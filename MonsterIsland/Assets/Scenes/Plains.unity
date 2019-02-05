@@ -296,7 +296,7 @@ SpriteShapeRenderer:
   - {fileID: 0}
   m_LocalAABB:
     m_Center: {x: 5, y: 0, z: 0}
-    m_Extent: {x: 5, y: 0.12500001, z: 0}
+    m_Extent: {x: 5, y: 0.50000006, z: 0}
 --- !u!4 &2055801576
 Transform:
   m_ObjectHideFlags: 0
@@ -305,7 +305,7 @@ Transform:
   m_GameObject: {fileID: 2055801573}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5, y: -2.5, z: 0}
-  m_LocalScale: {x: 1, y: 4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
