@@ -6,9 +6,9 @@ using System;
 [Serializable]
 public class GameFile {
     public string saveFileName;
-    public CameraLocation cameraLocation;
     public decimal totalPlayTime;
     public string saveDate;
+    public string saveArea;
     public Player player;
     public GameProgression gameProgression;
 }
