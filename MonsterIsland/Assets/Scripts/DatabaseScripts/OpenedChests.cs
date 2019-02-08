@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class OpenedChests : MonoBehaviour {
+public class OpenedChests {
     public bool plainsChest1;
     public bool plainsChest2;
     public bool jungleChest1;

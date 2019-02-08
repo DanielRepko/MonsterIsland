@@ -9,6 +9,6 @@ public class GameFile {
     public decimal totalPlayTime;
     public string saveDate;
     public string saveArea;
-    public Player player;
+    public PlayerInfo player;
     public GameProgression gameProgression;
 }
