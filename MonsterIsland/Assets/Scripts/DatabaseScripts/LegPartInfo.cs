@@ -7,7 +7,7 @@ using System;
 public class LegPartInfo {
     public string monster;
     public string pelvisSprite;
-    public string thightSprite;
+    public string thighSprite;
     public string shinSprite;
     public string footSprite;
 }
