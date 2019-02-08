@@ -7,6 +7,7 @@ using System;
 public class HeadPartInfo {
     public string monster;
     public string mainSprite;
+    public string neckSprite;
     public string hurtSprite;
     public string attackSprite;
 }
