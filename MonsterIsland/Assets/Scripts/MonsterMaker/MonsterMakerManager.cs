@@ -24,7 +24,8 @@ public class MonsterMakerManager : MonoBehaviour {
         {
             if(child.gameObject.name == (partType + "Slot"))
             {
-                
+                child.localPosition = new Vector3(0, 50f, 0);
+                child.localScale = new Vector3(1.4f, 1.4f, 0);
 
             } else if(child.gameObject.name == "PartEditor")
             {
