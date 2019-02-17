@@ -7,6 +7,12 @@ using UnityEngine.UI;
 public class MonsterMakerManager : MonoBehaviour {
 
     public Button headSlot;
+    public Button torsoSlot;
+    public Button rightArmSlot;
+    public Button leftArmSlot;
+    public Button legsSlot;
+    public Button rightWeaponSlot;
+    public Button leftWeaponSlot;
 	
 	// Use this for initialization
 	void Start () {
