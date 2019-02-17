@@ -24,7 +24,7 @@ public class MonsterMakerManager : MonoBehaviour {
 		
 	}
 
-    public void showPartEditor(string partType)
+    public void ShowPartEditor(string partType)
     {
         foreach(Transform child in transform)
         {
