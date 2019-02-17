@@ -16,7 +16,7 @@ public abstract class PartSlot : MonoBehaviour {
     abstract public void ChangeSecondaryColor(string newColor);
 
     //used to update the ui with the new/recolored part
-    abstract public void RefreshPart();
+    abstract public void UpdateUI();
 
     //helper method used to change the colors of each section of the part
     public string ChangeColor(string partString, string colorClass, string color)
