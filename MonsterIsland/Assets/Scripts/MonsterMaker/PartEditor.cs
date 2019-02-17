@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PartEditor : MonoBehaviour {
+
+    public PartSlot partSlot;
 	
 	// Use this for initialization
 	void Start () {
@@ -14,4 +16,17 @@ public class PartEditor : MonoBehaviour {
 	void Update () { 
 		
 	}
+
+    public void OpenPartEditor(PartSlot partSlot)
+    {
+        this.partSlot = partSlot;
+        this.partSlot.EnterPartEditor();
+        gameObject.SetActive(true);
+    }
+
+    public void ClosePartEditor()
+    {
+        partSlot.ExitPartEditor();
+        gameObject.SetActive(false);
+    }
 }

@@ -17,20 +17,17 @@ public abstract class PartSlot : MonoBehaviour {
 
     abstract public void RefreshPart();
 
-    public void Start()
-    {
-        originalPosition = transform.localScale;
-    }
-
     public void EnterPartEditor()
     {
         transform.localPosition = new Vector3(0, 50f, 0);
         transform.localScale = new Vector3(1.4f, 1.4f, 0);
+        gameObject.GetComponent<Button>().interactable = false;
     }
 
     public void ExitPartEditor()
     {
         transform.localPosition = originalPosition;
         transform.localScale = new Vector3(1f, 1f, 0);
+        gameObject.GetComponent<Button>().interactable = true;
     }
 }

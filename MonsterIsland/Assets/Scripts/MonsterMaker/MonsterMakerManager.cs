@@ -6,17 +6,19 @@ using UnityEngine.UI;
 
 public class MonsterMakerManager : MonoBehaviour {
 
-    public Button headSlot;
+    public HeadSlot headSlot;
     public Button torsoSlot;
     public Button rightArmSlot;
     public Button leftArmSlot;
     public Button legsSlot;
     public Button rightWeaponSlot;
     public Button leftWeaponSlot;
+
+    public PartEditor partEditor;
 	
 	// Use this for initialization
 	void Start () {
-        
+        headSlot.originalPosition = headSlot.transform.localPosition;
 	}
 
 	// Update is called once per frame
@@ -30,16 +32,34 @@ public class MonsterMakerManager : MonoBehaviour {
         {
             if(child.gameObject.name == (partType + "Slot"))
             {
-                child.localPosition = new Vector3(0, 50f, 0);
-                child.localScale = new Vector3(1.4f, 1.4f, 0);
-
-            } else if(child.gameObject.name == "PartEditor")
+                partEditor.OpenPartEditor(child.gameObject.GetComponent<PartSlot>());
+            }
+            else if(child.gameObject.name == "PartEditor")
             {
-                child.gameObject.SetActive(true);
-
-            } else
+                //child is the Part Editor, don't do anything
+            }
+            else
             {
                 child.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void HidePartEditor()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.name == "WeaponPicker")
+            {
+                child.gameObject.SetActive(false);
+            }
+            else if (child.gameObject.name == "PartEditor")
+            {
+                partEditor.ClosePartEditor();
+            }
+            else
+            {
+                child.gameObject.SetActive(true);
             }
         }
     }
