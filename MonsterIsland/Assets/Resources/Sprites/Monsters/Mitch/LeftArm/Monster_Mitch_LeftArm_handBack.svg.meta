@@ -13,8 +13,8 @@ ScriptedImporter:
   texturedSpriteMeshType: 0
   svgPixelsPerUnit: 10
   gradientResolution: 128
-  alignment: 0
-  customPivot: {x: 0, y: 0}
+  alignment: 9
+  customPivot: {x: 0.5, y: 0.95}
   generatePhysicsShape: 0
   preserveViewport: 0
   advancedMode: 1
@@ -37,7 +37,7 @@ ScriptedImporter:
   spriteData:
     TessellationDetail: 0
     SpriteRect:
-      name: 
+      name: Monster_Mitch_LeftArm_handBack
       originalName: 
       pivot: {x: 0, y: 0}
       alignment: 0
@@ -46,7 +46,7 @@ ScriptedImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 0
-        height: 0
+        width: 256
+        height: 173
       spriteID: f216a73d59127f049b3b452572d9f7c5
     PhysicsOutlines: []

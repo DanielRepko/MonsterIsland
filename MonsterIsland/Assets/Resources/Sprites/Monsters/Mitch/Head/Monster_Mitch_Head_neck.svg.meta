@@ -13,8 +13,8 @@ ScriptedImporter:
   texturedSpriteMeshType: 0
   svgPixelsPerUnit: 10
   gradientResolution: 128
-  alignment: 0
-  customPivot: {x: 0, y: 0}
+  alignment: 9
+  customPivot: {x: 0.49434072, y: 0.16433273}
   generatePhysicsShape: 0
   preserveViewport: 0
   advancedMode: 1
@@ -37,16 +37,16 @@ ScriptedImporter:
   spriteData:
     TessellationDetail: 0
     SpriteRect:
-      name: 
+      name: Monster_Mitch_Head_neck
       originalName: 
-      pivot: {x: 0, y: 0}
-      alignment: 0
+      pivot: {x: 0.49434072, y: 0.16433273}
+      alignment: 9
       border: {x: 0, y: 0, z: 0, w: 0}
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 0
-        height: 0
+        width: 256
+        height: 223
       spriteID: 2ede3bbad5c180d48b16f7399b366d37
     PhysicsOutlines: []

@@ -1090,6 +1090,12 @@ MonoBehaviour:
   rightWeaponSlot: {fileID: 1820924210}
   leftWeaponSlot: {fileID: 732212879}
   partEditor: {fileID: 650821324}
+  availableParts:
+    collectedHeads: []
+    collectedTorsos: []
+    collectedLeftArms: []
+    collectedRightArms: []
+    collectedLegs: []
 --- !u!1 &222177581
 GameObject:
   m_ObjectHideFlags: 0
@@ -4696,7 +4702,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalPosition: {x: 0, y: 0, z: 0}
-  partType: 
+  partType: Head
+  partInfo:
+    monster: 
+    mainSprite: 
+    neckSprite: 
+    hurtSprite: 
+    attackSprite: 
+  faceImage: {fileID: 2098960402}
+  neckImage: {fileID: 2141343313}
 --- !u!1 &1254600152
 GameObject:
   m_ObjectHideFlags: 0

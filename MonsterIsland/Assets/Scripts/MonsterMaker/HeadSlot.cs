@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class HeadSlot : PartSlot{
     public HeadPartInfo partInfo;
+    public Image faceImage;
+    public Image neckImage;
 
     public override void ChangePart(MonsterPartInfo newPart)
     {
@@ -43,6 +46,6 @@ public class HeadSlot : PartSlot{
 
     public override void UpdateUI()
     {
-        throw new System.NotImplementedException();
+        
     }
 }
