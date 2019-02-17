@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class HeadSlot : PartSlot{
+    public HeadPartInfo partInfo;
+
     public override void ChangePart(MonsterPartInfo newPart)
     {
         throw new System.NotImplementedException();
@@ -15,7 +18,7 @@ public class HeadSlot : PartSlot{
 
     public override void ChangeSecondaryColor(string newColor)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void RefreshPart()

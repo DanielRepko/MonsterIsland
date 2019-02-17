@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Xml;
 
 public abstract class PartSlot : MonoBehaviour {
-    public MonsterPartInfo partInfo;
     public Vector3 originalPosition;
     public string partType;
 
@@ -15,7 +15,28 @@ public abstract class PartSlot : MonoBehaviour {
 
     abstract public void ChangeSecondaryColor(string newColor);
 
+    //used to update the ui with the new/recolored part
     abstract public void RefreshPart();
+
+    //helper method used to change the colors of each section of the part
+    public string ChangeColor(string partString, string colorClass, string color)
+    {
+        XmlDocument partXml = new XmlDocument();
+        partXml.LoadXml(partString);
+
+        foreach (XmlNode node in partXml.DocumentElement.ChildNodes)
+        {
+            if (node.Attributes != null)
+            {
+                if (node.Attributes[0].Name == "class" && node.Attributes[0].Value == colorClass)
+                {
+                    node.Attributes[2].Value = color;
+                }
+            }
+        }
+
+        return partXml.InnerXml;
+    }
 
     public void EnterPartEditor()
     {
