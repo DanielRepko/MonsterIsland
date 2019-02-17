@@ -15,11 +15,22 @@ public abstract class PartSlot : MonoBehaviour {
 
     abstract public void ChangeSecondaryColor(string newColor);
 
-    public void EnterPartEditor()
+    abstract public void RefreshPart();
+
+    public void Start()
     {
-        gameObject.transform.localPosition = new Vector3(0, 50f, 0);
-        gameObject.transform.localScale = new Vector3(1.4f, 1.4f, 0);
+        originalPosition = transform.localScale;
     }
 
-    abstract public void ExitPartEditor();
+    public void EnterPartEditor()
+    {
+        transform.localPosition = new Vector3(0, 50f, 0);
+        transform.localScale = new Vector3(1.4f, 1.4f, 0);
+    }
+
+    public void ExitPartEditor()
+    {
+        transform.localPosition = originalPosition;
+        transform.localScale = new Vector3(1f, 1f, 0);
+    }
 }
