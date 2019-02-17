@@ -4,8 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class LegPartInfo {
-    public string monster;
+public class LegPartInfo : MonsterPartInfo{
     public string pelvisSprite;
     public string thighSprite;
     public string shinSprite;
