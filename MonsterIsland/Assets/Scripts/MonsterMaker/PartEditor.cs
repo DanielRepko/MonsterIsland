@@ -6,16 +6,6 @@ using UnityEngine.UI;
 public class PartEditor : MonoBehaviour {
 
     public PartSlot partSlot;
-	
-	// Use this for initialization
-	void Start () {
-		
-	}
-
-	// Update is called once per frame
-	void Update () { 
-		
-	}
 
     public void OpenPartEditor(PartSlot partSlot)
     {

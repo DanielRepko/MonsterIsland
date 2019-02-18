@@ -11,7 +11,7 @@ public class Helper : MonoBehaviour {
     /**
      * Head
      **/
-    public SVGImporter HeadImporter = new SVGImporter()
+    public static SVGImporter HeadImporter = new SVGImporter()
     {
         MaxCordDeviation = float.MaxValue,
         MaxTangentAngle = Mathf.PI / 2f,
@@ -26,7 +26,7 @@ public class Helper : MonoBehaviour {
     /**
      * Torso
      **/
-    public SVGImporter TorsoImporter = new SVGImporter()
+    public static SVGImporter TorsoImporter = new SVGImporter()
     {
         MaxCordDeviation = float.MaxValue,
         MaxTangentAngle = Mathf.PI / 2f,
@@ -42,7 +42,7 @@ public class Helper : MonoBehaviour {
      * Arms
      **/
     //Bicep
-    public SVGImporter BicepImporter = new SVGImporter()
+    public static SVGImporter BicepImporter = new SVGImporter()
     {
         MaxCordDeviation = float.MaxValue,
         MaxTangentAngle = Mathf.PI / 2f,
@@ -54,7 +54,7 @@ public class Helper : MonoBehaviour {
         GradientResolution = 128
     };
     //Forearm
-    public SVGImporter ForearmImporter = new SVGImporter()
+    public static SVGImporter ForearmImporter = new SVGImporter()
     {
         MaxCordDeviation = float.MaxValue,
         MaxTangentAngle = Mathf.PI / 2f,
@@ -66,7 +66,7 @@ public class Helper : MonoBehaviour {
         GradientResolution = 128
     };
     //Hand/Fingers
-    public SVGImporter HandImporter = new SVGImporter()
+    public static SVGImporter HandImporter = new SVGImporter()
     {
         MaxCordDeviation = float.MaxValue,
         MaxTangentAngle = Mathf.PI / 2f,
@@ -82,7 +82,7 @@ public class Helper : MonoBehaviour {
      * Legs
      **/
     //Pelvis
-    public SVGImporter PelvisImporter = new SVGImporter()
+    public static SVGImporter PelvisImporter = new SVGImporter()
     {
         MaxCordDeviation = float.MaxValue,
         MaxTangentAngle = Mathf.PI / 2f,
@@ -94,7 +94,7 @@ public class Helper : MonoBehaviour {
         GradientResolution = 128
     };
     //Thigh
-    public SVGImporter ThighImporter = new SVGImporter()
+    public static SVGImporter ThighImporter = new SVGImporter()
     {
         MaxCordDeviation = float.MaxValue,
         MaxTangentAngle = Mathf.PI / 2f,
@@ -106,7 +106,7 @@ public class Helper : MonoBehaviour {
         GradientResolution = 128
     };
     //Shin
-    public SVGImporter ShinImporter = new SVGImporter()
+    public static SVGImporter ShinImporter = new SVGImporter()
     {
         MaxCordDeviation = float.MaxValue,
         MaxTangentAngle = Mathf.PI / 2f,
@@ -118,7 +118,7 @@ public class Helper : MonoBehaviour {
         GradientResolution = 128
     };
     //Foot
-    public SVGImporter FootImporter = new SVGImporter()
+    public static SVGImporter FootImporter = new SVGImporter()
     {
         MaxCordDeviation = float.MaxValue,
         MaxTangentAngle = Mathf.PI / 2f,
@@ -131,7 +131,7 @@ public class Helper : MonoBehaviour {
     };
 
     //helper method used to convert the imageStrings to Sprites
-    public Sprite CreateSprite(string partString, SVGImporter importer)
+    public static Sprite CreateSprite(string partString, SVGImporter importer)
     {
         StringReader reader = new StringReader(partString);
 
