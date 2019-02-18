@@ -23,7 +23,13 @@ public class PartEditor : MonoBehaviour {
 
     public void SecondaryColorPressed(string color)
     {
-        partSlot.ChangePrimaryColor(color);
+        partSlot.ChangeSecondaryColor(color);
+
+        Color parsedColor = new Color();
+        if (ColorUtility.TryParseHtmlString(color, out parsedColor))
+        {
+            secondaryColorIndicator.color = parsedColor;
+        }
     }
 
     public void OpenPartEditor(PartSlot partSlot)
