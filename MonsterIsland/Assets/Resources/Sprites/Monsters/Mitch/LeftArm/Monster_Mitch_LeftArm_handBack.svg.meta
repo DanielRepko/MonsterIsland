@@ -37,7 +37,7 @@ ScriptedImporter:
   spriteData:
     TessellationDetail: 0
     SpriteRect:
-      name: Monster_Mitch_LeftArm_handBack
+      name: 
       originalName: 
       pivot: {x: 0, y: 0}
       alignment: 0
@@ -46,7 +46,7 @@ ScriptedImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 173
-      spriteID: f216a73d59127f049b3b452572d9f7c5
+        width: 0
+        height: 0
+      spriteID: bc74798e6b5792a4baf3575199bfff08
     PhysicsOutlines: []

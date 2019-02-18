@@ -108,6 +108,7 @@ public class Helper : MonoBehaviour {
     //Shin
     public static SVGImporter ShinImporter = new SVGImporter()
     {
+        
         MaxCordDeviation = float.MaxValue,
         MaxTangentAngle = Mathf.PI / 2f,
         SamplingStepDistance = 100,
@@ -131,7 +132,7 @@ public class Helper : MonoBehaviour {
     };
 
     //helper method used to convert the imageStrings to Sprites
-    public static Sprite CreateSprite(string partString, SVGImporter importer)
+    public static Sprite CreateSprite(string partString, SVGImporter importer, Material material)
     {
         StringReader reader = new StringReader(partString);
 
@@ -147,8 +148,12 @@ public class Helper : MonoBehaviour {
 
         var geometryList = VectorUtils.TessellateScene(sceneInfo.Scene, options);
 
-        Sprite partSprite = VectorUtils.BuildSprite(geometryList, importer.SvgPixelsPerUnit, importer.Alignment, importer.CustomPivot, importer.GradientResolution);
+        Sprite partSprite = VectorUtils.BuildSprite(geometryList, importer.SvgPixelsPerUnit, importer.Alignment, importer.CustomPivot, importer.GradientResolution, true);
 
-        return partSprite;
+        Texture2D partTexture = VectorUtils.RenderSpriteToTexture2D(partSprite, (int)partSprite.rect.width, (int)partSprite.rect.height, material);
+
+        Sprite texturedSprite = Sprite.Create(partTexture, new Rect(0, 0, (int)partSprite.rect.width, (int)partSprite.rect.height), importer.CustomPivot);
+
+        return texturedSprite;
     }
 }

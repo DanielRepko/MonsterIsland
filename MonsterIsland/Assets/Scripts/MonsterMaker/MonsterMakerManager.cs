@@ -26,13 +26,13 @@ public class MonsterMakerManager : MonoBehaviour {
 
         //this code is for testing purposes
         XmlDocument head_Face_Idle = new XmlDocument();
-        head_Face_Idle.LoadXml("Assets/Resources/Sprites/Monsters/Mitch/Head/Monster_Mitch_Head_Face_idle");
+        head_Face_Idle.Load("Assets/Resources/Sprites/Monsters/Mitch/Head/Monster_Mitch_Head_Face_idle.svg");
         XmlDocument head_Face_Attack = new XmlDocument();
-        head_Face_Attack.LoadXml("Assets/Resources/Sprites/Monsters/Mitch/Head/Monster_Mitch_Head_Face_attack");
+        head_Face_Attack.Load("Assets/Resources/Sprites/Monsters/Mitch/Head/Monster_Mitch_Head_Face_attack.svg");
         XmlDocument head_Face_Hurt = new XmlDocument();
-        head_Face_Hurt.LoadXml("Assets/Resources/Sprites/Monsters/Mitch/Head/Monster_Mitch_Head_Face_hurt");
+        head_Face_Hurt.Load("Assets/Resources/Sprites/Monsters/Mitch/Head/Monster_Mitch_Head_Face_hurt.svg");
         XmlDocument head_Neck = new XmlDocument();
-        head_Neck.LoadXml("Assets/Resources/Sprites/Monsters/Mitch/Head/Monster_Mitch_Head_neck");
+        head_Neck.Load("Assets/Resources/Sprites/Monsters/Mitch/Head/Monster_Mitch_Head_neck.svg");
 
         headSlot.partInfo = new HeadPartInfo()
         {

@@ -14,7 +14,7 @@ ScriptedImporter:
   svgPixelsPerUnit: 10
   gradientResolution: 128
   alignment: 9
-  customPivot: {x: 0.4943407, y: 0.1643327}
+  customPivot: {x: 0.4943407, y: 0}
   generatePhysicsShape: 0
   preserveViewport: 0
   advancedMode: 1
@@ -48,5 +48,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: b0178233707d92448ab521b4e7c9390a
+      spriteID: 1d546653352914c4889927f9e5c462e0
     PhysicsOutlines: []

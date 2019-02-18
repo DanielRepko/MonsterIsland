@@ -37,16 +37,16 @@ ScriptedImporter:
   spriteData:
     TessellationDetail: 0
     SpriteRect:
-      name: Monster_Mitch_Legs_foot
+      name: 
       originalName: 
-      pivot: {x: 0.262309, y: 0.6385142}
-      alignment: 9
+      pivot: {x: 0, y: 0}
+      alignment: 0
       border: {x: 0, y: 0, z: 0, w: 0}
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 129
-      spriteID: 3439d59c3afd2474c9d094e0dcea9188
+        width: 0
+        height: 0
+      spriteID: 48b81b5498719e74385cfc2c8ae906c4
     PhysicsOutlines: []

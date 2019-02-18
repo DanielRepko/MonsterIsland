@@ -25,6 +25,7 @@ public class HeadSlot : PartSlot{
             attackSprite = ChangeColor(partInfo.attackSprite, "primary_color", newColor),
         };
 
+
         partInfo = newPart;
         UpdateUI();
     }
@@ -46,7 +47,7 @@ public class HeadSlot : PartSlot{
 
     public override void UpdateUI()
     {
-        faceImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter);
-        neckImage.sprite = Helper.CreateSprite(partInfo.neckSprite, Helper.HeadImporter);
+        faceImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
+        neckImage.sprite = Helper.CreateSprite(partInfo.neckSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
     }
 }
