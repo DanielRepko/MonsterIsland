@@ -58,6 +58,8 @@ public class PartEditor : MonoBehaviour
                 });
 
             //getting the recttransform of the button
+
+            Debug.Log(partPicker.content.sizeDelta.x);
             var pickerButtonTransform = pickerButton.GetComponent<RectTransform>();
             pickerButtonTransform.SetParent(partPicker.content);
             pickerButtonTransform.anchoredPosition = new Vector2(xOffset, 0);
@@ -67,7 +69,12 @@ public class PartEditor : MonoBehaviour
 
     public void ResetPartPicker()
     {
-
+        partPicker.content.sizeDelta = new Vector2(-800, partPicker.content.sizeDelta.y);
+        partPicker.horizontalScrollbar.value = 0;
+        for(int i = 0; i < partPicker.content.childCount; i++)
+        {
+            Destroy(partPicker.content.GetChild(i).gameObject);
+        }
     }
 
     public void OpenPartEditor(PartSlot partSlot)
