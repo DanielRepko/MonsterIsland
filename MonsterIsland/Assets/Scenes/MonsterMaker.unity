@@ -2832,6 +2832,7 @@ GameObject:
   - component: {fileID: 469563245}
   - component: {fileID: 469563244}
   - component: {fileID: 469563243}
+  - component: {fileID: 469563246}
   m_Layer: 5
   m_Name: LeftArmSlot
   m_TagString: Untagged
@@ -2947,6 +2948,33 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 469563241}
   m_CullTransparentMesh: 0
+--- !u!114 &469563246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 469563241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e0fbd5803114d4887fd5766aa51ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalPosition: {x: 0, y: 0, z: 0}
+  partType: LeftArm
+  partInfo:
+    monster: 
+    bicepSprite: 
+    forearmSprite: 
+    handBackSprite: 
+    handFrontSprite: 
+    fingersOpenBackSprite: 
+    fingersOpenFrontSprite: 
+    fingersClosedBackSprite: 
+    fingersClosedFrontSprite: 
+  bicepImage: {fileID: 364056633}
+  forearmImage: {fileID: 569627715}
+  handImage: {fileID: 1394120391}
+  fingersImage: {fileID: 1599267155}
 --- !u!1 &493149588
 GameObject:
   m_ObjectHideFlags: 0
@@ -5018,10 +5046,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalPosition: {x: 0, y: 0, z: 0}
-  partType: 
+  partType: Torso
   partInfo:
-    monster: 
-    mainSprite: 
+    monster: Mitch
+    mainSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator: Adobe
+      Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg
+      version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect id=\"body_frame\"
+      x=\"230.5\" y=\"301.5\" fill-opacity=\"0\" fill=\"#BBBCBE\" width=\"151\" height=\"191\"/>
+      <path class=\"primary_color\" id=\"PRIMARY\" fill=\"#00BC03\" stroke=\"#231F20\"
+      stroke-width=\"0.9621\" stroke-miterlimit=\"10\" d=\"M255.691,491.519H356.62
+      \tc8.577-20.623,13.195-47.101,13.195-75.978c0-39.985,9.501-72.425-0.068-94.898c-0.955-2.247-2.102-4.394-3.469-6.439
+      \tc-7.529-14.436-23.262-11.472-36.128-11.47c-1.621,0-3.289,0-4.994,0c-12.077,0-26.063,0-38.271,0c-2.442,0-4.812,0-7.082,0.005
+      \tc-12.669-0.006-28.401-1.983-34.781,13.148c-1.348,2.362-2.46,4.814-3.371,7.355c-8.199,22.878-0.092,53.054-0.092,92.299
+      \tC241.559,444.418,246.735,470.896,255.691,491.519z\"/> <path class=\"secondary_color\"
+      id=\"SECONDARY\" fill=\"#FFFDB5\" stroke=\"#231F20\" stroke-width=\"0.9965\"
+      stroke-miterlimit=\"10\" d=\"M348.95,395.695 \tc0,44.139-19.229,79.916-42.95,79.916s-42.949-35.777-42.949-79.916c0-44.138,5.027-80.546,42.949-79.918
+      \tC343.658,316.401,348.95,351.558,348.95,395.695z\"/> <line fill=\"none\" stroke=\"#231F20\"
+      stroke-width=\"0.9965\" stroke-miterlimit=\"10\" x1=\"263.051\" y1=\"395.695\"
+      x2=\"348.95\" y2=\"395.695\"/> <path fill=\"none\" stroke=\"#231F20\" stroke-width=\"0.9965\"
+      stroke-miterlimit=\"10\" d=\"M265.319,420.973 \tc26.536,6.621,54.333,5.65,81.377-0.07\"/>
+      <path fill=\"none\" stroke=\"#231F20\" stroke-width=\"0.9965\" stroke-miterlimit=\"10\"
+      d=\"M272.744,446.367 \tc21.407,3.552,44.24,4.522,66.491-0.055\"/> <path fill=\"none\"
+      stroke=\"#231F20\" stroke-width=\"0.9965\" stroke-miterlimit=\"10\" d=\"M264.303,370.533
+      \tc28.395-6.033,55.521-6.033,83.391,0.077\"/> <path fill=\"none\" stroke=\"#231F20\"
+      stroke-width=\"0.9965\" stroke-miterlimit=\"10\" d=\"M268.263,345.197 \tc25.416-4.963,51.091-5.934,75.448,0.197\"/>
+      </svg>"
     hasWings: 0
     leftWingSprite: 
     rightWingSprite: 
@@ -5039,6 +5090,7 @@ GameObject:
   - component: {fileID: 993139398}
   - component: {fileID: 993139397}
   - component: {fileID: 993139396}
+  - component: {fileID: 993139399}
   m_Layer: 5
   m_Name: RightArmSlot
   m_TagString: Untagged
@@ -5154,6 +5206,165 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 993139394}
   m_CullTransparentMesh: 0
+--- !u!114 &993139399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 993139394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e0fbd5803114d4887fd5766aa51ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalPosition: {x: 0, y: 0, z: 0}
+  partType: RightArm
+  partInfo:
+    monster: Mitch
+    bicepSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator: Adobe
+      Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg
+      version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect x=\"264.5\"
+      y=\"357.651\" fill-opacity=\"0\" fill=\"#231F20\" width=\"81\" height=\"78.206\"/>
+      <path class=\"primary_color\" id=\"PRIMARY_2_\" fill=\"#00BC03\" stroke=\"#231F20\"
+      stroke-width=\"1.0054\" stroke-miterlimit=\"10\" d=\"M340.047,377.473 \tc9.064,7.569,5.236,26.806-8.551,42.964c-13.789,16.158,2.006,15.91-41.382,15.549c-11.863-0.099-5.235-26.806,8.553-42.964
+      \tC312.455,376.864,330.98,369.901,340.047,377.473z\"/> </svg>"
+    forearmSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator: Adobe
+      Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg
+      version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect x=\"266.5\"
+      y=\"352.008\" fill-opacity=\"0\" fill=\"#231F20\" width=\"81\" height=\"89.313\"/>
+      <path class=\"primary_color\" id=\"PRIMARY_3_\" fill=\"#00BC03\" stroke=\"#231F20\"
+      stroke-width=\"1.0468\" stroke-miterlimit=\"10\" d=\"M297.333,352.02 \tc-5.75,9.289-8.823,21.308-8.823,36.207c0,29.229,4.48,52.924,17.489,52.924c11.292,0,17.488-23.695,17.488-52.924
+      \tc0-14.899-2.738-27.403-8.071-36.207H297.333z\"/> <circle fill=\"none\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" cx=\"306.25\" cy=\"360.11\" r=\"2.5\"/> <line fill=\"none\"
+      stroke=\"#231F20\" stroke-width=\"1.0468\" stroke-miterlimit=\"10\" x1=\"303.75\"
+      y1=\"360.11\" x2=\"293.285\" y2=\"360.11\"/> <line fill=\"none\" stroke=\"#231F20\"
+      stroke-width=\"1.0468\" stroke-miterlimit=\"10\" x1=\"308.75\" y1=\"360.11\"
+      x2=\"319.228\" y2=\"360.11\"/> <circle fill=\"none\" stroke=\"#231F20\" stroke-miterlimit=\"10\"
+      cx=\"306.25\" cy=\"433.75\" r=\"2.5\"/> <line fill=\"none\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" x1=\"308.75\" y1=\"433.75\" x2=\"315.646\" y2=\"433.75\"/>
+      <line fill=\"none\" stroke=\"#231F20\" stroke-miterlimit=\"10\" x1=\"303.75\"
+      y1=\"433.75\" x2=\"295.915\" y2=\"433.75\"/> </svg>"
+    handBackSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator: Adobe
+      Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg
+      version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect x=\"265.5\"
+      y=\"369.004\" fill-opacity=\"0\" fill=\"#231F20\" width=\"81\" height=\"54.487\"/>
+      <circle class=\"primary_color\" id=\"PRIMARY_1_\" fill=\"#00BC03\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" cx=\"304.915\" cy=\"387.407\" r=\"18.232\"/> </svg>"
+    handFrontSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator: Adobe
+      Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg
+      version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect x=\"266.5\"
+      y=\"369.004\" fill-opacity=\"0\" fill=\"#231F20\" width=\"81\" height=\"54.487\"/>
+      <circle class=\"primary_color\" id=\"PRIMARY_1_\" fill=\"#00BC03\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" cx=\"305.915\" cy=\"387.407\" r=\"18.232\"/> <ellipse
+      class=\"secondary_color\" id=\"SECONDARY_1_\" transform=\"matrix(0.0487 0.9988
+      -0.9988 0.0487 674.4388 59.6323)\" fill=\"#FFFDB5\" stroke=\"#231F20\" stroke-miterlimit=\"10\"
+      cx=\"305.915\" cy=\"383.865\" rx=\"8.725\" ry=\"10.553\"/> </svg>"
+    fingersOpenBackSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator:
+      Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+      <svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect x=\"266.5\"
+      y=\"369.004\" fill-opacity=\"0\" fill=\"#231F20\" width=\"81\" height=\"54.487\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_3_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M301.616,416.329 \tc0.057-3.926,0.177-7.918,0.037-11.275c1.445,0.369,2.952,0.586,4.513,0.586c1.161,0,2.292-0.12,3.393-0.327
+      \tc0.279,4.712-0.203,10.025-4.971,15.116c-0.357,0.418-0.752,0.811-1.203,1.148c-0.927,0.697-2.092,1.182-3.665,1.227
+      \tc0.47-1.459,0.924-2.939,1.335-4.393C301.255,417.708,301.442,417.013,301.616,416.329z\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_2_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M312.799,414.265 \tc-0.488-3.214-0.941-6.479-1.474-9.377c2.716-0.801,5.157-2.221,7.185-4.09c1.25,4.89,2.129,10.664-2.104,17.023
+      \tc-0.284,0.471-0.608,0.922-0.999,1.33c-0.799,0.84-1.867,1.51-3.413,1.813c0.224-1.518,0.429-3.053,0.595-4.553
+      \tC312.668,415.685,312.74,414.968,312.799,414.265z\"/> <path class=\"secondary_color\"
+      id=\"SECONDARY_1_\" fill=\"#FFFDB5\" stroke=\"#231F20\" stroke-miterlimit=\"10\"
+      d=\"M324.398,387.407c0-0.6-0.033-1.192-0.09-1.777 \tc0.264,0.037,0.486,0.148,0.644,0.371c3.149,4.453,7.013,9.914,4.976,18.32c-0.106,0.539-0.256,1.074-0.483,1.59
+      \tc-0.464,1.064-1.238,2.059-2.587,2.873c-0.309-1.502-0.643-3.014-1-4.482c-0.173-0.709-0.352-1.406-0.536-2.088
+      \tc-1.091-1.994-2.174-4.02-3.237-5.929C323.553,393.657,324.398,390.633,324.398,387.407z\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M288.737,415.278 \tc0.33-0.652,0.648-1.297,0.949-1.938c0.977-4.65,2.074-9.395,2.465-13.088c-0.038-0.139-0.075-0.268-0.107-0.389
+      \tc-0.242-0.488-0.319-0.865-0.264-1.152c0.006-0.032,0.022-0.059,0.032-0.089c1.999,2.556,4.66,4.559,7.731,5.758
+      \tc-0.655,4.589-2.204,9.567-7.726,13.556c-0.431,0.34-0.894,0.65-1.401,0.895c-1.042,0.508-2.277,0.76-3.831,0.502
+      \tC287.326,417.991,288.056,416.626,288.737,415.278z\"/> </svg>"
+    fingersOpenFrontSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator:
+      Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+      <svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect x=\"262.5\"
+      y=\"379.004\" fill-opacity=\"0\" fill=\"#231F20\" width=\"81\" height=\"54.487\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_3_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M319.344,425.278 \tc-0.33-0.652-0.648-1.297-0.949-1.938c-0.977-4.65-2.074-9.395-2.465-13.088c0.038-0.139,0.075-0.268,0.107-0.389
+      \tc0.242-0.488,0.319-0.865,0.264-1.152c-0.006-0.032-0.022-0.059-0.032-0.089c-1.999,2.556-4.66,4.559-7.731,5.758
+      \tc0.655,4.589,2.204,9.567,7.726,13.556c0.431,0.34,0.894,0.65,1.401,0.895c1.042,0.508,2.277,0.76,3.831,0.502
+      \tC320.755,427.991,320.025,426.626,319.344,425.278z\"/> <path class=\"secondary_color\"
+      id=\"SECONDARY_2_\" fill=\"#FFFDB5\" stroke=\"#231F20\" stroke-miterlimit=\"10\"
+      d=\"M306.464,426.329 \tc-0.056-3.926-0.176-7.918-0.036-11.275c-1.446,0.369-2.953,0.586-4.514,0.586c-1.161,0-2.292-0.12-3.393-0.327
+      \tc-0.279,4.712,0.203,10.025,4.971,15.116c0.357,0.418,0.752,0.811,1.204,1.148c0.926,0.697,2.091,1.182,3.665,1.227
+      \tc-0.47-1.459-0.924-2.939-1.335-4.393C306.827,427.708,306.638,427.013,306.464,426.329z\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_1_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M295.282,424.265 \tc0.489-3.214,0.941-6.479,1.474-9.377c-2.715-0.801-5.158-2.221-7.185-4.09c-1.25,4.89-2.129,10.664,2.104,17.023
+      \tc0.284,0.471,0.608,0.922,0.999,1.33c0.799,0.84,1.868,1.51,3.414,1.813c-0.224-1.518-0.428-3.053-0.595-4.553
+      \tC295.413,425.685,295.341,424.968,295.282,424.265z\"/> <path class=\"secondary_color\"
+      id=\"SECONDARY\" fill=\"#FFFDB5\" stroke=\"#231F20\" stroke-miterlimit=\"10\"
+      d=\"M283.683,397.407c0-0.6,0.033-1.192,0.09-1.777 \tc-0.264,0.037-0.486,0.148-0.644,0.371c-3.149,4.453-7.012,9.914-4.975,18.32c0.106,0.539,0.256,1.074,0.483,1.59
+      \tc0.463,1.064,1.238,2.059,2.587,2.873c0.309-1.502,0.642-3.014,1-4.482c0.172-0.709,0.351-1.406,0.536-2.088
+      \tc1.091-1.994,2.174-4.02,3.237-5.929C284.528,403.657,283.683,400.633,283.683,397.407z\"/>
+      </svg>"
+    fingersClosedBackSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator:
+      Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+      <svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect x=\"265.5\"
+      y=\"370.004\" fill-opacity=\"0\" fill=\"#231F20\" width=\"81\" height=\"54.487\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_3_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M290.852,399.729 \tc-0.129,1.33-0.186,2.629-0.235,3.861c-0.057,1.377,2.841,1.535,4.231,2.166c0.629,0.149,1.264,0.258,1.837,0.298
+      \tc1.085,0.081,1.949-0.086,2.147-0.678C295.681,404.241,292.926,402.278,290.852,399.729z\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_2_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M305,406.469c-1.869,0-3.671-0.283-5.368-0.806 \tc0.103,0.548,0.208,1.089,0.313,1.615c0.269,1.352,3.121,0.822,4.622,1.113c0.647-0.002,1.289-0.046,1.856-0.142
+      \tc1.158-0.191,2.009-0.599,1.936-1.312c-0.021-0.217-0.129-0.464-0.336-0.74C307.037,406.362,306.032,406.469,305,406.469z\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_1_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M318.425,402.463 \tc-0.161-0.555-0.262-1.043-0.379-1.504c-1.899,1.948-4.235,3.459-6.845,4.405c0.087,0.19,0.175,0.382,0.261,0.569
+      \tc0.288,0.626,1.096,0.645,2.021,0.498c0.926-0.146,1.97-0.457,2.731-0.493C317,405,319,405,318.691,402.737
+      \tC318.609,402.649,318.521,402.561,318.425,402.463z\"/> <path class=\"secondary_color\"
+      id=\"SECONDARY\" fill=\"#FFFDB5\" stroke=\"#231F20\" stroke-miterlimit=\"10\"
+      d=\"M324.119,380.473 \tc-0.503-0.572-1.007-1.54-1.546-2.305s-1.114-1.333-1.765-1.104c-0.369,0.13-0.745,0.263-1.125,0.399
+      \tc1.543,2.099,2.659,4.528,3.189,7.177c0.096-0.054,0.188-0.107,0.29-0.161c0.136,0.001,0.262,0.002,0.383,0
+      \tC325.385,383.125,323.992,381.689,324.119,380.473z\"/> </svg>"
+    fingersClosedFrontSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator:
+      Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+      <svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect x=\"266.5\"
+      y=\"369.004\" fill-opacity=\"0\" fill=\"#231F20\" width=\"81\" height=\"54.487\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_7_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M312.528,401.096 \tc-0.267,0.477-0.362,0.849-0.323,1.139c0.097,0.712,1.02,0.907,2.19,0.819c0.573-0.04,1.208-0.148,1.837-0.298
+      \tc1.391-0.631,4.288-0.789,4.231-2.166c-0.219-5.448-0.489-12.134-7.231-17.552c-0.412-0.362-0.858-0.696-1.353-0.966
+      \tc-1.016-0.56-2.235-0.876-3.801-0.697c0.671,1.377,1.329,2.778,1.94,4.159c0.296,0.669,0.579,1.328,0.849,1.984
+      \tc0.735,4.695,1.588,9.487,1.788,13.199C312.611,400.852,312.566,400.978,312.528,401.096z\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_6_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M303.303,403.908 \tc-0.37,0.398-0.551,0.74-0.58,1.03c-0.073,0.713,0.777,1.12,1.936,1.312c0.567,0.096,1.208,0.14,1.856,0.142
+      \tc1.5-0.291,4.353,0.238,4.622-1.113c1.065-5.349,2.373-11.909-2.908-18.758c-0.316-0.45-0.672-0.879-1.088-1.258
+      \tc-0.856-0.783-1.97-1.376-3.531-1.571c0.328,1.496,0.638,3.014,0.909,4.5c0.131,0.719,0.251,1.429,0.358,2.126
+      \tc-0.386,4.739-0.683,9.6-1.357,13.249C303.441,403.688,303.368,403.801,303.303,403.908z\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_5_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M294.321,400.779 \tc-0.453,0.301-0.71,0.59-0.806,0.864c-0.236,0.679,0.496,1.271,1.578,1.728c0.53,0.225,1.144,0.417,1.773,0.569
+      \tc1.526,0.068,4.177,1.245,4.753-0.007c2.281-4.955,5.078-11.031,1.536-18.921c-0.202-0.511-0.448-1.01-0.766-1.476
+      \tc-0.65-0.96-1.594-1.797-3.068-2.351c-0.03,1.534-0.081,3.082-0.164,4.588c-0.04,0.73-0.087,1.449-0.145,2.153
+      \tc-1.479,4.517-2.898,9.175-4.405,12.568C294.505,400.596,294.409,400.688,294.321,400.779z\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_4_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M288.94,383.722 \tc-0.533,0.111-0.919,0.09-1.184-0.035c-0.647-0.305-0.555-1.245-0.121-2.336c0.212-0.533,0.507-1.105,0.839-1.66
+      \tc1.024-1.134,2.048-3.849,3.344-3.38c5.129,1.857,11.42,4.132,14.55,12.196c0.221,0.502,0.404,1.027,0.512,1.58
+      \tc0.229,1.139,0.16,2.398-0.482,3.836c-1.112-1.056-2.249-2.107-3.383-3.107c-0.545-0.483-1.091-0.954-1.631-1.408
+      \tc-4.255-2.119-8.568-4.381-12.043-5.692C289.2,383.72,289.064,383.721,288.94,383.722z\"/>
+      </svg>"
+  bicepImage: {fileID: 1254600154}
+  forearmImage: {fileID: 914115672}
+  handImage: {fileID: 1689301479}
+  fingersImage: {fileID: 1886770444}
 --- !u!1 &1079276384
 GameObject:
   m_ObjectHideFlags: 0
@@ -5635,11 +5846,173 @@ MonoBehaviour:
   originalPosition: {x: 0, y: 0, z: 0}
   partType: Head
   partInfo:
-    monster: 
-    mainSprite: 
-    neckSprite: 
-    hurtSprite: 
-    attackSprite: 
+    monster: Mitch
+    mainSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator: Adobe
+      Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg
+      version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect id=\"head_frame\"
+      x=\"212.5\" y=\"319.5\" fill=\"#BBBCBE\" fill-opacity=\"0\" stroke-miterlimit=\"10\"
+      width=\"151\" height=\"131\"/> <path class=\"secondary_color\" id=\"SECONDARY_18_\"
+      fill=\"#FFFDB5\" stroke=\"#231F20\" stroke-miterlimit=\"10\" d=\"M262.926,355.021
+      \tc7.938,2.225,2.117,9.963-3.094,13.795c-0.994,0.702-2.075,1.275-3.235,1.699c-3.708,1.362-7.653,1.001-11.311-0.722
+      \tc-0.914-0.43-1.81-0.946-2.68-1.539c-5.222-4.307-9.801-10.461-11.645-17.008c-0.264-0.935-0.471-1.878-0.616-2.824
+      \tc-0.146-7.114,1.602-16.709,13.533-21.663c0.253,9.208,0.47,17.101,10.616,22.877c0.68,0.526,1.349,1.035,2.004,1.515
+      \tc1.967,1.442,3.808,2.633,5.436,3.428C262.29,354.735,262.622,354.88,262.926,355.021z\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_17_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M310.75,355.021 \tc-7.938,2.225-2.117,9.963,3.093,13.795c0.996,0.702,2.076,1.275,3.235,1.699c3.708,1.362,7.653,1.001,11.312-0.722
+      \tc0.914-0.43,1.811-0.946,2.68-1.539c5.222-4.307,9.802-10.461,11.645-17.008c0.264-0.935,0.471-1.878,0.616-2.824
+      \tc0.146-7.114-1.602-16.709-13.533-21.663c-0.253,9.208-0.471,17.101-10.617,22.877c-0.68,0.526-1.348,1.035-2.004,1.515
+      \tc-1.967,1.442-3.807,2.633-5.434,3.428C311.386,354.735,311.054,354.88,310.75,355.021z\"/>
+      <path class=\"primary_color\" id=\"PRIMARY_16_\" fill=\"#00BC03\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M262.001,350.165 \tc1.683,1.754-1.984,7.898-8.193,13.727c-6.209,5.828-12.606,9.128-14.289,7.375c-1.683-1.754,1.985-7.899,8.195-13.728
+      \tC253.922,351.712,260.318,348.412,262.001,350.165z\"/> <path class=\"primary_color\"
+      id=\"PRIMARY_14_\" fill=\"#00BC03\" stroke=\"#231F20\" stroke-miterlimit=\"10\"
+      d=\"M312.581,350.165 \tc-1.685,1.754,1.985,7.898,8.194,13.727c6.208,5.828,12.606,9.128,14.288,7.375c1.682-1.754-1.984-7.899-8.194-13.728
+      \tC320.66,351.712,314.264,348.412,312.581,350.165z\"/> <ellipse class=\"primary_color\"
+      id=\"PRIMARY_13_\" fill=\"#00BC03\" stroke=\"#231F20\" stroke-miterlimit=\"10\"
+      cx=\"287.676\" cy=\"395.819\" rx=\"50.28\" ry=\"49.734\"/> <ellipse id=\"eye_2_\"
+      fill=\"#FFFFFF\" stroke=\"#231F20\" stroke-miterlimit=\"10\" cx=\"287.676\"
+      cy=\"383.938\" rx=\"23.097\" ry=\"22.844\"/> <ellipse id=\"pupil_2_\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" cx=\"292.677\" cy=\"383.938\" rx=\"8.891\" ry=\"9.222\"/>
+      <ellipse id=\"eye-glint_2_\" fill=\"#FFFFFF\" stroke=\"#FFFFFF\" stroke-miterlimit=\"10\"
+      cx=\"296.181\" cy=\"381.714\" rx=\"2.92\" ry=\"2.89\"/> <path id=\"mouth_2_\"
+      fill=\"#231F20\" stroke=\"#231F20\" stroke-miterlimit=\"10\" d=\"M288.261,419.273
+      \tc-10.534,0-19.877-2.609-25.699-6.638c-0.902,1.8-1.399,3.728-1.399,5.733c0,9.883,11.871,17.896,26.514,17.896
+      \tc14.644,0,26.515-8.013,26.515-17.896c0-1.791-0.395-3.518-1.118-5.148C307.21,416.913,298.275,419.273,288.261,419.273z\"/>
+      <polygon class=\"secondary_color\" id=\"SECONDARY_29_\" fill=\"#FFFDB5\" points=\"276.197,417.529
+      272.646,421.364 271.729,416.246 \"/> <polygon class=\"secondary_color\" id=\"SECONDARY_28_\"
+      fill=\"#FFFDB5\" points=\"268.179,415.094 263.949,418.184 264.041,412.984 \"/>
+      <polygon class=\"secondary_color\" id=\"SECONDARY_27_\" fill=\"#FFFDB5\" points=\"285.541,418.744
+      282.859,423.217 280.9,418.391 \"/> <polygon class=\"secondary_color\" id=\"SECONDARY_26_\"
+      fill=\"#FFFDB5\" points=\"294.76,418.459 292.773,423.273 290.117,418.785 \"/>
+      <polygon class=\"secondary_color\" id=\"SECONDARY_25_\" fill=\"#FFFDB5\" points=\"303.068,416.751
+      301.926,421.828 298.547,417.842 \"/> <polygon class=\"secondary_color\" id=\"SECONDARY_24_\"
+      fill=\"#FFFDB5\" points=\"311.326,413.52 311.252,418.721 307.123,415.499 \"/>
+      <polygon class=\"secondary_color\" id=\"SECONDARY_23_\" fill=\"#FFFDB5\" points=\"263.502,426.826
+      268.477,425.137 266.806,430.069 \"/> <polygon class=\"secondary_color\" id=\"SECONDARY_22_\"
+      fill=\"#FFFDB5\" points=\"273.471,434.25 277.025,430.416 277.939,435.539 \"/>
+      <polygon class=\"secondary_color\" id=\"SECONDARY_21_\" fill=\"#FFFDB5\" points=\"285.388,436.827
+      287.701,432.156 290.04,436.814 \"/> <polygon class=\"secondary_color\" id=\"SECONDARY_20_\"
+      fill=\"#FFFDB5\" points=\"297.035,435.784 297.685,430.622 301.43,434.273 \"/>
+      <polygon class=\"secondary_color\" id=\"SECONDARY_19_\" fill=\"#FFFDB5\" points=\"308.626,430.114
+      306.819,425.229 311.838,426.786 \"/> </svg>"
+    neckSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator: Adobe
+      Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg
+      version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect id=\"head_frame\"
+      x=\"359.5\" y=\"578.5\" fill-opacity=\"0\" fill=\"#BBBCBE\" width=\"151\" height=\"131\"/>
+      <path class=\"primary_color\" id=\"PRIMARY\" fill=\"#00BC03\" stroke=\"#231F20\"
+      stroke-width=\"0.9412\" stroke-miterlimit=\"10\" d=\"M406.088,680.671 \tc-3.559,8.246-5.695,18.073-5.854,28.659h70.27c-0.158-10.586-2.294-20.413-5.853-28.659H406.088z\"/>
+      <line fill=\"none\" stroke=\"#231F20\" stroke-width=\"0.9214\" stroke-miterlimit=\"10\"
+      x1=\"434\" y1=\"690.5\" x2=\"434\" y2=\"704.545\"/> <circle fill=\"none\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" cx=\"434\" cy=\"688\" r=\"2.5\"/> </svg>"
+    hurtSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator: Adobe
+      Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg
+      version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect id=\"head_frame\"
+      x=\"206.564\" y=\"385.998\" fill-opacity=\"0\" fill=\"#BBBCBE\" width=\"151\"
+      height=\"131\"/> <path class=\"secondary_color\" id=\"SECONDARY_1_\" fill=\"#FFFDB5\"
+      stroke=\"#231F20\" stroke-miterlimit=\"10\" d=\"M256.991,421.519 \tc7.938,2.225,2.117,9.964-3.094,13.795c-0.995,0.702-2.075,1.275-3.235,1.699c-3.707,1.362-7.653,1.002-11.311-0.722
+      \tc-0.914-0.43-1.81-0.946-2.68-1.539c-5.222-4.307-9.801-10.461-11.644-17.008c-0.264-0.935-0.472-1.878-0.616-2.823
+      \tc-0.146-7.114,1.602-16.71,13.533-21.663c0.253,9.208,0.47,17.102,10.616,22.878c0.68,0.525,1.349,1.034,2.004,1.515
+      \tc1.967,1.442,3.808,2.633,5.436,3.428C256.355,421.232,256.687,421.378,256.991,421.519z\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M304.814,421.519 \tc-7.938,2.225-2.116,9.964,3.094,13.795c0.996,0.702,2.076,1.275,3.234,1.699c3.709,1.362,7.654,1.002,11.313-0.722
+      \tc0.914-0.43,1.811-0.946,2.68-1.539c5.222-4.307,9.802-10.461,11.645-17.008c0.264-0.935,0.471-1.878,0.615-2.823
+      \tc0.146-7.114-1.602-16.71-13.532-21.663c-0.253,9.208-0.471,17.102-10.618,22.878c-0.679,0.525-1.347,1.034-2.003,1.515
+      \tc-1.967,1.442-3.808,2.633-5.434,3.428C305.451,421.232,305.119,421.378,304.814,421.519z\"/>
+      <path class=\"primary_color\" id=\"PRIMARY_2_\" fill=\"#00BC03\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M256.066,416.663 \tc1.682,1.754-1.985,7.898-8.194,13.727c-6.208,5.827-12.605,9.128-14.289,7.375c-1.683-1.754,1.985-7.899,8.195-13.728
+      \tC247.987,418.21,254.384,414.909,256.066,416.663z\"/> <path class=\"primary_color\"
+      id=\"PRIMARY_1_\" fill=\"#00BC03\" stroke=\"#231F20\" stroke-miterlimit=\"10\"
+      d=\"M306.646,416.663 \tc-1.686,1.754,1.986,7.898,8.195,13.727c6.207,5.827,12.605,9.128,14.287,7.375c1.682-1.754-1.984-7.899-8.195-13.728
+      \tC314.726,418.21,308.328,414.909,306.646,416.663z\"/> <ellipse class=\"primary_color\"
+      id=\"PRIMARY\" fill=\"#00BC03\" stroke=\"#231F20\" stroke-miterlimit=\"10\"
+      cx=\"281.741\" cy=\"462.317\" rx=\"50.28\" ry=\"49.733\"/> <line fill=\"none\"
+      stroke=\"#231F20\" stroke-width=\"3\" stroke-miterlimit=\"10\" x1=\"260.511\"
+      y1=\"439.426\" x2=\"302.973\" y2=\"461.444\"/> <line fill=\"none\" stroke=\"#231F20\"
+      stroke-width=\"3\" stroke-miterlimit=\"10\" x1=\"302.972\" y1=\"439.426\" x2=\"260.51\"
+      y2=\"461.444\"/> <path class=\"secondary_color\" id=\"SECONDARY_2_\" fill=\"#FFFDB5\"
+      stroke=\"#231F20\" stroke-width=\"1.1678\" stroke-miterlimit=\"10\" d=\"M308.992,487.062
+      \tc0,3.389-3.144,6.136-7.022,6.136h-40.443c-3.877,0-7.021-2.747-7.021-6.136l0,0c0-3.389,3.144-6.139,7.021-6.139h40.443
+      \tC305.849,480.923,308.992,483.673,308.992,487.062L308.992,487.062z\"/> <line
+      fill=\"none\" stroke=\"#231F20\" stroke-width=\"1.1408\" stroke-miterlimit=\"10\"
+      x1=\"258.179\" y1=\"482.252\" x2=\"261.232\" y2=\"493.041\"/> <line fill=\"none\"
+      stroke=\"#231F20\" stroke-width=\"1.1678\" stroke-miterlimit=\"10\" x1=\"262.029\"
+      y1=\"493.046\" x2=\"265.099\" y2=\"480.923\"/> <line fill=\"none\" stroke=\"#231F20\"
+      stroke-width=\"1.1678\" stroke-miterlimit=\"10\" x1=\"266.12\" y1=\"480.923\"
+      x2=\"268.979\" y2=\"493.046\"/> <line fill=\"none\" stroke=\"#231F20\" stroke-width=\"1.1678\"
+      stroke-miterlimit=\"10\" x1=\"269.979\" y1=\"493.046\" x2=\"273.091\" y2=\"480.923\"/>
+      <line fill=\"none\" stroke=\"#231F20\" stroke-width=\"1.1678\" stroke-miterlimit=\"10\"
+      x1=\"273.965\" y1=\"480.923\" x2=\"277.076\" y2=\"493.046\"/> <line fill=\"none\"
+      stroke=\"#231F20\" stroke-width=\"1.1678\" stroke-miterlimit=\"10\" x1=\"277.909\"
+      y1=\"493.046\" x2=\"281.104\" y2=\"480.923\"/> <line fill=\"none\" stroke=\"#231F20\"
+      stroke-width=\"1.1678\" stroke-miterlimit=\"10\" x1=\"281.543\" y1=\"480.923\"
+      x2=\"285.441\" y2=\"493.046\"/> <line fill=\"none\" stroke=\"#231F20\" stroke-width=\"1.1678\"
+      stroke-miterlimit=\"10\" x1=\"285.899\" y1=\"492.814\" x2=\"289.057\" y2=\"480.923\"/>
+      <line fill=\"none\" stroke=\"#231F20\" stroke-width=\"1.1678\" stroke-miterlimit=\"10\"
+      x1=\"289.446\" y1=\"480.923\" x2=\"293.481\" y2=\"493.412\"/> <line fill=\"none\"
+      stroke=\"#231F20\" stroke-width=\"1.1678\" stroke-miterlimit=\"10\" x1=\"293.514\"
+      y1=\"493.412\" x2=\"297.386\" y2=\"480.923\"/> <line fill=\"none\" stroke=\"#231F20\"
+      stroke-width=\"1.1678\" stroke-miterlimit=\"10\" x1=\"297.436\" y1=\"480.923\"
+      x2=\"301.433\" y2=\"493.197\"/> <line fill=\"none\" stroke=\"#231F20\" stroke-width=\"1.1678\"
+      stroke-miterlimit=\"10\" x1=\"301.486\" y1=\"493.604\" x2=\"305.354\" y2=\"481.329\"/>
+      </svg>"
+    attackSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator: Adobe
+      Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg
+      version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect id=\"head_frame\"
+      x=\"249.564\" y=\"476.998\" fill-opacity=\"0\" fill=\"#BBBCBE\" width=\"151\"
+      height=\"131\"/> <path class=\"secondary_color\" id=\"SECONDARY_1_\" fill=\"#FFFDB5\"
+      stroke=\"#231F20\" stroke-miterlimit=\"10\" d=\"M299.991,512.519 \tc7.939,2.225,2.117,9.964-3.094,13.795c-0.994,0.702-2.075,1.275-3.235,1.699c-3.708,1.362-7.653,1.002-11.311-0.722
+      \tc-0.914-0.43-1.81-0.946-2.68-1.539c-5.222-4.307-9.801-10.461-11.645-17.008c-0.264-0.935-0.471-1.878-0.616-2.823
+      \tc-0.146-7.114,1.602-16.71,13.533-21.663c0.253,9.208,0.47,17.102,10.616,22.878c0.68,0.525,1.349,1.034,2.004,1.515
+      \tc1.967,1.442,3.808,2.633,5.436,3.428C299.355,512.232,299.687,512.378,299.991,512.519z\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M347.815,512.519 \tc-7.938,2.225-2.117,9.964,3.093,13.795c0.996,0.702,2.076,1.275,3.235,1.699c3.708,1.362,7.653,1.002,11.312-0.722
+      \tc0.914-0.43,1.811-0.946,2.68-1.539c5.222-4.307,9.802-10.461,11.645-17.008c0.264-0.935,0.471-1.878,0.616-2.823
+      \tc0.146-7.114-1.602-16.71-13.533-21.663c-0.253,9.208-0.471,17.102-10.617,22.878c-0.68,0.525-1.348,1.034-2.004,1.515
+      \tc-1.967,1.442-3.807,2.633-5.434,3.428C348.451,512.232,348.119,512.378,347.815,512.519z\"/>
+      <path class=\"primary_color\" id=\"PRIMARY_2_\" fill=\"#00BC03\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M299.066,507.663 \tc1.683,1.754-1.984,7.898-8.193,13.727c-6.209,5.827-12.606,9.128-14.289,7.375c-1.683-1.754,1.985-7.899,8.195-13.728
+      \tC290.987,509.21,297.383,505.909,299.066,507.663z\"/> <path class=\"primary_color\"
+      id=\"PRIMARY_1_\" fill=\"#00BC03\" stroke=\"#231F20\" stroke-miterlimit=\"10\"
+      d=\"M349.646,507.663 \tc-1.685,1.754,1.985,7.898,8.194,13.727c6.208,5.827,12.606,9.128,14.288,7.375c1.682-1.754-1.984-7.899-8.194-13.728
+      \tC357.726,509.21,351.329,505.909,349.646,507.663z\"/> <ellipse class=\"primary_color\"
+      id=\"PRIMARY_3_\" fill=\"#00BC03\" stroke=\"#231F20\" stroke-miterlimit=\"10\"
+      cx=\"324.741\" cy=\"553.316\" rx=\"50.28\" ry=\"49.734\"/> <ellipse id=\"eye_2_\"
+      fill=\"#FFFFFF\" stroke=\"#231F20\" stroke-miterlimit=\"10\" cx=\"324.741\"
+      cy=\"541.436\" rx=\"23.097\" ry=\"22.845\"/> <ellipse id=\"pupil_2_\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" cx=\"329.742\" cy=\"541.436\" rx=\"8.891\" ry=\"9.222\"/>
+      <ellipse id=\"eye-glint_2_\" fill=\"#FFFFFF\" stroke=\"#FFFFFF\" stroke-miterlimit=\"10\"
+      cx=\"333.247\" cy=\"539.212\" rx=\"2.92\" ry=\"2.89\"/> <path id=\"mouth_2_\"
+      fill=\"#231F20\" stroke=\"#231F20\" stroke-miterlimit=\"10\" d=\"M325.326,576.771c-10.534,0-19.877-2.609-25.7-6.638
+      \tc-0.902,1.8-1.399,3.728-1.399,5.733c0,9.883,11.872,17.896,26.514,17.896c14.644,0,26.515-8.013,26.515-17.896
+      \tc0-1.791-0.395-3.518-1.118-5.148C344.275,574.411,335.341,576.771,325.326,576.771z\"/>
+      <polygon class=\"secondary_color\" id=\"SECONDARY_2_\" fill=\"#FFFDB5\" points=\"313.263,575.027
+      309.711,578.862 308.794,573.744 \"/> <polygon class=\"secondary_color\" id=\"SECONDARY_3_\"
+      fill=\"#FFFDB5\" points=\"305.244,572.592 301.014,575.682 301.106,570.482 \"/>
+      <polygon class=\"secondary_color\" id=\"SECONDARY_4_\" fill=\"#FFFDB5\" points=\"322.606,576.242
+      319.925,580.715 317.966,575.889 \"/> <polygon class=\"secondary_color\" id=\"SECONDARY_5_\"
+      fill=\"#FFFDB5\" points=\"331.825,575.957 329.839,580.771 327.183,576.283 \"/>
+      <polygon class=\"secondary_color\" id=\"SECONDARY_6_\" fill=\"#FFFDB5\" points=\"340.134,574.249
+      338.991,579.326 335.612,575.34 \"/> <polygon class=\"secondary_color\" id=\"SECONDARY_7_\"
+      fill=\"#FFFDB5\" points=\"348.392,571.018 348.317,576.219 344.188,572.997 \"/>
+      <polygon class=\"secondary_color\" id=\"SECONDARY_8_\" fill=\"#FFFDB5\" points=\"300.567,584.324
+      305.542,582.635 303.871,587.567 \"/> <polygon class=\"secondary_color\" id=\"SECONDARY_9_\"
+      fill=\"#FFFDB5\" points=\"310.536,591.748 314.091,587.914 315.005,593.037 \"/>
+      <polygon class=\"secondary_color\" id=\"SECONDARY_10_\" fill=\"#FFFDB5\" points=\"322.453,594.325
+      324.767,589.654 327.105,594.313 \"/> <polygon class=\"secondary_color\" id=\"SECONDARY_11_\"
+      fill=\"#FFFDB5\" points=\"334.101,593.282 334.75,588.12 338.495,591.771 \"/>
+      <polygon class=\"secondary_color\" id=\"SECONDARY_12_\" fill=\"#FFFDB5\" points=\"345.691,587.612
+      343.885,582.728 348.903,584.284 \"/> <path class=\"primary_color\" id=\"PRIMARY\"
+      fill=\"#00BC03\" stroke=\"#231F20\" stroke-miterlimit=\"10\" d=\"M324.695,518.721c-6.254,0-11.93,2.403-16.146,6.313
+      \tc4.07,5.882,10.861,9.736,18.555,9.736c6.404,0,12.18-2.673,16.286-6.958C339.087,522.288,332.319,518.721,324.695,518.721z\"/>
+      </svg>"
   faceImage: {fileID: 2098960402}
   neckImage: {fileID: 2141343313}
 --- !u!1 &1254600152

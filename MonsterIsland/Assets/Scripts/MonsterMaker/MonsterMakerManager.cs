@@ -19,42 +19,6 @@ public class MonsterMakerManager : MonoBehaviour {
 
     public CollectedPartsInfo availableParts;
 
-    // Use this for initialization
-    void Start() {
-
-        //this code is for testing purposes
-
-        //instatiating HeadSlot info
-        XmlDocument head_Face_Idle = new XmlDocument();
-        head_Face_Idle.Load("Assets/Resources/Sprites/Monsters/Mitch/Head/Monster_Mitch_Head_Face_idle.svg");
-        XmlDocument head_Face_Attack = new XmlDocument();
-        head_Face_Attack.Load("Assets/Resources/Sprites/Monsters/Mitch/Head/Monster_Mitch_Head_Face_attack.svg");
-        XmlDocument head_Face_Hurt = new XmlDocument();
-        head_Face_Hurt.Load("Assets/Resources/Sprites/Monsters/Mitch/Head/Monster_Mitch_Head_Face_hurt.svg");
-        XmlDocument head_Neck = new XmlDocument();
-        head_Neck.Load("Assets/Resources/Sprites/Monsters/Mitch/Head/Monster_Mitch_Head_neck.svg");
-
-        headSlot.partInfo = new HeadPartInfo()
-        {
-            monster = "Mitch",
-            mainSprite = head_Face_Idle.InnerXml,
-            attackSprite = head_Face_Attack.InnerXml,
-            hurtSprite = head_Face_Hurt.InnerXml,
-            neckSprite = head_Neck.InnerXml
-        };
-
-        //instatiating TorsoSlot info
-        XmlDocument torso = new XmlDocument();
-        torso.Load("Assets/Resources/Sprites/Monsters/Mitch/Torso/Monster_Mitch_Torso.svg");
-
-        torsoSlot.partInfo = new TorsoPartInfo()
-        {
-            monster = "Mitch",
-            mainSprite = torso.InnerXml,
-            hasWings = false
-        };
-    }
-
     public void ShowPartEditor(string partType)
     {
         //iterating through all objects inside the MonsterMaker canvas
