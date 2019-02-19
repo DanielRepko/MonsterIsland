@@ -32,10 +32,10 @@ public class MonsterMaker : MonoBehaviour {
         collectedParts = new CollectedPartsInfo()
         {
             collectedHeads = new string[] { "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch" },
-            collectedTorsos = new string[] { "Mitch" },
-            collectedRightArms = new string[] { "Mitch" },
-            collectedLeftArms = new string[] { "Mitch" },
-            collectedLegs = new string[] { "Mitch" }
+            collectedTorsos = new string[] { "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch" },
+            collectedRightArms = new string[] { "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch" },
+            collectedLeftArms = new string[] { "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch" },
+            collectedLegs = new string[] { "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch" }
         };
     }
 

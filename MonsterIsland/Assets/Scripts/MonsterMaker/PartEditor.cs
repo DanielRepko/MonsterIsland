@@ -65,6 +65,11 @@ public class PartEditor : MonoBehaviour
         }
     }
 
+    public void ResetPartPicker()
+    {
+
+    }
+
     public void OpenPartEditor(PartSlot partSlot)
     {
         this.partSlot = partSlot;
@@ -80,6 +85,7 @@ public class PartEditor : MonoBehaviour
         partSlot.ExitPartEditor();
         primaryColorIndicator.color = Color.white;
         secondaryColorIndicator.color = Color.white;
+        ResetPartPicker();
         gameObject.SetActive(false);
     }
 
