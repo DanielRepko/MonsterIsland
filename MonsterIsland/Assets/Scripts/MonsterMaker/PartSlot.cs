@@ -38,7 +38,13 @@ public abstract class PartSlot : MonoBehaviour {
             {
                 if (node.Attributes[0].Name == "class" && node.Attributes[0].Value == colorClass)
                 {
-                    node.Attributes[2].Value = color;
+                    foreach (XmlAttribute attribute in node.Attributes)
+                    {
+                        if(attribute.Name == "fill")
+                        {
+                            attribute.Value = color;
+                        }
+                    }
                 }
             }
         }
