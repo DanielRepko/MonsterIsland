@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 114593742494578470}
   - component: {fileID: 114923462968136748}
   m_Layer: 5
-  m_Name: LegsPicker
+  m_Name: LegsPickerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

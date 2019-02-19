@@ -12,8 +12,7 @@ public class Helper : MonoBehaviour {
     /**
      * Head
      **/
-    public static SVGImporter HeadImporter = new SVGImporter()
-    {
+    public static SVGImporter HeadImporter = new SVGImporter(){
         MaxCordDeviation = float.MaxValue,
         MaxTangentAngle = Mathf.PI / 2f,
         SamplingStepDistance = 100,
@@ -146,7 +145,7 @@ public class Helper : MonoBehaviour {
             SamplingStepSize = importer.SamplingStepDistance,
             StepDistance = importer.StepDistance
         };
-
+        
         var geometryList = VectorUtils.TessellateScene(sceneInfo.Scene, options);
 
         Sprite partSprite = VectorUtils.BuildSprite(geometryList, importer.SvgPixelsPerUnit, importer.Alignment, importer.CustomPivot, importer.GradientResolution, true);
@@ -159,7 +158,7 @@ public class Helper : MonoBehaviour {
     }
 
     //helper method used to return the HeadPartInfo for a certain monster
-    public static HeadPartInfo GetHeadPart(string monsterName)
+    public static HeadPartInfo GetHeadPartInfo(string monsterName)
     {
         XmlDocument mainSprite = new XmlDocument();
         mainSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Head/Monster_" + monsterName + "_Head_Face_idle.svg");
@@ -182,7 +181,7 @@ public class Helper : MonoBehaviour {
     }
 
     //helper method used to return the TorsoPartInfo for a certain monster
-    public static TorsoPartInfo GetTorsoPart(string monsterName)
+    public static TorsoPartInfo GetTorsoPartInfo(string monsterName)
     {
         XmlDocument mainSprite = new XmlDocument();
         mainSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Torso/Monster_" + monsterName + "_Torso.svg");
@@ -196,7 +195,7 @@ public class Helper : MonoBehaviour {
     }
 
     //helper method used to return the ArmPartInfo for a certain monster
-    public static ArmPartInfo GetArmPart(string monsterName, string armType)
+    public static ArmPartInfo GetArmPartInfo(string monsterName, string armType)
     {
         XmlDocument bicepSprite = new XmlDocument();
         bicepSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/" + armType + "/Monster_" + monsterName + "_" + armType + "_bicep.svg");
@@ -231,7 +230,7 @@ public class Helper : MonoBehaviour {
     }
 
     //helper method used to return the HeadPartInfo for a certain monster
-    public static LegPartInfo GetLegPart(string monsterName)
+    public static LegPartInfo GetLegPartInfo(string monsterName)
     {
         XmlDocument pelvisSprite = new XmlDocument();
         pelvisSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Legs/Monster_" + monsterName + "_Legs_pelvis.svg");

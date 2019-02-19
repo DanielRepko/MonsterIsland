@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 222721448499137236}
   - component: {fileID: 114241154198924748}
   - component: {fileID: 114227291854753092}
+  - component: {fileID: 114433586392871084}
   m_Layer: 5
-  m_Name: HeadPicker
+  m_Name: HeadPickerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,6 +159,28 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114433586392871084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101645972616106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0418d35bdf43bca4f96d29a099213444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partType: 
+  partInfo:
+    monster: 
+    abilityName: 
+    abilityDesc: 
+    mainSprite: 
+    neckSprite: 
+    hurtSprite: 
+    attackSprite: 
+  faceImage: {fileID: 0}
+  neckImage: {fileID: 0}
 --- !u!114 &114514146608005706
 MonoBehaviour:
   m_ObjectHideFlags: 1

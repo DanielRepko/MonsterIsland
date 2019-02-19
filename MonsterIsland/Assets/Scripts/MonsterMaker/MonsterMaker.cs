@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using System.Xml;
+using Unity.VectorGraphics.Editor;
+using Unity.VectorGraphics;
 
 public class MonsterMaker : MonoBehaviour {
 
@@ -21,11 +23,11 @@ public class MonsterMaker : MonoBehaviour {
 
     public void Start()
     {
-        headSlot.partInfo = Helper.GetHeadPart("Mitch");
-        torsoSlot.partInfo = Helper.GetTorsoPart("Mitch");
-        rightArmSlot.partInfo = Helper.GetArmPart("Mitch", "RightArm");
-        leftArmSlot.partInfo = Helper.GetArmPart("Mitch", "LeftArm");
-        legsSlot.partInfo = Helper.GetLegPart("Mitch");
+        headSlot.partInfo = Helper.GetHeadPartInfo("Mitch");
+        torsoSlot.partInfo = Helper.GetTorsoPartInfo("Mitch");
+        rightArmSlot.partInfo = Helper.GetArmPartInfo("Mitch", "RightArm");
+        leftArmSlot.partInfo = Helper.GetArmPartInfo("Mitch", "LeftArm");
+        legsSlot.partInfo = Helper.GetLegPartInfo("Mitch");
 
         collectedParts = new CollectedPartsInfo()
         {
@@ -45,7 +47,6 @@ public class MonsterMaker : MonoBehaviour {
             //if child is the selected slot
             if(child.gameObject.name == (partType + "Slot"))
             {
-                partEditor.OpenPartEditor(child.gameObject.GetComponent<PartSlot>());
                 switch (partType)
                 {
                     case "Head":
@@ -66,6 +67,8 @@ public class MonsterMaker : MonoBehaviour {
                     default:
                         break;
                 }
+
+                partEditor.OpenPartEditor(child.gameObject.GetComponent<PartSlot>());
             }
             else if(child.gameObject.name == "PartEditor")
             {

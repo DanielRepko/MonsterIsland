@@ -11,7 +11,8 @@ public class HeadSlot : PartSlot{
 
     public override void ChangePart(MonsterPartInfo newPart)
     {
-        throw new System.NotImplementedException();
+        partInfo = (HeadPartInfo)newPart;
+        UpdateUI();
     }
 
     public override void ChangePrimaryColor(string newColor)

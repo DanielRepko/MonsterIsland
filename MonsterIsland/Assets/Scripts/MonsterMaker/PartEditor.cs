@@ -30,7 +30,28 @@ public class PartEditor : MonoBehaviour
 
     public void PopulatePartPicker()
     {
-        
+        //iterating through all of the items in the availbleParts array
+        for (int i = 0; i < availableParts.Length; i++)
+        {
+            //loading the appropriate PartPickerPrefab
+            var pickerButtonPrefab = Resources.Load("Prefabs/MonsterMaker/"+partSlot.partType+"PickerButton") as GameObject;
+
+            //instantiating the 
+            var pickerButton = (GameObject)Instantiate(pickerButtonPrefab, Vector2.zero, Quaternion.identity);
+
+            //initializing the pickerButton and also saving the created PartInfo
+            var partInfo = pickerButton.GetComponent<PartPickerButton>().InitializePickerButton(availableParts[i], partSlot.GetComponent<Image>().material, partSlot.partType);
+            //setting the onClick listener to the pickerButton
+            pickerButton.GetComponent<Button>().onClick.AddListener(
+                delegate
+                {
+                    partSlot.ChangePart(partInfo);
+                });
+
+            //getting the recttransform of the button
+            var pickerButtonTransform = pickerButton.GetComponent<RectTransform>();
+            pickerButtonTransform.SetParent(partPicker.content);
+        }
     }
 
     public void OpenPartEditor(PartSlot partSlot)
