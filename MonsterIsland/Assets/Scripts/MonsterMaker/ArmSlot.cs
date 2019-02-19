@@ -21,6 +21,8 @@ public class ArmSlot : PartSlot {
         ArmPartInfo newPart = new ArmPartInfo()
         {
             monster = partInfo.monster,
+            abilityName = partInfo.abilityName,
+            abilityDesc = partInfo.abilityDesc,
             bicepSprite = ChangeColor(partInfo.bicepSprite, "primary_color", newColor),
             forearmSprite = ChangeColor(partInfo.forearmSprite, "primary_color", newColor),
             handBackSprite = ChangeColor(partInfo.handBackSprite, "primary_color", newColor),
@@ -41,6 +43,8 @@ public class ArmSlot : PartSlot {
         ArmPartInfo newPart = new ArmPartInfo()
         {
             monster = partInfo.monster,
+            abilityName = partInfo.abilityName,
+            abilityDesc = partInfo.abilityDesc,
             bicepSprite = ChangeColor(partInfo.bicepSprite, "secondary_color", newColor),
             forearmSprite = ChangeColor(partInfo.forearmSprite, "secondary_color", newColor),
             handBackSprite = ChangeColor(partInfo.handBackSprite, "secondary_color", newColor),

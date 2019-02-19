@@ -11,6 +11,8 @@ using Unity.VectorGraphics.Editor;
 public abstract class PartSlot : MonoBehaviour {
     public Vector3 originalPosition;
     public string partType;
+    public string abilityName;
+    public string abilityDesc;
 
     abstract public void ChangePart(MonsterPartInfo newPart);
 

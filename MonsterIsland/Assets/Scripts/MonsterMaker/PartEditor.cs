@@ -9,6 +9,8 @@ public class PartEditor : MonoBehaviour
     public PartSlot partSlot;
     public Image primaryColorIndicator;
     public Image secondaryColorIndicator;
+    public Text abilityName;
+    public Text abilityDesc;
 
     public void PrimaryColorPressed(string color)
     {
@@ -28,6 +30,8 @@ public class PartEditor : MonoBehaviour
     {
         this.partSlot = partSlot;
         this.partSlot.EnterPartEditor();
+        abilityName.text = this.partSlot.abilityName;
+        abilityDesc.text = this.partSlot.abilityDesc;
         gameObject.SetActive(true);
     }
 

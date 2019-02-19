@@ -5,7 +5,7 @@ using System;
 using UnityEngine.UI;
 using System.Xml;
 
-public class MonsterMakerManager : MonoBehaviour {
+public class MonsterMaker : MonoBehaviour {
 
     public HeadSlot headSlot;
     public TorsoSlot torsoSlot;

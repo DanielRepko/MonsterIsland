@@ -24,6 +24,8 @@ public class LegsSlot : PartSlot {
         LegPartInfo newPart = new LegPartInfo()
         {
             monster = partInfo.monster,
+            abilityName = partInfo.abilityName,
+            abilityDesc = partInfo.abilityDesc,
             pelvisSprite = ChangeColor(partInfo.pelvisSprite, "primary_color", newColor),
             thighSprite = ChangeColor(partInfo.thighSprite, "primary_color", newColor),
             shinSprite = ChangeColor(partInfo.shinSprite, "primary_color", newColor),
@@ -40,6 +42,8 @@ public class LegsSlot : PartSlot {
         LegPartInfo newPart = new LegPartInfo()
         {
             monster = partInfo.monster,
+            abilityName = partInfo.abilityName,
+            abilityDesc = partInfo.abilityDesc,
             pelvisSprite = ChangeColor(partInfo.pelvisSprite, "secondary_color", newColor),
             thighSprite = ChangeColor(partInfo.thighSprite, "secondary_color", newColor),
             shinSprite = ChangeColor(partInfo.shinSprite, "secondary_color", newColor),
