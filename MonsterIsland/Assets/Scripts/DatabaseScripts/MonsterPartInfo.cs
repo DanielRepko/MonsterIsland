@@ -6,4 +6,6 @@ using System;
 [Serializable]
 public abstract class MonsterPartInfo{
     public string monster;
+    public string abilityName;
+    public string abilityDesc;
 }
