@@ -1977,7 +1977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   headSlot: {fileID: 1240983556}
-  torsoSlot: {fileID: 976240627}
+  torsoSlot: {fileID: 976240630}
   rightArmSlot: {fileID: 993139396}
   leftArmSlot: {fileID: 469563243}
   legsSlot: {fileID: 655777445}
@@ -4893,6 +4893,7 @@ GameObject:
   - component: {fileID: 976240629}
   - component: {fileID: 976240628}
   - component: {fileID: 976240627}
+  - component: {fileID: 976240630}
   m_Layer: 5
   m_Name: TorsoSlot
   m_TagString: Untagged
@@ -5005,6 +5006,28 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 976240625}
   m_CullTransparentMesh: 0
+--- !u!114 &976240630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 976240625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c44877f1283886438c0c6f207a9e7cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalPosition: {x: 0, y: 0, z: 0}
+  partType: 
+  partInfo:
+    monster: 
+    mainSprite: 
+    hasWings: 0
+    leftWingSprite: 
+    rightWingSprite: 
+  torsoImage: {fileID: 15689480}
+  leftWingImage: {fileID: 0}
+  rightWingImage: {fileID: 0}
 --- !u!1 &993139394
 GameObject:
   m_ObjectHideFlags: 0

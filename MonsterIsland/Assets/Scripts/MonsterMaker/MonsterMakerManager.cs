@@ -8,7 +8,7 @@ using System.Xml;
 public class MonsterMakerManager : MonoBehaviour {
 
     public HeadSlot headSlot;
-    public Button torsoSlot;
+    public TorsoSlot torsoSlot;
     public Button rightArmSlot;
     public Button leftArmSlot;
     public Button legsSlot;
@@ -21,10 +21,10 @@ public class MonsterMakerManager : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        headSlot.originalPosition = headSlot.transform.localPosition;
-
 
         //this code is for testing purposes
+
+        //instatiating HeadSlot info
         XmlDocument head_Face_Idle = new XmlDocument();
         head_Face_Idle.Load("Assets/Resources/Sprites/Monsters/Mitch/Head/Monster_Mitch_Head_Face_idle.svg");
         XmlDocument head_Face_Attack = new XmlDocument();
@@ -42,7 +42,17 @@ public class MonsterMakerManager : MonoBehaviour {
             hurtSprite = head_Face_Hurt.InnerXml,
             neckSprite = head_Neck.InnerXml
         };
-        
+
+        //instatiating TorsoSlot info
+        XmlDocument torso = new XmlDocument();
+        torso.Load("Assets/Resources/Sprites/Monsters/Mitch/Torso/Monster_Mitch_Torso.svg");
+
+        torsoSlot.partInfo = new TorsoPartInfo()
+        {
+            monster = "Mitch",
+            mainSprite = torso.InnerXml,
+            hasWings = false
+        };
     }
 
     public void ShowPartEditor(string partType)

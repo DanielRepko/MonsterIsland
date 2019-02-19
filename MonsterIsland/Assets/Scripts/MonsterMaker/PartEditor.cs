@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PartEditor : MonoBehaviour {
+public class PartEditor : MonoBehaviour
+{
 
     public PartSlot partSlot;
     public Image primaryColorIndicator;
@@ -13,23 +14,14 @@ public class PartEditor : MonoBehaviour {
     {
         partSlot.ChangePrimaryColor(color);
 
-        Color parsedColor = new Color();
-        if (ColorUtility.TryParseHtmlString(color, out parsedColor))
-        {
-            primaryColorIndicator.color = parsedColor;
-        }
-         
+        primaryColorIndicator.color = ConvertHexColor(color);
     }
 
     public void SecondaryColorPressed(string color)
     {
         partSlot.ChangeSecondaryColor(color);
 
-        Color parsedColor = new Color();
-        if (ColorUtility.TryParseHtmlString(color, out parsedColor))
-        {
-            secondaryColorIndicator.color = parsedColor;
-        }
+        secondaryColorIndicator.color = ConvertHexColor(color);
     }
 
     public void OpenPartEditor(PartSlot partSlot)
@@ -42,6 +34,21 @@ public class PartEditor : MonoBehaviour {
     public void ClosePartEditor()
     {
         partSlot.ExitPartEditor();
+        primaryColorIndicator.color = Color.white;
+        secondaryColorIndicator.color = Color.white;
         gameObject.SetActive(false);
+    }
+
+    public Color ConvertHexColor(string hexColor)
+    {
+        Color parsedColor = new Color();
+        if (ColorUtility.TryParseHtmlString(hexColor, out parsedColor))
+        {
+            return parsedColor;
+        }
+        else
+        {
+            return Color.white;
+        }
     }
 }

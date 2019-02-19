@@ -21,6 +21,11 @@ public abstract class PartSlot : MonoBehaviour {
     //used to update the ui with the new/recolored part
     abstract public void UpdateUI();
 
+    public void Start()
+    {
+        originalPosition = transform.localPosition;
+    }
+
     //helper method used to change the colors of each section of the part
     public string ChangeColor(string partString, string colorClass, string color)
     {

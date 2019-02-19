@@ -22,7 +22,7 @@ public class HeadSlot : PartSlot{
             mainSprite = ChangeColor(partInfo.mainSprite, "primary_color", newColor),
             neckSprite = ChangeColor(partInfo.neckSprite, "primary_color", newColor),
             hurtSprite = ChangeColor(partInfo.hurtSprite, "primary_color", newColor),
-            attackSprite = ChangeColor(partInfo.attackSprite, "primary_color", newColor),
+            attackSprite = ChangeColor(partInfo.attackSprite, "primary_color", newColor)
         };
 
 
@@ -38,7 +38,7 @@ public class HeadSlot : PartSlot{
             mainSprite = ChangeColor(partInfo.mainSprite, "secondary_color", newColor),
             neckSprite = ChangeColor(partInfo.neckSprite, "secondary_color", newColor),
             hurtSprite = ChangeColor(partInfo.hurtSprite, "secondary_color", newColor),
-            attackSprite = ChangeColor(partInfo.attackSprite, "secondary_color", newColor),
+            attackSprite = ChangeColor(partInfo.attackSprite, "secondary_color", newColor)
         };
 
         partInfo = newPart;
