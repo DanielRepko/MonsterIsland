@@ -9,15 +9,21 @@ public class MonsterMakerManager : MonoBehaviour {
 
     public HeadSlot headSlot;
     public TorsoSlot torsoSlot;
-    public Button rightArmSlot;
-    public Button leftArmSlot;
-    public Button legsSlot;
+    public ArmSlot rightArmSlot;
+    public ArmSlot leftArmSlot;
+    public LegsSlot legsSlot;
     public Button rightWeaponSlot;
     public Button leftWeaponSlot;
 
     public PartEditor partEditor;
 
     public CollectedPartsInfo availableParts;
+
+    public void Start()
+    {
+        headSlot.partInfo = Helper.GetHeadPart("Mitch");
+        torsoSlot.partInfo = Helper.GetTorsoPart("Mitch");
+    }
 
     public void ShowPartEditor(string partType)
     {

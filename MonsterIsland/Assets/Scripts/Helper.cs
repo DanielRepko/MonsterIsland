@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.VectorGraphics.Editor;
 using Unity.VectorGraphics;
 using System.IO;
+using System.Xml;
 
 public class Helper : MonoBehaviour {
 
@@ -155,5 +156,42 @@ public class Helper : MonoBehaviour {
         Sprite texturedSprite = Sprite.Create(partTexture, new Rect(0, 0, (int)partSprite.rect.width, (int)partSprite.rect.height), importer.CustomPivot);
 
         return texturedSprite;
+    }
+
+    //helper method used to return the HeadPartInfo for a certain monster
+    public static HeadPartInfo GetHeadPart(string monsterName)
+    {
+        XmlDocument mainSprite = new XmlDocument();
+        mainSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Head/Monster_" + monsterName + "_Head_Face_idle.svg");
+        XmlDocument neckSprite = new XmlDocument();
+        neckSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Head/Monster_" + monsterName + "_Head_neck.svg");
+        XmlDocument hurtSprite = new XmlDocument();
+        hurtSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Head/Monster_" + monsterName + "_Head_Face_hurt.svg");
+        XmlDocument attackSprite = new XmlDocument();
+        attackSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Head/Monster_" + monsterName + "_Head_Face_attack.svg");
+
+        HeadPartInfo headPart = new HeadPartInfo()
+        {
+            monster = monsterName,
+            mainSprite = mainSprite.InnerXml,
+            neckSprite = neckSprite.InnerXml,
+            hurtSprite = hurtSprite.InnerXml,
+            attackSprite = attackSprite.InnerXml
+        };
+        return headPart;
+    }
+
+    //helper method used to return the HeadPartInfo for a certain monster
+    public static TorsoPartInfo GetTorsoPart(string monsterName)
+    {
+        XmlDocument mainSprite = new XmlDocument();
+        mainSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Torso/Monster_" + monsterName + "_Torso.svg");
+
+        TorsoPartInfo torsoPart = new TorsoPartInfo()
+        {
+            monster = monsterName,
+            mainSprite = mainSprite.InnerXml
+        };
+        return torsoPart;
     }
 }
