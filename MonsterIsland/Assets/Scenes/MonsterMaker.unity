@@ -3548,6 +3548,7 @@ GameObject:
   - component: {fileID: 655777447}
   - component: {fileID: 655777446}
   - component: {fileID: 655777445}
+  - component: {fileID: 655777448}
   m_Layer: 5
   m_Name: LegsSlot
   m_TagString: Untagged
@@ -3666,6 +3667,84 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 655777443}
   m_CullTransparentMesh: 0
+--- !u!114 &655777448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 655777443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e9cdd0bfa035747b415e4831cae573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalPosition: {x: 0, y: 0, z: 0}
+  partType: 
+  partInfo:
+    monster: Mitch
+    pelvisSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator: Adobe
+      Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg
+      version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect x=\"253.5\"
+      y=\"379\" fill-opacity=\"0\" fill=\"#231F20\" width=\"105\" height=\"34\"/>
+      <path class=\"primary_color\" id=\"PRIMARY_7_\" fill=\"#00BC03\" stroke=\"#231F20\"
+      stroke-width=\"0.9509\" stroke-miterlimit=\"10\" d=\"M254.902,380.471 \tc-0.597,1.661-0.921,3.375-0.921,5.128c0,15.149,23.293,27.431,52.028,27.431c28.731,0,52.026-12.281,52.026-27.431
+      \tc0-1.753-0.327-3.467-0.922-5.128H254.902z\"/> </svg>"
+    thighSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator: Adobe
+      Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg
+      version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect x=\"278.5\"
+      y=\"342.55\" fill-opacity=\"0\" fill=\"#231F20\" width=\"57\" height=\"108.807\"/>
+      <path class=\"primary_color\" id=\"PRIMARY_15_\" fill=\"#00BC03\" stroke=\"#231F20\"
+      stroke-width=\"0.9814\" stroke-miterlimit=\"10\" d=\"M330.264,396.979 \tc0-30.07,0.687-54.447-23.588-54.447c-24.042,0-23.589,24.377-23.589,54.447c0,30.069,10.561,54.446,23.589,54.446
+      \tS330.264,427.048,330.264,396.979z\"/> <circle fill=\"none\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" cx=\"307\" cy=\"353\" r=\"2.5\"/> </svg>"
+    shinSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator: Adobe
+      Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg
+      version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect x=\"278.5\"
+      y=\"345.356\" fill-opacity=\"0\" fill=\"#231F20\" width=\"57\" height=\"103.121\"/>
+      <path class=\"primary_color\" id=\"PRIMARY_9_\" fill=\"#00BC03\" stroke=\"#231F20\"
+      stroke-width=\"0.9504\" stroke-miterlimit=\"10\" d=\"M318.155,442.819 \tc5.898-9.41,9.81-25.845,9.81-44.563c0-29.229-3.632-52.926-21.289-52.926c-18.145,0-21.289,23.696-21.289,52.926
+      \tc0,18.718,3.911,35.152,9.809,44.563H318.155z\"/> <circle fill=\"none\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" cx=\"306.5\" cy=\"355\" r=\"2.5\"/> <circle fill=\"none\"
+      stroke=\"#231F20\" stroke-miterlimit=\"10\" cx=\"304\" cy=\"428\" r=\"2.5\"/>
+      <line fill=\"none\" stroke=\"#231F20\" stroke-miterlimit=\"10\" x1=\"304.114\"
+      y1=\"354.291\" x2=\"293.731\" y2=\"351.677\"/> <line fill=\"none\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" x1=\"303.525\" y1=\"345.591\" x2=\"305.815\" y2=\"352.607\"/>
+      </svg>"
+    footSprite: "<?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- Generator: Adobe
+      Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg
+      version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+      x=\"0px\" y=\"0px\" \t width=\"612px\" height=\"792px\" viewBox=\"0 0 612 792\"
+      enable-background=\"new 0 0 612 792\" xml:space=\"preserve\"> <rect x=\"270.592\"
+      y=\"378.5\" fill-opacity=\"0\" fill=\"#231F20\" width=\"69.979\" height=\"35\"/>
+      <path class=\"primary_color\" id=\"PRIMARY_12_\" fill=\"#00BC03\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M275.2,413.197 \tc-0.209-1.11-0.147-2.288-0.324-3.397c-4.701-29.573,12.961-22.906,31.089-23.64c28.795-1.165,31.09,10.585,31.09,23.64
+      \tc0,1.153-0.115,2.287-0.324,3.397H275.2z\"/> <path class=\"secondary_color\"
+      id=\"SECONDARY_16_\" fill=\"#FFFDB5\" stroke=\"#231F20\" stroke-miterlimit=\"10\"
+      d=\"M298.69,412.366 \tc3.625,1.357,7.193,0.865,9.236-0.143c6.633-2.008-1.994-9.181-5.193-9.89c-0.583-0.167-1.166-0.258-1.731-0.267
+      \tc-1.13-0.018-2.195,0.291-3.067,0.963c-1.308,1.007-1.941,2.638-1.905,4.46c0.012,0.607,0.098,1.236,0.259,1.87
+      \tc0.167,0.63,0.434,1.249,0.828,1.774C297.511,411.661,298.041,412.068,298.69,412.366z\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_15_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M314.951,412.366 \tc3.625,1.357,7.193,0.865,9.234-0.143c6.633-2.008-1.992-9.181-5.191-9.89c-0.584-0.167-1.166-0.258-1.732-0.267
+      \tc-1.131-0.018-2.195,0.291-3.066,0.963c-1.309,1.007-1.941,2.638-1.906,4.46c0.012,0.607,0.098,1.236,0.26,1.87
+      \tc0.166,0.63,0.434,1.249,0.828,1.774C313.771,411.661,314.301,412.068,314.951,412.366z\"/>
+      <path class=\"secondary_color\" id=\"SECONDARY_14_\" fill=\"#FFFDB5\" stroke=\"#231F20\"
+      stroke-miterlimit=\"10\" d=\"M328.693,410.401 \tc2.844,1.896,6.146,2.215,8.236,1.781c6.441-0.332,0.764-8.183-1.881-9.441c-0.471-0.263-0.963-0.459-1.463-0.583
+      \tc-0.998-0.248-2.027-0.206-2.986,0.184c-1.439,0.583-2.451,1.832-2.922,3.383c-0.156,0.517-0.254,1.066-0.287,1.637
+      \tc-0.025,0.567,0.041,1.146,0.246,1.673S328.199,410.015,328.693,410.401z\"/>
+      </svg>"
+  pelvisImage: {fileID: 2085251320}
+  rightThighImage: {fileID: 1118241420}
+  rightShinImage: {fileID: 2081986643}
+  rightFootImage: {fileID: 1362078568}
+  leftThighImage: {fileID: 1313581572}
+  leftShinImage: {fileID: 1837488662}
+  leftFootImage: {fileID: 273136547}
 --- !u!224 &660931438 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224680364961127404, guid: 161a9fa0ce7d42640a9a48e0408a9d1e,
