@@ -30,9 +30,18 @@ public class PartEditor : MonoBehaviour
 
     public void PopulatePartPicker()
     {
+        var xOffset = 0f;
         //iterating through all of the items in the availbleParts array
         for (int i = 0; i < availableParts.Length; i++)
         {
+            
+            if(i == 0)
+            {
+                xOffset = 55;
+            } else
+            {
+                xOffset += 100;
+            }
             //loading the appropriate PartPickerPrefab
             var pickerButtonPrefab = Resources.Load("Prefabs/MonsterMaker/"+partSlot.partType+"PickerButton") as GameObject;
 
@@ -51,6 +60,8 @@ public class PartEditor : MonoBehaviour
             //getting the recttransform of the button
             var pickerButtonTransform = pickerButton.GetComponent<RectTransform>();
             pickerButtonTransform.SetParent(partPicker.content);
+            pickerButtonTransform.anchoredPosition = new Vector2(xOffset, 0);
+            partPicker.content.sizeDelta = new Vector2(partPicker.content.sizeDelta.x+100.5f, partPicker.content.sizeDelta.y);
         }
     }
 

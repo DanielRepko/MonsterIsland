@@ -179,8 +179,8 @@ MonoBehaviour:
     neckSprite: 
     hurtSprite: 
     attackSprite: 
-  faceImage: {fileID: 0}
-  neckImage: {fileID: 0}
+  faceImage: {fileID: 114514146608005706}
+  neckImage: {fileID: 114294924425686186}
 --- !u!114 &114514146608005706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,7 +246,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5742373}
   m_AnchorMax: {x: 0, y: 0.5742373}
-  m_AnchoredPosition: {x: 54, y: 0}
+  m_AnchoredPosition: {x: 55, y: 0}
   m_SizeDelta: {x: 95, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224429547709739024
