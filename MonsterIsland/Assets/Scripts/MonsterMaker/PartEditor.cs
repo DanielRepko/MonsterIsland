@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class PartEditor : MonoBehaviour
 {
-
     public PartSlot partSlot;
     public Image primaryColorIndicator;
     public Image secondaryColorIndicator;
     public Text abilityName;
     public Text abilityDesc;
+
+    public ScrollRect partPicker;
+    public string[] availableParts;
 
     public void PrimaryColorPressed(string color)
     {
@@ -26,10 +28,16 @@ public class PartEditor : MonoBehaviour
         secondaryColorIndicator.color = ConvertHexColor(color);
     }
 
+    public void PopulatePartPicker()
+    {
+        
+    }
+
     public void OpenPartEditor(PartSlot partSlot)
     {
         this.partSlot = partSlot;
         this.partSlot.EnterPartEditor();
+        PopulatePartPicker();
         abilityName.text = this.partSlot.abilityName;
         abilityDesc.text = this.partSlot.abilityDesc;
         gameObject.SetActive(true);

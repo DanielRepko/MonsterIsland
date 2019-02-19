@@ -17,7 +17,7 @@ public class MonsterMaker : MonoBehaviour {
 
     public PartEditor partEditor;
 
-    public CollectedPartsInfo availableParts;
+    public CollectedPartsInfo collectedParts;
 
     public void Start()
     {
@@ -26,6 +26,15 @@ public class MonsterMaker : MonoBehaviour {
         rightArmSlot.partInfo = Helper.GetArmPart("Mitch", "RightArm");
         leftArmSlot.partInfo = Helper.GetArmPart("Mitch", "LeftArm");
         legsSlot.partInfo = Helper.GetLegPart("Mitch");
+
+        collectedParts = new CollectedPartsInfo()
+        {
+            collectedHeads = new string[] { "Mitch" },
+            collectedTorsos = new string[] { "Mitch" },
+            collectedRightArms = new string[] { "Mitch" },
+            collectedLeftArms = new string[] { "Mitch" },
+            collectedLegs = new string[] { "Mitch" }
+        };
     }
 
     public void ShowPartEditor(string partType)
@@ -37,6 +46,26 @@ public class MonsterMaker : MonoBehaviour {
             if(child.gameObject.name == (partType + "Slot"))
             {
                 partEditor.OpenPartEditor(child.gameObject.GetComponent<PartSlot>());
+                switch (partType)
+                {
+                    case "Head":
+                        partEditor.availableParts = collectedParts.collectedHeads;
+                        break;
+                    case "Torso":
+                        partEditor.availableParts = collectedParts.collectedTorsos;
+                        break;
+                    case "RightArm":
+                        partEditor.availableParts = collectedParts.collectedRightArms;
+                        break;
+                    case "LeftArm":
+                        partEditor.availableParts = collectedParts.collectedLeftArms;
+                        break;
+                    case "Legs":
+                        partEditor.availableParts = collectedParts.collectedLegs;
+                        break;
+                    default:
+                        break;
+                }
             }
             else if(child.gameObject.name == "PartEditor")
             {
