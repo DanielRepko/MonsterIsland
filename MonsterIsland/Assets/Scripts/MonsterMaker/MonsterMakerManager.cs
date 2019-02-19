@@ -25,6 +25,7 @@ public class MonsterMakerManager : MonoBehaviour {
         torsoSlot.partInfo = Helper.GetTorsoPart("Mitch");
         rightArmSlot.partInfo = Helper.GetArmPart("Mitch", "RightArm");
         leftArmSlot.partInfo = Helper.GetArmPart("Mitch", "LeftArm");
+        legsSlot.partInfo = Helper.GetLegPart("Mitch");
     }
 
     public void ShowPartEditor(string partType)

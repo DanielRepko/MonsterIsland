@@ -229,4 +229,27 @@ public class Helper : MonoBehaviour {
         };
         return armPart;
     }
+
+    //helper method used to return the HeadPartInfo for a certain monster
+    public static LegPartInfo GetLegPart(string monsterName)
+    {
+        XmlDocument pelvisSprite = new XmlDocument();
+        pelvisSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Legs/Monster_" + monsterName + "_Legs_pelvis.svg");
+        XmlDocument thighSprite = new XmlDocument();
+        thighSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Legs/Monster_" + monsterName + "_Legs_thigh.svg");
+        XmlDocument shinSprite = new XmlDocument();
+        shinSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Legs/Monster_" + monsterName + "_Legs_shin.svg");
+        XmlDocument footSprite = new XmlDocument();
+        footSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Legs/Monster_" + monsterName + "_Legs_foot.svg");
+
+        LegPartInfo legPart = new LegPartInfo()
+        {
+            monster = monsterName,
+            pelvisSprite = pelvisSprite.InnerXml,
+            thighSprite = thighSprite.InnerXml,
+            shinSprite = shinSprite.InnerXml,
+            footSprite = footSprite.InnerXml
+        };
+        return legPart;
+    }
 }
