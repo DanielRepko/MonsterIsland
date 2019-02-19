@@ -4,8 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class ArmPartInfo {
-    public string monster;
+public class ArmPartInfo : MonsterPartInfo{
     public string bicepSprite;
     public string forearmSprite;
     public string handBackSprite;
