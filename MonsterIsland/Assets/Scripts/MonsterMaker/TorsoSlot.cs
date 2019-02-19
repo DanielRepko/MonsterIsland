@@ -10,7 +10,9 @@ public class TorsoSlot : PartSlot{
 
     public override void ChangePart(MonsterPartInfo newPart)
     {
-        throw new System.NotImplementedException();
+        partInfo = (TorsoPartInfo)newPart;
+        abilitySignLabel.text = partInfo.abilityName;
+        UpdateUI();
     }
 
     public override void ChangePrimaryColor(string newColor)

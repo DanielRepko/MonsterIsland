@@ -12,6 +12,7 @@ public class HeadSlot : PartSlot{
     public override void ChangePart(MonsterPartInfo newPart)
     {
         partInfo = (HeadPartInfo)newPart;
+        abilitySignLabel.text = partInfo.abilityName;
         UpdateUI();
     }
 

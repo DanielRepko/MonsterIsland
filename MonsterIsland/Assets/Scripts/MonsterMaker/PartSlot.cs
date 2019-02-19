@@ -13,6 +13,7 @@ public abstract class PartSlot : MonoBehaviour {
     public string partType;
     public string abilityName;
     public string abilityDesc;
+    public Text abilitySignLabel;
 
     abstract public void ChangePart(MonsterPartInfo newPart);
 

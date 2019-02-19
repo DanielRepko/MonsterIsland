@@ -43,7 +43,15 @@ public class PartEditor : MonoBehaviour
                 xOffset += 100;
             }
             //loading the appropriate PartPickerPrefab
-            var pickerButtonPrefab = Resources.Load("Prefabs/MonsterMaker/"+partSlot.partType+"PickerButton") as GameObject;
+            var pickerButtonPrefab = new GameObject();
+            if(partSlot.partType == "LeftArm" || partSlot.partType == "RightArm")
+            {
+                pickerButtonPrefab = Resources.Load("Prefabs/MonsterMaker/ArmPickerButton") as GameObject;
+            }
+            else
+            {
+                pickerButtonPrefab = Resources.Load("Prefabs/MonsterMaker/" + partSlot.partType + "PickerButton") as GameObject;
+            }
 
             //instantiating the 
             var pickerButton = (GameObject)Instantiate(pickerButtonPrefab, Vector2.zero, Quaternion.identity);
@@ -55,11 +63,11 @@ public class PartEditor : MonoBehaviour
                 delegate
                 {
                     partSlot.ChangePart(partInfo);
+                    abilityName.text = partInfo.abilityName;
+                    abilityDesc.text = partInfo.abilityDesc;
                 });
 
             //getting the recttransform of the button
-
-            Debug.Log(partPicker.content.sizeDelta.x);
             var pickerButtonTransform = pickerButton.GetComponent<RectTransform>();
             pickerButtonTransform.SetParent(partPicker.content);
             pickerButtonTransform.anchoredPosition = new Vector2(xOffset, 0);

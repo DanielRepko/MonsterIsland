@@ -19,7 +19,7 @@ public class MonsterMaker : MonoBehaviour {
 
     public PartEditor partEditor;
 
-    public CollectedPartsInfo collectedParts;
+    private CollectedPartsInfo collectedParts;
 
     public void Start()
     {

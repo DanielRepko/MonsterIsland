@@ -2005,12 +2005,6 @@ MonoBehaviour:
   rightWeaponSlot: {fileID: 1820924210}
   leftWeaponSlot: {fileID: 732212879}
   partEditor: {fileID: 650821324}
-  collectedParts:
-    collectedHeads: []
-    collectedTorsos: []
-    collectedLeftArms: []
-    collectedRightArms: []
-    collectedLegs: []
 --- !u!1 &222177581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2633,7 +2627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.00009136822, y: 53}
+  m_AnchoredPosition: {x: -0.00000008484854, y: 53}
   m_SizeDelta: {x: -800, y: 121.399994}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &399411095
@@ -2984,6 +2978,7 @@ MonoBehaviour:
   partType: LeftArm
   abilityName: 
   abilityDesc: 
+  abilitySignLabel: {fileID: 222177583}
   partInfo:
     monster: 
     abilityName: 
@@ -3708,9 +3703,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalPosition: {x: 0, y: 0, z: 0}
-  partType: 
+  partType: Legs
   abilityName: 
   abilityDesc: 
+  abilitySignLabel: {fileID: 1417084609}
   partInfo:
     monster: 
     abilityName: 
@@ -5109,6 +5105,7 @@ MonoBehaviour:
   partType: Torso
   abilityName: 
   abilityDesc: 
+  abilitySignLabel: {fileID: 1725081258}
   partInfo:
     monster: 
     abilityName: 
@@ -5257,6 +5254,7 @@ MonoBehaviour:
   partType: RightArm
   abilityName: 
   abilityDesc: 
+  abilitySignLabel: {fileID: 577867347}
   partInfo:
     monster: 
     abilityName: 
@@ -5755,6 +5753,7 @@ MonoBehaviour:
   partType: Head
   abilityName: 
   abilityDesc: 
+  abilitySignLabel: {fileID: 87179213}
   partInfo:
     monster: 
     abilityName: 

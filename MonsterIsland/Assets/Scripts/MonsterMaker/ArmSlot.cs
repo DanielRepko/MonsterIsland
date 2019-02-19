@@ -13,7 +13,9 @@ public class ArmSlot : PartSlot {
 
     public override void ChangePart(MonsterPartInfo newPart)
     {
-        throw new System.NotImplementedException();
+        partInfo = (ArmPartInfo)newPart;
+        abilitySignLabel.text = partInfo.abilityName;
+        UpdateUI();
     }
 
     public override void ChangePrimaryColor(string newColor)

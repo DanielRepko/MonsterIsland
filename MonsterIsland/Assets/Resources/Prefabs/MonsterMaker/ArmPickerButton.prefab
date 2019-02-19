@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 222289224528998972}
   - component: {fileID: 114131966866746524}
   - component: {fileID: 114522813529080550}
+  - component: {fileID: 114715106026850436}
   m_Layer: 5
   m_Name: ArmPickerButton
   m_TagString: Untagged
@@ -246,6 +247,34 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114715106026850436
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614005777932870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a54e64b59694a47bf697cadb2f5406, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partType: 
+  partInfo:
+    monster: 
+    abilityName: 
+    abilityDesc: 
+    bicepSprite: 
+    forearmSprite: 
+    handBackSprite: 
+    handFrontSprite: 
+    fingersOpenBackSprite: 
+    fingersOpenFrontSprite: 
+    fingersClosedBackSprite: 
+    fingersClosedFrontSprite: 
+  bicepImage: {fileID: 114530814787945572}
+  forearmImage: {fileID: 114650203522790384}
+  handImage: {fileID: 114942509788341814}
+  fingersImage: {fileID: 114443015124152058}
 --- !u!114 &114942509788341814
 MonoBehaviour:
   m_ObjectHideFlags: 1
