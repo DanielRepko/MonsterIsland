@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    public float playerSpeed = 20f;
+
     private Rigidbody2D rb;
 
     void Awake() {
@@ -22,9 +24,9 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate() {
         if (Input.GetAxis("Horizontal") > 0) {
-            rb.velocity = new Vector2(20f, rb.velocity.y);
+            rb.velocity = new Vector2(playerSpeed, rb.velocity.y);
         } else if (Input.GetAxis("Horizontal") < 0) {
-            rb.velocity = new Vector2(-20f, rb.velocity.y);
+            rb.velocity = new Vector2(-playerSpeed, rb.velocity.y);
         } else if (Input.GetAxis("Horizontal") == 0) {
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
