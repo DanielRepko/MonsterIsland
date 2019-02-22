@@ -5,11 +5,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public float playerSpeed = 20f;
+    public float jumpForce = 10f;
+
+    private float rayCastLengthCheck = 0.005f;
+    private float width;
+    private float height;
 
     private Rigidbody2D rb;
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
+        width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
+        height = GetComponent<Collider2D>().bounds.extents.y + 0.2f;
     }
 
     // Use this for initialization
@@ -29,6 +36,24 @@ public class PlayerController : MonoBehaviour {
             rb.velocity = new Vector2(-playerSpeed, rb.velocity.y);
         } else if (Input.GetAxis("Horizontal") == 0) {
             rb.velocity = new Vector2(0f, rb.velocity.y);
+        }
+
+        if(PlayerIsOnGround() && Input.GetAxis("Vertical") > 0f) {
+            Debug.Log("Jump Conditions Met");
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+    }
+
+    //PlayerIsOnGround function taken from SuperSoyBoy game from Ray Wenderlich
+    public bool PlayerIsOnGround() {
+        bool groundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - height), -Vector2.up, rayCastLengthCheck);
+        bool groundCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck);
+        bool groundCheck3 = Physics2D.Raycast(new Vector2(transform.position.x - (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck);
+
+        if (groundCheck1 || groundCheck2 || groundCheck3) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

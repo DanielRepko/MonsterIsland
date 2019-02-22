@@ -202,6 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 15.5
+  jumpForce: 65
 --- !u!212 &212852191604282008
 SpriteRenderer:
   m_ObjectHideFlags: 1
