@@ -4,8 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class HeadPartInfo {
-    public string monster;
+public class HeadPartInfo : MonsterPartInfo{
     public string mainSprite;
     public string neckSprite;
     public string hurtSprite;
