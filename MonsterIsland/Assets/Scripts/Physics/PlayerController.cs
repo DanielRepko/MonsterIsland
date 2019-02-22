@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour {
     private float width;
     private float height;
 
+    private float xInput;
+    private float yInput;
+
     private Rigidbody2D rb;
 
     void Awake() {
@@ -26,20 +29,20 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        xInput = Input.GetAxis("Horizontal");
+        yInput = Input.GetAxis("Vertical");
     }
 
     private void FixedUpdate() {
-        if (Input.GetAxis("Horizontal") > 0) {
+        if (xInput > 0f) {
             rb.velocity = new Vector2(playerSpeed, rb.velocity.y);
-        } else if (Input.GetAxis("Horizontal") < 0) {
+        } else if (xInput < 0f) {
             rb.velocity = new Vector2(-playerSpeed, rb.velocity.y);
-        } else if (Input.GetAxis("Horizontal") == 0) {
+        } else if (xInput == 0f) {
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
 
-        if(PlayerIsOnGround() && Input.GetAxis("Vertical") > 0f) {
-            Debug.Log("Jump Conditions Met");
+        if(PlayerIsOnGround() && yInput > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
