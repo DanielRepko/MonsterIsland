@@ -6492,20 +6492,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1344063368092656, guid: 5dd60c8d1dd609b489d0083e1b88ff1c, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1773345955696892, guid: 5dd60c8d1dd609b489d0083e1b88ff1c, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1700182323248102, guid: 5dd60c8d1dd609b489d0083e1b88ff1c, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 61116749800732672, guid: 5dd60c8d1dd609b489d0083e1b88ff1c, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dd60c8d1dd609b489d0083e1b88ff1c, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1039148876
@@ -141303,39 +141290,3 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
---- !u!1 &2146882991 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1344063368092656, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1023053496}
---- !u!68 &2146882992
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2146882991}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.5, y: 0}
-  - {x: -0.5001116, y: 1.0000938}
-  - {x: 0.5001082, y: 0.9999676}
-  - {x: 0.49999726, y: -0.0000004172325}
-  - {x: -0.49999955, y: 0.00000166893}
---- !u!114 &2146882994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2146882991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e589e8be0291442863faf43da93aaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
