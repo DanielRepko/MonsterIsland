@@ -41,10 +41,13 @@ public abstract class PartSlot : MonoBehaviour {
             {
                 var nodeID = node.Attributes.GetNamedItem("id") as XmlAttribute;
 
-                if (nodeID.Value.Contains(colorID))
+                if(nodeID != null)
                 {
-                    node.Attributes.GetNamedItem("fill").Value = color;
-                }
+                    if (nodeID.Value.Contains(colorID))
+                    {
+                        node.Attributes.GetNamedItem("fill").Value = color;
+                    }
+                }                
             }
         }
 

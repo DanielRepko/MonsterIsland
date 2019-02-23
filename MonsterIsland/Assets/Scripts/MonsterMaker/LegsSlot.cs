@@ -28,10 +28,10 @@ public class LegsSlot : PartSlot {
             monster = partInfo.monster,
             abilityName = partInfo.abilityName,
             abilityDesc = partInfo.abilityDesc,
-            pelvisSprite = ChangeColor(partInfo.pelvisSprite, "primary_color", newColor),
-            thighSprite = ChangeColor(partInfo.thighSprite, "primary_color", newColor),
-            shinSprite = ChangeColor(partInfo.shinSprite, "primary_color", newColor),
-            footSprite = ChangeColor(partInfo.footSprite, "primary_color", newColor)
+            pelvisSprite = ChangeColor(partInfo.pelvisSprite, "PRIMARY", newColor),
+            thighSprite = ChangeColor(partInfo.thighSprite, "PRIMARY", newColor),
+            shinSprite = ChangeColor(partInfo.shinSprite, "PRIMARY", newColor),
+            footSprite = ChangeColor(partInfo.footSprite, "PRIMARY", newColor)
         };
 
 
@@ -46,10 +46,10 @@ public class LegsSlot : PartSlot {
             monster = partInfo.monster,
             abilityName = partInfo.abilityName,
             abilityDesc = partInfo.abilityDesc,
-            pelvisSprite = ChangeColor(partInfo.pelvisSprite, "secondary_color", newColor),
-            thighSprite = ChangeColor(partInfo.thighSprite, "secondary_color", newColor),
-            shinSprite = ChangeColor(partInfo.shinSprite, "secondary_color", newColor),
-            footSprite = ChangeColor(partInfo.footSprite, "secondary_color", newColor)
+            pelvisSprite = ChangeColor(partInfo.pelvisSprite, "SECONDARY", newColor),
+            thighSprite = ChangeColor(partInfo.thighSprite, "SECONDARY", newColor),
+            shinSprite = ChangeColor(partInfo.shinSprite, "SECONDARY", newColor),
+            footSprite = ChangeColor(partInfo.footSprite, "SECONDARY", newColor)
         };
 
         partInfo = newPart;

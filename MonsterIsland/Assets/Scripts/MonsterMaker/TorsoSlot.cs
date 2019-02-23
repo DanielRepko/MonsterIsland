@@ -22,7 +22,7 @@ public class TorsoSlot : PartSlot{
             monster = partInfo.monster,
             abilityName = partInfo.abilityName,
             abilityDesc = partInfo.abilityDesc,
-            mainSprite = ChangeColor(partInfo.mainSprite, "primary_color", newColor)
+            mainSprite = ChangeColor(partInfo.mainSprite, "PRIMARY", newColor)
         };
 
 
@@ -37,7 +37,7 @@ public class TorsoSlot : PartSlot{
             monster = partInfo.monster,
             abilityName = partInfo.abilityName,
             abilityDesc = partInfo.abilityDesc,
-            mainSprite = ChangeColor(partInfo.mainSprite, "secondary_color", newColor)
+            mainSprite = ChangeColor(partInfo.mainSprite, "SECONDARY", newColor)
         };
 
 
