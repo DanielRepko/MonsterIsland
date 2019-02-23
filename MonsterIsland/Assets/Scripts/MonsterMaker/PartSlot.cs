@@ -30,7 +30,7 @@ public abstract class PartSlot : MonoBehaviour {
     }
 
     //helper method used to change the colors of each section of the part
-    public string ChangeColor(string partString, string colorClass, string color)
+    public string ChangeColor(string partString, string colorID, string color)
     {
         XmlDocument partXml = new XmlDocument();
         partXml.LoadXml(partString);
@@ -39,16 +39,15 @@ public abstract class PartSlot : MonoBehaviour {
         {
             if (node.Attributes != null)
             {
-                if (node.Attributes[0].Name == "class" && node.Attributes[0].Value == colorClass)
+                var nodeID = node.Attributes.GetNamedItem("id") as XmlAttribute;
+
+                if(nodeID != null)
                 {
-                    foreach (XmlAttribute attribute in node.Attributes)
+                    if (nodeID.Value.Contains(colorID))
                     {
-                        if(attribute.Name == "fill")
-                        {
-                            attribute.Value = color;
-                        }
+                        node.Attributes.GetNamedItem("fill").Value = color;
                     }
-                }
+                }                
             }
         }
 

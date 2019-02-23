@@ -23,10 +23,10 @@ public class HeadSlot : PartSlot{
             monster = partInfo.monster,
             abilityName = partInfo.abilityName,
             abilityDesc = partInfo.abilityDesc,
-            mainSprite = ChangeColor(partInfo.mainSprite, "primary_color", newColor),
-            neckSprite = ChangeColor(partInfo.neckSprite, "primary_color", newColor),
-            hurtSprite = ChangeColor(partInfo.hurtSprite, "primary_color", newColor),
-            attackSprite = ChangeColor(partInfo.attackSprite, "primary_color", newColor)
+            mainSprite = ChangeColor(partInfo.mainSprite, "PRIMARY", newColor),
+            neckSprite = ChangeColor(partInfo.neckSprite, "PRIMARY", newColor),
+            hurtSprite = ChangeColor(partInfo.hurtSprite, "PRIMARY", newColor),
+            attackSprite = ChangeColor(partInfo.attackSprite, "PRIMARY", newColor)
         };
 
 
@@ -41,10 +41,10 @@ public class HeadSlot : PartSlot{
             monster = partInfo.monster,
             abilityName = partInfo.abilityName,
             abilityDesc = partInfo.abilityDesc,
-            mainSprite = ChangeColor(partInfo.mainSprite, "secondary_color", newColor),
-            neckSprite = ChangeColor(partInfo.neckSprite, "secondary_color", newColor),
-            hurtSprite = ChangeColor(partInfo.hurtSprite, "secondary_color", newColor),
-            attackSprite = ChangeColor(partInfo.attackSprite, "secondary_color", newColor)
+            mainSprite = ChangeColor(partInfo.mainSprite, "SECONDARY", newColor),
+            neckSprite = ChangeColor(partInfo.neckSprite, "SECONDARY", newColor),
+            hurtSprite = ChangeColor(partInfo.hurtSprite, "SECONDARY", newColor),
+            attackSprite = ChangeColor(partInfo.attackSprite, "SECONDARY", newColor)
         };
 
         partInfo = newPart;

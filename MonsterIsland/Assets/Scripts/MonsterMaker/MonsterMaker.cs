@@ -23,12 +23,7 @@ public class MonsterMaker : MonoBehaviour {
 
     public void Start()
     {
-        headSlot.partInfo = Helper.GetHeadPartInfo("Mitch");
-        torsoSlot.partInfo = Helper.GetTorsoPartInfo("Mitch");
-        rightArmSlot.partInfo = Helper.GetArmPartInfo("Mitch", "RightArm");
-        leftArmSlot.partInfo = Helper.GetArmPartInfo("Mitch", "LeftArm");
-        legsSlot.partInfo = Helper.GetLegPartInfo("Mitch");
-
+        //this code is for testing purposes only
         collectedParts = new CollectedPartsInfo()
         {
             collectedHeads = new string[] { "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch", "Mitch" },
