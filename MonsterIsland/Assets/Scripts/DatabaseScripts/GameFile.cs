@@ -9,6 +9,7 @@ public class GameFile {
     public decimal totalPlayTime;
     public string saveDate;
     public string saveArea;
+    public int saveNest;
     public PlayerInfo player;
     public GameProgression gameProgression;
 }
