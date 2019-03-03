@@ -7,6 +7,7 @@ using System;
 public class OpenedChests {
     public bool plainsChest1;
     public bool plainsChest2;
+    public bool hubChest;
     public bool jungleChest1;
     public bool jungleChest2;
     public bool desertChest1;
