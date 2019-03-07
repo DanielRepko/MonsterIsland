@@ -26,7 +26,7 @@ public class MonsterMaker : MonoBehaviour {
         //this code is for testing purposes only
         collectedParts = new CollectedPartsInfo()
         {
-            collectedHeads = new string[] { "Mitch", "Robot" },
+            collectedHeads = new string[] { "Mitch", "Vulture" },
             collectedTorsos = new string[] { "Mitch", "Robot"},
             collectedRightArms = new string[] { "Mitch", "Robot" },
             collectedLeftArms = new string[] { "Mitch", "Robot" },
