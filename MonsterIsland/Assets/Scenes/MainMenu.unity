@@ -168,12 +168,12 @@ Prefab:
     - target: {fileID: 224699278062911554, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -2
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 224699278062911554, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: -32
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 224699278062911554, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
         type: 2}
@@ -253,6 +253,36 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 224044965710971914, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224044965710971914, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224044965710971914, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224156381566954784, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224156381566954784, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224156381566954784, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9eeca6547a7d8c4e93fa985f8bd47e5, type: 2}
@@ -929,7 +959,7 @@ Prefab:
     - target: {fileID: 224699278062911554, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 224699278062911554, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
         type: 2}
@@ -939,7 +969,7 @@ Prefab:
     - target: {fileID: 224699278062911554, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: -30
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 224699278062911554, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
         type: 2}
@@ -979,11 +1009,6 @@ Prefab:
     - target: {fileID: 1678544730154590, guid: b9eeca6547a7d8c4e93fa985f8bd47e5, type: 2}
       propertyPath: m_Name
       value: PlayButtonSign
-      objectReference: {fileID: 0}
-    - target: {fileID: 114856837373949674, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
-        type: 2}
-      propertyPath: m_Text
-      value: Play
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9eeca6547a7d8c4e93fa985f8bd47e5, type: 2}
@@ -1100,17 +1125,17 @@ Prefab:
     - target: {fileID: 224699278062911554, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -20.080017
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 224699278062911554, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -2
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 224699278062911554, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: -29
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 224699278062911554, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
         type: 2}
@@ -1150,6 +1175,41 @@ Prefab:
     - target: {fileID: 1678544730154590, guid: b9eeca6547a7d8c4e93fa985f8bd47e5, type: 2}
       propertyPath: m_Name
       value: QuitButtonSign
+      objectReference: {fileID: 0}
+    - target: {fileID: 114856837373949674, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_Text
+      value: Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 224044965710971914, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224044965710971914, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224044965710971914, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224156381566954784, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224156381566954784, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224156381566954784, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9eeca6547a7d8c4e93fa985f8bd47e5, type: 2}
