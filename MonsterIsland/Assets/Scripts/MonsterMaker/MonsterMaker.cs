@@ -29,7 +29,7 @@ public class MonsterMaker : MonoBehaviour {
             collectedHeads = new string[] { "Mitch", "Sam" },
             collectedTorsos = new string[] { "Mitch", "Sam"},
             collectedRightArms = new string[] { "Mitch", "Mitch"},
-            collectedLeftArms = new string[] { "Mitch", "Mitch"},
+            collectedLeftArms = new string[] { "Mitch", "Sam"},
             collectedLegs = new string[] { "Mitch", "Sam"}
         };
     }
