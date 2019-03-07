@@ -1,30 +1,27 @@
 fileFormatVersion: 2
-guid: 4b6430d38a08aa547904ec645c5e2e34
+guid: 6d4815fd34339e1499fa6154ab59927c
 ScriptedImporter:
   fileIDToRecycleName:
-    100000: gameObject/Monster_Kangaroo_LeftArm_handFront
-    400000: gameObject/Monster_Kangaroo_LeftArm_handFront/Transform
-    21200000: gameObject/Monster_Kangaroo_LeftArm_handFront/SpriteRenderer
+    2800000: tex
     21300000: sprite
-    100100000: gameObject
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: a57477913897c46af95d590f580878bd, type: 3}
-  svgType: 0
+  svgType: 1
   texturedSpriteMeshType: 0
-  svgPixelsPerUnit: 100
+  svgPixelsPerUnit: 10
   gradientResolution: 128
-  alignment: 0
-  customPivot: {x: 0, y: 0}
+  alignment: 9
+  customPivot: {x: 0.4908897, y: 0.9051564}
   generatePhysicsShape: 0
   preserveViewport: 0
-  advancedMode: 0
+  advancedMode: 1
   predefinedResolutionIndex: 1
   targetResolution: 1080
   resolutionMultiplier: 1
-  stepDistance: 10
+  stepDistance: 1
   samplingStepDistance: 100
   maxCordDeviationEnabled: 0
   maxCordDeviation: 1
@@ -51,5 +48,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: e00a8bf27d0db6c4baf3825431824e91
+      spriteID: ad621873aca511c41bc3da19ab0aa5b5
     PhysicsOutlines: []

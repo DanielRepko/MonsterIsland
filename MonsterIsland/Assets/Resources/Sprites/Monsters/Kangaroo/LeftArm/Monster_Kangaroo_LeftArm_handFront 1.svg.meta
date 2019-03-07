@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4b6430d38a08aa547904ec645c5e2e34
+guid: d1b6fcf1bf13c854588e3ae6c807bfc4
 ScriptedImporter:
   fileIDToRecycleName:
-    100000: gameObject/Monster_Kangaroo_LeftArm_handFront
-    400000: gameObject/Monster_Kangaroo_LeftArm_handFront/Transform
-    21200000: gameObject/Monster_Kangaroo_LeftArm_handFront/SpriteRenderer
+    100000: gameObject/Monster_Kangaroo_LeftArm_handFront 1
+    400000: gameObject/Monster_Kangaroo_LeftArm_handFront 1/Transform
+    21200000: gameObject/Monster_Kangaroo_LeftArm_handFront 1/SpriteRenderer
     21300000: sprite
     100100000: gameObject
   externalObjects: {}
@@ -51,5 +51,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: e00a8bf27d0db6c4baf3825431824e91
+      spriteID: 3ea6ada47fe712d4f839b8a6898e25a0
     PhysicsOutlines: []
