@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f2db9904249cf924ab2c378f4e38973c
+guid: c28ed6b90b7412d49aebb6b0d1856ac3
 ScriptedImporter:
   fileIDToRecycleName:
     2800000: tex
@@ -13,8 +13,8 @@ ScriptedImporter:
   texturedSpriteMeshType: 0
   svgPixelsPerUnit: 10
   gradientResolution: 128
-  alignment: 9
-  customPivot: {x: 0.4943407, y: 0.1643327}
+  alignment: 0
+  customPivot: {x: 0, y: 0}
   generatePhysicsShape: 0
   preserveViewport: 0
   advancedMode: 1
@@ -48,5 +48,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: a2869594b00ee2443a0a5bf5dac2a5be
+      spriteID: 29aabd63778dcbd45954ae992c2271ba
     PhysicsOutlines: []
