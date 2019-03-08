@@ -20,7 +20,7 @@ public class LegsPickerButton : PartPickerButton
         partInfo = Helper.GetLegPartInfo(monsterName);
         pelvisImage.sprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.BicepImporter, material);
         rightThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.ForearmImporter, material);
-        rightShinImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.BicepImporter, material);
+        rightShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.BicepImporter, material);
         rightFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.ForearmImporter, material);
         leftThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.ForearmImporter, material);
         leftShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.BicepImporter, material);
