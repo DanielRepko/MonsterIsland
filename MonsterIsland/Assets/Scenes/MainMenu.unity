@@ -284,6 +284,17 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114856837373949674, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: c0ae1c7f925c38c4294f781a67975a8d,
+        type: 3}
+    - target: {fileID: 114856837373949674, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9eeca6547a7d8c4e93fa985f8bd47e5, type: 2}
   m_IsPrefabAsset: 0
@@ -1010,6 +1021,17 @@ Prefab:
       propertyPath: m_Name
       value: PlayButtonSign
       objectReference: {fileID: 0}
+    - target: {fileID: 114856837373949674, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: c0ae1c7f925c38c4294f781a67975a8d,
+        type: 3}
+    - target: {fileID: 114856837373949674, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9eeca6547a7d8c4e93fa985f8bd47e5, type: 2}
   m_IsPrefabAsset: 0
@@ -1209,6 +1231,17 @@ Prefab:
     - target: {fileID: 224156381566954784, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
         type: 2}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114856837373949674, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: c0ae1c7f925c38c4294f781a67975a8d,
+        type: 3}
+    - target: {fileID: 114856837373949674, guid: b9eeca6547a7d8c4e93fa985f8bd47e5,
+        type: 2}
+      propertyPath: m_FontData.m_FontStyle
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
