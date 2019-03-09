@@ -30,19 +30,23 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         xInput = Input.GetAxis("Horizontal");
-        yInput = Input.GetAxis("Vertical");
+        yInput = Input.GetAxis("Jump");
     }
 
     private void FixedUpdate() {
+        //input left
         if (xInput > 0f) {
             rb.velocity = new Vector2(playerSpeed, rb.velocity.y);
+        //input left
         } else if (xInput < 0f) {
             rb.velocity = new Vector2(-playerSpeed, rb.velocity.y);
+        //no input
         } else if (xInput == 0f) {
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
 
-        if(PlayerIsOnGround() && yInput > 0f) {
+        //input jump
+        if(PlayerIsOnGround() && yInput >= 1f) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
