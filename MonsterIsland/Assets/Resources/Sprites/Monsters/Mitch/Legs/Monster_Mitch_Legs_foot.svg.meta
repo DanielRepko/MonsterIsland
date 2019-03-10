@@ -14,7 +14,7 @@ ScriptedImporter:
   svgPixelsPerUnit: 10
   gradientResolution: 128
   alignment: 9
-  customPivot: {x: 0.262309, y: 0.6385142}
+  customPivot: {x: 0.36571193, y: 0.5829804}
   generatePhysicsShape: 0
   preserveViewport: 0
   advancedMode: 1
@@ -37,16 +37,16 @@ ScriptedImporter:
   spriteData:
     TessellationDetail: 0
     SpriteRect:
-      name: 
+      name: foot_alignment
       originalName: 
-      pivot: {x: 0, y: 0}
-      alignment: 0
+      pivot: {x: 0.36571193, y: 0.5829804}
+      alignment: 9
       border: {x: 0, y: 0, z: 0, w: 0}
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 0
-        height: 0
-      spriteID: 48b81b5498719e74385cfc2c8ae906c4
+        width: 256
+        height: 130
+      spriteID: 12473a8341923c14fb7cff38fd1196cb
     PhysicsOutlines: []
