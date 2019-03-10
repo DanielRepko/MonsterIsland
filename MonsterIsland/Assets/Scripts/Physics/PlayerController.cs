@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
         width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
-        height = GetComponent<Collider2D>().bounds.extents.y + 0.2f;
+        height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
     }
 
     // Use this for initialization
@@ -53,10 +53,9 @@ public class PlayerController : MonoBehaviour {
 
     //PlayerIsOnGround function taken from SuperSoyBoy game from Ray Wenderlich
     public bool PlayerIsOnGround() {
-        bool groundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - height), -Vector2.up, rayCastLengthCheck);
+        bool groundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - height), -Vector2.down, rayCastLengthCheck);
         bool groundCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck);
         bool groundCheck3 = Physics2D.Raycast(new Vector2(transform.position.x - (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck);
-
         if (groundCheck1 || groundCheck2 || groundCheck3) {
             return true;
         } else {
