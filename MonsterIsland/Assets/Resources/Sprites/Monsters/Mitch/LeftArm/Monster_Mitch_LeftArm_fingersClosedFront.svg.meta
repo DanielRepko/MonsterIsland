@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1e70b7e823f4d24469d31cac56b040cf
+guid: 36a5d97a9ccfdbd489c7a977ba32ff42
 ScriptedImporter:
   fileIDToRecycleName:
     2800000: tex
@@ -48,5 +48,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: 0e3acc19b54124b4ca25f14474535af4
+      spriteID: b7590868a63a3b647b22074608379e46
     PhysicsOutlines: []

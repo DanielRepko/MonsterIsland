@@ -13,8 +13,8 @@ ScriptedImporter:
   texturedSpriteMeshType: 0
   svgPixelsPerUnit: 10
   gradientResolution: 128
-  alignment: 0
-  customPivot: {x: 0, y: 0}
+  alignment: 9
+  customPivot: {x: 0.5, y: 0.5}
   generatePhysicsShape: 0
   preserveViewport: 0
   advancedMode: 1
@@ -48,5 +48,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: fe59f8843a0ab6b46b1e9f5cbb139cb0
+      spriteID: d5e395bf51ad15640b21855b69163650
     PhysicsOutlines: []

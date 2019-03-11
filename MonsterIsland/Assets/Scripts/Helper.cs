@@ -33,7 +33,7 @@ public class Helper : MonoBehaviour {
         SamplingStepDistance = 100,
         StepDistance = 1,
         SvgPixelsPerUnit = 10,
-        Alignment = VectorUtils.Alignment.Center,
+        Alignment = VectorUtils.Alignment.Custom,
         CustomPivot = new Vector2(0.5f,0.5f),
         GradientResolution = 128
     };
@@ -49,7 +49,7 @@ public class Helper : MonoBehaviour {
         SamplingStepDistance = 100,
         StepDistance = 1,
         SvgPixelsPerUnit = 10,
-        Alignment = VectorUtils.Alignment.Center,
+        Alignment = VectorUtils.Alignment.Custom,
         CustomPivot = new Vector2(0.5f,0.5f),
         GradientResolution = 128
     };
@@ -89,7 +89,7 @@ public class Helper : MonoBehaviour {
         SamplingStepDistance = 100,
         StepDistance = 1,
         SvgPixelsPerUnit = 10,
-        Alignment = VectorUtils.Alignment.Center,
+        Alignment = VectorUtils.Alignment.Custom,
         CustomPivot = new Vector2(0.5f, 0.5f),
         GradientResolution = 128
     };
