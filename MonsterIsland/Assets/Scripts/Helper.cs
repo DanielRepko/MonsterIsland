@@ -131,6 +131,56 @@ public class Helper : MonoBehaviour {
         GradientResolution = 128
     };
 
+    //Used for part types
+    public struct PartType 
+    {
+        public static string Head = "Head";
+        public static string Torso = "Torso";
+        public static string RightArm = "RightArm";
+        public static string LeftArm = "LeftArm";
+        public static string Legs = "Legs";
+    }
+
+    //used for monster names
+    public struct MonsterName
+    {
+        public static string Mitch = "Mitch";
+        public static string Sam = "Sam";
+        public static string Charles = "Charles";
+        public static string Randall = "Randall";
+        public static string Robot = "Robot";
+        public static string Vulture = "Vulture";
+        public static string Cactus = "Cactus";
+        public static string Kangaroo = "Kangaroo";
+        public static string Shark = "Shark";
+        public static string Turtle = "Turtle";
+        public static string Lobster = "Lobster";
+        public static string Frog = "Frog";
+        public static string Lion = "Lion";
+        public static string Monkey = "Monkey";
+        public static string Wingus = "Wingus";
+        public static string Dingus = "Dingus";
+        public static string Hingus = "Hingus";
+        public static string Skeleton = "Skeleton";
+        public static string Knight = "Knight";
+        public static string Mummy = "Mummy";
+    }
+
+    //used for weapon names
+    public struct WeaponName
+    {
+        public static string Stick = "Stick";
+        public static string PeaShooter = "Pea Shooter";
+        public static string Boomerang = "Boomerang";
+        public static string Scimitar = "Scimitar";
+        public static string BananaGun = "Banana Gun";
+        public static string Club = "Club";
+        public static string Swordfish = "Swordfish";
+        public static string HarpoonGun = "Harpoon Gun";
+        public static string SqueakyHammer = "Squeaky Hammer";
+        public static string Fan = "Fan";
+    }
+
     //helper method used to convert the imageStrings to Sprites
     public static Sprite CreateSprite(string partString, SVGImporter importer, Material material)
     {
