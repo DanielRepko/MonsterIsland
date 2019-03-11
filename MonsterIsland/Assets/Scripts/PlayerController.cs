@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb;
 
     //the Monster gameObject
-    public Monster monster;
+    public PlayerMonster monster;
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -29,8 +29,10 @@ public class PlayerController : MonoBehaviour {
     void Start () {
         var headInfo = PartFactory.GetHeadPartInfo(Helper.MonsterName.Mitch);
         var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Mitch);
+        var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.RightArm);
+        var leftArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.LeftArm);
 
-        monster.InitializeMonster(headInfo, torsoInfo);
+        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo);
 	}
 	
 	// Update is called once per frame
