@@ -27,7 +27,10 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        monster.InitializeMonster(PartFactory.GetHeadPartInfo(Helper.MonsterName.Mitch));
+        var headInfo = PartFactory.GetHeadPartInfo(Helper.MonsterName.Mitch);
+        var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Mitch);
+
+        monster.InitializeMonster(headInfo, torsoInfo);
 	}
 	
 	// Update is called once per frame

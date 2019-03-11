@@ -14,7 +14,7 @@ public class ArmPickerButton : PartPickerButton
 
     public override MonsterPartInfo InitializePickerButton(string monsterName, string partType)
     {
-        partInfo = Helper.GetArmPartInfo(monsterName, partType);
+        partInfo = PartFactory.GetArmPartInfo(monsterName, partType);
         bicepImage.sprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.BicepImporter);
         forearmImage.sprite = Helper.CreateSprite(partInfo.forearmSprite, Helper.ForearmImporter);
         if(partType == "RightArm")

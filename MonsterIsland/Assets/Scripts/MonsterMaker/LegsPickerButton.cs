@@ -17,7 +17,7 @@ public class LegsPickerButton : PartPickerButton
 
     public override MonsterPartInfo InitializePickerButton(string monsterName, string partType)
     {
-        partInfo = Helper.GetLegPartInfo(monsterName);
+        partInfo = PartFactory.GetLegPartInfo(monsterName);
         pelvisImage.sprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.BicepImporter);
         rightThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.ForearmImporter);
         rightShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.BicepImporter);
