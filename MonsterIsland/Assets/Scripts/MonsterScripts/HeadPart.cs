@@ -19,7 +19,10 @@ public class HeadPart : MonoBehaviour {
         {
             partInfo = headPartInfo;
 
-            //idleFaceSprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter, );
+            idleFaceSprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter);
+            hurtFaceSprite = Helper.CreateSprite(partInfo.hurtSprite, Helper.HeadImporter);
+            attackFaceSprite = Helper.CreateSprite(partInfo.attackSprite, Helper.HeadImporter);
+            neckSprite = Helper.CreateSprite(partInfo.neckSprite, Helper.HeadImporter);
         }
     }
 
