@@ -127,7 +127,7 @@ public class Helper : MonoBehaviour {
         StepDistance = 1,
         SvgPixelsPerUnit = 10,
         Alignment = VectorUtils.Alignment.Custom,
-        CustomPivot = new Vector2(0.262309f, 0.6385142f),
+        CustomPivot = new Vector2(0.3657119f, 0.5829804f),
         GradientResolution = 128
     };
 

@@ -31,8 +31,9 @@ public class PlayerController : MonoBehaviour {
         var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Mitch);
         var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.RightArm);
         var leftArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.LeftArm);
+        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Mitch);
 
-        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo);
+        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
 	}
 	
 	// Update is called once per frame
