@@ -188,6 +188,7 @@ public class Helper : MonoBehaviour {
 
         var sceneInfo = SVGParser.ImportSVG(reader);
 
+        //creating TessellationOptions
         var options = new VectorUtils.TessellationOptions
         {
             MaxCordDeviation = importer.MaxCordDeviation,
@@ -195,42 +196,38 @@ public class Helper : MonoBehaviour {
             SamplingStepSize = importer.SamplingStepDistance,
             StepDistance = importer.StepDistance
         };
-
-        Material material = Resources.Load<Material>("Monster Part Importers/Unlit_Vector");
         
+        //loading a material
+        Material material = Resources.Load<Material>("Monster Part Importers/Unlit_Vector");
+
+        //creating the geometry list
         var geometryList = VectorUtils.TessellateScene(sceneInfo.Scene, options);
 
+        //building the initial sprite
         Sprite partSprite = VectorUtils.BuildSprite(geometryList, importer.SvgPixelsPerUnit, importer.Alignment, importer.CustomPivot, importer.GradientResolution, true);
 
-        Texture2D partTexture = VectorUtils.RenderSpriteToTexture2D(partSprite, (int)partSprite.rect.width, (int)partSprite.rect.height, material);
+        //calculating the multiplier to apply to the dimensions
+        //(this accounts for some weirdness in the scaling)
+        int spriteWidth = (int)partSprite.rect.width;
+        int spriteHeight = (int)partSprite.rect.height;
 
-        Sprite texturedSprite = Sprite.Create(partTexture, new Rect(0, 0, (int)partSprite.rect.width, (int)partSprite.rect.height), importer.CustomPivot);
+        float largestSpriteDimen = (spriteWidth > spriteHeight) ? spriteWidth : spriteHeight;
+        float dimenMultiplier = Mathf.Round((largestSpriteDimen / 256) / 10);
+
+        int adjustedWidth = (int)(spriteWidth / dimenMultiplier);
+        int adjustedHeight = (int)(spriteHeight / dimenMultiplier);
+
+        Debug.Log(dimenMultiplier);
+
+        //creating the texture
+        Texture2D partTexture = VectorUtils.RenderSpriteToTexture2D(partSprite, adjustedWidth, adjustedHeight, material);
+
+        //creating the final textured sprite
+        Sprite texturedSprite = Sprite.Create(partTexture, new Rect(0, 0, adjustedWidth, adjustedHeight), importer.CustomPivot);
 
         return texturedSprite;
     }
-
-    //helper method used to return the HeadPartInfo for a certain monster
-    public static HeadPartInfo GetHeadPartInfo(string monsterName)
-    {
-        XmlDocument mainSprite = new XmlDocument();
-        mainSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Head/Monster_" + monsterName + "_Head_Face_idle.svg");
-        XmlDocument neckSprite = new XmlDocument();
-        neckSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Head/Monster_" + monsterName + "_Head_neck.svg");
-        XmlDocument hurtSprite = new XmlDocument();
-        hurtSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Head/Monster_" + monsterName + "_Head_Face_hurt.svg");
-        XmlDocument attackSprite = new XmlDocument();
-        attackSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Head/Monster_" + monsterName + "_Head_Face_attack.svg");
-
-        HeadPartInfo headPart = new HeadPartInfo()
-        {
-            monster = monsterName,
-            mainSprite = mainSprite.InnerXml,
-            neckSprite = neckSprite.InnerXml,
-            hurtSprite = hurtSprite.InnerXml,
-            attackSprite = attackSprite.InnerXml
-        };
-        return headPart;
-    }
+    
 
     //helper method used to return the TorsoPartInfo for a certain monster
     public static TorsoPartInfo GetTorsoPartInfo(string monsterName)

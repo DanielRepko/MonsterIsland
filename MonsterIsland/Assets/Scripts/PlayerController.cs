@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D rb;
 
+    //the Monster gameObject
+    public Monster monster;
+
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
         width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
@@ -24,7 +27,7 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        monster.InitializeMonster(PartFactory.GetHeadPartInfo(Helper.MonsterName.Mitch));
 	}
 	
 	// Update is called once per frame
