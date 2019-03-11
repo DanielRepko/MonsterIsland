@@ -45,8 +45,32 @@ public class PlayerController : MonoBehaviour {
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
 
+        //input rightArm attack
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("right arm attack");
+        }
+
+        //input leftArm attack
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("left arm attack");
+        }
+
+        //input torso ability
+        if (Input.GetKeyDown("f"))
+        {
+            Debug.Log("torso ability");
+        }
+
+        //input Head ability
+        if (Input.GetKeyDown("e"))
+        {
+            Debug.Log("head ability");
+        }
+
         //input jump
-        if(PlayerIsOnGround() && yInput >= 1f) {
+        if (PlayerIsOnGround() && yInput >= 1f) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
