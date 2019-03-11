@@ -63,18 +63,18 @@ public class ArmSlot : PartSlot {
 
     public override void UpdateUI()
     {
-        bicepImage.sprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        forearmImage.sprite = Helper.CreateSprite(partInfo.forearmSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
+        bicepImage.sprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.HeadImporter);
+        forearmImage.sprite = Helper.CreateSprite(partInfo.forearmSprite, Helper.HeadImporter);
 
         if(partType == "RightArm")
         {
-            handImage.sprite = Helper.CreateSprite(partInfo.handBackSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-            fingersImage.sprite = Helper.CreateSprite(partInfo.fingersOpenBackSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
+            handImage.sprite = Helper.CreateSprite(partInfo.handBackSprite, Helper.HeadImporter);
+            fingersImage.sprite = Helper.CreateSprite(partInfo.fingersOpenBackSprite, Helper.HeadImporter);
         }
         else if(partType == "LeftArm")
         {
-            handImage.sprite = Helper.CreateSprite(partInfo.handFrontSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-            fingersImage.sprite = Helper.CreateSprite(partInfo.fingersOpenFrontSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
+            handImage.sprite = Helper.CreateSprite(partInfo.handFrontSprite, Helper.HeadImporter);
+            fingersImage.sprite = Helper.CreateSprite(partInfo.fingersOpenFrontSprite, Helper.HeadImporter);
         }
         
     }

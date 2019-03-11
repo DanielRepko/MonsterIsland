@@ -182,7 +182,7 @@ public class Helper : MonoBehaviour {
     }
 
     //helper method used to convert the imageStrings to Sprites
-    public static Sprite CreateSprite(string partString, SVGImporter importer, Material material)
+    public static Sprite CreateSprite(string partString, SVGImporter importer)
     {
         StringReader reader = new StringReader(partString);
 
@@ -195,6 +195,8 @@ public class Helper : MonoBehaviour {
             SamplingStepSize = importer.SamplingStepDistance,
             StepDistance = importer.StepDistance
         };
+
+        Material material = Resources.Load<Material>("Monster Part Importers/Unlit_Vector");
         
         var geometryList = VectorUtils.TessellateScene(sceneInfo.Scene, options);
 
