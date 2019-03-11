@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
         width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
-        height = GetComponent<Collider2D>().bounds.extents.y + 0.2f;
+        height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
     }
 
     // Use this for initialization
@@ -30,29 +30,32 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         xInput = Input.GetAxis("Horizontal");
-        yInput = Input.GetAxis("Vertical");
+        yInput = Input.GetAxis("Jump");
     }
 
     private void FixedUpdate() {
+        //input left
         if (xInput > 0f) {
             rb.velocity = new Vector2(playerSpeed, rb.velocity.y);
+        //input left
         } else if (xInput < 0f) {
             rb.velocity = new Vector2(-playerSpeed, rb.velocity.y);
+        //no input
         } else if (xInput == 0f) {
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
 
-        if(PlayerIsOnGround() && yInput > 0f) {
+        //input jump
+        if(PlayerIsOnGround() && yInput >= 1f) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
 
     //PlayerIsOnGround function taken from SuperSoyBoy game from Ray Wenderlich
     public bool PlayerIsOnGround() {
-        bool groundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - height), -Vector2.up, rayCastLengthCheck);
+        bool groundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - height), -Vector2.down, rayCastLengthCheck);
         bool groundCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck);
         bool groundCheck3 = Physics2D.Raycast(new Vector2(transform.position.x - (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck);
-
         if (groundCheck1 || groundCheck2 || groundCheck3) {
             return true;
         } else {
