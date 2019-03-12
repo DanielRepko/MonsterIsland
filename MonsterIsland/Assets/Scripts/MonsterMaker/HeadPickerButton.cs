@@ -12,8 +12,8 @@ public class HeadPickerButton : PartPickerButton {
     public override MonsterPartInfo InitializePickerButton(string monsterName, string partType)
     {
         partInfo = PartFactory.GetHeadPartInfo(monsterName);
-        faceImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter);
-        neckImage.sprite = Helper.CreateSprite(partInfo.neckSprite, Helper.HeadImporter);
+        faceImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter, true);
+        neckImage.sprite = Helper.CreateSprite(partInfo.neckSprite, Helper.HeadImporter, true);
 
         return partInfo;
     }

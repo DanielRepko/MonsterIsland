@@ -18,13 +18,13 @@ public class LegsPickerButton : PartPickerButton
     public override MonsterPartInfo InitializePickerButton(string monsterName, string partType)
     {
         partInfo = PartFactory.GetLegPartInfo(monsterName);
-        pelvisImage.sprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.BicepImporter);
-        rightThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.ForearmImporter);
-        rightShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.BicepImporter);
-        rightFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.ForearmImporter);
-        leftThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.ForearmImporter);
-        leftShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.BicepImporter);
-        leftFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.ForearmImporter);
+        pelvisImage.sprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.BicepImporter, true);
+        rightThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.ForearmImporter, true);
+        rightShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.BicepImporter, true);
+        rightFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.ForearmImporter, true);
+        leftThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.ForearmImporter, true);
+        leftShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.BicepImporter, true);
+        leftFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.ForearmImporter, true);
 
         return partInfo;
     }

@@ -12,7 +12,7 @@ public class TorsoPickerButton : PartPickerButton
     public override MonsterPartInfo InitializePickerButton(string monsterName, string partType)
     {
         partInfo = PartFactory.GetTorsoPartInfo(monsterName);
-        torsoImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.TorsoImporter);
+        torsoImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.TorsoImporter, true);
 
         return partInfo;
     }

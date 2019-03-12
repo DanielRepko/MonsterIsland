@@ -28,10 +28,10 @@ public class LegPart : MonoBehaviour {
         {
             partInfo = legPartInfo;
 
-            pelvisSprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.PelvisImporter);
-            thighSprite = Helper.CreateSprite(partInfo.thighSprite, Helper.ThighImporter);
-            shinSprite = Helper.CreateSprite(partInfo.shinSprite, Helper.ShinImporter);
-            footSprite = Helper.CreateSprite(partInfo.footSprite, Helper.FootImporter);
+            pelvisSprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.PelvisImporter, false);
+            thighSprite = Helper.CreateSprite(partInfo.thighSprite, Helper.ThighImporter, false);
+            shinSprite = Helper.CreateSprite(partInfo.shinSprite, Helper.ShinImporter, false);
+            footSprite = Helper.CreateSprite(partInfo.footSprite, Helper.FootImporter, false);
 
             pelvis.sprite = pelvisSprite;
             thighR.sprite = thighSprite;

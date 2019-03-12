@@ -5,6 +5,7 @@ using Unity.VectorGraphics.Editor;
 using Unity.VectorGraphics;
 using System.IO;
 using System.Xml;
+using System;
 
 public class Helper : MonoBehaviour {
 
@@ -182,7 +183,11 @@ public class Helper : MonoBehaviour {
     }
 
     //helper method used to convert the imageStrings to Sprites
-    public static Sprite CreateSprite(string partString, SVGImporter importer)
+    //inMonsterMaker parameter used to determine whether the call is happening inside the MonsterMaker
+    //if it is, the method does not adjust the scaling of the images
+    //this is necessary because scaling the images properly is very taxing, and would put
+    //too much loading into the Monster Maker
+    public static Sprite CreateSprite(string partString, SVGImporter importer, bool inMonsterMaker)
     {
         StringReader reader = new StringReader(partString);
 
@@ -196,7 +201,7 @@ public class Helper : MonoBehaviour {
             SamplingStepSize = importer.SamplingStepDistance,
             StepDistance = importer.StepDistance
         };
-        
+
         //loading a material
         Material material = Resources.Load<Material>("Monster Part Importers/Unlit_Vector");
 
@@ -211,17 +216,27 @@ public class Helper : MonoBehaviour {
         int spriteWidth = (int)partSprite.rect.width;
         int spriteHeight = (int)partSprite.rect.height;
 
-        float largestSpriteDimen = (spriteWidth > spriteHeight) ? spriteWidth : spriteHeight;
-        float dimenMultiplier = (largestSpriteDimen / 256) / 10;
-
-        int adjustedWidth = (int)(spriteWidth / dimenMultiplier);
-        int adjustedHeight = (int)(spriteHeight / dimenMultiplier);
+        if (!inMonsterMaker)
+        {
+            if (spriteWidth > spriteHeight)
+            {
+                float dimenMultiplier = (float)Math.Round((float)spriteWidth / 256, 3);
+                spriteWidth = 2560;
+                spriteHeight = ((int)(spriteHeight / dimenMultiplier)) * 10;
+            }
+            else
+            {
+                float dimenMultiplier = (float)Math.Round((float)spriteHeight / 256, 3);
+                spriteWidth = ((int)(spriteWidth / dimenMultiplier)) * 10;
+                spriteHeight = 2560;
+            }
+        }
 
         //creating the texture
-        Texture2D partTexture = VectorUtils.RenderSpriteToTexture2D(partSprite, adjustedWidth, adjustedHeight, material);
+        Texture2D partTexture = VectorUtils.RenderSpriteToTexture2D(partSprite, spriteWidth, spriteHeight, material);
 
         //creating the final textured sprite
-        Sprite texturedSprite = Sprite.Create(partTexture, new Rect(0, 0, adjustedWidth, adjustedHeight), importer.CustomPivot);
+        Sprite texturedSprite = Sprite.Create(partTexture, new Rect(0, 0, spriteWidth, spriteHeight), importer.CustomPivot);
 
         return texturedSprite;
     }

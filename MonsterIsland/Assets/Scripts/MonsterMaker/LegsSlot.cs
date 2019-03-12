@@ -58,12 +58,12 @@ public class LegsSlot : PartSlot {
 
     public override void UpdateUI()
     {
-        pelvisImage.sprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.HeadImporter);
-        rightThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.HeadImporter);
-        rightShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.HeadImporter);
-        rightFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.HeadImporter);
-        leftThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.HeadImporter);
-        leftShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.HeadImporter);
-        leftFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.HeadImporter);
+        pelvisImage.sprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.HeadImporter, true);
+        rightThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.HeadImporter, true);
+        rightShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.HeadImporter, true);
+        rightFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.HeadImporter, true);
+        leftThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.HeadImporter, true);
+        leftShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.HeadImporter, true);
+        leftFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.HeadImporter, true);
     }
 }

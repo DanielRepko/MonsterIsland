@@ -47,6 +47,6 @@ public class TorsoSlot : PartSlot{
 
     public override void UpdateUI()
     {
-        torsoImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.TorsoImporter);
+        torsoImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.TorsoImporter, true);
     }
 }
