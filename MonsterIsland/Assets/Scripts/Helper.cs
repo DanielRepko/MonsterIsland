@@ -5,6 +5,7 @@ using Unity.VectorGraphics.Editor;
 using Unity.VectorGraphics;
 using System.IO;
 using System.Xml;
+using System;
 
 public class Helper : MonoBehaviour {
 
@@ -127,17 +128,72 @@ public class Helper : MonoBehaviour {
         StepDistance = 1,
         SvgPixelsPerUnit = 10,
         Alignment = VectorUtils.Alignment.Custom,
-        CustomPivot = new Vector2(0.262309f, 0.6385142f),
+        CustomPivot = new Vector2(0.3657119f, 0.5829804f),
         GradientResolution = 128
     };
 
+    //Used for part types
+    public struct PartType 
+    {
+        public static string Head = "Head";
+        public static string Torso = "Torso";
+        public static string RightArm = "RightArm";
+        public static string LeftArm = "LeftArm";
+        public static string Legs = "Legs";
+    }
+
+    //used for monster names
+    public struct MonsterName
+    {
+        public static string Mitch = "Mitch";
+        public static string Sam = "Sam";
+        public static string Charles = "Charles";
+        public static string Randall = "Randall";
+        public static string Robot = "Robot";
+        public static string Vulture = "Vulture";
+        public static string Cactus = "Cactus";
+        public static string Kangaroo = "Kangaroo";
+        public static string Shark = "Shark";
+        public static string Turtle = "Turtle";
+        public static string Lobster = "Lobster";
+        public static string Frog = "Frog";
+        public static string Lion = "Lion";
+        public static string Monkey = "Monkey";
+        public static string Wingus = "Wingus";
+        public static string Dingus = "Dingus";
+        public static string Hingus = "Hingus";
+        public static string Skeleton = "Skeleton";
+        public static string Knight = "Knight";
+        public static string Mummy = "Mummy";
+    }
+
+    //used for weapon names
+    public struct WeaponName
+    {
+        public static string Stick = "Stick";
+        public static string PeaShooter = "Pea Shooter";
+        public static string Boomerang = "Boomerang";
+        public static string Scimitar = "Scimitar";
+        public static string BananaGun = "Banana Gun";
+        public static string Club = "Club";
+        public static string Swordfish = "Swordfish";
+        public static string HarpoonGun = "Harpoon Gun";
+        public static string SqueakyHammer = "Squeaky Hammer";
+        public static string Fan = "Fan";
+    }
+
     //helper method used to convert the imageStrings to Sprites
-    public static Sprite CreateSprite(string partString, SVGImporter importer, Material material)
+    //inMonsterMaker parameter used to determine whether the call is happening inside the MonsterMaker
+    //if it is, the method does not adjust the scaling of the images
+    //this is necessary because scaling the images properly is very taxing, and would put
+    //too much loading into the Monster Maker
+    public static Sprite CreateSprite(string partString, SVGImporter importer, bool inMonsterMaker)
     {
         StringReader reader = new StringReader(partString);
 
         var sceneInfo = SVGParser.ImportSVG(reader);
 
+        //creating TessellationOptions
         var options = new VectorUtils.TessellationOptions
         {
             MaxCordDeviation = importer.MaxCordDeviation,
@@ -145,110 +201,43 @@ public class Helper : MonoBehaviour {
             SamplingStepSize = importer.SamplingStepDistance,
             StepDistance = importer.StepDistance
         };
-        
+
+        //loading a material
+        Material material = Resources.Load<Material>("Monster Part Importers/Unlit_Vector");
+
+        //creating the geometry list
         var geometryList = VectorUtils.TessellateScene(sceneInfo.Scene, options);
 
+        //building the initial sprite
         Sprite partSprite = VectorUtils.BuildSprite(geometryList, importer.SvgPixelsPerUnit, importer.Alignment, importer.CustomPivot, importer.GradientResolution, true);
 
-        Texture2D partTexture = VectorUtils.RenderSpriteToTexture2D(partSprite, (int)partSprite.rect.width, (int)partSprite.rect.height, material);
+        //calculating the multiplier to apply to the dimensions
+        //(this accounts for some weirdness in the scaling)
+        int spriteWidth = (int)partSprite.rect.width;
+        int spriteHeight = (int)partSprite.rect.height;
 
-        Sprite texturedSprite = Sprite.Create(partTexture, new Rect(0, 0, (int)partSprite.rect.width, (int)partSprite.rect.height), importer.CustomPivot);
+        if (!inMonsterMaker)
+        {
+            if (spriteWidth > spriteHeight)
+            {
+                float dimenMultiplier = (float)Math.Round((float)spriteWidth / 256, 3);
+                spriteWidth = 2560;
+                spriteHeight = ((int)(spriteHeight / dimenMultiplier)) * 10;
+            }
+            else
+            {
+                float dimenMultiplier = (float)Math.Round((float)spriteHeight / 256, 3);
+                spriteWidth = ((int)(spriteWidth / dimenMultiplier)) * 10;
+                spriteHeight = 2560;
+            }
+        }
+
+        //creating the texture
+        Texture2D partTexture = VectorUtils.RenderSpriteToTexture2D(partSprite, spriteWidth, spriteHeight, material);
+
+        //creating the final textured sprite
+        Sprite texturedSprite = Sprite.Create(partTexture, new Rect(0, 0, spriteWidth, spriteHeight), importer.CustomPivot);
 
         return texturedSprite;
-    }
-
-    //helper method used to return the HeadPartInfo for a certain monster
-    public static HeadPartInfo GetHeadPartInfo(string monsterName)
-    {
-        XmlDocument mainSprite = new XmlDocument();
-        mainSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Head/Monster_" + monsterName + "_Head_Face_idle.svg");
-        XmlDocument neckSprite = new XmlDocument();
-        neckSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Head/Monster_" + monsterName + "_Head_neck.svg");
-        XmlDocument hurtSprite = new XmlDocument();
-        hurtSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Head/Monster_" + monsterName + "_Head_Face_hurt.svg");
-        XmlDocument attackSprite = new XmlDocument();
-        attackSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Head/Monster_" + monsterName + "_Head_Face_attack.svg");
-
-        HeadPartInfo headPart = new HeadPartInfo()
-        {
-            monster = monsterName,
-            mainSprite = mainSprite.InnerXml,
-            neckSprite = neckSprite.InnerXml,
-            hurtSprite = hurtSprite.InnerXml,
-            attackSprite = attackSprite.InnerXml
-        };
-        return headPart;
-    }
-
-    //helper method used to return the TorsoPartInfo for a certain monster
-    public static TorsoPartInfo GetTorsoPartInfo(string monsterName)
-    {
-        XmlDocument mainSprite = new XmlDocument();
-        mainSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Torso/Monster_" + monsterName + "_Torso.svg");
-
-        TorsoPartInfo torsoPart = new TorsoPartInfo()
-        {
-            monster = monsterName,
-            mainSprite = mainSprite.InnerXml
-        };
-        return torsoPart;
-    }
-
-    //helper method used to return the ArmPartInfo for a certain monster
-    public static ArmPartInfo GetArmPartInfo(string monsterName, string armType)
-    {
-        XmlDocument bicepSprite = new XmlDocument();
-        bicepSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/" + armType + "/Monster_" + monsterName + "_" + armType + "_bicep.svg");
-        XmlDocument forearmSprite = new XmlDocument();
-        forearmSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/" + armType + "/Monster_" + monsterName + "_" + armType + "_forearm.svg");
-        XmlDocument handBackSprite = new XmlDocument();
-        handBackSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/" + armType + "/Monster_" + monsterName + "_" + armType + "_handBack.svg");
-        XmlDocument handFrontSprite = new XmlDocument();
-        handFrontSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/" + armType + "/Monster_" + monsterName + "_" + armType + "_handFront.svg");
-        XmlDocument fingersOpenBackSprite = new XmlDocument();
-        fingersOpenBackSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/" + armType + "/Monster_" + monsterName + "_" + armType + "_fingersOpenBack.svg");
-        XmlDocument fingersOpenFrontSprite = new XmlDocument();
-        fingersOpenFrontSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/" + armType + "/Monster_" + monsterName + "_" + armType + "_fingersOpenFront.svg");
-        XmlDocument fingersClosedBackSprite = new XmlDocument();
-        fingersClosedBackSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/" + armType + "/Monster_" + monsterName + "_" + armType + "_fingersClosedBack.svg");
-        XmlDocument fingersClosedFrontSprite = new XmlDocument();
-        fingersClosedFrontSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/" + armType + "/Monster_" + monsterName + "_" + armType + "_fingersClosedFront.svg");
-
-        ArmPartInfo armPart = new ArmPartInfo()
-        {
-            monster = monsterName,
-            bicepSprite = bicepSprite.InnerXml,
-            forearmSprite = forearmSprite.InnerXml,
-            handBackSprite = handBackSprite.InnerXml,
-            handFrontSprite = handFrontSprite.InnerXml,
-            fingersOpenBackSprite = fingersOpenBackSprite.InnerXml,
-            fingersOpenFrontSprite = fingersOpenFrontSprite.InnerXml,
-            fingersClosedBackSprite = fingersClosedBackSprite.InnerXml,
-            fingersClosedFrontSprite = fingersClosedFrontSprite.InnerXml
-        };
-        return armPart;
-    }
-
-    //helper method used to return the HeadPartInfo for a certain monster
-    public static LegPartInfo GetLegPartInfo(string monsterName)
-    {
-        XmlDocument pelvisSprite = new XmlDocument();
-        pelvisSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Legs/Monster_" + monsterName + "_Legs_pelvis.svg");
-        XmlDocument thighSprite = new XmlDocument();
-        thighSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Legs/Monster_" + monsterName + "_Legs_thigh.svg");
-        XmlDocument shinSprite = new XmlDocument();
-        shinSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Legs/Monster_" + monsterName + "_Legs_shin.svg");
-        XmlDocument footSprite = new XmlDocument();
-        footSprite.Load("Assets/Resources/Sprites/Monsters/" + monsterName + "/Legs/Monster_" + monsterName + "_Legs_foot.svg");
-
-        LegPartInfo legPart = new LegPartInfo()
-        {
-            monster = monsterName,
-            pelvisSprite = pelvisSprite.InnerXml,
-            thighSprite = thighSprite.InnerXml,
-            shinSprite = shinSprite.InnerXml,
-            footSprite = footSprite.InnerXml
-        };
-        return legPart;
     }
 }

@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D rb;
 
+    //the Monster gameObject
+    public PlayerMonster monster;
+
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
         width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
@@ -24,7 +27,13 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        var headInfo = PartFactory.GetHeadPartInfo(Helper.MonsterName.Mitch);
+        var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Mitch);
+        var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.RightArm);
+        var leftArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.LeftArm);
+        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Mitch);
+
+        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
 	}
 	
 	// Update is called once per frame
@@ -45,8 +54,32 @@ public class PlayerController : MonoBehaviour {
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
 
+        //input rightArm attack
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("right arm attack");
+        }
+
+        //input leftArm attack
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("left arm attack");
+        }
+
+        //input torso ability
+        if (Input.GetKeyDown("f"))
+        {
+            Debug.Log("torso ability");
+        }
+
+        //input Head ability
+        if (Input.GetKeyDown("e"))
+        {
+            Debug.Log("head ability");
+        }
+
         //input jump
-        if(PlayerIsOnGround() && yInput >= 1f) {
+        if (PlayerIsOnGround() && yInput >= 1f) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }

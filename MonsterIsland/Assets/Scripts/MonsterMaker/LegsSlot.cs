@@ -58,12 +58,12 @@ public class LegsSlot : PartSlot {
 
     public override void UpdateUI()
     {
-        pelvisImage.sprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        rightThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        rightShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        rightFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        leftThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        leftShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        leftFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
+        pelvisImage.sprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.HeadImporter, true);
+        rightThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.HeadImporter, true);
+        rightShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.HeadImporter, true);
+        rightFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.HeadImporter, true);
+        leftThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.HeadImporter, true);
+        leftShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.HeadImporter, true);
+        leftFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.HeadImporter, true);
     }
 }

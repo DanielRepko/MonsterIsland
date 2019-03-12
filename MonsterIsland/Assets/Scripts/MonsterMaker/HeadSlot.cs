@@ -53,7 +53,7 @@ public class HeadSlot : PartSlot{
 
     public override void UpdateUI()
     {
-        faceImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        neckImage.sprite = Helper.CreateSprite(partInfo.neckSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
+        faceImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter, true);
+        neckImage.sprite = Helper.CreateSprite(partInfo.neckSprite, Helper.HeadImporter, true);
     }
 }

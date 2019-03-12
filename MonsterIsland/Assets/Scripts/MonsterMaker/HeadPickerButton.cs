@@ -9,11 +9,11 @@ public class HeadPickerButton : PartPickerButton {
     public Image neckImage;
 
 
-    public override MonsterPartInfo InitializePickerButton(string monsterName, Material material, string partType)
+    public override MonsterPartInfo InitializePickerButton(string monsterName, string partType)
     {
-        partInfo = Helper.GetHeadPartInfo(monsterName);
-        faceImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter, material);
-        neckImage.sprite = Helper.CreateSprite(partInfo.neckSprite, Helper.HeadImporter, material);
+        partInfo = PartFactory.GetHeadPartInfo(monsterName);
+        faceImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter, true);
+        neckImage.sprite = Helper.CreateSprite(partInfo.neckSprite, Helper.HeadImporter, true);
 
         return partInfo;
     }

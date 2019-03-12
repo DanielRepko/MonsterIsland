@@ -57,7 +57,7 @@ public class PartEditor : MonoBehaviour
             var pickerButton = (GameObject)Instantiate(pickerButtonPrefab, Vector2.zero, Quaternion.identity);
 
             //initializing the pickerButton and also saving the created PartInfo
-            var partInfo = pickerButton.GetComponent<PartPickerButton>().InitializePickerButton(availableParts[i], partSlot.GetComponent<Image>().material, partSlot.partType);
+            var partInfo = pickerButton.GetComponent<PartPickerButton>().InitializePickerButton(availableParts[i], partSlot.partType);
             //setting the onClick listener to the pickerButton
             pickerButton.GetComponent<Button>().onClick.AddListener(
                 delegate
