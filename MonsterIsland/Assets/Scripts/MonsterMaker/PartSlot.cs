@@ -12,6 +12,7 @@ public abstract class PartSlot : MonoBehaviour {
     public Vector3 originalPosition;
     public string partType;
     public string abilityName;
+    public string abilityType;
     public string abilityDesc;
     public Text abilitySignLabel;
 

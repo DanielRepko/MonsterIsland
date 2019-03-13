@@ -7,5 +7,6 @@ using System;
 public abstract class MonsterPartInfo{
     public string monster;
     public string abilityName;
+    public string abilityType;
     public string abilityDesc;
 }
