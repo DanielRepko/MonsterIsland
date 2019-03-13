@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
     private float xInput;
     private float yInput;
 
+    private bool isUnderwater;
+
     private Rigidbody2D rb;
 
     //the Monster gameObject
