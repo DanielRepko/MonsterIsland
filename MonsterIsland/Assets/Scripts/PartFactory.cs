@@ -25,7 +25,7 @@ public class PartFactory : MonoBehaviour {
             attackSprite = attackSprite.InnerXml
         };
 
-        headPart = GetHeadAbility(headPart);
+        headPart = GetHeadAbilityInfo(headPart);
 
         return headPart;
     }
@@ -41,7 +41,7 @@ public class PartFactory : MonoBehaviour {
             mainSprite = mainSprite.InnerXml
         };
 
-        torsoPart = GetTorsoAbility(torsoPart);
+        torsoPart = GetTorsoAbilityInfo(torsoPart);
 
         return torsoPart;
     }
@@ -78,7 +78,7 @@ public class PartFactory : MonoBehaviour {
             fingersClosedFrontSprite = fingersClosedFrontSprite.InnerXml
         };
 
-        armPart = GetArmAbility(armPart, armType);
+        armPart = GetArmAbilityInfo(armPart, armType);
 
         return armPart;
     }
@@ -103,13 +103,13 @@ public class PartFactory : MonoBehaviour {
             footSprite = footSprite.InnerXml
         };
 
-        legPart = GetLegAbility(legPart);
+        legPart = GetLegAbilityInfo(legPart);
 
         return legPart;
     }
 
     //fills the partInfo with the monster's ability name and description and returns it
-    private static HeadPartInfo GetHeadAbility(HeadPartInfo partInfo)
+    private static HeadPartInfo GetHeadAbilityInfo(HeadPartInfo partInfo)
     {
         switch(partInfo.monster)
         {
@@ -144,7 +144,7 @@ public class PartFactory : MonoBehaviour {
     }
 
     //fills the partInfo with the monster's ability name and description and returns it
-    private static TorsoPartInfo GetTorsoAbility(TorsoPartInfo partInfo)
+    private static TorsoPartInfo GetTorsoAbilityInfo(TorsoPartInfo partInfo)
     {
         switch (partInfo.monster)
         {
@@ -169,7 +169,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityDesc = "Dissappear, then reappear further ahead in the direction you are facing";
                 return partInfo;
             case Helper.MonsterName.Wingus:
-                partInfo.abilityName = "Swoop da woop";
+                partInfo.abilityName = "Swoop da Woop";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Fly backwards into the air to escape any danger coming from the front";
                 return partInfo;
@@ -179,7 +179,7 @@ public class PartFactory : MonoBehaviour {
     }
 
     //fills the partInfo with the monster's ability name and description and returns it
-    private static ArmPartInfo GetArmAbility(ArmPartInfo partInfo, string armType)
+    private static ArmPartInfo GetArmAbilityInfo(ArmPartInfo partInfo, string armType)
     {
         switch (partInfo.monster)
         {
@@ -232,7 +232,7 @@ public class PartFactory : MonoBehaviour {
     }
 
     //fills the partInfo with the monster's ability name and description and returns it
-    private static LegPartInfo GetLegAbility(LegPartInfo partInfo)
+    private static LegPartInfo GetLegAbilityInfo(LegPartInfo partInfo)
     {
         switch (partInfo.monster)
         {
