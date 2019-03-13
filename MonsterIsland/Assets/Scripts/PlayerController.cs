@@ -27,13 +27,7 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        var headInfo = PartFactory.GetHeadPartInfo(Helper.MonsterName.Mitch);
-        var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Mitch);
-        var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.RightArm);
-        var leftArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.LeftArm);
-        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Mitch);
-
-        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
+        InitializePlayer();
 	}
 	
 	// Update is called once per frame
@@ -82,6 +76,17 @@ public class PlayerController : MonoBehaviour {
         if (PlayerIsOnGround() && yInput >= 1f) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
+    }
+
+    public void InitializePlayer()
+    {
+        var headInfo = PartFactory.GetHeadPartInfo(Helper.MonsterName.Mitch);
+        var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Mitch);
+        var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.RightArm);
+        var leftArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.LeftArm);
+        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Mitch);
+
+        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
     }
 
     //PlayerIsOnGround function taken from SuperSoyBoy game from Ray Wenderlich
