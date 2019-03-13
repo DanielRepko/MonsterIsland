@@ -6,7 +6,7 @@ public class AbilityFactory : MonoBehaviour {
 
     public delegate void Ability();
 
-    public static Ability GetPartAbility(string abilityName)
+    public static System.Delegate GetPartAbility(string abilityName)
     {
         Ability ability = null;
 
@@ -108,7 +108,7 @@ public class AbilityFactory : MonoBehaviour {
 
     public static void Ability_BigBeak()
     {
-
+       
     }
 
     public static void Ability_ArmoredBody()
