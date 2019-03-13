@@ -9,6 +9,7 @@ public class PartEditor : MonoBehaviour
     public Image primaryColorIndicator;
     public Image secondaryColorIndicator;
     public Text abilityName;
+    public Text abilityType;
     public Text abilityDesc;
 
     public ScrollRect partPicker;
@@ -64,6 +65,7 @@ public class PartEditor : MonoBehaviour
                 {
                     partSlot.ChangePart(partInfo);
                     abilityName.text = partInfo.abilityName;
+                    abilityType.text = partInfo.abilityType;
                     abilityDesc.text = partInfo.abilityDesc;
                 });
 
@@ -91,6 +93,7 @@ public class PartEditor : MonoBehaviour
         this.partSlot.EnterPartEditor();
         PopulatePartPicker();
         abilityName.text = this.partSlot.abilityName;
+        abilityType.text = this.partSlot.abilityType;
         abilityDesc.text = this.partSlot.abilityDesc;
         gameObject.SetActive(true);
     }

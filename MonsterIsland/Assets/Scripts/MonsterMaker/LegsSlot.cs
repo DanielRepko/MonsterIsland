@@ -17,7 +17,12 @@ public class LegsSlot : PartSlot {
     public override void ChangePart(MonsterPartInfo newPart)
     {
         partInfo = (LegPartInfo)newPart;
+
         abilitySignLabel.text = partInfo.abilityName;
+        abilityName = partInfo.abilityName;
+        abilityType = partInfo.abilityType;
+        abilityDesc = partInfo.abilityDesc;
+
         UpdateUI();
     }
 

@@ -135,51 +135,51 @@ public class Helper : MonoBehaviour {
     //Used for part types
     public struct PartType 
     {
-        public static string Head = "Head";
-        public static string Torso = "Torso";
-        public static string RightArm = "RightArm";
-        public static string LeftArm = "LeftArm";
-        public static string Legs = "Legs";
+        public const string Head = "Head";
+        public const string Torso = "Torso";
+        public const string RightArm = "RightArm";
+        public const string LeftArm = "LeftArm";
+        public const string Legs = "Legs";
     }
 
     //used for monster names
     public struct MonsterName
     {
-        public static string Mitch = "Mitch";
-        public static string Sam = "Sam";
-        public static string Charles = "Charles";
-        public static string Randall = "Randall";
-        public static string Robot = "Robot";
-        public static string Vulture = "Vulture";
-        public static string Cactus = "Cactus";
-        public static string Kangaroo = "Kangaroo";
-        public static string Shark = "Shark";
-        public static string Turtle = "Turtle";
-        public static string Lobster = "Lobster";
-        public static string Frog = "Frog";
-        public static string Lion = "Lion";
-        public static string Monkey = "Monkey";
-        public static string Wingus = "Wingus";
-        public static string Dingus = "Dingus";
-        public static string Hingus = "Hingus";
-        public static string Skeleton = "Skeleton";
-        public static string Knight = "Knight";
-        public static string Mummy = "Mummy";
+        public const string Mitch = "Mitch";
+        public const string Sam = "Sam";
+        public const string Charles = "Charles";
+        public const string Randall = "Randall";
+        public const string Robot = "Robot";
+        public const string Vulture = "Vulture";
+        public const string Cactus = "Cactus";
+        public const string Kangaroo = "Kangaroo";
+        public const string Shark = "Shark";
+        public const string Turtle = "Turtle";
+        public const string Lobster = "Lobster";
+        public const string Frog = "Frog";
+        public const string Lion = "Lion";
+        public const string Monkey = "Monkey";
+        public const string Wingus = "Wingus";
+        public const string Dingus = "Dingus";
+        public const string Hingus = "Hingus";
+        public const string Skeleton = "Skeleton";
+        public const string Knight = "Knight";
+        public const string Mummy = "Mummy";
     }
 
     //used for weapon names
     public struct WeaponName
     {
-        public static string Stick = "Stick";
-        public static string PeaShooter = "Pea Shooter";
-        public static string Boomerang = "Boomerang";
-        public static string Scimitar = "Scimitar";
-        public static string BananaGun = "Banana Gun";
-        public static string Club = "Club";
-        public static string Swordfish = "Swordfish";
-        public static string HarpoonGun = "Harpoon Gun";
-        public static string SqueakyHammer = "Squeaky Hammer";
-        public static string Fan = "Fan";
+        public const string Stick = "Stick";
+        public const string PeaShooter = "Pea Shooter";
+        public const string Boomerang = "Boomerang";
+        public const string Scimitar = "Scimitar";
+        public const string BananaGun = "Banana Gun";
+        public const string Club = "Club";
+        public const string Swordfish = "Swordfish";
+        public const string HarpoonGun = "Harpoon Gun";
+        public const string SqueakyHammer = "Squeaky Hammer";
+        public const string Fan = "Fan";
     }
 
     //helper method used to convert the imageStrings to Sprites
