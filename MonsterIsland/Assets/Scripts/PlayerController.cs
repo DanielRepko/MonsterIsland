@@ -24,13 +24,12 @@ public class PlayerController : MonoBehaviour {
     //delegate type used for all of the player actions and abilities
     public delegate void Ability();
 
-    public Ability moveRightDelegate = null;
-    public Ability moveLeftDelegate = null;
-    public Ability jumpDelegate = null;
-    public Ability rightAttackDelegate = null;
-    public Ability leftAttackDelegate = null;
-    public Ability torsoAbilityDelegate = null;
-    public Ability headAbilityDelegate = null;
+    public AbilityFactory.Ability moveDelegate = null;
+    public AbilityFactory.Ability jumpDelegate = null;
+    public AbilityFactory.Ability rightAttackDelegate = null;
+    public AbilityFactory.Ability leftAttackDelegate = null;
+    public AbilityFactory.Ability torsoAbilityDelegate = null;
+    public AbilityFactory.Ability headAbilityDelegate = null;
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -51,16 +50,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        //input right
-        if (xInput > 0f) {
-            moveRightDelegate();
-        //input left
-        } else if (xInput < 0f) {
-            moveLeftDelegate();
-        //no input
-        } else if (xInput == 0f) {
-            rb.velocity = new Vector2(0f, rb.velocity.y);
-        }
+
+        Move();
 
         //input rightArm attack
         if (Input.GetMouseButtonDown(0))
@@ -92,16 +83,23 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //moves the player right
-    public void MoveRight()
+    public void Move()
     {
-        rb.velocity = new Vector2(playerSpeed, rb.velocity.y);
-    }
-
-    //moves the player left
-    public void MoveLeft()
-    {
-        rb.velocity = new Vector2(-playerSpeed, rb.velocity.y);
+        //input right
+        if (xInput > 0f)
+        {
+            rb.velocity = new Vector2(playerSpeed, rb.velocity.y);
+        //input left
+        }
+        else if (xInput < 0f)
+        {
+            rb.velocity = new Vector2(-playerSpeed, rb.velocity.y);
+        //no input
+        }
+        else if (xInput == 0f)
+        {
+            rb.velocity = new Vector2(0f, rb.velocity.y);
+        }
     }
 
     //makes the player jump
@@ -127,13 +125,13 @@ public class PlayerController : MonoBehaviour {
     }
 
     //the default torso ability (default is to have no ability so it is meant to be empty)
-    public void TorsoAbility()
+    public void DefaultTorsoAbility()
     {
         Debug.Log("torso ability");
     }
 
     //the default head ability (default is to have no ability so it is meant to be empty)
-    public void HeadAbility()
+    public void DefaultHeadAbility()
     {
         Debug.Log("head ability");
     }
@@ -144,17 +142,16 @@ public class PlayerController : MonoBehaviour {
         var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Mitch);
         var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.RightArm);
         var leftArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.LeftArm);
-        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Mitch);
+        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Randall);
 
-    moveRightDelegate = MoveRight;
-    moveLeftDelegate = MoveLeft;
-    jumpDelegate = Jump;
-    rightAttackDelegate = RightAttack;
-    leftAttackDelegate = LeftAttack;
-    torsoAbilityDelegate = TorsoAbility;
-    headAbilityDelegate = HeadAbility;
+        moveDelegate = Move;
+        jumpDelegate = Jump;
+        rightAttackDelegate = RightAttack;
+        leftAttackDelegate = LeftAttack;
+        torsoAbilityDelegate = DefaultTorsoAbility;
 
-    monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
+        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
+
     }
 
     //PlayerIsOnGround function taken from SuperSoyBoy game from Ray Wenderlich

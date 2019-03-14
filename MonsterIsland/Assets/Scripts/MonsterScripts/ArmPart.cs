@@ -26,11 +26,43 @@ public class ArmPart : MonoBehaviour {
     public SpriteRenderer hand;
     public SpriteRenderer fingers;
 
+    //stores the part's ability delegate
+    public AbilityFactory.Ability partAbility = null;
+
     public void InitializePart(ArmPartInfo armPartInfo)
     {
         if (armPartInfo != null)
         {
             partInfo = armPartInfo;
+
+            //checking whether this part has an ability
+            if (partInfo.abilityName != null)
+            {
+                //populating the partAbility field with the appropriate ability delegate
+                partAbility = AbilityFactory.GetPartAbility(partInfo.abilityName);
+
+                //if the type is Passive, run the delegate method to apply the buff to the player
+                if (partInfo.abilityType == "Passive")
+                {
+                    partAbility();
+
+                }//if the type is Activate, set the ability to the Player action delegate
+                else if (partInfo.abilityType == "Activate")
+                {
+                    //checking which arm to apply the ability to
+                    if(partType == "RightArm")
+                    {
+                        GameManager.instance.player.rightAttackDelegate = partAbility;
+                    } else if(partType == "LeftArm")
+                    {
+                        GameManager.instance.player.rightAttackDelegate = partAbility;
+                    }
+                }//if the value is anything else, then a typo must have occured when creating the ability info
+                else
+                {
+                    Debug.Log("Error: Invalid ability type");
+                }
+            }
 
             bicepSprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.BicepImporter, false);
             forearmSprite = Helper.CreateSprite(partInfo.forearmSprite, Helper.ForearmImporter, false);

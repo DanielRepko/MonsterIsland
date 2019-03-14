@@ -22,11 +22,35 @@ public class LegPart : MonoBehaviour {
     public SpriteRenderer footR;
     public SpriteRenderer footL;
 
+    //stores the part's ability delegate
+    public AbilityFactory.Ability partAbility = null;
+
     public void InitializePart(LegPartInfo legPartInfo)
     {
         if (legPartInfo != null)
         {
             partInfo = legPartInfo;
+
+            //populating the partAbility field
+            if (partInfo.abilityName != null)
+            {
+                partAbility = AbilityFactory.GetPartAbility(partInfo.abilityName);
+
+                //if the type is Passive, run the delegate method to apply the buff to the player
+                if(partInfo.abilityType == "Passive")
+                {
+                    partAbility();
+
+                }//if the type is Activate, set the ability to the Player action delegate
+                else if(partInfo.abilityType == "Activate")
+                {
+                    GameManager.instance.player.moveDelegate = partAbility;
+                }//if the value is anything else, then a typo must have occured when creating the ability info
+                else
+                {
+                    Debug.Log("Error: Invalid ability type");
+                }
+            }
 
             pelvisSprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.PelvisImporter, false);
             thighSprite = Helper.CreateSprite(partInfo.thighSprite, Helper.ThighImporter, false);

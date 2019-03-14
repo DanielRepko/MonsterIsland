@@ -6,7 +6,7 @@ public class AbilityFactory : MonoBehaviour {
 
     public delegate void Ability();
 
-    public static System.Delegate GetPartAbility(string abilityName)
+    public static Ability GetPartAbility(string abilityName)
     {
         Ability ability = null;
 
@@ -182,7 +182,7 @@ public class AbilityFactory : MonoBehaviour {
     }
     public static void Ability_QuickFeet()
     {
-
+        Debug.Log("Issei ohseee, no qui something na na na da da da da, nani mo, nani mo");
     }
 
     public static void Ability_Acrobat()
