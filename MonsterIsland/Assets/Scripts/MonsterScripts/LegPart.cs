@@ -44,7 +44,7 @@ public class LegPart : MonoBehaviour {
                 }//if the type is Activate, set the ability to the Player action delegate
                 else if(partInfo.abilityType == "Activate")
                 {
-                    GameManager.instance.player.moveDelegate = partAbility;
+                    GameManager.instance.player.jumpDelegate = partAbility;
                 }//if the value is anything else, then a typo must have occured when creating the ability info
                 else
                 {

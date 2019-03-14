@@ -216,7 +216,18 @@ public class AbilityFactory : MonoBehaviour {
     //Leg Ability (Activate): Allows the player to perform a single jump in mid-air
     public static void Ability_Acrobat()
     {
+        PlayerController player = GameManager.instance.player;
 
+        if (player.PlayerIsOnGround())
+        {
+            player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
+        }
+        else if(!player.PlayerIsOnGround() && player.hasExtraJump)
+        {
+            player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
+            player.hasExtraJump = false;
+        }
+        
     }
 
     //Leg Ability (Passive): Increases the player's jump height

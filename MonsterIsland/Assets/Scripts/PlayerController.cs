@@ -7,12 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float moveSpeed = 20f;
     public float jumpForce = 10f;
 
-    //used to add time between when the player can jump
-    //prevents the player from holding down jump and skipping
-    //through sections of vertical platforming with one-way platforms
-    private bool canJump = true;
-    public float jumpCooldown = 0.2f;
-    private float jumpCooldownTimer = 0;
+    public bool hasExtraJump = true;
 
     private float rayCastLengthCheck = 0.005f;
     private float width;
@@ -23,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 
     private bool isUnderwater;
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     //the Monster gameObject
     public PlayerMonster monster;
@@ -56,18 +51,9 @@ public class PlayerController : MonoBehaviour {
         yInput = Input.GetAxis("Jump");
     }
 
-    private void FixedUpdate() {
-
-        if (!canJump && (jumpCooldownTimer < jumpCooldown))
-        {
-            jumpCooldownTimer += Time.deltaTime;
-        } else if(jumpCooldownTimer >= jumpCooldown)
-        {
-            jumpCooldownTimer = 0;
-            canJump = true;
-        }
-
-        Move();
+    private void FixedUpdate()
+    {
+        moveDelegate();
 
         //input rightArm attack
         if (Input.GetMouseButtonDown(0))
@@ -82,57 +68,55 @@ public class PlayerController : MonoBehaviour {
         }
 
         //input torso ability
-        if (Input.GetKeyDown("f"))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             torsoAbilityDelegate();
         }
 
         //input Head ability
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             headAbilityDelegate();
         }
 
+        //checking to see whether the extra jump should be refreshed
+        if (PlayerIsOnGround())
+        {
+            hasExtraJump = true;
+        }
+
         //input jump
-        if(yInput >= 1f) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
             jumpDelegate();
         }
     }
 
     public void Move()
     {
-        //input right
-        if (xInput > 0f)
+        //input Left
+        if (Input.GetKey(KeyCode.D))
         {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-        //input left
+        //input Right
         }
-        else if (xInput < 0f)
+        else if (Input.GetKey(KeyCode.A))
         {
             rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
         //no input
         }
-        else if (xInput == 0f)
+        else if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
         {
-            rb.velocity = new Vector2(0f, rb.velocity.y);
+            rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
 
     //makes the player jump
     public void Jump()
     {
-        if (canJump)
+        if (PlayerIsOnGround())
         {
-            //
-            canJump = false;
-
-            if (PlayerIsOnGround())
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            }
+           rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-        
-        
     }
 
     //right arm attack
@@ -161,11 +145,13 @@ public class PlayerController : MonoBehaviour {
 
     public void InitializePlayer()
     {
+        //creating variables to initialize the player monster
+        //this code is for testing purposes, final product will pull this information from the database scripts
         var headInfo = PartFactory.GetHeadPartInfo(Helper.MonsterName.Mitch);
         var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Mitch);
         var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.RightArm);
         var leftArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.LeftArm);
-        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Mitch);
+        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Monkey);
 
         moveDelegate = Move;
         jumpDelegate = Jump;
