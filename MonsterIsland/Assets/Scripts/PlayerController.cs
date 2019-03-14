@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float playerSpeed = 20f;
+    public float moveSpeed = 20f;
     public float jumpForce = 10f;
 
     private float rayCastLengthCheck = 0.005f;
@@ -88,12 +88,12 @@ public class PlayerController : MonoBehaviour {
         //input right
         if (xInput > 0f)
         {
-            rb.velocity = new Vector2(playerSpeed, rb.velocity.y);
+            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         //input left
         }
         else if (xInput < 0f)
         {
-            rb.velocity = new Vector2(-playerSpeed, rb.velocity.y);
+            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
         //no input
         }
         else if (xInput == 0f)
@@ -151,7 +151,6 @@ public class PlayerController : MonoBehaviour {
         torsoAbilityDelegate = DefaultTorsoAbility;
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
-
     }
 
     //PlayerIsOnGround function taken from SuperSoyBoy game from Ray Wenderlich

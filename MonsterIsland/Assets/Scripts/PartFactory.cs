@@ -223,7 +223,7 @@ public class PartFactory : MonoBehaviour {
                 return partInfo;
             case Helper.MonsterName.Skeleton:
                 partInfo.abilityName = "Bone Toss";
-                partInfo.abilityType = "Activate";
+                partInfo.abilityType = "Passive";
                 partInfo.abilityDesc = "Throw bones in an overhead arc. Angle of arc can be adjusted. Takes up this arm's weapon slot";
                 return partInfo;
             default:
