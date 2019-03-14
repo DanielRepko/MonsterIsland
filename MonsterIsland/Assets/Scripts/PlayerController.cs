@@ -110,6 +110,7 @@ public class PlayerController : MonoBehaviour {
         if (PlayerIsOnGround())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            //rb.AddForce(new Vector2(rb.velocity.x, jumpForce * 10000));
         }
         
     }
