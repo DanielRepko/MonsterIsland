@@ -382,6 +382,7 @@ GameObject:
   - component: {fileID: 50294502546255648}
   - component: {fileID: 114012045192248068}
   - component: {fileID: 68947545826544262}
+  - component: {fileID: 70056825719153610}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1039,7 +1040,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344063368092656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.25, z: 0}
+  m_LocalPosition: {x: 0, y: -1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4962323823073406}
@@ -1519,6 +1520,21 @@ EdgeCollider2D:
   - {x: 0.8105192, y: 1.370381}
   - {x: 0.8105192, y: -1.829342}
   - {x: -0.789734, y: -1.829342}
+--- !u!70 &70056825719153610
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344063368092656}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.2}
+  m_Size: {x: 1.59, y: 3.16}
+  m_Direction: 0
 --- !u!81 &81537305523738682
 AudioListener:
   m_ObjectHideFlags: 1
@@ -1581,6 +1597,7 @@ MonoBehaviour:
   partInfo:
     monster: 
     abilityName: 
+    abilityType: 
     abilityDesc: 
     mainSprite: 
   bodySprite: {fileID: 0}
@@ -1717,6 +1734,7 @@ MonoBehaviour:
   partInfo:
     monster: 
     abilityName: 
+    abilityType: 
     abilityDesc: 
     bicepSprite: 
     forearmSprite: 
@@ -2072,6 +2090,7 @@ MonoBehaviour:
   partInfo:
     monster: 
     abilityName: 
+    abilityType: 
     abilityDesc: 
     bicepSprite: 
     forearmSprite: 
@@ -2135,6 +2154,7 @@ MonoBehaviour:
   partInfo:
     monster: 
     abilityName: 
+    abilityType: 
     abilityDesc: 
     pelvisSprite: 
     thighSprite: 
@@ -2300,6 +2320,7 @@ MonoBehaviour:
   partInfo:
     monster: 
     abilityName: 
+    abilityType: 
     abilityDesc: 
     mainSprite: 
     neckSprite: 
