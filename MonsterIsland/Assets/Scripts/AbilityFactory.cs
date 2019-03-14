@@ -222,7 +222,7 @@ public class AbilityFactory : MonoBehaviour {
     //Leg Ability (Passive): Increases the player's jump height
     public static void Ability_JoeyJump()
     {
-
+        GameManager.instance.player.jumpForce = 70;
     }
 
     //Leg Ability (Activate): Allows the player to attack with taloned feet

@@ -7,6 +7,13 @@ public class PlayerController : MonoBehaviour {
     public float moveSpeed = 20f;
     public float jumpForce = 10f;
 
+    //used to add time between when the player can jump
+    //prevents the player from holding down jump and skipping
+    //through sections of vertical platforming with one-way platforms
+    private bool canJump = true;
+    public float jumpCooldown = 0.2f;
+    private float jumpCooldownTimer = 0;
+
     private float rayCastLengthCheck = 0.005f;
     private float width;
     private float height;
@@ -50,6 +57,15 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+
+        if (!canJump && (jumpCooldownTimer < jumpCooldown))
+        {
+            jumpCooldownTimer += Time.deltaTime;
+        } else if(jumpCooldownTimer >= jumpCooldown)
+        {
+            jumpCooldownTimer = 0;
+            canJump = true;
+        }
 
         Move();
 
@@ -105,10 +121,17 @@ public class PlayerController : MonoBehaviour {
     //makes the player jump
     public void Jump()
     {
-        if (PlayerIsOnGround())
+        if (canJump)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            //
+            canJump = false;
+
+            if (PlayerIsOnGround())
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
         }
+        
         
     }
 
@@ -142,7 +165,7 @@ public class PlayerController : MonoBehaviour {
         var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Mitch);
         var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.RightArm);
         var leftArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.LeftArm);
-        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Randall);
+        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Mitch);
 
         moveDelegate = Move;
         jumpDelegate = Jump;
