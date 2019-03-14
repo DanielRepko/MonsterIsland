@@ -7,14 +7,13 @@ public class PlayerController : MonoBehaviour {
     public float moveSpeed = 20f;
     public float jumpForce = 10f;
 
+    public float health;
+
     public bool hasExtraJump = true;
 
     private float rayCastLengthCheck = 0.005f;
     private float width;
     private float height;
-
-    private float xInput;
-    private float yInput;
 
     private bool isUnderwater;
 
@@ -47,12 +46,12 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        xInput = Input.GetAxis("Horizontal");
-        yInput = Input.GetAxis("Jump");
+
     }
 
     private void FixedUpdate()
     {
+        //moveing the player
         moveDelegate();
 
         //input rightArm attack
