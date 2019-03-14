@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
     private float width;
     private float height;
 
-    private bool isUnderwater;
+    public bool isUnderwater;
 
     public Rigidbody2D rb;
 
@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour {
     public AbilityFactory.Ability leftAttackDelegate = null;
     public AbilityFactory.Ability torsoAbilityDelegate = null;
     public AbilityFactory.Ability headAbilityDelegate = null;
+
+    //used to perform miscellaneous checks on the player's status
+    //primary use for now is to be used by the Vulture's Feather Fall ability
+    public AbilityFactory.Ability playerCheckDelegate = null;
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -51,8 +55,10 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        //moveing the player
+        //moving the player
         moveDelegate();
+
+        playerCheckDelegate();
 
         //input rightArm attack
         if (Input.GetMouseButtonDown(0))
@@ -130,16 +136,10 @@ public class PlayerController : MonoBehaviour {
         Debug.Log("left arm attack");
     }
 
-    //the default torso ability (default is to have no ability so it is meant to be empty)
-    public void DefaultTorsoAbility()
+    //the default ability method (default is to have no ability so it is meant to be empty)
+    public void AbilityDefault()
     {
-        Debug.Log("torso ability");
-    }
 
-    //the default head ability (default is to have no ability so it is meant to be empty)
-    public void DefaultHeadAbility()
-    {
-        Debug.Log("head ability");
     }
 
     public void InitializePlayer()
@@ -148,15 +148,17 @@ public class PlayerController : MonoBehaviour {
         //this code is for testing purposes, final product will pull this information from the database scripts
         var headInfo = PartFactory.GetHeadPartInfo(Helper.MonsterName.Mitch);
         var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Mitch);
-        var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.RightArm);
+        var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Vulture, Helper.PartType.RightArm);
         var leftArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.LeftArm);
-        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Monkey);
+        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Mitch);
 
         moveDelegate = Move;
         jumpDelegate = Jump;
         rightAttackDelegate = RightAttack;
         leftAttackDelegate = LeftAttack;
-        torsoAbilityDelegate = DefaultTorsoAbility;
+        torsoAbilityDelegate = AbilityDefault;
+        headAbilityDelegate = AbilityDefault;
+        playerCheckDelegate = AbilityDefault;
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
     }

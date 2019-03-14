@@ -182,9 +182,10 @@ public class AbilityFactory : MonoBehaviour {
     }
 
     //Arm Ability (Passive): Makes the player fall slower, effect can stack with other arm
+    //due to nature of the ability, needs to pass on a separate method (see FeatherFall())
     public static void Ability_FeatherFall()
     {
-
+        GameManager.instance.player.playerCheckDelegate += FeatherFall;
     }
 
     //Arm Ability (Activate): Allows the player to extend and shoot their arm out to 
@@ -218,22 +219,27 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = GameManager.instance.player;
 
-        if (player.PlayerIsOnGround())
+        if (!player.isUnderwater)
         {
-            player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
+            if (player.PlayerIsOnGround())
+            {
+                player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
+            }
+            else if (!player.PlayerIsOnGround() && player.hasExtraJump)
+            {
+                player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
+                player.hasExtraJump = false;
+            }
         }
-        else if(!player.PlayerIsOnGround() && player.hasExtraJump)
-        {
-            player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
-            player.hasExtraJump = false;
-        }
-        
     }
 
     //Leg Ability (Passive): Increases the player's jump height
     public static void Ability_JoeyJump()
     {
-        GameManager.instance.player.jumpForce = 70;
+        if (!GameManager.instance.player.isUnderwater)
+        {
+            GameManager.instance.player.jumpForce = 70;
+        }
     }
 
     //Leg Ability (Activate): Allows the player to attack with taloned feet
@@ -241,4 +247,22 @@ public class AbilityFactory : MonoBehaviour {
     {
 
     }    
+
+    //These methods are implemented on the PlayerController by certain methods for Passive abilities
+    public static void FeatherFall()
+    {
+        PlayerController player = GameManager.instance.player;
+
+        if (!player.isUnderwater)
+        {
+            if (player.rb.velocity.y < 0)
+            {
+                player.rb.gravityScale -= 2f;
+            }
+            else
+            {
+                player.rb.gravityScale = 20;
+            }
+        }        
+    }
 }
