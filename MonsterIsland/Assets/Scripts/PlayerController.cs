@@ -32,8 +32,11 @@ public class PlayerController : MonoBehaviour {
     public AbilityFactory.Ability torsoAbilityDelegate = null;
     public AbilityFactory.Ability headAbilityDelegate = null;
 
-    //used to perform miscellaneous checks on the player's status
-    //primary use for now is to be used by the Vulture's Feather Fall ability
+    //used to check what direction the player is facing
+    //-1 = left  1 = right
+    public int playerDirection;
+
+    //used to perform miscellaneous checks on the player through fixed update
     public AbilityFactory.Ability playerCheckDelegate = null;
 
     void Awake() {
@@ -55,10 +58,12 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        //performing status checks on the player using whatever 
+        //methods the delegate holds (may hold multiple method implementations)
+        playerCheckDelegate();
+
         //moving the player
         moveDelegate();
-
-        playerCheckDelegate();
 
         //input rightArm attack
         if (Input.GetMouseButtonDown(0))
@@ -127,13 +132,17 @@ public class PlayerController : MonoBehaviour {
     //right arm attack
     public void RightAttack()
     {
-        Debug.Log("right arm attack");
+        var playerPosition = transform.position;
+
+        Debug.DrawRay(playerPosition, new Vector3(1.65f * playerDirection, 0, 0), Color.green);
     }
 
     //left arm attack
     public void LeftAttack()
     {
-        Debug.Log("left arm attack");
+        var playerPosition = transform.position;
+
+        Debug.DrawRay(playerPosition, new Vector3(1.65f * playerDirection, 0, 0), Color.green);
     }
 
     //the default ability method (default is to have no ability so it is meant to be empty)
@@ -169,11 +178,13 @@ public class PlayerController : MonoBehaviour {
         var screenMiddle = Screen.width / 2;
         if (Input.mousePosition.x > screenMiddle)
         {
-            monster.ChangeDirection(1);
+            playerDirection = 1;
+            monster.ChangeDirection(playerDirection);
         }
         else if (Input.mousePosition.x < screenMiddle)
         {
-            monster.ChangeDirection(-1);
+            playerDirection = -1;
+            monster.ChangeDirection(playerDirection);
         }
     }
 
