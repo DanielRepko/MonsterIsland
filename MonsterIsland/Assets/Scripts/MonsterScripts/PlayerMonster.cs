@@ -26,8 +26,8 @@ public class PlayerMonster : MonoBehaviour {
     {
         headPart.ChangeDirection(scaleX);
         torsoPart.ChangeDirection(scaleX);
-        rightArmPart.ChangeDirection(scaleX);
-        leftArmPart.ChangeDirection(scaleX);
+        rightArmPart.ChangeRightArmDirection(scaleX);
+        leftArmPart.ChangeLeftArmDirection(scaleX);
         legPart.ChangeDirection(scaleX);
     }
 }

@@ -136,4 +136,67 @@ public class ArmPart : MonoBehaviour {
             }
         }
     }
+    public void ChangeRightArmDirection(int scaleX)
+    {
+        gameObject.transform.localScale = new Vector2(scaleX, 1);
+
+        if (scaleX == 1)
+        {
+            //flipping the sprite renderers to ensure the sprites face the same direction
+            //regardless of the gameObject facing direction
+            bicep.flipX = false;
+            forearm.flipX = false;
+            hand.flipX = false;
+            fingers.flipX = false;
+
+            //applying the appropriate hand and finger sprites
+            hand.sprite = handBackSprite;
+            fingers.sprite = fingersOpenBackSprite;
+        }
+        else if (scaleX == -1)
+        {
+            //flipping the sprite renderers to ensure the sprites face the same direction
+            //regardless of the gameObject facing direction
+            bicep.flipX = true;
+            forearm.flipX = true;
+            hand.flipX = true;
+            fingers.flipX = true;
+
+            //applying the appropriate hand and finger sprites
+            hand.sprite = handFrontSprite;
+            fingers.sprite = fingersOpenFrontSprite;
+        }
+    }
+
+    public void ChangeLeftArmDirection(int scaleX)
+    {
+        gameObject.transform.localScale = new Vector2(scaleX, 1);
+
+        if (scaleX == 1)
+        {
+            //flipping the sprite renderers to ensure the sprites face the same direction
+            //regardless of the gameObject facing direction
+            bicep.flipX = false;
+            forearm.flipX = false;
+            hand.flipX = false;
+            fingers.flipX = false;
+
+            //applying the appropriate hand and finger sprites
+            hand.sprite = handFrontSprite;
+            fingers.sprite = fingersOpenFrontSprite;
+        }
+        else if (scaleX == -1)
+        {
+            //flipping the sprite renderers to ensure the sprites face the same direction
+            //regardless of the gameObject facing direction
+            bicep.flipX = true;
+            forearm.flipX = true;
+            hand.flipX = true;
+            fingers.flipX = true;
+
+            //applying the appropriate hand and finger sprites
+            hand.sprite = handBackSprite;
+            fingers.sprite = fingersOpenBackSprite;
+        }
+    }
 }
