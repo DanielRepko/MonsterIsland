@@ -66,4 +66,9 @@ public class LegPart : MonoBehaviour {
             footL.sprite = footSprite;
         }
     }
+
+    public void ChangeDirection(int scaleX)
+    {
+
+    }
 }

@@ -1537,9 +1537,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e589e8be0291442863faf43da93aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 15.5
   jumpForce: 60
-  jumpCooldown: 0.2
+  health: 0
+  hasExtraJump: 1
+  isUnderwater: 0
+  rb: {fileID: 0}
   monster: {fileID: 114670642758465856}
 --- !u!114 &114045893432456752
 MonoBehaviour:

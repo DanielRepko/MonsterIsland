@@ -58,4 +58,9 @@ public class HeadPart : MonoBehaviour {
         }
     }
 
+    public void ChangeDirection(int scaleX)
+    {
+
+    }
+
 }

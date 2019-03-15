@@ -88,4 +88,9 @@ public class ArmPart : MonoBehaviour {
            
         }
     }
+
+    public void ChangeDirection(int scaleX)
+    {
+
+    }
 }

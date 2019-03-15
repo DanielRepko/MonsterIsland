@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float moveSpeed = 20f;
+    public float moveSpeed = 15.5f;
     public float jumpForce = 10f;
 
     public float health;
@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour {
         //this code is for testing purposes, final product will pull this information from the database scripts
         var headInfo = PartFactory.GetHeadPartInfo(Helper.MonsterName.Mitch);
         var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Mitch);
-        var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Vulture, Helper.PartType.RightArm);
+        var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.RightArm);
         var leftArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.LeftArm);
         var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Mitch);
 
@@ -158,9 +158,23 @@ public class PlayerController : MonoBehaviour {
         leftAttackDelegate = LeftAttack;
         torsoAbilityDelegate = AbilityDefault;
         headAbilityDelegate = AbilityDefault;
-        playerCheckDelegate = AbilityDefault;
+        playerCheckDelegate+=UpdatePlayerDirection;
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
+    }
+
+    //checks to see what direction the player should be facing based on the mouse position
+    public void UpdatePlayerDirection()
+    {
+        var screenMiddle = Screen.width / 2;
+        if (Input.mousePosition.x > screenMiddle)
+        {
+            monster.ChangeDirection(1);
+        }
+        else if (Input.mousePosition.x < screenMiddle)
+        {
+            monster.ChangeDirection(-1);
+        }
     }
 
     //PlayerIsOnGround function taken from SuperSoyBoy game from Ray Wenderlich

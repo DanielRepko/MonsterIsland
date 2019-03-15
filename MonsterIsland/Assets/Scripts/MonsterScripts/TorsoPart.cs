@@ -49,4 +49,9 @@ public class TorsoPart : MonoBehaviour {
             body.sprite = bodySprite;
         }
     }
+
+    public void ChangeDirection(int scaleX)
+    {
+
+    }
 }
