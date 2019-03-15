@@ -15,7 +15,10 @@ public class PlayerController : MonoBehaviour {
     private float width;
     private float height;
 
+    //Values used in the underwater level to store if the player is underwater, as well as how much air they currently have.
     public bool isUnderwater;
+    [Range(0.00f, 1.00f)]
+    public float air;   //A value of 1 is a full air meter, a value of 0 is an empty air meter
 
     public Rigidbody2D rb;
 
@@ -45,6 +48,7 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         InitializePlayer();
+        air = 1;
 	}
 
     // Update is called once per frame
