@@ -88,60 +88,18 @@ public class ArmPart : MonoBehaviour {
            
         }
     }
-
-    public void ChangeDirection(int scaleX)
-    {
-        gameObject.transform.localScale = new Vector2(scaleX, 1);
-
-        //checking whether the sprites need to be flipped
-        //the arm part in particular needs to be flipped in scale for animations
-        //but the sprites themselves actually need to remain unflipped
-        if(scaleX == 1)
-        {
-            bicep.flipX = false;
-            forearm.flipX = false;
-            hand.flipX = false;
-            fingers.flipX = false;
-
-            //checking which arm this is so that the proper hands and fingers can be set
-            //and each sprite can be set to the correct order in the sorting layer
-            if (partType == Helper.PartType.RightArm)
-            {
-                hand.sprite = handBackSprite;
-                fingers.sprite = fingersOpenBackSprite;
-            } else if(partType == Helper.PartType.LeftArm)
-            {
-                hand.sprite = handFrontSprite;
-                fingers.sprite = fingersOpenFrontSprite;
-            }
-        }
-        else if(scaleX == -1)
-        {
-            bicep.flipX = true;
-            forearm.flipX = true;
-            hand.flipX = true;
-            fingers.flipX = true;
-
-            //checking which arm this is so that the proper hands and fingers can be set
-            //and each sprite can be set to the correct order in the sorting layer
-            if (partType == Helper.PartType.RightArm)
-            {
-                hand.sprite = handFrontSprite;
-                fingers.sprite = fingersOpenFrontSprite;
-            }
-            else if (partType == Helper.PartType.LeftArm)
-            {
-                hand.sprite = handBackSprite;
-                fingers.sprite = fingersOpenBackSprite;
-            }
-        }
-    }
+    
+    //changes the facing direction of the right arm
     public void ChangeRightArmDirection(int scaleX)
     {
         gameObject.transform.localScale = new Vector2(scaleX, 1);
 
+        //facing right
         if (scaleX == 1)
         {
+            //positioning the arm
+            gameObject.transform.localPosition = new Vector2(-0.69f, 0);
+
             //flipping the sprite renderers to ensure the sprites face the same direction
             //regardless of the gameObject facing direction
             bicep.flipX = false;
@@ -152,9 +110,19 @@ public class ArmPart : MonoBehaviour {
             //applying the appropriate hand and finger sprites
             hand.sprite = handBackSprite;
             fingers.sprite = fingersOpenBackSprite;
+
+            //setting the sprite renderers to the correct order in the sorting layer
+            bicep.sortingOrder = 12;
+            forearm.sortingOrder = 8;
+            hand.sortingOrder = 10;
+            fingers.sortingOrder = 11;
         }
+        //facing left
         else if (scaleX == -1)
         {
+            //positioning the arm
+            gameObject.transform.localPosition = new Vector2(-0.63f, 0);
+
             //flipping the sprite renderers to ensure the sprites face the same direction
             //regardless of the gameObject facing direction
             bicep.flipX = true;
@@ -165,15 +133,26 @@ public class ArmPart : MonoBehaviour {
             //applying the appropriate hand and finger sprites
             hand.sprite = handFrontSprite;
             fingers.sprite = fingersOpenFrontSprite;
+
+            //setting the sprite renderers to the correct order in the sorting layer
+            bicep.sortingOrder = -1;
+            forearm.sortingOrder = -5;
+            hand.sortingOrder = -4;
+            fingers.sortingOrder = -2;
         }
     }
 
+    //changes the facing direction of the left arm
     public void ChangeLeftArmDirection(int scaleX)
     {
         gameObject.transform.localScale = new Vector2(scaleX, 1);
 
+        //facing right
         if (scaleX == 1)
         {
+            //positioning the arm
+            gameObject.transform.localPosition = new Vector2(0.63f, 0);
+
             //flipping the sprite renderers to ensure the sprites face the same direction
             //regardless of the gameObject facing direction
             bicep.flipX = false;
@@ -184,9 +163,19 @@ public class ArmPart : MonoBehaviour {
             //applying the appropriate hand and finger sprites
             hand.sprite = handFrontSprite;
             fingers.sprite = fingersOpenFrontSprite;
+
+            //setting the sprite renderers to the correct order in the sorting layer
+            bicep.sortingOrder = -1;
+            forearm.sortingOrder = -5;
+            hand.sortingOrder = -4;
+            fingers.sortingOrder = -2;
         }
+        //facing left
         else if (scaleX == -1)
         {
+            //positioning the arm
+            gameObject.transform.localPosition = new Vector2(0.69f, 0);
+
             //flipping the sprite renderers to ensure the sprites face the same direction
             //regardless of the gameObject facing direction
             bicep.flipX = true;
@@ -197,6 +186,12 @@ public class ArmPart : MonoBehaviour {
             //applying the appropriate hand and finger sprites
             hand.sprite = handBackSprite;
             fingers.sprite = fingersOpenBackSprite;
+
+            //setting the sprite renderers to the correct order in the sorting layer
+            bicep.sortingOrder = 12;
+            forearm.sortingOrder = 8;
+            hand.sortingOrder = 10;
+            fingers.sortingOrder = 11;
         }
     }
 }
