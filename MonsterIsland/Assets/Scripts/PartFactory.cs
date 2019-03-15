@@ -171,7 +171,7 @@ public class PartFactory : MonoBehaviour {
             case Helper.MonsterName.Wingus:
                 partInfo.abilityName = "Swoop da Woop";
                 partInfo.abilityType = "Activate";
-                partInfo.abilityDesc = "Fly backwards into the air to escape any danger coming from the front";
+                partInfo.abilityDesc = "Fly backwards into the air to escape any danger coming from the front, does not work underwater";
                 return partInfo;
             default:
                 return partInfo;
@@ -214,7 +214,7 @@ public class PartFactory : MonoBehaviour {
             case Helper.MonsterName.Vulture:
                 partInfo.abilityName = "Feather Fall";
                 partInfo.abilityType = "Passive";
-                partInfo.abilityDesc = "Decrease fall speed. Effect can stack with second arm";
+                partInfo.abilityDesc = "Decrease fall speed. Effect can stack with second arm, does not work underwater";
                 return partInfo;
             case Helper.MonsterName.Lobster:
                 partInfo.abilityName = "Pincer Pistol";
@@ -223,7 +223,7 @@ public class PartFactory : MonoBehaviour {
                 return partInfo;
             case Helper.MonsterName.Skeleton:
                 partInfo.abilityName = "Bone Toss";
-                partInfo.abilityType = "Activate";
+                partInfo.abilityType = "Passive";
                 partInfo.abilityDesc = "Throw bones in an overhead arc. Angle of arc can be adjusted. Takes up this arm's weapon slot";
                 return partInfo;
             default:
@@ -254,7 +254,7 @@ public class PartFactory : MonoBehaviour {
             case Helper.MonsterName.Kangaroo:
                 partInfo.abilityName = "Joey Jump";
                 partInfo.abilityType = "Passive";
-                partInfo.abilityDesc = "Jump higher";
+                partInfo.abilityDesc = "Go higher when jumping, does not work underwater";
                 return partInfo;
             case Helper.MonsterName.Hingus:
                 partInfo.abilityName = "Talon Flurry";
