@@ -17,11 +17,36 @@ public class HeadPart : MonoBehaviour {
     public SpriteRenderer face;
     public SpriteRenderer neck;
 
+    //stores the part's ability delegate
+    public AbilityFactory.Ability partAbility = null;
+
     public void InitializePart(HeadPartInfo headPartInfo)
     {
         if(headPartInfo != null)
         {
             partInfo = headPartInfo;
+
+            //checking whether this part has an ability
+            if (partInfo.abilityName != null)
+            {
+                //populating the partAbility field with the appropriate ability delegate
+                partAbility = AbilityFactory.GetPartAbility(partInfo.abilityName);
+
+                //if the type is Passive, run the delegate method to apply the buff to the player
+                if (partInfo.abilityType == "Passive")
+                {
+                    partAbility();
+
+                }//if the type is Activate, set the ability to the Player action delegate
+                else if (partInfo.abilityType == "Activate")
+                {
+                    GameManager.instance.player.headAbilityDelegate = partAbility;
+                }//if the value is anything else, then a typo must have occured when creating the ability info
+                else
+                {
+                    Debug.Log("Error: Invalid ability type");
+                }
+            }
 
             idleFaceSprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter, false);
             hurtFaceSprite = Helper.CreateSprite(partInfo.hurtSprite, Helper.HeadImporter, false);
