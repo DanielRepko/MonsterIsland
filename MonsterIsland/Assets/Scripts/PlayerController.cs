@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour {
             if(air > 0 && timeUnderwater >= timeBetweenAirLoss) {
                 air -= airToLose;
                 timeUnderwater -= timeBetweenAirLoss;
+                UIManager.Instance.UpdateAirMeter(air, isUnderwater);
             }
 
             //If the player's air is 0 or less and enough time has passed, damage them
@@ -218,6 +219,7 @@ public class PlayerController : MonoBehaviour {
             isUnderwater = false;
             timeUnderwater = 0;
             air = 1;
+            UIManager.Instance.UpdateAirMeter(air, isUnderwater);
         }
     }
 }
