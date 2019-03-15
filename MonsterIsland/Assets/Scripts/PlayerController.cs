@@ -179,4 +179,20 @@ public class PlayerController : MonoBehaviour {
             return false;
         }
     }
+
+    //Runs when the object enters the hitbox of another object
+    private void OnTriggerEnter2D(Collider2D collision) {
+        //If the tag on the object is "Water", the player is underwater
+        if(collision.tag == "Water") {
+            isUnderwater = true;
+        }
+    }
+
+    //Runs when the object exits the hitbox of another object
+    private void OnTriggerExit2D(Collider2D collision) {
+        //If the tag on the object is "Water", the player has exited the water
+        if(collision.tag == "Water") {
+            isUnderwater = false;
+        }
+    }
 }
