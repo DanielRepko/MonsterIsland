@@ -52,6 +52,6 @@ public class TorsoPart : MonoBehaviour {
 
     public void ChangeDirection(int scaleX)
     {
-
+        gameObject.transform.localScale = new Vector2(scaleX, 1);
     }
 }

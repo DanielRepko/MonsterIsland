@@ -91,6 +91,49 @@ public class ArmPart : MonoBehaviour {
 
     public void ChangeDirection(int scaleX)
     {
+        gameObject.transform.localScale = new Vector2(scaleX, 1);
 
+        //checking whether the sprites need to be flipped
+        //the arm part in particular needs to be flipped in scale for animations
+        //but the sprites themselves actually need to remain unflipped
+        if(scaleX == 1)
+        {
+            bicep.flipX = false;
+            forearm.flipX = false;
+            hand.flipX = false;
+            fingers.flipX = false;
+
+            //checking which arm this is so that the proper hands and fingers can be set
+            //and each sprite can be set to the correct order in the sorting layer
+            if (partType == Helper.PartType.RightArm)
+            {
+                hand.sprite = handBackSprite;
+                fingers.sprite = fingersOpenBackSprite;
+            } else if(partType == Helper.PartType.LeftArm)
+            {
+                hand.sprite = handFrontSprite;
+                fingers.sprite = fingersOpenFrontSprite;
+            }
+        }
+        else if(scaleX == -1)
+        {
+            bicep.flipX = true;
+            forearm.flipX = true;
+            hand.flipX = true;
+            fingers.flipX = true;
+
+            //checking which arm this is so that the proper hands and fingers can be set
+            //and each sprite can be set to the correct order in the sorting layer
+            if (partType == Helper.PartType.RightArm)
+            {
+                hand.sprite = handFrontSprite;
+                fingers.sprite = fingersOpenFrontSprite;
+            }
+            else if (partType == Helper.PartType.LeftArm)
+            {
+                hand.sprite = handBackSprite;
+                fingers.sprite = fingersOpenBackSprite;
+            }
+        }
     }
 }
