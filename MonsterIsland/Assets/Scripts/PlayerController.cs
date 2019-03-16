@@ -15,7 +15,19 @@ public class PlayerController : MonoBehaviour {
     private float width;
     private float height;
 
-    public bool isUnderwater;
+    [Header("Underwater Properties", order = 0)]
+    //Values used in the underwater level
+    public bool isUnderwater;           //If the user is underwater or not
+    [Range(0.00f, 1.00f)]
+    public float air;                   //The amount of air the player current has. Min 0, max 1
+    public float timeBetweenAirLoss;    //The amount of time between loss in air percentage, in seconds.
+    [Range(0.01f, 1.00f)]
+    public float airToLose;            //The amount of air to lose when required. Min 0.01, max 1
+    public float timeBetwenAirDamage;  //The amount of time between damage from having no air, in seconds.
+    public float drownDamage;          //The amount of damage the player should take from drowning, when required.
+    private float timeUnderwater;      //The amount of time the player has spent underwater since they last required air
+
+    [Space(20, order = 1)]
 
     public Rigidbody2D rb;
 
@@ -45,12 +57,28 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         InitializePlayer();
+        air = 1;
 	}
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+        //Check if the player is underwater, and if they are, update the underwater timer
+        if(isUnderwater) {
+            timeUnderwater += Time.deltaTime;
 
+            //If they've been undewater long enough with their air above 0, reduce their air meter.
+            if(air > 0 && timeUnderwater >= timeBetweenAirLoss) {
+                air -= airToLose;
+                timeUnderwater -= timeBetweenAirLoss;
+                UIManager.Instance.UpdateAirMeter(air, isUnderwater);
+            }
+
+            //If the player's air is 0 or less and enough time has passed, damage them
+            if(air <= 0 && timeUnderwater >= timeBetwenAirDamage) {
+                Debug.Log("Damage the player for " + drownDamage + " damage");
+                timeUnderwater -= timeBetwenAirDamage;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -120,7 +148,8 @@ public class PlayerController : MonoBehaviour {
     {
         if (PlayerIsOnGround())
         {
-           rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            //rb.AddForce(new Vector2(rb.velocity.x, jumpForce * 10000));
         }
     }
 
@@ -172,6 +201,25 @@ public class PlayerController : MonoBehaviour {
             return true;
         } else {
             return false;
+        }
+    }
+
+    //Runs when the object enters the hitbox of another object
+    private void OnTriggerEnter2D(Collider2D collision) {
+        //If the tag on the object is "Water", the player is underwater.
+        if(collision.tag == "Water") {
+            isUnderwater = true;
+        }
+    }
+
+    //Runs when the object exits the hitbox of another object
+    private void OnTriggerExit2D(Collider2D collision) {
+        //If the tag on the object is "Water", the player has exited the water. Reset all water related values.
+        if(collision.tag == "Water") {
+            isUnderwater = false;
+            timeUnderwater = 0;
+            air = 1;
+            UIManager.Instance.UpdateAirMeter(air, isUnderwater);
         }
     }
 }
