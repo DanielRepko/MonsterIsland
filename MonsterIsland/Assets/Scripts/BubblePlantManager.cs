@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class BubblePlantManager : MonoBehaviour {
 
+    public List<GameObject> bubblePlants;
+    public float timeBetweenBubbles = 5f;
+    private float timeSinceLastBubble;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -11,6 +15,6 @@ public class BubblePlantManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 }
