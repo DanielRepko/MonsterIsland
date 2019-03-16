@@ -5,6 +5,7 @@ using UnityEngine;
 public class BubblePlantManager : MonoBehaviour {
 
     public List<GameObject> bubblePlants;
+    public GameObject bubblePrefab;
     public float timeBetweenBubbles = 5f;
     private float timeSinceLastBubble;
 

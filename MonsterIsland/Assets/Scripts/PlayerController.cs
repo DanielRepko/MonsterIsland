@@ -210,6 +210,13 @@ public class PlayerController : MonoBehaviour {
         if(collision.tag == "Water") {
             isUnderwater = true;
         }
+
+        //If the tag on the object is "Bubble", restore the player's air meter
+        if (collision.tag == "Bubble") {
+            air = 1;
+            timeUnderwater = 0;
+            UIManager.Instance.UpdateAirMeter(air, isUnderwater);
+        }
     }
 
     //Runs when the object exits the hitbox of another object
