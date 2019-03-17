@@ -19,7 +19,7 @@ public class BubblePlantManager : MonoBehaviour {
         timeSinceLastBubble += Time.deltaTime;
         if(timeSinceLastBubble >= timeBetweenBubbles) {
             foreach(GameObject bubblePlant in bubblePlants) {
-                GameObject bubble = (GameObject)Instantiate(bubblePrefab,new Vector3(bubblePlant.transform.position.x, bubblePlant.transform.position.y), Quaternion.identity);
+                Instantiate(bubblePrefab,new Vector3(bubblePlant.transform.position.x, bubblePlant.transform.position.y), Quaternion.identity);
             }
             timeSinceLastBubble -= timeBetweenBubbles;
         }
