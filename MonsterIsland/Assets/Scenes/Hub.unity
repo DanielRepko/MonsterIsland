@@ -6629,6 +6629,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114827140259432662, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1469749352}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dd60c8d1dd609b489d0083e1b88ff1c, type: 2}
   m_IsPrefabAsset: 0
@@ -8404,6 +8409,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1176655854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1062477113408256, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1023053496}
 --- !u!1 &1191379149
 GameObject:
   m_ObjectHideFlags: 0
@@ -44039,6 +44049,11 @@ Prefab:
       propertyPath: airMeterBar
       value: 
       objectReference: {fileID: 1023053498}
+    - target: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: nestCanvas
+      value: 
+      objectReference: {fileID: 1176655854}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6e1e7a2685d74449d16d2c3e21cee3, type: 2}
   m_IsPrefabAsset: 0
@@ -44146,6 +44161,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1469749352 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1256450077}
+  m_Script: {fileID: 11500000, guid: 2d5aa0e40a29aef4cab89bcd6662bcae, type: 3}
 --- !u!1 &1738258380
 GameObject:
   m_ObjectHideFlags: 0

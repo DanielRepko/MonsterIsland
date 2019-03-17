@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour {
     public static UIManager Instance;
     public GameObject airMeter;
     public GameObject airMeterBar;
+    public GameObject nestCanvas;
 
 	// Use this for initialization
 	void Awake() {
@@ -26,5 +27,15 @@ public class UIManager : MonoBehaviour {
     public void UpdateAirMeter(float air, bool isUnderwater) {
         airMeterBar.GetComponent<RectTransform>().offsetMax = new Vector2(-(122f - (122f * air)), 0f);
         airMeter.SetActive(isUnderwater);
+    }
+
+    //When called, displays the Nest Canvas
+    public void ShowNestCanvas() {
+        nestCanvas.SetActive(true);
+    }
+
+    //When called, hides the Nest Canvas
+    public void HideNestCanvas() {
+        nestCanvas.SetActive(false);
     }
 }
