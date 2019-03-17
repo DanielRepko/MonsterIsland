@@ -5,7 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public float moveSpeed = 15.5f;
-    public float jumpForce = 10f;
+    public float jumpForce = 60f;
+
+    //range of the player's melee attack
+    private float attackRange = 1.6f;
+    public LayerMask layerMask;
 
     public float health;
 
@@ -19,7 +23,7 @@ public class PlayerController : MonoBehaviour {
     //Values used in the underwater level
     public bool isUnderwater;           //If the user is underwater or not
     [Range(0.00f, 1.00f)]
-    public float air;                   //The amount of air the player current has. Min 0, max 1
+    public float air;                   //The amount of air the player currently has. Min 0, max 1
     public float timeBetweenAirLoss;    //The amount of time between loss in air percentage, in seconds.
     [Range(0.01f, 1.00f)]
     public float airToLose;            //The amount of air to lose when required. Min 0.01, max 1
@@ -34,9 +38,10 @@ public class PlayerController : MonoBehaviour {
     //the Monster gameObject
     public PlayerMonster monster;
 
-    //delegate type used for all of the player actions and abilities
+    //delegate type used for player actions and abilities
     public delegate void Ability();
 
+    //delegates to be used for most player actions
     public AbilityFactory.Ability moveDelegate = null;
     public AbilityFactory.Ability jumpDelegate = null;
     public AbilityFactory.Ability rightAttackDelegate = null;
@@ -161,17 +166,33 @@ public class PlayerController : MonoBehaviour {
     //right arm attack
     public void RightAttack()
     {
-        var playerPosition = transform.position;
+        Ray attackRay = new Ray();
+        attackRay.origin = transform.position;
+        attackRay.direction = new Vector3(playerDirection, 0, 0);
 
-        Debug.DrawRay(playerPosition, new Vector3(1.65f * playerDirection, 0, 0), Color.green);
+        Debug.DrawRay(attackRay.origin, new Vector3(attackRange * playerDirection, 0, 0), Color.green);
+        
+        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange);
+        if(hit)
+        {
+            Debug.Log("adsgfgasdf");
+        }
     }
 
     //left arm attack
     public void LeftAttack()
     {
-        var playerPosition = transform.position;
+        Ray attackRay = new Ray();
+        attackRay.origin = transform.position;
+        attackRay.direction = new Vector3(playerDirection, 0, 0);
 
-        Debug.DrawRay(playerPosition, new Vector3(1.65f * playerDirection, 0, 0), Color.green);
+        Debug.DrawRay(attackRay.origin, new Vector3(attackRange * playerDirection, 0, 0), Color.green);
+
+        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange);
+        if (hit)
+        {
+            Debug.Log("adsgfgasdf");
+        }
     }
 
     //the default ability method (default is to have no ability so it is meant to be empty)
