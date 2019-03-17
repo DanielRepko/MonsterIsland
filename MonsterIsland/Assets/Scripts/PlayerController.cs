@@ -8,8 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpForce = 60f;
 
     //range of the player's melee attack
-    private float attackRange = 1.6f;
-    public LayerMask layerMask;
+    private float attackRange = 1.7f;
 
     public float health;
 
@@ -171,8 +170,8 @@ public class PlayerController : MonoBehaviour {
         attackRay.direction = new Vector3(playerDirection, 0, 0);
 
         Debug.DrawRay(attackRay.origin, new Vector3(attackRange * playerDirection, 0, 0), Color.green);
-        
-        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange);
+
+        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
         if(hit)
         {
             Debug.Log("adsgfgasdf");
@@ -188,7 +187,7 @@ public class PlayerController : MonoBehaviour {
 
         Debug.DrawRay(attackRay.origin, new Vector3(attackRange * playerDirection, 0, 0), Color.green);
 
-        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange);
+        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit)
         {
             Debug.Log("adsgfgasdf");
