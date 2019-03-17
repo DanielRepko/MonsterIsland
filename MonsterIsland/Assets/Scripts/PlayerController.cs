@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
         if(hit)
         {
-            Debug.Log("adsgfgasdf");
+            
         }
     }
 
@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit)
         {
-            Debug.Log("adsgfgasdf");
+            
         }
     }
 
