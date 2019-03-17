@@ -32,10 +32,12 @@ public class UIManager : MonoBehaviour {
     //When called, displays the Nest Canvas
     public void ShowNestCanvas() {
         nestCanvas.SetActive(true);
+        Time.timeScale = 0;
     }
 
     //When called, hides the Nest Canvas
     public void HideNestCanvas() {
         nestCanvas.SetActive(false);
+        Time.timeScale = 1;
     }
 }
