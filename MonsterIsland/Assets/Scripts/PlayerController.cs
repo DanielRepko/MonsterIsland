@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour {
 
     //range of the player's melee attack
     private float attackRange = 1.7f;
+    //damage dealt by right arm attack
+    public float rightAttackPower = 2;
+    //damage dealt by left arm attack
+    public float leftAttackPower = 2;
 
     public float health;
 
@@ -174,7 +178,11 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
         if(hit)
         {
-            
+            Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
+            if(enemy != null)
+            {
+                enemy.TakeDamage(rightAttackPower);
+            }
         }
     }
 
@@ -190,7 +198,11 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit)
         {
-            
+            Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(leftAttackPower);
+            }
         }
     }
 
