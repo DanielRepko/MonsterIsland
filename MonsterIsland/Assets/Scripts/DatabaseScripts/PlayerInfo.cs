@@ -9,9 +9,9 @@ public class PlayerInfo {
     public int totalHearts;
     public HeadPartInfo headPart;
     public TorsoPartInfo torsoPart;
-    public ArmPartInfo leftArm;
-    public ArmPartInfo rightArm;
-    public LegPartInfo legs;
+    public ArmPartInfo leftArmPart;
+    public ArmPartInfo rightArmPart;
+    public LegPartInfo legsPart;
     public string rightWeapon;
     public string leftWeapon;
     public InventoryInfo inventory;

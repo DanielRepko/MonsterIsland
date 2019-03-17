@@ -17,7 +17,12 @@ public class LegsSlot : PartSlot {
     public override void ChangePart(MonsterPartInfo newPart)
     {
         partInfo = (LegPartInfo)newPart;
+
         abilitySignLabel.text = partInfo.abilityName;
+        abilityName = partInfo.abilityName;
+        abilityType = partInfo.abilityType;
+        abilityDesc = partInfo.abilityDesc;
+
         UpdateUI();
     }
 
@@ -28,10 +33,10 @@ public class LegsSlot : PartSlot {
             monster = partInfo.monster,
             abilityName = partInfo.abilityName,
             abilityDesc = partInfo.abilityDesc,
-            pelvisSprite = ChangeColor(partInfo.pelvisSprite, "primary_color", newColor),
-            thighSprite = ChangeColor(partInfo.thighSprite, "primary_color", newColor),
-            shinSprite = ChangeColor(partInfo.shinSprite, "primary_color", newColor),
-            footSprite = ChangeColor(partInfo.footSprite, "primary_color", newColor)
+            pelvisSprite = ChangeColor(partInfo.pelvisSprite, "PRIMARY", newColor),
+            thighSprite = ChangeColor(partInfo.thighSprite, "PRIMARY", newColor),
+            shinSprite = ChangeColor(partInfo.shinSprite, "PRIMARY", newColor),
+            footSprite = ChangeColor(partInfo.footSprite, "PRIMARY", newColor)
         };
 
 
@@ -46,10 +51,10 @@ public class LegsSlot : PartSlot {
             monster = partInfo.monster,
             abilityName = partInfo.abilityName,
             abilityDesc = partInfo.abilityDesc,
-            pelvisSprite = ChangeColor(partInfo.pelvisSprite, "secondary_color", newColor),
-            thighSprite = ChangeColor(partInfo.thighSprite, "secondary_color", newColor),
-            shinSprite = ChangeColor(partInfo.shinSprite, "secondary_color", newColor),
-            footSprite = ChangeColor(partInfo.footSprite, "secondary_color", newColor)
+            pelvisSprite = ChangeColor(partInfo.pelvisSprite, "SECONDARY", newColor),
+            thighSprite = ChangeColor(partInfo.thighSprite, "SECONDARY", newColor),
+            shinSprite = ChangeColor(partInfo.shinSprite, "SECONDARY", newColor),
+            footSprite = ChangeColor(partInfo.footSprite, "SECONDARY", newColor)
         };
 
         partInfo = newPart;
@@ -58,12 +63,12 @@ public class LegsSlot : PartSlot {
 
     public override void UpdateUI()
     {
-        pelvisImage.sprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        rightThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        rightShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        rightFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        leftThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        leftShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
-        leftFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
+        pelvisImage.sprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.HeadImporter, true);
+        rightThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.HeadImporter, true);
+        rightShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.HeadImporter, true);
+        rightFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.HeadImporter, true);
+        leftThighImage.sprite = Helper.CreateSprite(partInfo.thighSprite, Helper.HeadImporter, true);
+        leftShinImage.sprite = Helper.CreateSprite(partInfo.shinSprite, Helper.HeadImporter, true);
+        leftFootImage.sprite = Helper.CreateSprite(partInfo.footSprite, Helper.HeadImporter, true);
     }
 }

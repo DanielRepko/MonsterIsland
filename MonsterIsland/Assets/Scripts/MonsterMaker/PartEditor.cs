@@ -9,6 +9,7 @@ public class PartEditor : MonoBehaviour
     public Image primaryColorIndicator;
     public Image secondaryColorIndicator;
     public Text abilityName;
+    public Text abilityType;
     public Text abilityDesc;
 
     public ScrollRect partPicker;
@@ -57,13 +58,14 @@ public class PartEditor : MonoBehaviour
             var pickerButton = (GameObject)Instantiate(pickerButtonPrefab, Vector2.zero, Quaternion.identity);
 
             //initializing the pickerButton and also saving the created PartInfo
-            var partInfo = pickerButton.GetComponent<PartPickerButton>().InitializePickerButton(availableParts[i], partSlot.GetComponent<Image>().material, partSlot.partType);
+            var partInfo = pickerButton.GetComponent<PartPickerButton>().InitializePickerButton(availableParts[i], partSlot.partType);
             //setting the onClick listener to the pickerButton
             pickerButton.GetComponent<Button>().onClick.AddListener(
                 delegate
                 {
                     partSlot.ChangePart(partInfo);
                     abilityName.text = partInfo.abilityName;
+                    abilityType.text = partInfo.abilityType;
                     abilityDesc.text = partInfo.abilityDesc;
                 });
 
@@ -91,6 +93,7 @@ public class PartEditor : MonoBehaviour
         this.partSlot.EnterPartEditor();
         PopulatePartPicker();
         abilityName.text = this.partSlot.abilityName;
+        abilityType.text = this.partSlot.abilityType;
         abilityDesc.text = this.partSlot.abilityDesc;
         gameObject.SetActive(true);
     }

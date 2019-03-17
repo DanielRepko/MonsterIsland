@@ -11,7 +11,12 @@ public class TorsoSlot : PartSlot{
     public override void ChangePart(MonsterPartInfo newPart)
     {
         partInfo = (TorsoPartInfo)newPart;
+
         abilitySignLabel.text = partInfo.abilityName;
+        abilityName = partInfo.abilityName;
+        abilityType = partInfo.abilityType;
+        abilityDesc = partInfo.abilityDesc;
+
         UpdateUI();
     }
 
@@ -22,7 +27,7 @@ public class TorsoSlot : PartSlot{
             monster = partInfo.monster,
             abilityName = partInfo.abilityName,
             abilityDesc = partInfo.abilityDesc,
-            mainSprite = ChangeColor(partInfo.mainSprite, "primary_color", newColor)
+            mainSprite = ChangeColor(partInfo.mainSprite, "PRIMARY", newColor)
         };
 
 
@@ -37,7 +42,7 @@ public class TorsoSlot : PartSlot{
             monster = partInfo.monster,
             abilityName = partInfo.abilityName,
             abilityDesc = partInfo.abilityDesc,
-            mainSprite = ChangeColor(partInfo.mainSprite, "secondary_color", newColor)
+            mainSprite = ChangeColor(partInfo.mainSprite, "SECONDARY", newColor)
         };
 
 
@@ -47,6 +52,6 @@ public class TorsoSlot : PartSlot{
 
     public override void UpdateUI()
     {
-        torsoImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter, gameObject.GetComponent<Image>().material);
+        torsoImage.sprite = Helper.CreateSprite(partInfo.mainSprite, Helper.TorsoImporter, true);
     }
 }
