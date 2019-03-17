@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour {
 
     //used to check what direction the player is facing
     //-1 = left  1 = right
-    public int playerDirection;
+    public int facingDirection;
 
     //used to perform miscellaneous checks on the player through fixed update
     public AbilityFactory.Ability playerCheckDelegate = null;
@@ -171,9 +171,9 @@ public class PlayerController : MonoBehaviour {
     {
         Ray attackRay = new Ray();
         attackRay.origin = transform.position;
-        attackRay.direction = new Vector3(playerDirection, 0, 0);
+        attackRay.direction = new Vector3(facingDirection, 0, 0);
 
-        Debug.DrawRay(attackRay.origin, new Vector3(attackRange * playerDirection, 0, 0), Color.green);
+        Debug.DrawRay(attackRay.origin, new Vector3(attackRange * facingDirection, 0, 0), Color.green);
 
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
         if(hit)
@@ -191,9 +191,9 @@ public class PlayerController : MonoBehaviour {
     {
         Ray attackRay = new Ray();
         attackRay.origin = transform.position;
-        attackRay.direction = new Vector3(playerDirection, 0, 0);
+        attackRay.direction = new Vector3(facingDirection, 0, 0);
 
-        Debug.DrawRay(attackRay.origin, new Vector3(attackRange * playerDirection, 0, 0), Color.green);
+        Debug.DrawRay(attackRay.origin, new Vector3(attackRange * facingDirection, 0, 0), Color.green);
 
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit)
@@ -217,7 +217,7 @@ public class PlayerController : MonoBehaviour {
         //creating variables to initialize the player monster
         //this code is for testing purposes, final product will pull this information from the database scripts
         var headInfo = PartFactory.GetHeadPartInfo(Helper.MonsterName.Mitch);
-        var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Mitch);
+        var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Knight);
         var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.RightArm);
         var leftArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.LeftArm);
         var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Mitch);
@@ -239,13 +239,13 @@ public class PlayerController : MonoBehaviour {
         var screenMiddle = Screen.width / 2;
         if (Input.mousePosition.x > screenMiddle)
         {
-            playerDirection = 1;
-            monster.ChangeDirection(playerDirection);
+            facingDirection = 1;
+            monster.ChangeDirection(facingDirection);
         }
         else if (Input.mousePosition.x < screenMiddle)
         {
-            playerDirection = -1;
-            monster.ChangeDirection(playerDirection);
+            facingDirection = -1;
+            monster.ChangeDirection(facingDirection);
         }
     }
 

@@ -139,7 +139,24 @@ public class AbilityFactory : MonoBehaviour {
     //Torso Ability (Activate): Allows the player to teleport short distances
     public static void Ability_GhostWalk()
     {
+        PlayerController player = GameManager.instance.player;
+        
+        Ray topRay = new Ray();
+        Ray middleRay = new Ray();
+        Ray bottomRay = new Ray();
 
+        topRay.origin = new Vector2(player.transform.position.x, player.transform.position.y + 1.4f);
+        topRay.direction = new Vector2(player.facingDirection, 0);
+
+        middleRay.origin = new Vector2(player.transform.position.x, player.transform.position.y);
+        middleRay.direction = new Vector2(player.facingDirection, 0);
+
+        bottomRay.origin = new Vector2(player.transform.position.x, player.transform.position.y - 1.4f);
+        bottomRay.direction = new Vector2(player.facingDirection, 0);
+
+        Debug.DrawRay(topRay.origin, new Vector2(8 * player.facingDirection, 0), Color.green);
+        Debug.DrawRay(middleRay.origin, new Vector2(8 * player.facingDirection, 0), Color.green);
+        Debug.DrawRay(bottomRay.origin, new Vector2(8 * player.facingDirection, 0), Color.green);
     }
 
     //Torso Ability (Activate): Allows the player to fly up forwards while in the air, or 
