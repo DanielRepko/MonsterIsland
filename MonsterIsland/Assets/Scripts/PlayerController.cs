@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour {
     private float width;
     private float height;
 
+    private Collider2D nestCheck;
+
     [Header("Underwater Properties", order = 0)]
     //Values used in the underwater level
     public bool isUnderwater;           //If the user is underwater or not
@@ -62,8 +64,13 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+        if (nestCheck != null && nestCheck.tag == "Nest" && Input.GetKeyDown(KeyCode.W) && !UIManager.Instance.nestCanvas.activeInHierarchy) {
+            UIManager.Instance.ShowNestCanvas();
+        }
+
         //Check if the player is underwater, and if they are, update the underwater timer
-        if(isUnderwater) {
+        if (isUnderwater) {
             timeUnderwater += Time.deltaTime;
 
             //If they've been undewater long enough with their air above 0, reduce their air meter.
@@ -227,6 +234,17 @@ public class PlayerController : MonoBehaviour {
             timeUnderwater = 0;
             air = 1;
             UIManager.Instance.UpdateAirMeter(air, isUnderwater);
+        }
+
+        //If the tag is "Nest", the player just left the nest's hitbox
+        if(collision.tag == "Nest") {
+            nestCheck = null;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision) {
+        if(collision.tag == "Nest") {
+            nestCheck = collision;
         }
     }
 }
