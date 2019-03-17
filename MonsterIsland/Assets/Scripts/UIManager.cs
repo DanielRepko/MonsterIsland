@@ -9,10 +9,10 @@ public class UIManager : MonoBehaviour {
     public GameObject airMeterBar;
 
 	// Use this for initialization
-	void Start () {
+	void Awake() {
         if(Instance == null) {
             Instance = this;
-        } else {
+        } else if (Instance != this) {
             Destroy(this);
         }
     }
