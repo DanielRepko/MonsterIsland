@@ -115,7 +115,22 @@ public class AbilityFactory : MonoBehaviour {
     //Head Ability (Activate): Allows the player to attack with large beak
     public static void Ability_BigBeak()
     {
-       
+        PlayerController player = GameManager.instance.player;
+        Ray beakRay = new Ray();
+        beakRay.origin = new Vector2(player.transform.position.x, player.transform.position.y + 1.2f);
+        beakRay.direction = new Vector3(player.facingDirection, 0, 0);
+
+        Debug.DrawRay(beakRay.origin, new Vector2(1.7f * player.facingDirection, 0), Color.green);
+
+        RaycastHit2D hit = Physics2D.Raycast(beakRay.origin, beakRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
+        if (hit)
+        {
+            Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(3);
+            }
+        }
     }
 
     //Torso Ability (Passive): Grants the player an extra heart of health

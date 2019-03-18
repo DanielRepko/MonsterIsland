@@ -220,15 +220,23 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    [Space(20, order = 1)]
+    //these are for easy initialization of the monster and are for testing purposes
+    public string head;
+    public string torso;
+    public string rightArm;
+    public string leftArm;
+    public string legs;
+
     public void InitializePlayer()
     {
         //creating variables to initialize the player monster
         //this code is for testing purposes, final product will pull this information from the database scripts
-        var headInfo = PartFactory.GetHeadPartInfo(Helper.MonsterName.Mitch);
-        var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Knight);
-        var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.RightArm);
-        var leftArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.LeftArm);
-        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Mitch);
+        var headInfo = PartFactory.GetHeadPartInfo(head);
+        var torsoInfo = PartFactory.GetTorsoPartInfo(torso);
+        var rightArmInfo = PartFactory.GetArmPartInfo(rightArm, Helper.PartType.RightArm);
+        var leftArmInfo = PartFactory.GetArmPartInfo(leftArm, Helper.PartType.LeftArm);
+        var legPartInfo = PartFactory.GetLegPartInfo(legs);
 
         moveDelegate = Move;
         jumpDelegate = Jump;
