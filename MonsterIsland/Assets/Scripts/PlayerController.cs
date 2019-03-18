@@ -50,8 +50,8 @@ public class PlayerController : MonoBehaviour {
     //delegates to be used for most player actions
     public AbilityFactory.Ability moveDelegate = null;
     public AbilityFactory.Ability jumpDelegate = null;
-    public AbilityFactory.Ability rightAttackDelegate = null;
-    public AbilityFactory.Ability leftAttackDelegate = null;
+    public AbilityFactory.ArmAbility rightAttackDelegate = null;
+    public AbilityFactory.ArmAbility leftAttackDelegate = null;
     public AbilityFactory.Ability torsoAbilityDelegate = null;
     public AbilityFactory.Ability headAbilityDelegate = null;
 
@@ -112,13 +112,13 @@ public class PlayerController : MonoBehaviour {
         //input rightArm attack
         if (Input.GetMouseButtonDown(0))
         {
-            rightAttackDelegate();
+            rightAttackDelegate(Helper.PartType.RightArm);
         }
 
         //input leftArm attack
         if (Input.GetMouseButtonDown(1))
         {
-            leftAttackDelegate();
+            leftAttackDelegate(Helper.PartType.LeftArm);
         }
 
         //input torso ability
@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     //right arm attack
-    public void RightAttack()
+    public void RightAttack(string armType)
     {
         Ray attackRay = new Ray();
         attackRay.origin = transform.position;
@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     //left arm attack
-    public void LeftAttack()
+    public void LeftAttack(string armType)
     {
         Ray attackRay = new Ray();
         attackRay.origin = transform.position;

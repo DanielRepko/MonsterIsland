@@ -5,6 +5,7 @@ using UnityEngine;
 public class AbilityFactory : MonoBehaviour {
 
     public delegate void Ability();
+    public delegate void ArmAbility(string armType);
 
     public static Ability GetPartAbility(string abilityName)
     {
@@ -42,30 +43,6 @@ public class AbilityFactory : MonoBehaviour {
             case "Swoop da Woop":
                 ability = Ability_SwoopDaWoop;
                 return ability;
-            case "Sticky Bomb":
-                ability = Ability_StickyBomb;
-                return ability;
-            case "Drill Fist":
-                ability = Ability_DrillFist;
-                return ability;
-            case "Strong Arm":
-                ability = Ability_StrongArm;
-                return ability;
-            case "Weapons Training":
-                ability = Ability_WeaponsTraining;
-                return ability;
-            case "Needle Shot":
-                ability = Ability_NeedleShot;
-                return ability;
-            case "Feather Fall":
-                ability = Ability_FeatherFall;
-                return ability;
-            case "Pincer Pistol":
-                ability = Ability_PincerPistol;
-                return ability;
-            case "Bone Toss":
-                ability = Ability_BoneToss;
-                return ability;
             case "Spiked Feet":
                 ability = Ability_SpikedFeet;
                 return ability;
@@ -86,8 +63,42 @@ public class AbilityFactory : MonoBehaviour {
         }
     }
 
+    public static ArmAbility GetArmPartAbility(string abilityName)
+    {
+        ArmAbility armAbility = null;
+
+        switch (abilityName)
+        {
+            case "Sticky Bomb":
+                armAbility = Ability_StickyBomb;
+                return armAbility;
+            case "Drill Fist":
+                armAbility = Ability_DrillFist;
+                return armAbility;
+            case "Strong Arm":
+                armAbility = Ability_StrongArm;
+                return armAbility;
+            case "Weapons Training":
+                armAbility = Ability_WeaponsTraining;
+                return armAbility;
+            case "Needle Shot":
+                armAbility = Ability_NeedleShot;
+                return armAbility;
+            case "Feather Fall":
+                armAbility = Ability_FeatherFall;
+                return armAbility;
+            case "Pincer Pistol":
+                armAbility = Ability_PincerPistol;
+                return armAbility;
+            case "Bone Toss":
+                armAbility = Ability_BoneToss;
+                return armAbility;
+            default:
+                return null;
+        }
+    }
     //Head Ability (Activate): Allows the player to shoot a laser beam
-    public static void Ability_LaserEyes()
+        public static void Ability_LaserEyes()
     {
 
     }
@@ -215,53 +226,53 @@ public class AbilityFactory : MonoBehaviour {
 
     //Arm Ability (Activate): Lets the player shoot out a bomb that explodes after 
     //a few seconds. Sticks to walls and enemies
-    public static void Ability_StickyBomb()
+    public static void Ability_StickyBomb(string armType)
     {
 
     }
 
     //Arm Ability (Activate): Allows the player to attack with a drill, deals multiple hits of 
     //damage, all other actions and movement are locked for the ability's duration
-    public static void Ability_DrillFist()
+    public static void Ability_DrillFist(string armType)
     {
 
     }
 
     //Arm Ability (Passive): Increases the player's melee damage, does not affect weapon damage
-    public static void Ability_StrongArm()
+    public static void Ability_StrongArm(string armType)
     {
-
+        
     }
 
     //Arm Ability (Passive): Increases the player's melee weapon damage, does not affect projectile weapon damage
-    public static void Ability_WeaponsTraining()
+    public static void Ability_WeaponsTraining(string armType)
     {
 
     }
 
     //Arm Ability (Activate): Allow the player to shoot needles in three shot bursts
-    public static void Ability_NeedleShot()
+    public static void Ability_NeedleShot(string armType)
     {
 
     }
 
     //Arm Ability (Passive): Makes the player fall slower, effect can stack with other arm
     //due to nature of the ability, needs to pass on a separate method (see FeatherFall())
-    public static void Ability_FeatherFall()
+    public static void Ability_FeatherFall(string armType)
     {
         GameManager.instance.player.playerCheckDelegate += FeatherFall;
     }
 
     //Arm Ability (Activate): Allows the player to extend and shoot their arm out to 
     //attack enemies at medium range
-    public static void Ability_PincerPistol()
+    public static void Ability_PincerPistol(string armType)
     {
 
     }
 
     //Arm Ability (Passive): Equips the player with the bone weapon, 
     //takes up and locks this arm's weapon slot
-    public static void Ability_BoneToss()
+    public static void Ability_BoneToss(string armType)
     {
 
     }
