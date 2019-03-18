@@ -19,9 +19,9 @@ public class PlayerController : MonoBehaviour {
 
     public bool hasExtraJump = true;
 
-    private float rayCastLengthCheck = 0.005f;
-    private float width;
-    private float height;
+    public float rayCastLengthCheck = 0.005f;
+    public float width;
+    public float height;
 
     private Collider2D nestCheck;
 

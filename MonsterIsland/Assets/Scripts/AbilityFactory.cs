@@ -287,7 +287,7 @@ public class AbilityFactory : MonoBehaviour {
     //Leg Ability (Passive): Allows the player to damage enemies by jumping on them
     public static void Ability_SpikedFeet()
     {
-
+        GameManager.instance.player.playerCheckDelegate += SpikedFeet;
     }
 
     //Leg Ability (Passive): Increases the player's move speed
@@ -331,7 +331,7 @@ public class AbilityFactory : MonoBehaviour {
     }    
 
 
-    //The below methods are for miscellaneous use by the actual ability methods
+    //The bellow methods are for miscellaneous use by the actual ability methods
 
     public static void FeatherFall()
     {
@@ -351,6 +351,32 @@ public class AbilityFactory : MonoBehaviour {
         else 
         {
             GameManager.instance.player.rb.gravityScale = 20;
+        }
+    }
+
+    public static void SpikedFeet()
+    {
+        PlayerController player = GameManager.instance.player;
+
+        var stompCheck1 = Physics2D.Raycast(new Vector2(player.transform.position.x, player.transform.position.y - player.height), -Vector2.down, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+        var stompCheck2 = Physics2D.Raycast(new Vector2(player.transform.position.x + (player.width - 0.2f), player.transform.position.y - player.height), -Vector2.up, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+        var stompCheck3 = Physics2D.Raycast(new Vector2(player.transform.position.x - (player.width - 0.2f), player.transform.position.y - player.height), -Vector2.up, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+
+        Enemy enemyHit = null;
+        if (stompCheck1)
+        {
+            enemyHit = stompCheck1.transform.GetComponentInParent<Enemy>();
+        } else if (stompCheck2)
+        {
+            enemyHit = stompCheck2.transform.GetComponentInParent<Enemy>();
+        } else if (stompCheck3)
+        {
+            enemyHit = stompCheck3.transform.GetComponentInParent<Enemy>();
+        }
+        if(enemyHit != null)
+        {
+            player.rb.velocity = new Vector2(player.rb.velocity.x, 40);
+            enemyHit.TakeDamage(2);
         }
     }
 }
