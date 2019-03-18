@@ -67,6 +67,9 @@ public class PlayerController : MonoBehaviour {
 
         if (nestCheck != null && nestCheck.tag == "Nest" && Input.GetKeyDown(KeyCode.W) && !UIManager.Instance.nestCanvas.activeInHierarchy) {
             UIManager.Instance.ShowNestCanvas();
+            if(nestCheck.gameObject.GetComponent<Nest>().isActive == false) {
+                nestCheck.gameObject.GetComponent<Nest>().Activate();
+            }
         }
 
         //Check if the player is underwater, and if they are, update the underwater timer

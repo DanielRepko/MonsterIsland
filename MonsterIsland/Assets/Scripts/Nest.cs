@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum LevelName {
-    Hub, Plains, Desert, Underwater, Jungle, Skyland, Castle
+    Hub = 0, Plains, Desert, Underwater, Jungle, Skyland, Castle
 }
 
 public enum LevelPosition {
-    Start, Shop, Boss
+    Start = 0, Shop, Boss
 }
 
 public class Nest : MonoBehaviour {
@@ -25,4 +25,11 @@ public class Nest : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void Activate() {
+        if(!isActive) {
+            isActive = true;
+            NestManager.instance.ActivateNest((int)levelName, (int)levelPosition);
+        }
+    }
 }
