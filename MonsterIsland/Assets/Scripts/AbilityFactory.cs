@@ -163,13 +163,7 @@ public class AbilityFactory : MonoBehaviour {
         RaycastHit2D middleRayTerrainHit = Physics2D.Raycast(middleRay.origin, middleRay.direction, 8f, 1 << LayerMask.NameToLayer("Terrain"));
         RaycastHit2D bottomRayTerrainHit = Physics2D.Raycast(bottomRay.origin, bottomRay.direction, 8f, 1 << LayerMask.NameToLayer("Terrain"));
 
-        //these raycasts check to see if there is an enemy in the path of the teleport
-        //need to do enemy and terrain separately because 2D raycast does not allow multiple layer mask selections
-        RaycastHit2D topRayEnemyHit = Physics2D.Raycast(topRay.origin, topRay.direction, 8f, 1 << LayerMask.NameToLayer("Enemy"));
-        RaycastHit2D middleRayEnemyHit = Physics2D.Raycast(middleRay.origin, middleRay.direction, 8f, 1 << LayerMask.NameToLayer("Enemy"));
-        RaycastHit2D bottomRayEnemyHit = Physics2D.Raycast(bottomRay.origin, bottomRay.direction, 8f, 1 << LayerMask.NameToLayer("Enemy"));
-
-        RaycastHit2D[] hitList = { topRayTerrainHit, middleRayTerrainHit, bottomRayTerrainHit, topRayEnemyHit, middleRayEnemyHit, bottomRayEnemyHit };
+        RaycastHit2D[] hitList = { topRayTerrainHit, middleRayTerrainHit, bottomRayTerrainHit };
 
         float shortestDistance = 8;
 
