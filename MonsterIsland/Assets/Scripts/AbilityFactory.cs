@@ -148,7 +148,7 @@ public class AbilityFactory : MonoBehaviour {
     //Torso Ability (Passive): Prevents the player from being damaged by attacks from behind
     public static void Ability_HardShell()
     {
-
+        
     }
 
     //Torso Ability (Activate): Allows the player to teleport short distances

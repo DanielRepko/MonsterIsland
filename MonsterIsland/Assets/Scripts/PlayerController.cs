@@ -10,9 +10,9 @@ public class PlayerController : MonoBehaviour {
     //range of the player's melee attack
     private float attackRange = 1.7f;
     //damage dealt by right arm attack
-    public float rightAttackPower = 2;
+    public int rightAttackPower = 2;
     //damage dealt by left arm attack
-    public float leftAttackPower = 2;
+    public int leftAttackPower = 2;
 
     public int health;
     private int maxHealth;
@@ -218,6 +218,14 @@ public class PlayerController : MonoBehaviour {
     public void AbilityDefault()
     {
 
+    }
+
+    //a delegate used for the TakeDamage method
+    //this and the collider parameter in the TakeDamage method are all so that
+    //the Turtle ability can be used
+    public void TakeDamage(int damage, Collider collider)
+    {
+        health -= damage;
     }
 
     [Space(20, order = 1)]
