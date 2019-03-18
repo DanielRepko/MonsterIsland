@@ -241,7 +241,14 @@ public class AbilityFactory : MonoBehaviour {
     //Arm Ability (Passive): Increases the player's melee damage, does not affect weapon damage
     public static void Ability_StrongArm(string armType)
     {
-        
+        if (armType == Helper.PartType.RightArm)
+        {
+            GameManager.instance.player.rightAttackPower = 5;
+        }
+        else if (armType == Helper.PartType.LeftArm)
+        {
+            GameManager.instance.player.leftAttackPower = 5;
+        }
     }
 
     //Arm Ability (Passive): Increases the player's melee weapon damage, does not affect projectile weapon damage
