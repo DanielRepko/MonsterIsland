@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour {
     //damage dealt by left arm attack
     public float leftAttackPower = 2;
 
-    public float health;
+    public int health;
+    private int maxHealth;
 
     public bool hasExtraJump = true;
 
