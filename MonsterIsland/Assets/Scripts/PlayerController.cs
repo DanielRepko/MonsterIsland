@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour {
     public float timeBetwenAirDamage;  //The amount of time between damage from having no air, in seconds.
     public float drownDamage;          //The amount of damage the player should take from drowning, when required.
     private float timeUnderwater;      //The amount of time the player has spent underwater since they last required air
+    public bool hasGills = false;
 
     [Space(20, order = 1)]
 

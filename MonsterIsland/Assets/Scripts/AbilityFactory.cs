@@ -153,7 +153,7 @@ public class AbilityFactory : MonoBehaviour {
     //Torso Ability (Passive): Allows the player to breath underwater
     public static void Ability_Gills()
     {
-
+        GameManager.instance.player.hasGills = true;
     }
 
     //Torso Ability (Passive): Prevents the player from being damaged by attacks from behind
