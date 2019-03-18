@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   airMeter: {fileID: 0}
   airMeterBar: {fileID: 0}
+  nestCanvas: {fileID: 0}
 --- !u!114 &114351522358479870
 MonoBehaviour:
   m_ObjectHideFlags: 1
