@@ -151,12 +151,50 @@ public class AbilityFactory : MonoBehaviour {
         middleRay.origin = new Vector2(player.transform.position.x, player.transform.position.y);
         middleRay.direction = new Vector2(player.facingDirection, 0);
 
-        bottomRay.origin = new Vector2(player.transform.position.x, player.transform.position.y - 1.4f);
+        bottomRay.origin = new Vector2(player.transform.position.x, player.transform.position.y - 1.8f);
         bottomRay.direction = new Vector2(player.facingDirection, 0);
 
         Debug.DrawRay(topRay.origin, new Vector2(8 * player.facingDirection, 0), Color.green);
         Debug.DrawRay(middleRay.origin, new Vector2(8 * player.facingDirection, 0), Color.green);
         Debug.DrawRay(bottomRay.origin, new Vector2(8 * player.facingDirection, 0), Color.green);
+
+        //these raycasts check to see if there is terrain in the path of teleport
+        RaycastHit2D topRayTerrainHit = Physics2D.Raycast(topRay.origin, topRay.direction, 8f, 1 << LayerMask.NameToLayer("Terrain"));
+        RaycastHit2D middleRayTerrainHit = Physics2D.Raycast(middleRay.origin, middleRay.direction, 8f, 1 << LayerMask.NameToLayer("Terrain"));
+        RaycastHit2D bottomRayTerrainHit = Physics2D.Raycast(bottomRay.origin, bottomRay.direction, 8f, 1 << LayerMask.NameToLayer("Terrain"));
+
+        //these raycasts check to see if there is an enemy in the path of the teleport
+        //need to do enemy and terrain separately because 2D raycast does not allow multiple layer mask selections
+        RaycastHit2D topRayEnemyHit = Physics2D.Raycast(topRay.origin, topRay.direction, 8f, 1 << LayerMask.NameToLayer("Enemy"));
+        RaycastHit2D middleRayEnemyHit = Physics2D.Raycast(middleRay.origin, middleRay.direction, 8f, 1 << LayerMask.NameToLayer("Enemy"));
+        RaycastHit2D bottomRayEnemyHit = Physics2D.Raycast(bottomRay.origin, bottomRay.direction, 8f, 1 << LayerMask.NameToLayer("Enemy"));
+
+        RaycastHit2D[] hitList = { topRayTerrainHit, middleRayTerrainHit, bottomRayTerrainHit, topRayEnemyHit, middleRayEnemyHit, bottomRayEnemyHit };
+
+        float shortestDistance = 8;
+
+        for(int i = 0; i < hitList.Length; i++)
+        {
+            if (hitList[i])
+            {
+                if (hitList[i].distance < shortestDistance)
+                {
+                    shortestDistance = hitList[i].distance;
+                }
+            }
+        }
+
+        //shortestDistance - 0.3 to account for the half of the player that will be over the distance threshold
+        float teleportDistance = player.transform.position.x + ((shortestDistance - 0.6f) * player.facingDirection);
+
+        //making the player "disappear"
+        player.monster.gameObject.SetActive(false);
+
+        //moving the player to the new
+        player.transform.position = new Vector2(teleportDistance, player.transform.position.y);
+
+        //making the player "reappear"
+        player.monster.gameObject.SetActive(true);
     }
 
     //Torso Ability (Activate): Allows the player to fly up forwards while in the air, or 
@@ -265,7 +303,9 @@ public class AbilityFactory : MonoBehaviour {
 
     }    
 
-    //These methods are implemented on the PlayerController by certain methods for Passive abilities
+
+    //The below methods are for miscellaneous use by the actual ability methods
+
     public static void FeatherFall()
     {
         PlayerController player = GameManager.instance.player;
@@ -280,6 +320,10 @@ public class AbilityFactory : MonoBehaviour {
             {
                 player.rb.gravityScale = 20;
             }
-        }        
+        }
+        else 
+        {
+            GameManager.instance.player.rb.gravityScale = 20;
+        }
     }
 }
