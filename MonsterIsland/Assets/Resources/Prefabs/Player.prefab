@@ -1983,7 +1983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e589e8be0291442863faf43da93aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 15.5
   jumpForce: 60
   health: 0
   hasExtraJump: 1
@@ -1995,6 +1995,7 @@ MonoBehaviour:
   drownDamage: 0.5
   rb: {fileID: 0}
   monster: {fileID: 114670642758465856}
+  playerDirection: 0
 --- !u!114 &114045893432456752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3115,6 +3116,12 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headPart: {fileID: 114953615037253176}
+  torsoPart: {fileID: 114058501148339678}
+  rightArmPart: {fileID: 114786274733707136}
+  leftArmPart: {fileID: 114276227744310176}
+  legPart: {fileID: 114818078536218328}
+--- !u!114 &114720538517651190
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -4157,7 +4164,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 15, y: 26.3}
+  m_Size: {x: 15, y: 26.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
