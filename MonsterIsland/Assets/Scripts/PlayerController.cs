@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    public static PlayerController Instance;
+
     public float moveSpeed = 15.5f;
     public float jumpForce = 60f;
 
@@ -64,9 +66,15 @@ public class PlayerController : MonoBehaviour {
     public AbilityFactory.Ability playerCheckDelegate = null;
 
     void Awake() {
-        rb = GetComponent<Rigidbody2D>();
-        width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
-        height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
+        if (Instance == null) {
+            rb = GetComponent<Rigidbody2D>();
+            width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
+            height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
+            Instance = this;
+        } else if (Instance != this) {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     // Use this for initialization
@@ -80,6 +88,9 @@ public class PlayerController : MonoBehaviour {
 
         if (nestCheck != null && nestCheck.tag == "Nest" && Input.GetKeyDown(KeyCode.W) && !UIManager.Instance.nestCanvas.activeInHierarchy) {
             UIManager.Instance.ShowNestCanvas();
+            if(nestCheck.gameObject.GetComponent<Nest>().isActive == false) {
+                nestCheck.gameObject.GetComponent<Nest>().Activate();
+            }
         }
 
         //Check if the player is underwater, and if they are, update the underwater timer

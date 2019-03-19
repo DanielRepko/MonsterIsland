@@ -5,7 +5,40 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 31c172f39d0dc744683a3d5c11b04569
+  - enabled: 1
+    path: Assets/Scenes/Plains.unity
+    guid: d6197cb882968d44b91e9051690a2825
+  - enabled: 1
+    path: Assets/Scenes/Hub.unity
+    guid: 6804cf281de1ea44d8aeff1a67357f3a
+  - enabled: 1
+    path: Assets/Scenes/Desert.unity
+    guid: 05879e5176f82a44a9e6b5bb4ab73953
+  - enabled: 1
+    path: Assets/Scenes/Underwater.unity
+    guid: eeb07a45f8ed1ea44b3f5cfa4b627b55
+  - enabled: 1
+    path: Assets/Scenes/Jungle.unity
+    guid: 67fe0457dee8537429cc9b7a636c2642
+  - enabled: 1
+    path: Assets/Scenes/Skyland.unity
+    guid: 93d2e013b3eb6574eb3e7f9b1c98b3e7
+  - enabled: 1
+    path: Assets/Scenes/Castle.unity
+    guid: 1207b6bc297140045b94efe650a56b41
+  - enabled: 1
+    path: Assets/Scenes/MonsterMaker.unity
+    guid: 4ab4226a82400d04b85b2f7ee9d7201e
+  - enabled: 1
+    path: Assets/Scenes/NestMenu.unity
+    guid: 0ab2ee4478b905f469a7ead0959f3c20
+  - enabled: 1
+    path: Assets/Scenes/PauseMenu.unity
+    guid: 408565f1eead6ce488a469db74c4ad7d
+  - enabled: 1
+    path: Assets/Scenes/ShopMenu.unity
+    guid: 0d53156a25a535144bf8cd1f39720933
   m_configObjects: {}

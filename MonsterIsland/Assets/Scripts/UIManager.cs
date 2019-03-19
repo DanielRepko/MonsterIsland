@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour {
 
     //When called, hides the Nest Canvas
     public void HideNestCanvas() {
+        Debug.Log("HideNestCanvas called");
         nestCanvas.SetActive(false);
         Time.timeScale = 1;
     }
