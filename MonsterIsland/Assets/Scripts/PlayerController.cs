@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    public static PlayerController Instance;
+
     public float moveSpeed = 20f;
     public float jumpForce = 10f;
 
@@ -51,9 +53,15 @@ public class PlayerController : MonoBehaviour {
     public AbilityFactory.Ability playerCheckDelegate = null;
 
     void Awake() {
-        rb = GetComponent<Rigidbody2D>();
-        width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
-        height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
+        if (Instance == null) {
+            rb = GetComponent<Rigidbody2D>();
+            width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
+            height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
+            Instance = this;
+        } else if (Instance != this) {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     // Use this for initialization
