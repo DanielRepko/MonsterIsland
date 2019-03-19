@@ -30,7 +30,6 @@ public class StickyBomb : MonoBehaviour {
                 gameObject.AddComponent<FixedJoint2D>().connectedBody = collision.attachedRigidbody;
                 connectedEnemy = collision.GetComponent<Enemy>();
                 animator.Play("StickyBombAnim");
-                Debug.Log("working");
             }
             else if (collision.tag == "Ground")
             {
