@@ -159,7 +159,13 @@ public class AbilityFactory : MonoBehaviour {
     //Torso Ability (Passive): Prevents the player from being damaged by attacks from behind
     public static void Ability_HardShell()
     {
-        
+        //creating the collider to act as the shell
+        BoxCollider2D shellCollider = PlayerController.Instance.gameObject.AddComponent<BoxCollider2D>();
+        shellCollider.isTrigger = true;
+        shellCollider.offset = new Vector2(0.78f, -0.2326667f);
+        shellCollider.size = new Vector2(0.2f, 3.214667f);
+
+        PlayerController.Instance.playerCheckDelegate += HardShell;
     }
 
     //Torso Ability (Activate): Allows the player to teleport short distances
@@ -377,6 +383,23 @@ public class AbilityFactory : MonoBehaviour {
         {
             player.rb.velocity = new Vector2(player.rb.velocity.x, 40);
             enemyHit.TakeDamage(2);
+        }
+    }
+
+    public static void HardShell()
+    {
+        BoxCollider2D shellCollider = PlayerController.Instance.GetComponent<BoxCollider2D>();
+        if (shellCollider)
+        {
+            //checking the player direction to make sure the shell is always on the back of the player
+            if (PlayerController.Instance.facingDirection == 1)
+            {
+                shellCollider.offset = new Vector2(-0.78f, shellCollider.offset.y);
+            }
+            else if(PlayerController.Instance.facingDirection == -1)
+            {
+                shellCollider.offset = new Vector2(0.78f, shellCollider.offset.y);
+            }
         }
     }
 }

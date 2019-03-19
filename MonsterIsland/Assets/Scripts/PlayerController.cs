@@ -235,10 +235,7 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    //a delegate used for the TakeDamage method
-    //this and the collider parameter in the TakeDamage method are all so that
-    //the Turtle ability can be used
-    public void TakeDamage(int damage, Collider collider)
+    public void TakeDamage(int damage)
     {
         health -= damage;
     }

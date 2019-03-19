@@ -24,21 +24,16 @@ public class Enemy : MonoBehaviour {
         text.text = health.ToString();
         //Ray attack = new Ray();
         //attack.origin = transform.position;
-        //attack.direction = new Vector2(-1,0);
+        //attack.direction = new Vector2(-1, 0);
 
         //Debug.DrawRay(attack.origin, new Vector3(1.7f * -1f, 0, 0), Color.green);
 
         //RaycastHit2D hit = Physics2D.Raycast(attack.origin, attack.direction, 1.7f, 1 << LayerMask.NameToLayer("Player"));
         //if (hit)
         //{
-        //    var shell = GameManager.instance.player.GetComponent<BoxCollider2D>();
-        //    if (hit.collider.Equals(shell))
-        //    {
-        //        Debug.Log("hit the shell");
-        //    } else
+        //    if(hit.collider == PlayerController.Instance.hurtBox)
         //    {
         //        Debug.Log("hit the player");
-        //        Debug.Log(System.Type.GetType("BoxCollider2D"));
         //    }
         //}
     }
