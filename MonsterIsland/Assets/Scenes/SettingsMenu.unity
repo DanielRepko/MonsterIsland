@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 106491901}
   - component: {fileID: 106491900}
   m_Layer: 5
-  m_Name: Button
+  m_Name: TorsoButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 149539584}
   - component: {fileID: 149539583}
   m_Layer: 5
-  m_Name: Text
+  m_Name: LeftText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 230571726}
   - component: {fileID: 230571725}
   m_Layer: 5
-  m_Name: Text
+  m_Name: SecondaryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -892,7 +892,7 @@ GameObject:
   - component: {fileID: 343978162}
   - component: {fileID: 343978161}
   m_Layer: 5
-  m_Name: Text
+  m_Name: HeadText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 352034725}
   - component: {fileID: 352034724}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PrimaryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1225,7 +1225,7 @@ GameObject:
   - component: {fileID: 375715957}
   - component: {fileID: 375715956}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Sound70Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1438,7 +1438,7 @@ GameObject:
   - component: {fileID: 399253607}
   - component: {fileID: 399253606}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TorsoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1514,7 +1514,7 @@ GameObject:
   - component: {fileID: 404951920}
   - component: {fileID: 404951919}
   m_Layer: 5
-  m_Name: Button
+  m_Name: JumpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1931,7 +1931,7 @@ GameObject:
   - component: {fileID: 525914596}
   - component: {fileID: 525914595}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Sound90Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2189,7 +2189,7 @@ GameObject:
   - component: {fileID: 550315397}
   - component: {fileID: 550315396}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Music40Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2293,7 +2293,7 @@ GameObject:
   - component: {fileID: 653276773}
   - component: {fileID: 653276772}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Sound100Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2671,7 +2671,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1375729117}
-  - {fileID: 1620166296}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2916,7 +2915,7 @@ GameObject:
   - component: {fileID: 794937810}
   - component: {fileID: 794937809}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Music80Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2985,7 +2984,7 @@ GameObject:
   - component: {fileID: 804453860}
   - component: {fileID: 804453859}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Sound40Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3165,7 +3164,7 @@ GameObject:
   - component: {fileID: 851226304}
   - component: {fileID: 851226303}
   m_Layer: 5
-  m_Name: Button
+  m_Name: RightButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3353,7 +3352,7 @@ GameObject:
   - component: {fileID: 875025940}
   - component: {fileID: 875025939}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Music20Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3422,7 +3421,7 @@ GameObject:
   - component: {fileID: 892191203}
   - component: {fileID: 892191202}
   m_Layer: 5
-  m_Name: Text
+  m_Name: JumpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3498,7 +3497,7 @@ GameObject:
   - component: {fileID: 929319059}
   - component: {fileID: 929319058}
   m_Layer: 5
-  m_Name: Button
+  m_Name: InteractButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4275,7 +4274,7 @@ GameObject:
   - component: {fileID: 1105043410}
   - component: {fileID: 1105043409}
   m_Layer: 5
-  m_Name: Text
+  m_Name: InteractText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4350,7 +4349,7 @@ GameObject:
   - component: {fileID: 1113034995}
   - component: {fileID: 1113034994}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Sound80Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4488,7 +4487,7 @@ GameObject:
   - component: {fileID: 1126653180}
   - component: {fileID: 1126653179}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Music60Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4850,7 +4849,7 @@ GameObject:
   - component: {fileID: 1262924710}
   - component: {fileID: 1262924709}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SecondaryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4961,7 +4960,7 @@ GameObject:
   - component: {fileID: 1264061762}
   - component: {fileID: 1264061761}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Music70Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5100,7 +5099,7 @@ GameObject:
   - component: {fileID: 1273691047}
   - component: {fileID: 1273691046}
   m_Layer: 5
-  m_Name: Button
+  m_Name: LeftButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5211,7 +5210,7 @@ GameObject:
   - component: {fileID: 1302220519}
   - component: {fileID: 1302220518}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Music50Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5368,6 +5367,7 @@ RectTransform:
   - {fileID: 2094285063}
   - {fileID: 668012280}
   - {fileID: 2060760195}
+  - {fileID: 1620166296}
   m_Father: {fileID: 681734033}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5421,7 +5421,7 @@ GameObject:
   - component: {fileID: 1405379585}
   - component: {fileID: 1405379584}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Sound30Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5669,7 +5669,7 @@ GameObject:
   - component: {fileID: 1474332231}
   - component: {fileID: 1474332230}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Music90Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5813,7 +5813,7 @@ GameObject:
   - component: {fileID: 1488178222}
   - component: {fileID: 1488178221}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Music100Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6097,7 +6097,7 @@ GameObject:
   - component: {fileID: 1527561982}
   - component: {fileID: 1527561981}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Sound10Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6167,7 +6167,7 @@ GameObject:
   - component: {fileID: 1564771412}
   - component: {fileID: 1564771411}
   m_Layer: 5
-  m_Name: Button
+  m_Name: HeadButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6278,7 +6278,7 @@ GameObject:
   - component: {fileID: 1579024327}
   - component: {fileID: 1579024326}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Sound50Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6344,8 +6344,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1620166296}
+  - component: {fileID: 1620166297}
   m_Layer: 5
-  m_Name: SettingsHandler
+  m_Name: SettingsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6357,18 +6358,57 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1620166295}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 681734033}
-  m_RootOrder: 1
+  m_Father: {fileID: 1375729117}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1620166297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1620166295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e0faadb909b1045b2d275672f3896b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicActive10: {fileID: 1629299736}
+  musicActive20: {fileID: 875025937}
+  musicActive30: {fileID: 1657993877}
+  musicActive40: {fileID: 550315394}
+  musicActive50: {fileID: 1302220516}
+  musicActive60: {fileID: 1126653177}
+  musicActive70: {fileID: 1264061759}
+  musicActive80: {fileID: 794937807}
+  musicActive90: {fileID: 1474332228}
+  musicActive100: {fileID: 1488178219}
+  soundActive10: {fileID: 1527561979}
+  soundActive20: {fileID: 1957476839}
+  soundActive30: {fileID: 1405379582}
+  soundActive40: {fileID: 804453857}
+  soundActive50: {fileID: 1579024324}
+  soundActive60: {fileID: 1795505801}
+  soundActive70: {fileID: 375715954}
+  soundActive80: {fileID: 1113034992}
+  soundActive90: {fileID: 525914593}
+  soundActive100: {fileID: 653276770}
+  primaryButtonText: {fileID: 1758440470}
+  secondaryButtonText: {fileID: 230571723}
+  leftButtonText: {fileID: 149539581}
+  rightButtonText: {fileID: 1766150324}
+  jumpButtonText: {fileID: 892191200}
+  interactButtonText: {fileID: 1105043407}
+  torsoButtonText: {fileID: 399253604}
+  headButtonText: {fileID: 343978159}
 --- !u!1 &1629299736
 GameObject:
   m_ObjectHideFlags: 0
@@ -6380,7 +6420,7 @@ GameObject:
   - component: {fileID: 1629299739}
   - component: {fileID: 1629299738}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Music10Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6449,7 +6489,7 @@ GameObject:
   - component: {fileID: 1657993880}
   - component: {fileID: 1657993879}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Music30Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6932,7 +6972,7 @@ GameObject:
   - component: {fileID: 1758440473}
   - component: {fileID: 1758440472}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PrimaryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7007,7 +7047,7 @@ GameObject:
   - component: {fileID: 1766150327}
   - component: {fileID: 1766150326}
   m_Layer: 5
-  m_Name: Text
+  m_Name: RightText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7415,7 +7455,7 @@ GameObject:
   - component: {fileID: 1795505804}
   - component: {fileID: 1795505803}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Sound60Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7952,7 +7992,7 @@ GameObject:
   - component: {fileID: 1957476842}
   - component: {fileID: 1957476841}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: Sound20Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
