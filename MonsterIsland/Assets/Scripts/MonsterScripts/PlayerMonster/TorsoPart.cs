@@ -36,7 +36,7 @@ public class TorsoPart : MonoBehaviour {
                 }//if the type is Activate, set the ability to the Player action delegate
                 else if (partInfo.abilityType == "Activate")
                 {
-                    GameManager.instance.player.torsoAbilityDelegate = partAbility;
+                    PlayerController.Instance.torsoAbilityDelegate = partAbility;
                 }//if the value is anything else, then a typo must have occured when creating the ability info
                 else
                 {
