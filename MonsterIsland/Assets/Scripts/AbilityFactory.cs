@@ -113,8 +113,7 @@ public class AbilityFactory : MonoBehaviour {
     //an AOE roar attack. Does not deal damage
     public static void Ability_LionsRoar()
     {
-        PlayerController player = GameManager.instance.player;
-        
+
     }
 
     //Head Ability (Activate): Allows the player to spit out a cloud of acid 
@@ -127,7 +126,7 @@ public class AbilityFactory : MonoBehaviour {
     //Head Ability (Activate): Allows the player to attack with large beak
     public static void Ability_BigBeak()
     {
-        PlayerController player = GameManager.instance.player;
+        PlayerController player = PlayerController.Instance;
         Ray beakRay = new Ray();
         beakRay.origin = new Vector2(player.transform.position.x, player.transform.position.y + 1.2f);
         beakRay.direction = new Vector3(player.facingDirection, 0, 0);
@@ -148,13 +147,13 @@ public class AbilityFactory : MonoBehaviour {
     //Torso Ability (Passive): Grants the player an extra heart of health
     public static void Ability_ArmoredBody()
     {
-        GameManager.instance.player.health += 1;
+        PlayerController.Instance.health += 1;
     }
 
     //Torso Ability (Passive): Allows the player to breath underwater
     public static void Ability_Gills()
     {
-        GameManager.instance.player.hasGills = true;
+        PlayerController.Instance.hasGills = true;
     }
 
     //Torso Ability (Passive): Prevents the player from being damaged by attacks from behind
@@ -166,7 +165,7 @@ public class AbilityFactory : MonoBehaviour {
     //Torso Ability (Activate): Allows the player to teleport short distances
     public static void Ability_GhostWalk()
     {
-        PlayerController player = GameManager.instance.player;
+        PlayerController player = PlayerController.Instance;
         
         Ray topRay = new Ray();
         Ray middleRay = new Ray();
@@ -244,11 +243,11 @@ public class AbilityFactory : MonoBehaviour {
     {
         if (armType == Helper.PartType.RightArm)
         {
-            GameManager.instance.player.rightAttackPower = 5;
+            PlayerController.Instance.rightAttackPower = 5;
         }
         else if (armType == Helper.PartType.LeftArm)
         {
-            GameManager.instance.player.leftAttackPower = 5;
+            PlayerController.Instance.leftAttackPower = 5;
         }
     }
 
@@ -268,7 +267,7 @@ public class AbilityFactory : MonoBehaviour {
     //due to nature of the ability, needs to pass on a separate method (see FeatherFall())
     public static void Ability_FeatherFall(string armType)
     {
-        GameManager.instance.player.playerCheckDelegate += FeatherFall;
+        PlayerController.Instance.playerCheckDelegate += FeatherFall;
     }
 
     //Arm Ability (Activate): Allows the player to extend and shoot their arm out to 
@@ -288,19 +287,19 @@ public class AbilityFactory : MonoBehaviour {
     //Leg Ability (Passive): Allows the player to damage enemies by jumping on them
     public static void Ability_SpikedFeet()
     {
-        GameManager.instance.player.playerCheckDelegate += SpikedFeet;
+        PlayerController.Instance.playerCheckDelegate += SpikedFeet;
     }
 
     //Leg Ability (Passive): Increases the player's move speed
     public static void Ability_QuickFeet()
     {
-        GameManager.instance.player.moveSpeed = 19;
+        PlayerController.Instance.moveSpeed = 19;
     }
 
     //Leg Ability (Activate): Allows the player to perform a single jump in mid-air
     public static void Ability_Acrobat()
     {
-        PlayerController player = GameManager.instance.player;
+        PlayerController player = PlayerController.Instance;
 
         if (!player.isUnderwater)
         {
@@ -319,9 +318,9 @@ public class AbilityFactory : MonoBehaviour {
     //Leg Ability (Passive): Increases the player's jump height
     public static void Ability_JoeyJump()
     {
-        if (!GameManager.instance.player.isUnderwater)
+        if (!PlayerController.Instance.isUnderwater)
         {
-            GameManager.instance.player.jumpForce = 70;
+            PlayerController.Instance.jumpForce = 70;
         }
     }
 
@@ -336,7 +335,7 @@ public class AbilityFactory : MonoBehaviour {
 
     public static void FeatherFall()
     {
-        PlayerController player = GameManager.instance.player;
+        PlayerController player = PlayerController.Instance;
 
         if (!player.isUnderwater)
         {
@@ -351,13 +350,13 @@ public class AbilityFactory : MonoBehaviour {
         }
         else 
         {
-            GameManager.instance.player.rb.gravityScale = 20;
+            player.rb.gravityScale = 20;
         }
     }
 
     public static void SpikedFeet()
     {
-        PlayerController player = GameManager.instance.player;
+        PlayerController player = PlayerController.Instance;
 
         var stompCheck1 = Physics2D.Raycast(new Vector2(player.transform.position.x, player.transform.position.y - player.height), -Vector2.down, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
         var stompCheck2 = Physics2D.Raycast(new Vector2(player.transform.position.x + (player.width - 0.2f), player.transform.position.y - player.height), -Vector2.up, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
