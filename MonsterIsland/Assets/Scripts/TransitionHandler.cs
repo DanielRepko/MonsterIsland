@@ -7,6 +7,7 @@ public class TransitionHandler : MonoBehaviour {
 
     public LevelName levelName;
     public bool fromHub;
+    private bool hasContact;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +16,18 @@ public class TransitionHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(hasContact == true && Input.GetKeyDown(KeyCode.W)) {
+            if(levelName == LevelName.Skyland && fromHub) {
+                PlayerController.Instance.transform.position = new Vector2(-0.5f, -1f);
+                SceneManager.LoadScene("Skyland");
+            } else if (levelName == LevelName.Skyland && !fromHub) {
+                PlayerController.Instance.transform.position = new Vector2(70.5f, 13f);
+                SceneManager.LoadScene("Hub");
+            } else if (levelName == LevelName.Castle && fromHub) {
+                PlayerController.Instance.transform.position = new Vector2(-20f, 1f);
+                SceneManager.LoadScene("Castle");
+            }
+        }
 	}
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -57,27 +69,26 @@ public class TransitionHandler : MonoBehaviour {
                         SceneManager.LoadScene("Hub");
                     }
                     break;
-                case LevelName.Skyland:
-                    if (fromHub) {
-                        PlayerController.Instance.transform.position = new Vector2(-0.5f, -1f);
-                        SceneManager.LoadScene("Skyland");
-                    } else {
-                        PlayerController.Instance.transform.position = new Vector2(-70.5f, 13f);
-                        SceneManager.LoadScene("Hub");
-                    }
-                    break;
                 case LevelName.Castle:
                     if (fromHub) {
-                        PlayerController.Instance.transform.position = new Vector2(-20f, 1f);
-                        SceneManager.LoadScene("Castle");
+                        hasContact = true;
                     } else {
                         PlayerController.Instance.transform.position = new Vector2(70.5f, -34f);
                         SceneManager.LoadScene("Hub");
                     }
                     break;
                 default:
+                    //If default is run, this may be one of the cases where they have to press W to enter. In that case, toggle contact
+                    hasContact = true;
                     break;
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        //Contact with the player has been lost
+        if (collision.tag == "Player") {
+            hasContact = false;
         }
     }
 }
