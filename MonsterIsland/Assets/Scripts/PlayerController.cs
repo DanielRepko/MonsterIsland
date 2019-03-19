@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour {
 
     public static PlayerController Instance;
 
+    public Animator animator;
+
     public float moveSpeed = 15.5f;
     public float jumpForce = 60f;
 
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour {
 
     public int health;
     private int maxHealth;
+    public EdgeCollider2D hurtBox;
 
     public bool hasExtraJump = true;
 
@@ -182,7 +185,6 @@ public class PlayerController : MonoBehaviour {
         if (PlayerIsOnGround())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            //rb.AddForce(new Vector2(rb.velocity.x, jumpForce * 10000));
         }
     }
 
@@ -219,7 +221,7 @@ public class PlayerController : MonoBehaviour {
         if (hit)
         {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
-            if (enemy != null)
+            if (enemy != null && hit.collider == enemy.hurtBox)
             {
                 enemy.TakeDamage(leftAttackPower);
             }
@@ -232,10 +234,7 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    //a delegate used for the TakeDamage method
-    //this and the collider parameter in the TakeDamage method are all so that
-    //the Turtle ability can be used
-    public void TakeDamage(int damage, Collider collider)
+    public void TakeDamage(int damage)
     {
         health -= damage;
     }
