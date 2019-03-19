@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SettingsManager : MonoBehaviour {
 
@@ -22,10 +23,13 @@ public class SettingsManager : MonoBehaviour {
     public GameObject torsoButtonText;
     public GameObject headButtonText;
 
+    [Header("Other Objects", order = 3)]
+    public AudioMixer audioMixer;
+
     // Use this for initialization
     void Start () {
-        currentMusicVolume = 10;
-        currentSoundVolume = 10;
+        SetMusic(8);
+        SetSound(8);
 	}
 	
 	// Update is called once per frame
@@ -57,6 +61,7 @@ public class SettingsManager : MonoBehaviour {
         }
 
         currentMusicVolume = volumeLevel;
+        audioMixer.SetFloat("MusicVolume", (currentMusicVolume * 10 - 80));
 
         foreach(GameObject bar in musicActiveBars) {
             if(volumeLevel > 0) {
@@ -76,6 +81,7 @@ public class SettingsManager : MonoBehaviour {
         }
 
         currentSoundVolume = volumeLevel;
+        audioMixer.SetFloat("SoundVolume", (currentSoundVolume * 10 - 80));
 
         foreach (GameObject bar in soundActiveBars) {
             if (volumeLevel > 0) {
