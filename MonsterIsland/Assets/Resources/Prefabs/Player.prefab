@@ -37,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224928109610299170}
   - component: {fileID: 222116595392955260}
-  - component: {fileID: 114720538517651190}
   m_Layer: 5
   m_Name: HeartHalf
   m_TagString: Untagged
@@ -1470,7 +1469,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344063368092656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.25, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4962323823073406}
@@ -1983,18 +1982,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e589e8be0291442863faf43da93aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 15.5
   jumpForce: 60
+  rightAttackPower: 2
+  leftAttackPower: 2
   health: 0
   hasExtraJump: 1
+  rayCastLengthCheck: 0.005
+  width: 0
+  height: 0
   isUnderwater: 0
   air: 1
   timeBetweenAirLoss: 0.1
   airToLose: 0.01
   timeBetwenAirDamage: 2
   drownDamage: 0.5
-  rb: {fileID: 0}
+  hasGills: 0
+  rb: {fileID: 50294502546255648}
   monster: {fileID: 114670642758465856}
+  facingDirection: 0
+  head: Mitch
+  torso: Mitch
+  rightArm: Mitch
+  leftArm: Mitch
+  legs: Mitch
 --- !u!114 &114045893432456752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2993,8 +3004,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headPart: {fileID: 114953615037253176}
   torsoPart: {fileID: 114058501148339678}
-  rightArm: {fileID: 114786274733707136}
-  leftArm: {fileID: 114276227744310176}
+  rightArmPart: {fileID: 114786274733707136}
+  leftArmPart: {fileID: 114276227744310176}
   legPart: {fileID: 114818078536218328}
 --- !u!114 &114693845627524028
 MonoBehaviour:
@@ -3050,33 +3061,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114720538517651190
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1021827953994362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9a6e3b100a41d7d4f818b38f59a386d2, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
 --- !u!114 &114722594591324880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3123,8 +3107,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ff192a9aa4f4bb64da4375ad3eacbb7a, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4157,7 +4141,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 15, y: 26.3}
+  m_Size: {x: 15, y: 26.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

@@ -25,8 +25,11 @@ public class UIManager : MonoBehaviour {
 
     //When called, updates the air meter based on the provided information
     public void UpdateAirMeter(float air, bool isUnderwater) {
-        airMeterBar.GetComponent<RectTransform>().offsetMax = new Vector2(-(122f - (122f * air)), 0f);
-        airMeter.SetActive(isUnderwater);
+        if (!GameManager.instance.player.hasGills)
+        {
+            airMeterBar.GetComponent<RectTransform>().offsetMax = new Vector2(-(122f - (122f * air)), 0f);
+            airMeter.SetActive(isUnderwater);
+        }
     }
 
     //When called, displays the Nest Canvas
