@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SettingsManager : MonoBehaviour {
 
@@ -22,10 +23,13 @@ public class SettingsManager : MonoBehaviour {
     public GameObject torsoButtonText;
     public GameObject headButtonText;
 
+    [Header("Other Objects", order = 3)]
+    public AudioMixer audioMixer;
+
     // Use this for initialization
     void Start () {
-        currentMusicVolume = 10;
-        currentSoundVolume = 10;
+        SetMusic(8);
+        SetSound(8);
 	}
 	
 	// Update is called once per frame
@@ -33,22 +37,27 @@ public class SettingsManager : MonoBehaviour {
 		
 	}
 
+    //Raises the music volume 1 level
     public void RaiseMusicVolume() {
         SetMusic(currentMusicVolume + 1);
     }
 
+    //Raises the sound volume 1 level
     public void RaiseSoundVolume() {
         SetSound(currentSoundVolume + 1);
     }
 
+    //Lowers the music volume 1 level
     public void LowerMusicVolume() {
         SetMusic(currentMusicVolume - 1);
     }
 
+    //Lowers the sound volume 1 level
     public void LowerSoundVolume() {
         SetSound(currentSoundVolume - 1);
     }
 
+    //Sets the current volume level for the music, both in here, in the audio mixer, and in the ui
     public void SetMusic(int volumeLevel) {
         if(volumeLevel > 10) {
             volumeLevel = 10;
@@ -57,6 +66,7 @@ public class SettingsManager : MonoBehaviour {
         }
 
         currentMusicVolume = volumeLevel;
+        audioMixer.SetFloat("MusicVolume", (currentMusicVolume * 10 - 80));
 
         foreach(GameObject bar in musicActiveBars) {
             if(volumeLevel > 0) {
@@ -68,6 +78,7 @@ public class SettingsManager : MonoBehaviour {
         }
     }
 
+    //Sets the current volume level for the sound effects, both in here, in the audio mixer, and in the ui
     public void SetSound(int volumeLevel) {
         if (volumeLevel > 10) {
             volumeLevel = 10;
@@ -76,6 +87,7 @@ public class SettingsManager : MonoBehaviour {
         }
 
         currentSoundVolume = volumeLevel;
+        audioMixer.SetFloat("SoundVolume", (currentSoundVolume * 10 - 80));
 
         foreach (GameObject bar in soundActiveBars) {
             if (volumeLevel > 0) {

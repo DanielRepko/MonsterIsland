@@ -6598,6 +6598,7 @@ MonoBehaviour:
   interactButtonText: {fileID: 1105043407}
   torsoButtonText: {fileID: 399253604}
   headButtonText: {fileID: 343978159}
+  audioMixer: {fileID: 24100000, guid: aac208b4cefb6854284918db8810f00a, type: 2}
 --- !u!1 &1629299736
 GameObject:
   m_ObjectHideFlags: 0
