@@ -8,6 +8,7 @@ TagManager:
   - Bubble
   - Ground
   - Nest
+  - Enemy
   layers:
   - Default
   - TransparentFX

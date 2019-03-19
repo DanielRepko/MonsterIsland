@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour {
         //RaycastHit2D hit = Physics2D.Raycast(attack.origin, attack.direction, 1.7f, 1 << LayerMask.NameToLayer("Player"));
         //if (hit)
         //{
-        //    if(hit.collider == PlayerController.Instance.hurtBox)
+        //    if (hit.collider == PlayerController.Instance.hurtBox)
         //    {
         //        Debug.Log("hit the player");
         //    }
