@@ -571,6 +571,9 @@ GameObject:
   - component: {fileID: 114012045192248068}
   - component: {fileID: 68947545826544262}
   - component: {fileID: 70056825719153610}
+  - component: {fileID: 58904695573865450}
+  - component: {fileID: 250665372711516750}
+  - component: {fileID: 95794942750992136}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1929,6 +1932,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!58 &58904695573865450
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344063368092656}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.0001
 --- !u!68 &68947545826544262
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -1961,8 +1979,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2}
-  m_Size: {x: 1.59, y: 3.16}
+  m_Offset: {x: 0.012268186, y: -0.22625351}
+  m_Size: {x: 1.5654635, y: 3.1634622}
   m_Direction: 0
 --- !u!81 &81537305523738682
 AudioListener:
@@ -1971,6 +1989,24 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773345955696892}
   m_Enabled: 1
+--- !u!95 &95794942750992136
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344063368092656}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31d8c5a203508a44e9ee8a705a7e2ab4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114012045192248068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1982,11 +2018,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e589e8be0291442863faf43da93aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 95794942750992136}
   moveSpeed: 15.5
   jumpForce: 60
   rightAttackPower: 2
   leftAttackPower: 2
   health: 0
+  hurtBox: {fileID: 68947545826544262}
   hasExtraJump: 1
   rayCastLengthCheck: 0.005
   width: 0
@@ -2001,8 +2039,8 @@ MonoBehaviour:
   rb: {fileID: 50294502546255648}
   monster: {fileID: 114670642758465856}
   facingDirection: 0
-  head: Mitch
-  torso: Mitch
+  head: Lion
+  torso: Turtle
   rightArm: Mitch
   leftArm: Mitch
   legs: Mitch
@@ -6090,3 +6128,22 @@ RectTransform:
   m_AnchoredPosition: {x: -37.000046, y: 19.575989}
   m_SizeDelta: {x: 17.199997, y: -39.15204}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!250 &250665372711516750
+PointEffector2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344063368092656}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  m_ForceMagnitude: 0
+  m_ForceVariation: 1
+  m_DistanceScale: 0.0001
+  m_ForceSource: 1
+  m_ForceTarget: 1
+  m_ForceMode: 0
+  m_Drag: 1
+  m_AngularDrag: 1
