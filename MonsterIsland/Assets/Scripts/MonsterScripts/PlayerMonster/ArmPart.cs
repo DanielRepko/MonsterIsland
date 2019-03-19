@@ -27,7 +27,7 @@ public class ArmPart : MonoBehaviour {
     public SpriteRenderer fingers;
 
     //stores the part's ability delegate
-    public AbilityFactory.Ability partAbility = null;
+    public AbilityFactory.ArmAbility partAbility = null;
 
     public void InitializePart(ArmPartInfo armPartInfo)
     {
@@ -39,12 +39,12 @@ public class ArmPart : MonoBehaviour {
             if (partInfo.abilityName != null)
             {
                 //populating the partAbility field with the appropriate ability delegate
-                partAbility = AbilityFactory.GetPartAbility(partInfo.abilityName);
+                partAbility = AbilityFactory.GetArmPartAbility(partInfo.abilityName);
 
                 //if the type is Passive, run the delegate method to apply the buff to the player
                 if (partInfo.abilityType == "Passive")
                 {
-                    partAbility();
+                    partAbility(partType);
 
                 }//if the type is Activate, set the ability to the Player action delegate
                 else if (partInfo.abilityType == "Activate")

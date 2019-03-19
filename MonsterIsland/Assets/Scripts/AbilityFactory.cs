@@ -5,6 +5,7 @@ using UnityEngine;
 public class AbilityFactory : MonoBehaviour {
 
     public delegate void Ability();
+    public delegate void ArmAbility(string armType);
 
     public static Ability GetPartAbility(string abilityName)
     {
@@ -42,30 +43,6 @@ public class AbilityFactory : MonoBehaviour {
             case "Swoop da Woop":
                 ability = Ability_SwoopDaWoop;
                 return ability;
-            case "Sticky Bomb":
-                ability = Ability_StickyBomb;
-                return ability;
-            case "Drill Fist":
-                ability = Ability_DrillFist;
-                return ability;
-            case "Strong Arm":
-                ability = Ability_StrongArm;
-                return ability;
-            case "Weapons Training":
-                ability = Ability_WeaponsTraining;
-                return ability;
-            case "Needle Shot":
-                ability = Ability_NeedleShot;
-                return ability;
-            case "Feather Fall":
-                ability = Ability_FeatherFall;
-                return ability;
-            case "Pincer Pistol":
-                ability = Ability_PincerPistol;
-                return ability;
-            case "Bone Toss":
-                ability = Ability_BoneToss;
-                return ability;
             case "Spiked Feet":
                 ability = Ability_SpikedFeet;
                 return ability;
@@ -86,8 +63,42 @@ public class AbilityFactory : MonoBehaviour {
         }
     }
 
+    public static ArmAbility GetArmPartAbility(string abilityName)
+    {
+        ArmAbility armAbility = null;
+
+        switch (abilityName)
+        {
+            case "Sticky Bomb":
+                armAbility = Ability_StickyBomb;
+                return armAbility;
+            case "Drill Fist":
+                armAbility = Ability_DrillFist;
+                return armAbility;
+            case "Strong Arm":
+                armAbility = Ability_StrongArm;
+                return armAbility;
+            case "Weapons Training":
+                armAbility = Ability_WeaponsTraining;
+                return armAbility;
+            case "Needle Shot":
+                armAbility = Ability_NeedleShot;
+                return armAbility;
+            case "Feather Fall":
+                armAbility = Ability_FeatherFall;
+                return armAbility;
+            case "Pincer Pistol":
+                armAbility = Ability_PincerPistol;
+                return armAbility;
+            case "Bone Toss":
+                armAbility = Ability_BoneToss;
+                return armAbility;
+            default:
+                return null;
+        }
+    }
     //Head Ability (Activate): Allows the player to shoot a laser beam
-    public static void Ability_LaserEyes()
+        public static void Ability_LaserEyes()
     {
 
     }
@@ -102,7 +113,8 @@ public class AbilityFactory : MonoBehaviour {
     //an AOE roar attack. Does not deal damage
     public static void Ability_LionsRoar()
     {
-
+        PlayerController player = GameManager.instance.player;
+        
     }
 
     //Head Ability (Activate): Allows the player to spit out a cloud of acid 
@@ -115,7 +127,22 @@ public class AbilityFactory : MonoBehaviour {
     //Head Ability (Activate): Allows the player to attack with large beak
     public static void Ability_BigBeak()
     {
-       
+        PlayerController player = GameManager.instance.player;
+        Ray beakRay = new Ray();
+        beakRay.origin = new Vector2(player.transform.position.x, player.transform.position.y + 1.2f);
+        beakRay.direction = new Vector3(player.facingDirection, 0, 0);
+
+        Debug.DrawRay(beakRay.origin, new Vector2(1.7f * player.facingDirection, 0), Color.green);
+
+        RaycastHit2D hit = Physics2D.Raycast(beakRay.origin, beakRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
+        if (hit)
+        {
+            Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(3);
+            }
+        }
     }
 
     //Torso Ability (Passive): Grants the player an extra heart of health
@@ -127,13 +154,13 @@ public class AbilityFactory : MonoBehaviour {
     //Torso Ability (Passive): Allows the player to breath underwater
     public static void Ability_Gills()
     {
-
+        GameManager.instance.player.hasGills = true;
     }
 
     //Torso Ability (Passive): Prevents the player from being damaged by attacks from behind
     public static void Ability_HardShell()
     {
-
+        
     }
 
     //Torso Ability (Activate): Allows the player to teleport short distances
@@ -163,13 +190,7 @@ public class AbilityFactory : MonoBehaviour {
         RaycastHit2D middleRayTerrainHit = Physics2D.Raycast(middleRay.origin, middleRay.direction, 8f, 1 << LayerMask.NameToLayer("Terrain"));
         RaycastHit2D bottomRayTerrainHit = Physics2D.Raycast(bottomRay.origin, bottomRay.direction, 8f, 1 << LayerMask.NameToLayer("Terrain"));
 
-        //these raycasts check to see if there is an enemy in the path of the teleport
-        //need to do enemy and terrain separately because 2D raycast does not allow multiple layer mask selections
-        RaycastHit2D topRayEnemyHit = Physics2D.Raycast(topRay.origin, topRay.direction, 8f, 1 << LayerMask.NameToLayer("Enemy"));
-        RaycastHit2D middleRayEnemyHit = Physics2D.Raycast(middleRay.origin, middleRay.direction, 8f, 1 << LayerMask.NameToLayer("Enemy"));
-        RaycastHit2D bottomRayEnemyHit = Physics2D.Raycast(bottomRay.origin, bottomRay.direction, 8f, 1 << LayerMask.NameToLayer("Enemy"));
-
-        RaycastHit2D[] hitList = { topRayTerrainHit, middleRayTerrainHit, bottomRayTerrainHit, topRayEnemyHit, middleRayEnemyHit, bottomRayEnemyHit };
+        RaycastHit2D[] hitList = { topRayTerrainHit, middleRayTerrainHit, bottomRayTerrainHit };
 
         float shortestDistance = 8;
 
@@ -206,53 +227,60 @@ public class AbilityFactory : MonoBehaviour {
 
     //Arm Ability (Activate): Lets the player shoot out a bomb that explodes after 
     //a few seconds. Sticks to walls and enemies
-    public static void Ability_StickyBomb()
+    public static void Ability_StickyBomb(string armType)
     {
 
     }
 
     //Arm Ability (Activate): Allows the player to attack with a drill, deals multiple hits of 
     //damage, all other actions and movement are locked for the ability's duration
-    public static void Ability_DrillFist()
+    public static void Ability_DrillFist(string armType)
     {
 
     }
 
     //Arm Ability (Passive): Increases the player's melee damage, does not affect weapon damage
-    public static void Ability_StrongArm()
+    public static void Ability_StrongArm(string armType)
     {
-
+        if (armType == Helper.PartType.RightArm)
+        {
+            GameManager.instance.player.rightAttackPower = 5;
+        }
+        else if (armType == Helper.PartType.LeftArm)
+        {
+            GameManager.instance.player.leftAttackPower = 5;
+        }
     }
 
     //Arm Ability (Passive): Increases the player's melee weapon damage, does not affect projectile weapon damage
-    public static void Ability_WeaponsTraining()
+    public static void Ability_WeaponsTraining(string armType)
     {
 
     }
 
     //Arm Ability (Activate): Allow the player to shoot needles in three shot bursts
-    public static void Ability_NeedleShot()
+    public static void Ability_NeedleShot(string armType)
     {
 
     }
 
     //Arm Ability (Passive): Makes the player fall slower, effect can stack with other arm
     //due to nature of the ability, needs to pass on a separate method (see FeatherFall())
-    public static void Ability_FeatherFall()
+    public static void Ability_FeatherFall(string armType)
     {
         GameManager.instance.player.playerCheckDelegate += FeatherFall;
     }
 
     //Arm Ability (Activate): Allows the player to extend and shoot their arm out to 
     //attack enemies at medium range
-    public static void Ability_PincerPistol()
+    public static void Ability_PincerPistol(string armType)
     {
 
     }
 
     //Arm Ability (Passive): Equips the player with the bone weapon, 
     //takes up and locks this arm's weapon slot
-    public static void Ability_BoneToss()
+    public static void Ability_BoneToss(string armType)
     {
 
     }
@@ -260,7 +288,7 @@ public class AbilityFactory : MonoBehaviour {
     //Leg Ability (Passive): Allows the player to damage enemies by jumping on them
     public static void Ability_SpikedFeet()
     {
-
+        GameManager.instance.player.playerCheckDelegate += SpikedFeet;
     }
 
     //Leg Ability (Passive): Increases the player's move speed
@@ -304,7 +332,7 @@ public class AbilityFactory : MonoBehaviour {
     }    
 
 
-    //The below methods are for miscellaneous use by the actual ability methods
+    //The bellow methods are for miscellaneous use by the actual ability methods
 
     public static void FeatherFall()
     {
@@ -324,6 +352,32 @@ public class AbilityFactory : MonoBehaviour {
         else 
         {
             GameManager.instance.player.rb.gravityScale = 20;
+        }
+    }
+
+    public static void SpikedFeet()
+    {
+        PlayerController player = GameManager.instance.player;
+
+        var stompCheck1 = Physics2D.Raycast(new Vector2(player.transform.position.x, player.transform.position.y - player.height), -Vector2.down, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+        var stompCheck2 = Physics2D.Raycast(new Vector2(player.transform.position.x + (player.width - 0.2f), player.transform.position.y - player.height), -Vector2.up, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+        var stompCheck3 = Physics2D.Raycast(new Vector2(player.transform.position.x - (player.width - 0.2f), player.transform.position.y - player.height), -Vector2.up, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+
+        Enemy enemyHit = null;
+        if (stompCheck1)
+        {
+            enemyHit = stompCheck1.transform.GetComponentInParent<Enemy>();
+        } else if (stompCheck2)
+        {
+            enemyHit = stompCheck2.transform.GetComponentInParent<Enemy>();
+        } else if (stompCheck3)
+        {
+            enemyHit = stompCheck3.transform.GetComponentInParent<Enemy>();
+        }
+        if(enemyHit != null)
+        {
+            player.rb.velocity = new Vector2(player.rb.velocity.x, 40);
+            enemyHit.TakeDamage(2);
         }
     }
 }

@@ -10,17 +10,18 @@ public class PlayerController : MonoBehaviour {
     //range of the player's melee attack
     private float attackRange = 1.7f;
     //damage dealt by right arm attack
-    public float rightAttackPower = 2;
+    public int rightAttackPower = 2;
     //damage dealt by left arm attack
-    public float leftAttackPower = 2;
+    public int leftAttackPower = 2;
 
-    public float health;
+    public int health;
+    private int maxHealth;
 
     public bool hasExtraJump = true;
 
-    private float rayCastLengthCheck = 0.005f;
-    private float width;
-    private float height;
+    public float rayCastLengthCheck = 0.005f;
+    public float width;
+    public float height;
 
     private Collider2D nestCheck;
 
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour {
     public float timeBetwenAirDamage;  //The amount of time between damage from having no air, in seconds.
     public float drownDamage;          //The amount of damage the player should take from drowning, when required.
     private float timeUnderwater;      //The amount of time the player has spent underwater since they last required air
+    public bool hasGills = false;
 
     [Space(20, order = 1)]
 
@@ -49,8 +51,8 @@ public class PlayerController : MonoBehaviour {
     //delegates to be used for most player actions
     public AbilityFactory.Ability moveDelegate = null;
     public AbilityFactory.Ability jumpDelegate = null;
-    public AbilityFactory.Ability rightAttackDelegate = null;
-    public AbilityFactory.Ability leftAttackDelegate = null;
+    public AbilityFactory.ArmAbility rightAttackDelegate = null;
+    public AbilityFactory.ArmAbility leftAttackDelegate = null;
     public AbilityFactory.Ability torsoAbilityDelegate = null;
     public AbilityFactory.Ability headAbilityDelegate = null;
 
@@ -111,13 +113,13 @@ public class PlayerController : MonoBehaviour {
         //input rightArm attack
         if (Input.GetMouseButtonDown(0))
         {
-            rightAttackDelegate();
+            rightAttackDelegate(Helper.PartType.RightArm);
         }
 
         //input leftArm attack
         if (Input.GetMouseButtonDown(1))
         {
-            leftAttackDelegate();
+            leftAttackDelegate(Helper.PartType.LeftArm);
         }
 
         //input torso ability
@@ -174,7 +176,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     //right arm attack
-    public void RightAttack()
+    public void RightAttack(string armType)
     {
         Ray attackRay = new Ray();
         attackRay.origin = transform.position;
@@ -194,7 +196,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     //left arm attack
-    public void LeftAttack()
+    public void LeftAttack(string armType)
     {
         Ray attackRay = new Ray();
         attackRay.origin = transform.position;
@@ -219,15 +221,31 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    //a delegate used for the TakeDamage method
+    //this and the collider parameter in the TakeDamage method are all so that
+    //the Turtle ability can be used
+    public void TakeDamage(int damage, Collider collider)
+    {
+        health -= damage;
+    }
+
+    [Space(20, order = 1)]
+    //these are for easy initialization of the monster and are for testing purposes
+    public string head;
+    public string torso;
+    public string rightArm;
+    public string leftArm;
+    public string legs;
+
     public void InitializePlayer()
     {
         //creating variables to initialize the player monster
         //this code is for testing purposes, final product will pull this information from the database scripts
-        var headInfo = PartFactory.GetHeadPartInfo(Helper.MonsterName.Mitch);
-        var torsoInfo = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Knight);
-        var rightArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.RightArm);
-        var leftArmInfo = PartFactory.GetArmPartInfo(Helper.MonsterName.Mitch, Helper.PartType.LeftArm);
-        var legPartInfo = PartFactory.GetLegPartInfo(Helper.MonsterName.Mitch);
+        var headInfo = PartFactory.GetHeadPartInfo(head);
+        var torsoInfo = PartFactory.GetTorsoPartInfo(torso);
+        var rightArmInfo = PartFactory.GetArmPartInfo(rightArm, Helper.PartType.RightArm);
+        var leftArmInfo = PartFactory.GetArmPartInfo(leftArm, Helper.PartType.LeftArm);
+        var legPartInfo = PartFactory.GetLegPartInfo(legs);
 
         moveDelegate = Move;
         jumpDelegate = Jump;
