@@ -4,28 +4,46 @@ using UnityEngine;
 
 public class StickyBomb : MonoBehaviour {
 
-    Enemy connectedEnemy;
+    public bool exploded;
+    public bool destroy;
+    public Animator animator;
+    private Enemy connectedEnemy;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void FixedUpdate()
+    {
+        if (destroy)
+        {
+            if (connectedEnemy)
+            {
+                connectedEnemy.TakeDamage(5);
+            }
+            Destroy(gameObject);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy" && collision.GetComponent<Enemy>().hurtBox == collision)
+        if (!gameObject.GetComponent<FixedJoint2D>())
         {
-            FixedJoint2D stick = gameObject.AddComponent<FixedJoint2D>();
-            stick.connectedBody = collision.attachedRigidbody;
-            connectedEnemy = collision.GetComponent<Enemy>();
-        } else if (collision.tag == "Ground")
+            if (collision.tag == "Enemy" && collision.GetComponent<Enemy>().hurtBox == collision)
+            {
+                gameObject.AddComponent<FixedJoint2D>().connectedBody = collision.attachedRigidbody;
+                connectedEnemy = collision.GetComponent<Enemy>();
+                animator.Play("StickyBombAnim");
+                Debug.Log("working");
+            }
+            else if (collision.tag == "Ground")
+            {
+                gameObject.AddComponent<FixedJoint2D>();
+                animator.Play("StickyBombAnim");
+            }
+        }
+        if (exploded)
         {
-            FixedJoint2D stick = gameObject.AddComponent<FixedJoint2D>();
+            if (collision.tag == "Enemy" && collision.GetComponent<Enemy>().hurtBox == collision)
+            {
+                collision.GetComponent<Enemy>().TakeDamage(5);
+            }
         }
     }
 }
