@@ -11,19 +11,22 @@ public class TransitionHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(hasContact == true && Input.GetKeyDown(KeyCode.W)) {
             if(levelName == LevelName.Skyland && fromHub) {
+                UIManager.Instance.ShowLoadingPanel();
                 PlayerController.Instance.transform.position = new Vector2(-0.5f, -1f);
                 SceneManager.LoadScene("Skyland");
             } else if (levelName == LevelName.Skyland && !fromHub) {
+                UIManager.Instance.ShowLoadingPanel();
                 PlayerController.Instance.transform.position = new Vector2(70.5f, 13f);
                 SceneManager.LoadScene("Hub");
             } else if (levelName == LevelName.Castle && fromHub) {
+                UIManager.Instance.ShowLoadingPanel();
                 PlayerController.Instance.transform.position = new Vector2(-20f, 1f);
                 SceneManager.LoadScene("Castle");
             }
@@ -35,36 +38,44 @@ public class TransitionHandler : MonoBehaviour {
             switch(levelName) {
                 case LevelName.Plains:
                     if(fromHub) {
+                        UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(530f, 25.6f);
                         SceneManager.LoadScene("Plains");
                     } else {
+                        UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(0f, -1.25f);
                         SceneManager.LoadScene("Hub");
                     }
                     break;
                 case LevelName.Desert:
                     if (fromHub) {
+                        UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(20f, 1f);
                         SceneManager.LoadScene("Desert");
                     } else {
+                        UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(3f, -32f);
                         SceneManager.LoadScene("Hub");
                     }
                     break;
                 case LevelName.Underwater:
                     if (fromHub) {
+                        UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(-10f, 1f);
                         SceneManager.LoadScene("Underwater");
                     } else {
+                        UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(120f, -66f);
                         SceneManager.LoadScene("Hub");
                     }
                     break;
                 case LevelName.Jungle:
                     if (fromHub) {
+                        UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(-20f, 1f);
                         SceneManager.LoadScene("Jungle");
                     } else {
+                        UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(140f, -32f);
                         SceneManager.LoadScene("Hub");
                     }
@@ -73,6 +84,7 @@ public class TransitionHandler : MonoBehaviour {
                     if (fromHub) {
                         hasContact = true;
                     } else {
+                        UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(70.5f, -34f);
                         SceneManager.LoadScene("Hub");
                     }

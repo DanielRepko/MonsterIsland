@@ -9138,6 +9138,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1062477113408256, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
     type: 2}
   m_PrefabInternal: {fileID: 1023053496}
+--- !u!1 &1180597848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1773273311309588, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1023053496}
 --- !u!1 &1191379149
 GameObject:
   m_ObjectHideFlags: 0
@@ -44778,6 +44783,11 @@ Prefab:
       propertyPath: nestCanvas
       value: 
       objectReference: {fileID: 1176655854}
+    - target: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: loadingPanel
+      value: 
+      objectReference: {fileID: 1180597848}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6e1e7a2685d74449d16d2c3e21cee3, type: 2}
   m_IsPrefabAsset: 0

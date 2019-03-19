@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 
@@ -8,10 +9,12 @@ public class UIManager : MonoBehaviour {
     public GameObject airMeter;
     public GameObject airMeterBar;
     public GameObject nestCanvas;
+    public GameObject loadingPanel;
 
 	// Use this for initialization
 	void Awake() {
         if(Instance == null) {
+            SceneManager.sceneLoaded += OnSceneLoaded;
             Instance = this;
         } else if (Instance != this) {
             Destroy(this);
@@ -40,8 +43,19 @@ public class UIManager : MonoBehaviour {
 
     //When called, hides the Nest Canvas
     public void HideNestCanvas() {
-        Debug.Log("HideNestCanvas called");
         nestCanvas.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        HideLoadingPanel();
+    }
+
+    public void ShowLoadingPanel() {
+        loadingPanel.SetActive(true);
+    }
+
+    public void HideLoadingPanel() {
+        loadingPanel.SetActive(false);
     }
 }
