@@ -113,7 +113,7 @@ public class AbilityFactory : MonoBehaviour {
     //an AOE roar attack. Does not deal damage
     public static void Ability_LionsRoar()
     {
-
+        PlayerController.Instance.animator.Play("LionsRoarAnim");
     }
 
     //Head Ability (Activate): Allows the player to spit out a cloud of acid 

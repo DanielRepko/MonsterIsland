@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour {
 
     float health = 10;
     public Text text;
+    public EdgeCollider2D hurtBox;
 
 	// Use this for initialization
 	void Start () {
