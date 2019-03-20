@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 
 public class SettingsManager : MonoBehaviour {
 
+    public static SettingsManager Instance;
+
     [Header("Music Objects", order = 0)]
     public List<GameObject> musicActiveBars;
     private int currentMusicVolume;
@@ -28,8 +30,13 @@ public class SettingsManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        SetMusic(8);
-        SetSound(8);
+        if (Instance == null) {
+            Instance = this;
+            SetMusic(8);
+            SetSound(8);
+        } else if (Instance != this) {
+            Destroy(gameObject);
+        }
 	}
 	
 	// Update is called once per frame
