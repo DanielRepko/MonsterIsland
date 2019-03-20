@@ -29,7 +29,7 @@ public class SettingsManager : MonoBehaviour {
     public AudioMixer audioMixer;
 
     // Use this for initialization
-    void Start () {
+    void Start () { 
         if (Instance == null) {
             Instance = this;
             SetMusic(8);
