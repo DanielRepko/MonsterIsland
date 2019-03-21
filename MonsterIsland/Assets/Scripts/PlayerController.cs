@@ -20,23 +20,23 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Input Cooldowns", order = 0)]
     //these fields are used to add delays between when the player can complete certain actions
-    public float rightAttackCooldown = 0.5f;
-    public float rightAttackTimer = 0;
+    private float rightAttackCooldown = 0.5f;
+    private float rightAttackTimer = 0;
 
-    public float leftAttackCooldown = 0.5f;
-    public float leftAttackTimer = 0;
+    private float leftAttackCooldown = 0.5f;
+    private float leftAttackTimer = 0;
 
-    public float headAbilityCooldown = 0;
-    public float headAbilityTimer = 0;
+    private float headAbilityCooldown = 0;
+    private float headAbilityTimer = 0;
 
-    public float torsoAbilityCooldown = 0;
-    public float torsoAbilityTimer = 0;
+    private float torsoAbilityCooldown = 0;
+    private float torsoAbilityTimer = 0;
 
     [Space(20, order = 1)]
 
 
-    public int health;
-    private int maxHealth;
+    private int health;
+    public int maxHealth;
     public EdgeCollider2D hurtBox;
 
     public bool hasExtraJump = true;
@@ -281,16 +281,17 @@ public class PlayerController : MonoBehaviour {
         torsoAbilityDelegate = AbilityDefault;
         headAbilityDelegate = AbilityDefault;
 
+        playerCheckDelegate += UpdatePlayerDirection;
+        playerCheckDelegate += UpdatePlayerInputCooldowns;
+
+        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
+
+        SetPlayerCooldowns();
         //setting the cooldown timers so that the player can use the inputs as soon as the game loads
         rightAttackTimer = rightAttackCooldown;
         leftAttackTimer = leftAttackCooldown;
         headAbilityTimer = headAbilityCooldown;
         torsoAbilityTimer = torsoAbilityCooldown;
-
-        playerCheckDelegate += UpdatePlayerDirection;
-        playerCheckDelegate += UpdatePlayerInputCooldowns;
-
-        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
     }
 
     //checks to see what direction the player should be facing based on the mouse position
@@ -306,6 +307,30 @@ public class PlayerController : MonoBehaviour {
         {
             facingDirection = -1;
             monster.ChangeDirection(facingDirection);
+        }
+    }
+
+    //used by Initialize player to set all of the input cooldowns
+    public void SetPlayerCooldowns()
+    {
+        if(monster.headPart.partInfo.abilityCooldown != 0)
+        {
+            headAbilityCooldown = monster.headPart.partInfo.abilityCooldown;
+        }
+
+        if (monster.torsoPart.partInfo.abilityCooldown != 0)
+        {
+            torsoAbilityCooldown = monster.torsoPart.partInfo.abilityCooldown;
+        }
+        
+        if (monster.rightArmPart.partInfo.abilityCooldown != 0)
+        {
+            rightAttackCooldown = monster.rightArmPart.partInfo.abilityCooldown;
+        }
+
+        if (monster.leftArmPart.partInfo.abilityCooldown != 0)
+        {
+            leftAttackCooldown = monster.leftArmPart.partInfo.abilityCooldown;
         }
     }
 
@@ -345,6 +370,7 @@ public class PlayerController : MonoBehaviour {
             case "rightAttack":
                 if(rightAttackTimer >= rightAttackCooldown)
                 {
+                    //Debug.Log(monster.rightArmPart.partInfo.abilityCooldown);
                     rightAttackTimer = 0;
                     return true;
                 }

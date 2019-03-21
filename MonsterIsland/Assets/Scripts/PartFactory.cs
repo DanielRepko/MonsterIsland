@@ -152,21 +152,25 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Armored Body";
                 partInfo.abilityType = "Passive";
                 partInfo.abilityDesc = "Gain an extra heart of health";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Shark:
                 partInfo.abilityName = "Gills";
                 partInfo.abilityType = "Passive";
                 partInfo.abilityDesc = "Gain the ability to breath underwater";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Turtle:
                 partInfo.abilityName = "Hard Shell";
                 partInfo.abilityType = "Passive";
                 partInfo.abilityDesc = "You cannot be hurt by attacks from behind";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Knight:
                 partInfo.abilityName = "Ghost Walk";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Dissappear, then reappear further ahead in the direction you are facing";
+                partInfo.abilityCooldown = 3;
                 return partInfo;
             case Helper.MonsterName.Wingus:
                 partInfo.abilityName = "Swoop da Woop";
@@ -189,6 +193,7 @@ public class PartFactory : MonoBehaviour {
                     partInfo.abilityName = "Sticky Bomb";
                     partInfo.abilityType = "Activate";
                     partInfo.abilityDesc = "Shoot a bomb that explodes after a few seconds. Sticks to walls and enemies";
+                    partInfo.abilityCooldown = 1;
                 } else if(armType == Helper.PartType.LeftArm)
                 {
                     partInfo.abilityName = "Drill Fist";
@@ -200,11 +205,13 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Strong Arm";
                 partInfo.abilityType = "Passive";
                 partInfo.abilityDesc = "Increased melee damage. Does not affect melee weapon damage";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Charles:
                 partInfo.abilityName = "Weapons Training";
                 partInfo.abilityType = "Passive";
                 partInfo.abilityDesc = "Increased melee weapon damage. Does not affect projectile weapon damage";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Cactus:
                 partInfo.abilityName = "Needle Shot";
@@ -215,6 +222,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Feather Fall";
                 partInfo.abilityType = "Passive";
                 partInfo.abilityDesc = "Decrease fall speed. Effect can stack with second arm, does not work underwater";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Lobster:
                 partInfo.abilityName = "Pincer Pistol";
@@ -225,6 +233,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Bone Toss";
                 partInfo.abilityType = "Passive";
                 partInfo.abilityDesc = "Throw bones in an overhead arc. Angle of arc can be adjusted. Takes up this arm's weapon slot";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             default:
                 return partInfo;
@@ -240,11 +249,13 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Spiked Feet";
                 partInfo.abilityType = "Passive";
                 partInfo.abilityDesc = "Hurt enemies by landing on them";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Randall:
                 partInfo.abilityName = "Quick Feet";
                 partInfo.abilityType = "Passive";
                 partInfo.abilityDesc = "Gain faster move speed";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Monkey:
                 partInfo.abilityName = "Acrobat";
@@ -255,6 +266,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Joey Jump";
                 partInfo.abilityType = "Passive";
                 partInfo.abilityDesc = "Go higher when jumping, does not work underwater";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Hingus:
                 partInfo.abilityName = "Talon Flurry";
