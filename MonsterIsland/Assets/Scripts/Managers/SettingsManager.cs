@@ -32,8 +32,8 @@ public class SettingsManager : MonoBehaviour {
     void Start () { 
         if (Instance == null) {
             Instance = this;
-            SetMusic(8);
-            SetSound(8);
+            SetMusic(PlayerPrefs.GetInt("MusicVolume", 8));
+            SetSound(PlayerPrefs.GetInt("SoundVolume", 8));
             CustomInputManager.Instance.RefreshGUI();
         } else if (Instance != this) {
             Destroy(gameObject);
@@ -105,5 +105,14 @@ public class SettingsManager : MonoBehaviour {
             }
             volumeLevel--;
         }
+    }
+
+    public void SaveSettings() {
+        foreach (KeyValuePair<InputType, KeyCode> inputCombo in CustomInputManager.InputKeys) {
+            PlayerPrefs.SetString(inputCombo.Key.ToString(), inputCombo.Value.ToString());
+        }
+        PlayerPrefs.SetInt("MusicVolume", currentMusicVolume);
+        PlayerPrefs.SetInt("SoundVolume", currentSoundVolume);
+        PlayerPrefs.Save();
     }
 }

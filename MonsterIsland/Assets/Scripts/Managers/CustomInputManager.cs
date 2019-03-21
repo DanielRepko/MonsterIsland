@@ -10,7 +10,7 @@ public enum InputType {
 public class CustomInputManager : MonoBehaviour {
 
     public static CustomInputManager Instance;
-    private static Dictionary<InputType, KeyCode> InputKeys = new Dictionary<InputType, KeyCode>();
+    public static Dictionary<InputType, KeyCode> InputKeys = new Dictionary<InputType, KeyCode>();
 
     private GameObject currentKey;
 
@@ -18,15 +18,15 @@ public class CustomInputManager : MonoBehaviour {
 	void Awake() {
         if(Instance == null) {
             Instance = this;
-            InputKeys.Add(InputType.Primary, KeyCode.Mouse0);
-            InputKeys.Add(InputType.Secondary, KeyCode.Mouse1);
-            InputKeys.Add(InputType.Left, KeyCode.A);
-            InputKeys.Add(InputType.Right, KeyCode.D);
-            InputKeys.Add(InputType.Jump, KeyCode.Space);
-            InputKeys.Add(InputType.Interact, KeyCode.W);
-            InputKeys.Add(InputType.Torso, KeyCode.F);
-            InputKeys.Add(InputType.Head, KeyCode.E);
-            InputKeys.Add(InputType.Pause, KeyCode.Escape);
+            InputKeys.Add(InputType.Primary, (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(InputType.Primary.ToString(), "Mouse0")));
+            InputKeys.Add(InputType.Secondary, (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(InputType.Secondary.ToString(), "Mouse1")));
+            InputKeys.Add(InputType.Left, (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(InputType.Left.ToString(), "A")));
+            InputKeys.Add(InputType.Right, (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(InputType.Right.ToString(), "D")));
+            InputKeys.Add(InputType.Jump, (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(InputType.Jump.ToString(), "Space")));
+            InputKeys.Add(InputType.Interact, (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(InputType.Interact.ToString(), "W")));
+            InputKeys.Add(InputType.Torso, (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(InputType.Torso.ToString(), "F")));
+            InputKeys.Add(InputType.Head, (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(InputType.Head.ToString(), "E")));
+            InputKeys.Add(InputType.Pause, (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(InputType.Pause.ToString(), "Escape")));
         } else if (Instance != this) {
             Destroy(gameObject);
         }
