@@ -18,6 +18,23 @@ public class PlayerController : MonoBehaviour {
     //damage dealt by left arm attack
     public int leftAttackPower = 2;
 
+    [Header("Input Cooldowns", order = 0)]
+    //these fields are used to add delays between when the player can complete certain actions
+    public float rightAttackDelay = 0.5f;
+    public float rightAttackTimer = 0;
+
+    public float leftAttackDelay = 0.5f;
+    public float leftAttackTimer = 0;
+
+    public float headAbilityDelay = 0;
+    public float headAbilityTimer = 0;
+
+    public float torsoAbilityDelay = 0;
+    public float torsoAbilityTimer = 0;
+
+    [Space(20, order = 1)]
+
+
     public int health;
     private int maxHealth;
     public EdgeCollider2D hurtBox;
@@ -282,6 +299,11 @@ public class PlayerController : MonoBehaviour {
             facingDirection = -1;
             monster.ChangeDirection(facingDirection);
         }
+    }
+
+    public void UpdatePlayerInputCooldowns()
+    {
+
     }
 
     //PlayerIsOnGround function taken from SuperSoyBoy game from Ray Wenderlich
