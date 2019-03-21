@@ -36,11 +36,12 @@ public class PlayerController : MonoBehaviour {
     [Space(20, order = 1)]
 
 
-    private int health;
+    public int health;
     public int maxHealth;
-    public EdgeCollider2D hurtBox;
+    public Collider2D hurtBox;
+    public bool inHitStun = false;
 
-    public BoxCollider2D hitBox;
+    public Collider2D hitBox;
     public int hitBoxDamage;
 
     public bool hasExtraJump = true;
@@ -183,11 +184,11 @@ public class PlayerController : MonoBehaviour {
 
     public void Move()
     {
-        //input Left
+        //input Right
         if (Input.GetKey(KeyCode.D))
         {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-        //input Right
+        //input Left
         }
         else if (Input.GetKey(KeyCode.A))
         {
@@ -257,7 +258,10 @@ public class PlayerController : MonoBehaviour {
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        if (!inHitStun)
+        {
+            health -= damage;
+        }
     }
 
     [Space(20, order = 1)]
@@ -494,6 +498,18 @@ public class PlayerController : MonoBehaviour {
     private void OnTriggerStay2D(Collider2D collision) {
         if(collision.tag == "Nest") {
             nestCheck = collision;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Enemy")
+        {
+            Enemy enemy = collision.collider.GetComponent<Enemy>();
+            if (enemy != null && collision.collider == enemy.hurtBox)
+            {
+                TakeDamage(1);
+            }                
         }
     }
 }
