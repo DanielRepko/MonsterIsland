@@ -18,9 +18,34 @@ public class PlayerController : MonoBehaviour {
     //damage dealt by left arm attack
     public int leftAttackPower = 2;
 
+    [Header("Attack Cooldowns")]
+    public bool attacksLocked;
+    //these fields are used to add delays between when the player can complete certain actions
+    public float rightAttackCooldown = 0.5f;
+    private float rightAttackTimer = 0;
+
+    public float leftAttackCooldown = 0.5f;
+    private float leftAttackTimer = 0;
+
+    public float headAbilityCooldown = 0;
+    private float headAbilityTimer = 0;
+
+    public float torsoAbilityCooldown = 0;
+    private float torsoAbilityTimer = 0;
+
+    [Space(20, order = 1)]
+
+
     public int health;
-    private int maxHealth;
-    public EdgeCollider2D hurtBox;
+    public int maxHealth;
+    public Collider2D hurtBox;
+
+    private float hitStunCooldown = 0.4f;
+    private float hitStunTimer = 0;
+    private bool inHitStun = false;
+
+    public Collider2D hitBox;
+    public int hitBoxDamage;
 
     public bool hasExtraJump = true;
 
@@ -122,28 +147,47 @@ public class PlayerController : MonoBehaviour {
         playerCheckDelegate();
 
         //moving the player
-        moveDelegate();
+        if (!inHitStun)
+        {
+            moveDelegate();
+        }
+
+        if(inHitStun && hitStunTimer == 0)
+        {
+            rb.velocity = new Vector2(-10 * facingDirection, 30);
+        }
+
+        //Handling hitstun
+        if(inHitStun && hitStunTimer < hitStunCooldown)
+        {
+            hitStunTimer += Time.deltaTime;
+        }
+        else if(inHitStun && hitStunTimer >= hitStunCooldown)
+        {
+            hitStunTimer = 0;
+            inHitStun = false;
+        }
 
         //input rightArm attack
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && CheckCooldown("rightAttack"))
         {
             rightAttackDelegate(Helper.PartType.RightArm);
         }
 
         //input leftArm attack
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && CheckCooldown("leftAttack"))
         {
             leftAttackDelegate(Helper.PartType.LeftArm);
         }
 
         //input torso ability
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && CheckCooldown("torsoAbility"))
         {
             torsoAbilityDelegate();
         }
 
         //input Head ability
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && CheckCooldown("headAbility"))
         {
             headAbilityDelegate();
         }
@@ -162,11 +206,11 @@ public class PlayerController : MonoBehaviour {
 
     public void Move()
     {
-        //input Left
+        //input Right
         if (Input.GetKey(KeyCode.D))
         {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-        //input Right
+        //input Left
         }
         else if (Input.GetKey(KeyCode.A))
         {
@@ -236,7 +280,11 @@ public class PlayerController : MonoBehaviour {
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        if (!inHitStun)
+        {
+            health -= damage;
+            inHitStun = true;
+        }
     }
 
     [Space(20, order = 1)]
@@ -263,9 +311,19 @@ public class PlayerController : MonoBehaviour {
         leftAttackDelegate = LeftAttack;
         torsoAbilityDelegate = AbilityDefault;
         headAbilityDelegate = AbilityDefault;
-        playerCheckDelegate+=UpdatePlayerDirection;
+
+        playerCheckDelegate += UpdatePlayerDirection;
+        playerCheckDelegate += UpdatePlayerInputCooldowns;
+        playerCheckDelegate += ClearHitBox;
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
+
+        SetPlayerCooldowns();
+        //setting the cooldown timers so that the player can use the inputs as soon as the game loads
+        rightAttackTimer = rightAttackCooldown;
+        leftAttackTimer = leftAttackCooldown;
+        headAbilityTimer = headAbilityCooldown;
+        torsoAbilityTimer = torsoAbilityCooldown;
     }
 
     //checks to see what direction the player should be facing based on the mouse position
@@ -281,6 +339,127 @@ public class PlayerController : MonoBehaviour {
         {
             facingDirection = -1;
             monster.ChangeDirection(facingDirection);
+        }
+    }
+
+    //used by Initialize player to set all of the input cooldowns
+    public void SetPlayerCooldowns()
+    {
+        if(monster.headPart.partInfo.abilityCooldown != 0)
+        {
+            headAbilityCooldown = monster.headPart.partInfo.abilityCooldown;
+        }
+
+        if (monster.torsoPart.partInfo.abilityCooldown != 0)
+        {
+            torsoAbilityCooldown = monster.torsoPart.partInfo.abilityCooldown;
+        }
+        
+        if (monster.rightArmPart.partInfo.abilityCooldown != 0)
+        {
+            rightAttackCooldown = monster.rightArmPart.partInfo.abilityCooldown;
+        }
+
+        if (monster.leftArmPart.partInfo.abilityCooldown != 0)
+        {
+            leftAttackCooldown = monster.leftArmPart.partInfo.abilityCooldown;
+        }
+    }
+
+    //Updates the player's input cooldowns
+    public void UpdatePlayerInputCooldowns()
+    {
+        //Right Attack Cooldown
+        if(rightAttackTimer < rightAttackCooldown)
+        {
+            rightAttackTimer += Time.deltaTime;
+        }
+
+        //Left Attack Cooldown
+        if (leftAttackTimer < leftAttackCooldown)
+        {
+            leftAttackTimer += Time.deltaTime;
+        }
+
+        //Head Ability Cooldown
+        if (headAbilityTimer < headAbilityCooldown)
+        {
+            headAbilityTimer += Time.deltaTime;
+        }
+
+        //Torso Ability Cooldown
+        if (torsoAbilityTimer < torsoAbilityCooldown)
+        {
+            torsoAbilityTimer += Time.deltaTime;
+        }
+    }
+
+    //used to remove any hit boxes created by abilities after they are finished executing
+    public void ClearHitBox()
+    {
+        if(!attacksLocked && hitBox != null)
+        {
+            Destroy(hitBox);
+            //just in case it still references the destroyed component
+            hitBox = null;
+        }
+    }
+
+    //Checks the player's input cooldowns
+    public bool CheckCooldown(string inputCooldown)
+    {
+        if (!attacksLocked)
+        {
+            switch (inputCooldown)
+            {
+                case "rightAttack":
+                    if (rightAttackTimer >= rightAttackCooldown)
+                    {
+                        //Debug.Log(monster.rightArmPart.partInfo.abilityCooldown);
+                        rightAttackTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case "leftAttack":
+                    if (leftAttackTimer >= leftAttackCooldown)
+                    {
+                        leftAttackTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case "headAbility":
+                    if (headAbilityTimer >= headAbilityCooldown)
+                    {
+                        headAbilityTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case "torsoAbility":
+                    if (torsoAbilityTimer >= torsoAbilityCooldown)
+                    {
+                        torsoAbilityTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                default:
+                    return false;
+            }
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -309,6 +488,18 @@ public class PlayerController : MonoBehaviour {
             timeUnderwater = 0;
             UIManager.Instance.UpdateAirMeter(air, isUnderwater);
         }
+
+        if(collision.tag == "Enemy")
+        {
+            if(hitBox != null)
+            {
+                Enemy enemy = collision.GetComponent<Enemy>();
+                if(enemy != null && hitBox.IsTouching(enemy.hurtBox))
+                {
+                    enemy.TakeDamage(hitBoxDamage);
+                }
+            }
+        }
     }
 
     //Runs when the object exits the hitbox of another object
@@ -330,6 +521,18 @@ public class PlayerController : MonoBehaviour {
     private void OnTriggerStay2D(Collider2D collision) {
         if(collision.tag == "Nest") {
             nestCheck = collision;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Enemy")
+        {
+            Enemy enemy = collision.collider.GetComponent<Enemy>();
+            if (enemy != null && collision.collider == enemy.hurtBox)
+            {
+                TakeDamage(1);
+            }                
         }
     }
 }

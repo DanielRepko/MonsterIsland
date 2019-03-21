@@ -574,6 +574,7 @@ GameObject:
   - component: {fileID: 58904695573865450}
   - component: {fileID: 250665372711516750}
   - component: {fileID: 95794942750992136}
+  - component: {fileID: 61692302764017500}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1506,7 +1507,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344063368092656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.25, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4962323823073406}
@@ -1981,6 +1982,31 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.0001
+--- !u!61 &61692302764017500
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344063368092656}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!68 &68947545826544262
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -2057,8 +2083,16 @@ MonoBehaviour:
   jumpForce: 60
   rightAttackPower: 2
   leftAttackPower: 2
+  attacksLocked: 0
+  rightAttackCooldown: 0.5
+  leftAttackCooldown: 0.5
+  headAbilityCooldown: 0
+  torsoAbilityCooldown: 0
   health: 0
-  hurtBox: {fileID: 68947545826544262}
+  maxHealth: 0
+  hurtBox: {fileID: 61692302764017500}
+  hitBox: {fileID: 0}
+  hitBoxDamage: 0
   hasExtraJump: 1
   rayCastLengthCheck: 0.005
   width: 0
@@ -2074,8 +2108,8 @@ MonoBehaviour:
   monster: {fileID: 114670642758465856}
   facingDirection: 0
   head: Lion
-  torso: Turtle
-  rightArm: Mitch
+  torso: Knight
+  rightArm: Robot
   leftArm: Mitch
   legs: Mitch
 --- !u!114 &114045893432456752
@@ -2121,6 +2155,7 @@ MonoBehaviour:
     abilityName: 
     abilityType: 
     abilityDesc: 
+    abilityCooldown: 0
     mainSprite: 
   bodySprite: {fileID: 0}
   body: {fileID: 212882053346851266}
@@ -2386,6 +2421,7 @@ MonoBehaviour:
     abilityName: 
     abilityType: 
     abilityDesc: 
+    abilityCooldown: 0
     bicepSprite: 
     forearmSprite: 
     handBackSprite: 
@@ -3344,6 +3380,7 @@ MonoBehaviour:
     abilityName: 
     abilityType: 
     abilityDesc: 
+    abilityCooldown: 0
     bicepSprite: 
     forearmSprite: 
     handBackSprite: 
@@ -3449,6 +3486,7 @@ MonoBehaviour:
     abilityName: 
     abilityType: 
     abilityDesc: 
+    abilityCooldown: 0
     pelvisSprite: 
     thighSprite: 
     shinSprite: 
@@ -3774,6 +3812,7 @@ MonoBehaviour:
     abilityName: 
     abilityType: 
     abilityDesc: 
+    abilityCooldown: 0
     mainSprite: 
     neckSprite: 
     hurtSprite: 
