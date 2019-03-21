@@ -40,6 +40,9 @@ public class PlayerController : MonoBehaviour {
     public int maxHealth;
     public EdgeCollider2D hurtBox;
 
+    public BoxCollider2D hitBox;
+    public int hitBoxDamage;
+
     public bool hasExtraJump = true;
 
     public float rayCastLengthCheck = 0.005f;
@@ -284,6 +287,7 @@ public class PlayerController : MonoBehaviour {
 
         playerCheckDelegate += UpdatePlayerDirection;
         playerCheckDelegate += UpdatePlayerInputCooldowns;
+        playerCheckDelegate += ClearHitBox;
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
 
@@ -360,6 +364,17 @@ public class PlayerController : MonoBehaviour {
         if (torsoAbilityTimer < torsoAbilityCooldown)
         {
             torsoAbilityTimer += Time.deltaTime;
+        }
+    }
+
+    //used to remove any hit boxes created by abilities after they are finished executing
+    public void ClearHitBox()
+    {
+        if(!attacksLocked && hitBox != null)
+        {
+            Destroy(hitBox);
+            //just in case it still references the destroyed component
+            hitBox = null;
         }
     }
 
@@ -445,6 +460,18 @@ public class PlayerController : MonoBehaviour {
             air = 1;
             timeUnderwater = 0;
             UIManager.Instance.UpdateAirMeter(air, isUnderwater);
+        }
+
+        if(collision.tag == "Enemy")
+        {
+            if(hitBox != null)
+            {
+                Enemy enemy = collision.GetComponent<Enemy>();
+                if(enemy != null && hitBox.IsTouching(enemy.hurtBox))
+                {
+                    enemy.TakeDamage(hitBoxDamage);
+                }
+            }
         }
     }
 
