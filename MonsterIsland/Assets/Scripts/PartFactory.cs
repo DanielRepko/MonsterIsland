@@ -129,7 +129,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Lion's Roar";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Let out a courageous roar to knock back enemies around you";
-                partInfo.abilityCooldown = 2;
+                partInfo.abilityCooldown = 1;
                 return partInfo;
             case Helper.MonsterName.Mummy:
                 partInfo.abilityName = "Acid Breath";
@@ -175,7 +175,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Ghost Walk";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Dissappear, then reappear further ahead in the direction you are facing";
-                partInfo.abilityCooldown = 3;
+                partInfo.abilityCooldown = 1;
                 return partInfo;
             case Helper.MonsterName.Wingus:
                 partInfo.abilityName = "Swoop da Woop";

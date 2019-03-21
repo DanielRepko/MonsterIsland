@@ -18,18 +18,19 @@ public class PlayerController : MonoBehaviour {
     //damage dealt by left arm attack
     public int leftAttackPower = 2;
 
-    [Header("Input Cooldowns", order = 0)]
+    [Header("Attack Cooldowns")]
+    public bool attacksLocked;
     //these fields are used to add delays between when the player can complete certain actions
-    private float rightAttackCooldown = 0.5f;
+    public float rightAttackCooldown = 0.5f;
     private float rightAttackTimer = 0;
 
-    private float leftAttackCooldown = 0.5f;
+    public float leftAttackCooldown = 0.5f;
     private float leftAttackTimer = 0;
 
-    private float headAbilityCooldown = 0;
+    public float headAbilityCooldown = 0;
     private float headAbilityTimer = 0;
 
-    private float torsoAbilityCooldown = 0;
+    public float torsoAbilityCooldown = 0;
     private float torsoAbilityTimer = 0;
 
     [Space(20, order = 1)]
@@ -365,51 +366,58 @@ public class PlayerController : MonoBehaviour {
     //Checks the player's input cooldowns
     public bool CheckCooldown(string inputCooldown)
     {
-        switch (inputCooldown)
+        if (!attacksLocked)
         {
-            case "rightAttack":
-                if(rightAttackTimer >= rightAttackCooldown)
-                {
-                    //Debug.Log(monster.rightArmPart.partInfo.abilityCooldown);
-                    rightAttackTimer = 0;
-                    return true;
-                }
-                else
-                {
+            switch (inputCooldown)
+            {
+                case "rightAttack":
+                    if (rightAttackTimer >= rightAttackCooldown)
+                    {
+                        //Debug.Log(monster.rightArmPart.partInfo.abilityCooldown);
+                        rightAttackTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case "leftAttack":
+                    if (leftAttackTimer >= leftAttackCooldown)
+                    {
+                        leftAttackTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case "headAbility":
+                    if (headAbilityTimer >= headAbilityCooldown)
+                    {
+                        headAbilityTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case "torsoAbility":
+                    if (torsoAbilityTimer >= torsoAbilityCooldown)
+                    {
+                        torsoAbilityTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                default:
                     return false;
-                }
-            case "leftAttack":
-                if (leftAttackTimer >= leftAttackCooldown)
-                {
-                    leftAttackTimer = 0;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            case "headAbility":
-                if (headAbilityTimer >= headAbilityCooldown)
-                {
-                    headAbilityTimer = 0;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            case "torsoAbility":
-                if (torsoAbilityTimer >= torsoAbilityCooldown)
-                {
-                    torsoAbilityTimer = 0;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            default:
-                return false;
+            }
+        }
+        else
+        {
+            return false;
         }
     }
 
