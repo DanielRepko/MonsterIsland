@@ -86,7 +86,9 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if (nestCheck != null && nestCheck.tag == "Nest" && Input.GetKeyDown(KeyCode.W) && !UIManager.Instance.nestCanvas.activeInHierarchy) {
+        if (nestCheck != null && nestCheck.tag == "Nest"
+            && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))
+            && !UIManager.Instance.nestCanvas.activeInHierarchy) {
             UIManager.Instance.ShowNestCanvas();
             if(nestCheck.gameObject.GetComponent<Nest>().isActive == false) {
                 nestCheck.gameObject.GetComponent<Nest>().Activate();
@@ -116,8 +118,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         //performing status checks on the player using whatever 
         //methods the delegate holds (may hold multiple method implementations)
         playerCheckDelegate();
@@ -126,73 +127,58 @@ public class PlayerController : MonoBehaviour {
         moveDelegate();
 
         //input rightArm attack
-        if (Input.GetMouseButtonDown(0))
-        {
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Primary))) {
             rightAttackDelegate(Helper.PartType.RightArm);
         }
 
         //input leftArm attack
-        if (Input.GetMouseButtonDown(1))
-        {
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Secondary))) {
             leftAttackDelegate(Helper.PartType.LeftArm);
         }
 
         //input torso ability
-        if (Input.GetKeyDown(KeyCode.F))
-        {
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Torso))) {
             torsoAbilityDelegate();
         }
 
         //input Head ability
-        if (Input.GetKeyDown(KeyCode.E))
-        {
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Head))) {
             headAbilityDelegate();
         }
 
         //checking to see whether the extra jump should be refreshed
-        if (PlayerIsOnGround())
-        {
+        if (PlayerIsOnGround()) {
             hasExtraJump = true;
         }
 
         //input jump
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Jump))) {
             jumpDelegate();
         }
     }
 
-    public void Move()
-    {
+    public void Move() {
         //input Left
-        if (Input.GetKey(KeyCode.D))
-        {
+        if (Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Right))) {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         //input Right
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
+        } else if (Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Left))) {
             rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
         //no input
-        }
-        else if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
-        {
+        } else if (!Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Left)) && !Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Right))) {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
 
     //makes the player jump
-    public void Jump()
-    {
-        if (PlayerIsOnGround())
-        {
+    public void Jump() {
+        if (PlayerIsOnGround()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            //rb.AddForce(new Vector2(rb.velocity.x, jumpForce * 10000));
         }
     }
 
     //right arm attack
-    public void RightAttack(string armType)
-    {
+    public void RightAttack(string armType) {
         Ray attackRay = new Ray();
         attackRay.origin = transform.position;
         attackRay.direction = new Vector3(facingDirection, 0, 0);
@@ -200,19 +186,16 @@ public class PlayerController : MonoBehaviour {
         Debug.DrawRay(attackRay.origin, new Vector3(attackRange * facingDirection, 0, 0), Color.green);
 
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
-        if(hit)
-        {
+        if(hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
-            if(enemy != null)
-            {
+            if(enemy != null) {
                 enemy.TakeDamage(rightAttackPower);
             }
         }
     }
 
     //left arm attack
-    public void LeftAttack(string armType)
-    {
+    public void LeftAttack(string armType) {
         Ray attackRay = new Ray();
         attackRay.origin = transform.position;
         attackRay.direction = new Vector3(facingDirection, 0, 0);
@@ -220,27 +203,21 @@ public class PlayerController : MonoBehaviour {
         Debug.DrawRay(attackRay.origin, new Vector3(attackRange * facingDirection, 0, 0), Color.green);
 
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
-        if (hit)
-        {
+        if (hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
-            if (enemy != null)
-            {
+            if (enemy != null) {
                 enemy.TakeDamage(leftAttackPower);
             }
         }
     }
 
     //the default ability method (default is to have no ability so it is meant to be empty)
-    public void AbilityDefault()
-    {
-
-    }
+    public void AbilityDefault() {}
 
     //a delegate used for the TakeDamage method
     //this and the collider parameter in the TakeDamage method are all so that
     //the Turtle ability can be used
-    public void TakeDamage(int damage, Collider collider)
-    {
+    public void TakeDamage(int damage, Collider collider) {
         health -= damage;
     }
 
@@ -252,8 +229,7 @@ public class PlayerController : MonoBehaviour {
     public string leftArm;
     public string legs;
 
-    public void InitializePlayer()
-    {
+    public void InitializePlayer() {
         //creating variables to initialize the player monster
         //this code is for testing purposes, final product will pull this information from the database scripts
         var headInfo = PartFactory.GetHeadPartInfo(head);
@@ -274,16 +250,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     //checks to see what direction the player should be facing based on the mouse position
-    public void UpdatePlayerDirection()
-    {
+    public void UpdatePlayerDirection() {
         var screenMiddle = Screen.width / 2;
-        if (Input.mousePosition.x > screenMiddle)
-        {
+        if (Input.mousePosition.x > screenMiddle) {
             facingDirection = 1;
             monster.ChangeDirection(facingDirection);
-        }
-        else if (Input.mousePosition.x < screenMiddle)
-        {
+        } else if (Input.mousePosition.x < screenMiddle) {
             facingDirection = -1;
             monster.ChangeDirection(facingDirection);
         }
