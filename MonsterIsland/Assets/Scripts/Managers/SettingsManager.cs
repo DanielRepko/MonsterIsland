@@ -27,6 +27,7 @@ public class SettingsManager : MonoBehaviour {
 
     [Header("Other Objects", order = 3)]
     public AudioMixer audioMixer;
+    public GameObject settingsPanel;
 
     // Use this for initialization
     void Start () { 
@@ -114,5 +115,6 @@ public class SettingsManager : MonoBehaviour {
         PlayerPrefs.SetInt("MusicVolume", currentMusicVolume);
         PlayerPrefs.SetInt("SoundVolume", currentSoundVolume);
         PlayerPrefs.Save();
+        settingsPanel.SetActive(false);
     }
 }
