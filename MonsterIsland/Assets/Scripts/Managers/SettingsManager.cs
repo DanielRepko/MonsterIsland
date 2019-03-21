@@ -34,6 +34,7 @@ public class SettingsManager : MonoBehaviour {
             Instance = this;
             SetMusic(8);
             SetSound(8);
+            CustomInputManager.Instance.RefreshGUI();
         } else if (Instance != this) {
             Destroy(gameObject);
         }

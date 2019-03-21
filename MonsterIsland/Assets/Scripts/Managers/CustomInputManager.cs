@@ -15,7 +15,7 @@ public class CustomInputManager : MonoBehaviour {
     private GameObject currentKey;
 
 	// Use this for initialization
-	void Start () {
+	void Awake() {
         if(Instance == null) {
             Instance = this;
             InputKeys.Add(InputType.Primary, KeyCode.Mouse0);
@@ -31,7 +31,7 @@ public class CustomInputManager : MonoBehaviour {
             Destroy(gameObject);
         }
 	}
-	
+
     public KeyCode GetInputKey(InputType inputType) {
         return InputKeys[inputType];
     }
@@ -65,13 +65,13 @@ public class CustomInputManager : MonoBehaviour {
 
             if (e.isKey || e.keyCode == KeyCode.Mouse0 || e.keyCode == KeyCode.Mouse1) {
 
-                if (e.keyCode == KeyCode.Mouse0) {
-                    currentKey.transform.GetChild(0).GetComponent<Text>().text = "Left Mouse";
-                } else if (e.keyCode == KeyCode.Mouse1) {
-                    currentKey.transform.GetChild(0).GetComponent<Text>().text = "Right Mouse";
-                } else {
-                    currentKey.transform.GetChild(0).GetComponent<Text>().text = e.keyCode.ToString();
+                //Before doing anything else, check if they pressed escape. If they did, refresh the gui and abort the function
+                if(e.keyCode == KeyCode.Escape) {
+                    RefreshGUI();
+                    return;
                 }
+
+                currentKey.transform.GetChild(0).GetComponent<Text>().text = e.keyCode.ToString();
 
                 switch (currentKey.name) {
                     case "PrimaryButton":
@@ -113,5 +113,17 @@ public class CustomInputManager : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void RefreshGUI() {
+        SettingsManager.Instance.primaryButtonText.GetComponent<Text>().text = InputKeys[InputType.Primary].ToString();
+        SettingsManager.Instance.secondaryButtonText.GetComponent<Text>().text = InputKeys[InputType.Secondary].ToString();
+        SettingsManager.Instance.leftButtonText.GetComponent<Text>().text = InputKeys[InputType.Left].ToString();
+        SettingsManager.Instance.rightButtonText.GetComponent<Text>().text = InputKeys[InputType.Right].ToString();
+        SettingsManager.Instance.jumpButtonText.GetComponent<Text>().text = InputKeys[InputType.Jump].ToString();
+        SettingsManager.Instance.interactButtonText.GetComponent<Text>().text = InputKeys[InputType.Interact].ToString();
+        SettingsManager.Instance.torsoButtonText.GetComponent<Text>().text = InputKeys[InputType.Torso].ToString();
+        SettingsManager.Instance.headButtonText.GetComponent<Text>().text = InputKeys[InputType.Head].ToString();
+        currentKey = null;
     }
 }
