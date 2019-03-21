@@ -344,7 +344,7 @@ public class AbilityFactory : MonoBehaviour {
         }
         else
         {
-            //player.hitBox = 
+            player.rb.velocity = new Vector2(player.rb.velocity.x, 5);
             player.animator.Play("TalonFlurryAnim");
         }
     }    

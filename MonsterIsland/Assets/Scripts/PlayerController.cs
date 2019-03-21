@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour {
     public float torsoAbilityCooldown = 0;
     private float torsoAbilityTimer = 0;
 
+    public float legAbilityCooldown = 0;
+    public float legAbilityTimer = 0;
+
     [Space(20, order = 1)]
 
 
@@ -314,7 +317,6 @@ public class PlayerController : MonoBehaviour {
 
         playerCheckDelegate += UpdatePlayerDirection;
         playerCheckDelegate += UpdatePlayerInputCooldowns;
-        playerCheckDelegate += ClearHitBox;
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
 
@@ -354,7 +356,12 @@ public class PlayerController : MonoBehaviour {
         {
             torsoAbilityCooldown = monster.torsoPart.partInfo.abilityCooldown;
         }
-        
+
+        if (monster.legPart.partInfo.abilityCooldown != 0)
+        {
+            legAbilityCooldown = monster.legPart.partInfo.abilityCooldown;
+        }
+
         if (monster.rightArmPart.partInfo.abilityCooldown != 0)
         {
             rightAttackCooldown = monster.rightArmPart.partInfo.abilityCooldown;
@@ -392,16 +399,11 @@ public class PlayerController : MonoBehaviour {
         {
             torsoAbilityTimer += Time.deltaTime;
         }
-    }
 
-    //used to remove any hit boxes created by abilities after they are finished executing
-    public void ClearHitBox()
-    {
-        if(!attacksLocked && hitBox != null)
+        //Leg Ability Cooldown
+        if (legAbilityTimer < legAbilityCooldown)
         {
-            Destroy(hitBox);
-            //just in case it still references the destroyed component
-            hitBox = null;
+            legAbilityTimer += Time.deltaTime;
         }
     }
 
@@ -447,6 +449,16 @@ public class PlayerController : MonoBehaviour {
                     if (torsoAbilityTimer >= torsoAbilityCooldown)
                     {
                         torsoAbilityTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case "legAbility":
+                    if (legAbilityTimer >= legAbilityCooldown)
+                    {
+                        legAbilityTimer = 0;
                         return true;
                     }
                     else
@@ -500,10 +512,6 @@ public class PlayerController : MonoBehaviour {
                     {
                         enemy.TakeDamage(hitBoxDamage);
                     }
-                }
-                if (collision == enemy.hurtBox)
-                {
-                    TakeDamage(1);
                 }
             }
         }
