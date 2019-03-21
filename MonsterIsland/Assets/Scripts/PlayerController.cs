@@ -281,6 +281,12 @@ public class PlayerController : MonoBehaviour {
         torsoAbilityDelegate = AbilityDefault;
         headAbilityDelegate = AbilityDefault;
 
+        //setting the cooldown timers so that the player can use the inputs as soon as the game loads
+        rightAttackTimer = rightAttackCooldown;
+        leftAttackTimer = leftAttackCooldown;
+        headAbilityTimer = headAbilityCooldown;
+        torsoAbilityTimer = torsoAbilityCooldown;
+
         playerCheckDelegate += UpdatePlayerDirection;
         playerCheckDelegate += UpdatePlayerInputCooldowns;
 
@@ -303,6 +309,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    //Updates the player's input cooldowns
     public void UpdatePlayerInputCooldowns()
     {
         //Right Attack Cooldown
@@ -327,6 +334,56 @@ public class PlayerController : MonoBehaviour {
         if (torsoAbilityTimer < torsoAbilityCooldown)
         {
             torsoAbilityTimer += Time.deltaTime;
+        }
+    }
+
+    //Checks the player's input cooldowns
+    public bool CheckCooldown(string inputCooldown)
+    {
+        switch (inputCooldown)
+        {
+            case "rightAttack":
+                if(rightAttackTimer >= rightAttackCooldown)
+                {
+                    rightAttackTimer = 0;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            case "leftAttack":
+                if (leftAttackTimer >= leftAttackCooldown)
+                {
+                    leftAttackTimer = 0;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            case "headAbility":
+                if (headAbilityTimer >= headAbilityCooldown)
+                {
+                    headAbilityTimer = 0;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            case "torsoAbility":
+                if (torsoAbilityTimer >= torsoAbilityCooldown)
+                {
+                    torsoAbilityTimer = 0;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            default:
+                return false;
         }
     }
 
