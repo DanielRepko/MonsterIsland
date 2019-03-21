@@ -142,25 +142,25 @@ public class PlayerController : MonoBehaviour {
         moveDelegate();
 
         //input rightArm attack
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && CheckCooldown("rightAttack"))
         {
             rightAttackDelegate(Helper.PartType.RightArm);
         }
 
         //input leftArm attack
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && CheckCooldown("leftAttack"))
         {
             leftAttackDelegate(Helper.PartType.LeftArm);
         }
 
         //input torso ability
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && CheckCooldown("torsoAbility"))
         {
             torsoAbilityDelegate();
         }
 
         //input Head ability
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && CheckCooldown("headAbility"))
         {
             headAbilityDelegate();
         }
