@@ -9,4 +9,5 @@ public abstract class MonsterPartInfo{
     public string abilityName;
     public string abilityType;
     public string abilityDesc;
+    public float abilityCooldown;
 }
