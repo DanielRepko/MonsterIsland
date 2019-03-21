@@ -39,7 +39,10 @@ public class PlayerController : MonoBehaviour {
     public int health;
     public int maxHealth;
     public Collider2D hurtBox;
-    public bool inHitStun = false;
+
+    private float hitStunCooldown = 0.4f;
+    private float hitStunTimer = 0;
+    private bool inHitStun = false;
 
     public Collider2D hitBox;
     public int hitBoxDamage;
@@ -144,7 +147,26 @@ public class PlayerController : MonoBehaviour {
         playerCheckDelegate();
 
         //moving the player
-        moveDelegate();
+        if (!inHitStun)
+        {
+            moveDelegate();
+        }
+
+        if(inHitStun && hitStunTimer == 0)
+        {
+            rb.velocity = new Vector2(-10 * facingDirection, 30);
+        }
+
+        //Handling hitstun
+        if(inHitStun && hitStunTimer < hitStunCooldown)
+        {
+            hitStunTimer += Time.deltaTime;
+        }
+        else if(inHitStun && hitStunTimer >= hitStunCooldown)
+        {
+            hitStunTimer = 0;
+            inHitStun = false;
+        }
 
         //input rightArm attack
         if (Input.GetMouseButtonDown(0) && CheckCooldown("rightAttack"))
@@ -261,6 +283,7 @@ public class PlayerController : MonoBehaviour {
         if (!inHitStun)
         {
             health -= damage;
+            inHitStun = true;
         }
     }
 
