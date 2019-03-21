@@ -20,16 +20,16 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Input Cooldowns", order = 0)]
     //these fields are used to add delays between when the player can complete certain actions
-    public float rightAttackDelay = 0.5f;
+    public float rightAttackCooldown = 0.5f;
     public float rightAttackTimer = 0;
 
-    public float leftAttackDelay = 0.5f;
+    public float leftAttackCooldown = 0.5f;
     public float leftAttackTimer = 0;
 
-    public float headAbilityDelay = 0;
+    public float headAbilityCooldown = 0;
     public float headAbilityTimer = 0;
 
-    public float torsoAbilityDelay = 0;
+    public float torsoAbilityCooldown = 0;
     public float torsoAbilityTimer = 0;
 
     [Space(20, order = 1)]
@@ -280,7 +280,9 @@ public class PlayerController : MonoBehaviour {
         leftAttackDelegate = LeftAttack;
         torsoAbilityDelegate = AbilityDefault;
         headAbilityDelegate = AbilityDefault;
-        playerCheckDelegate+=UpdatePlayerDirection;
+
+        playerCheckDelegate += UpdatePlayerDirection;
+        playerCheckDelegate += UpdatePlayerInputCooldowns;
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
     }
@@ -303,7 +305,29 @@ public class PlayerController : MonoBehaviour {
 
     public void UpdatePlayerInputCooldowns()
     {
+        //Right Attack Cooldown
+        if(rightAttackTimer < rightAttackCooldown)
+        {
+            rightAttackTimer += Time.deltaTime;
+        }
 
+        //Left Attack Cooldown
+        if (leftAttackTimer < leftAttackCooldown)
+        {
+            leftAttackTimer += Time.deltaTime;
+        }
+
+        //Head Ability Cooldown
+        if (headAbilityTimer < headAbilityCooldown)
+        {
+            headAbilityTimer += Time.deltaTime;
+        }
+
+        //Torso Ability Cooldown
+        if (torsoAbilityTimer < torsoAbilityCooldown)
+        {
+            torsoAbilityTimer += Time.deltaTime;
+        }
     }
 
     //PlayerIsOnGround function taken from SuperSoyBoy game from Ray Wenderlich
