@@ -65,8 +65,8 @@ public class CustomInputManager : MonoBehaviour {
 
             if (e.isKey || e.keyCode == KeyCode.Mouse0 || e.keyCode == KeyCode.Mouse1) {
 
-                //Before doing anything else, check if they pressed escape. If they did, refresh the gui and abort the function
-                if(e.keyCode == KeyCode.Escape) {
+                //Before doing anything else, check if that key is already assigned. If so, refresh the gui and abort the function
+                if(IsKeyAlreadySet(e.keyCode)) {
                     RefreshGUI();
                     return;
                 }
@@ -125,5 +125,14 @@ public class CustomInputManager : MonoBehaviour {
         SettingsManager.Instance.torsoButtonText.GetComponent<Text>().text = InputKeys[InputType.Torso].ToString();
         SettingsManager.Instance.headButtonText.GetComponent<Text>().text = InputKeys[InputType.Head].ToString();
         currentKey = null;
+    }
+
+    private bool IsKeyAlreadySet(KeyCode inputKeyCode) {
+        foreach(KeyCode existingKeyCode in InputKeys.Values) {
+            if(inputKeyCode == existingKeyCode) {
+                return true;
+            }
+        }
+        return false;
     }
 }
