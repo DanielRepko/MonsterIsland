@@ -55,6 +55,7 @@ public class CustomInputManager : MonoBehaviour {
     private void OnGUI() {
         if (currentKey != null) {
             Event e = Event.current;
+
             if(Input.GetKeyDown(KeyCode.Mouse0)) {
                 e.keyCode = KeyCode.Mouse0;
             }

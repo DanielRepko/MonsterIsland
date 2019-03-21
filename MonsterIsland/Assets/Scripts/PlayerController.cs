@@ -93,6 +93,10 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+        if(Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Pause))) {
+            UIManager.Instance.PauseGame();
+        }
+
         //Check if the player is underwater, and if they are, update the underwater timer
         if (isUnderwater) {
             timeUnderwater += Time.deltaTime;

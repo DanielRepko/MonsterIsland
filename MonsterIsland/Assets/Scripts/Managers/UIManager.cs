@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour {
     public GameObject airMeterBar;
     public GameObject nestCanvas;
     public GameObject loadingPanel;
+    public GameObject pauseCanvas;
+    public GameObject settingsPanel;
 
 	// Use this for initialization
 	void Awake() {
@@ -57,5 +59,19 @@ public class UIManager : MonoBehaviour {
 
     public void HideLoadingPanel() {
         loadingPanel.SetActive(false);
+    }
+
+    public void PauseGame() {
+        pauseCanvas.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void UnpauseGame() {
+        pauseCanvas.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void ShowSettings() {
+        settingsPanel.SetActive(true);
     }
 }
