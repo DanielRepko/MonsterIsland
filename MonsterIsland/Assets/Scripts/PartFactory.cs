@@ -117,26 +117,31 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Laser Eyes";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Fire a laser beam that deals damage over time";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Frog:
                 partInfo.abilityName = "Tongue Flick";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Quickly flick out your tongue to attack enemies from a medium range";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Lion:
                 partInfo.abilityName = "Lion's Roar";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Let out a courageous roar to knock back enemies around you";
+                partInfo.abilityCooldown = 2;
                 return partInfo;
             case Helper.MonsterName.Mummy:
                 partInfo.abilityName = "Acid Breath";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Cough up a cloud of acid that lingers in space and deals damage over time";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Dingus:
                 partInfo.abilityName = "Big Beak";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Use your beak to peck at enemies";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             default:
                 return partInfo;
@@ -176,6 +181,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Swoop da Woop";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Fly backwards into the air to escape any danger coming from the front, does not work underwater";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             default:
                 return partInfo;
@@ -199,6 +205,7 @@ public class PartFactory : MonoBehaviour {
                     partInfo.abilityName = "Drill Fist";
                     partInfo.abilityType = "Activate";
                     partInfo.abilityDesc = "Attack with a drill to deal multiple hits of damage. Movement and other actions are locked until the attack finishes";
+                    partInfo.abilityCooldown = 0;
                 }
                 return partInfo;
             case Helper.MonsterName.Sam:
@@ -217,6 +224,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Needle Shot";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Shoot bursts of three needles at enemies";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Vulture:
                 partInfo.abilityName = "Feather Fall";
@@ -228,6 +236,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Pincer Pistol";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Extend and shoot your arm out to attack enemies from a medium range";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Skeleton:
                 partInfo.abilityName = "Bone Toss";
@@ -261,6 +270,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Acrobat";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Jump in mid-air to perform a second jump.";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Kangaroo:
                 partInfo.abilityName = "Joey Jump";
@@ -272,6 +282,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Talon Flurry";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Press jump in mid-air to attack with taloned feet";
+                partInfo.abilityCooldown = 0;
                 return partInfo;
             default:
                 return partInfo;
