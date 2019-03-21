@@ -336,7 +336,17 @@ public class AbilityFactory : MonoBehaviour {
     //Leg Ability (Activate): Allows the player to attack with taloned feet
     public static void Ability_TalonFlurry()
     {
+        PlayerController player = PlayerController.Instance;
 
+        if (player.PlayerIsOnGround())
+        {
+            player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
+        }
+        else
+        {
+            //player.hitBox = 
+            player.animator.Play("TalonFlurryAnim");
+        }
     }    
 
 

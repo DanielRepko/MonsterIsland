@@ -491,12 +491,19 @@ public class PlayerController : MonoBehaviour {
 
         if(collision.tag == "Enemy")
         {
-            if(hitBox != null)
+            Enemy enemy = collision.GetComponent<Enemy>();
+            if (enemy != null)
             {
-                Enemy enemy = collision.GetComponent<Enemy>();
-                if(enemy != null && hitBox.IsTouching(enemy.hurtBox))
+                if (hitBox != null)
                 {
-                    enemy.TakeDamage(hitBoxDamage);
+                    if (hitBox.IsTouching(enemy.hurtBox))
+                    {
+                        enemy.TakeDamage(hitBoxDamage);
+                    }
+                }
+                if (collision == enemy.hurtBox)
+                {
+                    TakeDamage(1);
                 }
             }
         }
@@ -521,18 +528,6 @@ public class PlayerController : MonoBehaviour {
     private void OnTriggerStay2D(Collider2D collision) {
         if(collision.tag == "Nest") {
             nestCheck = collision;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Enemy")
-        {
-            Enemy enemy = collision.collider.GetComponent<Enemy>();
-            if (enemy != null && collision.collider == enemy.hurtBox)
-            {
-                TakeDamage(1);
-            }                
         }
     }
 }

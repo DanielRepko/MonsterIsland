@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 50355783440314154}
   m_Layer: 11
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -759,7 +759,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1551540030444826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.745102, y: -1, z: 0}
+  m_LocalPosition: {x: 7.94, y: -0.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4745770589146790}
@@ -963,8 +963,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2}
-  m_Size: {x: 1.59, y: 3.16}
+  m_Offset: {x: 0.012268186, y: -0.22625351}
+  m_Size: {x: 1.5654635, y: 3.1634622}
   m_Direction: 0
 --- !u!114 &114347700014837342
 MonoBehaviour:
@@ -994,6 +994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 114586799637203630}
+  hurtBox: {fileID: 68694630284831884}
 --- !u!114 &114586799637203630
 MonoBehaviour:
   m_ObjectHideFlags: 1
