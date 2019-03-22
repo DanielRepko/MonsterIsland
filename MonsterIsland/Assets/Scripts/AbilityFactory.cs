@@ -106,7 +106,12 @@ public class AbilityFactory : MonoBehaviour {
     //Head Ability (Activate): Allows the player to attack with a tongue flick
     public static void Ability_TongueFlick()
     {
+        PlayerController player = PlayerController.Instance;
+        GameObject tongueLoad = Resources.Load<GameObject>("Prefabs/Projectiles/Frog_Tongue");
 
+        Vector2 tonguePosition = new Vector2(player.monster.headPart.transform.position.x + 0.3f * player.facingDirection, player.monster.headPart.transform.position.y + 0.05f);
+        tongueLoad.transform.localScale *= player.facingDirection;
+        GameObject tongue = Instantiate(tongueLoad, tonguePosition, Quaternion.identity);
     }
 
     //Head Ability (Activate): Allows the player to knock back enemies with 
@@ -340,13 +345,16 @@ public class AbilityFactory : MonoBehaviour {
         {
             player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
         }
-        else
+        else if(!player.PlayerIsOnGround() && player.hasExtraJump)
         {
+            player.hasExtraJump = false;
+
             //setting the size and offset of the hitbox
             player.hitBox.offset = new Vector2(0.2874344f, -1.349547f);
             player.hitBox.size = new Vector2(1.574869f, 1.591879f);
 
             player.rb.velocity = new Vector2(player.rb.velocity.x, 5);
+            
             player.animator.Play("TalonFlurryAnim");
         }
     }    
