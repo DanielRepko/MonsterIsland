@@ -4258,7 +4258,7 @@ MonoBehaviour:
   monster: {fileID: 114670642758465856}
   facingDirection: 0
   head: Lion
-  torso: Knight
+  torso: Turtle
   rightArm: Robot
   leftArm: Mitch
   legs: Hingus
