@@ -16,19 +16,21 @@ public class TransitionHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(hasContact == true && Input.GetKeyDown(KeyCode.W)) {
-            if(levelName == LevelName.Skyland && fromHub) {
-                UIManager.Instance.ShowLoadingPanel();
-                PlayerController.Instance.transform.position = new Vector2(-0.5f, -1f);
-                SceneManager.LoadScene("Skyland");
-            } else if (levelName == LevelName.Skyland && !fromHub) {
-                UIManager.Instance.ShowLoadingPanel();
-                PlayerController.Instance.transform.position = new Vector2(70.5f, 13f);
-                SceneManager.LoadScene("Hub");
-            } else if (levelName == LevelName.Castle && fromHub) {
-                UIManager.Instance.ShowLoadingPanel();
-                PlayerController.Instance.transform.position = new Vector2(-20f, 1f);
-                SceneManager.LoadScene("Castle");
+        if (Time.deltaTime > 0) {
+            if (hasContact == true && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))) {
+                if (levelName == LevelName.Skyland && fromHub) {
+                    UIManager.Instance.ShowLoadingPanel();
+                    PlayerController.Instance.transform.position = new Vector2(-0.5f, -1f);
+                    SceneManager.LoadScene("Skyland");
+                } else if (levelName == LevelName.Skyland && !fromHub) {
+                    UIManager.Instance.ShowLoadingPanel();
+                    PlayerController.Instance.transform.position = new Vector2(70.5f, 13f);
+                    SceneManager.LoadScene("Hub");
+                } else if (levelName == LevelName.Castle && fromHub) {
+                    UIManager.Instance.ShowLoadingPanel();
+                    PlayerController.Instance.transform.position = new Vector2(-20f, 1f);
+                    SceneManager.LoadScene("Castle");
+                }
             }
         }
 	}
