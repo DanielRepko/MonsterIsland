@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
     private float hitStunTimer = 0;
     private bool inHitStun = false;
 
-    public Collider2D hitBox;
+    public BoxCollider2D hitBox;
     public int hitBoxDamage;
 
     public bool hasExtraJump = true;

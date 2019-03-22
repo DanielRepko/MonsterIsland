@@ -342,6 +342,10 @@ public class AbilityFactory : MonoBehaviour {
         }
         else
         {
+            //setting the size and offset of the hitbox
+            player.hitBox.offset = new Vector2(0.2874344f, -1.349547f);
+            player.hitBox.size = new Vector2(1.574869f, 1.591879f);
+
             player.rb.velocity = new Vector2(player.rb.velocity.x, 5);
             player.animator.Play("TalonFlurryAnim");
         }
