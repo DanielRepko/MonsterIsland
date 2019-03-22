@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour {
     public float torsoAbilityCooldown = 0;
     private float torsoAbilityTimer = 0;
 
+    public float legAbilityCooldown = 0;
+    public float legAbilityTimer = 0;
+
     [Space(20, order = 1)]
 
 
@@ -296,7 +299,6 @@ public class PlayerController : MonoBehaviour {
 
         playerCheckDelegate += UpdatePlayerDirection;
         playerCheckDelegate += UpdatePlayerInputCooldowns;
-        playerCheckDelegate += ClearHitBox;
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
 
@@ -332,7 +334,12 @@ public class PlayerController : MonoBehaviour {
         {
             torsoAbilityCooldown = monster.torsoPart.partInfo.abilityCooldown;
         }
-        
+
+        if (monster.legPart.partInfo.abilityCooldown != 0)
+        {
+            legAbilityCooldown = monster.legPart.partInfo.abilityCooldown;
+        }
+
         if (monster.rightArmPart.partInfo.abilityCooldown != 0)
         {
             rightAttackCooldown = monster.rightArmPart.partInfo.abilityCooldown;
@@ -370,16 +377,11 @@ public class PlayerController : MonoBehaviour {
         {
             torsoAbilityTimer += Time.deltaTime;
         }
-    }
 
-    //used to remove any hit boxes created by abilities after they are finished executing
-    public void ClearHitBox()
-    {
-        if(!attacksLocked && hitBox != null)
+        //Leg Ability Cooldown
+        if (legAbilityTimer < legAbilityCooldown)
         {
-            Destroy(hitBox);
-            //just in case it still references the destroyed component
-            hitBox = null;
+            legAbilityTimer += Time.deltaTime;
         }
     }
 
@@ -431,6 +433,16 @@ public class PlayerController : MonoBehaviour {
                     {
                         return false;
                     }
+                case "legAbility":
+                    if (legAbilityTimer >= legAbilityCooldown)
+                    {
+                        legAbilityTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 default:
                     return false;
             }
@@ -469,12 +481,15 @@ public class PlayerController : MonoBehaviour {
 
         if(collision.tag == "Enemy")
         {
-            if(hitBox != null)
+            Enemy enemy = collision.GetComponent<Enemy>();
+            if (enemy != null)
             {
-                Enemy enemy = collision.GetComponent<Enemy>();
-                if(enemy != null && hitBox.IsTouching(enemy.hurtBox))
+                if (hitBox != null)
                 {
-                    enemy.TakeDamage(hitBoxDamage);
+                    if (hitBox.IsTouching(enemy.hurtBox))
+                    {
+                        enemy.TakeDamage(hitBoxDamage);
+                    }
                 }
             }
         }
@@ -499,18 +514,6 @@ public class PlayerController : MonoBehaviour {
     private void OnTriggerStay2D(Collider2D collision) {
         if(collision.tag == "Nest") {
             nestCheck = collision;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Enemy")
-        {
-            Enemy enemy = collision.collider.GetComponent<Enemy>();
-            if (enemy != null && collision.collider == enemy.hurtBox)
-            {
-                TakeDamage(1);
-            }                
         }
     }
 }

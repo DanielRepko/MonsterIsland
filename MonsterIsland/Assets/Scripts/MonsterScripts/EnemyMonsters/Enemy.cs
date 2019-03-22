@@ -7,11 +7,15 @@ public class Enemy : MonoBehaviour {
 
     float health = 10;
     public Text text;
-    public EdgeCollider2D hurtBox;
+    public Collider2D hurtBox;
+    private float hitStunCooldown = 0.4f;
+    private float hitStunTimer = 0;
+    private bool inHitStun = false;
+    private Rigidbody2D rb;
 
-	// Use this for initialization
-	void Start () {
-		
+    // Use this for initialization
+    void Start () {
+        rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -22,6 +26,21 @@ public class Enemy : MonoBehaviour {
     void FixedUpdate()
     {
         text.text = health.ToString();
+
+        //Handling Hitstun
+        if (inHitStun && hitStunTimer == 0)
+        {
+            rb.velocity = new Vector2(-10 * transform.localScale.x, 30);
+        }
+        if (inHitStun && hitStunTimer < hitStunCooldown)
+        {
+            hitStunTimer += Time.deltaTime;
+        }
+        else if (inHitStun && hitStunTimer >= hitStunCooldown)
+        {
+            hitStunTimer = 0;
+            inHitStun = false;
+        }
         //Ray attack = new Ray();
         //attack.origin = transform.position;
         //attack.direction = new Vector2(-1, 0);
@@ -42,5 +61,41 @@ public class Enemy : MonoBehaviour {
     public void TakeDamage(int damage)
     {
         health -= damage;
+        inHitStun = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision == PlayerController.Instance.hitBox)
+        {
+            
+            TakeDamage(PlayerController.Instance.hitBoxDamage);
+
+        }
+        else if (collision == PlayerController.Instance.hurtBox)
+        {
+            if (!inHitStun)
+            {
+                PlayerController.Instance.TakeDamage(1);
+            }
+        }
+        
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision == PlayerController.Instance.hitBox)
+        {
+
+            TakeDamage(PlayerController.Instance.hitBoxDamage);
+
+        }
+        else if (collision == PlayerController.Instance.hurtBox)
+        {
+            if (!inHitStun)
+            {
+                PlayerController.Instance.TakeDamage(1);
+            }
+        }
     }
 }
