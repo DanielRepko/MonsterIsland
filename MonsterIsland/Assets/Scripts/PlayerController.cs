@@ -478,21 +478,6 @@ public class PlayerController : MonoBehaviour {
             timeUnderwater = 0;
             UIManager.Instance.UpdateAirMeter(air, isUnderwater);
         }
-
-        if(collision.tag == "Enemy")
-        {
-            Enemy enemy = collision.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                if (hitBox != null)
-                {
-                    if (hitBox.IsTouching(enemy.hurtBox))
-                    {
-                        enemy.TakeDamage(hitBoxDamage);
-                    }
-                }
-            }
-        }
     }
 
     //Runs when the object exits the hitbox of another object

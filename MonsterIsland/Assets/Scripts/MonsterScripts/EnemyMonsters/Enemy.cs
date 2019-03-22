@@ -81,4 +81,22 @@ public class Enemy : MonoBehaviour {
         }
         
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision == PlayerController.Instance.hitBox)
+        {
+
+            TakeDamage(PlayerController.Instance.hitBoxDamage);
+
+        }
+        else if (collision == PlayerController.Instance.hurtBox)
+        {
+            if (!inHitStun)
+            {
+                PlayerController.Instance.TakeDamage(1);
+            }
+        }
+
+    }
 }
