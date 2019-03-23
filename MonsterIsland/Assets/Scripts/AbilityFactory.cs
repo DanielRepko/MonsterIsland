@@ -106,7 +106,17 @@ public class AbilityFactory : MonoBehaviour {
     //Head Ability (Activate): Allows the player to attack with a tongue flick
     public static void Ability_TongueFlick()
     {
+        PlayerController player = PlayerController.Instance;
+        GameObject tongueLoad = Resources.Load<GameObject>("Prefabs/Projectiles/Frog_Tongue");
 
+        Vector2 tonguePosition = new Vector2(player.monster.headPart.transform.position.x + 0.3f * player.facingDirection, player.monster.headPart.transform.position.y + 0.05f);
+        //Debug.Log(tongueLoad.transform.localScale);
+        //tongueLoad.transform.localScale *= player.facingDirection;
+        //Debug.Log(tongueLoad.transform.localScale);
+        GameObject tongue = Instantiate(tongueLoad, tonguePosition, Quaternion.identity);
+        tongue.transform.localScale *= player.facingDirection;
+
+        tongue.GetComponent<Animator>().Play("TongueFlickAnim");
     }
 
     //Head Ability (Activate): Allows the player to knock back enemies with 
@@ -162,10 +172,8 @@ public class AbilityFactory : MonoBehaviour {
         //creating the collider to act as the shell
         BoxCollider2D shellCollider = PlayerController.Instance.gameObject.AddComponent<BoxCollider2D>();
         shellCollider.isTrigger = true;
-        shellCollider.offset = new Vector2(0.78f, -0.2326667f);
+        shellCollider.offset = new Vector2(-0.78f, -0.2326667f);
         shellCollider.size = new Vector2(0.2f, 3.214667f);
-
-        PlayerController.Instance.playerCheckDelegate += HardShell;
     }
 
     //Torso Ability (Activate): Allows the player to teleport short distances
@@ -338,14 +346,25 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = PlayerController.Instance;
 
-        if (player.PlayerIsOnGround())
+        if (!player.isUnderwater)
         {
-            player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
-        }
-        else
-        {
-            player.rb.velocity = new Vector2(player.rb.velocity.x, 5);
-            player.animator.Play("TalonFlurryAnim");
+            if (player.PlayerIsOnGround())
+            {
+                player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
+            }
+            else if (!player.PlayerIsOnGround() && player.hasExtraJump)
+            {
+                player.hasExtraJump = false;
+
+                //setting the size and offset of the hitbox
+                player.hitBox.offset = new Vector2(0.2874344f, -1.349547f);
+                player.hitBox.size = new Vector2(1.574869f, 1.591879f);
+
+                player.rb.velocity = new Vector2(player.rb.velocity.x, 5);
+
+                player.animator.Play("TalonFlurryAnim");
+                
+            }
         }
     }    
 
@@ -396,23 +415,6 @@ public class AbilityFactory : MonoBehaviour {
         {
             player.rb.velocity = new Vector2(player.rb.velocity.x, 40);
             enemyHit.TakeDamage(2);
-        }
-    }
-
-    public static void HardShell()
-    {
-        BoxCollider2D shellCollider = PlayerController.Instance.GetComponent<BoxCollider2D>();
-        if (shellCollider)
-        {
-            //checking the player direction to make sure the shell is always on the back of the player
-            if (PlayerController.Instance.facingDirection == 1)
-            {
-                shellCollider.offset = new Vector2(-0.78f, shellCollider.offset.y);
-            }
-            else if(PlayerController.Instance.facingDirection == -1)
-            {
-                shellCollider.offset = new Vector2(0.78f, shellCollider.offset.y);
-            }
         }
     }
 }

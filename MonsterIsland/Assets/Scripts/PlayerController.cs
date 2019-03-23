@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
     private float hitStunTimer = 0;
     private bool inHitStun = false;
 
-    public Collider2D hitBox;
+    public BoxCollider2D hitBox;
     public int hitBoxDamage;
 
     public bool hasExtraJump = true;
@@ -455,9 +455,9 @@ public class PlayerController : MonoBehaviour {
 
     //PlayerIsOnGround function taken from SuperSoyBoy game from Ray Wenderlich
     public bool PlayerIsOnGround() {
-        bool groundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - height), -Vector2.down, rayCastLengthCheck);
-        bool groundCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck);
-        bool groundCheck3 = Physics2D.Raycast(new Vector2(transform.position.x - (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck);
+        bool groundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - height), -Vector2.down, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Terrain"));
+        bool groundCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Terrain"));
+        bool groundCheck3 = Physics2D.Raycast(new Vector2(transform.position.x - (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Terrain"));
         if (groundCheck1 || groundCheck2 || groundCheck3) {
             return true;
         } else {
