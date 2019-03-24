@@ -8,4 +8,5 @@ public class GameProgression {
     public CollectedLegendaryParts collectedLegendaryParts;
     public DefeatedBosses defeatedBosses;
     public OpenedChests openedChests;
+    public NestInfo nestInfo;
 }
