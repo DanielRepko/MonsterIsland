@@ -55,7 +55,7 @@ public class ArmPart : MonoBehaviour {
                         PlayerController.Instance.rightAttackDelegate = partAbility;
                     } else if(partType == "LeftArm")
                     {
-                        PlayerController.Instance.rightAttackDelegate = partAbility;
+                        PlayerController.Instance.leftAttackDelegate = partAbility;
                     }
                 }//if the value is anything else, then a typo must have occured when creating the ability info
                 else
