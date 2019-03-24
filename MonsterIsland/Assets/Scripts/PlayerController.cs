@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour {
     private float hitStunCooldown = 0.4f;
     private float hitStunTimer = 0;
     private bool inHitStun = false;
+    public bool movementLocked = false;
 
     public BoxCollider2D hitBox;
     public int hitBoxDamage;
@@ -157,7 +158,7 @@ public class PlayerController : MonoBehaviour {
         playerCheckDelegate();
 
         //moving the player
-        if (!inHitStun)
+        if (!inHitStun && !movementLocked)
         {
             moveDelegate();
         }
