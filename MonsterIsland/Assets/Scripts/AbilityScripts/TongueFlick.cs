@@ -7,6 +7,8 @@ public class TongueFlick : MonoBehaviour {
     public int damage = 1;
     public bool destroy;
 
+    public string target;
+
     private void FixedUpdate()
     {
         transform.position = new Vector2(PlayerController.Instance.monster.headPart.transform.position.x + 0.3f * PlayerController.Instance.facingDirection, PlayerController.Instance.monster.headPart.transform.position.y + 0.05f); ;
@@ -19,13 +21,27 @@ public class TongueFlick : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if (target == "Enemy")
         {
-            Enemy enemy = collision.GetComponent<Enemy>();
-            if(enemy != null && collision == enemy.hurtBox)
+            if (collision.tag == "Enemy")
             {
-                enemy.TakeDamage(damage);
-                Destroy(gameObject);
+                Enemy enemy = collision.GetComponent<Enemy>();
+                if (enemy != null && collision == enemy.hurtBox)
+                {
+                    enemy.TakeDamage(damage);
+                    Destroy(gameObject);
+                }
+            }
+        }
+        else if(target == "Player")
+        {
+            if (collision.tag == "Player")
+            {
+                if (collision == PlayerController.Instance.hurtBox)
+                {
+                    PlayerController.Instance.TakeDamage(damage);
+                    Destroy(gameObject);
+                }
             }
         }
     }
