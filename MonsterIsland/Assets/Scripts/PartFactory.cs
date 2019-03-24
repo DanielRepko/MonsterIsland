@@ -116,7 +116,7 @@ public class PartFactory : MonoBehaviour {
             case Helper.MonsterName.Robot:
                 partInfo.abilityName = "Laser Eyes";
                 partInfo.abilityType = "Activate";
-                partInfo.abilityDesc = "Fire a laser beam that deals damage over time";
+                partInfo.abilityDesc = "Fire a single laser beam from your eyes";
                 partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Frog:
@@ -223,7 +223,7 @@ public class PartFactory : MonoBehaviour {
             case Helper.MonsterName.Cactus:
                 partInfo.abilityName = "Needle Shot";
                 partInfo.abilityType = "Activate";
-                partInfo.abilityDesc = "Shoot bursts of three needles at enemies";
+                partInfo.abilityDesc = "Shoot fire a spread of three needles";
                 partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Vulture:
