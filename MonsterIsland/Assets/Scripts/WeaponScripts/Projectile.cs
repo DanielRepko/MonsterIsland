@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour {
 
     public int damage;
     public int speed;
+    public string target;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,13 +14,27 @@ public class Projectile : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        else if(collision.tag == "Enemy")
+        if(target == "Enemy")
         {
-            Enemy enemy = collision.GetComponent<Enemy>();
-            if(enemy != null && collision == enemy.hurtBox)
+            if (collision.tag == "Enemy")
             {
-                enemy.TakeDamage(damage);
-                Destroy(gameObject);
+                Enemy enemy = collision.GetComponent<Enemy>();
+                if (enemy != null && collision == enemy.hurtBox)
+                {
+                    enemy.TakeDamage(damage);
+                    Destroy(gameObject);
+                }
+            }
+        }
+        else if (target == "Player")
+        {
+            if (collision.tag == "Player")
+            {
+                if (collision == PlayerController.Instance.hurtBox)
+                {
+                    PlayerController.Instance.TakeDamage(damage);
+                    Destroy(gameObject);
+                }
             }
         }
     }

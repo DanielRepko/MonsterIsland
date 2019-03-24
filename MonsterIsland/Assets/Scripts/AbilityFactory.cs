@@ -105,6 +105,7 @@ public class AbilityFactory : MonoBehaviour {
 
         Vector2 laserPosition = new Vector2(player.monster.headPart.transform.position.x + 0.3f * player.facingDirection, player.monster.headPart.transform.position.y + 0.3f);
         GameObject laser = Instantiate(laserLoad, laserPosition, Quaternion.identity);
+        laser.GetComponent<Projectile>().target = "Enemy";
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(laser.GetComponent<Projectile>().speed * player.facingDirection, 0);
     }
 
