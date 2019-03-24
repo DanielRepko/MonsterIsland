@@ -14,7 +14,8 @@ public class LocalNestManager : MonoBehaviour {
 	void Start () {
         //Since each LocalNestManager is unique to their scene, the instance should update depending on the scene
         Instance = this;
-	}
+        Debug.Log("LocalNestManager instance set");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -31,6 +32,10 @@ public class LocalNestManager : MonoBehaviour {
         if (bossNest != null) {
             bossNest.GetComponent<Nest>().isActive = bossStatus;
         }
+    }
+
+    public void LoadNests() {
+        GlobalNestManager.instance.LoadNests(startNest.GetComponent<Nest>().levelName.ToString());
     }
 
     public void ActivateLocalNest(LevelName levelName, LevelPosition levelPosition) {

@@ -16,11 +16,13 @@ public class GlobalNestManager : MonoBehaviour {
         { false, false, false }
     };
 
+    private GameObject localNestManager;
+
 	// Use this for initialization
 	void Start () {
         if(instance == null) {
             instance = this;
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.sceneLoaded += FindLocalNest;
         } else if (instance != this) {
             Destroy(gameObject);
         }
@@ -32,31 +34,39 @@ public class GlobalNestManager : MonoBehaviour {
 		
 	}
     
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        if(LocalNestManager.Instance != null) {
-            switch(scene.name) {
+    public void LoadNests(string scene) {
+        Debug.Log("LoadNests Started");
+        if(localNestManager != null) {
+            switch(scene) {
                 case "Hub":
-                    LocalNestManager.Instance.LoadLocalNests(gameNests[0, 0], false, false);
+                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[0, 0], false, false);
                     break;
                 case "Plains":
-                    LocalNestManager.Instance.LoadLocalNests(gameNests[1, 0], gameNests[1, 1], gameNests[1, 2]);
+                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[1, 0], gameNests[1, 1], gameNests[1, 2]);
                     break;
                 case "Desert":
-                    LocalNestManager.Instance.LoadLocalNests(gameNests[2, 0], gameNests[2, 1], gameNests[2, 2]);
+                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[2, 0], gameNests[2, 1], gameNests[2, 2]);
                     break;
                 case "Underwater":
-                    LocalNestManager.Instance.LoadLocalNests(gameNests[3, 0], gameNests[3, 1], gameNests[3, 2]);
+                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[3, 0], gameNests[3, 1], gameNests[3, 2]);
                     break;
                 case "Jungle":
-                    LocalNestManager.Instance.LoadLocalNests(gameNests[4, 0], gameNests[4, 1], gameNests[4, 2]);
+                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[4, 0], gameNests[4, 1], gameNests[4, 2]);
                     break;
                 case "Skyland":
-                    LocalNestManager.Instance.LoadLocalNests(gameNests[5, 0], gameNests[5, 1], gameNests[5, 2]);
+                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[5, 0], gameNests[5, 1], gameNests[5, 2]);
                     break;
                 case "Castle":
-                    LocalNestManager.Instance.LoadLocalNests(gameNests[6, 0], gameNests[6, 1], gameNests[6, 2]);
+                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[6, 0], gameNests[6, 1], gameNests[6, 2]);
                     break;
             }
+        }
+    }
+
+    private void FindLocalNest(Scene scene, LoadSceneMode mode) {
+        localNestManager = GameObject.Find("LocalNestManager");
+        if(localNestManager != null) {
+            localNestManager.GetComponent<LocalNestManager>().LoadNests();
         }
     }
 
