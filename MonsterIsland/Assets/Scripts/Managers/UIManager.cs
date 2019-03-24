@@ -78,4 +78,12 @@ public class UIManager : MonoBehaviour {
     public void ShowSettings() {
         settingsPanel.SetActive(true);
     }
+
+    public void DisableQuickTravelMenu() {
+        quickTravelMenu.SetActive(false);
+    }
+
+    public void EnableQuickTravelMenu() {
+        quickTravelMenu.SetActive(true);
+    }
 }
