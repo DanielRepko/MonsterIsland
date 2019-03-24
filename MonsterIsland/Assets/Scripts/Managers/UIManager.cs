@@ -12,6 +12,10 @@ public class UIManager : MonoBehaviour {
     public GameObject loadingPanel;
     public GameObject pauseCanvas;
     public GameObject settingsPanel;
+    public GameObject quickTravelMenu;
+    public GameObject startTravelButton;
+    public GameObject shopTravelButton;
+    public GameObject bossTravelButton;
 
 	// Use this for initialization
 	void Awake() {
