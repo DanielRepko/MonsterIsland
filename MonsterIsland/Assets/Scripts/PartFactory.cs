@@ -123,7 +123,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Tongue Flick";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Quickly flick out your tongue to attack enemies from a medium range";
-                partInfo.abilityCooldown = 0;
+                partInfo.abilityCooldown = 0.5f;
                 return partInfo;
             case Helper.MonsterName.Lion:
                 partInfo.abilityName = "Lion's Roar";
