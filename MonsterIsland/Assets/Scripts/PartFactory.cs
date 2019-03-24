@@ -117,7 +117,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Laser Eyes";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Fire a single laser beam from your eyes";
-                partInfo.abilityCooldown = 0;
+                partInfo.abilityCooldown = 1;
                 return partInfo;
             case Helper.MonsterName.Frog:
                 partInfo.abilityName = "Tongue Flick";
