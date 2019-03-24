@@ -115,6 +115,7 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = PlayerController.Instance;
         GameObject tongueLoad = Resources.Load<GameObject>("Prefabs/Projectiles/Frog_Tongue");
+        tongueLoad.GetComponent<TongueFlick>().target = "Enemy";
 
         Vector2 tonguePosition = new Vector2(player.monster.headPart.transform.position.x + 0.3f * player.facingDirection, player.monster.headPart.transform.position.y + 0.05f);
         //Debug.Log(tongueLoad.transform.localScale);
