@@ -98,9 +98,14 @@ public class AbilityFactory : MonoBehaviour {
         }
     }
     //Head Ability (Activate): Allows the player to shoot a laser beam
-        public static void Ability_LaserEyes()
+    public static void Ability_LaserEyes()
     {
+        PlayerController player = PlayerController.Instance;
+        GameObject laserLoad = Resources.Load<GameObject>("Prefabs/Projectiles/Robot_Laser");
 
+        Vector2 laserPosition = new Vector2(player.monster.headPart.transform.position.x + 0.3f * player.facingDirection, player.monster.headPart.transform.position.y + 0.3f);
+        GameObject laser = Instantiate(laserLoad, laserPosition, Quaternion.identity);
+        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(laser.GetComponent<Projectile>().speed * player.facingDirection, 0);
     }
 
     //Head Ability (Activate): Allows the player to attack with a tongue flick

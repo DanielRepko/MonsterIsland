@@ -4241,6 +4241,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   hurtBox: {fileID: 68947545826544262}
+  movementLocked: 0
   hitBox: {fileID: 61265560518600250}
   hitBoxDamage: 0
   hitCounter: 0
