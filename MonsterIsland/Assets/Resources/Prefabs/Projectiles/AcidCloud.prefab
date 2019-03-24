@@ -80,8 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   lifeTime: 2
-  timeTillDamage: 0.3
-  target: 
+  timeTillDamage: 0.8
+  target: Enemy
 --- !u!212 &212245110255829670
 SpriteRenderer:
   m_ObjectHideFlags: 1

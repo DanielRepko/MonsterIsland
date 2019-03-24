@@ -6,10 +6,10 @@ public class AcidBreath : MonoBehaviour {
 
     public int damage = 1;
 
-    public float lifeTime = 2;
+    public float lifeTime = 3.5f;
     private float lifeTimer = 0;
 
-    public float timeTillDamage = 0.3f;
+    public float timeTillDamage = 0.6f;
     private float damageTimer = 0;
     private bool readyToDamage = true;
 
@@ -29,7 +29,7 @@ public class AcidBreath : MonoBehaviour {
 
         if (lifeTimer < lifeTime)
         {
-            lifeTime += Time.deltaTime;
+            lifeTimer += Time.deltaTime;
         }
         else if (lifeTimer >= lifeTime)
         {

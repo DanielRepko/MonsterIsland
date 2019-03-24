@@ -138,7 +138,13 @@ public class AbilityFactory : MonoBehaviour {
     //that lingers for several seconds and deals damage over time
     public static void Ability_AcidBreath()
     {
+        PlayerController player = PlayerController.Instance;
+        GameObject acidCloudLoad = Resources.Load<GameObject>("Prefabs/Projectiles/AcidCloud");
+        acidCloudLoad.GetComponent<AcidBreath>().target = "Enemy";
 
+        Vector2 acidCloudPosition = new Vector2(player.transform.position.x + 2 * player.facingDirection, player.transform.position.y);
+
+        GameObject acidCloud = Instantiate(acidCloudLoad, acidCloudPosition, Quaternion.identity);
     }
 
     //Head Ability (Activate): Allows the player to attack with large beak
