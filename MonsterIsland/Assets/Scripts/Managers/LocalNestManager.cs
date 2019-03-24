@@ -23,8 +23,14 @@ public class LocalNestManager : MonoBehaviour {
 
     public void LoadLocalNests(bool startStatus, bool shopStatus, bool bossStatus) {
         startNest.GetComponent<Nest>().isActive = startStatus;
-        shopNest.GetComponent<Nest>().isActive = shopStatus;
-        bossNest.GetComponent<Nest>().isActive = bossStatus;
+
+        if (shopNest != null) {
+            shopNest.GetComponent<Nest>().isActive = shopStatus;
+        }
+
+        if (bossNest != null) {
+            bossNest.GetComponent<Nest>().isActive = bossStatus;
+        }
     }
 
     public void ActivateLocalNest(LevelName levelName, LevelPosition levelPosition) {
