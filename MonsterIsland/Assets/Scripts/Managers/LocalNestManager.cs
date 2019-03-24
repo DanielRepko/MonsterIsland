@@ -24,13 +24,16 @@ public class LocalNestManager : MonoBehaviour {
 
     public void LoadLocalNests(bool startStatus, bool shopStatus, bool bossStatus) {
         startNest.GetComponent<Nest>().isActive = startStatus;
+        UIManager.Instance.SetStartWarp(startStatus);
 
         if (shopNest != null) {
             shopNest.GetComponent<Nest>().isActive = shopStatus;
+            UIManager.Instance.SetShopWarp(shopStatus);
         }
 
         if (bossNest != null) {
             bossNest.GetComponent<Nest>().isActive = bossStatus;
+            UIManager.Instance.SetBossWarp(bossStatus);
         }
     }
 
@@ -40,6 +43,13 @@ public class LocalNestManager : MonoBehaviour {
 
     public void ActivateLocalNest(LevelName levelName, LevelPosition levelPosition) {
         GlobalNestManager.instance.ActivateNest((int) levelName, (int) levelPosition);
+        if(levelPosition == LevelPosition.Start) {
+            UIManager.Instance.SetStartWarp(true);
+        } else if (levelPosition == LevelPosition.Shop) {
+            UIManager.Instance.SetShopWarp(true);
+        } else if (levelPosition == LevelPosition.Boss) {
+            UIManager.Instance.SetBossWarp(true);
+        }
     }
 
 }
