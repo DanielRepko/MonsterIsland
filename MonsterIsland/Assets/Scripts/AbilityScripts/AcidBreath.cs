@@ -36,4 +36,70 @@ public class AcidBreath : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (target == "Enemy")
+        {
+            if (collision.tag == "Enemy")
+            {
+                Enemy enemy = collision.GetComponent<Enemy>();
+                if (enemy != null && collision == enemy.hurtBox)
+                {
+                    if (readyToDamage)
+                    {
+                        enemy.TakeDamage(damage);
+                        readyToDamage = false;
+                    }
+                }
+            }
+        }
+        else if (target == "Player")
+        {
+            if (collision.tag == "Player")
+            {
+                if (collision == PlayerController.Instance.hurtBox)
+                {
+                    if (readyToDamage)
+                    {
+                        PlayerController.Instance.TakeDamage(damage);
+                        readyToDamage = false;
+                    }
+                }
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (target == "Enemy")
+        {
+            if (collision.tag == "Enemy")
+            {
+                Enemy enemy = collision.GetComponent<Enemy>();
+                if (enemy != null && collision == enemy.hurtBox)
+                {
+                    if (readyToDamage)
+                    {
+                        enemy.TakeDamage(damage);
+                        readyToDamage = false;
+                    }
+                }
+            }
+        }
+        else if (target == "Player")
+        {
+            if (collision.tag == "Player")
+            {
+                if (collision == PlayerController.Instance.hurtBox)
+                {
+                    if (readyToDamage)
+                    {
+                        PlayerController.Instance.TakeDamage(damage);
+                        readyToDamage = false;
+                    }
+                }
+            }
+        }
+    }
 }
