@@ -23,6 +23,7 @@ public class GlobalNestManager : MonoBehaviour {
         if(instance == null) {
             instance = this;
             SceneManager.sceneLoaded += SceneLoaded;
+            SceneLoaded(gameObject.scene, LoadSceneMode.Single);
         } else if (instance != this) {
             Destroy(gameObject);
         }
@@ -35,7 +36,6 @@ public class GlobalNestManager : MonoBehaviour {
 	}
     
     public void LoadNests(string scene) {
-        Debug.Log("LoadNests Started");
         if(localNestManager != null) {
             switch(scene) {
                 case "Hub":
@@ -64,15 +64,15 @@ public class GlobalNestManager : MonoBehaviour {
     }
 
     private void SceneLoaded(Scene scene, LoadSceneMode mode) {
-
-        if(scene.name == "Hub") {
-            UIManager.Instance.DisableQuickTravelMenu();
-        } else {
-            UIManager.Instance.EnableQuickTravelMenu();
-        }
-
         localNestManager = GameObject.Find("LocalNestManager");
+
         if(localNestManager != null) {
+            if (localNestManager.scene.name == "Hub") {
+                UIManager.Instance.DisableQuickTravelMenu();
+            } else {
+                UIManager.Instance.EnableQuickTravelMenu();
+            }
+
             localNestManager.GetComponent<LocalNestManager>().LoadNests();
         }
     }

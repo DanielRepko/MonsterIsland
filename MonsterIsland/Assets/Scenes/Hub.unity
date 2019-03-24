@@ -113,6 +113,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &12517426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1273457928883650, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1023053496}
 --- !u!1 &132879508
 GameObject:
   m_ObjectHideFlags: 0
@@ -6811,6 +6816,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &653723234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1434947816638114, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1023053496}
 --- !u!1 &681440420 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1389945079734464, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
@@ -45064,6 +45074,26 @@ Prefab:
       propertyPath: settingsPanel
       value: 
       objectReference: {fileID: 681440420}
+    - target: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: quickTravelMenu
+      value: 
+      objectReference: {fileID: 653723234}
+    - target: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: startTravelButton
+      value: 
+      objectReference: {fileID: 12517426}
+    - target: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: shopTravelButton
+      value: 
+      objectReference: {fileID: 2044980854}
+    - target: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: bossTravelButton
+      value: 
+      objectReference: {fileID: 1712818390}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6e1e7a2685d74449d16d2c3e21cee3, type: 2}
   m_IsPrefabAsset: 0
@@ -45224,6 +45254,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4890ea28c2aea1f4c8c5ce65ca32065a, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1712818390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1579172443850612, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1023053496}
 --- !u!1 &1738258380
 GameObject:
   m_ObjectHideFlags: 0
@@ -45364,6 +45399,11 @@ Transform:
 --- !u!1 &1967822119 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1165587872868348, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1023053496}
+--- !u!1 &2044980854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1076281378512002, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
     type: 2}
   m_PrefabInternal: {fileID: 1023053496}
 --- !u!1 &2077202277
