@@ -135,7 +135,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Acid Breath";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Cough up a cloud of acid that lingers in space and deals damage over time";
-                partInfo.abilityCooldown = 0;
+                partInfo.abilityCooldown = 4;
                 return partInfo;
             case Helper.MonsterName.Dingus:
                 partInfo.abilityName = "Big Beak";
