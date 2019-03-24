@@ -14,4 +14,26 @@ public class AcidBreath : MonoBehaviour {
     private bool readyToDamage = true;
 
     public string target;
+
+    private void FixedUpdate()
+    {
+        if(!readyToDamage && damageTimer < timeTillDamage)
+        {
+            damageTimer += Time.deltaTime;
+        }
+        else if(!readyToDamage && damageTimer >= timeTillDamage)
+        {
+            damageTimer = 0;
+            readyToDamage = true;
+        }
+
+        if (lifeTimer < lifeTime)
+        {
+            lifeTime += Time.deltaTime;
+        }
+        else if (lifeTimer >= lifeTime)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
