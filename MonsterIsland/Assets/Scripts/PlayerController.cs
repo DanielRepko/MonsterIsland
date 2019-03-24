@@ -46,9 +46,12 @@ public class PlayerController : MonoBehaviour {
     private float hitStunCooldown = 0.4f;
     private float hitStunTimer = 0;
     private bool inHitStun = false;
+    public bool movementLocked = false;
 
     public BoxCollider2D hitBox;
     public int hitBoxDamage;
+    public int hitCounter;
+    public int totalHits;
 
     public bool hasExtraJump = true;
 
@@ -155,7 +158,7 @@ public class PlayerController : MonoBehaviour {
         playerCheckDelegate();
 
         //moving the player
-        if (!inHitStun)
+        if (!inHitStun && !movementLocked)
         {
             moveDelegate();
         }
@@ -299,6 +302,7 @@ public class PlayerController : MonoBehaviour {
 
         playerCheckDelegate += UpdatePlayerDirection;
         playerCheckDelegate += UpdatePlayerInputCooldowns;
+        playerCheckDelegate += CheckHitBox;
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
 
@@ -308,6 +312,14 @@ public class PlayerController : MonoBehaviour {
         leftAttackTimer = leftAttackCooldown;
         headAbilityTimer = headAbilityCooldown;
         torsoAbilityTimer = torsoAbilityCooldown;
+    }
+
+    public void CheckHitBox()
+    {
+        if(hitCounter == totalHits)
+        {
+            hitBoxDamage = 0;
+        }
     }
 
     //checks to see what direction the player should be facing based on the mouse position
@@ -489,6 +501,7 @@ public class PlayerController : MonoBehaviour {
                     if (hitBox.IsTouching(enemy.hurtBox))
                     {
                         enemy.TakeDamage(hitBoxDamage);
+                        hitCounter += 1;
                     }
                 }
             }

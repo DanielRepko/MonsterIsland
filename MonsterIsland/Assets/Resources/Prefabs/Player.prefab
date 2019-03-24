@@ -4241,8 +4241,11 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   hurtBox: {fileID: 68947545826544262}
+  movementLocked: 0
   hitBox: {fileID: 61265560518600250}
   hitBoxDamage: 0
+  hitCounter: 0
+  totalHits: 0
   hasExtraJump: 1
   rayCastLengthCheck: 0.005
   width: 0
@@ -4257,8 +4260,8 @@ MonoBehaviour:
   rb: {fileID: 50294502546255648}
   monster: {fileID: 114670642758465856}
   facingDirection: 0
-  head: Lion
-  torso: Knight
+  head: Frog
+  torso: Turtle
   rightArm: Robot
   leftArm: Mitch
   legs: Hingus

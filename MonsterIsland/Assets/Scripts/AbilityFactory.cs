@@ -98,9 +98,16 @@ public class AbilityFactory : MonoBehaviour {
         }
     }
     //Head Ability (Activate): Allows the player to shoot a laser beam
-        public static void Ability_LaserEyes()
+    public static void Ability_LaserEyes()
     {
+        PlayerController player = PlayerController.Instance;
+        GameObject laserLoad = Resources.Load<GameObject>("Prefabs/Projectiles/Robot_Laser");
 
+        Vector2 laserPosition = new Vector2(player.monster.headPart.transform.position.x + 0.3f * player.facingDirection, player.monster.headPart.transform.position.y + 0.3f);
+        GameObject laser = Instantiate(laserLoad, laserPosition, Quaternion.identity);
+        laser.GetComponent<Projectile>().target = "Enemy";
+
+        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(laser.GetComponent<Projectile>().speed * player.facingDirection, 0);
     }
 
     //Head Ability (Activate): Allows the player to attack with a tongue flick
@@ -108,6 +115,7 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = PlayerController.Instance;
         GameObject tongueLoad = Resources.Load<GameObject>("Prefabs/Projectiles/Frog_Tongue");
+        tongueLoad.GetComponent<TongueFlick>().target = "Enemy";
 
         Vector2 tonguePosition = new Vector2(player.monster.headPart.transform.position.x + 0.3f * player.facingDirection, player.monster.headPart.transform.position.y + 0.05f);
         //Debug.Log(tongueLoad.transform.localScale);
@@ -130,7 +138,13 @@ public class AbilityFactory : MonoBehaviour {
     //that lingers for several seconds and deals damage over time
     public static void Ability_AcidBreath()
     {
+        PlayerController player = PlayerController.Instance;
+        GameObject acidCloudLoad = Resources.Load<GameObject>("Prefabs/Projectiles/AcidCloud");
+        acidCloudLoad.GetComponent<AcidBreath>().target = "Enemy";
 
+        Vector2 acidCloudPosition = new Vector2(player.transform.position.x + 2 * player.facingDirection, player.transform.position.y);
+
+        GameObject acidCloud = Instantiate(acidCloudLoad, acidCloudPosition, Quaternion.identity);
     }
 
     //Head Ability (Activate): Allows the player to attack with large beak
@@ -274,10 +288,40 @@ public class AbilityFactory : MonoBehaviour {
 
     }
 
-    //Arm Ability (Activate): Allow the player to shoot needles in three shot bursts
+    //Arm Ability (Activate): Allow the player to shoot three needles in a spread formation
     public static void Ability_NeedleShot(string armType)
     {
+        PlayerController player = PlayerController.Instance;
 
+        //loading the prefab
+        GameObject needleLoad = Resources.Load<GameObject>("Prefabs/Projectiles/Cactus_Needle");
+        int speed = needleLoad.GetComponent<Projectile>().speed;
+        needleLoad.GetComponent<Projectile>().target = "Enemy";
+        Vector2 needlePosition = new Vector2();
+
+        //determining which hand to spawn the needles at
+        if (armType == Helper.PartType.RightArm)
+        {
+            needlePosition = player.monster.rightArmPart.hand.transform.position;
+        }
+        else if (armType == Helper.PartType.LeftArm)
+        {
+            needlePosition = player.monster.leftArmPart.hand.transform.position;
+        }
+
+        //instatiating each needle with its own rotation
+        GameObject upNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, 45));
+        GameObject middleNeedle = Instantiate(needleLoad, needlePosition, Quaternion.identity);
+        GameObject downNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, -45));
+
+        //turning the needles in the same direction the player is facing
+        upNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
+        middleNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
+        downNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
+
+        upNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, speed / 2);
+        middleNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, 0);
+        downNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, -speed / 2);
     }
 
     //Arm Ability (Passive): Makes the player fall slower, effect can stack with other arm
@@ -359,6 +403,10 @@ public class AbilityFactory : MonoBehaviour {
                 //setting the size and offset of the hitbox
                 player.hitBox.offset = new Vector2(0.2874344f, -1.349547f);
                 player.hitBox.size = new Vector2(1.574869f, 1.591879f);
+
+                player.hitBoxDamage = 1;
+                player.hitCounter = 0;
+                player.totalHits = 3;
 
                 player.rb.velocity = new Vector2(player.rb.velocity.x, 5);
 
