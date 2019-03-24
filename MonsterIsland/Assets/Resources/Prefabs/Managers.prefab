@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4847083021761986}
   - component: {fileID: 114241451573536656}
   m_Layer: 0
-  m_Name: NestManager
+  m_Name: GlobalNestManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

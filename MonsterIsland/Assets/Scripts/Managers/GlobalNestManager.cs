@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NestManager : MonoBehaviour {
+public class GlobalNestManager : MonoBehaviour {
 
-    public static NestManager instance;
+    public static GlobalNestManager instance;
     public bool[,] gameNests = {
         { false, false, false },
         { false, false, false },

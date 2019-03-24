@@ -29,7 +29,6 @@ public class Nest : MonoBehaviour {
     public void Activate() {
         if(!isActive) {
             isActive = true;
-            NestManager.instance.ActivateNest((int)levelName, (int)levelPosition);
         }
     }
 }
