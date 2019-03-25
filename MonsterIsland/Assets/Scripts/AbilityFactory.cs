@@ -256,6 +256,7 @@ public class AbilityFactory : MonoBehaviour {
             if (player.PlayerIsOnGround())
             {
                 player.animator.Play("SwoopDaWoopAnim_Grounded");
+                player.rb.velocity = new Vector2(-13f * player.facingDirection, 20);
             }
             else if (!player.PlayerIsOnGround() && player.hasExtraJump)
             {

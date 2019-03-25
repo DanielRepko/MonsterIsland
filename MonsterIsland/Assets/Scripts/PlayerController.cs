@@ -218,7 +218,7 @@ public class PlayerController : MonoBehaviour {
         } else if (Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Left))) {
             rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
         //no input
-        } else if (!Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Left)) && !Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Right))) {
+        } else if (Input.GetKeyUp(CustomInputManager.Instance.GetInputKey(InputType.Left)) || Input.GetKeyUp(CustomInputManager.Instance.GetInputKey(InputType.Right))) {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
