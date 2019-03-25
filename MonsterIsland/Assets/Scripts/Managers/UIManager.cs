@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
@@ -12,6 +13,7 @@ public class UIManager : MonoBehaviour {
     public GameObject loadingPanel;
     public GameObject pauseCanvas;
     public GameObject settingsPanel;
+    public GameObject quickTravelMenu;
 
 	// Use this for initialization
 	void Awake() {
@@ -73,5 +75,42 @@ public class UIManager : MonoBehaviour {
 
     public void ShowSettings() {
         settingsPanel.SetActive(true);
+    }
+
+    public void DisableQuickTravelMenu() {
+        Debug.Log("'DisableQuickTravelMenu' called!");
+        quickTravelMenu.SetActive(false);
+    }
+
+    public void EnableQuickTravelMenu() {
+        Debug.Log("'EnableQuickTravelMenu' called!");
+        quickTravelMenu.SetActive(true);
+    }
+
+    public void TravelToStartNest() {
+        PlayerController.Instance.transform.position = LocalNestManager.Instance.startNest.transform.position;
+        HideNestCanvas();
+    }
+
+    public void TravelToShopNest() {
+        PlayerController.Instance.transform.position = LocalNestManager.Instance.shopNest.transform.position;
+        HideNestCanvas();
+    }
+
+    public void TravelToBossNest() {
+        PlayerController.Instance.transform.position = LocalNestManager.Instance.bossNest.transform.position;
+        HideNestCanvas();
+    }
+
+    public void SetStartWarp(bool interactible) {
+        quickTravelMenu.transform.Find("QuickStartButton").GetComponent<Button>().interactable = interactible;
+    }
+
+    public void SetShopWarp(bool interactible) {
+        quickTravelMenu.transform.Find("QuickShopButton").GetComponent<Button>().interactable = interactible;
+    }
+
+    public void SetBossWarp(bool interactible) {
+        quickTravelMenu.transform.Find("QuickBossButton").GetComponent<Button>().interactable = interactible;
     }
 }
