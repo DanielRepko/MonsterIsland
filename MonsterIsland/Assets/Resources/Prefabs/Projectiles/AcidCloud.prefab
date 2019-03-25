@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  lifeTime: 2
-  timeTillDamage: 0.8
+  lifeTime: 3.5
+  timeTillDamage: 0.6
   target: Enemy
 --- !u!212 &212245110255829670
 SpriteRenderer:
