@@ -62,7 +62,7 @@ public class Weapon {
     //used to store the attack delegate for the weapon
     //delegate is self-set based on the weapon type
     //using the AbilityFactory delegate type just so that I don't have to parse between different delegates in PlayerController
-    public static AbilityFactory.ArmAbility _attackDelegate;
+    private AbilityFactory.ArmAbility _attackDelegate;
     public AbilityFactory.ArmAbility AttackDelegate { get { return _attackDelegate; } set { _attackDelegate = value; } }
 
     public Weapon(string weaponName)
@@ -78,9 +78,8 @@ public class Weapon {
         Ray attackRay = new Ray();
         attackRay.origin = player.transform.position;
         attackRay.direction = new Vector2(player.facingDirection, 0);
-
+        
         Debug.DrawRay(attackRay.origin, new Vector2(AttackRange * player.facingDirection, 0), Color.green);
-
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, _attackRange, 1 << LayerMask.NameToLayer(AttackTarget));
         if (hit)
         {

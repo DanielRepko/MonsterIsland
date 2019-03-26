@@ -40,6 +40,8 @@ public class ArmPart : MonoBehaviour {
 
     public void InitializePart(ArmPartInfo armPartInfo, Weapon equippedWeapon)
     {
+        PlayerController player = PlayerController.Instance;
+
         if (armPartInfo != null)
         {
             partInfo = armPartInfo;
@@ -63,12 +65,12 @@ public class ArmPart : MonoBehaviour {
                 else if (partInfo.abilityType == "Activate")
                 {
                     //checking which arm to apply the ability to
-                    if(partType == "RightArm")
+                    if(partType == Helper.PartType.RightArm)
                     {
-                        PlayerController.Instance.rightAttackDelegate = ability;
-                    } else if(partType == "LeftArm")
+                        player.rightAttackDelegate = ability;
+                    } else if(partType == Helper.PartType.LeftArm)
                     {
-                        PlayerController.Instance.leftAttackDelegate = ability;
+                        player.leftAttackDelegate = ability;
                     }
                 }//if the value is anything else, then a typo must have occured when creating the ability info
                 else
@@ -84,13 +86,17 @@ public class ArmPart : MonoBehaviour {
                 weaponSprite = weapon.WeaponSprite;
                 weaponRenderer.sprite = weaponSprite;
 
-                if (partType == "RightArm")
+                
+
+                if (partType == Helper.PartType.RightArm)
                 {
-                    PlayerController.Instance.rightAttackDelegate = ability;
+                    player.rightAttackDelegate = ability;
+                    player.RightAttackCooldown = weapon.AttackCooldown;
                 }
-                else if (partType == "LeftArm")
+                else if (partType == Helper.PartType.LeftArm)
                 {
-                    PlayerController.Instance.leftAttackDelegate = ability;
+                    player.leftAttackDelegate = ability;
+                    player.LeftAttackCooldown = weapon.AttackCooldown;
                 }
             }
 
@@ -145,6 +151,7 @@ public class ArmPart : MonoBehaviour {
             bicep.sortingOrder = 12;
             forearm.sortingOrder = 8;
             hand.sortingOrder = 10;
+            weaponRenderer.sortingOrder = 9;
             fingers.sortingOrder = 11;
         }
         //facing left
@@ -168,6 +175,7 @@ public class ArmPart : MonoBehaviour {
             bicep.sortingOrder = -1;
             forearm.sortingOrder = -5;
             hand.sortingOrder = -4;
+            weaponRenderer.sortingOrder = -3;
             fingers.sortingOrder = -2;
         }
     }
@@ -198,6 +206,7 @@ public class ArmPart : MonoBehaviour {
             bicep.sortingOrder = -1;
             forearm.sortingOrder = -5;
             hand.sortingOrder = -4;
+            weaponRenderer.sortingOrder = -3;
             fingers.sortingOrder = -2;
         }
         //facing left
@@ -221,6 +230,7 @@ public class ArmPart : MonoBehaviour {
             bicep.sortingOrder = 12;
             forearm.sortingOrder = 8;
             hand.sortingOrder = 10;
+            weaponRenderer.sortingOrder = 9;
             fingers.sortingOrder = 11;
         }
     }

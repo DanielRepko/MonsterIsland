@@ -416,8 +416,8 @@ public class AbilityFactory : MonoBehaviour {
                 player.hasExtraJump = false;
 
                 //setting the size and offset of the hitbox
-                player.hitBox.offset = new Vector2(0.2874344f, -1.349547f);
-                player.hitBox.size = new Vector2(1.574869f, 1.591879f);
+                player.hitBox.offset = new Vector2(0.3871388f, -1.349547f);
+                player.hitBox.size = new Vector2(1.37546f, 1.591879f);
 
                 player.hitBoxDamage = 1;
                 player.hitCounter = 0;

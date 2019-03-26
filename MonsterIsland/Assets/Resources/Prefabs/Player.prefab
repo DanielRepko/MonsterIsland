@@ -4157,7 +4157,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2874344, y: -1.3495469}
+  m_Offset: {x: 0.38713884, y: -1.3495469}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4168,7 +4168,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5748688, y: 1.5918789}
+  m_Size: {x: 1.3754599, y: 1.5918789}
   m_EdgeRadius: 0
 --- !u!68 &68947545826544262
 EdgeCollider2D:
@@ -4185,11 +4185,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.78915787, y: -1.829342}
-  - {x: -0.7891579, y: 1.370381}
-  - {x: 0.8105192, y: 1.370381}
-  - {x: 0.8105192, y: -1.829342}
-  - {x: -0.789734, y: -1.829342}
+  - {x: -0.5, y: -1.829342}
+  - {x: -0.5, y: 1.370381}
+  - {x: 0.5, y: 1.370381}
+  - {x: 0.5, y: -1.829342}
+  - {x: -0.5, y: -1.829342}
 --- !u!70 &70056825719153610
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -4278,9 +4278,9 @@ MonoBehaviour:
   head: Frog
   torso: Wingus
   rightArm: Robot
-  leftArm: Cactus
+  leftArm: Mitch
   legs: Hingus
-  rightWeapon: Stick
+  rightWeapon: Scimitar
   leftWeapon: Stick
 --- !u!114 &114017853166408056
 MonoBehaviour:

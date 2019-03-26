@@ -16,22 +16,26 @@ public class PlayerController : MonoBehaviour {
     //damage dealt by left arm attack
     public int leftAttackPower = 2;
 
-    [Header("Attack Cooldowns")]
     public bool attacksLocked;
     //these fields are used to add delays between when the player can complete certain actions
-    public float rightAttackCooldown = 0.5f;
+    private float _rightAttackCooldown = 0.5f;
+    public float RightAttackCooldown { get { return _rightAttackCooldown; } set { _rightAttackCooldown = value; } }
     private float rightAttackTimer = 0;
 
-    public float leftAttackCooldown = 0.5f;
+    private float _leftAttackCooldown = 0.5f;
+    public float LeftAttackCooldown { get { return _leftAttackCooldown; } set { _leftAttackCooldown = value; } }
     private float leftAttackTimer = 0;
 
-    public float headAbilityCooldown = 0;
+    private float _headAbilityCooldown = 0;
+    public float HeadAbilityCooldown { get { return _headAbilityCooldown; } set { _headAbilityCooldown = value; } }
     private float headAbilityTimer = 0;
 
-    public float torsoAbilityCooldown = 0;
+    private float _torsoAbilityCooldown = 0;
+    public float TorsoAbilityCooldown { get { return _torsoAbilityCooldown; } set { _torsoAbilityCooldown = value; } }
     private float torsoAbilityTimer = 0;
 
-    public float legAbilityCooldown = 0;
+    private float _legAbilityCooldown = 0;
+    public float LegAbilityCooldown { get { return _legAbilityCooldown; } set { _legAbilityCooldown = value; } }
     public float legAbilityTimer = 0;
 
     [Space(20, order = 1)]
@@ -177,7 +181,7 @@ public class PlayerController : MonoBehaviour {
             inHitStun = false;
         }
 
-        //input rightArm attack\
+        //input rightArm attack
         if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Primary)) && CheckCooldown("rightAttack")) {
             rightAttackDelegate(Helper.PartType.RightArm);
         }
@@ -311,10 +315,11 @@ public class PlayerController : MonoBehaviour {
 
         SetPlayerCooldowns();
         //setting the cooldown timers so that the player can use the inputs as soon as the game loads
-        rightAttackTimer = rightAttackCooldown;
-        leftAttackTimer = leftAttackCooldown;
-        headAbilityTimer = headAbilityCooldown;
-        torsoAbilityTimer = torsoAbilityCooldown;
+        rightAttackTimer = RightAttackCooldown;
+        leftAttackTimer = LeftAttackCooldown;
+        headAbilityTimer = HeadAbilityCooldown;
+        torsoAbilityTimer = TorsoAbilityCooldown;
+        legAbilityTimer = LegAbilityCooldown;
     }
 
     public void CheckHitBox()
@@ -342,27 +347,27 @@ public class PlayerController : MonoBehaviour {
     {
         if(monster.headPart.partInfo.abilityCooldown != 0)
         {
-            headAbilityCooldown = monster.headPart.partInfo.abilityCooldown;
+            HeadAbilityCooldown = monster.headPart.partInfo.abilityCooldown;
         }
 
         if (monster.torsoPart.partInfo.abilityCooldown != 0)
         {
-            torsoAbilityCooldown = monster.torsoPart.partInfo.abilityCooldown;
+            TorsoAbilityCooldown = monster.torsoPart.partInfo.abilityCooldown;
         }
 
         if (monster.legPart.partInfo.abilityCooldown != 0)
         {
-            legAbilityCooldown = monster.legPart.partInfo.abilityCooldown;
+            LegAbilityCooldown = monster.legPart.partInfo.abilityCooldown;
         }
 
         if (monster.rightArmPart.partInfo.abilityCooldown != 0)
         {
-            rightAttackCooldown = monster.rightArmPart.partInfo.abilityCooldown;
+            RightAttackCooldown = monster.rightArmPart.partInfo.abilityCooldown;
         }
 
         if (monster.leftArmPart.partInfo.abilityCooldown != 0)
         {
-            leftAttackCooldown = monster.leftArmPart.partInfo.abilityCooldown;
+            LeftAttackCooldown = monster.leftArmPart.partInfo.abilityCooldown;
         }
     }
 
@@ -370,31 +375,31 @@ public class PlayerController : MonoBehaviour {
     public void UpdatePlayerInputCooldowns()
     {
         //Right Attack Cooldown
-        if(rightAttackTimer < rightAttackCooldown)
+        if(rightAttackTimer < RightAttackCooldown)
         {
             rightAttackTimer += Time.deltaTime;
         }
 
         //Left Attack Cooldown
-        if (leftAttackTimer < leftAttackCooldown)
+        if (leftAttackTimer < LeftAttackCooldown)
         {
             leftAttackTimer += Time.deltaTime;
         }
 
         //Head Ability Cooldown
-        if (headAbilityTimer < headAbilityCooldown)
+        if (headAbilityTimer < HeadAbilityCooldown)
         {
             headAbilityTimer += Time.deltaTime;
         }
 
         //Torso Ability Cooldown
-        if (torsoAbilityTimer < torsoAbilityCooldown)
+        if (torsoAbilityTimer < TorsoAbilityCooldown)
         {
             torsoAbilityTimer += Time.deltaTime;
         }
 
         //Leg Ability Cooldown
-        if (legAbilityTimer < legAbilityCooldown)
+        if (legAbilityTimer < LegAbilityCooldown)
         {
             legAbilityTimer += Time.deltaTime;
         }
@@ -408,7 +413,7 @@ public class PlayerController : MonoBehaviour {
             switch (inputCooldown)
             {
                 case "rightAttack":
-                    if (rightAttackTimer >= rightAttackCooldown)
+                    if (rightAttackTimer >= RightAttackCooldown)
                     {
                         //Debug.Log(monster.rightArmPart.partInfo.abilityCooldown);
                         rightAttackTimer = 0;
@@ -419,7 +424,7 @@ public class PlayerController : MonoBehaviour {
                         return false;
                     }
                 case "leftAttack":
-                    if (leftAttackTimer >= leftAttackCooldown)
+                    if (leftAttackTimer >= LeftAttackCooldown)
                     {
                         leftAttackTimer = 0;
                         return true;
@@ -429,7 +434,7 @@ public class PlayerController : MonoBehaviour {
                         return false;
                     }
                 case "headAbility":
-                    if (headAbilityTimer >= headAbilityCooldown)
+                    if (headAbilityTimer >= HeadAbilityCooldown)
                     {
                         headAbilityTimer = 0;
                         return true;
@@ -439,7 +444,7 @@ public class PlayerController : MonoBehaviour {
                         return false;
                     }
                 case "torsoAbility":
-                    if (torsoAbilityTimer >= torsoAbilityCooldown)
+                    if (torsoAbilityTimer >= TorsoAbilityCooldown)
                     {
                         torsoAbilityTimer = 0;
                         return true;
@@ -449,7 +454,7 @@ public class PlayerController : MonoBehaviour {
                         return false;
                     }
                 case "legAbility":
-                    if (legAbilityTimer >= legAbilityCooldown)
+                    if (legAbilityTimer >= LegAbilityCooldown)
                     {
                         legAbilityTimer = 0;
                         return true;
