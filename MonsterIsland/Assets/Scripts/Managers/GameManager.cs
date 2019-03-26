@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
     public PlayerController player;
+    public GameObject coinPrefab;
 
     private void Awake()
     {
