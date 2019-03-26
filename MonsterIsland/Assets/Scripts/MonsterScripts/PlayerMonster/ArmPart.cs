@@ -92,6 +92,7 @@ public class ArmPart : MonoBehaviour {
                 {
                     player.rightAttackDelegate = ability;
                     player.RightAttackCooldown = weapon.AttackCooldown;
+                    
                 }
                 else if (partType == Helper.PartType.LeftArm)
                 {

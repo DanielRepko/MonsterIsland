@@ -243,7 +243,7 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if(hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
-            if(enemy != null && hit.collider == (enemy.hurtBox || enemy.GetComponent<CapsuleCollider2D>())) {
+            if(enemy != null && hit.collider == enemy.hurtBox) {
                 enemy.TakeDamage(rightAttackPower);
             }
         }
@@ -260,7 +260,7 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
-            if (enemy != null && hit.collider == (enemy.hurtBox || enemy.GetComponent<CapsuleCollider2D>())) {
+            if (enemy != null && hit.collider == enemy.hurtBox) {
                 enemy.TakeDamage(leftAttackPower);
             }
         }
@@ -360,12 +360,12 @@ public class PlayerController : MonoBehaviour {
             LegAbilityCooldown = monster.legPart.partInfo.abilityCooldown;
         }
 
-        if (monster.rightArmPart.partInfo.abilityCooldown != 0)
+        if (monster.rightArmPart.partInfo.abilityCooldown != 0 && monster.rightArmPart.weapon == null)
         {
             RightAttackCooldown = monster.rightArmPart.partInfo.abilityCooldown;
         }
 
-        if (monster.leftArmPart.partInfo.abilityCooldown != 0)
+        if (monster.leftArmPart.partInfo.abilityCooldown != 0 && monster.rightArmPart.weapon == null)
         {
             LeftAttackCooldown = monster.leftArmPart.partInfo.abilityCooldown;
         }

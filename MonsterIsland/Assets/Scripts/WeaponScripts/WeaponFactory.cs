@@ -95,6 +95,18 @@ public class WeaponFactory : MonoBehaviour {
                     AttackCooldown = 2.8f
                 };
                 return bananaGun;
+            //Squeaky Hammer
+            case Helper.WeaponName.SqueakyHammer:
+                Weapon squeakyHammer = new Weapon(weaponName)
+                {
+                    WeaponDesc = "This little knick-knack was won at a carnival hammer game by a norse god in his toddler years. Its surprisingly heavy, so it's pretty slow, but its power is shocking to say the least.",
+                    WeaponType = Helper.WeaponType.Projectile,
+                    ArmEquippedOn = armEquippedOn,
+                    AttackTarget = attackTarget,
+                    Damage = 4,
+                    AttackCooldown = 2.5f
+                };
+                return squeakyHammer;
             default:
                 return null;
         }

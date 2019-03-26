@@ -79,7 +79,10 @@ public class Weapon {
         Ray attackRay = new Ray();
         attackRay.origin = player.transform.position;
         attackRay.direction = new Vector2(player.facingDirection, 0);
-        
+
+        Debug.Log(player.RightAttackCooldown);
+        Debug.Log(player.LeftAttackCooldown);
+
         Debug.DrawRay(attackRay.origin, new Vector2(AttackRange * player.facingDirection, 0), Color.green);
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, _attackRange, 1 << LayerMask.NameToLayer(AttackTarget));
         if (hit)
@@ -87,7 +90,7 @@ public class Weapon {
             if (AttackTarget == "Enemy")
             {
                 Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
-                if (enemy != null && hit.collider == (enemy.hurtBox || enemy.GetComponent<CapsuleCollider2D>()))
+                if (enemy != null && hit.collider == enemy.hurtBox)
                 {
                     enemy.TakeDamage(Damage);
                 }
@@ -102,6 +105,8 @@ public class Weapon {
     public void ProjectileAttack(string armEquippedOn)
     {
         PlayerController player = PlayerController.Instance;
+        Debug.Log(player.RightAttackCooldown);
+        Debug.Log(player.LeftAttackCooldown);
 
         Vector2 projectilePosition = new Vector2();
 
@@ -114,7 +119,7 @@ public class Weapon {
             projectilePosition = player.monster.leftArmPart.hand.transform.position;
         }
 
-        GameObject projectile = Object.Instantiate(ProjectilePrefab, projectilePosition, Quaternion.identity);
+        GameObject projectile = Object.Instantiate(ProjectilePrefab, projectilePosition, ProjectilePrefab.transform.rotation);
         projectile.GetComponent<Projectile>().target = AttackTarget;
         projectile.GetComponent<Projectile>().damage = Damage;
 

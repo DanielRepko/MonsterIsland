@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour {
             if (collision.tag == "Enemy")
             {
                 Enemy enemy = collision.GetComponent<Enemy>();
-                if (enemy != null && (collision == enemy.hurtBox || collision == enemy.GetComponent<CapsuleCollider2D>()))
+                if (enemy != null && collision == enemy.hurtBox)
                 {
                     enemy.TakeDamage(damage);
                     Destroy(gameObject);
