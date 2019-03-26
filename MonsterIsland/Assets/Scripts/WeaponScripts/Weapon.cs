@@ -39,11 +39,39 @@ public class Weapon : MonoBehaviour {
     //delegate is self-set based on the weapon type
     //using the AbilityFactory delegate type just so that I don't have to parse between different delegates in PlayerController
     public static AbilityFactory.Ability _attackDelegate;
-    public AbilityFactory.Ability AttackDelegate { get { return _attackDelegate; } }
+    public AbilityFactory.Ability AttackDelegate { get { return _attackDelegate; }
+        set
+        {
+            if(_weaponType == "Melee")
+            {
+                _attackDelegate = MeleeAttack;
+            }
+            else if(_weaponType == "Projectile")
+            {
+                _attackDelegate = ProjectileAttack;
+            }
+        }
+    }
 
     public void MeleeAttack()
     {
+        PlayerController player = PlayerController.Instance;
 
+        Ray attackRay = new Ray();
+        attackRay.origin = player.transform.position;
+        attackRay.direction = new Vector2(player.facingDirection, 0);
+
+        Debug.DrawRay(attackRay.origin, new Vector2(_attackRange * player.facingDirection, 0), Color.green);
+
+        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, _attackRange, 1 << LayerMask.NameToLayer("Enemy"));
+        if (hit)
+        {
+            Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(_damage);
+            }
+        }
     }
 
     public void ProjectileAttack()

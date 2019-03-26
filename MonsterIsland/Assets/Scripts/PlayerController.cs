@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour {
     public float moveSpeed = 15.5f;
     public float jumpForce = 60f;
 
-    //range of the player's melee attack
-    private float attackRange = 1.7f;
     //damage dealt by right arm attack
     public int rightAttackPower = 2;
     //damage dealt by left arm attack
@@ -234,11 +232,11 @@ public class PlayerController : MonoBehaviour {
     public void RightAttack(string armType) {
         Ray attackRay = new Ray();
         attackRay.origin = transform.position;
-        attackRay.direction = new Vector3(facingDirection, 0, 0);
+        attackRay.direction = new Vector2(facingDirection, 0);
 
-        Debug.DrawRay(attackRay.origin, new Vector3(attackRange * facingDirection, 0, 0), Color.green);
+        Debug.DrawRay(attackRay.origin, new Vector2(1.7f * facingDirection, 0), Color.green);
 
-        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
+        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if(hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
             if(enemy != null) {
@@ -251,11 +249,11 @@ public class PlayerController : MonoBehaviour {
     public void LeftAttack(string armType) {
         Ray attackRay = new Ray();
         attackRay.origin = transform.position;
-        attackRay.direction = new Vector3(facingDirection, 0, 0);
+        attackRay.direction = new Vector2(facingDirection, 0);
 
-        Debug.DrawRay(attackRay.origin, new Vector3(attackRange * facingDirection, 0, 0), Color.green);
+        Debug.DrawRay(attackRay.origin, new Vector2(1.7f * facingDirection, 0), Color.green);
 
-        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
+        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
             if (enemy != null && hit.collider == enemy.hurtBox) {
