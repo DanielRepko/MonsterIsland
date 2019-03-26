@@ -564,9 +564,9 @@ GameObject:
   - component: {fileID: 149477157}
   - component: {fileID: 149477160}
   - component: {fileID: 149477159}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: One-way Platform Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11601,9 +11601,9 @@ GameObject:
   - component: {fileID: 251520592}
   - component: {fileID: 251520595}
   - component: {fileID: 251520594}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Primary Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

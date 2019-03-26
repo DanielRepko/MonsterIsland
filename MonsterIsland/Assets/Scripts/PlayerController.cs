@@ -470,7 +470,12 @@ public class PlayerController : MonoBehaviour {
         bool groundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - height), -Vector2.down, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Terrain"));
         bool groundCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Terrain"));
         bool groundCheck3 = Physics2D.Raycast(new Vector2(transform.position.x - (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Terrain"));
-        if (groundCheck1 || groundCheck2 || groundCheck3) {
+
+
+        bool waterCheck1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - height), -Vector2.down, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Water"));
+        bool waterCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Water"));
+        bool waterCheck3 = Physics2D.Raycast(new Vector2(transform.position.x - (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Water"));
+        if (groundCheck1 || groundCheck2 || groundCheck3 || waterCheck1 || waterCheck2 || waterCheck3) {
             return true;
         } else {
             return false;

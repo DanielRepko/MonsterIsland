@@ -937,9 +937,9 @@ GameObject:
   - component: {fileID: 188549596}
   - component: {fileID: 188549599}
   - component: {fileID: 188549598}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Primary Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102211,9 +102211,9 @@ GameObject:
   - component: {fileID: 738982721}
   - component: {fileID: 738982723}
   - component: {fileID: 738982722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Quicksand Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105786,9 +105786,9 @@ GameObject:
   - component: {fileID: 1265484154}
   - component: {fileID: 1265484157}
   - component: {fileID: 1265484156}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: One-way Platform Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
