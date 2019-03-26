@@ -14,17 +14,27 @@ public class Weapon : MonoBehaviour {
     private string _weaponType;
     public string WeaponType { get { return _weaponType; } set { _weaponType = value; } }
 
+    //holds which arm the weapon is equipped on
+    private string _armEquipped;
+    public string ArmEquipped { get { return _armEquipped; } set { _armEquipped = value; } }
+
+    //holds the target of the weapon's attack
+    //if the weapon is being used by an enemy the target will be Player
+    //if the weapon is being used by the player the target will be Enemy
+    private string _attackTarget;
+    public string AttackTarget { get { return _attackTarget; } set { _attackTarget = value; } }
+
     //holds the damage dealt by the weapon
-    public static int _damage;
+    private int _damage;
     public int Damage { get { return _damage; } set { _damage = value; } }
 
     //holds the range of the attack, used for melee weapons
-    public static float _attackRange;
+    private float _attackRange;
     public float AttackRange { get { return _attackRange; } set { _attackRange = value; } }
 
 
     //The cooldown on the weapon's attack (essentially attack speed)
-    public static float _attackCooldown;
+    private float _attackCooldown;
     public float AttackCooldown { get { return _attackCooldown; } set { _attackCooldown = value; } }
 
     //the sprite to be used for the weapon
@@ -32,7 +42,7 @@ public class Weapon : MonoBehaviour {
     public Sprite WeaponSprite { get { return _weaponSprite; } set { _weaponSprite = value; } }
 
     //the prefab to use for the projectile, if the weapon is a projectile type
-    public static GameObject _projectilePrefab;
+    private GameObject _projectilePrefab;
     public GameObject ProjectilePrefab { get { return _projectilePrefab; } set { _projectilePrefab = value; } }
 
     //used to store the attack delegate for the weapon
@@ -63,20 +73,44 @@ public class Weapon : MonoBehaviour {
 
         Debug.DrawRay(attackRay.origin, new Vector2(_attackRange * player.facingDirection, 0), Color.green);
 
-        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, _attackRange, 1 << LayerMask.NameToLayer("Enemy"));
+        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, _attackRange, 1 << LayerMask.NameToLayer(_attackTarget));
         if (hit)
         {
-            Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
-            if (enemy != null)
+            if (_attackTarget == "Enemy")
             {
-                enemy.TakeDamage(_damage);
+                Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(_damage);
+                }
+            }
+            else if(_attackTarget == "Player")
+            {
+                PlayerController.Instance.TakeDamage(_damage);
             }
         }
     }
 
     public void ProjectileAttack()
     {
+        PlayerController player = PlayerController.Instance;
 
+        Vector2 projectilePosition = new Vector2();
+
+        if (_armEquipped == Helper.PartType.RightArm)
+        {
+            projectilePosition = player.monster.rightArmPart.hand.transform.position;
+        }
+        else if (_armEquipped == Helper.PartType.LeftArm)
+        {
+            projectilePosition = player.monster.leftArmPart.hand.transform.position;
+        }
+
+        GameObject projectile = Instantiate(_projectilePrefab, projectilePosition, Quaternion.identity);
+        projectile.GetComponent<Projectile>().target = _attackTarget;
+        projectile.GetComponent<Projectile>().damage = _damage;
+
+        projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectile.GetComponent<Projectile>().speed * player.facingDirection, 0);
     }
 
 }
