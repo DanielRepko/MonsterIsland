@@ -71,22 +71,22 @@ public class Weapon : MonoBehaviour {
         attackRay.origin = player.transform.position;
         attackRay.direction = new Vector2(player.facingDirection, 0);
 
-        Debug.DrawRay(attackRay.origin, new Vector2(_attackRange * player.facingDirection, 0), Color.green);
+        Debug.DrawRay(attackRay.origin, new Vector2(AttackRange * player.facingDirection, 0), Color.green);
 
-        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, _attackRange, 1 << LayerMask.NameToLayer(_attackTarget));
+        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, _attackRange, 1 << LayerMask.NameToLayer(AttackTarget));
         if (hit)
         {
-            if (_attackTarget == "Enemy")
+            if (AttackTarget == "Enemy")
             {
                 Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(_damage);
+                    enemy.TakeDamage(Damage);
                 }
             }
-            else if(_attackTarget == "Player")
+            else if(AttackTarget == "Player")
             {
-                PlayerController.Instance.TakeDamage(_damage);
+                PlayerController.Instance.TakeDamage(Damage);
             }
         }
     }
@@ -97,18 +97,18 @@ public class Weapon : MonoBehaviour {
 
         Vector2 projectilePosition = new Vector2();
 
-        if (_armEquipped == Helper.PartType.RightArm)
+        if (ArmEquipped == Helper.PartType.RightArm)
         {
             projectilePosition = player.monster.rightArmPart.hand.transform.position;
         }
-        else if (_armEquipped == Helper.PartType.LeftArm)
+        else if (ArmEquipped == Helper.PartType.LeftArm)
         {
             projectilePosition = player.monster.leftArmPart.hand.transform.position;
         }
 
-        GameObject projectile = Instantiate(_projectilePrefab, projectilePosition, Quaternion.identity);
-        projectile.GetComponent<Projectile>().target = _attackTarget;
-        projectile.GetComponent<Projectile>().damage = _damage;
+        GameObject projectile = Instantiate(ProjectilePrefab, projectilePosition, Quaternion.identity);
+        projectile.GetComponent<Projectile>().target = AttackTarget;
+        projectile.GetComponent<Projectile>().damage = Damage;
 
         projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectile.GetComponent<Projectile>().speed * player.facingDirection, 0);
     }
