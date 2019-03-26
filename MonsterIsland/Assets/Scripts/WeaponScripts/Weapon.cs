@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour {
+public class Weapon {
 
     //these fields are mainly used to display information about the weapon
     private string _weaponName;
@@ -62,8 +62,8 @@ public class Weapon : MonoBehaviour {
     //used to store the attack delegate for the weapon
     //delegate is self-set based on the weapon type
     //using the AbilityFactory delegate type just so that I don't have to parse between different delegates in PlayerController
-    public static AbilityFactory.Ability _attackDelegate;
-    public AbilityFactory.Ability AttackDelegate { get { return _attackDelegate; } set { _attackDelegate = value; } }
+    public static AbilityFactory.ArmAbility _attackDelegate;
+    public AbilityFactory.ArmAbility AttackDelegate { get { return _attackDelegate; } set { _attackDelegate = value; } }
 
     public Weapon(string weaponName)
     {
@@ -71,7 +71,7 @@ public class Weapon : MonoBehaviour {
         WeaponSprite = Resources.Load<Sprite>("Sprites/Weapons/Weapon_"+weaponName);
     }
 
-    public void MeleeAttack()
+    public void MeleeAttack(string armEquippedOn)
     {
         PlayerController player = PlayerController.Instance;
 
@@ -99,7 +99,7 @@ public class Weapon : MonoBehaviour {
         }
     }
 
-    public void ProjectileAttack()
+    public void ProjectileAttack(string armEquippedOn)
     {
         PlayerController player = PlayerController.Instance;
 
@@ -114,7 +114,7 @@ public class Weapon : MonoBehaviour {
             projectilePosition = player.monster.leftArmPart.hand.transform.position;
         }
 
-        GameObject projectile = Instantiate(ProjectilePrefab, projectilePosition, Quaternion.identity);
+        GameObject projectile = Object.Instantiate(ProjectilePrefab, projectilePosition, Quaternion.identity);
         projectile.GetComponent<Projectile>().target = AttackTarget;
         projectile.GetComponent<Projectile>().damage = Damage;
 

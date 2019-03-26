@@ -282,6 +282,9 @@ public class PlayerController : MonoBehaviour {
     public string leftArm;
     public string legs;
 
+    public string rightWeapon;
+    public string leftWeapon;
+
     public void InitializePlayer() {
         //creating variables to initialize the player monster
         //this code is for testing purposes, final product will pull this information from the database scripts
@@ -290,6 +293,8 @@ public class PlayerController : MonoBehaviour {
         var rightArmInfo = PartFactory.GetArmPartInfo(rightArm, Helper.PartType.RightArm);
         var leftArmInfo = PartFactory.GetArmPartInfo(leftArm, Helper.PartType.LeftArm);
         var legPartInfo = PartFactory.GetLegPartInfo(legs);
+        Weapon weaponRight = WeaponFactory.GetWeapon(rightWeapon, Helper.PartType.RightArm, "Player");
+        Weapon weaponLeft = WeaponFactory.GetWeapon(leftWeapon, Helper.PartType.LeftArm, "Player");
 
         moveDelegate = Move;
         jumpDelegate = Jump;
@@ -302,7 +307,7 @@ public class PlayerController : MonoBehaviour {
         playerCheckDelegate += UpdatePlayerInputCooldowns;
         playerCheckDelegate += CheckHitBox;
 
-        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
+        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo, weaponRight, weaponLeft);
 
         SetPlayerCooldowns();
         //setting the cooldown timers so that the player can use the inputs as soon as the game loads

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponFactory : MonoBehaviour {
 
-	public Weapon GetWeapon(string weaponName, string armEquippedOn, string weaponIsFor)
+	public static Weapon GetWeapon(string weaponName, string armEquippedOn, string weaponIsFor)
     {
         string attackTarget = "";
 
@@ -20,15 +20,16 @@ public class WeaponFactory : MonoBehaviour {
         switch (weaponName)
         {
             case Helper.WeaponName.Stick:
-                Weapon stick = new Weapon(weaponName);
-                stick.WeaponDesc = "A really good stick. Perfect for wacking people, and taking through walks in the woods.";
-                stick.WeaponType = Helper.WeaponType.Melee;
-                stick.ArmEquippedOn = armEquippedOn;
-                stick.AttackTarget = attackTarget;
-                stick.Damage = 3;
-                stick.AttackRange = 2;
-                stick.AttackCooldown = 0.7f;
-
+                Weapon stick = new Weapon(weaponName)
+                {
+                    WeaponDesc = "A really good stick. Perfect for wacking people, and taking through walks in the woods.",
+                    WeaponType = Helper.WeaponType.Melee,
+                    ArmEquippedOn = armEquippedOn,
+                    AttackTarget = attackTarget,
+                    Damage = 3,
+                    AttackRange = 2,
+                    AttackCooldown = 0.7f
+                };
                 return stick;
             default:
                 return null;

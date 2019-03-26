@@ -3670,7 +3670,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344063368092656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4962323823073406}
@@ -4275,11 +4275,13 @@ MonoBehaviour:
   rb: {fileID: 50294502546255648}
   monster: {fileID: 114670642758465856}
   facingDirection: 0
-  head: Mummy
+  head: Frog
   torso: Wingus
-  rightArm: Cactus
+  rightArm: Robot
   leftArm: Cactus
-  legs: Mitch
+  legs: Hingus
+  rightWeapon: Stick
+  leftWeapon: Stick
 --- !u!114 &114017853166408056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5429,10 +5431,12 @@ MonoBehaviour:
   fingersOpenFrontSprite: {fileID: 0}
   fingersClosedBackSprite: {fileID: 0}
   fingersClosedFrontSprite: {fileID: 0}
+  weaponSprite: {fileID: 0}
   bicep: {fileID: 212902684648565526}
   forearm: {fileID: 212416011872491540}
   hand: {fileID: 212275897321896476}
   fingers: {fileID: 212533744404529522}
+  weaponRenderer: {fileID: 212963576852012056}
 --- !u!114 &114277337683860780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9313,10 +9317,12 @@ MonoBehaviour:
   fingersOpenFrontSprite: {fileID: 0}
   fingersClosedBackSprite: {fileID: 0}
   fingersClosedFrontSprite: {fileID: 0}
+  weaponSprite: {fileID: 0}
   bicep: {fileID: 212303709983224880}
   forearm: {fileID: 212764156200335192}
   hand: {fileID: 212174084322354970}
   fingers: {fileID: 212783963989819516}
+  weaponRenderer: {fileID: 212557071176250190}
 --- !u!114 &114786345071749408
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -144,7 +144,7 @@ public class AbilityFactory : MonoBehaviour {
 
         Vector2 acidCloudPosition = new Vector2(player.transform.position.x + 2 * player.facingDirection, player.transform.position.y);
 
-        GameObject acidCloud = Instantiate(acidCloudLoad, acidCloudPosition, Quaternion.identity);
+        Instantiate(acidCloudLoad, acidCloudPosition, Quaternion.identity);
     }
 
     //Head Ability (Activate): Allows the player to attack with large beak
