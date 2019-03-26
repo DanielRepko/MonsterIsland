@@ -11,12 +11,26 @@ public class Weapon : MonoBehaviour {
     private string _weaponDesc;
     public string WeaponDesc { get { return _weaponDesc; } set { _weaponDesc = value; } }
 
+    //holds the type of weapon (melee or projectile)
+    //also sets the attackDelegate based on the type
     private string _weaponType;
-    public string WeaponType { get { return _weaponType; } set { _weaponType = value; } }
+    public string WeaponType { get { return _weaponType; }
+        set {
+            _weaponType = value;
+            if (_weaponType == Helper.WeaponType.Melee)
+            {
+                _attackDelegate = MeleeAttack;
+            }
+            else if (_weaponType == Helper.WeaponType.Projectile)
+            {
+                _attackDelegate = ProjectileAttack;
+            }
+        }
+    }
 
     //holds which arm the weapon is equipped on
-    private string _armEquipped;
-    public string ArmEquipped { get { return _armEquipped; } set { _armEquipped = value; } }
+    private string _armEquippedOn;
+    public string ArmEquippedOn { get { return _armEquippedOn; } set { _armEquippedOn = value; } }
 
     //holds the target of the weapon's attack
     //if the weapon is being used by an enemy the target will be Player
@@ -49,18 +63,12 @@ public class Weapon : MonoBehaviour {
     //delegate is self-set based on the weapon type
     //using the AbilityFactory delegate type just so that I don't have to parse between different delegates in PlayerController
     public static AbilityFactory.Ability _attackDelegate;
-    public AbilityFactory.Ability AttackDelegate { get { return _attackDelegate; }
-        set
-        {
-            if(_weaponType == "Melee")
-            {
-                _attackDelegate = MeleeAttack;
-            }
-            else if(_weaponType == "Projectile")
-            {
-                _attackDelegate = ProjectileAttack;
-            }
-        }
+    public AbilityFactory.Ability AttackDelegate { get { return _attackDelegate; } set { _attackDelegate = value; } }
+
+    public Weapon(string weaponName)
+    {
+        WeaponName = weaponName;
+        WeaponSprite = Resources.Load<Sprite>("Sprites/Weapons/Weapon_"+weaponName);
     }
 
     public void MeleeAttack()
@@ -97,11 +105,11 @@ public class Weapon : MonoBehaviour {
 
         Vector2 projectilePosition = new Vector2();
 
-        if (ArmEquipped == Helper.PartType.RightArm)
+        if (ArmEquippedOn == Helper.PartType.RightArm)
         {
             projectilePosition = player.monster.rightArmPart.hand.transform.position;
         }
-        else if (ArmEquipped == Helper.PartType.LeftArm)
+        else if (ArmEquippedOn == Helper.PartType.LeftArm)
         {
             projectilePosition = player.monster.leftArmPart.hand.transform.position;
         }
