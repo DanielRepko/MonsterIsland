@@ -249,7 +249,22 @@ public class AbilityFactory : MonoBehaviour {
     //fly up backwards while on the ground
     public static void Ability_SwoopDaWoop()
     {
+        PlayerController player = PlayerController.Instance;
 
+        if (!player.isUnderwater)
+        {
+            if (player.PlayerIsOnGround())
+            {
+                player.animator.Play("SwoopDaWoopAnim_Grounded");
+                player.rb.velocity = new Vector2(-13f * player.facingDirection, 20);
+            }
+            else if (!player.PlayerIsOnGround() && player.hasExtraJump)
+            {
+                player.rb.velocity = new Vector2(17f * player.facingDirection, 20);
+                player.animator.Play("SwoopDaWoopAnim_Aerial");
+                player.hasExtraJump = false;
+            }
+        }
     }
 
     //Arm Ability (Activate): Lets the player shoot out a bomb that explodes after 
