@@ -407,6 +407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  coinPrefab: {fileID: 1758634498893170, guid: 7c321e89e2277aa49ae8c7c018a74973, type: 2}
 --- !u!114 &114241451573536656
 MonoBehaviour:
   m_ObjectHideFlags: 1
