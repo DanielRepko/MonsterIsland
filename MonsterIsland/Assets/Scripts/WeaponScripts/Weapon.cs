@@ -69,6 +69,7 @@ public class Weapon {
     {
         WeaponName = weaponName;
         WeaponSprite = Resources.Load<Sprite>("Sprites/Weapons/Weapon_"+weaponName);
+        ProjectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/Projectile_"+weaponName);
     }
 
     public void MeleeAttack(string armEquippedOn)
@@ -86,12 +87,12 @@ public class Weapon {
             if (AttackTarget == "Enemy")
             {
                 Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
-                if (enemy != null)
+                if (enemy != null && hit.collider == (enemy.hurtBox || enemy.GetComponent<CapsuleCollider2D>()))
                 {
                     enemy.TakeDamage(Damage);
                 }
             }
-            else if(AttackTarget == "Player")
+            else if(AttackTarget == "Player" && hit.collider == PlayerController.Instance.hurtBox)
             {
                 PlayerController.Instance.TakeDamage(Damage);
             }

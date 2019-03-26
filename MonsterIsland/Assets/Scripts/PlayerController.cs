@@ -243,7 +243,7 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if(hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
-            if(enemy != null) {
+            if(enemy != null && hit.collider == (enemy.hurtBox || enemy.GetComponent<CapsuleCollider2D>())) {
                 enemy.TakeDamage(rightAttackPower);
             }
         }
@@ -260,7 +260,7 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
-            if (enemy != null && hit.collider == enemy.hurtBox) {
+            if (enemy != null && hit.collider == (enemy.hurtBox || enemy.GetComponent<CapsuleCollider2D>())) {
                 enemy.TakeDamage(leftAttackPower);
             }
         }

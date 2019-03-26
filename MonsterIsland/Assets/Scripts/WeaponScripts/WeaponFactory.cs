@@ -36,7 +36,7 @@ public class WeaponFactory : MonoBehaviour {
             case Helper.WeaponName.Scimitar:
                 Weapon scimitar = new Weapon(weaponName)
                 {
-                    WeaponDesc = "This sleak piece of metal might not pack as much punch compared to other melee weapons, but it more than makes up for it in speed",
+                    WeaponDesc = "This sleak piece of metal might not pack as much punch compared to other melee weapons, but it more than makes up for it in speed.",
                     WeaponType = Helper.WeaponType.Melee,
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
@@ -49,7 +49,7 @@ public class WeaponFactory : MonoBehaviour {
             case Helper.WeaponName.Club:
                 Weapon club = new Weapon(weaponName)
                 {
-                    WeaponDesc = "While its weight makes it slow to swing, this monkey-made hit stick packs a real wallop",
+                    WeaponDesc = "While its weight makes it slow to swing, this monkey-made hit stick packs a real wallop.",
                     WeaponType = Helper.WeaponType.Melee,
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
@@ -71,6 +71,18 @@ public class WeaponFactory : MonoBehaviour {
                     AttackCooldown = 1.5f
                 };
                 return swordFish;
+            //Pea Shooter
+            case Helper.WeaponName.PeaShooter:
+                Weapon peaShooter = new Weapon(weaponName)
+                {
+                    WeaponDesc = "This is why your mother tells you to always eat your greens.",
+                    WeaponType = Helper.WeaponType.Projectile,
+                    ArmEquippedOn = armEquippedOn,
+                    AttackTarget = attackTarget,
+                    Damage = 2,
+                    AttackCooldown = 3.5f
+                };
+                return peaShooter;
             default:
                 return null;
         }
