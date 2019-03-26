@@ -54,10 +54,23 @@ public class WeaponFactory : MonoBehaviour {
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
                     Damage = 4,
-                    AttackRange = 2.5f,
+                    AttackRange = 1.8f,
                     AttackCooldown = 2f
                 };
                 return club;
+            //Swordfish
+            case Helper.WeaponName.Swordfish:
+                Weapon swordFish = new Weapon(weaponName)
+                {
+                    WeaponDesc = "Something about this weapon seems... fishy. Oh, that's it! It has longer range than other melees!",
+                    WeaponType = Helper.WeaponType.Melee,
+                    ArmEquippedOn = armEquippedOn,
+                    AttackTarget = attackTarget,
+                    Damage = 2,
+                    AttackRange = 3f,
+                    AttackCooldown = 1.5f
+                };
+                return swordFish;
             default:
                 return null;
         }
