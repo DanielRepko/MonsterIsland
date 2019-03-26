@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour {
 
+    public int value = 0;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,4 +15,12 @@ public class Coin : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.transform.tag == "Player") {
+            Inventory.Instance.AddMoney(value);
+            Destroy(gameObject);
+        }
+    }
+
 }
