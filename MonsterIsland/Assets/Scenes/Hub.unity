@@ -7324,6 +7324,36 @@ Prefab:
       propertyPath: rayCastLengthCheck
       value: 0.022
       objectReference: {fileID: 0}
+    - target: {fileID: 114142929183438322, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1469749352}
+    - target: {fileID: 114142929183438322, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TravelToShopNest
+      objectReference: {fileID: 0}
+    - target: {fileID: 114380234869835602, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1469749352}
+    - target: {fileID: 114380234869835602, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TravelToBossNest
+      objectReference: {fileID: 0}
+    - target: {fileID: 114364128611377122, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1469749352}
+    - target: {fileID: 114364128611377122, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TravelToStartNest
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dd60c8d1dd609b489d0083e1b88ff1c, type: 2}
   m_IsPrefabAsset: 0
