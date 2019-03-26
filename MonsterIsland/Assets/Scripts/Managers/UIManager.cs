@@ -64,8 +64,10 @@ public class UIManager : MonoBehaviour {
     }
 
     public void PauseGame() {
-        pauseCanvas.SetActive(true);
-        Time.timeScale = 0;
+        if (Time.timeScale != 0) {
+            pauseCanvas.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void UnpauseGame() {
