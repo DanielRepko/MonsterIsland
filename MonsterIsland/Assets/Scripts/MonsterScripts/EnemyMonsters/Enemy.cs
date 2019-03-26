@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour {
     float health = 10;
     public Text text;
     public Collider2D hurtBox;
+    public string monsterName;
     private float hitStunCooldown = 0.4f;
     private float hitStunTimer = 0;
     private bool inHitStun = false;
@@ -95,7 +96,6 @@ public class Enemy : MonoBehaviour {
 
         //6 to 10, 50% chance of getting coins
         if(coinChance >= 6) {
-            Debug.Log("Dropping Coin");
             //Grab a random coin value from 1 to 5, create the coin, and set it's value
             int coinValue = Random.Range(0, 5) + 1;
             GameObject coin = Instantiate(GameManager.instance.coinPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
@@ -104,7 +104,19 @@ public class Enemy : MonoBehaviour {
 
         //6 to 10, 50% chance of getting a monster part
         if(partChance >= 6) {
-
+            //Grab a random number from 1 to 5. This number represents one of the 5 parts (Head, Torso, Left Arm, Right Arm, Legs)
+            int partToGet = Random.Range(0, 5) + 1;
+            if(partToGet == 1) {
+                //Head
+            } else if (partToGet == 2) {
+                //Torso
+            } else if (partToGet == 3) {
+                //Left Arm
+            } else if (partToGet == 4) {
+                //Right Arm
+            } else if (partToGet == 5) {
+                //Legs
+            }
         }
 
         Destroy(gameObject);
