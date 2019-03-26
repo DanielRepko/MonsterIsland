@@ -20,7 +20,9 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(health <= 0) {
+            KillEnemy();
+        }
 	}
 
     void FixedUpdate()
@@ -85,5 +87,26 @@ public class Enemy : MonoBehaviour {
                 PlayerController.Instance.TakeDamage(1);
             }
         }
+    }
+
+    private void KillEnemy() {
+        int coinChance = Random.Range(0, 10) + 1;
+        int partChance = Random.Range(0, 10) + 1;
+
+        //6 to 10, 50% chance of getting coins
+        if(coinChance >= 6) {
+            Debug.Log("Dropping Coin");
+            //Grab a random coin value from 1 to 5, create the coin, and set it's value
+            int coinValue = Random.Range(0, 5) + 1;
+            GameObject coin = Instantiate(GameManager.instance.coinPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            coin.GetComponent<Coin>().value = coinValue;
+        }
+
+        //6 to 10, 50% chance of getting a monster part
+        if(partChance >= 6) {
+
+        }
+
+        Destroy(gameObject);
     }
 }

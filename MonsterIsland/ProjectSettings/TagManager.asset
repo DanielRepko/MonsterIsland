@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Nest
   - Enemy
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Bubble
   - Enemy
   - Projectile
-  - 
+  - Coin
   - 
   - 
   - 
