@@ -45,6 +45,19 @@ public class WeaponFactory : MonoBehaviour {
                     AttackCooldown = 0.4f
                 };
                 return scimitar;
+            //Club
+            case Helper.WeaponName.Club:
+                Weapon club = new Weapon(weaponName)
+                {
+                    WeaponDesc = "While its weight makes it slow to swing, this monkey-made hit stick packs a real wallop",
+                    WeaponType = Helper.WeaponType.Melee,
+                    ArmEquippedOn = armEquippedOn,
+                    AttackTarget = attackTarget,
+                    Damage = 4,
+                    AttackRange = 2.5f,
+                    AttackCooldown = 2f
+                };
+                return club;
             default:
                 return null;
         }
