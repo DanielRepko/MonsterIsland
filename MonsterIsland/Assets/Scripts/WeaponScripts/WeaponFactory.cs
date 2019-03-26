@@ -75,7 +75,7 @@ public class WeaponFactory : MonoBehaviour {
             case Helper.WeaponName.PeaShooter:
                 Weapon peaShooter = new Weapon(weaponName)
                 {
-                    WeaponDesc = "This is why your mother tells you to always eat your greens.",
+                    WeaponDesc = "This is why your mother always tells you to eat your greens.",
                     WeaponType = Helper.WeaponType.Projectile,
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
@@ -83,6 +83,18 @@ public class WeaponFactory : MonoBehaviour {
                     AttackCooldown = 3.5f
                 };
                 return peaShooter;
+            //Banana Gun
+            case Helper.WeaponName.BananaGun:
+                Weapon bananaGun = new Weapon(weaponName)
+                {
+                    WeaponDesc = "Banana peels slip on the ground, so it only makes sense that the insides would slip through the air, making them the speediest, most delicious bullets you'll ever find.",
+                    WeaponType = Helper.WeaponType.Projectile,
+                    ArmEquippedOn = armEquippedOn,
+                    AttackTarget = attackTarget,
+                    Damage = 1,
+                    AttackCooldown = 2.8f
+                };
+                return bananaGun;
             default:
                 return null;
         }
