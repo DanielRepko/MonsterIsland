@@ -3761,7 +3761,7 @@ Transform:
   m_GameObject: {fileID: 1431702886559130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4174965530458818}
   m_RootOrder: 0
@@ -4248,11 +4248,6 @@ MonoBehaviour:
   rightAttackPower: 2
   leftAttackPower: 2
   attacksLocked: 0
-  rightAttackCooldown: 0.5
-  leftAttackCooldown: 0.5
-  headAbilityCooldown: 0
-  torsoAbilityCooldown: 0
-  legAbilityCooldown: 0
   legAbilityTimer: 0
   health: 0
   maxHealth: 0
@@ -4276,13 +4271,13 @@ MonoBehaviour:
   rb: {fileID: 50294502546255648}
   monster: {fileID: 114670642758465856}
   facingDirection: 0
-  head: Frog
-  torso: Wingus
+  head: Wingus
+  torso: Cactus
   rightArm: Robot
   leftArm: Mitch
   legs: Hingus
   rightWeapon: Scimitar
-  leftWeapon: Stick
+  leftWeapon: Squeaky Hammer
 --- !u!114 &114017853166408056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11515,7 +11510,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 20.3, y: 25.6}
+  m_Size: {x: 2.02, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
