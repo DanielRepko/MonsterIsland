@@ -2,14 +2,16 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="271.592" y="379.106" fill-opacity="0" fill="#231F20" width="69.979" height="35"/>
-<path id="PRIMARY_17_" fill="#FFC18C" stroke="#231F20" stroke-miterlimit="10" d="M339.463,412.885l-14.796,1.002l-40.323-11.284
-	c-6.244-1.164-10.361-7.17-9.196-13.413l0,0c1.165-6.244,7.17-10.361,13.414-9.196l35.573,6.636
-	c2.212,0.412,17.842,12.78,16.678,19.024L339.463,412.885z"/>
-<path id="SECONDARY_43_" fill="#FFFDB5" stroke="#231F20" stroke-miterlimit="10" d="M329.867,390.91l-4.7,22.977h6.416h8.334
-	l0.852-7.202C341.717,401.604,332.363,392.33,329.867,390.91z"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M328.708,397.122"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M338.625,412.795"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M338.051,413.881c1.161-6.228-4.99-14.595-9.586-15.452"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M333.001,413.887c0.767-4.108-1.439-10.341-5.354-11.071"/>
+<rect x="178.582" y="332.607" fill="#231F20" fill-opacity="0" width="256" height="127.998"/>
+<path id="PRIMARY_17_" fill="#FFC18C" stroke="#231F20" stroke-width="3.6576" stroke-miterlimit="10" d="M426.869,456.137
+	l-54.127,3.665l-147.509-41.263c-22.842-4.258-37.904-26.223-33.642-49.054l0,0c4.262-22.833,26.229-37.89,49.071-33.629
+	l130.133,24.267c8.092,1.507,65.27,46.738,61.015,69.573L426.869,456.137z"/>
+<path id="SECONDARY_43_" fill="#FFFDB5" stroke="#231F20" stroke-width="3.6576" stroke-miterlimit="10" d="M391.766,375.775
+	l-17.194,84.026h23.471h30.487l3.115-26.339C435.114,414.882,400.896,380.968,391.766,375.775z"/>
+<path fill="none" stroke="#231F20" stroke-width="3.6576" stroke-miterlimit="10" d="M387.525,398.493"/>
+<path fill="none" stroke="#231F20" stroke-width="3.6576" stroke-miterlimit="10" d="M423.804,455.809"/>
+<path fill="none" stroke="#231F20" stroke-width="3.6576" stroke-miterlimit="10" d="M421.703,459.78
+	c4.247-22.774-18.256-53.374-35.067-56.509"/>
+<path fill="none" stroke="#231F20" stroke-width="3.6576" stroke-miterlimit="10" d="M403.229,459.802
+	c2.805-15.021-5.263-37.817-19.584-40.484"/>
 </svg>
