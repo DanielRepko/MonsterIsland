@@ -2,10 +2,10 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect id="head_frame_1_" x="230.5" y="331.5" fill="#231F20" fill-opacity="0" width="151" height="131"/>
-<rect id="SECONDARY" x="290.322" y="434.526" fill="#8C8900" stroke="#231F20" stroke-miterlimit="10" width="29.177" height="27.043"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="305" cy="441" r="2.5"/>
-<rect id="PRIMARY" x="288.691" y="451.262" transform="matrix(0.9976 0.0696 -0.0696 0.9976 32.3133 -20.1738)" fill="#F1F1F1" stroke="#231F20" stroke-miterlimit="10" width="33.956" height="4.752"/>
-<rect id="PRIMARY_1_" x="288.38" y="455.764" transform="matrix(0.9861 -0.1664 0.1664 0.9861 -71.7886 57.1527)" fill="#F1F1F1" stroke="#231F20" stroke-miterlimit="10" width="33.531" height="2.375"/>
-<rect id="PRIMARY_2_" x="289.269" y="456.938" fill="#F1F1F1" stroke="#231F20" stroke-miterlimit="10" width="33.529" height="2.375"/>
+<rect id="head_frame_1_" x="178" y="286" fill="#231F20" fill-opacity="0" width="256" height="222"/>
+<rect id="SECONDARY" x="279.42" y="460.595" fill="#8C8900" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" width="49.466" height="45.828"/>
+<circle fill="none" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" cx="304.305" cy="471.565" r="4.237"/>
+<rect id="PRIMARY" x="276.665" y="488.975" transform="matrix(-0.9976 -0.0696 0.0696 -0.9976 575.863 1006.0585)" fill="#F1F1F1" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" width="57.569" height="8.054"/>
+<rect id="PRIMARY_1_" x="276.137" y="496.627" transform="matrix(-0.9861 0.1663 -0.1663 -0.9861 687.8071 939.6853)" fill="#F1F1F1" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" width="56.85" height="4.024"/>
+<rect id="PRIMARY_2_" x="277.635" y="498.573" fill="#F1F1F1" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" width="56.844" height="4.025"/>
 </svg>
