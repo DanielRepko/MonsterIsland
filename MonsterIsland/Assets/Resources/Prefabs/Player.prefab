@@ -3687,7 +3687,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792542134182912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.23, y: -1.028, z: 0}
+  m_LocalPosition: {x: -0.24900001, y: -1.028, z: 0}
   m_LocalScale: {x: 0.1806, y: 0.1806, z: 1}
   m_Children: []
   m_Father: {fileID: 4184799624838086}
@@ -3869,7 +3869,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1823806694868458}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.23, y: -1.028, z: 0}
+  m_LocalPosition: {x: 0.211, y: -1.028, z: 0}
   m_LocalScale: {x: 0.1806, y: 0.1806, z: 1}
   m_Children: []
   m_Father: {fileID: 4184799624838086}
@@ -4275,7 +4275,7 @@ MonoBehaviour:
   torso: Wingus
   rightArm: Mitch
   leftArm: Mitch
-  legs: Mitch
+  legs: Sam
   rightWeapon: Scimitar
   leftWeapon: Squeaky Hammer
 --- !u!114 &114017853166408056
@@ -10958,7 +10958,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 14.1, y: 25.6}
+  m_Size: {x: 1.41, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -11280,7 +11280,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 14.1, y: 25.6}
+  m_Size: {x: 1.41, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -11464,7 +11464,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 25.6, y: 13.1}
+  m_Size: {x: 2.56, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -11602,7 +11602,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 25.6, y: 13.1}
+  m_Size: {x: 2.56, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
