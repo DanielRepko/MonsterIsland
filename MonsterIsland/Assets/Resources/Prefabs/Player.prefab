@@ -3671,7 +3671,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344063368092656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.25, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4962323823073406}
@@ -3883,7 +3883,7 @@ Transform:
   m_GameObject: {fileID: 1455840427194520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.04, y: 0.04, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 4455811966689854}
   m_RootOrder: 0
@@ -3941,7 +3941,7 @@ Transform:
   m_GameObject: {fileID: 1335693649377656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.04, y: 0.04, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 4455811966689854}
   m_RootOrder: 1
@@ -4276,10 +4276,10 @@ MonoBehaviour:
   rb: {fileID: 50294502546255648}
   monster: {fileID: 114670642758465856}
   facingDirection: 0
-  head: Mummy
-  torso: Wingus
-  rightArm: Cactus
-  leftArm: Cactus
+  head: Mitch
+  torso: Mitch
+  rightArm: Mitch
+  leftArm: Mitch
   legs: Mitch
 --- !u!114 &114017853166408056
 MonoBehaviour:

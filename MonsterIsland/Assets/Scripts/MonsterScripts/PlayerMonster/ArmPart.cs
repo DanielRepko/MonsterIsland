@@ -64,14 +64,14 @@ public class ArmPart : MonoBehaviour {
                 }
             }
 
-            bicepSprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.BicepImporter, false);
-            forearmSprite = Helper.CreateSprite(partInfo.forearmSprite, Helper.ForearmImporter, false);
-            handBackSprite = Helper.CreateSprite(partInfo.handBackSprite, Helper.HandImporter, false);
-            handFrontSprite = Helper.CreateSprite(partInfo.handFrontSprite, Helper.HandImporter, false);
-            fingersOpenBackSprite = Helper.CreateSprite(partInfo.fingersOpenBackSprite, Helper.HandImporter, false);
-            fingersOpenFrontSprite = Helper.CreateSprite(partInfo.fingersOpenFrontSprite, Helper.HandImporter, false);
-            fingersClosedBackSprite = Helper.CreateSprite(partInfo.fingersClosedBackSprite, Helper.HandImporter, false);
-            fingersClosedFrontSprite = Helper.CreateSprite(partInfo.fingersClosedFrontSprite, Helper.HandImporter, false);
+            bicepSprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.BicepImporter);
+            forearmSprite = Helper.CreateSprite(partInfo.forearmSprite, Helper.ForearmImporter);
+            handBackSprite = Helper.CreateSprite(partInfo.handBackSprite, Helper.HandImporter);
+            handFrontSprite = Helper.CreateSprite(partInfo.handFrontSprite, Helper.HandImporter);
+            fingersOpenBackSprite = Helper.CreateSprite(partInfo.fingersOpenBackSprite, Helper.HandImporter);
+            fingersOpenFrontSprite = Helper.CreateSprite(partInfo.fingersOpenFrontSprite, Helper.HandImporter);
+            fingersClosedBackSprite = Helper.CreateSprite(partInfo.fingersClosedBackSprite, Helper.HandImporter);
+            fingersClosedFrontSprite = Helper.CreateSprite(partInfo.fingersClosedFrontSprite, Helper.HandImporter);
 
             bicep.sprite = bicepSprite;
             forearm.sprite = forearmSprite;
