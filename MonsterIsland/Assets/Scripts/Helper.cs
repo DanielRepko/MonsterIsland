@@ -216,21 +216,21 @@ public class Helper : MonoBehaviour {
         int spriteWidth = (int)partSprite.rect.width;
         int spriteHeight = (int)partSprite.rect.height;
 
-        if (!inMonsterMaker)
-        {
-            if (spriteWidth > spriteHeight)
-            {
-                float dimenMultiplier = (float)Math.Round((float)spriteWidth / 256, 3);
-                spriteWidth = 2560;
-                spriteHeight = ((int)(spriteHeight / dimenMultiplier)) * 10;
-            }
-            else
-            {
-                float dimenMultiplier = (float)Math.Round((float)spriteHeight / 256, 3);
-                spriteWidth = ((int)(spriteWidth / dimenMultiplier)) * 10;
-                spriteHeight = 2560;
-            }
-        }
+        //if (!inMonsterMaker)
+        //{
+        //    if (spriteWidth > spriteHeight)
+        //    {
+        //        float dimenMultiplier = (float)Math.Round((float)spriteWidth / 256, 3);
+        //        spriteWidth = 2560;
+        //        spriteHeight = ((int)(spriteHeight / dimenMultiplier)) * 10;
+        //    }
+        //    else
+        //    {
+        //        float dimenMultiplier = (float)Math.Round((float)spriteHeight / 256, 3);
+        //        spriteWidth = ((int)(spriteWidth / dimenMultiplier)) * 10;
+        //        spriteHeight = 2560;
+        //    }
+        //}
 
         //creating the texture
         Texture2D partTexture = VectorUtils.RenderSpriteToTexture2D(partSprite, spriteWidth, spriteHeight, material);
