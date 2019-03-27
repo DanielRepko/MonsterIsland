@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4119190012716618}
   - component: {fileID: 212681919314650168}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,9 +37,9 @@ GameObject:
   - component: {fileID: 4527830887995072}
   - component: {fileID: 50551379709203578}
   - component: {fileID: 61961732164369534}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: DroppedHead
-  m_TagString: Untagged
+  m_TagString: PartDrop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4763165745280208}
   - component: {fileID: 212069064991890070}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

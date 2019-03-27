@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4478047628997384}
   - component: {fileID: 212855978881910744}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,9 +37,9 @@ GameObject:
   - component: {fileID: 4918084827407744}
   - component: {fileID: 50582734042411740}
   - component: {fileID: 61077264797440124}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: DroppedTorso
-  m_TagString: Untagged
+  m_TagString: PartDrop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
