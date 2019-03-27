@@ -11,12 +11,16 @@ public class PlayerMonster : MonoBehaviour {
     public ArmPart leftArmPart;
     public LegPart legPart;
 
-    public void InitializeMonster(HeadPartInfo headInfo, TorsoPartInfo torsoInfo, ArmPartInfo rightArmInfo, ArmPartInfo leftArmInfo, LegPartInfo legPartInfo)
+    public void InitializeMonster(HeadPartInfo headInfo, 
+                                  TorsoPartInfo torsoInfo, 
+                                  ArmPartInfo rightArmInfo, ArmPartInfo leftArmInfo, 
+                                  LegPartInfo legPartInfo, 
+                                  Weapon rightWeapon, Weapon leftWeapon)
     {
         headPart.InitializePart(headInfo);
         torsoPart.InitializePart(torsoInfo);
-        rightArmPart.InitializePart(rightArmInfo);
-        leftArmPart.InitializePart(leftArmInfo);
+        rightArmPart.InitializePart(rightArmInfo, rightWeapon);
+        leftArmPart.InitializePart(leftArmInfo, leftWeapon);
         legPart.InitializePart(legPartInfo);
     }
 

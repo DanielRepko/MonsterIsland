@@ -7,6 +7,9 @@ public class ArmPart : MonoBehaviour {
     //holds information about the part
     public ArmPartInfo partInfo;
 
+    //holds the equipped weapon, if any
+    public Weapon weapon;
+
     //used to tell whether this class represents the right or left arm
     public string partType;
 
@@ -20,47 +23,81 @@ public class ArmPart : MonoBehaviour {
     public Sprite fingersClosedBackSprite;
     public Sprite fingersClosedFrontSprite;
 
+    //holds the sprite for the weapon
+    public Sprite weaponSprite;
+
     //Sprite renderers for the gameObject
     public SpriteRenderer bicep;
     public SpriteRenderer forearm;
     public SpriteRenderer hand;
     public SpriteRenderer fingers;
+    public SpriteRenderer weaponRenderer;
 
     //stores the part's ability delegate
-    public AbilityFactory.ArmAbility partAbility = null;
+    //for the sake of simplicity, this is also used to store 
+    //the attack delegate for the weapon, if one is equipped
+    public AbilityFactory.ArmAbility ability = null;
 
-    public void InitializePart(ArmPartInfo armPartInfo)
+    public void InitializePart(ArmPartInfo armPartInfo, Weapon equippedWeapon)
     {
+        PlayerController player = PlayerController.Instance;
+
         if (armPartInfo != null)
         {
             partInfo = armPartInfo;
+            if(equippedWeapon != null)
+            {
+                weapon = equippedWeapon;
+            }            
 
             //checking whether this part has an ability
             if (partInfo.abilityName != null)
             {
                 //populating the partAbility field with the appropriate ability delegate
-                partAbility = AbilityFactory.GetArmPartAbility(partInfo.abilityName);
+                ability = AbilityFactory.GetArmPartAbility(partInfo.abilityName);
 
                 //if the type is Passive, run the delegate method to apply the buff to the player
                 if (partInfo.abilityType == "Passive")
                 {
-                    partAbility(partType);
+                    ability(partType);
 
                 }//if the type is Activate, set the ability to the Player action delegate
                 else if (partInfo.abilityType == "Activate")
                 {
                     //checking which arm to apply the ability to
-                    if(partType == "RightArm")
+                    if(partType == Helper.PartType.RightArm)
                     {
-                        PlayerController.Instance.rightAttackDelegate = partAbility;
-                    } else if(partType == "LeftArm")
+                        player.rightAttackDelegate = ability;
+                    } else if(partType == Helper.PartType.LeftArm)
                     {
-                        PlayerController.Instance.leftAttackDelegate = partAbility;
+                        player.leftAttackDelegate = ability;
                     }
                 }//if the value is anything else, then a typo must have occured when creating the ability info
                 else
                 {
                     Debug.Log("Error: Invalid ability type");
+                }
+            }
+
+            if (weapon != null)
+            {
+                ability = weapon.AttackDelegate;
+
+                weaponSprite = weapon.WeaponSprite;
+                weaponRenderer.sprite = weaponSprite;
+
+                
+
+                if (partType == Helper.PartType.RightArm)
+                {
+                    player.rightAttackDelegate = ability;
+                    player.RightAttackCooldown = weapon.AttackCooldown;
+                    
+                }
+                else if (partType == Helper.PartType.LeftArm)
+                {
+                    player.leftAttackDelegate = ability;
+                    player.LeftAttackCooldown = weapon.AttackCooldown;
                 }
             }
 
@@ -115,6 +152,7 @@ public class ArmPart : MonoBehaviour {
             bicep.sortingOrder = 12;
             forearm.sortingOrder = 8;
             hand.sortingOrder = 10;
+            weaponRenderer.sortingOrder = 9;
             fingers.sortingOrder = 11;
         }
         //facing left
@@ -138,6 +176,7 @@ public class ArmPart : MonoBehaviour {
             bicep.sortingOrder = -1;
             forearm.sortingOrder = -5;
             hand.sortingOrder = -4;
+            weaponRenderer.sortingOrder = -3;
             fingers.sortingOrder = -2;
         }
     }
@@ -168,6 +207,7 @@ public class ArmPart : MonoBehaviour {
             bicep.sortingOrder = -1;
             forearm.sortingOrder = -5;
             hand.sortingOrder = -4;
+            weaponRenderer.sortingOrder = -3;
             fingers.sortingOrder = -2;
         }
         //facing left
@@ -191,6 +231,7 @@ public class ArmPart : MonoBehaviour {
             bicep.sortingOrder = 12;
             forearm.sortingOrder = 8;
             hand.sortingOrder = 10;
+            weaponRenderer.sortingOrder = 9;
             fingers.sortingOrder = 11;
         }
     }

@@ -224,7 +224,7 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Needle Shot";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Shoot fire a spread of three needles";
-                partInfo.abilityCooldown = 0;
+                partInfo.abilityCooldown = 1;
                 return partInfo;
             case Helper.MonsterName.Vulture:
                 partInfo.abilityName = "Feather Fall";
