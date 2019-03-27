@@ -182,6 +182,12 @@ public class Helper : MonoBehaviour {
         public const string Fan = "Fan";
     }
 
+    public struct WeaponType
+    {
+        public const string Melee = "Melee";
+        public const string Projectile = "Projectile";
+    }
+
     //helper method used to convert the imageStrings to Sprites
     //inMonsterMaker parameter used to determine whether the call is happening inside the MonsterMaker
     //if it is, the method does not adjust the scaling of the images
