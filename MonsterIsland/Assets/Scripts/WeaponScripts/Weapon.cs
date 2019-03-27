@@ -80,9 +80,6 @@ public class Weapon {
         attackRay.origin = player.transform.position;
         attackRay.direction = new Vector2(player.facingDirection, 0);
 
-        Debug.Log(player.RightAttackCooldown);
-        Debug.Log(player.LeftAttackCooldown);
-
         Debug.DrawRay(attackRay.origin, new Vector2(AttackRange * player.facingDirection, 0), Color.green);
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, _attackRange, 1 << LayerMask.NameToLayer(AttackTarget));
         if (hit)
