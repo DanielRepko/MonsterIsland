@@ -108,14 +108,29 @@ public class Enemy : MonoBehaviour {
             int partToGet = Random.Range(0, 5) + 1;
             if(partToGet == 1) {
                 //Head
+                GameObject droppedHead = Instantiate(GameManager.instance.headDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                droppedHead.GetComponent<DroppedPart>().partType = Helper.PartType.Head;
+                droppedHead.GetComponent<DroppedPart>().monsterName = monsterName;
             } else if (partToGet == 2) {
                 //Torso
+                GameObject droppedTorso = Instantiate(GameManager.instance.torsoDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                droppedTorso.GetComponent<DroppedPart>().partType = Helper.PartType.Torso;
+                droppedTorso.GetComponent<DroppedPart>().monsterName = monsterName;
             } else if (partToGet == 3) {
                 //Left Arm
+                GameObject droppedLeftArm = Instantiate(GameManager.instance.leftArmDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                droppedLeftArm.GetComponent<DroppedPart>().partType = Helper.PartType.LeftArm;
+                droppedLeftArm.GetComponent<DroppedPart>().monsterName = monsterName;
             } else if (partToGet == 4) {
                 //Right Arm
+                GameObject droppedRightArm = Instantiate(GameManager.instance.rightArmDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                droppedRightArm.GetComponent<DroppedPart>().partType = Helper.PartType.RightArm;
+                droppedRightArm.GetComponent<DroppedPart>().monsterName = monsterName;
             } else if (partToGet == 5) {
                 //Legs
+                GameObject droppedLegs = Instantiate(GameManager.instance.legsDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                droppedLegs.GetComponent<DroppedPart>().partType = Helper.PartType.Legs;
+                droppedLegs.GetComponent<DroppedPart>().monsterName = monsterName;
             }
         }
 

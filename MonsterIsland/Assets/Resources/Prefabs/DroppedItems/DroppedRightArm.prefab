@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: 4640357429241248}
   - component: {fileID: 50514536170930814}
   - component: {fileID: 61938815379823970}
+  - component: {fileID: 114817289880325006}
   m_Layer: 13
   m_Name: DroppedRightArm
   m_TagString: PartDrop
@@ -198,7 +199,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1214736009926186}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 55.83, y: -28.28, z: 0}
+  m_LocalPosition: {x: 58.03, y: -29.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4513087926677972}
@@ -238,7 +239,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &61938815379823970
 BoxCollider2D:
@@ -265,6 +266,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.42197418, y: 1.1420441}
   m_EdgeRadius: 0
+--- !u!114 &114817289880325006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1214736009926186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f534b39b828e9cc4e800a6825e7c2413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partType: 
+  monsterName: 
 --- !u!212 &212233370121533792
 SpriteRenderer:
   m_ObjectHideFlags: 1

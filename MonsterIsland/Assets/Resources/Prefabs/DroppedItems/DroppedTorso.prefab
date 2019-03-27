@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4918084827407744}
   - component: {fileID: 50582734042411740}
   - component: {fileID: 61077264797440124}
+  - component: {fileID: 114729790921276332}
   m_Layer: 13
   m_Name: DroppedTorso
   m_TagString: PartDrop
@@ -64,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1997261974715278}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 58.24, y: -27.01, z: 0}
+  m_LocalPosition: {x: 58.93, y: -30.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4478047628997384}
@@ -89,7 +90,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &61077264797440124
 BoxCollider2D:
@@ -116,6 +117,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9384537, y: 1.2706909}
   m_EdgeRadius: 0
+--- !u!114 &114729790921276332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1997261974715278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f534b39b828e9cc4e800a6825e7c2413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partType: 
+  monsterName: 
 --- !u!212 &212855978881910744
 SpriteRenderer:
   m_ObjectHideFlags: 1
