@@ -161,9 +161,9 @@ public class ArmPart : MonoBehaviour {
             //setting the sprite renderers to the correct order in the sorting layer
             bicep.sortingOrder = 12;
             forearm.sortingOrder = 8;
-            hand.sortingOrder = 10;
-            weaponRenderer.sortingOrder = 9;
-            fingers.sortingOrder = 11;
+            hand.sortingOrder = 11;
+            weaponRenderer.sortingOrder = 10;
+            fingers.sortingOrder = 9;
         }
         //facing left
         else if (scaleX == -1)
@@ -240,9 +240,9 @@ public class ArmPart : MonoBehaviour {
             //setting the sprite renderers to the correct order in the sorting layer
             bicep.sortingOrder = 12;
             forearm.sortingOrder = 8;
-            hand.sortingOrder = 10;
-            weaponRenderer.sortingOrder = 9;
-            fingers.sortingOrder = 11;
+            hand.sortingOrder = 11;
+            weaponRenderer.sortingOrder = 10;
+            fingers.sortingOrder = 9;
         }
     }
 }
