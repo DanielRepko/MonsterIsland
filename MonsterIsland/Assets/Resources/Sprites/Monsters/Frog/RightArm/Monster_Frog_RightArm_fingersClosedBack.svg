@@ -2,11 +2,11 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="266.5" y="369.004" fill-opacity="0" fill="#231F20" width="81" height="54.487"/>
-<path id="SECONDARY_25_" fill="#F77300" stroke="#231F20" stroke-miterlimit="10" d="M292.524,391.248l-1.209,2.483
-	c1.471,1.529,3.264,2.449,5.21,2.465l0.839-1.724C295.506,394.187,293.831,393.01,292.524,391.248z"/>
-<polygon id="SECONDARY_24_" fill="#F77300" stroke="#231F20" stroke-miterlimit="10" points="303.258,394.542 303.281,396.542 
-	309.045,396.542 309.021,394.542 "/>
-<path id="SECONDARY_23_" fill="#F77300" stroke="#231F20" stroke-miterlimit="10" d="M314.475,394.525l0.735,1.509h0.645
-	c1.767,0,3.411-0.721,4.815-1.951l-1.116-2.293C318.154,393.442,316.395,394.449,314.475,394.525z"/>
+<rect x="179" y="310.248" fill="#231F20" fill-opacity="0" width="256" height="172"/>
+<path id="SECONDARY_25_" fill="#F77300" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M261.249,380.466
+	l-3.821,7.838c4.649,4.826,10.316,7.729,16.466,7.782l2.651-5.443C270.673,389.743,265.38,386.027,261.249,380.466z"/>
+<polygon id="SECONDARY_24_" fill="#F77300" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" points="
+	295.173,390.864 295.247,397.177 313.463,397.177 313.389,390.864 "/>
+<path id="SECONDARY_23_" fill="#F77300" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M330.623,390.81
+	l2.324,4.765h2.04c5.584,0,10.778-2.277,15.217-6.159l-3.528-7.238C342.253,387.391,336.691,390.571,330.623,390.81z"/>
 </svg>
