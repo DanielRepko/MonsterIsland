@@ -3856,7 +3856,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1281557813799032}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.008, y: -0.112, z: 0}
+  m_LocalPosition: {x: 0.008, y: -0.102, z: 0}
   m_LocalScale: {x: 0.05370215, y: 0.05370215, z: 1}
   m_Children: []
   m_Father: {fileID: 4541549585395506}
@@ -3927,7 +3927,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1447384371814402}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.008, y: -0.112, z: 0}
+  m_LocalPosition: {x: 0.008, y: -0.102, z: 0}
   m_LocalScale: {x: 0.05370215, y: 0.05370215, z: 1}
   m_Children: []
   m_Father: {fileID: 4637516741036926}
@@ -4273,8 +4273,8 @@ MonoBehaviour:
   facingDirection: 0
   head: Wingus
   torso: Wingus
-  rightArm: Cactus
-  leftArm: Dingus
+  rightArm: Kangaroo
+  leftArm: Hingus
   legs: Wingus
   rightWeapon: Scimitar
   leftWeapon: Squeaky Hammer
