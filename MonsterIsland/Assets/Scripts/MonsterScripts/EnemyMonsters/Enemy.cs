@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour {
     private float hitStunTimer = 0;
     private bool inHitStun = false;
     private Rigidbody2D rb;
+    public bool alwaysDropPart = false;
+    public string partToAlwaysDrop;
 
     // Use this for initialization
     void Start () {
@@ -94,6 +96,11 @@ public class Enemy : MonoBehaviour {
         int coinChance = Random.Range(0, 10) + 1;
         int partChance = Random.Range(0, 10) + 1;
 
+        //If the enemy is supposed to always drop a part, overwrite partChance to be 10
+        if(alwaysDropPart) {
+            partChance = 10;
+        }
+
         //6 to 10, 50% chance of getting coins
         if(coinChance >= 6) {
             //Grab a random coin value from 1 to 5, create the coin, and set it's value
@@ -106,6 +113,28 @@ public class Enemy : MonoBehaviour {
         if(partChance >= 6) {
             //Grab a random number from 1 to 5. This number represents one of the 5 parts (Head, Torso, Left Arm, Right Arm, Legs)
             int partToGet = Random.Range(0, 5) + 1;
+
+            //If the enemy is always supposed to drop a part, set partToGet to the correct value based on what part it's supposed to drop
+            if(alwaysDropPart) {
+                switch(partToAlwaysDrop) {
+                    case Helper.PartType.Head:
+                        partToGet = 1;
+                        break;
+                    case Helper.PartType.Torso:
+                        partToGet = 2;
+                        break;
+                    case Helper.PartType.LeftArm:
+                        partToGet = 3;
+                        break;
+                    case Helper.PartType.RightArm:
+                        partToGet = 4;
+                        break;
+                    case Helper.PartType.Legs:
+                        partToGet = 5;
+                        break;
+                }
+            }
+
             if(partToGet == 1) {
                 //Head
                 GameObject droppedHead = Instantiate(GameManager.instance.headDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
