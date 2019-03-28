@@ -152,7 +152,7 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = PlayerController.Instance;
         Ray beakRay = new Ray();
-        beakRay.origin = new Vector2(player.transform.position.x, player.transform.position.y + 1.2f);
+        beakRay.origin = new Vector2(player.transform.position.x, player.transform.position.y + 1f);
         beakRay.direction = new Vector3(player.facingDirection, 0, 0);
 
         Debug.DrawRay(beakRay.origin, new Vector2(1.7f * player.facingDirection, 0), Color.green);

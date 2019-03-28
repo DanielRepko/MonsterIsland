@@ -23,6 +23,9 @@ public class ArmPart : MonoBehaviour {
     public Sprite fingersClosedBackSprite;
     public Sprite fingersClosedFrontSprite;
 
+    public Sprite fingersBack;
+    public Sprite fingersFront;
+
     //holds the sprite for the weapon
     public Sprite weaponSprite;
 
@@ -79,14 +82,25 @@ public class ArmPart : MonoBehaviour {
                 }
             }
 
+            //setting all of the sprite fields
+            bicepSprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.BicepImporter);
+            forearmSprite = Helper.CreateSprite(partInfo.forearmSprite, Helper.ForearmImporter);
+            handBackSprite = Helper.CreateSprite(partInfo.handBackSprite, Helper.HandImporter);
+            handFrontSprite = Helper.CreateSprite(partInfo.handFrontSprite, Helper.HandImporter);
+            fingersOpenBackSprite = Helper.CreateSprite(partInfo.fingersOpenBackSprite, Helper.HandImporter);
+            fingersOpenFrontSprite = Helper.CreateSprite(partInfo.fingersOpenFrontSprite, Helper.HandImporter);
+            fingersClosedBackSprite = Helper.CreateSprite(partInfo.fingersClosedBackSprite, Helper.HandImporter);
+            fingersClosedFrontSprite = Helper.CreateSprite(partInfo.fingersClosedFrontSprite, Helper.HandImporter);
+
             if (weapon != null)
             {
                 ability = weapon.AttackDelegate;
 
-                weaponSprite = weapon.WeaponSprite;
-                weaponRenderer.sprite = weaponSprite;
+                fingersBack = fingersClosedBackSprite;
+                fingersFront = fingersClosedFrontSprite;
 
-                
+                weaponSprite = weapon.WeaponSprite;
+                weaponRenderer.sprite = weaponSprite;                
 
                 if (partType == Helper.PartType.RightArm)
                 {
@@ -100,15 +114,11 @@ public class ArmPart : MonoBehaviour {
                     player.LeftAttackCooldown = weapon.AttackCooldown;
                 }
             }
-
-            bicepSprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.BicepImporter, false);
-            forearmSprite = Helper.CreateSprite(partInfo.forearmSprite, Helper.ForearmImporter, false);
-            handBackSprite = Helper.CreateSprite(partInfo.handBackSprite, Helper.HandImporter, false);
-            handFrontSprite = Helper.CreateSprite(partInfo.handFrontSprite, Helper.HandImporter, false);
-            fingersOpenBackSprite = Helper.CreateSprite(partInfo.fingersOpenBackSprite, Helper.HandImporter, false);
-            fingersOpenFrontSprite = Helper.CreateSprite(partInfo.fingersOpenFrontSprite, Helper.HandImporter, false);
-            fingersClosedBackSprite = Helper.CreateSprite(partInfo.fingersClosedBackSprite, Helper.HandImporter, false);
-            fingersClosedFrontSprite = Helper.CreateSprite(partInfo.fingersClosedFrontSprite, Helper.HandImporter, false);
+            else
+            {
+                fingersBack = fingersOpenBackSprite;
+                fingersFront = fingersOpenFrontSprite;
+            }
 
             bicep.sprite = bicepSprite;
             forearm.sprite = forearmSprite;
@@ -116,11 +126,11 @@ public class ArmPart : MonoBehaviour {
             if (partType == Helper.PartType.RightArm)
             {
                 hand.sprite = handBackSprite;
-                fingers.sprite = fingersOpenBackSprite;
+                fingers.sprite = fingersBack;
             } else if (partType == Helper.PartType.LeftArm)
             {
                 hand.sprite = handFrontSprite;
-                fingers.sprite = fingersOpenFrontSprite;
+                fingers.sprite = fingersFront;
             }
            
         }
@@ -146,14 +156,14 @@ public class ArmPart : MonoBehaviour {
 
             //applying the appropriate hand and finger sprites
             hand.sprite = handBackSprite;
-            fingers.sprite = fingersOpenBackSprite;
+            fingers.sprite = fingersBack;
 
             //setting the sprite renderers to the correct order in the sorting layer
             bicep.sortingOrder = 12;
             forearm.sortingOrder = 8;
-            hand.sortingOrder = 10;
-            weaponRenderer.sortingOrder = 9;
-            fingers.sortingOrder = 11;
+            hand.sortingOrder = 11;
+            weaponRenderer.sortingOrder = 10;
+            fingers.sortingOrder = 9;
         }
         //facing left
         else if (scaleX == -1)
@@ -170,7 +180,7 @@ public class ArmPart : MonoBehaviour {
 
             //applying the appropriate hand and finger sprites
             hand.sprite = handFrontSprite;
-            fingers.sprite = fingersOpenFrontSprite;
+            fingers.sprite = fingersFront;
 
             //setting the sprite renderers to the correct order in the sorting layer
             bicep.sortingOrder = -1;
@@ -201,7 +211,7 @@ public class ArmPart : MonoBehaviour {
 
             //applying the appropriate hand and finger sprites
             hand.sprite = handFrontSprite;
-            fingers.sprite = fingersOpenFrontSprite;
+            fingers.sprite = fingersFront;
 
             //setting the sprite renderers to the correct order in the sorting layer
             bicep.sortingOrder = -1;
@@ -225,14 +235,14 @@ public class ArmPart : MonoBehaviour {
 
             //applying the appropriate hand and finger sprites
             hand.sprite = handBackSprite;
-            fingers.sprite = fingersOpenBackSprite;
+            fingers.sprite = fingersBack;
 
             //setting the sprite renderers to the correct order in the sorting layer
             bicep.sortingOrder = 12;
             forearm.sortingOrder = 8;
-            hand.sortingOrder = 10;
-            weaponRenderer.sortingOrder = 9;
-            fingers.sortingOrder = 11;
+            hand.sortingOrder = 11;
+            weaponRenderer.sortingOrder = 10;
+            fingers.sortingOrder = 9;
         }
     }
 }

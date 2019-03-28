@@ -2,11 +2,14 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="266.5" y="369.004" fill-opacity="0" fill="#231F20" width="81" height="54.487"/>
-<path id="PRIMARY_5_" fill="#00BC03" stroke="#231F20" stroke-miterlimit="10" d="M292.867,393.846
-	c0,7.816,6.664,14.153,14.883,14.153l0,0c8.219,0,14.882-6.337,14.882-14.153v-10.713c0-7.816-6.663-14.153-14.882-14.153l0,0
-	c-8.219,0-14.883,6.337-14.883,14.153V393.846z"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M297.35,403.003c0-18.925,1.461-32.023,3.268-32.023"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M307.75,407.975c0-22.678,0-38.995,0-38.995"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M318.147,403.736c0-20.135-0.523-32.045-1.639-32.045"/>
+<rect x="179" y="310.562" fill-opacity="0" fill="#231F20" width="256" height="171.423"/>
+<path id="PRIMARY_5_" fill="#00BC03" stroke="#231F20" stroke-width="3.1533" stroke-miterlimit="10" d="M262.333,388.717
+	c0,24.591,21.062,44.528,47.037,44.528l0,0c25.976,0,47.034-19.937,47.034-44.528v-33.704c0-24.591-21.059-44.528-47.034-44.528l0,0
+	c-25.975,0-47.037,19.937-47.037,44.528V388.717z"/>
+<path fill="none" stroke="#231F20" stroke-width="3.1533" stroke-miterlimit="10" d="M276.5,417.527
+	c0-59.54,4.617-100.75,10.327-100.75"/>
+<path fill="none" stroke="#231F20" stroke-width="3.1533" stroke-miterlimit="10" d="M309.37,433.168c0-71.346,0-122.683,0-122.683"
+	/>
+<path fill="none" stroke="#231F20" stroke-width="3.1533" stroke-miterlimit="10" d="M342.231,419.834
+	c0-63.346-1.654-100.816-5.179-100.816"/>
 </svg>

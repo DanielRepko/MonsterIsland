@@ -2,8 +2,8 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="253.5" y="379.606" fill-opacity="0" fill="#231F20" width="105" height="34"/>
-<path id="PRIMARY_14_" fill="#894000" stroke="#231F20" stroke-miterlimit="10" d="M352,396.606c0,8.8-8.852,15.935-19.77,15.935
-	H279.77c-10.918,0-19.77-7.135-19.77-15.935l0,0c0-8.8,8.851-15.935,19.77-15.935h52.461C343.148,380.672,352,387.807,352,396.606
-	L352,396.606z"/>
+<rect x="178" y="354.606" fill="#231F20" fill-opacity="0" width="256" height="84"/>
+<path id="PRIMARY_14_" fill="#894000" stroke="#231F20" stroke-width="2.4543" stroke-miterlimit="10" d="M418.152,396.606
+	c0,21.741-21.581,39.367-48.2,39.367H242.049c-26.619,0-48.201-17.626-48.201-39.367l0,0c0-21.741,21.58-39.369,48.201-39.369
+	h127.906C396.571,357.24,418.152,374.868,418.152,396.606L418.152,396.606z"/>
 </svg>

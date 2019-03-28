@@ -2,24 +2,24 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect id="head_frame_1_" x="230.5" y="328.932" fill-opacity="0" fill="#231F20" width="151" height="131"/>
-<path id="PRIMARY" fill="#00BC03" stroke="#231F20" stroke-miterlimit="10" d="M353.188,416.188
-	c1.066-2.892-5.188-12.583-5.188-15.752l0,0c0.311-1.605,0.493-3.272,0.493-4.997c0-11.787-7.697-21.341-17.191-21.341
-	c-5.814,0-10.945,3.593-14.057,9.077c-0.973-0.097-1.952-0.176-2.944-0.217c-3.123-5.36-8.189-8.86-13.925-8.86
-	c-8.387,0-15.362,7.458-16.878,17.322c-8.839,5.96-11.366,14.126-11.497,23.707c-0.667,48.873,16.5,44.484,44.5,35.895
-	c9.405-2.887,16.276-4.02,23.323-8.896c0.766-0.53,9.566-14.01,10.28-14.584c-10.5,1.228-24.811-1.09-24.811-2.522
-	c0,0,6.235,0.458,16.417,0.458c2.102,0,10.456-0.186,12.644,1.439C354.607,426.349,352.973,416.77,353.188,416.188z"/>
-<ellipse fill="#FFFFFF" stroke="#231F20" stroke-miterlimit="10" cx="301.04" cy="393.049" rx="10.875" ry="13.5"/>
-<ellipse fill="#FFFFFF" stroke="#231F20" stroke-miterlimit="10" cx="331.301" cy="393.049" rx="10.875" ry="13.5"/>
-<ellipse fill="#231F20" cx="335.562" cy="393.049" rx="4.261" ry="5.291"/>
-<ellipse fill="#231F20" cx="304.755" cy="393.049" rx="4.261" ry="5.291"/>
-<ellipse id="SECONDARY_6_" transform="matrix(0.9534 -0.3017 0.3017 0.9534 -121.421 105.8655)" fill="#005601" cx="282" cy="446" rx="4.046" ry="6.907"/>
-<circle id="SECONDARY_5_" fill="#005601" cx="277" cy="417.123" r="2.471"/>
-<ellipse id="SECONDARY_4_" fill="#005601" cx="287.89" cy="435.125" rx="1.183" ry="1.334"/>
-<ellipse id="SECONDARY_3_" transform="matrix(0.9655 -0.2604 0.2604 0.9655 -100.6946 88.723)" fill="#005601" cx="284.447" cy="424.331" rx="2.126" ry="3.625"/>
-<ellipse id="SECONDARY_2_" transform="matrix(-0.9175 -0.3978 0.3978 -0.9175 384.0872 887.817)" fill="#005601" cx="284.146" cy="404.063" rx="2.39" ry="7.624"/>
-<ellipse id="SECONDARY_1_" fill="#005601" cx="278.25" cy="431.5" rx="1.25" ry="3.625"/>
-<ellipse id="SECONDARY" fill="#005601" cx="291.747" cy="419.594" rx="3.125" ry="4.125"/>
-<ellipse transform="matrix(0.9061 0.423 -0.423 0.9061 210.7093 -105.809)" fill="#231F20" stroke="#231F20" stroke-miterlimit="10" cx="343.764" cy="421.867" rx="2.459" ry="0.94"/>
-<ellipse transform="matrix(-0.9061 0.423 -0.423 -0.9061 846.1465 655.9694)" fill="#231F20" stroke="#231F20" stroke-miterlimit="10" cx="350.292" cy="421.867" rx="2.459" ry="0.94"/>
+<rect id="head_frame_1_" x="178" y="283.432" fill="#231F20" fill-opacity="0" width="256" height="222"/>
+<path id="PRIMARY" fill="#00BC03" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" d="M386,431.301
+	c1.808-4.9-8.795-21.322-8.795-26.694l0,0c0.526-2.72,0.836-5.544,0.836-8.468c0-19.975-13.049-36.166-29.146-36.166
+	c-9.855,0-18.555,6.088-23.831,15.382c-1.648-0.164-3.31-0.298-4.991-0.368c-5.295-9.083-13.883-15.014-23.608-15.014
+	c-14.219,0-26.044,12.639-28.614,29.354c-14.985,10.1-19.27,23.939-19.492,40.175c-1.131,82.823,27.974,75.386,75.443,60.829
+	c15.945-4.892,27.595-6.812,39.542-15.074c1.298-0.899,16.217-23.742,17.427-24.716c-17.801,2.081-42.063-1.847-42.063-4.274
+	c0,0,10.571,0.776,27.832,0.776c3.563,0,17.728-0.314,21.436,2.439C388.407,448.52,385.636,432.287,386,431.301z"/>
+<ellipse fill="#FFFFFF" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" cx="297.591" cy="392.088" rx="18.437" ry="22.878"/>
+<ellipse fill="#FFFFFF" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" cx="348.895" cy="392.088" rx="18.437" ry="22.878"/>
+<ellipse fill="#231F20" cx="356.119" cy="392.088" rx="7.224" ry="8.967"/>
+<ellipse fill="#231F20" cx="303.889" cy="392.088" rx="7.223" ry="8.967"/>
+<ellipse id="SECONDARY_6_" transform="matrix(-0.3018 -0.9534 0.9534 -0.3018 -113.9747 880.1855)" fill="#005601" cx="265.305" cy="481.826" rx="11.706" ry="6.859"/>
+<circle id="SECONDARY_5_" fill="#005601" cx="256.834" cy="432.886" r="4.187"/>
+<ellipse id="SECONDARY_4_" fill="#005601" cx="275.297" cy="463.393" rx="2.006" ry="2.26"/>
+<ellipse id="SECONDARY_3_" transform="matrix(-0.2605 -0.9655 0.9655 -0.2605 -90.1198 821.2228)" fill="#005601" cx="269.439" cy="445.124" rx="6.144" ry="3.604"/>
+<ellipse id="SECONDARY_2_" transform="matrix(-0.3979 0.9174 -0.9174 -0.3979 752.7288 327.4798)" fill="#005601" cx="268.905" cy="410.741" rx="12.921" ry="4.052"/>
+<ellipse id="SECONDARY_1_" fill="#005601" cx="258.954" cy="457.25" rx="2.119" ry="6.143"/>
+<ellipse id="SECONDARY" fill="#005601" cx="281.836" cy="437.073" rx="5.298" ry="6.991"/>
+<ellipse transform="matrix(0.4229 -0.9062 0.9062 0.4229 -186.0192 589.7229)" fill="#231F20" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" cx="369.99" cy="440.908" rx="1.593" ry="4.17"/>
+<ellipse transform="matrix(0.4229 0.9062 -0.9062 0.4229 619.521 -90.8646)" fill="#231F20" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" cx="381.1" cy="440.962" rx="1.593" ry="4.168"/>
 </svg>

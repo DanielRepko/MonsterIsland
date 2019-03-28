@@ -2,12 +2,13 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="278.5" y="344.963" fill-opacity="0" fill="#231F20" width="57" height="103.121"/>
-<path id="PRIMARY_18_" fill="#666666" stroke="#231F20" stroke-miterlimit="10" d="M322.609,403.822
-	c0,4.596-7.212,8.321-16.11,8.321l0,0c-8.897,0-16.11-3.726-16.11-8.321v-50.023c0-4.596,7.213-8.321,16.11-8.321l0,0
-	c8.898,0,16.11,3.726,16.11,8.321V403.822z"/>
-<path stroke="#231F20" stroke-miterlimit="10" d="M322.609,352.251c0,4.596-7.212-1.89-16.11-1.89l0,0
-	c-8.897,0-16.11,6.485-16.11,1.89v1.548c0-4.596,7.213-8.321,16.11-8.321l0,0c8.898,0,16.11,3.726,16.11,8.321V352.251z"/>
-<ellipse id="PRIMARY_17_" fill="#666666" stroke="#231F20" stroke-miterlimit="10" cx="306.5" cy="379.353" rx="11.032" ry="14.3"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="304" cy="427.606" r="2.5"/>
+<rect x="236.5" y="268.659" fill-opacity="0" fill="#231F20" width="141" height="255.729"/>
+<path id="PRIMARY_18_" fill="#666666" stroke="#231F20" stroke-width="2.4768" stroke-miterlimit="10" d="M345.612,414.624
+	c0,11.396-17.84,20.636-39.851,20.636l0,0c-22.008,0-39.851-9.239-39.851-20.636V290.571c0-11.396,17.843-20.636,39.851-20.636l0,0
+	c22.011,0,39.851,9.239,39.851,20.636V414.624z"/>
+<path stroke="#231F20" stroke-width="2.4768" stroke-miterlimit="10" d="M345.612,286.733c0,11.397-17.84-4.686-39.851-4.686l0,0
+	c-22.008,0-39.851,16.083-39.851,4.686v3.838c0-11.396,17.843-20.636,39.851-20.636l0,0c22.011,0,39.851,9.239,39.851,20.636
+	V286.733z"/>
+<ellipse id="PRIMARY_17_" fill="#666666" stroke="#231F20" stroke-width="2.4768" stroke-miterlimit="10" cx="305.762" cy="353.941" rx="27.289" ry="35.462"/>
+<ellipse fill="none" stroke="#231F20" stroke-width="2.4768" stroke-miterlimit="10" cx="299.579" cy="473.605" rx="6.184" ry="6.2"/>
 </svg>

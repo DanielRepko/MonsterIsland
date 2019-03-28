@@ -2,14 +2,14 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="265.5" y="352.008" fill-opacity="0" fill="#231F20" width="81" height="89.313"/>
-<path class="primary_color" id="PRIMARY_6_" fill="#00BC03" stroke="#231F20" stroke-width="1.0468" stroke-miterlimit="10" d="M316.227,352.02
-	c5.75,9.289,8.823,21.308,8.823,36.207c0,29.228-4.48,52.923-17.489,52.923c-11.292,0-17.488-23.695-17.488-52.923
-	c0-14.899,2.738-27.403,8.071-36.207H316.227z"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="308.311" cy="360.11" r="2.5"/>
-<line fill="none" stroke="#231F20" stroke-width="1.0468" stroke-miterlimit="10" x1="310.811" y1="360.11" x2="321.275" y2="360.11"/>
-<line fill="none" stroke="#231F20" stroke-width="1.0468" stroke-miterlimit="10" x1="305.811" y1="360.11" x2="295.333" y2="360.11"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="308.311" cy="433.75" r="2.5"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="305.811" y1="433.75" x2="298.914" y2="433.75"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="310.811" y1="433.75" x2="318.646" y2="433.75"/>
+<rect x="191" y="269.841" fill-opacity="0" fill="#231F20" width="230" height="253.646"/>
+<path id="PRIMARY_6_" fill="#00BC03" stroke="#231F20" stroke-width="2.9726" stroke-miterlimit="10" d="M335.039,269.875
+	c16.327,26.379,25.053,60.514,25.053,102.828c0,83.006-12.723,150.301-49.661,150.301c-32.063,0-49.657-67.295-49.657-150.301
+	c0-42.314,7.775-77.824,22.918-102.828H335.039z"/>
+<circle fill="none" stroke="#231F20" stroke-width="2.8397" stroke-miterlimit="10" cx="312.561" cy="292.852" r="7.099"/>
+<line fill="none" stroke="#231F20" stroke-width="2.9726" stroke-miterlimit="10" x1="319.66" y1="292.852" x2="349.374" y2="292.852"/>
+<line fill="none" stroke="#231F20" stroke-width="2.9726" stroke-miterlimit="10" x1="305.462" y1="292.852" x2="275.711" y2="292.852"/>
+<circle fill="none" stroke="#231F20" stroke-width="2.8397" stroke-miterlimit="10" cx="312.561" cy="501.988" r="7.099"/>
+<line fill="none" stroke="#231F20" stroke-width="2.8397" stroke-miterlimit="10" x1="305.462" y1="501.988" x2="285.879" y2="501.988"/>
+<line fill="none" stroke="#231F20" stroke-width="2.8397" stroke-miterlimit="10" x1="319.66" y1="501.988" x2="341.907" y2="501.988"/>
 </svg>

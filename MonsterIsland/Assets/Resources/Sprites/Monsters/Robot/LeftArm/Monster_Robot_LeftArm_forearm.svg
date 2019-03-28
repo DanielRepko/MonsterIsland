@@ -2,14 +2,15 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="266.5" y="352.008" fill-opacity="0" fill="#231F20" width="81" height="89.313"/>
-<path id="PRIMARY" fill="#666666" stroke="#231F20" stroke-miterlimit="10" d="M291.283,424.385l-0.004-68.635
-	c0,0-2.279-3.723,15.83-3.723c18.974,0,17.11,3.723,17.11,3.723v44.912l-6.082,24.936v15.686h-26.858v-16.898H291.283z"/>
-<path id="SECONDARY_29_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" d="M306.593,381.929
-	c-1.146,1.464-2.785,2.539-4.683,2.992l16.316,25.778c0.862-2.084,2.027-3.849,3.322-5.142L306.593,381.929z"/>
-<circle id="SECONDARY_28_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" cx="301.263" cy="378.499" r="7.5"/>
-<path id="SECONDARY_27_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" d="M318.813,421.211l4.442-18.48
-	c-2.372,0.826-4.784,3.771-6.022,7.707C315.741,415.18,316.471,419.715,318.813,421.211z"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="307.75" cy="360.11" r="2.5"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="307.75" cy="433.75" r="2.5"/>
+<rect x="192" y="269.479" fill-opacity="0" fill="#231F20" width="230" height="254.371"/>
+<path id="PRIMARY" fill="#666666" stroke="#231F20" stroke-width="2.8438" stroke-miterlimit="10" d="M262.372,475.615
+	l-0.011-195.479c0,0-6.472-10.604,44.95-10.604c53.876,0,48.585,10.604,48.585,10.604v127.914l-17.27,71.02v44.674h-76.265v-48.129
+	H262.372z"/>
+<path id="SECONDARY_29_" fill="#FF0000" stroke="#231F20" stroke-width="2.8438" stroke-miterlimit="10" d="M305.844,354.698
+	c-3.253,4.17-7.909,7.231-13.296,8.522l46.331,73.418c2.448-5.936,5.757-10.962,9.434-14.644L305.844,354.698z"/>
+<ellipse id="SECONDARY_28_" fill="#FF0000" stroke="#231F20" stroke-width="2.8438" stroke-miterlimit="10" cx="290.71" cy="344.927" rx="21.295" ry="21.361"/>
+<path id="SECONDARY_27_" fill="#FF0000" stroke="#231F20" stroke-width="2.8438" stroke-miterlimit="10" d="M340.545,466.576
+	l12.613-52.635c-6.735,2.354-13.584,10.742-17.101,21.951C331.82,449.398,333.893,462.314,340.545,466.576z"/>
+<ellipse fill="none" stroke="#231F20" stroke-width="2.8438" stroke-miterlimit="10" cx="309.13" cy="292.554" rx="7.099" ry="7.12"/>
+<ellipse fill="none" stroke="#231F20" stroke-width="2.8438" stroke-miterlimit="10" cx="309.13" cy="502.288" rx="7.099" ry="7.12"/>
 </svg>
