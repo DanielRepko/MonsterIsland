@@ -138,6 +138,18 @@ public class WeaponFactory : MonoBehaviour {
                     WeaponSpriteRenderer = weaponRenderer
                 };
                 return boomerang;
+            case Helper.WeaponName.HarpoonGun:
+                Weapon harpoonGun = new Weapon(weaponName)
+                {
+                    WeaponDesc = "Careful where you point this thing, the barbed tip of that harpoon is so sharp, it can lodge itself right into walls. It can get so well stuck, you can even jump right on it, and it holds just fine.",
+                    WeaponType = Helper.WeaponType.Projectile,
+                    ArmEquippedOn = armEquippedOn,
+                    AttackTarget = attackTarget,
+                    Damage = 2,
+                    AttackCooldown = 1.5f,
+                    WeaponSpriteRenderer = weaponRenderer
+                };
+                return harpoonGun;
             default:
                 return null;
         }

@@ -126,6 +126,11 @@ public class Weapon {
         projectile.GetComponent<Projectile>().damage = Damage;
         projectile.GetComponent<Projectile>().weaponRenderer = WeaponSpriteRenderer;
 
+        Debug.Log(player.PlayerIsOnGround());
+
+        var facingDirection = WeaponSpriteRenderer.transform.GetComponentInParent<Rigidbody2D>().transform.localScale.x;
+        projectile.transform.localScale *= facingDirection;
+
         projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectile.GetComponent<Projectile>().speed * player.facingDirection, 0);
     }
 

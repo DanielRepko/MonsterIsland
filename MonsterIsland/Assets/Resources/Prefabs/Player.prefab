@@ -3671,7 +3671,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344063368092656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4962323823073406}
@@ -4248,7 +4248,6 @@ MonoBehaviour:
   rightAttackPower: 2
   leftAttackPower: 2
   attacksLocked: 0
-  legAbilityTimer: 0
   health: 0
   maxHealth: 0
   hurtBox: {fileID: 68947545826544262}
@@ -4258,7 +4257,7 @@ MonoBehaviour:
   hitCounter: 0
   totalHits: 0
   hasExtraJump: 1
-  rayCastLengthCheck: 0.022
+  rayCastLengthCheck: 0.2
   width: 0
   height: 0
   isUnderwater: 0
@@ -4273,11 +4272,11 @@ MonoBehaviour:
   facingDirection: 0
   head: Wingus
   torso: Wingus
-  rightArm: Wingus
-  leftArm: Wingus
+  rightArm: Kangaroo
+  leftArm: Mitch
   legs: Wingus
-  rightWeapon: Scimitar
-  leftWeapon: Squeaky Hammer
+  rightWeapon: Harpoon Gun
+  leftWeapon: Bone
 --- !u!114 &114017853166408056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5418,6 +5417,7 @@ MonoBehaviour:
     fingersOpenFrontSprite: 
     fingersClosedBackSprite: 
     fingersClosedFrontSprite: 
+    equippedWeapon: 
   partType: LeftArm
   bicepSprite: {fileID: 0}
   forearmSprite: {fileID: 0}
@@ -5580,6 +5580,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 0
+  collectedParts:
+    collectedHeads: []
+    collectedTorsos: []
+    collectedLeftArms: []
+    collectedRightArms: []
+    collectedLegs: []
 --- !u!114 &114298664699984536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9318,6 +9324,7 @@ MonoBehaviour:
     fingersOpenFrontSprite: 
     fingersClosedBackSprite: 
     fingersClosedFrontSprite: 
+    equippedWeapon: 
   partType: RightArm
   bicepSprite: {fileID: 0}
   forearmSprite: {fileID: 0}

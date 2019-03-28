@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
 
     private float _legAbilityCooldown = 0;
     public float LegAbilityCooldown { get { return _legAbilityCooldown; } set { _legAbilityCooldown = value; } }
-    public float legAbilityTimer = 0;
+    private float legAbilityTimer = 0;
 
     [Space(20, order = 1)]
 
