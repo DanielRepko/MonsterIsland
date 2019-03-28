@@ -21,6 +21,7 @@ public class DroppedPart : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.transform.tag == "Player") {
             AudioManager.Instance.PlaySound(soundClip);
+            Inventory.Instance.AddMonsterPart(monsterName, partType);
             Destroy(gameObject);
         }
     }
