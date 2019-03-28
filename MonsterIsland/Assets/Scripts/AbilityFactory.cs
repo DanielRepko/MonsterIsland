@@ -300,7 +300,21 @@ public class AbilityFactory : MonoBehaviour {
     //Arm Ability (Passive): Increases the player's melee weapon damage, does not affect projectile weapon damage
     public static void Ability_WeaponsTraining(string armType)
     {
-
+        PlayerController player = PlayerController.Instance;
+        if(armType == Helper.PartType.RightArm)
+        {
+            if(player.monster.rightArmPart.weapon != null && player.monster.rightArmPart.weapon.WeaponType == Helper.WeaponType.Melee)
+            {
+                player.monster.rightArmPart.weapon.Damage += 1;
+            }
+        }
+        else if (armType == Helper.PartType.LeftArm)
+        {
+            if (player.monster.leftArmPart.weapon != null && player.monster.leftArmPart.weapon.WeaponType == Helper.WeaponType.Melee)
+            {
+                player.monster.leftArmPart.weapon.Damage += 1;
+            }
+        }
     }
 
     //Arm Ability (Activate): Allow the player to shoot three needles in a spread formation
