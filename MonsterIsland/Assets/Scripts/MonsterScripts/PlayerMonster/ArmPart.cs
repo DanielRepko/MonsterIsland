@@ -41,17 +41,14 @@ public class ArmPart : MonoBehaviour {
     //the attack delegate for the weapon, if one is equipped
     public AbilityFactory.ArmAbility ability = null;
 
-    public void InitializePart(ArmPartInfo armPartInfo, Weapon equippedWeapon)
+    public void InitializePart(ArmPartInfo armPartInfo)
     {
         PlayerController player = PlayerController.Instance;
 
         if (armPartInfo != null)
         {
             partInfo = armPartInfo;
-            if(equippedWeapon != null)
-            {
-                weapon = equippedWeapon;
-            }            
+            weapon = WeaponFactory.GetWeapon(partInfo.equippedWeapon, partType, "Player", weaponRenderer);
 
             //checking whether this part has an ability
             if (partInfo.abilityName != null)

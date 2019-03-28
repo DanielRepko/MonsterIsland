@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponFactory : MonoBehaviour {
 
-	public static Weapon GetWeapon(string weaponName, string armEquippedOn, string weaponIsFor)
+	public static Weapon GetWeapon(string weaponName, string armEquippedOn, string weaponIsFor, SpriteRenderer weaponRenderer)
     {
         string attackTarget = "";
 
@@ -29,7 +29,8 @@ public class WeaponFactory : MonoBehaviour {
                     AttackTarget = attackTarget,
                     Damage = 3,
                     AttackRange = 2.5f,
-                    AttackCooldown = 1f
+                    AttackCooldown = 1f,
+                    WeaponSpriteRenderer = weaponRenderer
                 };
                 return stick;
             //Scimitar
@@ -42,7 +43,8 @@ public class WeaponFactory : MonoBehaviour {
                     AttackTarget = attackTarget,
                     Damage = 2,
                     AttackRange = 2.2f,
-                    AttackCooldown = 0.4f
+                    AttackCooldown = 0.4f,
+                    WeaponSpriteRenderer = weaponRenderer
                 };
                 return scimitar;
             //Club
@@ -55,7 +57,8 @@ public class WeaponFactory : MonoBehaviour {
                     AttackTarget = attackTarget,
                     Damage = 4,
                     AttackRange = 1.8f,
-                    AttackCooldown = 2f
+                    AttackCooldown = 2f,
+                    WeaponSpriteRenderer = weaponRenderer
                 };
                 return club;
             //Swordfish
@@ -68,7 +71,8 @@ public class WeaponFactory : MonoBehaviour {
                     AttackTarget = attackTarget,
                     Damage = 2,
                     AttackRange = 3f,
-                    AttackCooldown = 1.5f
+                    AttackCooldown = 1.5f,
+                    WeaponSpriteRenderer = weaponRenderer
                 };
                 return swordFish;
             //Pea Shooter
@@ -80,7 +84,8 @@ public class WeaponFactory : MonoBehaviour {
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
                     Damage = 2,
-                    AttackCooldown = 3.5f
+                    AttackCooldown = 1.3f,
+                    WeaponSpriteRenderer = weaponRenderer
                 };
                 return peaShooter;
             //Banana Gun
@@ -92,7 +97,8 @@ public class WeaponFactory : MonoBehaviour {
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
                     Damage = 1,
-                    AttackCooldown = 2.8f
+                    AttackCooldown = 0.7f,
+                    WeaponSpriteRenderer = weaponRenderer
                 };
                 return bananaGun;
             //Squeaky Hammer
@@ -104,9 +110,22 @@ public class WeaponFactory : MonoBehaviour {
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
                     Damage = 4,
-                    AttackCooldown = 2.5f
+                    AttackCooldown = 2f,
+                    WeaponSpriteRenderer = weaponRenderer
                 };
                 return squeakyHammer;
+            case Helper.WeaponName.Bone:
+                Weapon bone = new Weapon(weaponName)
+                {
+                    WeaponDesc = "The skeleton arm doesn't have very much muscle on it, so all it can really do is just huck this bone overhead.",
+                    WeaponType = Helper.WeaponType.Projectile,
+                    ArmEquippedOn = armEquippedOn,
+                    AttackTarget = attackTarget,
+                    Damage = 3,
+                    AttackCooldown = 1f,
+                    WeaponSpriteRenderer = weaponRenderer
+                };
+                return bone;
             default:
                 return null;
         }

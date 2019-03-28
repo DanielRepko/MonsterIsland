@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
+    public SpriteRenderer weaponRenderer;
     public int damage;
     public int speed;
     public string target;

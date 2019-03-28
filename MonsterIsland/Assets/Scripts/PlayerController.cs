@@ -297,8 +297,9 @@ public class PlayerController : MonoBehaviour {
         var rightArmInfo = PartFactory.GetArmPartInfo(rightArm, Helper.PartType.RightArm);
         var leftArmInfo = PartFactory.GetArmPartInfo(leftArm, Helper.PartType.LeftArm);
         var legPartInfo = PartFactory.GetLegPartInfo(legs);
-        Weapon weaponRight = WeaponFactory.GetWeapon(rightWeapon, Helper.PartType.RightArm, "Player");
-        Weapon weaponLeft = WeaponFactory.GetWeapon(leftWeapon, Helper.PartType.LeftArm, "Player");
+        rightArmInfo.equippedWeapon = rightWeapon; //WeaponFactory.GetWeapon(rightWeapon, Helper.PartType.RightArm, "Player");
+        leftArmInfo.equippedWeapon = leftWeapon;//WeaponFactory.GetWeapon(leftWeapon, Helper.PartType.LeftArm, "Player");
+
 
         moveDelegate = Move;
         jumpDelegate = Jump;
@@ -311,7 +312,7 @@ public class PlayerController : MonoBehaviour {
         playerCheckDelegate += UpdatePlayerInputCooldowns;
         playerCheckDelegate += CheckHitBox;
 
-        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo, weaponRight, weaponLeft);
+        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
 
         SetPlayerCooldowns();
         //setting the cooldown timers so that the player can use the inputs as soon as the game loads
