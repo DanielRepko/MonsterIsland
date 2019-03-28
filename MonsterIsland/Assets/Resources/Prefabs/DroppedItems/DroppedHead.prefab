@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partType: 
   monsterName: 
+  soundClip: {fileID: 8300000, guid: 2c0e84ccc79fa5e48b55ed9eb499b83f, type: 3}
 --- !u!212 &212069064991890070
 SpriteRenderer:
   m_ObjectHideFlags: 1
