@@ -182,12 +182,18 @@ public class Helper : MonoBehaviour {
         public const string Fan = "Fan";
     }
 
+    public struct WeaponType
+    {
+        public const string Melee = "Melee";
+        public const string Projectile = "Projectile";
+    }
+
     //helper method used to convert the imageStrings to Sprites
     //inMonsterMaker parameter used to determine whether the call is happening inside the MonsterMaker
     //if it is, the method does not adjust the scaling of the images
     //this is necessary because scaling the images properly is very taxing, and would put
     //too much loading into the Monster Maker
-    public static Sprite CreateSprite(string partString, SVGImporter importer, bool inMonsterMaker)
+    public static Sprite CreateSprite(string partString, SVGImporter importer)
     {
         StringReader reader = new StringReader(partString);
 
@@ -211,26 +217,8 @@ public class Helper : MonoBehaviour {
         //building the initial sprite
         Sprite partSprite = VectorUtils.BuildSprite(geometryList, importer.SvgPixelsPerUnit, importer.Alignment, importer.CustomPivot, importer.GradientResolution, true);
 
-        //calculating the multiplier to apply to the dimensions
-        //(this accounts for some weirdness in the scaling)
         int spriteWidth = (int)partSprite.rect.width;
         int spriteHeight = (int)partSprite.rect.height;
-
-        if (!inMonsterMaker)
-        {
-            if (spriteWidth > spriteHeight)
-            {
-                float dimenMultiplier = (float)Math.Round((float)spriteWidth / 256, 3);
-                spriteWidth = 2560;
-                spriteHeight = ((int)(spriteHeight / dimenMultiplier)) * 10;
-            }
-            else
-            {
-                float dimenMultiplier = (float)Math.Round((float)spriteHeight / 256, 3);
-                spriteWidth = ((int)(spriteWidth / dimenMultiplier)) * 10;
-                spriteHeight = 2560;
-            }
-        }
 
         //creating the texture
         Texture2D partTexture = VectorUtils.RenderSpriteToTexture2D(partSprite, spriteWidth, spriteHeight, material);

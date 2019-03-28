@@ -2,8 +2,9 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect id="head_frame" x="231.166" y="330.917" fill-opacity="0" fill="#BBBCBE" width="151" height="131"/>
-<path id="PRIMARY_3_" fill="#666666" stroke="#231F20" stroke-miterlimit="10" d="M322.999,460.084c0,0-7.606,0-17,0l0,0
-	c-9.394,0-17,0-17,0v-22.738c0-2.998,7.606-5.43,17-5.43l0,0c9.394,0,17,2.432,17,5.43V460.084z"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="306" cy="439" r="2.5"/>
+<rect id="head_frame" x="178.666" y="285.417" fill-opacity="0" fill="#BBBCBE" width="256" height="222"/>
+<path id="PRIMARY_3_" fill="#666666" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" d="M334.356,504.311
+	c0,0-12.896,0-28.821,0l0,0c-15.925,0-28.821,0-28.821,0v-38.533c0-5.081,12.896-9.202,28.821-9.202l0,0
+	c15.926,0,28.821,4.121,28.821,9.202V504.311z"/>
+<circle fill="none" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" cx="305.536" cy="468.58" r="4.238"/>
 </svg>

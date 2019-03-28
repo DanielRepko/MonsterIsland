@@ -48,10 +48,10 @@ public class HeadPart : MonoBehaviour {
                 }
             }
 
-            idleFaceSprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter, false);
-            hurtFaceSprite = Helper.CreateSprite(partInfo.hurtSprite, Helper.HeadImporter, false);
-            attackFaceSprite = Helper.CreateSprite(partInfo.attackSprite, Helper.HeadImporter, false);
-            neckSprite = Helper.CreateSprite(partInfo.neckSprite, Helper.HeadImporter, false);
+            idleFaceSprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter);
+            hurtFaceSprite = Helper.CreateSprite(partInfo.hurtSprite, Helper.HeadImporter);
+            attackFaceSprite = Helper.CreateSprite(partInfo.attackSprite, Helper.HeadImporter);
+            neckSprite = Helper.CreateSprite(partInfo.neckSprite, Helper.HeadImporter);
 
             face.sprite = idleFaceSprite;
             neck.sprite = neckSprite;

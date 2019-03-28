@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  speed: 30
+  speed: 25
   target: Enemy
 --- !u!212 &212886728196738284
 SpriteRenderer:

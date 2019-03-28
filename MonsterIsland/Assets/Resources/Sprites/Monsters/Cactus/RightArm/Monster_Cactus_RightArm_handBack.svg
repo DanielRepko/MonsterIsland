@@ -2,14 +2,17 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="266.5" y="369.004" fill-opacity="0" fill="#231F20" width="81" height="54.487"/>
-<path id="PRIMARY_5_" fill="#00BC03" stroke="#231F20" stroke-miterlimit="10" d="M321.133,393.846
-	c0,7.816-6.664,14.153-14.883,14.153l0,0c-8.219,0-14.882-6.337-14.882-14.153v-10.713c0-7.816,6.663-14.153,14.882-14.153l0,0
-	c8.219,0,14.883,6.337,14.883,14.153V393.846z"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M316.65,403.003c0-18.925-1.461-32.023-3.268-32.023"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M306.25,407.975c0-22.678,0-38.995,0-38.995"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M295.853,403.736c0-20.135,0.523-32.045,1.638-32.045"/>
-<polygon id="SECONDARY_75_" fill="#005601" points="310.79,383.504 307.501,382.818 313.81,370.121 314.521,384.279 "/>
-<polygon id="SECONDARY_76_" fill="#005601" points="301.375,388.004 298.38,389.525 295.367,375.669 304.773,386.278 "/>
-<polygon id="SECONDARY_80_" fill="#005601" points="306.316,399.541 303.142,398.444 311.012,386.649 309.919,400.787 "/>
+<rect x="179" y="310.562" fill-opacity="0" fill="#231F20" width="256" height="171.423"/>
+<path id="PRIMARY_5_" fill="#00BC03" stroke="#231F20" stroke-width="3.1533" stroke-miterlimit="10" d="M351.667,388.717
+	c0,24.591-21.063,44.528-47.037,44.528l0,0c-25.977,0-47.036-19.937-47.036-44.528v-33.704c0-24.591,21.059-44.528,47.036-44.528
+	l0,0c25.975,0,47.037,19.937,47.037,44.528V388.717z"/>
+<path fill="none" stroke="#231F20" stroke-width="3.1533" stroke-miterlimit="10" d="M337.5,417.527
+	c0-59.54-4.617-100.75-10.327-100.75"/>
+<path fill="none" stroke="#231F20" stroke-width="3.1533" stroke-miterlimit="10" d="M304.63,433.168c0-71.346,0-122.683,0-122.683"
+	/>
+<path fill="none" stroke="#231F20" stroke-width="3.1533" stroke-miterlimit="10" d="M271.769,419.834
+	c0-63.346,1.654-100.816,5.177-100.816"/>
+<polygon id="SECONDARY_75_" fill="#005601" points="318.979,356.181 308.583,354.024 328.521,314.075 330.771,358.62 "/>
+<polygon id="SECONDARY_76_" fill="#005601" points="289.222,370.338 279.758,375.125 270.233,331.533 299.963,364.909 "/>
+<polygon id="SECONDARY_80_" fill="#005601" points="304.839,406.636 294.806,403.186 319.679,366.077 316.226,410.556 "/>
 </svg>

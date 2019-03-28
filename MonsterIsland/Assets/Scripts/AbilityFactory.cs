@@ -144,7 +144,7 @@ public class AbilityFactory : MonoBehaviour {
 
         Vector2 acidCloudPosition = new Vector2(player.transform.position.x + 2 * player.facingDirection, player.transform.position.y);
 
-        GameObject acidCloud = Instantiate(acidCloudLoad, acidCloudPosition, Quaternion.identity);
+        Instantiate(acidCloudLoad, acidCloudPosition, Quaternion.identity);
     }
 
     //Head Ability (Activate): Allows the player to attack with large beak
@@ -152,7 +152,7 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = PlayerController.Instance;
         Ray beakRay = new Ray();
-        beakRay.origin = new Vector2(player.transform.position.x, player.transform.position.y + 1.2f);
+        beakRay.origin = new Vector2(player.transform.position.x, player.transform.position.y + 1f);
         beakRay.direction = new Vector3(player.facingDirection, 0, 0);
 
         Debug.DrawRay(beakRay.origin, new Vector2(1.7f * player.facingDirection, 0), Color.green);
@@ -416,8 +416,8 @@ public class AbilityFactory : MonoBehaviour {
                 player.hasExtraJump = false;
 
                 //setting the size and offset of the hitbox
-                player.hitBox.offset = new Vector2(0.2874344f, -1.349547f);
-                player.hitBox.size = new Vector2(1.574869f, 1.591879f);
+                player.hitBox.offset = new Vector2(0.3871388f, -1.349547f);
+                player.hitBox.size = new Vector2(1.37546f, 1.591879f);
 
                 player.hitBoxDamage = 1;
                 player.hitCounter = 0;

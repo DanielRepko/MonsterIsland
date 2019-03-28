@@ -2,7 +2,11 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="266.5" y="369.004" fill-opacity="0" fill="#231F20" width="81" height="54.487"/>
-<circle class="primary_color" id="PRIMARY_1_" fill="#00BC03" stroke="#231F20" stroke-miterlimit="10" cx="305.915" cy="387.407" r="18.232"/>
-<ellipse class="secondary_color" id="SECONDARY_1_" transform="matrix(0.0487 0.9988 -0.9988 0.0487 674.4388 59.6323)" fill="#FFFDB5" stroke="#231F20" stroke-miterlimit="10" cx="305.915" cy="383.865" rx="8.725" ry="10.553"/>
+<rect x="179" y="310.412" fill-opacity="0" fill="#231F20" width="256" height="171.672"/>
+<path id="PRIMARY_1_" fill="#00BC03" stroke="#231F20" stroke-width="3.1556" stroke-miterlimit="10" d="M361.191,368.394
+	c0,31.729-25.796,57.445-57.622,57.445c-31.821,0-57.622-25.717-57.622-57.445c0-31.719,25.801-57.441,57.622-57.441
+	C335.396,310.952,361.191,336.675,361.191,368.394z"/>
+<path id="SECONDARY_1_" fill="#FFFDB5" stroke="#231F20" stroke-width="3.1556" stroke-miterlimit="10" d="M304.914,384.689
+	c-18.4,0.892-33.914-10.677-34.654-25.839c-0.741-15.163,13.573-28.178,31.971-29.073c18.397-0.893,33.912,10.677,34.65,25.842
+	C337.623,370.781,323.309,383.796,304.914,384.689z"/>
 </svg>

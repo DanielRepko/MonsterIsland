@@ -44,7 +44,7 @@ public class TorsoPart : MonoBehaviour {
                 }
             }
 
-            bodySprite = Helper.CreateSprite(partInfo.mainSprite, Helper.TorsoImporter, false);
+            bodySprite = Helper.CreateSprite(partInfo.mainSprite, Helper.TorsoImporter);
 
             body.sprite = bodySprite;
         }

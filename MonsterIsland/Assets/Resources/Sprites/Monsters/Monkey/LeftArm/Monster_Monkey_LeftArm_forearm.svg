@@ -2,9 +2,10 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="265.5" y="352.008" fill-opacity="0" fill="#231F20" width="81" height="89.313"/>
-<path id="PRIMARY_6_" fill="#894000" stroke="#231F20" stroke-miterlimit="10" d="M292.833,426.908c0,7.887,6.268,14.283,14,14.283
-	l0,0c7.733,0,14-6.396,14-14.283v-60.495c0-7.888-6.267-14.283-14-14.283l0,0c-7.732,0-14,6.395-14,14.283V426.908z"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="305.25" cy="360.11" r="2.5"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="305.25" cy="433.75" r="2.5"/>
+<rect x="191" y="269.381" fill="#231F20" fill-opacity="0" width="230" height="254.567"/>
+<path id="PRIMARY_6_" fill="#894000" stroke="#231F20" stroke-width="2.8449" stroke-miterlimit="10" d="M268.612,482.867
+	c0,22.479,17.798,40.711,39.753,40.711l0,0c21.959,0,39.753-18.232,39.753-40.711V310.44c0-22.483-17.794-40.711-39.753-40.711l0,0
+	c-21.955,0-39.753,18.228-39.753,40.711V482.867z"/>
+<ellipse fill="none" stroke="#231F20" stroke-width="2.8449" stroke-miterlimit="10" cx="303.871" cy="292.474" rx="7.098" ry="7.125"/>
+<ellipse fill="none" stroke="#231F20" stroke-width="2.8449" stroke-miterlimit="10" cx="303.871" cy="502.368" rx="7.098" ry="7.125"/>
 </svg>

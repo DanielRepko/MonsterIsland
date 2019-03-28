@@ -2,12 +2,15 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="271.592" y="379.106" fill-opacity="0" fill="#231F20" width="69.979" height="35"/>
-<path id="SECONDARY_17_" fill="#960303" stroke="#231F20" stroke-miterlimit="10" d="M341.179,412.001
-	c0.052,1.013-9.643,1.749-22.019,1.749c-12.377,0-22.411-5.181-22.411-11.572c0-6.39,11.288-16.999,22.411-11.57
-	C334.689,398.188,340.5,398.595,341.179,412.001z"/>
-<ellipse id="SECONDARY_16_" fill="#960303" stroke="#231F20" stroke-miterlimit="10" cx="297.499" cy="400.625" rx="14.501" ry="13.125"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M310.881,405.688c0,2.557,13.496,4.625,30.174,4.625"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M312,399.501c0,2.051,12.176,3.71,27.223,3.71"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M308.794,392.654c1.463,1.727,9.83,3.452,21.977,3.452"/>
+<rect x="178.635" y="332.406" fill-opacity="0" fill="#231F20" width="255.891" height="128.4"/>
+<path id="SECONDARY_17_" fill="#960303" stroke="#231F20" stroke-width="3.6626" stroke-miterlimit="10" d="M433.095,453.082
+	c0.189,3.716-35.26,6.417-80.516,6.417c-45.259,0-81.949-19.006-81.949-42.454c0-23.44,41.275-62.362,81.949-42.446
+	C409.365,402.406,430.613,403.9,433.095,453.082z"/>
+<ellipse id="SECONDARY_16_" fill="#960303" stroke="#231F20" stroke-width="3.6626" stroke-miterlimit="10" cx="273.371" cy="411.349" rx="53.026" ry="48.15"/>
+<path fill="none" stroke="#231F20" stroke-width="3.6626" stroke-miterlimit="10" d="M322.305,429.921
+	c0,9.38,49.351,16.968,110.337,16.968"/>
+<path fill="none" stroke="#231F20" stroke-width="3.6626" stroke-miterlimit="10" d="M326.396,407.226
+	c0,7.523,44.523,13.61,99.546,13.61"/>
+<path fill="none" stroke="#231F20" stroke-width="3.6626" stroke-miterlimit="10" d="M314.673,382.107
+	c5.35,6.334,35.946,12.665,80.362,12.665"/>
 </svg>

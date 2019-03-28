@@ -2,14 +2,15 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="253.5" y="379.606" fill-opacity="0" fill="#231F20" width="105" height="34"/>
-<path fill="#B7B784" stroke="#231F20" stroke-miterlimit="10" d="M341.166,381.106h-70.333c-15.5,0-15.5,0-15.5,15.5
-	s0,15.5,15.5,15.5H298.5c0.08-4.149,5.566-12,8-12c2.435,0,6.082,7.851,6.162,12h28.504c15.5,0,15.5,0,15.5-15.5
-	S356.666,381.106,341.166,381.106z"/>
-<path fill="#B7B784" stroke="#231F20" stroke-miterlimit="10" d="M349.123,381.289h-86.247c-4.408,0.408-6.239,1.708-7,5.777
-	h100.246C355.362,382.997,353.53,381.697,349.123,381.289z"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M311.625,395.853c0,0.955-2.103,4.734-3.625,4.734l0,0
-	c0,0-1.573-0.509-1.818-0.509v-12.943c0,0,1.233-0.07,2.756-0.07l0,0c1.522,0,2.756,0.07,2.756,0.07L311.625,395.853z"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="306.182" y1="387.528" x2="306.182" y2="381.289"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="308.792" cy="383.959" r="1.458"/>
+<rect x="178" y="354.606" fill="#231F20" fill-opacity="0" width="256" height="84"/>
+<path fill="#B7B784" stroke="#231F20" stroke-width="2.4543" stroke-miterlimit="10" d="M391.738,358.312H220.26
+	c-37.791,0-37.791,0-37.791,38.294c0,38.294,0,38.294,37.791,38.294h67.455c0.195-10.251,13.57-29.646,19.504-29.646
+	c5.936,0,14.829,19.396,15.024,29.646h69.495c37.79,0,37.79,0,37.79-38.294C429.528,358.312,429.528,358.312,391.738,358.312z"/>
+<path fill="#B7B784" stroke="#231F20" stroke-width="2.4543" stroke-miterlimit="10" d="M411.138,358.765H200.859
+	c-10.748,1.007-15.212,4.22-17.066,14.272h244.409C426.35,362.984,421.883,359.771,411.138,358.765z"/>
+<path fill="none" stroke="#231F20" stroke-width="2.4543" stroke-miterlimit="10" d="M319.714,394.746
+	c0,2.358-5.126,11.695-8.838,11.695l0,0c0,0-3.836-1.257-4.433-1.257v-31.977c0,0,3.007-0.172,6.721-0.172l0,0
+	c3.71,0,6.719,0.172,6.719,0.172L319.714,394.746z"/>
+<line fill="none" stroke="#231F20" stroke-width="2.4543" stroke-miterlimit="10" x1="306.443" y1="374.178" x2="306.443" y2="358.765"/>
+<ellipse fill="none" stroke="#231F20" stroke-width="2.4543" stroke-miterlimit="10" cx="312.807" cy="365.361" rx="3.556" ry="3.602"/>
 </svg>
