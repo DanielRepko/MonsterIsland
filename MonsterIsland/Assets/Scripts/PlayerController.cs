@@ -297,9 +297,8 @@ public class PlayerController : MonoBehaviour {
         var rightArmInfo = PartFactory.GetArmPartInfo(rightArm, Helper.PartType.RightArm);
         var leftArmInfo = PartFactory.GetArmPartInfo(leftArm, Helper.PartType.LeftArm);
         var legPartInfo = PartFactory.GetLegPartInfo(legs);
-        rightArmInfo.equippedWeapon = rightWeapon; //WeaponFactory.GetWeapon(rightWeapon, Helper.PartType.RightArm, "Player");
-        leftArmInfo.equippedWeapon = leftWeapon;//WeaponFactory.GetWeapon(leftWeapon, Helper.PartType.LeftArm, "Player");
-
+        rightArmInfo.equippedWeapon = rightWeapon;
+        leftArmInfo.equippedWeapon = leftWeapon;
 
         moveDelegate = Move;
         jumpDelegate = Jump;

@@ -122,10 +122,22 @@ public class WeaponFactory : MonoBehaviour {
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
                     Damage = 3,
-                    AttackCooldown = 1f,
+                    AttackCooldown = 1.5f,
                     WeaponSpriteRenderer = weaponRenderer
                 };
                 return bone;
+            case Helper.WeaponName.Boomerang:
+                Weapon boomerang = new Weapon(weaponName)
+                {
+                    WeaponDesc = "Crikey! If you throw this here curved stick at a bloke, it'll fly right back to ya! And it'll damage any poor sops it happens to come across on the way!",
+                    WeaponType = Helper.WeaponType.Projectile,
+                    ArmEquippedOn = armEquippedOn,
+                    AttackTarget = attackTarget,
+                    Damage = 2,
+                    AttackCooldown = 1.5f,
+                    WeaponSpriteRenderer = weaponRenderer
+                };
+                return boomerang;
             default:
                 return null;
         }

@@ -65,8 +65,11 @@ public class Enemy : MonoBehaviour {
     //causes the enemy to take damage
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        inHitStun = true;
+        if (!inHitStun)
+        {
+            health -= damage;
+            inHitStun = true;
+        }        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
