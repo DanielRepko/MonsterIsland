@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 50971585055966886}
   - component: {fileID: 61625877142323280}
   - component: {fileID: 114843376737826238}
+  - component: {fileID: 114962906760060458}
   m_Layer: 13
   m_Name: DroppedLeftArm
   m_TagString: PartDrop
@@ -280,6 +281,44 @@ MonoBehaviour:
   partType: 
   monsterName: 
   soundClip: {fileID: 8300000, guid: 2c0e84ccc79fa5e48b55ed9eb499b83f, type: 3}
+--- !u!114 &114962906760060458
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1125672735492682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279cabe8c3812ce4ca639be5c3494b7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partInfo:
+    monster: 
+    abilityName: 
+    abilityType: 
+    abilityDesc: 
+    abilityCooldown: 0
+    bicepSprite: 
+    forearmSprite: 
+    handBackSprite: 
+    handFrontSprite: 
+    fingersOpenBackSprite: 
+    fingersOpenFrontSprite: 
+    fingersClosedBackSprite: 
+    fingersClosedFrontSprite: 
+  partType: 
+  bicepSprite: {fileID: 0}
+  forearmSprite: {fileID: 0}
+  handBackSprite: {fileID: 0}
+  handFrontSprite: {fileID: 0}
+  fingersOpenBackSprite: {fileID: 0}
+  fingersOpenFrontSprite: {fileID: 0}
+  fingersClosedBackSprite: {fileID: 0}
+  fingersClosedFrontSprite: {fileID: 0}
+  bicep: {fileID: 212474598004425144}
+  forearm: {fileID: 212988147701443748}
+  hand: {fileID: 212697230568675598}
+  fingers: {fileID: 212323915066292296}
 --- !u!212 &212323915066292296
 SpriteRenderer:
   m_ObjectHideFlags: 1

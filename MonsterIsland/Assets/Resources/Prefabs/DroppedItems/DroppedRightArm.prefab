@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 50514536170930814}
   - component: {fileID: 61938815379823970}
   - component: {fileID: 114817289880325006}
+  - component: {fileID: 114050397294432704}
   m_Layer: 13
   m_Name: DroppedRightArm
   m_TagString: PartDrop
@@ -266,6 +267,44 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.42197418, y: 1.1420441}
   m_EdgeRadius: 0
+--- !u!114 &114050397294432704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1214736009926186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279cabe8c3812ce4ca639be5c3494b7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partInfo:
+    monster: 
+    abilityName: 
+    abilityType: 
+    abilityDesc: 
+    abilityCooldown: 0
+    bicepSprite: 
+    forearmSprite: 
+    handBackSprite: 
+    handFrontSprite: 
+    fingersOpenBackSprite: 
+    fingersOpenFrontSprite: 
+    fingersClosedBackSprite: 
+    fingersClosedFrontSprite: 
+  partType: 
+  bicepSprite: {fileID: 0}
+  forearmSprite: {fileID: 0}
+  handBackSprite: {fileID: 0}
+  handFrontSprite: {fileID: 0}
+  fingersOpenBackSprite: {fileID: 0}
+  fingersOpenFrontSprite: {fileID: 0}
+  fingersClosedBackSprite: {fileID: 0}
+  fingersClosedFrontSprite: {fileID: 0}
+  bicep: {fileID: 212452100702136400}
+  forearm: {fileID: 212988785483183382}
+  hand: {fileID: 212233370121533792}
+  fingers: {fileID: 212511563358625452}
 --- !u!114 &114817289880325006
 MonoBehaviour:
   m_ObjectHideFlags: 1

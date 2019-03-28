@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 50551379709203578}
   - component: {fileID: 61961732164369534}
   - component: {fileID: 114685497670830358}
+  - component: {fileID: 114150026741908986}
   m_Layer: 13
   m_Name: DroppedHead
   m_TagString: PartDrop
@@ -147,6 +148,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.78297424, y: 0.8395424}
   m_EdgeRadius: 0
+--- !u!114 &114150026741908986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714039446524052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b979e55120cf547b91c0343ed0a3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partInfo:
+    monster: 
+    abilityName: 
+    abilityType: 
+    abilityDesc: 
+    abilityCooldown: 0
+    mainSprite: 
+    neckSprite: 
+    hurtSprite: 
+    attackSprite: 
+  idleFaceSprite: {fileID: 0}
+  hurtFaceSprite: {fileID: 0}
+  attackFaceSprite: {fileID: 0}
+  neckSprite: {fileID: 0}
+  face: {fileID: 212681919314650168}
+  neck: {fileID: 212069064991890070}
 --- !u!114 &114685497670830358
 MonoBehaviour:
   m_ObjectHideFlags: 1

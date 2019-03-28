@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 50582734042411740}
   - component: {fileID: 61077264797440124}
   - component: {fileID: 114729790921276332}
+  - component: {fileID: 114085798577997848}
   m_Layer: 13
   m_Name: DroppedTorso
   m_TagString: PartDrop
@@ -117,6 +118,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9384537, y: 1.2706909}
   m_EdgeRadius: 0
+--- !u!114 &114085798577997848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1997261974715278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce9fea4a13826f42b8ea68a74efbab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partInfo:
+    monster: 
+    abilityName: 
+    abilityType: 
+    abilityDesc: 
+    abilityCooldown: 0
+    mainSprite: 
+  bodySprite: {fileID: 0}
+  body: {fileID: 212855978881910744}
 --- !u!114 &114729790921276332
 MonoBehaviour:
   m_ObjectHideFlags: 1

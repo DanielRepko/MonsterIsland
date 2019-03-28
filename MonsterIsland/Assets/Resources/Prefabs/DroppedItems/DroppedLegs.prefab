@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 50206857550646098}
   - component: {fileID: 61951719292841748}
   - component: {fileID: 114556981119996854}
+  - component: {fileID: 114500082969501898}
   m_Layer: 13
   m_Name: DroppedLegs
   m_TagString: PartDrop
@@ -297,6 +298,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.90755844, y: 1.2902412}
   m_EdgeRadius: 0
+--- !u!114 &114500082969501898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353959309529644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6aab3d768c82b4db5d3a2492352c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partInfo:
+    monster: 
+    abilityName: 
+    abilityType: 
+    abilityDesc: 
+    abilityCooldown: 0
+    pelvisSprite: 
+    thighSprite: 
+    shinSprite: 
+    footSprite: 
+  pelvisSprite: {fileID: 0}
+  thighSprite: {fileID: 0}
+  shinSprite: {fileID: 0}
+  footSprite: {fileID: 0}
+  pelvis: {fileID: 212249757821373644}
+  thighR: {fileID: 212183595403031788}
+  thighL: {fileID: 212929882246409966}
+  shinR: {fileID: 212197317689147412}
+  shinL: {fileID: 212605573811841932}
+  footR: {fileID: 212325108788417146}
+  footL: {fileID: 212643932562858480}
 --- !u!114 &114556981119996854
 MonoBehaviour:
   m_ObjectHideFlags: 1
