@@ -8,10 +8,13 @@ public class Enemy : MonoBehaviour {
     float health = 10;
     public Text text;
     public Collider2D hurtBox;
+    public string monsterName;
     private float hitStunCooldown = 0.4f;
     private float hitStunTimer = 0;
     private bool inHitStun = false;
     private Rigidbody2D rb;
+    public bool alwaysDropPart = false;
+    public string partToAlwaysDrop;
 
     // Use this for initialization
     void Start () {
@@ -93,9 +96,13 @@ public class Enemy : MonoBehaviour {
         int coinChance = Random.Range(0, 10) + 1;
         int partChance = Random.Range(0, 10) + 1;
 
+        //If the enemy is supposed to always drop a part, overwrite partChance to be 10
+        if(alwaysDropPart) {
+            partChance = 10;
+        }
+
         //6 to 10, 50% chance of getting coins
         if(coinChance >= 6) {
-            Debug.Log("Dropping Coin");
             //Grab a random coin value from 1 to 5, create the coin, and set it's value
             int coinValue = Random.Range(0, 5) + 1;
             GameObject coin = Instantiate(GameManager.instance.coinPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
@@ -104,7 +111,61 @@ public class Enemy : MonoBehaviour {
 
         //6 to 10, 50% chance of getting a monster part
         if(partChance >= 6) {
+            //Grab a random number from 1 to 5. This number represents one of the 5 parts (Head, Torso, Left Arm, Right Arm, Legs)
+            int partToGet = Random.Range(0, 5) + 1;
 
+            //If the enemy is always supposed to drop a part, set partToGet to the correct value based on what part it's supposed to drop
+            if(alwaysDropPart) {
+                switch(partToAlwaysDrop) {
+                    case Helper.PartType.Head:
+                        partToGet = 1;
+                        break;
+                    case Helper.PartType.Torso:
+                        partToGet = 2;
+                        break;
+                    case Helper.PartType.LeftArm:
+                        partToGet = 3;
+                        break;
+                    case Helper.PartType.RightArm:
+                        partToGet = 4;
+                        break;
+                    case Helper.PartType.Legs:
+                        partToGet = 5;
+                        break;
+                }
+            }
+
+            if(partToGet == 1) {
+                //Head
+                GameObject droppedHead = Instantiate(GameManager.instance.headDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                droppedHead.GetComponent<DroppedPart>().partType = Helper.PartType.Head;
+                droppedHead.GetComponent<DroppedPart>().monsterName = monsterName;
+                droppedHead.GetComponent<HeadPart>().InitializePart(PartFactory.GetHeadPartInfo(monsterName));
+            } else if (partToGet == 2) {
+                //Torso
+                GameObject droppedTorso = Instantiate(GameManager.instance.torsoDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                droppedTorso.GetComponent<DroppedPart>().partType = Helper.PartType.Torso;
+                droppedTorso.GetComponent<DroppedPart>().monsterName = monsterName;
+                droppedTorso.GetComponent<TorsoPart>().InitializePart(PartFactory.GetTorsoPartInfo(monsterName));
+            } else if (partToGet == 3) {
+                //Left Arm
+                GameObject droppedLeftArm = Instantiate(GameManager.instance.leftArmDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                droppedLeftArm.GetComponent<DroppedPart>().partType = Helper.PartType.LeftArm;
+                droppedLeftArm.GetComponent<DroppedPart>().monsterName = monsterName;
+                droppedLeftArm.GetComponent<ArmPart>().InitializePart(PartFactory.GetArmPartInfo(monsterName, "LeftArm"));
+            } else if (partToGet == 4) {
+                //Right Arm
+                GameObject droppedRightArm = Instantiate(GameManager.instance.rightArmDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                droppedRightArm.GetComponent<DroppedPart>().partType = Helper.PartType.RightArm;
+                droppedRightArm.GetComponent<DroppedPart>().monsterName = monsterName;
+                droppedRightArm.GetComponent<ArmPart>().InitializePart(PartFactory.GetArmPartInfo(monsterName, "RightArm"));
+            } else if (partToGet == 5) {
+                //Legs
+                GameObject droppedLegs = Instantiate(GameManager.instance.legsDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                droppedLegs.GetComponent<DroppedPart>().partType = Helper.PartType.Legs;
+                droppedLegs.GetComponent<DroppedPart>().monsterName = monsterName;
+                droppedLegs.GetComponent<LegPart>().InitializePart(PartFactory.GetLegPartInfo(monsterName));
+            }
         }
 
         Destroy(gameObject);
