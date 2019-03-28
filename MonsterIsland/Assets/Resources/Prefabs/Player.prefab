@@ -4273,8 +4273,8 @@ MonoBehaviour:
   facingDirection: 0
   head: Wingus
   torso: Wingus
-  rightArm: Kangaroo
-  leftArm: Hingus
+  rightArm: Wingus
+  leftArm: Wingus
   legs: Wingus
   rightWeapon: Scimitar
   leftWeapon: Squeaky Hammer
