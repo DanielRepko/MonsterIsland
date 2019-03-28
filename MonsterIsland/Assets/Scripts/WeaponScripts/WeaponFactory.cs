@@ -150,6 +150,19 @@ public class WeaponFactory : MonoBehaviour {
                     WeaponSpriteRenderer = weaponRenderer
                 };
                 return harpoonGun;
+            case Helper.WeaponName.Fan:
+                Weapon fan = new Weapon(weaponName)
+                {
+                    WeaponDesc = "This paper fan blows at dealing damage, but it also blows gusts of wind that can push back enemies",
+                    WeaponType = Helper.WeaponType.Melee,
+                    ArmEquippedOn = armEquippedOn,
+                    AttackTarget = attackTarget,
+                    Damage = 1,
+                    AttackRange = 2f,
+                    AttackCooldown = 1.5f,
+                    WeaponSpriteRenderer = weaponRenderer
+                };
+                return fan;
             default:
                 return null;
         }

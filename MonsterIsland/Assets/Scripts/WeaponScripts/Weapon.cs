@@ -140,6 +140,30 @@ public class Weapon {
 
         Vector2 projectilePosition = new Vector2();
 
+        //the melee attack
+        Ray attackRay = new Ray();
+        attackRay.origin = player.transform.position;
+        attackRay.direction = new Vector2(player.facingDirection, 0);
+
+        Debug.DrawRay(attackRay.origin, new Vector2(AttackRange * player.facingDirection, 0), Color.green);
+        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, _attackRange, 1 << LayerMask.NameToLayer(AttackTarget));
+        if (hit)
+        {
+            if (AttackTarget == "Enemy")
+            {
+                Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
+                if (enemy != null && hit.collider == enemy.hurtBox)
+                {
+                    enemy.TakeDamage(Damage);
+                }
+            }
+            else if (AttackTarget == "Player" && hit.collider == PlayerController.Instance.hurtBox)
+            {
+                PlayerController.Instance.TakeDamage(Damage);
+            }
+        }
+
+        //the projectile
         if (ArmEquippedOn == Helper.PartType.RightArm)
         {
             projectilePosition = player.monster.rightArmPart.hand.transform.position;
@@ -152,6 +176,10 @@ public class Weapon {
         GameObject projectile = Object.Instantiate(ProjectilePrefab, projectilePosition, ProjectilePrefab.transform.rotation);
         projectile.GetComponent<Projectile>().target = AttackTarget;
         projectile.GetComponent<Projectile>().damage = Damage;
+        projectile.GetComponent<Projectile>().weaponRenderer = WeaponSpriteRenderer;
+
+        var facingDirection = WeaponSpriteRenderer.transform.GetComponentInParent<Rigidbody2D>().transform.localScale.x;
+        projectile.transform.localScale *= facingDirection;
 
         projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectile.GetComponent<Projectile>().speed * player.facingDirection, 0);
     }
