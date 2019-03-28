@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +8,18 @@ public class Inventory : MonoBehaviour {
     public static Inventory Instance;
 
     public int money;
+    public CollectedPartsInfo collectedParts;
 
 	// Use this for initialization
 	void Start () {
 		if(Instance == null) {
             Instance = this;
+            collectedParts = new CollectedPartsInfo();
+            collectedParts.collectedHeads = new List<string>();
+            collectedParts.collectedTorsos = new List<string>();
+            collectedParts.collectedLeftArms = new List<string>();
+            collectedParts.collectedRightArms = new List<string>();
+            collectedParts.collectedLegs = new List<string>();
         } else if (Instance != this) {
             Destroy(gameObject);
         }
@@ -26,4 +34,46 @@ public class Inventory : MonoBehaviour {
         money += amount;
     }
 
+    public void AddMonsterPart(string monsterName, string partType) {
+        switch(partType) {
+            case Helper.PartType.Head:
+                if(!collectedParts.collectedHeads.Contains(monsterName)) {
+                    collectedParts.collectedHeads.Add(monsterName);
+                } else {
+                    AddMoney(10);
+                }
+                break;
+            case Helper.PartType.Torso:
+                if (!collectedParts.collectedTorsos.Contains(monsterName)) {
+                    collectedParts.collectedTorsos.Add(monsterName);
+                } else {
+                    AddMoney(10);
+                }
+                break;
+            case Helper.PartType.LeftArm:
+                if (!collectedParts.collectedLeftArms.Contains(monsterName)) {
+                    collectedParts.collectedLeftArms.Add(monsterName);
+                } else {
+                    AddMoney(10);
+                }
+                break;
+            case Helper.PartType.RightArm:
+                if (!collectedParts.collectedRightArms.Contains(monsterName)) {
+                    collectedParts.collectedRightArms.Add(monsterName);
+                } else {
+                    AddMoney(10);
+                }
+                break;
+            case Helper.PartType.Legs:
+                if (!collectedParts.collectedLegs.Contains(monsterName)) {
+                    collectedParts.collectedLegs.Add(monsterName);
+                } else {
+                    AddMoney(10);
+                }
+                break;
+            default:
+                AddMoney(10);
+                break;
+        }
+    }
 }
