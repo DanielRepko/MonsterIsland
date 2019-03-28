@@ -371,7 +371,14 @@ public class AbilityFactory : MonoBehaviour {
     //takes up and locks this arm's weapon slot
     public static void Ability_BoneToss(string armType)
     {
-
+        if(armType == Helper.PartType.RightArm)
+        {
+            PlayerController.Instance.monster.rightArmPart.weapon = WeaponFactory.GetWeapon(Helper.WeaponName.Bone, armType, "Player", PlayerController.Instance.monster.rightArmPart.weaponRenderer);
+        }
+        else if (armType == Helper.PartType.LeftArm)
+        {
+            PlayerController.Instance.monster.leftArmPart.weapon = WeaponFactory.GetWeapon(Helper.WeaponName.Bone, armType, "Player", PlayerController.Instance.monster.leftArmPart.weaponRenderer);
+        }
     }
 
     //Leg Ability (Passive): Allows the player to damage enemies by jumping on them
