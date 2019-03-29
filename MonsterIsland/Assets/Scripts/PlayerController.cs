@@ -240,6 +240,9 @@ public class PlayerController : MonoBehaviour {
 
         Debug.DrawRay(attackRay.origin, new Vector2(1.7f * facingDirection, 0), Color.green);
 
+        //using the armType and Helper method to call the correct anim
+        animator.Play(armType + Helper.GetAnimDirection(armType, facingDirection) + "MeleeAnim");
+
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if(hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
@@ -256,6 +259,8 @@ public class PlayerController : MonoBehaviour {
         attackRay.direction = new Vector2(facingDirection, 0);
 
         Debug.DrawRay(attackRay.origin, new Vector2(1.7f * facingDirection, 0), Color.green);
+
+        animator.Play(armType + Helper.GetAnimDirection(armType, facingDirection) + "MeleeAnim");
 
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit) {
@@ -320,6 +325,21 @@ public class PlayerController : MonoBehaviour {
         headAbilityTimer = HeadAbilityCooldown;
         torsoAbilityTimer = TorsoAbilityCooldown;
         legAbilityTimer = LegAbilityCooldown;
+    }
+
+    public void ShowAttackFace()
+    {
+        monster.headPart.face.sprite = monster.headPart.attackFaceSprite;
+    }
+
+    public void ShowIdleFace()
+    {
+        monster.headPart.face.sprite = monster.headPart.idleFaceSprite;
+    }
+
+    public void ShowHurtFace()
+    {
+        monster.headPart.face.sprite = monster.headPart.hurtFaceSprite;
     }
 
     public void CheckHitBox()

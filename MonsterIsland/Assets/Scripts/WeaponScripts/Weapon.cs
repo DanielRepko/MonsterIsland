@@ -83,6 +83,9 @@ public class Weapon {
     {
         PlayerController player = PlayerController.Instance;
 
+        //play attack animation
+        player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(ArmEquippedOn, player.facingDirection) + "MeleeAnim");
+
         Ray attackRay = new Ray();
         attackRay.origin = player.transform.position;
         attackRay.direction = new Vector2(player.facingDirection, 0);
@@ -110,6 +113,16 @@ public class Weapon {
     {
         PlayerController player = PlayerController.Instance;
 
+        if(WeaponName == Helper.WeaponName.Bone || WeaponName == Helper.WeaponName.Boomerang)
+        {
+            //play attack animation
+            player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(ArmEquippedOn, player.facingDirection) + "MeleeAnim");
+        }
+        else
+        {
+            //play shoot anim
+        }
+
         Vector2 projectilePosition = new Vector2();
 
         if (ArmEquippedOn == Helper.PartType.RightArm)
@@ -126,8 +139,6 @@ public class Weapon {
         projectile.GetComponent<Projectile>().damage = Damage;
         projectile.GetComponent<Projectile>().weaponRenderer = WeaponSpriteRenderer;
 
-        Debug.Log(player.PlayerIsOnGround());
-
         var facingDirection = WeaponSpriteRenderer.transform.GetComponentInParent<Rigidbody2D>().transform.localScale.x;
         projectile.transform.localScale *= facingDirection;
 
@@ -137,6 +148,11 @@ public class Weapon {
     public void FanAttack(string armEquippedOn)
     {
         PlayerController player = PlayerController.Instance;
+
+        //play attack animation
+        player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(ArmEquippedOn, player.facingDirection) + "MeleeAnim");
+
+        
 
         Vector2 projectilePosition = new Vector2();
 
@@ -182,6 +198,8 @@ public class Weapon {
         projectile.transform.localScale *= facingDirection;
 
         projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectile.GetComponent<Projectile>().speed * player.facingDirection, 0);
+
+        
     }
 
 }

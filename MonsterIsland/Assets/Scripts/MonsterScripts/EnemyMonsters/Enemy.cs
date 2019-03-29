@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour {
     public bool alwaysDropPart = false;
     public string partToAlwaysDrop;
 
+    public bool attacksLocked;
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -60,6 +62,8 @@ public class Enemy : MonoBehaviour {
         //        Debug.Log("hit the player");
         //    }
         //}
+
+        //GetComponent<Animator>().Play("FrontArmMeleeAnim");
     }
 
     //causes the enemy to take damage
@@ -172,5 +176,20 @@ public class Enemy : MonoBehaviour {
         }
 
         Destroy(gameObject);
+    }
+
+    public void ShowAttackFace()
+    {
+        
+    }
+
+    public void ShowIdleFace()
+    {
+        
+    }
+
+    public void ShowHurtFace()
+    {
+        
     }
 }

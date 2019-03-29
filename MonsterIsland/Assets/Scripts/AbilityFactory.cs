@@ -272,6 +272,9 @@ public class AbilityFactory : MonoBehaviour {
     public static void Ability_StickyBomb(string armType)
     {
         PlayerController player = PlayerController.Instance;
+        //play attack animation
+        player.animator.Play(armType + Helper.GetAnimDirection(armType, player.facingDirection) + "MeleeAnim");
+
         GameObject bombPrefab = Resources.Load<GameObject>("Prefabs/Projectiles/StickyBomb");
         GameObject bomb = Instantiate(bombPrefab, player.monster.rightArmPart.hand.transform.position, Quaternion.identity);
         bomb.GetComponent<Rigidbody2D>().velocity = new Vector2(bomb.GetComponent<Rigidbody2D>().velocity.x + 40 * player.facingDirection, bomb.GetComponent<Rigidbody2D>().velocity.y+10);
