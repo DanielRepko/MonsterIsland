@@ -327,6 +327,21 @@ public class PlayerController : MonoBehaviour {
         legAbilityTimer = LegAbilityCooldown;
     }
 
+    public void ShowAttackFace()
+    {
+        monster.headPart.face.sprite = monster.headPart.attackFaceSprite;
+    }
+
+    public void ShowIdleFace()
+    {
+        monster.headPart.face.sprite = monster.headPart.idleFaceSprite;
+    }
+
+    public void ShowHurtFace()
+    {
+        monster.headPart.face.sprite = monster.headPart.hurtFaceSprite;
+    }
+
     public void CheckHitBox()
     {
         if(hitCounter == totalHits)

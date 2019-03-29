@@ -177,4 +177,19 @@ public class Enemy : MonoBehaviour {
 
         Destroy(gameObject);
     }
+
+    public void ShowAttackFace()
+    {
+        
+    }
+
+    public void ShowIdleFace()
+    {
+        
+    }
+
+    public void ShowHurtFace()
+    {
+        
+    }
 }
