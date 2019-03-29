@@ -2,14 +2,14 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="266.5" y="352.008" fill-opacity="0" fill="#231F20" width="81" height="89.313"/>
-<path class="primary_color" id="PRIMARY_3_" fill="#ff0000" stroke="#231F20" stroke-width="1.0468" stroke-miterlimit="10" d="M297.333,352.02
-	c-5.75,9.289-8.823,21.308-8.823,36.207c0,29.229,4.48,52.924,17.489,52.924c11.292,0,17.488-23.695,17.488-52.924
-	c0-14.899-2.738-27.403-8.071-36.207H297.333z"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="306.25" cy="360.11" r="2.5"/>
-<line fill="none" stroke="#231F20" stroke-width="1.0468" stroke-miterlimit="10" x1="303.75" y1="360.11" x2="293.285" y2="360.11"/>
-<line fill="none" stroke="#231F20" stroke-width="1.0468" stroke-miterlimit="10" x1="308.75" y1="360.11" x2="319.228" y2="360.11"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="306.25" cy="433.75" r="2.5"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="308.75" y1="433.75" x2="315.646" y2="433.75"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="303.75" y1="433.75" x2="295.915" y2="433.75"/>
+<rect x="192" y="269.456" fill="#231F20" fill-opacity="0" width="230" height="254.418"/>
+<path id="PRIMARY_3_" fill="#FF0000" stroke="#231F20" stroke-width="2.9772" stroke-miterlimit="10" d="M279.551,269.49
+	c-16.328,26.461-25.054,60.698-25.054,103.139c0,83.262,12.722,150.76,49.661,150.76c32.064,0,49.658-67.498,49.658-150.76
+	c0-42.441-7.775-78.06-22.918-103.139H279.551z"/>
+<ellipse fill="none" stroke="#231F20" stroke-width="2.844" stroke-miterlimit="10" cx="304.87" cy="292.535" rx="7.099" ry="7.121"/>
+<line fill="none" stroke="#231F20" stroke-width="2.9772" stroke-miterlimit="10" x1="297.771" y1="292.535" x2="268.057" y2="292.535"/>
+<line fill="none" stroke="#231F20" stroke-width="2.9772" stroke-miterlimit="10" x1="311.969" y1="292.535" x2="341.72" y2="292.535"/>
+<ellipse fill="none" stroke="#231F20" stroke-width="2.844" stroke-miterlimit="10" cx="304.87" cy="502.306" rx="7.099" ry="7.122"/>
+<line fill="none" stroke="#231F20" stroke-width="2.844" stroke-miterlimit="10" x1="311.969" y1="502.307" x2="331.552" y2="502.307"/>
+<line fill="none" stroke="#231F20" stroke-width="2.844" stroke-miterlimit="10" x1="297.771" y1="502.307" x2="275.524" y2="502.307"/>
 </svg>

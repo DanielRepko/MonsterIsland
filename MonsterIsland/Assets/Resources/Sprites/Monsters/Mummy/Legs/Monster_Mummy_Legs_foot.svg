@@ -2,19 +2,19 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="271.592" y="379.106" fill-opacity="0" fill="#231F20" width="69.979" height="35"/>
-<path id="SECONDARY_7_" fill="#8C8900" stroke="#231F20" stroke-miterlimit="10" d="M339.512,400.908
-	c0,7.065-4.489,12.793-10.025,12.793h-41.907c-5.537,0-10.025-5.728-10.025-12.793l0,0c0-7.065,4.488-12.793,10.025-12.793h41.907
-	C335.022,388.115,339.512,393.843,339.512,400.908L339.512,400.908z"/>
-<rect id="PRIMARY_153_" x="278.935" y="389.112" fill="#F1F1F1" stroke="#231F20" stroke-miterlimit="10" width="58.984" height="2.893"/>
-<rect id="PRIMARY_152_" x="279.34" y="393.622" fill="#F1F1F1" stroke="#231F20" stroke-miterlimit="10" width="59.765" height="3.684"/>
-<polygon id="PRIMARY_151_" fill="#F1F1F1" stroke="#231F20" stroke-miterlimit="10" points="338.976,404.166 277.654,397.737 
-	278.048,391.618 339.37,398.047 "/>
-<polygon id="PRIMARY_150_" fill="#F1F1F1" stroke="#231F20" stroke-miterlimit="10" points="280.833,410.012 340.248,401.9 
-	340.527,405.237 281.112,413.347 "/>
-<rect id="PRIMARY_149_" x="279.34" y="409.929" fill="#F1F1F1" stroke="#231F20" stroke-miterlimit="10" width="56.037" height="2.429"/>
-<rect id="PRIMARY_148_" x="277.804" y="403.741" fill="#F1F1F1" stroke="#231F20" stroke-miterlimit="10" width="61.708" height="4.048"/>
-<polygon id="PRIMARY_147_" fill="#F1F1F1" stroke="#231F20" stroke-miterlimit="10" points="339.378,399.336 276.628,408.048 
-	276.295,404.139 339.044,395.428 "/>
-<rect id="PRIMARY_146_" x="276.391" y="399.81" fill="#F1F1F1" stroke="#231F20" stroke-miterlimit="10" width="63.121" height="2.429"/>
+<rect x="178.582" y="332.382" fill="#231F20" fill-opacity="0" width="256" height="128.449"/>
+<path id="SECONDARY_7_" fill="#8C8900" stroke="#231F20" stroke-width="3.6641" stroke-miterlimit="10" d="M427.047,412.395
+	c0,25.926-16.419,46.949-36.671,46.949H237.07c-20.256,0-36.673-21.023-36.673-46.949l0,0c0-25.93,16.417-46.949,36.673-46.949
+	h153.306C410.625,365.445,427.047,386.465,427.047,412.395L427.047,412.395z"/>
+<rect id="PRIMARY_153_" x="205.445" y="369.103" fill="#F1F1F1" stroke="#231F20" stroke-width="3.6641" stroke-miterlimit="10" width="215.776" height="10.617"/>
+<rect id="PRIMARY_152_" x="206.926" y="385.655" fill="#F1F1F1" stroke="#231F20" stroke-width="3.6641" stroke-miterlimit="10" width="218.635" height="13.518"/>
+<polygon id="PRIMARY_151_" fill="#F1F1F1" stroke="#231F20" stroke-width="3.6641" stroke-miterlimit="10" points="425.086,424.35 
+	200.758,400.757 202.199,378.301 426.529,401.894 "/>
+<polygon id="PRIMARY_150_" fill="#F1F1F1" stroke="#231F20" stroke-width="3.6641" stroke-miterlimit="10" points="212.388,445.804 
+	429.741,416.035 430.763,428.281 213.408,458.042 "/>
+<rect id="PRIMARY_149_" x="206.926" y="445.499" fill="#F1F1F1" stroke="#231F20" stroke-width="3.6641" stroke-miterlimit="10" width="204.996" height="8.917"/>
+<rect id="PRIMARY_148_" x="201.308" y="422.791" fill="#F1F1F1" stroke="#231F20" stroke-width="3.6641" stroke-miterlimit="10" width="225.739" height="14.855"/>
+<polygon id="PRIMARY_147_" fill="#F1F1F1" stroke="#231F20" stroke-width="3.6641" stroke-miterlimit="10" points="426.558,406.624 
+	197.005,438.596 195.787,424.25 425.336,392.283 "/>
+<rect id="PRIMARY_146_" x="196.139" y="408.362" fill="#F1F1F1" stroke="#231F20" stroke-width="3.6641" stroke-miterlimit="10" width="230.908" height="8.917"/>
 </svg>

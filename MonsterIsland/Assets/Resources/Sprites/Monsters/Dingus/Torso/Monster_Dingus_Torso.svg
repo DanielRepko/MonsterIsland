@@ -2,20 +2,26 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect id="body_frame_1_" x="230.5" y="301.5" fill-opacity="0" fill="#BBBCBE" width="151" height="191"/>
-<path id="PRIMARY_4_" fill="#000000" stroke="#231F20" stroke-miterlimit="10" d="M379,347.651c0-44.181,0-44.181-29.93-44.181H262.93
-	c-29.93,0-29.93,0-29.93,44.181c0,41.825,0.005,44.056,25.396,44.174v71.827c0,28.287,0,28.287,48.5,28.287s48.5,0,48.5-28.287
-	v-71.839C378.998,391.577,379,388.47,379,347.651z"/>
-<path id="SECONDARY_8_" fill="#F1F1F1" stroke="#231F20" stroke-miterlimit="10" d="M370.531,341.828
-	c0-32.604,0-32.604-24.094-32.604h-69.344c-24.094,0-24.094,0-24.094,32.604c0,31.658,0.004,32.577,22.06,32.604l0.001,79.24
-	c0,28.242,0,28.242,36.51,28.242c36.512,0,36.512,0,36.512-28.242v-79.239C370.519,374.415,370.531,373.667,370.531,341.828z"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M257.57,344.758c0,10.64,8.361,19.25,18.689,19.25"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M367.57,344.758c0,10.64-8.361,19.25-18.69,19.25"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="276.26" y1="364.008" x2="348.88" y2="364.008"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M313.57,360.616c7.629-16.858,7.629-30.449,0.086-37.432"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M317.309,394.906c5.064,0,5.064,24.334,0.702,24.334"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M317.309,423.321c5.064,0,5.064,24.334,0.702,24.334"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M317.309,451.737c5.064,0,5.064,24.334,0.702,24.334"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="307.057" y1="421.28" x2="332.148" y2="421.28"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="307.057" y1="449.696" x2="332.148" y2="449.696"/>
+<rect id="body_frame_1_" x="205" y="269.009" fill="#BBBCBE" fill-opacity="0" width="202" height="256"/>
+<path id="PRIMARY_4_" stroke="#231F20" stroke-width="1.339" stroke-miterlimit="10" d="M403.655,330.861
+	c0-59.212,0-59.212-40.038-59.212H248.383c-40.039,0-40.039,0-40.039,59.212c0,56.055,0.007,59.045,33.974,59.203v96.265
+	c0,37.911,0,37.911,64.881,37.911c64.881,0,64.881,0,64.881-37.911v-96.281C403.653,389.732,403.655,385.568,403.655,330.861z"/>
+<path id="SECONDARY_8_" fill="#F1F1F1" stroke="#231F20" stroke-width="1.339" stroke-miterlimit="10" d="M392.326,323.058
+	c0-43.697,0-43.697-32.231-43.697H267.33c-32.231,0-32.231,0-32.231,43.697c0,42.428,0.005,43.66,29.511,43.696l0.001,106.199
+	c0,37.851,0,37.851,48.841,37.851c48.844,0,48.844,0,48.844-37.851V366.755C392.31,366.731,392.326,365.729,392.326,323.058z"/>
+<path fill="none" stroke="#231F20" stroke-width="1.339" stroke-miterlimit="10" d="M241.212,326.984
+	c0,14.26,11.186,25.799,25.001,25.799"/>
+<path fill="none" stroke="#231F20" stroke-width="1.339" stroke-miterlimit="10" d="M388.365,326.984
+	c0,14.26-11.185,25.799-25.003,25.799"/>
+<line fill="none" stroke="#231F20" stroke-width="1.339" stroke-miterlimit="10" x1="266.215" y1="352.783" x2="363.362" y2="352.783"/>
+<path fill="none" stroke="#231F20" stroke-width="1.339" stroke-miterlimit="10" d="M316.127,348.238
+	c10.206-22.594,10.206-40.809,0.115-50.167"/>
+<path fill="none" stroke="#231F20" stroke-width="1.339" stroke-miterlimit="10" d="M321.128,394.194
+	c6.775,0,6.775,32.613,0.939,32.613"/>
+<path fill="none" stroke="#231F20" stroke-width="1.339" stroke-miterlimit="10" d="M321.128,432.276
+	c6.775,0,6.775,32.613,0.939,32.613"/>
+<path fill="none" stroke="#231F20" stroke-width="1.339" stroke-miterlimit="10" d="M321.128,470.36
+	c6.775,0,6.775,32.612,0.939,32.612"/>
+<line fill="none" stroke="#231F20" stroke-width="1.339" stroke-miterlimit="10" x1="307.413" y1="429.541" x2="340.98" y2="429.541"/>
+<line fill="none" stroke="#231F20" stroke-width="1.339" stroke-miterlimit="10" x1="307.413" y1="467.625" x2="340.98" y2="467.625"/>
 </svg>

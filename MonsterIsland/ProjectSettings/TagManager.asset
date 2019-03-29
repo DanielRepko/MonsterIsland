@@ -7,6 +7,10 @@ TagManager:
   - Water
   - Bubble
   - Ground
+  - Nest
+  - Enemy
+  - Coin
+  - PartDrop
   layers:
   - Default
   - TransparentFX
@@ -19,9 +23,9 @@ TagManager:
   - Player
   - Terrain
   - Bubble
-  - 
-  - 
-  - 
+  - Enemy
+  - Projectile
+  - Collectable
   - 
   - 
   - 
@@ -46,4 +50,7 @@ TagManager:
     locked: 0
   - name: Monster
     uniqueID: 207324261
+    locked: 0
+  - name: Projectile
+    uniqueID: 1922656591
     locked: 0

@@ -12,7 +12,5 @@ public class PlayerInfo {
     public ArmPartInfo leftArmPart;
     public ArmPartInfo rightArmPart;
     public LegPartInfo legsPart;
-    public string rightWeapon;
-    public string leftWeapon;
     public InventoryInfo inventory;
 }

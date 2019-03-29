@@ -2,12 +2,16 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="278.5" y="342.156" fill-opacity="0" fill="#231F20" width="57" height="108.807"/>
-<path id="PRIMARY_5_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" d="M326.16,396.629c0,29.912-8.73,54.162-19.5,54.162
-	c-10.771,0-19.5-24.25-19.5-54.162c0-29.917,8.729-54.167,19.5-54.167C317.43,342.462,326.16,366.712,326.16,396.629z"/>
-<ellipse id="SECONDARY_13_" fill="#960303" stroke="#231F20" stroke-miterlimit="10" cx="306.5" cy="433.669" rx="13.307" ry="17.05"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M297.209,421.467c-0.213,5.283,18.819,6.496,18.583,0"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M293.5,432.107c-0.307,5.499,26.307,5.499,26,0"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M294.502,441.106c-0.502,5.894,24,6.894,24,0"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="307" cy="352.606" r="2.5"/>
+<rect x="240.5" y="269.084" fill-opacity="0" fill="#231F20" width="133" height="254.95"/>
+<path id="PRIMARY_5_" fill="#FF0000" stroke="#231F20" stroke-width="2.3382" stroke-miterlimit="10" d="M351.707,396.722
+	c0,70.088-20.371,126.91-45.5,126.91c-25.133,0-45.5-56.821-45.5-126.91c0-70.1,20.367-126.921,45.5-126.921
+	C331.336,269.801,351.707,326.622,351.707,396.722z"/>
+<ellipse id="SECONDARY_13_" fill="#960303" stroke="#231F20" stroke-width="2.3382" stroke-miterlimit="10" cx="305.833" cy="483.513" rx="31.049" ry="39.95"/>
+<path fill="none" stroke="#231F20" stroke-width="2.3382" stroke-miterlimit="10" d="M284.155,454.921
+	c-0.498,12.379,43.911,15.222,43.359,0"/>
+<path fill="none" stroke="#231F20" stroke-width="2.3382" stroke-miterlimit="10" d="M275.5,479.854
+	c-0.717,12.885,61.382,12.885,60.667,0"/>
+<path fill="none" stroke="#231F20" stroke-width="2.3382" stroke-miterlimit="10" d="M277.838,500.939c-1.172,13.81,56,16.152,56,0"
+	/>
+<ellipse fill="none" stroke="#231F20" stroke-width="2.3382" stroke-miterlimit="10" cx="307" cy="293.571" rx="5.833" ry="5.858"/>
 </svg>

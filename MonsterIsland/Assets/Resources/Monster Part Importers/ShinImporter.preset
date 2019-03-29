@@ -58,7 +58,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SvgPixelsPerUnit
-    value: 10
+    value: 100
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_GradientResolution

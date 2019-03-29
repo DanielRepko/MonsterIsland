@@ -180,6 +180,52 @@ public class Helper : MonoBehaviour {
         public const string HarpoonGun = "Harpoon Gun";
         public const string SqueakyHammer = "Squeaky Hammer";
         public const string Fan = "Fan";
+        public const string Bone = "Bone";
+    }
+
+    public struct WeaponType
+    {
+        public const string Melee = "Melee";
+        public const string Projectile = "Projectile";
+    }
+
+    //used to get strings Front or Back from 1 or -1 based on the side passed
+    //sides can be passed in the form of armTypes (RightArm/LeftArm) or basic sides (Right/Left)
+    //used for easy animation calls
+    public static string GetAnimDirection(string side, int scaleX)
+    {
+        string sideTrimmed = "";
+        if(side.Length > 5)
+        {
+            sideTrimmed = side.Substring(0, side.Length - 3);
+        }
+        else
+        {
+            sideTrimmed = side;
+        }
+
+        //checking if the side is Right
+        if(sideTrimmed == "Right" && scaleX > 0)
+        {
+            return "Back";
+        }
+        else if(sideTrimmed == "Right" && scaleX < 0)
+        {
+            return "Front";
+        }
+        //checking if the side is Left
+        else if (sideTrimmed == "Left" && scaleX > 0)
+        {
+            return "Front";
+        }
+        else if (sideTrimmed == "Left" && scaleX < 0)
+        {
+            return "Back";
+        }
+        else
+        {
+            return null;
+        }
     }
 
     //helper method used to convert the imageStrings to Sprites
@@ -187,7 +233,7 @@ public class Helper : MonoBehaviour {
     //if it is, the method does not adjust the scaling of the images
     //this is necessary because scaling the images properly is very taxing, and would put
     //too much loading into the Monster Maker
-    public static Sprite CreateSprite(string partString, SVGImporter importer, bool inMonsterMaker)
+    public static Sprite CreateSprite(string partString, SVGImporter importer)
     {
         StringReader reader = new StringReader(partString);
 
@@ -211,26 +257,8 @@ public class Helper : MonoBehaviour {
         //building the initial sprite
         Sprite partSprite = VectorUtils.BuildSprite(geometryList, importer.SvgPixelsPerUnit, importer.Alignment, importer.CustomPivot, importer.GradientResolution, true);
 
-        //calculating the multiplier to apply to the dimensions
-        //(this accounts for some weirdness in the scaling)
         int spriteWidth = (int)partSprite.rect.width;
         int spriteHeight = (int)partSprite.rect.height;
-
-        if (!inMonsterMaker)
-        {
-            if (spriteWidth > spriteHeight)
-            {
-                float dimenMultiplier = (float)Math.Round((float)spriteWidth / 256, 3);
-                spriteWidth = 2560;
-                spriteHeight = ((int)(spriteHeight / dimenMultiplier)) * 10;
-            }
-            else
-            {
-                float dimenMultiplier = (float)Math.Round((float)spriteHeight / 256, 3);
-                spriteWidth = ((int)(spriteWidth / dimenMultiplier)) * 10;
-                spriteHeight = 2560;
-            }
-        }
 
         //creating the texture
         Texture2D partTexture = VectorUtils.RenderSpriteToTexture2D(partSprite, spriteWidth, spriteHeight, material);

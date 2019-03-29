@@ -2,27 +2,27 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect id="head_frame" x="230.5" y="331.5" fill-opacity="0" fill="#BBBCBE" width="151" height="131"/>
-<polygon id="SECONDARY_10_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" points="339.634,409.262 352.186,440.145 
-	361.251,405.168 327.083,378.378 "/>
-<polygon id="SECONDARY_4_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" points="270.366,409.262 257.815,440.145 
-	248.75,405.168 282.918,378.378 "/>
-<polygon id="PRIMARY_1_" fill="#666666" stroke="#231F20" stroke-miterlimit="10" points="354.316,446.5 255.316,446.5 
-	283.852,376.167 325.781,376.167 "/>
-<polygon id="SECONDARY_3_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" points="324.815,440.145 284.815,440.145 
-	295.586,418.145 314.047,418.145 "/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="292.816" y1="423.803" x2="292.816" y2="439.979"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="300.816" y1="418.145" x2="300.816" y2="440.145"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="308.816" y1="418.479" x2="308.816" y2="440.479"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="316.816" y1="423.461" x2="316.816" y2="440.145"/>
-<rect x="286.816" y="388.083" width="38" height="12.75"/>
-<rect id="SECONDARY_2_" x="293.816" y="391.919" fill="#FF0000" width="28" height="5"/>
-<path id="SECONDARY_1_" fill="#F21818" stroke="#231F20" stroke-miterlimit="10" d="M310.816,376v-7.166c0-3.866-2.687-7-6-7
-	s-6,3.134-6,7V376H310.816z"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M313.816,376.167v-8.768c0-4.73-4.029-8.565-9-8.565s-9,3.834-9,8.565
-	v8.768H313.816z"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="304.816" y1="358.833" x2="304.816" y2="376"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="295.328" y1="367.646" x2="314.328" y2="367.646"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="295.316" y1="372.333" x2="314.316" y2="372.333"/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="297.375" y1="362.582" x2="312.516" y2="362.582"/>
+<rect id="head_frame" x="178" y="286" fill-opacity="0" fill="#BBBCBE" width="256" height="222"/>
+<polygon id="SECONDARY_10_" fill="#FF0000" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" points="363.021,417.779 
+	384.302,470.115 399.671,410.842 341.743,365.443 "/>
+<polygon id="SECONDARY_4_" fill="#FF0000" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" points="245.588,417.779 
+	224.31,470.115 208.939,410.842 266.868,365.443 "/>
+<polygon id="PRIMARY_1_" fill="#666666" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" points="387.914,480.886 
+	220.072,480.886 268.45,361.694 339.536,361.694 "/>
+<polygon id="SECONDARY_3_" fill="#FF0000" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" points="337.899,470.115 
+	270.084,470.115 288.344,432.833 319.643,432.833 "/>
+<line fill="none" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" x1="283.649" y1="442.422" x2="283.649" y2="469.834"/>
+<line fill="none" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" x1="297.212" y1="432.833" x2="297.212" y2="470.115"/>
+<line fill="none" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" x1="310.774" y1="433.398" x2="310.774" y2="470.682"/>
+<line fill="none" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" x1="324.338" y1="441.842" x2="324.338" y2="470.115"/>
+<rect x="273.477" y="381.89" width="64.423" height="21.607"/>
+<rect id="SECONDARY_2_" x="285.344" y="388.39" fill="#FF0000" width="47.47" height="8.473"/>
+<path id="SECONDARY_1_" fill="#F21818" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" d="M314.166,361.411v-12.143
+	c0-6.552-4.555-11.863-10.173-11.863c-5.617,0-10.172,5.311-10.172,11.863v12.143H314.166z"/>
+<path fill="none" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" d="M319.252,361.694v-14.859
+	c0-8.017-6.831-14.515-15.259-14.515c-8.427,0-15.258,6.498-15.258,14.515v14.859H319.252z"/>
+<line fill="none" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" x1="303.993" y1="332.321" x2="303.993" y2="361.411"/>
+<line fill="none" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" x1="287.907" y1="347.254" x2="320.119" y2="347.254"/>
+<line fill="none" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" x1="287.888" y1="355.199" x2="320.1" y2="355.199"/>
+<line fill="none" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" x1="291.377" y1="338.673" x2="317.047" y2="338.673"/>
 </svg>

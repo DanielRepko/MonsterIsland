@@ -26,12 +26,22 @@ public class MonsterMaker : MonoBehaviour {
         //this code is for testing purposes only
         collectedParts = new CollectedPartsInfo()
         {
-            collectedHeads = new string[] { "Mitch", "Skeleton" },
-            collectedTorsos = new string[] { "Mitch", "Skeleton"},
-            collectedRightArms = new string[] { "Mitch", "Skeleton" },
-            collectedLeftArms = new string[] { "Mitch", "Skeleton" },
-            collectedLegs = new string[] { "Mitch", "Skeleton" }
+            collectedHeads = new List<string>(),
+            collectedTorsos = new List<string>(),
+            collectedLeftArms = new List<string>(),
+            collectedRightArms = new List<string>(),
+            collectedLegs = new List<string>(),
         };
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Skeleton");
+        collectedParts.collectedTorsos.Add("Mitch");
+        collectedParts.collectedTorsos.Add("Skeleton");
+        collectedParts.collectedLeftArms.Add("Mitch");
+        collectedParts.collectedLeftArms.Add("Skeleton");
+        collectedParts.collectedRightArms.Add("Mitch");
+        collectedParts.collectedRightArms.Add("Skeleton");
+        collectedParts.collectedLegs.Add("Mitch");
+        collectedParts.collectedLegs.Add("Skeleton");
     }
 
     public void ShowPartEditor(string partType)
@@ -45,19 +55,19 @@ public class MonsterMaker : MonoBehaviour {
                 switch (partType)
                 {
                     case "Head":
-                        partEditor.availableParts = collectedParts.collectedHeads;
+                        partEditor.availableParts = collectedParts.collectedHeads.ToArray();
                         break;
                     case "Torso":
-                        partEditor.availableParts = collectedParts.collectedTorsos;
+                        partEditor.availableParts = collectedParts.collectedTorsos.ToArray();
                         break;
                     case "RightArm":
-                        partEditor.availableParts = collectedParts.collectedRightArms;
+                        partEditor.availableParts = collectedParts.collectedRightArms.ToArray();
                         break;
                     case "LeftArm":
-                        partEditor.availableParts = collectedParts.collectedLeftArms;
+                        partEditor.availableParts = collectedParts.collectedLeftArms.ToArray();
                         break;
                     case "Legs":
-                        partEditor.availableParts = collectedParts.collectedLegs;
+                        partEditor.availableParts = collectedParts.collectedLegs.ToArray();
                         break;
                     default:
                         break;

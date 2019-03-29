@@ -2,24 +2,31 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="266.5" y="357.651" fill-opacity="0" fill="#231F20" width="81" height="78.206"/>
-<path id="PRIMARY_3_" fill="#00BC03" stroke="#231F20" stroke-miterlimit="10" d="M287.83,417.777
-	c0,9.596,8.918,17.376,19.92,17.376l0,0c11.001,0,19.92-7.78,19.92-17.376v-22.788c0.663-19.026-10.004-29.277-60.67-21.634v43.527
-	C267,416.883,287.83,408.182,287.83,417.777L287.83,417.777z"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M272.329,415.006c0-18.904,0.915-42.672,2.046-42.672"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M280.5,413.37c0-19.91,1.484-42.03,3.32-42.03"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M287.511,415.961c0-23.789,4.21-44.621,7.989-44.621"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M295.5,431.474c0-33.237,3.652-60.133,8.166-60.133"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M303.666,434.787c0-34.442,2.945-62.313,6.584-62.313"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M311.836,434.787c0-33.955,1.203-61.432,2.689-61.432"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M322.581,429.373c0-29.521-1.225-53.41-2.737-53.41"/>
-<polygon id="SECONDARY_56_" fill="#005601" points="276.727,383.717 280.083,383.836 276.982,370 272.917,383.583 "/>
-<polygon id="SECONDARY_57_" fill="#005601" points="291.89,377.915 295.225,377.521 290.051,364.318 288.104,378.362 "/>
-<polygon id="SECONDARY_58_" fill="#005601" points="313.559,396.739 316.623,398.115 318.969,384.132 310.082,395.178 "/>
-<polygon id="SECONDARY_59_" fill="#005601" points="307.522,380.785 310.88,380.904 307.779,367.068 303.714,380.65 "/>
-<polygon id="SECONDARY_60_" fill="#005601" points="325.961,410.166 329.01,411.574 331.505,397.616 322.5,408.568 "/>
-<polygon id="SECONDARY_61_" fill="#005601" points="314.898,424.798 318.149,423.955 311.232,411.577 311.209,425.755 "/>
-<polygon id="SECONDARY_62_" fill="#005601" points="294.328,419.117 297.473,420.297 298.936,406.193 290.76,417.777 "/>
-<polygon id="SECONDARY_63_" fill="#005601" points="292.238,398.641 295.5,399.443 295.296,385.266 288.537,397.729 "/>
-<polygon id="SECONDARY_64_" fill="#005601" points="281.379,405.002 283.82,402.693 271.787,395.193 278.61,407.621 "/>
+<rect x="179" y="272.347" fill-opacity="0" fill="#231F20" width="256" height="248.815"/>
+<path id="PRIMARY_3_" fill="#00BC03" stroke="#231F20" stroke-width="3.171" stroke-miterlimit="10" d="M246.414,463.64
+	c0,30.529,28.185,55.282,62.957,55.282l0,0c34.769,0,62.957-24.753,62.957-55.282v-72.501
+	c2.096-60.533-31.617-93.147-191.747-68.829v138.484C180.58,460.794,246.414,433.11,246.414,463.64L246.414,463.64z"/>
+<path fill="none" stroke="#231F20" stroke-width="3.171" stroke-miterlimit="10" d="M197.423,454.822
+	c0-60.144,2.892-135.764,6.466-135.764"/>
+<path fill="none" stroke="#231F20" stroke-width="3.171" stroke-miterlimit="10" d="M223.247,449.618
+	c0-63.344,4.691-133.72,10.494-133.72"/>
+<path fill="none" stroke="#231F20" stroke-width="3.171" stroke-miterlimit="10" d="M245.404,457.86
+	c0-75.684,13.306-141.962,25.25-141.962"/>
+<path fill="none" stroke="#231F20" stroke-width="3.171" stroke-miterlimit="10" d="M270.654,507.215
+	c0-105.746,11.543-191.316,25.809-191.316"/>
+<path fill="none" stroke="#231F20" stroke-width="3.171" stroke-miterlimit="10" d="M296.463,517.757
+	c0-109.579,9.309-198.25,20.809-198.25"/>
+<path fill="none" stroke="#231F20" stroke-width="3.171" stroke-miterlimit="10" d="M322.284,517.757
+	c0-108.029,3.802-195.447,8.5-195.447"/>
+<path fill="none" stroke="#231F20" stroke-width="3.171" stroke-miterlimit="10" d="M356.244,500.531
+	c0-93.923-3.871-169.926-8.651-169.926"/>
+<polygon id="SECONDARY_56_" fill="#005601" points="211.321,355.276 221.929,355.655 212.13,311.634 199.281,354.848 "/>
+<polygon id="SECONDARY_57_" fill="#005601" points="259.244,336.815 269.784,335.561 253.432,293.558 247.281,338.239 "/>
+<polygon id="SECONDARY_58_" fill="#005601" points="327.729,396.706 337.414,401.084 344.827,356.595 316.74,391.74 "/>
+<polygon id="SECONDARY_59_" fill="#005601" points="308.651,345.948 319.263,346.327 309.463,302.306 296.614,345.519 "/>
+<polygon id="SECONDARY_60_" fill="#005601" points="366.926,439.424 376.562,443.904 384.447,399.496 355.987,434.341 "/>
+<polygon id="SECONDARY_61_" fill="#005601" points="331.963,485.976 342.237,483.294 320.377,443.914 320.303,489.021 "/>
+<polygon id="SECONDARY_62_" fill="#005601" points="266.951,467.902 276.889,471.655 281.512,426.785 255.673,463.64 "/>
+<polygon id="SECONDARY_63_" fill="#005601" points="260.346,402.756 270.654,405.31 270.009,360.204 248.648,399.856 "/>
+<polygon id="SECONDARY_64_" fill="#005601" points="226.025,422.994 233.741,415.649 195.71,391.786 217.275,431.327 "/>
 </svg>
