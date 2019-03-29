@@ -17,13 +17,17 @@ public class Weapon {
     public string WeaponType { get { return _weaponType; }
         set {
             _weaponType = value;
-            if (_weaponType == Helper.WeaponType.Melee)
+            if(WeaponName == Helper.WeaponName.Fan)
             {
-                _attackDelegate = MeleeAttack;
+                AttackDelegate = FanAttack;
+            }
+            else if (_weaponType == Helper.WeaponType.Melee)
+            {
+                AttackDelegate = MeleeAttack;
             }
             else if (_weaponType == Helper.WeaponType.Projectile)
             {
-                _attackDelegate = ProjectileAttack;
+                AttackDelegate = ProjectileAttack;
             }
         }
     }
@@ -55,6 +59,9 @@ public class Weapon {
     private Sprite _weaponSprite;
     public Sprite WeaponSprite { get { return _weaponSprite; } set { _weaponSprite = value; } }
 
+    private SpriteRenderer _weaponSpriteRenderer;
+    public SpriteRenderer WeaponSpriteRenderer { get { return _weaponSpriteRenderer; } set { _weaponSpriteRenderer = value; } }
+
     //the prefab to use for the projectile, if the weapon is a projectile type
     private GameObject _projectilePrefab;
     public GameObject ProjectilePrefab { get { return _projectilePrefab; } set { _projectilePrefab = value; } }
@@ -68,8 +75,8 @@ public class Weapon {
     public Weapon(string weaponName)
     {
         WeaponName = weaponName;
-        WeaponSprite = Resources.Load<Sprite>("Sprites/Weapons/Weapon_"+weaponName);
-        ProjectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/Projectile_"+weaponName);
+        WeaponSprite = Resources.Load<Sprite>("Sprites/Weapons/Weapon_" + weaponName);
+        ProjectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/Projectile_" + weaponName);
     }
 
     public void MeleeAttack(string armEquippedOn)
@@ -102,8 +109,6 @@ public class Weapon {
     public void ProjectileAttack(string armEquippedOn)
     {
         PlayerController player = PlayerController.Instance;
-        Debug.Log(player.RightAttackCooldown);
-        Debug.Log(player.LeftAttackCooldown);
 
         Vector2 projectilePosition = new Vector2();
 
@@ -119,6 +124,62 @@ public class Weapon {
         GameObject projectile = Object.Instantiate(ProjectilePrefab, projectilePosition, ProjectilePrefab.transform.rotation);
         projectile.GetComponent<Projectile>().target = AttackTarget;
         projectile.GetComponent<Projectile>().damage = Damage;
+        projectile.GetComponent<Projectile>().weaponRenderer = WeaponSpriteRenderer;
+
+        Debug.Log(player.PlayerIsOnGround());
+
+        var facingDirection = WeaponSpriteRenderer.transform.GetComponentInParent<Rigidbody2D>().transform.localScale.x;
+        projectile.transform.localScale *= facingDirection;
+
+        projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectile.GetComponent<Projectile>().speed * player.facingDirection, 0);
+    }
+
+    public void FanAttack(string armEquippedOn)
+    {
+        PlayerController player = PlayerController.Instance;
+
+        Vector2 projectilePosition = new Vector2();
+
+        //the melee attack
+        Ray attackRay = new Ray();
+        attackRay.origin = player.transform.position;
+        attackRay.direction = new Vector2(player.facingDirection, 0);
+
+        Debug.DrawRay(attackRay.origin, new Vector2(AttackRange * player.facingDirection, 0), Color.green);
+        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, _attackRange, 1 << LayerMask.NameToLayer(AttackTarget));
+        if (hit)
+        {
+            if (AttackTarget == "Enemy")
+            {
+                Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
+                if (enemy != null && hit.collider == enemy.hurtBox)
+                {
+                    enemy.TakeDamage(Damage);
+                }
+            }
+            else if (AttackTarget == "Player" && hit.collider == PlayerController.Instance.hurtBox)
+            {
+                PlayerController.Instance.TakeDamage(Damage);
+            }
+        }
+
+        //the projectile
+        if (ArmEquippedOn == Helper.PartType.RightArm)
+        {
+            projectilePosition = player.monster.rightArmPart.hand.transform.position;
+        }
+        else if (ArmEquippedOn == Helper.PartType.LeftArm)
+        {
+            projectilePosition = player.monster.leftArmPart.hand.transform.position;
+        }
+
+        GameObject projectile = Object.Instantiate(ProjectilePrefab, projectilePosition, ProjectilePrefab.transform.rotation);
+        projectile.GetComponent<Projectile>().target = AttackTarget;
+        projectile.GetComponent<Projectile>().damage = Damage;
+        projectile.GetComponent<Projectile>().weaponRenderer = WeaponSpriteRenderer;
+
+        var facingDirection = WeaponSpriteRenderer.transform.GetComponentInParent<Rigidbody2D>().transform.localScale.x;
+        projectile.transform.localScale *= facingDirection;
 
         projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectile.GetComponent<Projectile>().speed * player.facingDirection, 0);
     }

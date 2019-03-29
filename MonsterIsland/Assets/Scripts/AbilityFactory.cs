@@ -300,7 +300,21 @@ public class AbilityFactory : MonoBehaviour {
     //Arm Ability (Passive): Increases the player's melee weapon damage, does not affect projectile weapon damage
     public static void Ability_WeaponsTraining(string armType)
     {
-
+        PlayerController player = PlayerController.Instance;
+        if(armType == Helper.PartType.RightArm)
+        {
+            if(player.monster.rightArmPart.weapon != null && player.monster.rightArmPart.weapon.WeaponType == Helper.WeaponType.Melee)
+            {
+                player.monster.rightArmPart.weapon.Damage += 1;
+            }
+        }
+        else if (armType == Helper.PartType.LeftArm)
+        {
+            if (player.monster.leftArmPart.weapon != null && player.monster.leftArmPart.weapon.WeaponType == Helper.WeaponType.Melee)
+            {
+                player.monster.leftArmPart.weapon.Damage += 1;
+            }
+        }
     }
 
     //Arm Ability (Activate): Allow the player to shoot three needles in a spread formation
@@ -357,7 +371,14 @@ public class AbilityFactory : MonoBehaviour {
     //takes up and locks this arm's weapon slot
     public static void Ability_BoneToss(string armType)
     {
-
+        if(armType == Helper.PartType.RightArm)
+        {
+            PlayerController.Instance.monster.rightArmPart.weapon = WeaponFactory.GetWeapon(Helper.WeaponName.Bone, armType, "Player", PlayerController.Instance.monster.rightArmPart.weaponRenderer);
+        }
+        else if (armType == Helper.PartType.LeftArm)
+        {
+            PlayerController.Instance.monster.leftArmPart.weapon = WeaponFactory.GetWeapon(Helper.WeaponName.Bone, armType, "Player", PlayerController.Instance.monster.leftArmPart.weaponRenderer);
+        }
     }
 
     //Leg Ability (Passive): Allows the player to damage enemies by jumping on them

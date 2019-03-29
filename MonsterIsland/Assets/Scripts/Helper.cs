@@ -180,6 +180,7 @@ public class Helper : MonoBehaviour {
         public const string HarpoonGun = "Harpoon Gun";
         public const string SqueakyHammer = "Squeaky Hammer";
         public const string Fan = "Fan";
+        public const string Bone = "Bone";
     }
 
     public struct WeaponType

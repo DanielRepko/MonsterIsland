@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
 
     private float _legAbilityCooldown = 0;
     public float LegAbilityCooldown { get { return _legAbilityCooldown; } set { _legAbilityCooldown = value; } }
-    public float legAbilityTimer = 0;
+    private float legAbilityTimer = 0;
 
     [Space(20, order = 1)]
 
@@ -297,8 +297,8 @@ public class PlayerController : MonoBehaviour {
         var rightArmInfo = PartFactory.GetArmPartInfo(rightArm, Helper.PartType.RightArm);
         var leftArmInfo = PartFactory.GetArmPartInfo(leftArm, Helper.PartType.LeftArm);
         var legPartInfo = PartFactory.GetLegPartInfo(legs);
-        Weapon weaponRight = WeaponFactory.GetWeapon(rightWeapon, Helper.PartType.RightArm, "Player");
-        Weapon weaponLeft = WeaponFactory.GetWeapon(leftWeapon, Helper.PartType.LeftArm, "Player");
+        rightArmInfo.equippedWeapon = rightWeapon;
+        leftArmInfo.equippedWeapon = leftWeapon;
 
         moveDelegate = Move;
         jumpDelegate = Jump;
@@ -311,7 +311,7 @@ public class PlayerController : MonoBehaviour {
         playerCheckDelegate += UpdatePlayerInputCooldowns;
         playerCheckDelegate += CheckHitBox;
 
-        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo, weaponRight, weaponLeft);
+        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
 
         SetPlayerCooldowns();
         //setting the cooldown timers so that the player can use the inputs as soon as the game loads

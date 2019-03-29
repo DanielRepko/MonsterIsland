@@ -4248,7 +4248,6 @@ MonoBehaviour:
   rightAttackPower: 2
   leftAttackPower: 2
   attacksLocked: 0
-  legAbilityTimer: 0
   health: 0
   maxHealth: 0
   hurtBox: {fileID: 68947545826544262}
@@ -5418,6 +5417,7 @@ MonoBehaviour:
     fingersOpenFrontSprite: 
     fingersClosedBackSprite: 
     fingersClosedFrontSprite: 
+    equippedWeapon: 
   partType: LeftArm
   bicepSprite: {fileID: 0}
   forearmSprite: {fileID: 0}
@@ -5580,6 +5580,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 0
+  collectedParts:
+    collectedHeads: []
+    collectedTorsos: []
+    collectedLeftArms: []
+    collectedRightArms: []
+    collectedLegs: []
 --- !u!114 &114298664699984536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9318,6 +9324,7 @@ MonoBehaviour:
     fingersOpenFrontSprite: 
     fingersClosedBackSprite: 
     fingersClosedFrontSprite: 
+    equippedWeapon: 
   partType: RightArm
   bicepSprite: {fileID: 0}
   forearmSprite: {fileID: 0}

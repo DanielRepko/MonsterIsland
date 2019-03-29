@@ -13,4 +13,5 @@ public class ArmPartInfo : MonsterPartInfo{
     public string fingersOpenFrontSprite;
     public string fingersClosedBackSprite;
     public string fingersClosedFrontSprite;
+    public string equippedWeapon;
 }
