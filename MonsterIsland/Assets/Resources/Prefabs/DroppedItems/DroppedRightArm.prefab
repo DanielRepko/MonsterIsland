@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 1048471891331240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.008, y: 0, z: 0}
-  m_LocalScale: {x: 0.018518887, y: 0.018518887, z: 1}
+  m_LocalScale: {x: 0.1851889, y: 0.1851889, z: 1}
   m_Children: []
   m_Father: {fileID: 4317215217832908}
   m_RootOrder: 1
@@ -162,7 +162,7 @@ Transform:
   m_GameObject: {fileID: 1184488656939056}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.008, y: -0.152, z: 0}
-  m_LocalScale: {x: 0.05370215, y: 0.05370215, z: 1}
+  m_LocalScale: {x: 0.5370215, y: 0.5370215, z: 1}
   m_Children: []
   m_Father: {fileID: 4317215217832908}
   m_RootOrder: 2
@@ -175,7 +175,7 @@ Transform:
   m_GameObject: {fileID: 1964418185208324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0285, y: 0.371, z: 0}
-  m_LocalScale: {x: 0.021509139, y: 0.021509139, z: 1}
+  m_LocalScale: {x: 0.2150914, y: 0.2150914, z: 1}
   m_Children: []
   m_Father: {fileID: 4640357429241248}
   m_RootOrder: 0
@@ -188,7 +188,7 @@ Transform:
   m_GameObject: {fileID: 1497583565904846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0285, y: 0.1624, z: 0}
-  m_LocalScale: {x: 0.023660049, y: 0.02366005, z: 1}
+  m_LocalScale: {x: 0.2366005, y: 0.2366005, z: 1}
   m_Children: []
   m_Father: {fileID: 4640357429241248}
   m_RootOrder: 1
@@ -200,7 +200,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1214736009926186}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 58.03, y: -29.51, z: 0}
+  m_LocalPosition: {x: 55.588593, y: -31.682457, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4513087926677972}
@@ -217,7 +217,7 @@ Transform:
   m_GameObject: {fileID: 1748990094318240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.008, y: 0, z: 0}
-  m_LocalScale: {x: 0.018518887, y: 0.018518887, z: 1}
+  m_LocalScale: {x: 0.1851889, y: 0.1851889, z: 1}
   m_Children: []
   m_Father: {fileID: 4317215217832908}
   m_RootOrder: 0
@@ -292,6 +292,7 @@ MonoBehaviour:
     fingersOpenFrontSprite: 
     fingersClosedBackSprite: 
     fingersClosedFrontSprite: 
+    equippedWeapon: 
   partType: 
   bicepSprite: {fileID: 0}
   forearmSprite: {fileID: 0}
@@ -301,10 +302,14 @@ MonoBehaviour:
   fingersOpenFrontSprite: {fileID: 0}
   fingersClosedBackSprite: {fileID: 0}
   fingersClosedFrontSprite: {fileID: 0}
+  fingersBack: {fileID: 0}
+  fingersFront: {fileID: 0}
+  weaponSprite: {fileID: 0}
   bicep: {fileID: 212452100702136400}
   forearm: {fileID: 212988785483183382}
   hand: {fileID: 212233370121533792}
   fingers: {fileID: 212511563358625452}
+  weaponRenderer: {fileID: 0}
 --- !u!114 &114817289880325006
 MonoBehaviour:
   m_ObjectHideFlags: 1

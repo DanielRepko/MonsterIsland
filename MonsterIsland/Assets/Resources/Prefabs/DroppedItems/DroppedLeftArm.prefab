@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 1003580918551782}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.008, y: -0.152, z: 0}
-  m_LocalScale: {x: 0.05370215, y: 0.05370215, z: 1}
+  m_LocalScale: {x: 0.5370215, y: 0.5370215, z: 1}
   m_Children: []
   m_Father: {fileID: 4170020817224302}
   m_RootOrder: 2
@@ -161,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1125672735492682}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 59.8, y: -30.03, z: 0}
+  m_LocalPosition: {x: 56.227222, y: -31.276056, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4449218083865624}
@@ -191,7 +191,7 @@ Transform:
   m_GameObject: {fileID: 1556008357932134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0285, y: 0.371, z: 0}
-  m_LocalScale: {x: 0.021509139, y: 0.021509139, z: 1}
+  m_LocalScale: {x: 0.2150914, y: 0.2150914, z: 1}
   m_Children: []
   m_Father: {fileID: 4209737822311930}
   m_RootOrder: 0
@@ -204,7 +204,7 @@ Transform:
   m_GameObject: {fileID: 1924271414274984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0285, y: 0.1624, z: 0}
-  m_LocalScale: {x: 0.023660049, y: 0.02366005, z: 1}
+  m_LocalScale: {x: 0.2366005, y: 0.2366005, z: 1}
   m_Children: []
   m_Father: {fileID: 4209737822311930}
   m_RootOrder: 1
@@ -217,7 +217,7 @@ Transform:
   m_GameObject: {fileID: 1016058348164026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.008, y: 0, z: 0}
-  m_LocalScale: {x: 0.018518887, y: 0.018518887, z: 1}
+  m_LocalScale: {x: 0.1851889, y: 0.1851889, z: 1}
   m_Children: []
   m_Father: {fileID: 4170020817224302}
   m_RootOrder: 1
@@ -306,6 +306,7 @@ MonoBehaviour:
     fingersOpenFrontSprite: 
     fingersClosedBackSprite: 
     fingersClosedFrontSprite: 
+    equippedWeapon: 
   partType: 
   bicepSprite: {fileID: 0}
   forearmSprite: {fileID: 0}
@@ -315,10 +316,14 @@ MonoBehaviour:
   fingersOpenFrontSprite: {fileID: 0}
   fingersClosedBackSprite: {fileID: 0}
   fingersClosedFrontSprite: {fileID: 0}
+  fingersBack: {fileID: 0}
+  fingersFront: {fileID: 0}
+  weaponSprite: {fileID: 0}
   bicep: {fileID: 212474598004425144}
   forearm: {fileID: 212988147701443748}
   hand: {fileID: 212697230568675598}
   fingers: {fileID: 212323915066292296}
+  weaponRenderer: {fileID: 0}
 --- !u!212 &212323915066292296
 SpriteRenderer:
   m_ObjectHideFlags: 1
