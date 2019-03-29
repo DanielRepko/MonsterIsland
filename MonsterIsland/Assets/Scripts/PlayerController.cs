@@ -329,13 +329,11 @@ public class PlayerController : MonoBehaviour {
 
     public void ShowAttackFace()
     {
-        Debug.Log("attack");
         monster.headPart.face.sprite = monster.headPart.attackFaceSprite;
     }
 
     public void ShowIdleFace()
     {
-        Debug.Log("idle");
         monster.headPart.face.sprite = monster.headPart.idleFaceSprite;
     }
 
