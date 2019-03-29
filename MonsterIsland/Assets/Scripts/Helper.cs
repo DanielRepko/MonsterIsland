@@ -204,8 +204,6 @@ public class Helper : MonoBehaviour {
             sideTrimmed = side;
         }
 
-        Debug.Log(sideTrimmed);
-
         //checking if the side is Right
         if(sideTrimmed == "Right" && scaleX > 0)
         {
