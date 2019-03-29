@@ -240,7 +240,9 @@ public class PlayerController : MonoBehaviour {
 
         Debug.DrawRay(attackRay.origin, new Vector2(1.7f * facingDirection, 0), Color.green);
 
-        animator.Play("FrontArmMeleeAnim");
+        //using the armType and Helper method to call the correct anim
+        animator.Play(armType + Helper.GetAnimDirection(armType, facingDirection) + "MeleeAnim");
+       // Debug.Log(Helper.GetAnimDirection(armType, facingDirection));
 
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if(hit) {
@@ -258,8 +260,6 @@ public class PlayerController : MonoBehaviour {
         attackRay.direction = new Vector2(facingDirection, 0);
 
         Debug.DrawRay(attackRay.origin, new Vector2(1.7f * facingDirection, 0), Color.green);
-
-        
 
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit) {

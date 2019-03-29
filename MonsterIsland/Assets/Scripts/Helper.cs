@@ -189,6 +189,47 @@ public class Helper : MonoBehaviour {
         public const string Projectile = "Projectile";
     }
 
+    //used to get strings Front or Back from 1 or -1 based on the side passed
+    //sides can be passed in the form of armTypes (RightArm/LeftArm) or basic sides (Right/Left)
+    //used for easy animation calls
+    public static string GetAnimDirection(string side, int scaleX)
+    {
+        string sideTrimmed = "";
+        if(side.Length > 5)
+        {
+            sideTrimmed = side.Substring(0, side.Length - 3);
+        }
+        else
+        {
+            sideTrimmed = side;
+        }
+
+        Debug.Log(sideTrimmed);
+
+        //checking if the side is Right
+        if(sideTrimmed == "Right" && scaleX > 0)
+        {
+            return "Back";
+        }
+        else if(sideTrimmed == "Right" && scaleX < 0)
+        {
+            return "Front";
+        }
+        //checking if the side is Left
+        else if (sideTrimmed == "Left" && scaleX > 0)
+        {
+            return "Front";
+        }
+        else if (sideTrimmed == "Left" && scaleX < 0)
+        {
+            return "Back";
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     //helper method used to convert the imageStrings to Sprites
     //inMonsterMaker parameter used to determine whether the call is happening inside the MonsterMaker
     //if it is, the method does not adjust the scaling of the images
