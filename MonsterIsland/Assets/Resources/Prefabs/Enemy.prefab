@@ -425,6 +425,9 @@ GameObject:
   - component: {fileID: 68940303664264368}
   - component: {fileID: 70453582673227394}
   - component: {fileID: 50284019387309448}
+  - component: {fileID: 58510137848486018}
+  - component: {fileID: 250790272746950184}
+  - component: {fileID: 95621210937696042}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -937,6 +940,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!58 &58510137848486018
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860751665264152}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.0001
 --- !u!68 &68940303664264368
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -972,6 +990,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0.012268186, y: -0.22625351}
   m_Size: {x: 1.5654635, y: 3.1634622}
   m_Direction: 0
+--- !u!95 &95621210937696042
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860751665264152}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31d8c5a203508a44e9ee8a705a7e2ab4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114081887161647660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1135,6 +1171,7 @@ MonoBehaviour:
     fingersOpenFrontSprite: 
     fingersClosedBackSprite: 
     fingersClosedFrontSprite: 
+    equippedWeapon: 
   partType: LeftArm
   bicepSprite: {fileID: 0}
   forearmSprite: {fileID: 0}
@@ -1204,6 +1241,7 @@ MonoBehaviour:
     fingersOpenFrontSprite: 
     fingersClosedBackSprite: 
     fingersClosedFrontSprite: 
+    equippedWeapon: 
   partType: RightArm
   bicepSprite: {fileID: 0}
   forearmSprite: {fileID: 0}
@@ -1234,6 +1272,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 114244767943668226}
   hurtBox: {fileID: 68940303664264368}
+  monsterName: 
+  alwaysDropPart: 0
+  partToAlwaysDrop: 
+  attacksLocked: 0
 --- !u!212 &212098274339478526
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2218,3 +2260,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 2.1}
   m_SizeDelta: {x: 3, y: 0.8}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!250 &250790272746950184
+PointEffector2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860751665264152}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  m_ForceMagnitude: 0
+  m_ForceVariation: 1
+  m_DistanceScale: 0.0001
+  m_ForceSource: 1
+  m_ForceTarget: 1
+  m_ForceMode: 0
+  m_Drag: 1
+  m_AngularDrag: 1
