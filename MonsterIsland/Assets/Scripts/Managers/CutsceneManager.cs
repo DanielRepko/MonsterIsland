@@ -26,4 +26,21 @@ public class CutsceneManager : MonoBehaviour {
     void Update () {
 		
 	}
+
+    IEnumerator EndCutscene() {
+        yield return new WaitForSeconds((float) director.duration);
+
+        playerController.enabled = true;
+        gameplayCanvas.SetActive(true);
+        playerCamera.SetActive(true);
+    }
+
+    public void PlayActivateDesertGem() {
+        playerController.enabled = false;
+        gameplayCanvas.SetActive(false);
+        playerCamera.SetActive(false);
+        director.Play(activateDesertGem);
+
+        StartCoroutine("EndCutscene");
+    }
 }
