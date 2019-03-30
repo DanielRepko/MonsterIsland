@@ -120,7 +120,8 @@ public class Weapon {
         }
         else
         {
-            //play shoot anim
+            //play shoot animation
+            player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(ArmEquippedOn, player.facingDirection) + "ShootAnim");
         }
 
         Vector2 projectilePosition = new Vector2();
