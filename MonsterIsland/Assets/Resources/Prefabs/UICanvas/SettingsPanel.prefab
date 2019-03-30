@@ -3017,6 +3017,7 @@ MonoBehaviour:
   torsoButtonText: {fileID: 1746442485883404}
   headButtonText: {fileID: 1018761680827936}
   audioMixer: {fileID: 24100000, guid: aac208b4cefb6854284918db8810f00a, type: 2}
+  settingsPanel: {fileID: 1561389571420490}
 --- !u!114 &114264713256170820
 MonoBehaviour:
   m_ObjectHideFlags: 1

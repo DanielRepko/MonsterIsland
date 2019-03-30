@@ -117,4 +117,8 @@ public class SettingsManager : MonoBehaviour {
         PlayerPrefs.Save();
         settingsPanel.SetActive(false);
     }
+
+    public void ShowSettingsMenu() {
+        settingsPanel.SetActive(true);
+    }
 }

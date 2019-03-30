@@ -16,14 +16,20 @@ public class AudioManager : MonoBehaviour {
         } else if (Instance != this) {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(gameObject);
 	}
 	
     public void PlayMusic(AudioClip song, bool loop) {
+        if(musicAudioSource.clip == song) {
+            return;
+        }
+
         if(musicAudioSource.isPlaying) {
             musicAudioSource.Stop();
         }
         musicAudioSource.loop = loop;
-        musicAudioSource.PlayOneShot(song);
+        musicAudioSource.clip = song;
+        musicAudioSource.Play();
     }
 
     public void PlaySound(AudioClip sound) {
