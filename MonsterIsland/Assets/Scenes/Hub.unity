@@ -6886,6 +6886,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &573036138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1773345955696892, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1023053496}
 --- !u!1 &653723234 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1434947816638114, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
@@ -7598,6 +7603,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1469749352}
+    - target: {fileID: 1751393701101738, guid: 5dd60c8d1dd609b489d0083e1b88ff1c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dd60c8d1dd609b489d0083e1b88ff1c, type: 2}
   m_IsPrefabAsset: 0
@@ -45143,6 +45152,21 @@ Prefab:
       propertyPath: m_SceneBindings.Array.data[4].value
       value: 
       objectReference: {fileID: 987075151}
+    - target: {fileID: 114459118525096300, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 573036138}
+    - target: {fileID: 114459118525096300, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1023053497}
+    - target: {fileID: 114459118525096300, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: gameplayCanvas
+      value: 
+      objectReference: {fileID: 1577759490}
     - target: {fileID: 114146147085181238, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
         type: 2}
       propertyPath: player
@@ -45343,6 +45367,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4890ea28c2aea1f4c8c5ce65ca32065a, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1577759490 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1751393701101738, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1023053496}
 --- !u!1 &1657110041
 GameObject:
   m_ObjectHideFlags: 0

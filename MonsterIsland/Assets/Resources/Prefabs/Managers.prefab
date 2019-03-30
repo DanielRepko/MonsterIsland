@@ -500,6 +500,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa4d831b15a7eb499f308533726b9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  director: {fileID: 320752959442772696}
+  playerCamera: {fileID: 0}
+  playerController: {fileID: 0}
+  gameplayCanvas: {fileID: 0}
+  activateDesertGem: {fileID: 11400000, guid: 998e47af78ed439469fb86628eca959b, type: 2}
 --- !u!114 &114629648450477680
 MonoBehaviour:
   m_ObjectHideFlags: 1
