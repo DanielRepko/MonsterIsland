@@ -14,8 +14,8 @@ public class CustomInputManager : MonoBehaviour {
 
     private GameObject currentKey;
 
-	// Use this for initialization
-	void Awake() {
+    // Use this for initialization
+    void Awake() {
         if(Instance == null) {
             Instance = this;
             InputKeys.Add(InputType.Primary, (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(InputType.Primary.ToString(), "Mouse0")));
@@ -30,6 +30,7 @@ public class CustomInputManager : MonoBehaviour {
         } else if (Instance != this) {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(gameObject);
 	}
 
     public KeyCode GetInputKey(InputType inputType) {
