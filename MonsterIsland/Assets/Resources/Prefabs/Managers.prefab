@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4308308919659118}
   - component: {fileID: 114459118525096300}
+  - component: {fileID: 320752959442772696}
   m_Layer: 0
   m_Name: CutsceneManager
   m_TagString: Untagged
@@ -512,3 +513,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicAudioSource: {fileID: 82189413830944218}
   soundAudioSource: {fileID: 82801545650459958}
+--- !u!320 &320752959442772696
+PlayableDirector:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1066239467522572}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 114934705042370484, guid: 998e47af78ed439469fb86628eca959b, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 114947597964215852, guid: 998e47af78ed439469fb86628eca959b, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 114006989531854664, guid: 998e47af78ed439469fb86628eca959b, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
