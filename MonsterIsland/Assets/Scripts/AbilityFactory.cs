@@ -351,6 +351,10 @@ public class AbilityFactory : MonoBehaviour {
         middleNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
         downNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
 
+
+        //playing the shoot animation
+        player.animator.Play(armType + Helper.GetAnimDirection(armType, player.facingDirection) + "ShootAnim");
+
         upNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, speed / 2);
         middleNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, 0);
         downNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, -speed / 2);
