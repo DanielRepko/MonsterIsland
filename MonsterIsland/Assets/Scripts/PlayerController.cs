@@ -228,6 +228,8 @@ public class PlayerController : MonoBehaviour {
     //makes the player jump
     public void Jump() {
         if (PlayerIsOnGround()) {
+            //calling the jump animation
+            animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
@@ -241,7 +243,7 @@ public class PlayerController : MonoBehaviour {
         Debug.DrawRay(attackRay.origin, new Vector2(1.7f * facingDirection, 0), Color.green);
 
         //using the armType and Helper method to call the correct anim
-        animator.Play(armType + Helper.GetAnimDirection(armType, facingDirection) + "MeleeAnim");
+        animator.Play(armType + Helper.GetAnimDirection(facingDirection, armType) + "MeleeAnim");
 
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if(hit) {
@@ -260,7 +262,7 @@ public class PlayerController : MonoBehaviour {
 
         Debug.DrawRay(attackRay.origin, new Vector2(1.7f * facingDirection, 0), Color.green);
 
-        animator.Play(armType + Helper.GetAnimDirection(armType, facingDirection) + "MeleeAnim");
+        animator.Play(armType + Helper.GetAnimDirection(facingDirection, armType) + "MeleeAnim");
 
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit) {

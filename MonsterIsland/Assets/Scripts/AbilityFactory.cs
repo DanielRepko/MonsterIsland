@@ -273,7 +273,7 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = PlayerController.Instance;
         //play attack animation
-        player.animator.Play(armType + Helper.GetAnimDirection(armType, player.facingDirection) + "MeleeAnim");
+        player.animator.Play(armType + Helper.GetAnimDirection(player.facingDirection, armType) + "MeleeAnim");
 
         GameObject bombPrefab = Resources.Load<GameObject>("Prefabs/Projectiles/StickyBomb");
         GameObject bomb = Instantiate(bombPrefab, player.monster.rightArmPart.hand.transform.position, Quaternion.identity);
@@ -353,7 +353,7 @@ public class AbilityFactory : MonoBehaviour {
 
 
         //playing the shoot animation
-        player.animator.Play(armType + Helper.GetAnimDirection(armType, player.facingDirection) + "ShootAnim");
+        player.animator.Play(armType + Helper.GetAnimDirection(player.facingDirection, armType) + "ShootAnim");
 
         upNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, speed / 2);
         middleNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, 0);
@@ -409,10 +409,14 @@ public class AbilityFactory : MonoBehaviour {
         {
             if (player.PlayerIsOnGround())
             {
+                //calling the jump animation
+                player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
             }
             else if (!player.PlayerIsOnGround() && player.hasExtraJump)
             {
+                //calling the jump animation
+                player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
                 player.hasExtraJump = false;
             }
@@ -422,10 +426,7 @@ public class AbilityFactory : MonoBehaviour {
     //Leg Ability (Passive): Increases the player's jump height
     public static void Ability_JoeyJump()
     {
-        if (!PlayerController.Instance.isUnderwater)
-        {
-            PlayerController.Instance.jumpForce = 70;
-        }
+        PlayerController.Instance.jumpForce = 70;
     }
 
     //Leg Ability (Activate): Allows the player to attack with taloned feet
@@ -437,6 +438,8 @@ public class AbilityFactory : MonoBehaviour {
         {
             if (player.PlayerIsOnGround())
             {
+                //calling the jump animation
+                player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
             }
             else if (!player.PlayerIsOnGround() && player.hasExtraJump)
