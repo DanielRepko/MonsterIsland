@@ -45127,6 +45127,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114146147085181238, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1023053497}
+    - target: {fileID: 114459118525096300, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 573036138}
+    - target: {fileID: 114459118525096300, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1023053497}
+    - target: {fileID: 114459118525096300, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: gameplayCanvas
+      value: 
+      objectReference: {fileID: 1577759490}
     - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
         type: 2}
       propertyPath: m_SceneBindings.Array.data[0].value
@@ -45152,26 +45172,21 @@ Prefab:
       propertyPath: m_SceneBindings.Array.data[4].value
       value: 
       objectReference: {fileID: 987075151}
-    - target: {fileID: 114459118525096300, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
         type: 2}
-      propertyPath: playerCamera
+      propertyPath: m_SceneBindings.Array.data[6].value
       value: 
-      objectReference: {fileID: 573036138}
-    - target: {fileID: 114459118525096300, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+      objectReference: {fileID: 987075146}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
         type: 2}
-      propertyPath: playerController
+      propertyPath: m_SceneBindings.Array.data[7].value
       value: 
-      objectReference: {fileID: 1023053497}
-    - target: {fileID: 114459118525096300, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+      objectReference: {fileID: 987075151}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
         type: 2}
-      propertyPath: gameplayCanvas
+      propertyPath: m_SceneBindings.Array.data[8].value
       value: 
-      objectReference: {fileID: 1577759490}
-    - target: {fileID: 114146147085181238, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1023053497}
+      objectReference: {fileID: 1657110044}
     - target: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
         type: 2}
       propertyPath: airMeter
@@ -45381,6 +45396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1657110042}
   - component: {fileID: 1657110043}
+  - component: {fileID: 1657110044}
   m_Layer: 0
   m_Name: UnderwaterGem
   m_TagString: Untagged
@@ -45447,6 +45463,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1657110044
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1657110041}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1738258380
 GameObject:
   m_ObjectHideFlags: 0
