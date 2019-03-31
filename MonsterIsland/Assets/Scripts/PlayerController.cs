@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 
     private float hitStunCooldown = 0.4f;
     private float hitStunTimer = 0;
-    private bool inHitStun = false;
+    public bool inHitStun = false;
     public bool movementLocked = false;
 
     public BoxCollider2D hitBox;
@@ -165,11 +165,6 @@ public class PlayerController : MonoBehaviour {
             moveDelegate();
         }
 
-        if(inHitStun && hitStunTimer == 0)
-        {
-            rb.velocity = new Vector2(-10 * facingDirection, 30);
-        }
-
         //Handling hitstun
         if(inHitStun && hitStunTimer < hitStunCooldown)
         {
@@ -280,7 +275,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (!inHitStun)
         {
-            transform.localScale = new Vector2(knockBackDirection, transform.localScale.y);
+            rb.velocity = new Vector2(-10 * knockBackDirection, 30);
             health -= damage;
             inHitStun = true;
         }

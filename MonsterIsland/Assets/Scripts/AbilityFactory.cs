@@ -497,26 +497,32 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = PlayerController.Instance;
 
-        var stompCheck1 = Physics2D.Raycast(new Vector2(player.transform.position.x, player.transform.position.y - player.height), -Vector2.down, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
-        var stompCheck2 = Physics2D.Raycast(new Vector2(player.transform.position.x + (player.width - 0.2f), player.transform.position.y - player.height), -Vector2.up, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
-        var stompCheck3 = Physics2D.Raycast(new Vector2(player.transform.position.x - (player.width - 0.2f), player.transform.position.y - player.height), -Vector2.up, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+        if (!player.inHitStun)
+        {
 
-        Enemy enemyHit = null;
-        if (stompCheck1)
-        {
-            enemyHit = stompCheck1.transform.GetComponentInParent<Enemy>();
-        } else if (stompCheck2)
-        {
-            enemyHit = stompCheck2.transform.GetComponentInParent<Enemy>();
-        } else if (stompCheck3)
-        {
-            enemyHit = stompCheck3.transform.GetComponentInParent<Enemy>();
-        }
-        if(enemyHit != null)
-        {
-            player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
-            player.rb.velocity = new Vector2(player.rb.velocity.x, 40);
-            enemyHit.TakeDamage(2, Helper.GetKnockBackDirection(player.transform, enemyHit.transform));
+            var stompCheck1 = Physics2D.Raycast(new Vector2(player.transform.position.x, player.transform.position.y - player.height), -Vector2.down, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+            var stompCheck2 = Physics2D.Raycast(new Vector2(player.transform.position.x + (player.width - 0.2f), player.transform.position.y - player.height), -Vector2.up, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+            var stompCheck3 = Physics2D.Raycast(new Vector2(player.transform.position.x - (player.width - 0.2f), player.transform.position.y - player.height), -Vector2.up, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+
+            Enemy enemyHit = null;
+            if (stompCheck1)
+            {
+                enemyHit = stompCheck1.transform.GetComponentInParent<Enemy>();
+            }
+            else if (stompCheck2)
+            {
+                enemyHit = stompCheck2.transform.GetComponentInParent<Enemy>();
+            }
+            else if (stompCheck3)
+            {
+                enemyHit = stompCheck3.transform.GetComponentInParent<Enemy>();
+            }
+            if (enemyHit != null)
+            {
+                player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
+                player.rb.velocity = new Vector2(player.rb.velocity.x, 40);
+                enemyHit.TakeDamage(2, Helper.GetKnockBackDirection(player.transform, enemyHit.transform));
+            }
         }
     }
 }
