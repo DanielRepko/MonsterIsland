@@ -514,6 +514,7 @@ public class AbilityFactory : MonoBehaviour {
         }
         if(enemyHit != null)
         {
+            player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
             player.rb.velocity = new Vector2(player.rb.velocity.x, 40);
             enemyHit.TakeDamage(2);
         }

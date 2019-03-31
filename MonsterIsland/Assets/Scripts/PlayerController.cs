@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour {
 
     public bool hasExtraJump = true;
 
-    public float rayCastLengthCheck = 0.005f;
+    public float rayCastLengthCheck = 0.2f;
     public float width;
     public float height;
 

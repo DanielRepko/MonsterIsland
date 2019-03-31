@@ -142,7 +142,7 @@ public class Enemy : MonoBehaviour {
                 }
             }
 
-            if (monsterName != null)
+            if (monsterName != "")
             {
                 if (partToGet == 1)
                 {
