@@ -9412,6 +9412,7 @@ GameObject:
   - component: {fileID: 1129103065}
   - component: {fileID: 1129103064}
   - component: {fileID: 1129103063}
+  - component: {fileID: 1129103066}
   m_Layer: 0
   m_Name: HubToSkylandTransition
   m_TagString: Untagged
@@ -9516,6 +9517,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1129103066
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1129103061}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1176655854 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1062477113408256, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
@@ -45219,6 +45238,66 @@ Prefab:
     - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
         type: 2}
       propertyPath: m_SceneBindings.Array.data[11].value
+      value: 
+      objectReference: {fileID: 987075151}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[12].value
+      value: 
+      objectReference: {fileID: 885727123}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[13].value
+      value: 
+      objectReference: {fileID: 987075146}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[14].value
+      value: 
+      objectReference: {fileID: 987075151}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[15].value
+      value: 
+      objectReference: {fileID: 1129103066}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[16].value
+      value: 
+      objectReference: {fileID: 1657110044}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[17].value
+      value: 
+      objectReference: {fileID: 1129103066}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[18].value
+      value: 
+      objectReference: {fileID: 987075146}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[19].value
+      value: 
+      objectReference: {fileID: 987075151}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[20].value
+      value: 
+      objectReference: {fileID: 125162092}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[21].value
+      value: 
+      objectReference: {fileID: 1129103066}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[22].value
+      value: 
+      objectReference: {fileID: 987075146}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[23].value
       value: 
       objectReference: {fileID: 987075151}
     - target: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
