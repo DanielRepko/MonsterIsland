@@ -45392,6 +45392,21 @@ Prefab:
       propertyPath: m_SceneBindings.Array.data[27].value
       value: 
       objectReference: {fileID: 357285605}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[28].value
+      value: 
+      objectReference: {fileID: 1129103061}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[29].value
+      value: 
+      objectReference: {fileID: 1129103061}
+    - target: {fileID: 320752959442772696, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[30].value
+      value: 
+      objectReference: {fileID: 1129103061}
     - target: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
         type: 2}
       propertyPath: airMeter
