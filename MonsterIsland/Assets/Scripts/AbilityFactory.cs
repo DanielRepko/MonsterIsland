@@ -127,6 +127,7 @@ public class AbilityFactory : MonoBehaviour {
         GameObject tongue = Instantiate(tongueLoad, tonguePosition, Quaternion.identity);
         tongue.transform.localScale *= player.facingDirection;
 
+        player.animator.Play("HeadAbilityAnim");
         tongue.GetComponent<Animator>().Play("TongueFlickAnim");
     }
 
