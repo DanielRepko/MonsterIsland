@@ -28,7 +28,7 @@ public class TongueFlick : MonoBehaviour {
                 Enemy enemy = collision.GetComponent<Enemy>();
                 if (enemy != null && collision == enemy.hurtBox)
                 {
-                    enemy.TakeDamage(damage);
+                    enemy.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                     Destroy(gameObject);
                 }
             }
@@ -39,7 +39,7 @@ public class TongueFlick : MonoBehaviour {
             {
                 if (collision == PlayerController.Instance.hurtBox)
                 {
-                    PlayerController.Instance.TakeDamage(damage);
+                    PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                     Destroy(gameObject);
                 }
             }

@@ -66,14 +66,14 @@ public class Enemy : MonoBehaviour {
         //GetComponent<Animator>().Play("FrontArmMeleeAnim");
     }
 
-    //causes the enemy to take damage
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, float knockBackDirection)
     {
         if (!inHitStun)
         {
+            transform.localScale = new Vector2(knockBackDirection, transform.localScale.y);
             health -= damage;
             inHitStun = true;
-        }        
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour {
         {
             if (!inHitStun)
             {
-                PlayerController.Instance.TakeDamage(1);
+                PlayerController.Instance.TakeDamage(1, Helper.GetKnockBackDirection(transform, collision.transform));
             }
         }
         
@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour {
         {
             if (!inHitStun)
             {
-                PlayerController.Instance.TakeDamage(1);
+                PlayerController.Instance.TakeDamage(1, Helper.GetKnockBackDirection(transform, collision.transform));
             }
         }
     }

@@ -249,7 +249,7 @@ public class PlayerController : MonoBehaviour {
         if(hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
             if(enemy != null && hit.collider == enemy.hurtBox) {
-                enemy.TakeDamage(rightAttackPower);
+                enemy.TakeDamage(rightAttackPower, Helper.GetKnockBackDirection(transform, hit.transform));
             }
         }
     }
@@ -268,7 +268,7 @@ public class PlayerController : MonoBehaviour {
         if (hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
             if (enemy != null && hit.collider == enemy.hurtBox) {
-                enemy.TakeDamage(leftAttackPower);
+                enemy.TakeDamage(leftAttackPower, Helper.GetKnockBackDirection(transform, hit.transform));
             }
         }
     }
@@ -276,10 +276,11 @@ public class PlayerController : MonoBehaviour {
     //the default ability method (default is to have no ability so it is meant to be empty)
     public void AbilityDefault() {}
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, float knockBackDirection)
     {
         if (!inHitStun)
         {
+            transform.localScale = new Vector2(knockBackDirection, transform.localScale.y);
             health -= damage;
             inHitStun = true;
         }
@@ -535,7 +536,7 @@ public class PlayerController : MonoBehaviour {
                 {
                     if (hitBox.IsTouching(enemy.hurtBox))
                     {
-                        enemy.TakeDamage(hitBoxDamage);
+                        enemy.TakeDamage(hitBoxDamage, Helper.GetKnockBackDirection(transform, collision.transform));
                         hitCounter += 1;
                     }
                 }

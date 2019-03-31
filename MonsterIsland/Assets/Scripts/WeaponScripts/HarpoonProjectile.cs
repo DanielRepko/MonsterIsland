@@ -31,7 +31,7 @@ public class HarpoonProjectile : Projectile {
                 Enemy enemy = collision.GetComponent<Enemy>();
                 if (enemy != null && collision == enemy.hurtBox)
                 {
-                    enemy.TakeDamage(damage);
+                    enemy.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                     Destroy(gameObject);
                 }
             }
@@ -42,7 +42,7 @@ public class HarpoonProjectile : Projectile {
             {
                 if (collision == PlayerController.Instance.hurtBox)
                 {
-                    PlayerController.Instance.TakeDamage(damage);
+                    PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, PlayerController.Instance.transform));
                     Destroy(gameObject);
                 }
             }

@@ -170,7 +170,7 @@ public class AbilityFactory : MonoBehaviour {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(3);
+                enemy.TakeDamage(3, Helper.GetKnockBackDirection(player.transform, hit.transform));
             }
         }
     }
@@ -516,7 +516,7 @@ public class AbilityFactory : MonoBehaviour {
         {
             player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
             player.rb.velocity = new Vector2(player.rb.velocity.x, 40);
-            enemyHit.TakeDamage(2);
+            enemyHit.TakeDamage(2, Helper.GetKnockBackDirection(player.transform, enemyHit.transform));
         }
     }
 }

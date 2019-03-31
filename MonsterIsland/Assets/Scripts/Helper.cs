@@ -189,6 +189,23 @@ public class Helper : MonoBehaviour {
         public const string Projectile = "Projectile";
     }
 
+    public static float GetKnockBackDirection(Transform attacker, Transform target)
+    {
+        //attack is hitting target from the left
+        if(attacker.position.x < target.position.x)
+        {
+            return -1;
+        }
+        //attack is hitting target from the right
+        else if (attacker.position.x > target.position.x)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 
     //used to get strings Front or Back from 1 or -1 based on the side passed
     //sides can be passed in the form of armTypes (RightArm/LeftArm) or basic sides (Right/Left)
