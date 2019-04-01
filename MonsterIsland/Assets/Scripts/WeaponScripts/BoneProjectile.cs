@@ -73,7 +73,7 @@ public class BoneProjectile : Projectile {
                 Enemy enemy = collision.GetComponent<Enemy>();
                 if (enemy != null && collision == enemy.hurtBox)
                 {
-                    enemy.TakeDamage(damage);
+                    enemy.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                     weaponRenderer.gameObject.SetActive(true);
                     UpdateCooldown(true);
                     Destroy(gameObject);
@@ -86,7 +86,7 @@ public class BoneProjectile : Projectile {
             {
                 if (collision == PlayerController.Instance.hurtBox)
                 {
-                    PlayerController.Instance.TakeDamage(damage);
+                    PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                     weaponRenderer.gameObject.SetActive(true);
                     UpdateCooldown(true);
                     Destroy(gameObject);

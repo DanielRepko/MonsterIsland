@@ -88,7 +88,7 @@ public class BoomerangProjectile : Projectile {
                 Enemy enemy = collision.GetComponent<Enemy>();
                 if (enemy != null && collision == enemy.hurtBox)
                 {
-                    enemy.TakeDamage(damage);
+                    enemy.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                 }
             }
             else if (collision.tag == "Player" && returning)
@@ -104,7 +104,7 @@ public class BoomerangProjectile : Projectile {
             {
                 if (collision == PlayerController.Instance.hurtBox)
                 {
-                    PlayerController.Instance.TakeDamage(damage);
+                    PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                 }
             }
         }

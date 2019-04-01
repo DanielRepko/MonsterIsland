@@ -189,42 +189,78 @@ public class Helper : MonoBehaviour {
         public const string Projectile = "Projectile";
     }
 
+    public static float GetKnockBackDirection(Transform attacker, Transform target)
+    {
+        //attack is hitting target from the left
+        if(attacker.position.x < target.position.x)
+        {
+            return -1;
+        }
+        //attack is hitting target from the right
+        else if (attacker.position.x > target.position.x)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
     //used to get strings Front or Back from 1 or -1 based on the side passed
     //sides can be passed in the form of armTypes (RightArm/LeftArm) or basic sides (Right/Left)
-    //used for easy animation calls
-    public static string GetAnimDirection(string side, int scaleX)
+    //if side is null, returns Left or Right based on the value of scaleX
+    public static string GetAnimDirection(int scaleX, string side = null)
     {
-        string sideTrimmed = "";
-        if(side.Length > 5)
+        if (side == null)
         {
-            sideTrimmed = side.Substring(0, side.Length - 3);
+            if (scaleX < 0)
+            {
+                return "Left";
+            }
+            else if (scaleX > 0)
+            {
+                return "Right";
+            }
+            else
+            {
+                return null;
+            }
         }
         else
         {
-            sideTrimmed = side;
-        }
+            string sideTrimmed = "";
+            if (side.Length > 5)
+            {
+                sideTrimmed = side.Substring(0, side.Length - 3);
+            }
+            else
+            {
+                sideTrimmed = side;
+            }
 
-        //checking if the side is Right
-        if(sideTrimmed == "Right" && scaleX > 0)
-        {
-            return "Back";
-        }
-        else if(sideTrimmed == "Right" && scaleX < 0)
-        {
-            return "Front";
-        }
-        //checking if the side is Left
-        else if (sideTrimmed == "Left" && scaleX > 0)
-        {
-            return "Front";
-        }
-        else if (sideTrimmed == "Left" && scaleX < 0)
-        {
-            return "Back";
-        }
-        else
-        {
-            return null;
+            //checking if the side is Right
+            if (sideTrimmed == "Right" && scaleX > 0)
+            {
+                return "Back";
+            }
+            else if (sideTrimmed == "Right" && scaleX < 0)
+            {
+                return "Front";
+            }
+            //checking if the side is Left
+            else if (sideTrimmed == "Left" && scaleX > 0)
+            {
+                return "Front";
+            }
+            else if (sideTrimmed == "Left" && scaleX < 0)
+            {
+                return "Back";
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 
