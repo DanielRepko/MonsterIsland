@@ -263,13 +263,13 @@ public class AbilityFactory : MonoBehaviour {
         {
             if (player.PlayerIsOnGround())
             {
-                player.animator.Play("SwoopDaWoopAnim_Grounded");
+                player.animator.Play("SwoopDaWoop" + Helper.GetAnimDirection(player.facingDirection) + "Anim_Grounded");
                 player.rb.velocity = new Vector2(-13f * player.facingDirection, 20);
             }
             else if (!player.PlayerIsOnGround() && player.hasExtraJump)
             {
                 player.rb.velocity = new Vector2(17f * player.facingDirection, 20);
-                player.animator.Play("SwoopDaWoopAnim_Aerial");
+                player.animator.Play("SwoopDaWoop" + Helper.GetAnimDirection(player.facingDirection) + "Anim_Aerial");
                 player.hasExtraJump = false;
             }
         }
