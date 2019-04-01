@@ -464,7 +464,7 @@ public class AbilityFactory : MonoBehaviour {
 
                 player.rb.velocity = new Vector2(player.rb.velocity.x, 5);
 
-                player.animator.Play("TalonFlurryAnim");
+                player.animator.Play("TalonFlurry" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 
             }
         }
