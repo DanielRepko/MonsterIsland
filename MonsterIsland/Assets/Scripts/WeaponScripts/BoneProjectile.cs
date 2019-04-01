@@ -23,6 +23,11 @@ public class BoneProjectile : Projectile {
         
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+    }
+
     private void UpdateCooldown(bool destroyed)
     {
         //Weapon weapon = weaponRenderer.GetComponentInParent<Weapon>();
