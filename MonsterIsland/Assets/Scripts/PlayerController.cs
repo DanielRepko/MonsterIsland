@@ -275,7 +275,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (!inHitStun)
         {
-            animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection * -1) + "Anim");
+            animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(-10 * knockBackDirection, 30);
             health -= damage;
             inHitStun = true;
