@@ -12,6 +12,12 @@ public class CutsceneManager : MonoBehaviour {
     public PlayerController playerController;
     public GameObject gameplayCanvas;
     public TimelineAsset activateDesertGem;
+    public TimelineAsset activateUnderwaterGem;
+    public TimelineAsset activateJungleGem;
+    public TimelineAsset finalDesertGem;
+    public TimelineAsset finalUnderwaterGem;
+    public TimelineAsset finalJungleGem;
+    public TimelineAsset openGate;
 
     private void Awake() {
         if(Instance == null) {

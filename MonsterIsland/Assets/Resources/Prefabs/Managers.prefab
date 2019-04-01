@@ -505,6 +505,13 @@ MonoBehaviour:
   playerController: {fileID: 0}
   gameplayCanvas: {fileID: 0}
   activateDesertGem: {fileID: 11400000, guid: 998e47af78ed439469fb86628eca959b, type: 2}
+  activateUnderwaterGem: {fileID: 11400000, guid: e416d8da5f544f74c906c9d6120f3b1f,
+    type: 2}
+  activateJungleGem: {fileID: 11400000, guid: 8f1e90b9227720e4ab2f85e68303380f, type: 2}
+  finalDesertGem: {fileID: 11400000, guid: ae4d6942eca276c4a8acfaf13991ee3f, type: 2}
+  finalUnderwaterGem: {fileID: 11400000, guid: 38412f886381e2049a73db639a0660f6, type: 2}
+  finalJungleGem: {fileID: 11400000, guid: af5ef919ee26367499c0ee2b935fa0eb, type: 2}
+  openGate: {fileID: 11400000, guid: 943bb0829e5ac344686e4fb5f0189b8a, type: 2}
 --- !u!114 &114629648450477680
 MonoBehaviour:
   m_ObjectHideFlags: 1
