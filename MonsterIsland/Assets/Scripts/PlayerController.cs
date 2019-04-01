@@ -162,6 +162,7 @@ public class PlayerController : MonoBehaviour {
         //moving the player
         if (!inHitStun && !movementLocked)
         {
+            animator.SetFloat("FacingDirection", facingDirection);
             moveDelegate();
         }
 
@@ -211,11 +212,17 @@ public class PlayerController : MonoBehaviour {
         //input Left
         if (Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Right))) {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-        //input Right
+            animator.SetBool("IsRunningLeft", true);
+            animator.SetBool("IsRunningRight", false);
+            //input Right
         } else if (Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Left))) {
+            animator.SetBool("IsRunningRight", true);
+            animator.SetBool("IsRunningLeft", false);
             rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
         //no input
         } else if (Input.GetKeyUp(CustomInputManager.Instance.GetInputKey(InputType.Left)) || Input.GetKeyUp(CustomInputManager.Instance.GetInputKey(InputType.Right))) {
+            animator.SetBool("IsRunningRight", false);
+            animator.SetBool("IsRunningLeft", false);
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
