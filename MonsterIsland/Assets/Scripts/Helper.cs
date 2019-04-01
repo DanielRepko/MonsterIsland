@@ -210,7 +210,7 @@ public class Helper : MonoBehaviour {
     //used to get strings Front or Back from 1 or -1 based on the side passed
     //sides can be passed in the form of armTypes (RightArm/LeftArm) or basic sides (Right/Left)
     //if side is null, returns Left or Right based on the value of scaleX
-    public static string GetAnimDirection(int scaleX, string side = null)
+    public static string GetAnimDirection(float scaleX, string side = null)
     {
         if (side == null)
         {

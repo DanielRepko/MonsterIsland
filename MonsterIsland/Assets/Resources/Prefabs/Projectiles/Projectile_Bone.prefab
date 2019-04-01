@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61308420772582776}
   - component: {fileID: 50260276076684010}
   - component: {fileID: 114446994413143258}
+  - component: {fileID: 95489566013474202}
   m_Layer: 0
   m_Name: Projectile_Bone
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870569187635004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.8, y: -1.37, z: 0}
+  m_LocalPosition: {x: 48.502625, y: 25.039406, z: 0}
   m_LocalScale: {x: 0.05370215, y: 0.05370215, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,6 +89,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.2, y: 18.8}
   m_EdgeRadius: 0
+--- !u!95 &95489566013474202
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870569187635004}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 19905470e76c31e44ac0757faada2658, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114446994413143258
 MonoBehaviour:
   m_ObjectHideFlags: 1
