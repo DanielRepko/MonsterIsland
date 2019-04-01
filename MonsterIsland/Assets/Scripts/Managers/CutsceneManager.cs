@@ -41,11 +41,64 @@ public class CutsceneManager : MonoBehaviour {
         playerCamera.SetActive(true);
     }
 
-    public void PlayActivateDesertGem() {
+    private void SetupCutscene() {
         playerController.enabled = false;
         gameplayCanvas.SetActive(false);
         playerCamera.SetActive(false);
+    }
+
+    public void PlayActivateDesertGem() {
+        SetupCutscene();
+
         director.Play(activateDesertGem);
+
+        StartCoroutine("EndCutscene");
+    }
+
+    public void PlayActivateUnderwaterGem() {
+        SetupCutscene();
+
+        director.Play(activateUnderwaterGem);
+
+        StartCoroutine("EndCutscene");
+    }
+
+    public void PlayActivateJungleGem() {
+        SetupCutscene();
+
+        director.Play(activateUnderwaterGem);
+
+        StartCoroutine("EndCutscene");
+    }
+
+    public void PlayFinalDesertGem() {
+        SetupCutscene();
+
+        director.Play(finalDesertGem);
+
+        StartCoroutine("EndCutscene");
+    }
+
+    public void PlayFinalUnderwaterGem() {
+        SetupCutscene();
+
+        director.Play(finalUnderwaterGem);
+
+        StartCoroutine("EndCutscene");
+    }
+
+    public void PlayFinalJungleGem() {
+        SetupCutscene();
+
+        director.Play(finalJungleGem);
+
+        StartCoroutine("EndCutscene");
+    }
+
+    public void PlayOpenGate() {
+        SetupCutscene();
+
+        director.Play(openGate);
 
         StartCoroutine("EndCutscene");
     }
