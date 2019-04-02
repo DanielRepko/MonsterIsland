@@ -205,7 +205,7 @@ public class PartFactory : MonoBehaviour {
                     partInfo.abilityName = "Drill Fist";
                     partInfo.abilityType = "Activate";
                     partInfo.abilityDesc = "Shoot out a drill that can bore through an entire wall before breaking. Can also go through enemies";
-                    partInfo.abilityCooldown = 0;
+                    partInfo.abilityCooldown = 1.5f;
                 }
                 return partInfo;
             case Helper.MonsterName.Sam:
@@ -223,7 +223,7 @@ public class PartFactory : MonoBehaviour {
             case Helper.MonsterName.Cactus:
                 partInfo.abilityName = "Needle Shot";
                 partInfo.abilityType = "Activate";
-                partInfo.abilityDesc = "Shoot fire a spread of three needles";
+                partInfo.abilityDesc = "Shoot a spread of three needles";
                 partInfo.abilityCooldown = 1;
                 return partInfo;
             case Helper.MonsterName.Vulture:
@@ -236,12 +236,12 @@ public class PartFactory : MonoBehaviour {
                 partInfo.abilityName = "Pincer Pistol";
                 partInfo.abilityType = "Activate";
                 partInfo.abilityDesc = "Extend and shoot your arm out to attack enemies from a medium range";
-                partInfo.abilityCooldown = 0;
+                partInfo.abilityCooldown = 1.7f;
                 return partInfo;
             case Helper.MonsterName.Skeleton:
                 partInfo.abilityName = "Bone Toss";
                 partInfo.abilityType = "Passive";
-                partInfo.abilityDesc = "Throw bones in an overhead arc. Angle of arc can be adjusted. Takes up this arm's weapon slot";
+                partInfo.abilityDesc = "Throw bones in an overhead arc. Takes up this arm's weapon slot";
                 partInfo.abilityCooldown = 0;
                 return partInfo;
             default:

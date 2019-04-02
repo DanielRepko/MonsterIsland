@@ -379,7 +379,32 @@ public class AbilityFactory : MonoBehaviour {
     //attack enemies at medium range
     public static void Ability_PincerPistol(string armType)
     {
+        PlayerController player = PlayerController.Instance;
 
+        player.animator.Play("PincerPistol_" + armType + "_" + Helper.GetAnimDirection(player.facingDirection, armType) + "_Anim");
+
+        Debug.DrawRay(player.monster.rightArmPart.bicep.transform.position, new Vector2(5f, 0), Color.green);
+
+        Ray pincerRay = new Ray();
+        if(armType == Helper.PartType.RightArm)
+        {
+            pincerRay.origin = player.monster.rightArmPart.bicep.transform.position;
+        }
+        else if(armType == Helper.PartType.LeftArm)
+        {
+            pincerRay.origin = player.monster.leftArmPart.bicep.transform.position;
+        }
+        pincerRay.direction = new Vector2(player.facingDirection, 0);
+        
+        RaycastHit2D hit = Physics2D.Raycast(pincerRay.origin, pincerRay.direction, 5f, 1 << LayerMask.NameToLayer("Enemy"));
+        if (hit)
+        {
+            Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(3, Helper.GetKnockBackDirection(player.transform, hit.transform));
+            }
+        }
     }
 
     //Arm Ability (Passive): Equips the player with the bone weapon, 
