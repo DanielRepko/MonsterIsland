@@ -54,6 +54,17 @@ public class GameManager : MonoBehaviour {
         //Store infomration about the player themself
         newFile.player.name = monsterName;
         newFile.player.totalHearts = 3;
+        newFile.player.headPart = new HeadPartInfo();
+        newFile.player.headPart.monster = "Mitch";
+        newFile.player.torsoPart = new TorsoPartInfo();
+        newFile.player.torsoPart.monster = "Mitch";
+        newFile.player.leftArmPart = new ArmPartInfo();
+        newFile.player.leftArmPart.monster = "Mitch";
+        newFile.player.rightArmPart = new ArmPartInfo();
+        newFile.player.rightArmPart.monster = "Mitch";
+        newFile.player.legsPart = new LegPartInfo();
+        newFile.player.legsPart.monster = "Mitch";
+        newFile.player.inventory = new InventoryInfo();
     }
 
     //Updates an existing save file
