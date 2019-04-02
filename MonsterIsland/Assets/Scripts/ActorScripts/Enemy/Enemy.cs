@@ -3,20 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : Actor {
 
-    float health = 10;
     public Text text;
-    public Collider2D hurtBox;
     public string monsterName;
-    private float hitStunCooldown = 0.4f;
-    private float hitStunTimer = 0;
-    private bool inHitStun = false;
-    private Rigidbody2D rb;
     public bool alwaysDropPart = false;
     public string partToAlwaysDrop;
-
-    public bool attacksLocked;
 
     // Use this for initialization
     void Start () {
@@ -66,7 +58,7 @@ public class Enemy : MonoBehaviour {
         //GetComponent<Animator>().Play("FrontArmMeleeAnim");
     }
 
-    public void TakeDamage(int damage, float knockBackDirection)
+    override public void TakeDamage(int damage, float knockBackDirection)
     {
         if (!inHitStun)
         {
@@ -190,17 +182,17 @@ public class Enemy : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    public void ShowAttackFace()
+    override public void ShowAttackFace()
     {
         
     }
 
-    public void ShowIdleFace()
+    override public void ShowIdleFace()
     {
         
     }
 
-    public void ShowHurtFace()
+    override public void ShowHurtFace()
     {
         
     }

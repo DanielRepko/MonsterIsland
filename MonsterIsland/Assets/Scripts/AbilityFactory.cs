@@ -261,12 +261,12 @@ public class AbilityFactory : MonoBehaviour {
 
         if (!player.isUnderwater)
         {
-            if (player.PlayerIsOnGround())
+            if (player.IsOnGround())
             {
                 player.animator.Play("SwoopDaWoop" + Helper.GetAnimDirection(player.facingDirection) + "Anim_Grounded");
                 player.rb.velocity = new Vector2(-13f * player.facingDirection, 20);
             }
-            else if (!player.PlayerIsOnGround() && player.hasExtraJump)
+            else if (!player.IsOnGround() && player.hasExtraJump)
             {
                 player.rb.velocity = new Vector2(17f * player.facingDirection, 20);
                 player.animator.Play("SwoopDaWoop" + Helper.GetAnimDirection(player.facingDirection) + "Anim_Aerial");
@@ -451,13 +451,13 @@ public class AbilityFactory : MonoBehaviour {
 
         if (!player.isUnderwater)
         {
-            if (player.PlayerIsOnGround())
+            if (player.IsOnGround())
             {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
             }
-            else if (!player.PlayerIsOnGround() && player.hasExtraJump)
+            else if (!player.IsOnGround() && player.hasExtraJump)
             {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
@@ -480,13 +480,13 @@ public class AbilityFactory : MonoBehaviour {
 
         if (!player.isUnderwater)
         {
-            if (player.PlayerIsOnGround())
+            if (player.IsOnGround())
             {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
             }
-            else if (!player.PlayerIsOnGround() && player.hasExtraJump)
+            else if (!player.IsOnGround() && player.hasExtraJump)
             {
                 player.hasExtraJump = false;
 

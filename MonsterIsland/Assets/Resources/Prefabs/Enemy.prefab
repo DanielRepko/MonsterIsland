@@ -51,7 +51,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4734861419938234}
-  - component: {fileID: 114325459876267706}
   m_Layer: 0
   m_Name: LeftArm
   m_TagString: Untagged
@@ -163,7 +162,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4428426760187434}
-  - component: {fileID: 114224821525053668}
   m_Layer: 0
   m_Name: Legs
   m_TagString: Untagged
@@ -228,7 +226,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4284250878217116}
-  - component: {fileID: 114368288032344288}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -342,7 +339,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4401783797333106}
-  - component: {fileID: 114081887161647660}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -389,7 +385,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4326122461616768}
-  - component: {fileID: 114311044748524470}
   m_Layer: 0
   m_Name: Torso
   m_TagString: Untagged
@@ -405,7 +400,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4406667239121904}
-  - component: {fileID: 114400604348807896}
   m_Layer: 0
   m_Name: RightArm
   m_TagString: Untagged
@@ -899,7 +893,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1860751665264152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.94, y: -0.79, z: 0}
+  m_LocalPosition: {x: 8.81, y: -0.79, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 224956361824635376}
@@ -1008,22 +1002,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114081887161647660
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1769896117447326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b1bad03d6351fe4b8a562224c5bda4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  headPart: {fileID: 114368288032344288}
-  torsoPart: {fileID: 114311044748524470}
-  rightArmPart: {fileID: 114400604348807896}
-  leftArmPart: {fileID: 114325459876267706}
-  legPart: {fileID: 114224821525053668}
 --- !u!114 &114098981014529518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1061,38 +1039,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114224821525053668
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1384626684551202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca6aab3d768c82b4db5d3a2492352c2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  partInfo:
-    monster: 
-    abilityName: 
-    abilityType: 
-    abilityDesc: 
-    abilityCooldown: 0
-    pelvisSprite: 
-    thighSprite: 
-    shinSprite: 
-    footSprite: 
-  pelvisSprite: {fileID: 0}
-  thighSprite: {fileID: 0}
-  shinSprite: {fileID: 0}
-  footSprite: {fileID: 0}
-  pelvis: {fileID: 212692706364813938}
-  thighR: {fileID: 212183505572439872}
-  thighL: {fileID: 212293438734312716}
-  shinR: {fileID: 212229080342033554}
-  shinL: {fileID: 212100085231735982}
-  footR: {fileID: 212386544863563978}
-  footL: {fileID: 212434747519301988}
 --- !u!114 &114244767943668226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1126,139 +1072,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
---- !u!114 &114311044748524470
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1826447501175870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ce9fea4a13826f42b8ea68a74efbab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  partInfo:
-    monster: 
-    abilityName: 
-    abilityType: 
-    abilityDesc: 
-    abilityCooldown: 0
-    mainSprite: 
-  bodySprite: {fileID: 0}
-  body: {fileID: 212098274339478526}
---- !u!114 &114325459876267706
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1241342528377986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 279cabe8c3812ce4ca639be5c3494b7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  partInfo:
-    monster: 
-    abilityName: 
-    abilityType: 
-    abilityDesc: 
-    abilityCooldown: 0
-    bicepSprite: 
-    forearmSprite: 
-    handBackSprite: 
-    handFrontSprite: 
-    fingersOpenBackSprite: 
-    fingersOpenFrontSprite: 
-    fingersClosedBackSprite: 
-    fingersClosedFrontSprite: 
-    equippedWeapon: 
-  partType: LeftArm
-  bicepSprite: {fileID: 0}
-  forearmSprite: {fileID: 0}
-  handBackSprite: {fileID: 0}
-  handFrontSprite: {fileID: 0}
-  fingersOpenBackSprite: {fileID: 0}
-  fingersOpenFrontSprite: {fileID: 0}
-  fingersClosedBackSprite: {fileID: 0}
-  fingersClosedFrontSprite: {fileID: 0}
-  fingersBack: {fileID: 0}
-  fingersFront: {fileID: 0}
-  weaponSprite: {fileID: 0}
-  bicep: {fileID: 212628464883592974}
-  forearm: {fileID: 212385374554308362}
-  hand: {fileID: 212860289700258128}
-  fingers: {fileID: 212378721038981248}
-  weaponRenderer: {fileID: 212854515093064620}
---- !u!114 &114368288032344288
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570726219185150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57b979e55120cf547b91c0343ed0a3c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  partInfo:
-    monster: 
-    abilityName: 
-    abilityType: 
-    abilityDesc: 
-    abilityCooldown: 0
-    mainSprite: 
-    neckSprite: 
-    hurtSprite: 
-    attackSprite: 
-  idleFaceSprite: {fileID: 0}
-  hurtFaceSprite: {fileID: 0}
-  attackFaceSprite: {fileID: 0}
-  neckSprite: {fileID: 0}
-  face: {fileID: 212770581906365972}
-  neck: {fileID: 212876409260113018}
---- !u!114 &114400604348807896
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1828208135700240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 279cabe8c3812ce4ca639be5c3494b7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  partInfo:
-    monster: 
-    abilityName: 
-    abilityType: 
-    abilityDesc: 
-    abilityCooldown: 0
-    bicepSprite: 
-    forearmSprite: 
-    handBackSprite: 
-    handFrontSprite: 
-    fingersOpenBackSprite: 
-    fingersOpenFrontSprite: 
-    fingersClosedBackSprite: 
-    fingersClosedFrontSprite: 
-    equippedWeapon: 
-  partType: RightArm
-  bicepSprite: {fileID: 0}
-  forearmSprite: {fileID: 0}
-  handBackSprite: {fileID: 0}
-  handFrontSprite: {fileID: 0}
-  fingersOpenBackSprite: {fileID: 0}
-  fingersOpenFrontSprite: {fileID: 0}
-  fingersClosedBackSprite: {fileID: 0}
-  fingersClosedFrontSprite: {fileID: 0}
-  fingersBack: {fileID: 0}
-  fingersFront: {fileID: 0}
-  weaponSprite: {fileID: 0}
-  bicep: {fileID: 212319812440075454}
-  forearm: {fileID: 212528423375216052}
-  hand: {fileID: 212889159183238246}
-  fingers: {fileID: 212488327801637762}
-  weaponRenderer: {fileID: 212496936663288374}
 --- !u!114 &114578217870108758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1270,12 +1083,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e7c66238ecd4049995c7a97dd9ec7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 15.5
+  jumpForce: 60
+  rightAttackPower: 2
+  leftAttackPower: 2
+  attacksLocked: 0
   text: {fileID: 114244767943668226}
   hurtBox: {fileID: 68940303664264368}
   monsterName: 
   alwaysDropPart: 0
   partToAlwaysDrop: 
-  attacksLocked: 0
 --- !u!212 &212098274339478526
 SpriteRenderer:
   m_ObjectHideFlags: 1
