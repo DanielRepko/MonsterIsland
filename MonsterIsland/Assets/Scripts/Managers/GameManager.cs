@@ -39,12 +39,21 @@ public class GameManager : MonoBehaviour {
 	}
 
     //Creates a new save file
-    public void CreateSave(int fileNumber) {
+    public void CreateSave(int fileNumber, string monsterName) {
+        //Store the top level Game File info
         GameFile newFile = new GameFile();
         newFile.fileID = fileNumber;
         newFile.totalPlayTime = 0;
         DateTime date = DateTime.Now;
         newFile.saveDate = date.ToShortDateString();
+        newFile.saveArea = LevelName.Hub.ToString();
+        newFile.saveNest = LevelPosition.Start.ToString();
+        newFile.player = new PlayerInfo();
+        newFile.gameProgression = new GameProgression();
+
+        //Store infomration about the player themself
+        newFile.player.name = monsterName;
+        newFile.player.totalHearts = 3;
     }
 
     //Updates an existing save file
