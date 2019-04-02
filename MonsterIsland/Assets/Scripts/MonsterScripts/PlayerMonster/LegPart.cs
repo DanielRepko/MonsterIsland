@@ -70,26 +70,5 @@ public class LegPart : MonoBehaviour {
     public void ChangeDirection(int scaleX)
     {
         gameObject.transform.localScale = new Vector2(scaleX, 1);
-
-        //facing right
-        if (scaleX == 1)
-        {
-            thighR.sortingOrder = 6;
-            thighL.sortingOrder = 3;
-            shinR.sortingOrder = 4;
-            shinL.sortingOrder = 1;
-            footR.sortingOrder = 5;
-            footL.sortingOrder = 2;
-        }
-        //facing left
-        else if(scaleX == -1)
-        {
-            thighR.sortingOrder = 3;
-            thighL.sortingOrder = 6;
-            shinR.sortingOrder = 1;
-            shinL.sortingOrder = 4;
-            footR.sortingOrder = 2;
-            footL.sortingOrder = 5;
-        }
     }
 }

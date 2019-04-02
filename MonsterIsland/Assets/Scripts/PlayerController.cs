@@ -162,6 +162,7 @@ public class PlayerController : MonoBehaviour {
         //moving the player
         if (!inHitStun && !movementLocked)
         {
+            
             moveDelegate();
         }
 
@@ -211,12 +212,27 @@ public class PlayerController : MonoBehaviour {
         //input Left
         if (Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Right))) {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-        //input Right
+            animator.SetBool("IsRunningLeft", true);
+            animator.SetBool("IsRunningRight", false);
+            animator.SetFloat("FacingDirection", facingDirection);
+            //input Right
         } else if (Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Left))) {
+            animator.SetBool("IsRunningRight", true);
+            animator.SetBool("IsRunningLeft", false);
+            animator.SetFloat("FacingDirection", facingDirection);
             rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
         //no input
         } else if (Input.GetKeyUp(CustomInputManager.Instance.GetInputKey(InputType.Left)) || Input.GetKeyUp(CustomInputManager.Instance.GetInputKey(InputType.Right))) {
+            animator.SetBool("IsRunningRight", false);
+            animator.SetBool("IsRunningLeft", false);
+            animator.SetFloat("FacingDirection", facingDirection);
             rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+
+        if(!Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Left)) && !Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Right)))
+        {
+            animator.SetBool("IsRunningRight", false);
+            animator.SetBool("IsRunningLeft", false);
         }
     }
 
@@ -354,9 +370,19 @@ public class PlayerController : MonoBehaviour {
         var screenMiddle = Screen.width / 2;
         if (Input.mousePosition.x > screenMiddle) {
             facingDirection = 1;
+            //setting the scale of the player object
+            transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
+            //setting the scale of the camera (so that it is not flipped to look away from the world)
+            GetComponentInChildren<Camera>().transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
+
             monster.ChangeDirection(facingDirection);
         } else if (Input.mousePosition.x < screenMiddle) {
             facingDirection = -1;
+            //setting the scale of the player object
+            transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
+            //setting the scale of the camera (so that it is not flipped to look away from the world)
+            GetComponentInChildren<Camera>().transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
+
             monster.ChangeDirection(facingDirection);
         }
     }

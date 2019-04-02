@@ -135,7 +135,8 @@ public class AbilityFactory : MonoBehaviour {
     //an AOE roar attack. Does not deal damage
     public static void Ability_LionsRoar()
     {
-        PlayerController.Instance.animator.Play("LionsRoarAnim");
+        
+        PlayerController.Instance.animator.Play("LionsRoar" + Helper.GetAnimDirection(PlayerController.Instance.facingDirection) + "Anim");
     }
 
     //Head Ability (Activate): Allows the player to spit out a cloud of acid 
@@ -262,13 +263,13 @@ public class AbilityFactory : MonoBehaviour {
         {
             if (player.PlayerIsOnGround())
             {
-                player.animator.Play("SwoopDaWoopAnim_Grounded");
+                player.animator.Play("SwoopDaWoop" + Helper.GetAnimDirection(player.facingDirection) + "Anim_Grounded");
                 player.rb.velocity = new Vector2(-13f * player.facingDirection, 20);
             }
             else if (!player.PlayerIsOnGround() && player.hasExtraJump)
             {
                 player.rb.velocity = new Vector2(17f * player.facingDirection, 20);
-                player.animator.Play("SwoopDaWoopAnim_Aerial");
+                player.animator.Play("SwoopDaWoop" + Helper.GetAnimDirection(player.facingDirection) + "Anim_Aerial");
                 player.hasExtraJump = false;
             }
         }
@@ -378,7 +379,32 @@ public class AbilityFactory : MonoBehaviour {
     //attack enemies at medium range
     public static void Ability_PincerPistol(string armType)
     {
+        PlayerController player = PlayerController.Instance;
 
+        player.animator.Play("PincerPistol_" + armType + "_" + Helper.GetAnimDirection(player.facingDirection, armType) + "_Anim");
+
+        Debug.DrawRay(player.monster.rightArmPart.bicep.transform.position, new Vector2(5f, 0), Color.green);
+
+        Ray pincerRay = new Ray();
+        if(armType == Helper.PartType.RightArm)
+        {
+            pincerRay.origin = player.monster.rightArmPart.bicep.transform.position;
+        }
+        else if(armType == Helper.PartType.LeftArm)
+        {
+            pincerRay.origin = player.monster.leftArmPart.bicep.transform.position;
+        }
+        pincerRay.direction = new Vector2(player.facingDirection, 0);
+        
+        RaycastHit2D hit = Physics2D.Raycast(pincerRay.origin, pincerRay.direction, 5f, 1 << LayerMask.NameToLayer("Enemy"));
+        if (hit)
+        {
+            Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(3, Helper.GetKnockBackDirection(player.transform, hit.transform));
+            }
+        }
     }
 
     //Arm Ability (Passive): Equips the player with the bone weapon, 
@@ -463,7 +489,7 @@ public class AbilityFactory : MonoBehaviour {
 
                 player.rb.velocity = new Vector2(player.rb.velocity.x, 5);
 
-                player.animator.Play("TalonFlurryAnim");
+                player.animator.Play("TalonFlurry" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 
             }
         }

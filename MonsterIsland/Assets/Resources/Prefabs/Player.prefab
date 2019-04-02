@@ -4251,6 +4251,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   hurtBox: {fileID: 68947545826544262}
+  inHitStun: 0
   movementLocked: 0
   hitBox: {fileID: 61265560518600250}
   hitBoxDamage: 0
@@ -4270,13 +4271,13 @@ MonoBehaviour:
   rb: {fileID: 50294502546255648}
   monster: {fileID: 114670642758465856}
   facingDirection: 0
-  head: Frog
+  head: Lion
   torso: Mitch
   rightArm: Mitch
-  leftArm: Mitch
+  leftArm: Cactus
   legs: Robot
-  rightWeapon: 
-  leftWeapon: 
+  rightWeapon: Boomerang
+  leftWeapon: Fan
 --- !u!114 &114017853166408056
 MonoBehaviour:
   m_ObjectHideFlags: 1
