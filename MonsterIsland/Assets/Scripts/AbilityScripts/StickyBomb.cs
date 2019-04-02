@@ -15,7 +15,7 @@ public class StickyBomb : MonoBehaviour {
         {
             if (connectedEnemy)
             {
-                connectedEnemy.TakeDamage(5);
+                connectedEnemy.TakeDamage(5, Helper.GetKnockBackDirection(transform, connectedEnemy.transform));
             }
             Destroy(gameObject);
         }
@@ -41,7 +41,7 @@ public class StickyBomb : MonoBehaviour {
         {
             if (collision.tag == "Enemy" && collision.GetComponent<Enemy>().hurtBox == collision)
             {
-                collision.GetComponent<Enemy>().TakeDamage(5);
+                collision.GetComponent<Enemy>().TakeDamage(5, Helper.GetKnockBackDirection(transform, collision.transform));
             }
         }
     }

@@ -15,6 +15,16 @@ public class HarpoonProjectile : Projectile {
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+
+    private void FixedUpdate()
+    {
+        
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Ground")
@@ -31,7 +41,7 @@ public class HarpoonProjectile : Projectile {
                 Enemy enemy = collision.GetComponent<Enemy>();
                 if (enemy != null && collision == enemy.hurtBox)
                 {
-                    enemy.TakeDamage(damage);
+                    enemy.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                     Destroy(gameObject);
                 }
             }
@@ -42,7 +52,7 @@ public class HarpoonProjectile : Projectile {
             {
                 if (collision == PlayerController.Instance.hurtBox)
                 {
-                    PlayerController.Instance.TakeDamage(damage);
+                    PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, PlayerController.Instance.transform));
                     Destroy(gameObject);
                 }
             }

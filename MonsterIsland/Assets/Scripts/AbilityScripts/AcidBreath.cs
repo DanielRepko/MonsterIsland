@@ -48,7 +48,7 @@ public class AcidBreath : MonoBehaviour {
                 {
                     if (readyToDamage)
                     {
-                        enemy.TakeDamage(damage);
+                        enemy.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                         readyToDamage = false;
                     }
                 }
@@ -62,7 +62,7 @@ public class AcidBreath : MonoBehaviour {
                 {
                     if (readyToDamage)
                     {
-                        PlayerController.Instance.TakeDamage(damage);
+                        PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                         readyToDamage = false;
                     }
                 }
@@ -81,7 +81,7 @@ public class AcidBreath : MonoBehaviour {
                 {
                     if (readyToDamage)
                     {
-                        enemy.TakeDamage(damage);
+                        enemy.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                         readyToDamage = false;
                     }
                 }
@@ -95,7 +95,7 @@ public class AcidBreath : MonoBehaviour {
                 {
                     if (readyToDamage)
                     {
-                        PlayerController.Instance.TakeDamage(damage);
+                        PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                         readyToDamage = false;
                     }
                 }

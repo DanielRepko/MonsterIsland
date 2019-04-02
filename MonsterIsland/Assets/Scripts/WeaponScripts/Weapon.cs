@@ -84,7 +84,7 @@ public class Weapon {
         PlayerController player = PlayerController.Instance;
 
         //play attack animation
-        player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(ArmEquippedOn, player.facingDirection) + "MeleeAnim");
+        player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(player.facingDirection,ArmEquippedOn) + "MeleeAnim");
 
         Ray attackRay = new Ray();
         attackRay.origin = player.transform.position;
@@ -99,12 +99,12 @@ public class Weapon {
                 Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
                 if (enemy != null && hit.collider == enemy.hurtBox)
                 {
-                    enemy.TakeDamage(Damage);
+                    enemy.TakeDamage(Damage, Helper.GetKnockBackDirection(player.transform, hit.transform));
                 }
             }
             else if(AttackTarget == "Player" && hit.collider == PlayerController.Instance.hurtBox)
             {
-                PlayerController.Instance.TakeDamage(Damage);
+                PlayerController.Instance.TakeDamage(Damage, Helper.GetKnockBackDirection(WeaponSpriteRenderer.GetComponentInParent<Enemy>().transform, hit.transform));
             }
         }
     }
@@ -112,16 +112,6 @@ public class Weapon {
     public void ProjectileAttack(string armEquippedOn)
     {
         PlayerController player = PlayerController.Instance;
-
-        if(WeaponName == Helper.WeaponName.Bone || WeaponName == Helper.WeaponName.Boomerang)
-        {
-            //play attack animation
-            player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(ArmEquippedOn, player.facingDirection) + "MeleeAnim");
-        }
-        else
-        {
-            //play shoot anim
-        }
 
         Vector2 projectilePosition = new Vector2();
 
@@ -140,9 +130,21 @@ public class Weapon {
         projectile.GetComponent<Projectile>().weaponRenderer = WeaponSpriteRenderer;
 
         var facingDirection = WeaponSpriteRenderer.transform.GetComponentInParent<Rigidbody2D>().transform.localScale.x;
-        projectile.transform.localScale *= facingDirection;
+        projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * facingDirection, projectile.transform.localScale.y);
 
         projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectile.GetComponent<Projectile>().speed * player.facingDirection, 0);
+
+        if (WeaponName == Helper.WeaponName.Bone || WeaponName == Helper.WeaponName.Boomerang)
+        {
+            //play attack animation
+            player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(player.facingDirection, ArmEquippedOn) + "MeleeAnim");
+            projectile.GetComponent<Animator>().Play("Spin" + Helper.GetAnimDirection(facingDirection) + "Anim");
+        }
+        else
+        {
+            //play shoot animation
+            player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(player.facingDirection, ArmEquippedOn) + "ShootAnim");
+        }
     }
 
     public void FanAttack(string armEquippedOn)
@@ -150,7 +152,7 @@ public class Weapon {
         PlayerController player = PlayerController.Instance;
 
         //play attack animation
-        player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(ArmEquippedOn, player.facingDirection) + "MeleeAnim");
+        player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(player.facingDirection, ArmEquippedOn) + "MeleeAnim");
 
         
 
@@ -170,12 +172,12 @@ public class Weapon {
                 Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
                 if (enemy != null && hit.collider == enemy.hurtBox)
                 {
-                    enemy.TakeDamage(Damage);
+                    enemy.TakeDamage(Damage, Helper.GetKnockBackDirection(player.transform, hit.transform));
                 }
             }
             else if (AttackTarget == "Player" && hit.collider == PlayerController.Instance.hurtBox)
             {
-                PlayerController.Instance.TakeDamage(Damage);
+                PlayerController.Instance.TakeDamage(Damage, Helper.GetKnockBackDirection(WeaponSpriteRenderer.GetComponentInParent<Enemy>().transform, hit.transform));
             }
         }
 

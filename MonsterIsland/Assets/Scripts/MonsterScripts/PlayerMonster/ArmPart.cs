@@ -141,9 +141,6 @@ public class ArmPart : MonoBehaviour {
         //facing right
         if (scaleX == 1)
         {
-            //positioning the arm
-            gameObject.transform.localPosition = new Vector2(-0.69f, 0);
-
             //flipping the sprite renderers to ensure the sprites face the same direction
             //regardless of the gameObject facing direction
             bicep.flipX = false;
@@ -165,9 +162,6 @@ public class ArmPart : MonoBehaviour {
         //facing left
         else if (scaleX == -1)
         {
-            //positioning the arm
-            gameObject.transform.localPosition = new Vector2(-0.63f, 0);
-
             //flipping the sprite renderers to ensure the sprites face the same direction
             //regardless of the gameObject facing direction
             bicep.flipX = true;
@@ -196,9 +190,6 @@ public class ArmPart : MonoBehaviour {
         //facing right
         if (scaleX == 1)
         {
-            //positioning the arm
-            gameObject.transform.localPosition = new Vector2(0.63f, 0);
-
             //flipping the sprite renderers to ensure the sprites face the same direction
             //regardless of the gameObject facing direction
             bicep.flipX = false;
@@ -220,9 +211,6 @@ public class ArmPart : MonoBehaviour {
         //facing left
         else if (scaleX == -1)
         {
-            //positioning the arm
-            gameObject.transform.localPosition = new Vector2(0.69f, 0);
-
             //flipping the sprite renderers to ensure the sprites face the same direction
             //regardless of the gameObject facing direction
             bicep.flipX = true;

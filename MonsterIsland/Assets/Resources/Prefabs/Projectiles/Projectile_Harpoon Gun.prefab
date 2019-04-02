@@ -61,7 +61,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &61636441839692336
 BoxCollider2D:
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponRenderer: {fileID: 0}
   damage: 0
-  speed: 10
+  speed: 15
   target: 
 --- !u!212 &212007693806947022
 SpriteRenderer:

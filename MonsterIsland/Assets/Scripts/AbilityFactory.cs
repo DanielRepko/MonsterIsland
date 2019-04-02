@@ -103,6 +103,9 @@ public class AbilityFactory : MonoBehaviour {
         PlayerController player = PlayerController.Instance;
         GameObject laserLoad = Resources.Load<GameObject>("Prefabs/Projectiles/Robot_Laser");
 
+        //playing the animation
+        player.animator.Play("HeadAbilityAnim");
+
         Vector2 laserPosition = new Vector2(player.monster.headPart.transform.position.x + 0.3f * player.facingDirection, player.monster.headPart.transform.position.y + 0.3f);
         GameObject laser = Instantiate(laserLoad, laserPosition, Quaternion.identity);
         laser.GetComponent<Projectile>().target = "Enemy";
@@ -124,6 +127,7 @@ public class AbilityFactory : MonoBehaviour {
         GameObject tongue = Instantiate(tongueLoad, tonguePosition, Quaternion.identity);
         tongue.transform.localScale *= player.facingDirection;
 
+        player.animator.Play("HeadAbilityAnim");
         tongue.GetComponent<Animator>().Play("TongueFlickAnim");
     }
 
@@ -131,7 +135,8 @@ public class AbilityFactory : MonoBehaviour {
     //an AOE roar attack. Does not deal damage
     public static void Ability_LionsRoar()
     {
-        PlayerController.Instance.animator.Play("LionsRoarAnim");
+        
+        PlayerController.Instance.animator.Play("LionsRoar" + Helper.GetAnimDirection(PlayerController.Instance.facingDirection) + "Anim");
     }
 
     //Head Ability (Activate): Allows the player to spit out a cloud of acid 
@@ -157,13 +162,16 @@ public class AbilityFactory : MonoBehaviour {
 
         Debug.DrawRay(beakRay.origin, new Vector2(1.7f * player.facingDirection, 0), Color.green);
 
+        //playing the animation
+        player.animator.Play("HeadAbilityAnim");
+
         RaycastHit2D hit = Physics2D.Raycast(beakRay.origin, beakRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit)
         {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(3);
+                enemy.TakeDamage(3, Helper.GetKnockBackDirection(player.transform, hit.transform));
             }
         }
     }
@@ -255,13 +263,13 @@ public class AbilityFactory : MonoBehaviour {
         {
             if (player.PlayerIsOnGround())
             {
-                player.animator.Play("SwoopDaWoopAnim_Grounded");
+                player.animator.Play("SwoopDaWoop" + Helper.GetAnimDirection(player.facingDirection) + "Anim_Grounded");
                 player.rb.velocity = new Vector2(-13f * player.facingDirection, 20);
             }
             else if (!player.PlayerIsOnGround() && player.hasExtraJump)
             {
                 player.rb.velocity = new Vector2(17f * player.facingDirection, 20);
-                player.animator.Play("SwoopDaWoopAnim_Aerial");
+                player.animator.Play("SwoopDaWoop" + Helper.GetAnimDirection(player.facingDirection) + "Anim_Aerial");
                 player.hasExtraJump = false;
             }
         }
@@ -273,7 +281,7 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = PlayerController.Instance;
         //play attack animation
-        player.animator.Play(armType + Helper.GetAnimDirection(armType, player.facingDirection) + "MeleeAnim");
+        player.animator.Play(armType + Helper.GetAnimDirection(player.facingDirection, armType) + "MeleeAnim");
 
         GameObject bombPrefab = Resources.Load<GameObject>("Prefabs/Projectiles/StickyBomb");
         GameObject bomb = Instantiate(bombPrefab, player.monster.rightArmPart.hand.transform.position, Quaternion.identity);
@@ -351,6 +359,10 @@ public class AbilityFactory : MonoBehaviour {
         middleNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
         downNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
 
+
+        //playing the shoot animation
+        player.animator.Play(armType + Helper.GetAnimDirection(player.facingDirection, armType) + "ShootAnim");
+
         upNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, speed / 2);
         middleNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, 0);
         downNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, -speed / 2);
@@ -367,7 +379,32 @@ public class AbilityFactory : MonoBehaviour {
     //attack enemies at medium range
     public static void Ability_PincerPistol(string armType)
     {
+        PlayerController player = PlayerController.Instance;
 
+        player.animator.Play("PincerPistol_" + armType + "_" + Helper.GetAnimDirection(player.facingDirection, armType) + "_Anim");
+
+        Debug.DrawRay(player.monster.rightArmPart.bicep.transform.position, new Vector2(5f, 0), Color.green);
+
+        Ray pincerRay = new Ray();
+        if(armType == Helper.PartType.RightArm)
+        {
+            pincerRay.origin = player.monster.rightArmPart.bicep.transform.position;
+        }
+        else if(armType == Helper.PartType.LeftArm)
+        {
+            pincerRay.origin = player.monster.leftArmPart.bicep.transform.position;
+        }
+        pincerRay.direction = new Vector2(player.facingDirection, 0);
+        
+        RaycastHit2D hit = Physics2D.Raycast(pincerRay.origin, pincerRay.direction, 5f, 1 << LayerMask.NameToLayer("Enemy"));
+        if (hit)
+        {
+            Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(3, Helper.GetKnockBackDirection(player.transform, hit.transform));
+            }
+        }
     }
 
     //Arm Ability (Passive): Equips the player with the bone weapon, 
@@ -405,10 +442,14 @@ public class AbilityFactory : MonoBehaviour {
         {
             if (player.PlayerIsOnGround())
             {
+                //calling the jump animation
+                player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
             }
             else if (!player.PlayerIsOnGround() && player.hasExtraJump)
             {
+                //calling the jump animation
+                player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
                 player.hasExtraJump = false;
             }
@@ -418,10 +459,7 @@ public class AbilityFactory : MonoBehaviour {
     //Leg Ability (Passive): Increases the player's jump height
     public static void Ability_JoeyJump()
     {
-        if (!PlayerController.Instance.isUnderwater)
-        {
-            PlayerController.Instance.jumpForce = 70;
-        }
+        PlayerController.Instance.jumpForce = 70;
     }
 
     //Leg Ability (Activate): Allows the player to attack with taloned feet
@@ -433,6 +471,8 @@ public class AbilityFactory : MonoBehaviour {
         {
             if (player.PlayerIsOnGround())
             {
+                //calling the jump animation
+                player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
             }
             else if (!player.PlayerIsOnGround() && player.hasExtraJump)
@@ -449,7 +489,7 @@ public class AbilityFactory : MonoBehaviour {
 
                 player.rb.velocity = new Vector2(player.rb.velocity.x, 5);
 
-                player.animator.Play("TalonFlurryAnim");
+                player.animator.Play("TalonFlurry" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 
             }
         }
@@ -483,25 +523,32 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = PlayerController.Instance;
 
-        var stompCheck1 = Physics2D.Raycast(new Vector2(player.transform.position.x, player.transform.position.y - player.height), -Vector2.down, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
-        var stompCheck2 = Physics2D.Raycast(new Vector2(player.transform.position.x + (player.width - 0.2f), player.transform.position.y - player.height), -Vector2.up, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
-        var stompCheck3 = Physics2D.Raycast(new Vector2(player.transform.position.x - (player.width - 0.2f), player.transform.position.y - player.height), -Vector2.up, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+        if (!player.inHitStun)
+        {
 
-        Enemy enemyHit = null;
-        if (stompCheck1)
-        {
-            enemyHit = stompCheck1.transform.GetComponentInParent<Enemy>();
-        } else if (stompCheck2)
-        {
-            enemyHit = stompCheck2.transform.GetComponentInParent<Enemy>();
-        } else if (stompCheck3)
-        {
-            enemyHit = stompCheck3.transform.GetComponentInParent<Enemy>();
-        }
-        if(enemyHit != null)
-        {
-            player.rb.velocity = new Vector2(player.rb.velocity.x, 40);
-            enemyHit.TakeDamage(2);
+            var stompCheck1 = Physics2D.Raycast(new Vector2(player.transform.position.x, player.transform.position.y - player.height), -Vector2.down, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+            var stompCheck2 = Physics2D.Raycast(new Vector2(player.transform.position.x + (player.width - 0.2f), player.transform.position.y - player.height), -Vector2.up, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+            var stompCheck3 = Physics2D.Raycast(new Vector2(player.transform.position.x - (player.width - 0.2f), player.transform.position.y - player.height), -Vector2.up, player.rayCastLengthCheck, 1 << LayerMask.NameToLayer("Enemy"));
+
+            Enemy enemyHit = null;
+            if (stompCheck1)
+            {
+                enemyHit = stompCheck1.transform.GetComponentInParent<Enemy>();
+            }
+            else if (stompCheck2)
+            {
+                enemyHit = stompCheck2.transform.GetComponentInParent<Enemy>();
+            }
+            else if (stompCheck3)
+            {
+                enemyHit = stompCheck3.transform.GetComponentInParent<Enemy>();
+            }
+            if (enemyHit != null)
+            {
+                player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
+                player.rb.velocity = new Vector2(player.rb.velocity.x, 40);
+                enemyHit.TakeDamage(2, Helper.GetKnockBackDirection(player.transform, enemyHit.transform));
+            }
         }
     }
 }

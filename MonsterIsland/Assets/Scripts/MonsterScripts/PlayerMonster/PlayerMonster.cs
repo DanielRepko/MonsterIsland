@@ -27,6 +27,8 @@ public class PlayerMonster : MonoBehaviour {
     //arm on the correct side, scaleX is the value to be applied to each part's local scale x
     public void ChangeDirection(int scaleX)
     {
+        //setting the scale of the monster object (a child of, but different from the player object)
+        transform.localScale = new Vector2(scaleX, transform.localScale.y);
         headPart.ChangeDirection(scaleX);
         torsoPart.ChangeDirection(scaleX);
         rightArmPart.ChangeRightArmDirection(scaleX);

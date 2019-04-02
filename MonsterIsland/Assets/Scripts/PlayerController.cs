@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 
     private float hitStunCooldown = 0.4f;
     private float hitStunTimer = 0;
-    private bool inHitStun = false;
+    public bool inHitStun = false;
     public bool movementLocked = false;
 
     public BoxCollider2D hitBox;
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour {
 
     public bool hasExtraJump = true;
 
-    public float rayCastLengthCheck = 0.005f;
+    public float rayCastLengthCheck = 0.2f;
     public float width;
     public float height;
 
@@ -162,12 +162,8 @@ public class PlayerController : MonoBehaviour {
         //moving the player
         if (!inHitStun && !movementLocked)
         {
+            
             moveDelegate();
-        }
-
-        if(inHitStun && hitStunTimer == 0)
-        {
-            rb.velocity = new Vector2(-10 * facingDirection, 30);
         }
 
         //Handling hitstun
@@ -216,18 +212,35 @@ public class PlayerController : MonoBehaviour {
         //input Left
         if (Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Right))) {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-        //input Right
+            animator.SetBool("IsRunningLeft", true);
+            animator.SetBool("IsRunningRight", false);
+            animator.SetFloat("FacingDirection", facingDirection);
+            //input Right
         } else if (Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Left))) {
+            animator.SetBool("IsRunningRight", true);
+            animator.SetBool("IsRunningLeft", false);
+            animator.SetFloat("FacingDirection", facingDirection);
             rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
         //no input
         } else if (Input.GetKeyUp(CustomInputManager.Instance.GetInputKey(InputType.Left)) || Input.GetKeyUp(CustomInputManager.Instance.GetInputKey(InputType.Right))) {
+            animator.SetBool("IsRunningRight", false);
+            animator.SetBool("IsRunningLeft", false);
+            animator.SetFloat("FacingDirection", facingDirection);
             rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+
+        if(!Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Left)) && !Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Right)))
+        {
+            animator.SetBool("IsRunningRight", false);
+            animator.SetBool("IsRunningLeft", false);
         }
     }
 
     //makes the player jump
     public void Jump() {
         if (PlayerIsOnGround()) {
+            //calling the jump animation
+            animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
@@ -241,13 +254,13 @@ public class PlayerController : MonoBehaviour {
         Debug.DrawRay(attackRay.origin, new Vector2(1.7f * facingDirection, 0), Color.green);
 
         //using the armType and Helper method to call the correct anim
-        animator.Play(armType + Helper.GetAnimDirection(armType, facingDirection) + "MeleeAnim");
+        animator.Play(armType + Helper.GetAnimDirection(facingDirection, armType) + "MeleeAnim");
 
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if(hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
             if(enemy != null && hit.collider == enemy.hurtBox) {
-                enemy.TakeDamage(rightAttackPower);
+                enemy.TakeDamage(rightAttackPower, Helper.GetKnockBackDirection(transform, hit.transform));
             }
         }
     }
@@ -260,13 +273,13 @@ public class PlayerController : MonoBehaviour {
 
         Debug.DrawRay(attackRay.origin, new Vector2(1.7f * facingDirection, 0), Color.green);
 
-        animator.Play(armType + Helper.GetAnimDirection(armType, facingDirection) + "MeleeAnim");
+        animator.Play(armType + Helper.GetAnimDirection(facingDirection, armType) + "MeleeAnim");
 
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
             if (enemy != null && hit.collider == enemy.hurtBox) {
-                enemy.TakeDamage(leftAttackPower);
+                enemy.TakeDamage(leftAttackPower, Helper.GetKnockBackDirection(transform, hit.transform));
             }
         }
     }
@@ -274,10 +287,12 @@ public class PlayerController : MonoBehaviour {
     //the default ability method (default is to have no ability so it is meant to be empty)
     public void AbilityDefault() {}
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, float knockBackDirection)
     {
         if (!inHitStun)
         {
+            animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
+            rb.velocity = new Vector2(-10 * knockBackDirection, 30);
             health -= damage;
             inHitStun = true;
         }
@@ -355,9 +370,19 @@ public class PlayerController : MonoBehaviour {
         var screenMiddle = Screen.width / 2;
         if (Input.mousePosition.x > screenMiddle) {
             facingDirection = 1;
+            //setting the scale of the player object
+            transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
+            //setting the scale of the camera (so that it is not flipped to look away from the world)
+            GetComponentInChildren<Camera>().transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
+
             monster.ChangeDirection(facingDirection);
         } else if (Input.mousePosition.x < screenMiddle) {
             facingDirection = -1;
+            //setting the scale of the player object
+            transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
+            //setting the scale of the camera (so that it is not flipped to look away from the world)
+            GetComponentInChildren<Camera>().transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
+
             monster.ChangeDirection(facingDirection);
         }
     }
@@ -533,7 +558,7 @@ public class PlayerController : MonoBehaviour {
                 {
                     if (hitBox.IsTouching(enemy.hurtBox))
                     {
-                        enemy.TakeDamage(hitBoxDamage);
+                        enemy.TakeDamage(hitBoxDamage, Helper.GetKnockBackDirection(transform, collision.transform));
                         hitCounter += 1;
                     }
                 }
