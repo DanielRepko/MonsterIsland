@@ -2,26 +2,29 @@ fileFormatVersion: 2
 guid: 67216bd25a3eebe4ba9611856e02c655
 ScriptedImporter:
   fileIDToRecycleName:
-    2800000: tex
+    100000: gameObject/Monster_Wingus_RightArm_fingersClosedFront
+    400000: gameObject/Monster_Wingus_RightArm_fingersClosedFront/Transform
+    21200000: gameObject/Monster_Wingus_RightArm_fingersClosedFront/SpriteRenderer
     21300000: sprite
+    100100000: gameObject
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: a57477913897c46af95d590f580878bd, type: 3}
-  svgType: 1
+  svgType: 0
   texturedSpriteMeshType: 0
-  svgPixelsPerUnit: 10
+  svgPixelsPerUnit: 100
   gradientResolution: 128
-  alignment: 9
-  customPivot: {x: 0.5, y: 0.95}
+  alignment: 0
+  customPivot: {x: 0, y: 0}
   generatePhysicsShape: 0
   preserveViewport: 0
-  advancedMode: 1
+  advancedMode: 0
   predefinedResolutionIndex: 1
   targetResolution: 1080
   resolutionMultiplier: 1
-  stepDistance: 1
+  stepDistance: 10
   samplingStepDistance: 100
   maxCordDeviationEnabled: 0
   maxCordDeviation: 1
@@ -48,5 +51,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: b7590868a63a3b647b22074608379e46
+      spriteID: b2bec6a9f61617348b213d4a87fc8984
     PhysicsOutlines: []

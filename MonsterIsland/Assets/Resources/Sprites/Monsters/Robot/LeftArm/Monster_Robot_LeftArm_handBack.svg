@@ -2,21 +2,21 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="203.5" y="354.004" fill-opacity="0" fill="#231F20" width="81" height="54.487"/>
-<polygon id="PRIMARY_3_" fill="#666666" stroke="#231F20" stroke-miterlimit="10" points="227.174,370.912 220.34,362.357 
-	227.174,353.801 254.093,353.801 261.197,362.357 254.093,370.912 "/>
-<polygon id="SECONDARY_39_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" points="226.864,370.864 219.363,380.014 
-	240.769,406.12 262.175,380.014 254.672,370.864 "/>
-<path id="SECONDARY_38_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" d="M245.412,401.767
-	c0-0.767-4.638-1.386-10.375-1.386"/>
-<path id="SECONDARY_37_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" d="M249.142,398.142
-	c0-1.5-8.585-2.713-19.198-2.713"/>
-<path id="SECONDARY_36_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" d="M252.432,393.747
-	c0-2.317-12.108-4.192-27.074-4.192"/>
-<path id="SECONDARY_35_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" d="M257.166,388.492
-	c0-2.555-16.513-4.621-36.92-4.621"/>
-<path id="SECONDARY_34_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" d="M260.979,383.871
-	c0-2.791-19.156-5.049-42.827-5.049"/>
-<path id="SECONDARY_33_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" d="M263.529,380.014
-	c0-3.599-18.714-6.511-41.843-6.511"/>
+<rect x="116" y="296.033" fill-opacity="0" fill="#231F20" width="256" height="170.863"/>
+<polygon id="PRIMARY_3_" fill="#666666" stroke="#231F20" stroke-width="3.1481" stroke-miterlimit="10" points="190.821,349.054 
+	169.222,322.228 190.821,295.396 275.898,295.396 298.352,322.228 275.898,349.054 "/>
+<polygon id="SECONDARY_39_" fill="#FF0000" stroke="#231F20" stroke-width="3.1481" stroke-miterlimit="10" points="
+	189.843,348.904 166.136,377.595 233.787,459.461 301.441,377.595 277.729,348.904 "/>
+<path id="SECONDARY_38_" fill="#FF0000" stroke="#231F20" stroke-width="3.1481" stroke-miterlimit="10" d="M248.463,445.809
+	c0-2.404-14.657-4.346-32.79-4.346"/>
+<path id="SECONDARY_37_" fill="#FF0000" stroke="#231F20" stroke-width="3.1481" stroke-miterlimit="10" d="M260.25,434.441
+	c0-4.704-27.133-8.507-60.676-8.507"/>
+<path id="SECONDARY_36_" fill="#FF0000" stroke="#231F20" stroke-width="3.1481" stroke-miterlimit="10" d="M270.648,420.661
+	c0-7.268-38.269-13.146-85.568-13.146"/>
+<path id="SECONDARY_35_" fill="#FF0000" stroke="#231F20" stroke-width="3.1481" stroke-miterlimit="10" d="M285.611,404.183
+	c0-8.011-52.188-14.491-116.686-14.491"/>
+<path id="SECONDARY_34_" fill="#FF0000" stroke="#231F20" stroke-width="3.1481" stroke-miterlimit="10" d="M297.661,389.691
+	c0-8.752-60.543-15.832-135.355-15.832"/>
+<path id="SECONDARY_33_" fill="#FF0000" stroke="#231F20" stroke-width="3.1481" stroke-miterlimit="10" d="M305.722,377.595
+	c0-11.285-59.145-20.417-132.244-20.417"/>
 </svg>

@@ -2,17 +2,17 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="265.5" y="371.004" fill-opacity="0" fill="#231F20" width="81" height="54.487"/>
-<path id="SECONDARY_4_" fill="#7CD5FF" stroke="#231F20" stroke-miterlimit="10" d="M295.553,379.287
-	c-0.179,0.179-0.346,0.347-0.518,0.521l-0.872-0.882c0.133-0.126,0.269-0.238,0.4-0.37c1.148-1.149,2.171-2.172,3.081-3.107
-	l0.88,0.89C297.626,377.214,296.646,378.194,295.553,379.287z"/>
-<path id="SECONDARY_3_" fill="#7CD5FF" stroke="#231F20" stroke-miterlimit="10" d="M314.115,404.197v2.02
-	c-2.282,1.241-3.257,1.046-4.923,1.691v-1.681C310.86,405.886,312.511,405.205,314.115,404.197z"/>
-<path id="SECONDARY_2_" fill="#7CD5FF" stroke="#231F20" stroke-miterlimit="10" d="M305.307,406.429v1.779
-	c-1.664-0.378-3.015-0.3-4.922-1.416v-1.854C301.994,405.755,303.644,406.26,305.307,406.429z"/>
-<path id="SECONDARY_1_" fill="#7CD5FF" stroke="#231F20" stroke-miterlimit="10" d="M295.553,401.374
-	c0.312,0.312,0.63,0.593,0.947,0.876v2.019c-1.631-2.124-3.771-3.659-4.923-5.269v-1.679
-	C292.684,398.504,294.009,399.83,295.553,401.374z"/>
-<path id="SECONDARY" fill="#7CD5FF" stroke="#231F20" stroke-miterlimit="10" d="M322.922,395.913v2.004
-	c-1.227,1.768-3.119,2.73-5.04,5.215l0.019-2.019C319.979,399.034,321.652,397.352,322.922,395.913z"/>
+<rect x="178" y="312.248" fill-opacity="0" fill="#231F20" width="256" height="172"/>
+<path id="SECONDARY_4_" fill="#7CD5FF" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M272.981,338.395
+	c-0.565,0.564-1.093,1.096-1.636,1.643l-2.756-2.785c0.42-0.399,0.849-0.752,1.266-1.168c3.629-3.626,6.861-6.857,9.738-9.808
+	l2.781,2.809C279.534,331.852,276.435,334.945,272.981,338.395z"/>
+<path id="SECONDARY_3_" fill="#7CD5FF" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M331.648,417.029v6.375
+	c-7.213,3.918-10.294,3.301-15.559,5.339v-5.306C321.361,422.359,326.577,420.21,331.648,417.029z"/>
+<path id="SECONDARY_2_" fill="#7CD5FF" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M303.809,424.073v5.616
+	c-5.259-1.192-9.528-0.946-15.556-4.47v-5.854C293.339,421.946,298.552,423.54,303.809,424.073z"/>
+<path id="SECONDARY_1_" fill="#7CD5FF" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M272.981,408.117
+	c0.984,0.983,1.991,1.871,2.994,2.765v6.372c-5.154-6.705-11.919-11.551-15.559-16.631v-5.299
+	C263.914,399.057,268.102,403.243,272.981,408.117z"/>
+<path id="SECONDARY" fill="#7CD5FF" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M359.481,390.878v6.326
+	c-3.877,5.579-9.858,8.619-15.929,16.462l0.059-6.372C350.179,400.73,355.469,395.419,359.481,390.878z"/>
 </svg>

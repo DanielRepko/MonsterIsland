@@ -2,20 +2,20 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="265.5" y="368.933" fill-opacity="0" fill="#231F20" width="81" height="54.487"/>
-<path id="SECONDARY_25_" fill="#FFFA00" stroke="#231F20" stroke-miterlimit="10" d="M319.969,388.055l7.472,19.264
-	c0.864,2.227-0.241,4.732-2.469,5.598c-2.228,0.863-4.733-0.242-5.598-2.469l-4.059-10.463
-	C318.012,397,319.76,392.783,319.969,388.055z"/>
-<path id="SECONDARY_24_" fill="#FFFA00" stroke="#231F20" stroke-miterlimit="10" d="M305.621,404.508
-	c1.559,0,3.055-0.314,4.458-0.879v8.064c0,2.389-1.937,4.326-4.326,4.326s-4.326-1.938-4.326-4.326v-7.953
-	C302.753,404.238,304.16,404.508,305.621,404.508z"/>
-<path id="SECONDARY_23_" fill="#FFFA00" stroke="#231F20" stroke-miterlimit="10" d="M284.887,406.412l7.4-13.627
-	c0.98,3.461,2.824,6.424,5.226,8.506l-5.022,9.25c-1.141,2.1-3.766,2.879-5.867,1.738
-	C284.524,411.139,283.746,408.512,284.887,406.412z"/>
-<polygon fill="#FFFFFF" stroke="#231F20" stroke-miterlimit="10" points="323.389,410.689 326.414,410.51 323.516,416.338 
-	320.362,410.873 "/>
-<polygon fill="#FFFFFF" stroke="#231F20" stroke-miterlimit="10" points="288.482,410.273 285.505,409.711 287.64,415.859 
-	291.462,410.838 "/>
-<polygon fill="#FFFFFF" stroke="#231F20" stroke-miterlimit="10" points="305.504,414.252 302.473,414.266 305.738,419.896 
-	308.535,414.24 "/>
+<rect x="178" y="310.177" fill="#231F20" fill-opacity="0" width="256" height="172"/>
+<path id="SECONDARY_25_" fill="#FFFA00" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M350.148,370.54
+	l23.617,60.812c2.729,7.028-0.763,14.936-7.806,17.67c-7.04,2.726-14.957-0.765-17.691-7.793L335.441,408.2
+	C343.963,398.776,349.487,385.465,350.148,370.54z"/>
+<path id="SECONDARY_24_" fill="#FFFA00" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M304.802,422.477
+	c4.926,0,9.655-0.99,14.089-2.775v25.458c0,7.54-6.123,13.653-13.672,13.653s-13.671-6.116-13.671-13.653v-25.106
+	C295.738,421.625,300.185,422.477,304.802,422.477z"/>
+<path id="SECONDARY_23_" fill="#FFFA00" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M239.273,428.487
+	l23.388-43.017c3.097,10.925,8.924,20.278,16.517,26.851l-15.872,29.2c-3.606,6.628-11.903,9.088-18.543,5.487
+	C238.125,443.408,235.667,435.115,239.273,428.487z"/>
+<polygon fill="#FFFFFF" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" points="360.957,441.99 370.519,441.423 
+	361.358,459.82 351.392,442.569 "/>
+<polygon fill="#FFFFFF" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" points="250.634,440.677 241.225,438.9 
+	247.974,458.31 260.052,442.458 "/>
+<polygon fill="#FFFFFF" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" points="304.432,453.235 294.854,453.279 
+	305.171,471.054 314.013,453.199 "/>
 </svg>

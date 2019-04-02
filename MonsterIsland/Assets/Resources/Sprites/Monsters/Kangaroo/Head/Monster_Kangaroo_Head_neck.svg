@@ -2,7 +2,9 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect id="head_frame_1_" x="231.187" y="331.5" fill-opacity="0" fill="#231F20" width="151" height="131"/>
-<rect id="PRIMARY_7_" x="286.5" y="434.5" fill="#FFC18C" stroke="#231F20" stroke-miterlimit="10" width="39" height="27"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="306" cy="441" r="2.5"/>
+<rect id="head_frame_1_" x="178.687" y="286" fill="#231F20" fill-opacity="0" width="256" height="222"/>
+<rect id="PRIMARY_7_" x="272.462" y="460.551" fill="#FFC18C" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" width="66.12" height="45.754"/>
+<path fill="none" stroke="#231F20" stroke-width="1.695" stroke-miterlimit="10" d="M305.522,467.331
+	c2.341,0,4.239,1.893,4.239,4.237c0,2.335-1.897,4.237-4.239,4.237c-2.341,0-4.238-1.902-4.238-4.237
+	C301.284,469.224,303.181,467.331,305.522,467.331z"/>
 </svg>

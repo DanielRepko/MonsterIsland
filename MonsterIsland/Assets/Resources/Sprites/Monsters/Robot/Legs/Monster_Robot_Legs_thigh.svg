@@ -2,14 +2,14 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="278.5" y="342.156" fill-opacity="0" fill="#231F20" width="57" height="108.807"/>
-<path id="PRIMARY_10_" fill="#666666" stroke="#231F20" stroke-miterlimit="10" d="M326.288,421.816
-	c0,12.586-8.636,22.788-19.288,22.788l0,0c-10.653,0-19.288-10.202-19.288-22.788v-56.784c0-12.586,8.635-22.788,19.288-22.788l0,0
-	c10.652,0,19.288,10.202,19.288,22.788V421.816z"/>
-<circle id="PRIMARY_9_" fill="#666666" stroke="#231F20" stroke-miterlimit="10" cx="307" cy="429.359" r="20.377"/>
-<path id="SECONDARY_42_" fill="#F21818" stroke="#231F20" stroke-miterlimit="10" d="M312.001,415.602
-	c-7.596,0-13.759,6.162-13.759,13.758s6.163,13.76,13.759,13.76c7.595,0,13.759-6.164,13.759-13.76S319.596,415.602,312.001,415.602
-	z M312.145,437.222c-4.338,0-7.862-3.523-7.862-7.862c0-4.338,3.524-7.861,7.862-7.861s7.861,3.523,7.861,7.861
-	C320.006,433.698,316.482,437.222,312.145,437.222z"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="307" cy="352.606" r="2.5"/>
+<rect x="240.5" y="268.897" fill-opacity="0" fill="#231F20" width="133" height="255.324"/>
+<path id="PRIMARY_10_" fill="#666666" stroke="#231F20" stroke-width="2.34" stroke-miterlimit="10" d="M352.006,455.827
+	c0,29.534-20.15,53.474-45.006,53.474l0,0c-24.856,0-45.005-23.939-45.005-53.474V322.578c0-29.534,20.149-53.475,45.005-53.475l0,0
+	c24.855,0,45.006,23.94,45.006,53.475V455.827z"/>
+<ellipse id="PRIMARY_9_" fill="#666666" stroke="#231F20" stroke-width="2.34" stroke-miterlimit="10" cx="307" cy="473.527" rx="47.546" ry="47.82"/>
+<path id="SECONDARY_42_" fill="#F21818" stroke="#231F20" stroke-width="2.34" stroke-miterlimit="10" d="M318.669,441.243
+	c-17.723,0-32.104,14.46-32.104,32.284s14.381,32.288,32.104,32.288c17.721,0,32.104-14.464,32.104-32.288
+	S336.39,441.243,318.669,441.243z M319.004,491.977c-10.122,0-18.345-8.268-18.345-18.449c0-10.18,8.223-18.447,18.345-18.447
+	s18.343,8.268,18.343,18.447C337.347,483.709,329.126,491.977,319.004,491.977z"/>
+<ellipse fill="none" stroke="#231F20" stroke-width="2.34" stroke-miterlimit="10" cx="307" cy="293.42" rx="5.833" ry="5.866"/>
 </svg>

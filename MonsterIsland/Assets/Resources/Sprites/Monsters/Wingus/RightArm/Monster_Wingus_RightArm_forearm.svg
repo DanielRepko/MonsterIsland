@@ -2,20 +2,32 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="266.5" y="352.008" fill-opacity="0" fill="#231F20" width="81" height="89.313"/>
-<path id="SECONDARY_6_" fill="#FFFA00" stroke="#231F20" stroke-miterlimit="10" d="M320.75,434.561c0,3.597-6.488,6.513-14.5,6.513
-	l0,0c-8.003,0-14.5-2.916-14.5-6.513v-75.468c0-3.596,6.496-6.513,14.5-6.513l0,0c8.011,0,14.5,2.917,14.5,6.513V434.561z"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M291.75,369.935c0,4.599,29,4.652,29,0"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M291.75,363.091c0,4.599,29,4.652,29,0"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M291.75,376.778c0,4.599,29,4.652,29,0"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M291.75,383.622c0,4.599,29,4.651,29,0"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M291.75,390.466c0,4.599,29,4.651,29,0"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M291.75,397.309c0,4.6,29,4.651,29,0"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M291.75,404.152c0,4.599,29,4.651,29,0"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M291.75,410.996c0,4.599,29,4.651,29,0"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M291.75,417.84c0,4.6,29,4.651,29,0"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M291.75,424.683c0,4.599,29,4.651,29,0"/>
-<path fill="none" stroke="#231F20" stroke-miterlimit="10" d="M291.75,431.527c0,4.599,29,4.651,29,0"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="306.25" cy="360.11" r="2.5"/>
-<circle fill="none" stroke="#231F20" stroke-miterlimit="10" cx="306.25" cy="433.75" r="2.5"/>
+<rect x="192" y="268.791" fill="#231F20" fill-opacity="0" width="230" height="255.747"/>
+<path id="SECONDARY_6_" fill="#FFFA00" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" d="M346.043,505.179
+	c0,10.302-18.423,18.651-41.173,18.651l0,0c-22.724,0-41.173-8.35-41.173-18.651v-216.1c0-10.296,18.446-18.649,41.173-18.649l0,0
+	c22.747,0,41.173,8.353,41.173,18.649V505.179z"/>
+<path fill="none" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" d="M263.697,320.125
+	c0,13.17,82.346,13.321,82.346,0"/>
+<path fill="none" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" d="M263.697,300.527
+	c0,13.169,82.346,13.322,82.346,0"/>
+<path fill="none" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" d="M263.697,339.719
+	c0,13.169,82.346,13.322,82.346,0"/>
+<path fill="none" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" d="M263.697,359.318
+	c0,13.169,82.346,13.317,82.346,0"/>
+<path fill="none" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" d="M263.697,378.915
+	c0,13.169,82.346,13.319,82.346,0"/>
+<path fill="none" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" d="M263.697,398.509
+	c0,13.174,82.346,13.319,82.346,0"/>
+<path fill="none" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" d="M263.697,418.105
+	c0,13.168,82.346,13.316,82.346,0"/>
+<path fill="none" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" d="M263.697,437.703
+	c0,13.168,82.346,13.318,82.346,0"/>
+<path fill="none" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" d="M263.697,457.3
+	c0,13.173,82.346,13.318,82.346,0"/>
+<path fill="none" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" d="M263.697,476.894
+	c0,13.171,82.346,13.319,82.346,0"/>
+<path fill="none" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" d="M263.697,496.493
+	c0,13.168,82.346,13.316,82.346,0"/>
+<ellipse fill="none" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" cx="304.87" cy="291.991" rx="7.099" ry="7.159"/>
+<ellipse fill="none" stroke="#231F20" stroke-width="2.8515" stroke-miterlimit="10" cx="304.87" cy="502.858" rx="7.099" ry="7.159"/>
 </svg>

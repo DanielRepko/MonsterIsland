@@ -68,18 +68,18 @@ public class ArmSlot : PartSlot {
 
     public override void UpdateUI()
     {
-        bicepImage.sprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.HeadImporter, true);
-        forearmImage.sprite = Helper.CreateSprite(partInfo.forearmSprite, Helper.HeadImporter, true);
+        bicepImage.sprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.HeadImporter);
+        forearmImage.sprite = Helper.CreateSprite(partInfo.forearmSprite, Helper.HeadImporter);
 
         if(partType == "RightArm")
         {
-            handImage.sprite = Helper.CreateSprite(partInfo.handBackSprite, Helper.HeadImporter, true);
-            fingersImage.sprite = Helper.CreateSprite(partInfo.fingersOpenBackSprite, Helper.HeadImporter, true);
+            handImage.sprite = Helper.CreateSprite(partInfo.handBackSprite, Helper.HeadImporter);
+            fingersImage.sprite = Helper.CreateSprite(partInfo.fingersOpenBackSprite, Helper.HeadImporter);
         }
         else if(partType == "LeftArm")
         {
-            handImage.sprite = Helper.CreateSprite(partInfo.handFrontSprite, Helper.HeadImporter, true);
-            fingersImage.sprite = Helper.CreateSprite(partInfo.fingersOpenFrontSprite, Helper.HeadImporter, true);
+            handImage.sprite = Helper.CreateSprite(partInfo.handFrontSprite, Helper.HeadImporter);
+            fingersImage.sprite = Helper.CreateSprite(partInfo.fingersOpenFrontSprite, Helper.HeadImporter);
         }
         
     }

@@ -2,11 +2,13 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<rect x="266.5" y="369.004" fill-opacity="0" fill="#231F20" width="81" height="54.487"/>
-<polygon id="SECONDARY_32_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" points="326.382,403.795 322.844,397.498 
-	329.565,383.539 329.788,383.414 335.119,392.9 335.22,392.775 338.476,398.57 320.15,420.785 320.15,411.564 "/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="338.476" y1="398.57" x2="326.382" y2="403.795"/>
-<polygon id="SECONDARY_30_" fill="#FF0000" stroke="#231F20" stroke-miterlimit="10" points="291.244,404.096 294.782,397.799 
-	288.061,383.84 287.838,383.715 282.507,393.201 282.406,393.076 279.15,398.871 297.476,421.086 297.476,411.865 "/>
-<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="279.15" y1="398.871" x2="291.244" y2="404.096"/>
+<rect x="179" y="310.248" fill-opacity="0" fill="#231F20" width="256" height="172"/>
+<polygon id="SECONDARY_32_" fill="#FF0000" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" points="
+	368.256,420.072 357.074,400.195 378.318,356.131 379.021,355.736 395.87,385.682 396.188,385.287 406.479,403.58 348.562,473.705 
+	348.562,444.599 "/>
+<line fill="none" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" x1="406.479" y1="403.58" x2="368.256" y2="420.072"/>
+<polygon id="SECONDARY_30_" fill="#FF0000" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" points="
+	257.204,421.021 268.386,401.145 247.142,357.08 246.438,356.686 229.589,386.631 229.271,386.236 218.981,404.529 276.898,474.655 
+	276.898,445.548 "/>
+<line fill="none" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" x1="218.981" y1="404.529" x2="257.204" y2="421.021"/>
 </svg>
