@@ -80,15 +80,20 @@ public class ArmPart : MonoBehaviour {
                 }
             }
 
-            //setting all of the sprite fields
-            bicepSprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.BicepImporter);
-            forearmSprite = Helper.CreateSprite(partInfo.forearmSprite, Helper.ForearmImporter);
-            handBackSprite = Helper.CreateSprite(partInfo.handBackSprite, Helper.HandImporter);
-            handFrontSprite = Helper.CreateSprite(partInfo.handFrontSprite, Helper.HandImporter);
-            fingersOpenBackSprite = Helper.CreateSprite(partInfo.fingersOpenBackSprite, Helper.HandImporter);
-            fingersOpenFrontSprite = Helper.CreateSprite(partInfo.fingersOpenFrontSprite, Helper.HandImporter);
-            fingersClosedBackSprite = Helper.CreateSprite(partInfo.fingersClosedBackSprite, Helper.HandImporter);
-            fingersClosedFrontSprite = Helper.CreateSprite(partInfo.fingersClosedFrontSprite, Helper.HandImporter);
+            Enemy enemy = GetComponentInParent<Enemy>();
+
+            if (enemy == null)
+            {
+                //setting all of the sprite fields
+                bicepSprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.BicepImporter);
+                forearmSprite = Helper.CreateSprite(partInfo.forearmSprite, Helper.ForearmImporter);
+                handBackSprite = Helper.CreateSprite(partInfo.handBackSprite, Helper.HandImporter);
+                handFrontSprite = Helper.CreateSprite(partInfo.handFrontSprite, Helper.HandImporter);
+                fingersOpenBackSprite = Helper.CreateSprite(partInfo.fingersOpenBackSprite, Helper.HandImporter);
+                fingersOpenFrontSprite = Helper.CreateSprite(partInfo.fingersOpenFrontSprite, Helper.HandImporter);
+                fingersClosedBackSprite = Helper.CreateSprite(partInfo.fingersClosedBackSprite, Helper.HandImporter);
+                fingersClosedFrontSprite = Helper.CreateSprite(partInfo.fingersClosedFrontSprite, Helper.HandImporter);
+            }
 
             if (weapon != null)
             {
@@ -102,14 +107,29 @@ public class ArmPart : MonoBehaviour {
 
                 if (partType == Helper.PartType.RightArm)
                 {
-                    player.rightAttackDelegate = ability;
-                    player.RightAttackCooldown = weapon.AttackCooldown;
-                    
+                    if (player != null)
+                    {
+                        player.rightAttackDelegate = ability;
+                        player.RightAttackCooldown = weapon.AttackCooldown;
+                    }
+                    else if (enemy != null)
+                    {
+                        enemy.armAttackDelegate = ability;
+                        enemy.attackCooldown = weapon.AttackCooldown;
+                    }
                 }
                 else if (partType == Helper.PartType.LeftArm)
                 {
-                    player.leftAttackDelegate = ability;
-                    player.LeftAttackCooldown = weapon.AttackCooldown;
+                    if (player != null)
+                    {
+                        player.leftAttackDelegate = ability;
+                        player.LeftAttackCooldown = weapon.AttackCooldown;
+                    }
+                    else if (enemy != null)
+                    {
+                        enemy.armAttackDelegate = ability;
+                        enemy.attackCooldown = weapon.AttackCooldown;
+                    }
                 }
             }
             else
@@ -135,7 +155,7 @@ public class ArmPart : MonoBehaviour {
     }
     
     //changes the facing direction of the right arm
-    public void ChangeRightArmDirection(int scaleX)
+    public void ChangeRightArmDirection(float scaleX)
     {
         gameObject.transform.localScale = new Vector2(scaleX, 1);
 
@@ -184,7 +204,7 @@ public class ArmPart : MonoBehaviour {
     }
 
     //changes the facing direction of the left arm
-    public void ChangeLeftArmDirection(int scaleX)
+    public void ChangeLeftArmDirection(float scaleX)
     {
         gameObject.transform.localScale = new Vector2(scaleX, 1);
 

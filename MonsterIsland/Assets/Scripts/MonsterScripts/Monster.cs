@@ -25,7 +25,7 @@ public class Monster : MonoBehaviour {
 
     //used to change the direction the monster is facing, while keeping each
     //arm on the correct side, scaleX is the value to be applied to each part's local scale x
-    public void ChangeDirection(int scaleX)
+    public void ChangeDirection(float scaleX)
     {
         //setting the scale of the monster object (a child of, but different from the player object)
         transform.localScale = new Vector2(scaleX, transform.localScale.y);

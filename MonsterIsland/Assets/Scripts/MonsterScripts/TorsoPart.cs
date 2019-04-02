@@ -47,13 +47,16 @@ public class TorsoPart : MonoBehaviour {
                 }
             }
 
-            bodySprite = Helper.CreateSprite(partInfo.mainSprite, Helper.TorsoImporter);
+            if (GetComponentInParent<Enemy>() == null)
+            {
+                bodySprite = Helper.CreateSprite(partInfo.mainSprite, Helper.TorsoImporter);
+            }
 
             body.sprite = bodySprite;
         }
     }
 
-    public void ChangeDirection(int scaleX)
+    public void ChangeDirection(float scaleX)
     {
         gameObject.transform.localScale = new Vector2(scaleX, 1);
     }

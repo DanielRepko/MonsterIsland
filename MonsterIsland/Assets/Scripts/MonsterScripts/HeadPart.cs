@@ -51,17 +51,20 @@ public class HeadPart : MonoBehaviour {
                 }
             }
 
-            idleFaceSprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter);
-            hurtFaceSprite = Helper.CreateSprite(partInfo.hurtSprite, Helper.HeadImporter);
-            attackFaceSprite = Helper.CreateSprite(partInfo.attackSprite, Helper.HeadImporter);
-            neckSprite = Helper.CreateSprite(partInfo.neckSprite, Helper.HeadImporter);
+            if (GetComponentInParent<Enemy>() == null)
+            {
+                idleFaceSprite = Helper.CreateSprite(partInfo.mainSprite, Helper.HeadImporter);
+                hurtFaceSprite = Helper.CreateSprite(partInfo.hurtSprite, Helper.HeadImporter);
+                attackFaceSprite = Helper.CreateSprite(partInfo.attackSprite, Helper.HeadImporter);
+                neckSprite = Helper.CreateSprite(partInfo.neckSprite, Helper.HeadImporter);
+            }
 
             face.sprite = idleFaceSprite;
             neck.sprite = neckSprite;
         }
     }
 
-    public void ChangeDirection(int scaleX)
+    public void ChangeDirection(float scaleX)
     {
         gameObject.transform.localScale = new Vector2(scaleX, 1);
     }

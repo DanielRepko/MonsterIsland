@@ -55,10 +55,13 @@ public class LegPart : MonoBehaviour {
                 }
             }
 
-            pelvisSprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.PelvisImporter);
-            thighSprite = Helper.CreateSprite(partInfo.thighSprite, Helper.ThighImporter);
-            shinSprite = Helper.CreateSprite(partInfo.shinSprite, Helper.ShinImporter);
-            footSprite = Helper.CreateSprite(partInfo.footSprite, Helper.FootImporter);
+            if (GetComponentInParent<Enemy>() == null)
+            {
+                pelvisSprite = Helper.CreateSprite(partInfo.pelvisSprite, Helper.PelvisImporter);
+                thighSprite = Helper.CreateSprite(partInfo.thighSprite, Helper.ThighImporter);
+                shinSprite = Helper.CreateSprite(partInfo.shinSprite, Helper.ShinImporter);
+                footSprite = Helper.CreateSprite(partInfo.footSprite, Helper.FootImporter);
+            }
 
             pelvis.sprite = pelvisSprite;
             thighR.sprite = thighSprite;
@@ -70,7 +73,7 @@ public class LegPart : MonoBehaviour {
         }
     }
 
-    public void ChangeDirection(int scaleX)
+    public void ChangeDirection(float scaleX)
     {
         gameObject.transform.localScale = new Vector2(scaleX, 1);
     }

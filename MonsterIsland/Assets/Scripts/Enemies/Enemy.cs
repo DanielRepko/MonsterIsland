@@ -9,10 +9,26 @@ public class Enemy : Actor {
     public string monsterName;
     public bool alwaysDropPart = false;
     public string partToAlwaysDrop;
+    public string equippedWeapon;
+    public AbilityFactory.ArmAbility armAttackDelegate;
+    public AbilityFactory.Ability abilityDelegate;
+
+    public delegate void CheckDelegate();
+    public CheckDelegate checkDelegate;
+
+    //attack cooldown
+    public float attackCooldown;
+    private float attackCooldownTimer;
+    //ability cooldown
+    public float abilityCooldown;
+    private float abilityCooldownTimer;
+
+    public Canvas healthBar;
 
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
+        InitializeEnemy();
 	}
 	
 	// Update is called once per frame
@@ -26,10 +42,12 @@ public class Enemy : Actor {
     {
         text.text = health.ToString();
 
+        checkDelegate();
+
         //Handling Hitstun
         if (inHitStun && hitStunTimer == 0)
         {
-            rb.velocity = new Vector2(-10 * transform.localScale.x, 30);
+            rb.velocity = new Vector2(-10 * facingDirection, 30);
         }
         if (inHitStun && hitStunTimer < hitStunCooldown)
         {
@@ -58,11 +76,104 @@ public class Enemy : Actor {
         //GetComponent<Animator>().Play("FrontArmMeleeAnim");
     }
 
+    public void InitializeEnemy()
+    {
+        //creating variables to initialize the player monster
+        //this code is for testing purposes, final product will pull this information from the database scripts
+        var headInfo = PartFactory.GetHeadPartInfo(monsterName);
+        var torsoInfo = PartFactory.GetTorsoPartInfo(monsterName);
+        var rightArmInfo = PartFactory.GetArmPartInfo(monsterName, Helper.PartType.RightArm);
+        var leftArmInfo = PartFactory.GetArmPartInfo(monsterName, Helper.PartType.LeftArm);
+        var legPartInfo = PartFactory.GetLegPartInfo(monsterName);
+        rightArmInfo.equippedWeapon = equippedWeapon;
+
+        armAttackDelegate = Attack;
+        abilityDelegate = Ability;
+
+        checkDelegate += UpdateCooldowns;
+
+        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
+        //setting the cooldown timers so that the player can use the inputs as soon as the game loads
+        attackCooldownTimer = attackCooldown;
+        abilityCooldownTimer = abilityCooldown;
+    }
+
+    public void SetFacingDirection(float scaleX)
+    {
+        facingDirection = scaleX;
+        transform.localScale = new Vector3(facingDirection, 1, 1);
+        healthBar.transform.localScale = new Vector3(facingDirection, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+        monster.ChangeDirection(facingDirection);
+    }
+
+    public void UpdateCooldowns()
+    {
+        if(attackCooldownTimer < attackCooldown)
+        {
+            attackCooldownTimer += Time.deltaTime;
+        }
+        if (abilityCooldownTimer < attackCooldown)
+        {
+            abilityCooldownTimer += Time.deltaTime;
+        }
+    }
+
+    public void SetCooldowns()
+    {
+
+    }
+
+    public bool CheckCooldown(string inputCooldown)
+    {
+        if (!attacksLocked)
+        {
+            switch (inputCooldown)
+            {
+                case "attack":
+                    if (attackCooldownTimer >= attackCooldown)
+                    {
+                        attackCooldownTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }               
+                case "ability":
+                    if (abilityCooldownTimer >= abilityCooldown)
+                    {
+                        abilityCooldownTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                default:
+                    return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void Attack(string armType = "RightArm")
+    {
+
+    }
+
+    public void Ability()
+    {
+
+    }
+
     override public void TakeDamage(int damage, float knockBackDirection)
     {
         if (!inHitStun)
         {
-            transform.localScale = new Vector2(knockBackDirection, transform.localScale.y);
+            SetFacingDirection(knockBackDirection);
             health -= damage;
             inHitStun = true;
         }
@@ -180,20 +291,5 @@ public class Enemy : Actor {
         }
 
         Destroy(gameObject);
-    }
-
-    override public void ShowAttackFace()
-    {
-        
-    }
-
-    override public void ShowIdleFace()
-    {
-        
-    }
-
-    override public void ShowHurtFace()
-    {
-        
     }
 }

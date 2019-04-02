@@ -58,11 +58,6 @@ public class PlayerController : Actor {
     private float timeUnderwater;      //The amount of time the player has spent underwater since they last required air
     public bool hasGills = false;
 
-    [Space(20, order = 1)]
-
-    //the Monster gameObject
-    public Monster monster;
-
     //delegate type used for player actions and abilities
     public delegate void Ability();
 
@@ -321,21 +316,6 @@ public class PlayerController : Actor {
         legAbilityTimer = LegAbilityCooldown;
     }
 
-    override public void ShowAttackFace()
-    {
-        monster.headPart.face.sprite = monster.headPart.attackFaceSprite;
-    }
-
-    override public void ShowIdleFace()
-    {
-        monster.headPart.face.sprite = monster.headPart.idleFaceSprite;
-    }
-
-    override public void ShowHurtFace()
-    {
-        monster.headPart.face.sprite = monster.headPart.hurtFaceSprite;
-    }
-
     public void CheckHitBox()
     {
         if(hitCounter == totalHits)
@@ -439,7 +419,6 @@ public class PlayerController : Actor {
                 case "rightAttack":
                     if (rightAttackTimer >= RightAttackCooldown)
                     {
-                        //Debug.Log(monster.rightArmPart.partInfo.abilityCooldown);
                         rightAttackTimer = 0;
                         return true;
                     }
