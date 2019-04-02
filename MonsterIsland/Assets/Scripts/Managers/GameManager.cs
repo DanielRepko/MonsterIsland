@@ -60,6 +60,21 @@ public class GameManager : MonoBehaviour {
         newFile.player.rightArmPart = new ArmPartInfo();
         newFile.player.legsPart = new LegPartInfo();
         newFile.player.inventory = new InventoryInfo();
+
+        //Initial Player Inventory
+        newFile.player.inventory.monsterBucks = 0;
+        newFile.player.inventory.collectedParts = new CollectedPartsInfo();
+        newFile.player.inventory.collectedParts.collectedHeads = new List<string>();
+        newFile.player.inventory.collectedParts.collectedHeads.Add(Helper.MonsterName.Mitch);
+        newFile.player.inventory.collectedParts.collectedTorsos = new List<string>();
+        newFile.player.inventory.collectedParts.collectedTorsos.Add(Helper.MonsterName.Mitch);
+        newFile.player.inventory.collectedParts.collectedLeftArms = new List<string>();
+        newFile.player.inventory.collectedParts.collectedLeftArms.Add(Helper.MonsterName.Mitch);
+        newFile.player.inventory.collectedParts.collectedRightArms = new List<string>();
+        newFile.player.inventory.collectedParts.collectedRightArms.Add(Helper.MonsterName.Mitch);
+        newFile.player.inventory.collectedParts.collectedLegs = new List<string>();
+        newFile.player.inventory.collectedParts.collectedLegs.Add(Helper.MonsterName.Mitch);
+        newFile.player.inventory.collectedWeapons = new List<string>();
     }
 
     //Updates an existing save file
