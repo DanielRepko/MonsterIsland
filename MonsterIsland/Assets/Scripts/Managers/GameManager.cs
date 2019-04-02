@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 
     [Range(0, 3)]
     public int FileNumber;
+    private GameFile gameFile;
 
     public PlayerController player;
     public GameObject coinPrefab;
@@ -38,7 +39,11 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
-    public void SaveGame() {
+    public void CreateSave() {
+        GameFile newFile = new GameFile();
+    }
 
+    public void SaveGame() {
+        GameFile fileToUpdate = gameFile; 
     }
 }
