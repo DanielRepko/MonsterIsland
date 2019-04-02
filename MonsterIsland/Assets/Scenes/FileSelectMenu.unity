@@ -454,8 +454,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 139802655}
+  - component: {fileID: 139802656}
   m_Layer: 5
-  m_Name: RightArm
+  m_Name: LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -483,6 +484,42 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &139802656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 139802654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e0fbd5803114d4887fd5766aa51ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalPosition: {x: 0, y: 0, z: 0}
+  partType: LeftArm
+  abilityName: 
+  abilityType: 
+  abilityDesc: 
+  abilitySignLabel: {fileID: 0}
+  partInfo:
+    monster: 
+    abilityName: 
+    abilityType: 
+    abilityDesc: 
+    abilityCooldown: 0
+    bicepSprite: 
+    forearmSprite: 
+    handBackSprite: 
+    handFrontSprite: 
+    fingersOpenBackSprite: 
+    fingersOpenFrontSprite: 
+    fingersClosedBackSprite: 
+    fingersClosedFrontSprite: 
+    equippedWeapon: 
+  bicepImage: {fileID: 1276793825}
+  forearmImage: {fileID: 1606268689}
+  handImage: {fileID: 290361511}
+  fingersImage: {fileID: 1921196559}
 --- !u!1 &186692685
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,6 +855,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 249370728}
+  - component: {fileID: 249370729}
   m_Layer: 5
   m_Name: Head
   m_TagString: Untagged
@@ -845,6 +883,35 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &249370729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 249370727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df97a65ebf18844a8036c83ed51a0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalPosition: {x: 0, y: 0, z: 0}
+  partType: Head
+  abilityName: 
+  abilityType: 
+  abilityDesc: 
+  abilitySignLabel: {fileID: 0}
+  partInfo:
+    monster: 
+    abilityName: 
+    abilityType: 
+    abilityDesc: 
+    abilityCooldown: 0
+    mainSprite: 
+    neckSprite: 
+    hurtSprite: 
+    attackSprite: 
+  faceImage: {fileID: 2101798495}
+  neckImage: {fileID: 1647385801}
 --- !u!1 &251660802
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +979,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '---'
+  m_Text: '-----'
 --- !u!222 &251660805
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1530,6 +1597,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 364135626}
   m_CullTransparentMesh: 0
+--- !u!1001 &367364747
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4430187937303578, guid: 80061d0cbe2dfe449a420dc44eb46291, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.91328686
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430187937303578, guid: 80061d0cbe2dfe449a420dc44eb46291, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.14332728
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430187937303578, guid: 80061d0cbe2dfe449a420dc44eb46291, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3.8417969
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430187937303578, guid: 80061d0cbe2dfe449a420dc44eb46291, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430187937303578, guid: 80061d0cbe2dfe449a420dc44eb46291, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430187937303578, guid: 80061d0cbe2dfe449a420dc44eb46291, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430187937303578, guid: 80061d0cbe2dfe449a420dc44eb46291, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430187937303578, guid: 80061d0cbe2dfe449a420dc44eb46291, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 80061d0cbe2dfe449a420dc44eb46291, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &455763027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,7 +1748,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 455763029}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1003799383}
+        m_MethodName: ShowFile
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &497288427
@@ -2878,7 +2998,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 762602576}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1003799383}
+        m_MethodName: ShowFile
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &801226819
@@ -3391,7 +3522,7 @@ GameObject:
   - component: {fileID: 885355970}
   - component: {fileID: 885355969}
   m_Layer: 5
-  m_Name: CurrentRightArm
+  m_Name: CurrentLeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3685,8 +3816,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 968277523}
+  - component: {fileID: 968277524}
   m_Layer: 5
-  m_Name: LeftArm
+  m_Name: RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3714,6 +3846,42 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &968277524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 968277522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e0fbd5803114d4887fd5766aa51ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalPosition: {x: 0, y: 0, z: 0}
+  partType: RightArm
+  abilityName: 
+  abilityType: 
+  abilityDesc: 
+  abilitySignLabel: {fileID: 0}
+  partInfo:
+    monster: 
+    abilityName: 
+    abilityType: 
+    abilityDesc: 
+    abilityCooldown: 0
+    bicepSprite: 
+    forearmSprite: 
+    handBackSprite: 
+    handFrontSprite: 
+    fingersOpenBackSprite: 
+    fingersOpenFrontSprite: 
+    fingersClosedBackSprite: 
+    fingersClosedFrontSprite: 
+    equippedWeapon: 
+  bicepImage: {fileID: 758764284}
+  forearmImage: {fileID: 822968461}
+  handImage: {fileID: 1053255593}
+  fingersImage: {fileID: 2113366042}
 --- !u!1 &1003799382
 GameObject:
   m_ObjectHideFlags: 0
@@ -3741,6 +3909,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b7943c529ecf24bbba6ad70a58ca44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playButton: {fileID: 1865722475}
+  deleteButton: {fileID: 571633324}
+  heartGroup: {fileID: 1285445847}
+  heartImages:
+  - {fileID: 1167737689}
+  - {fileID: 91511296}
+  - {fileID: 927608024}
+  - {fileID: 659786289}
+  - {fileID: 1637099344}
+  - {fileID: 1714066637}
+  - {fileID: 928312232}
+  - {fileID: 1934010595}
+  monsterName: {fileID: 1080459445}
+  playTime: {fileID: 1160613483}
+  areaName: {fileID: 251660804}
+  dateSaved: {fileID: 1054229582}
+  currentBalance: {fileID: 2060447801}
+  headSlot: {fileID: 249370727}
+  torsoSlot: {fileID: 2078879449}
+  leftArmSlot: {fileID: 139802654}
+  rightArmSlot: {fileID: 968277522}
+  legSlot: {fileID: 1422143659}
+  leftWeapon: {fileID: 1763463498}
+  rightWeapon: {fileID: 1309410482}
+  legendaryHead: {fileID: 751562901}
+  legendaryTorso: {fileID: 186692685}
+  legendaryLeftArm: {fileID: 2030639977}
+  legendaryRightArm: {fileID: 2135051194}
+  legendaryLegs: {fileID: 1621297797}
 --- !u!4 &1003799384
 Transform:
   m_ObjectHideFlags: 0
@@ -3890,7 +4087,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '---'
+  m_Text: '-----'
 --- !u!222 &1054229583
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3965,7 +4162,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '---'
+  m_Text: '-----'
 --- !u!222 &1080459446
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4113,7 +4310,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '---'
+  m_Text: '-----'
 --- !u!222 &1160613484
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4843,6 +5040,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1422143660}
+  - component: {fileID: 1422143661}
   m_Layer: 5
   m_Name: Legs
   m_TagString: Untagged
@@ -4875,6 +5073,40 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1422143661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1422143659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e9cdd0bfa035747b415e4831cae573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalPosition: {x: 0, y: 0, z: 0}
+  partType: Legs
+  abilityName: 
+  abilityType: 
+  abilityDesc: 
+  abilitySignLabel: {fileID: 0}
+  partInfo:
+    monster: 
+    abilityName: 
+    abilityType: 
+    abilityDesc: 
+    abilityCooldown: 0
+    pelvisSprite: 
+    thighSprite: 
+    shinSprite: 
+    footSprite: 
+  pelvisImage: {fileID: 1349787704}
+  rightThighImage: {fileID: 1846592466}
+  rightShinImage: {fileID: 722931548}
+  rightFootImage: {fileID: 73982836}
+  leftThighImage: {fileID: 204265425}
+  leftShinImage: {fileID: 521418134}
+  leftFootImage: {fileID: 753955867}
 --- !u!1 &1448704259
 GameObject:
   m_ObjectHideFlags: 0
@@ -6302,7 +6534,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1842116746}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1003799383}
+        m_MethodName: ShowFile
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1846592464
@@ -6826,7 +7069,7 @@ GameObject:
   - component: {fileID: 2004654365}
   - component: {fileID: 2004654364}
   m_Layer: 5
-  m_Name: CurrentLeftArm
+  m_Name: CurrentRightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7074,6 +7317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2078879450}
+  - component: {fileID: 2078879451}
   m_Layer: 5
   m_Name: Torso
   m_TagString: Untagged
@@ -7100,6 +7344,31 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2078879451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2078879449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c44877f1283886438c0c6f207a9e7cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalPosition: {x: 0, y: 0, z: 0}
+  partType: Torso
+  abilityName: 
+  abilityType: 
+  abilityDesc: 
+  abilitySignLabel: {fileID: 0}
+  partInfo:
+    monster: 
+    abilityName: 
+    abilityType: 
+    abilityDesc: 
+    abilityCooldown: 0
+    mainSprite: 
+  torsoImage: {fileID: 1374355516}
 --- !u!1 &2101798493
 GameObject:
   m_ObjectHideFlags: 0

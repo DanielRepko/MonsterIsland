@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour {
 
     //When called, updates the air meter based on the provided information
     public void UpdateAirMeter(float air, bool isUnderwater) {
-        if (!GameManager.instance.player.hasGills)
+        if (!PlayerController.Instance.hasGills)
         {
             airMeterBar.GetComponent<RectTransform>().offsetMax = new Vector2(-(122f - (122f * air)), 0f);
             airMeter.SetActive(isUnderwater);

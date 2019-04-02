@@ -9,9 +9,8 @@ public class GameManager : MonoBehaviour {
 
     [Range(0, 3)]
     public int FileNumber;
-    private GameFile gameFile;
-
-    public PlayerController player;
+    public GameFile gameFile;
+    
     public GameObject coinPrefab;
     public GameObject headDropPrefab;
     public GameObject leftArmDropPrefab;
