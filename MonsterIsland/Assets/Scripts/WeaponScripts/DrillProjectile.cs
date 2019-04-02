@@ -5,6 +5,7 @@ using UnityEngine;
 public class DrillProjectile : Projectile {
 
     private bool hasGoneThroughWall;
+    private bool hasBeenSlowed;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,7 +14,12 @@ public class DrillProjectile : Projectile {
             if (hasGoneThroughWall)
             {
                 Destroy(gameObject);
-            }            
+            }
+            else if(!hasBeenSlowed)
+            {
+                GetComponent<Rigidbody2D>().velocity /= 3;
+                hasBeenSlowed = true;
+            }
         }
         if (target == "Enemy")
         {
@@ -43,6 +49,7 @@ public class DrillProjectile : Projectile {
         if (collision.tag == "Ground")
         {
             hasGoneThroughWall = true;
+            GetComponent<Rigidbody2D>().velocity *= 3;
         }
     }
 

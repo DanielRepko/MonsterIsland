@@ -292,7 +292,18 @@ public class AbilityFactory : MonoBehaviour {
     //damage, all other actions and movement are locked for the ability's duration
     public static void Ability_DrillFist(string armType)
     {
+        PlayerController player = PlayerController.Instance;
 
+        GameObject drillPrefab = Resources.Load<GameObject>("Prefabs/Projectiles/Projectile_Drill");
+
+        GameObject drill = Instantiate(drillPrefab, player.monster.leftArmPart.hand.transform.position, drillPrefab.transform.rotation);
+
+        drill.transform.localScale = new Vector3(drill.transform.localScale.x, drill.transform.localScale.y * player.facingDirection, drill.transform.localScale.z);
+
+        //playing the shoot animation
+        player.animator.Play(armType + Helper.GetAnimDirection(player.facingDirection, armType) + "ShootAnim");
+
+        drill.GetComponent<Rigidbody2D>().velocity = new Vector2(drill.GetComponent<Projectile>().speed * player.facingDirection, 0);
     }
 
     //Arm Ability (Passive): Increases the player's melee damage, does not affect weapon damage

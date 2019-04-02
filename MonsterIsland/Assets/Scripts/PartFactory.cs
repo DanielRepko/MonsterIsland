@@ -205,7 +205,7 @@ public class PartFactory : MonoBehaviour {
                     partInfo.abilityName = "Drill Fist";
                     partInfo.abilityType = "Activate";
                     partInfo.abilityDesc = "Shoot out a drill that can bore through an entire wall before breaking. Can also go through enemies";
-                    partInfo.abilityCooldown = 1.5f;
+                    partInfo.abilityCooldown = 2f;
                 }
                 return partInfo;
             case Helper.MonsterName.Sam:
