@@ -204,7 +204,7 @@ public class PartFactory : MonoBehaviour {
                 {
                     partInfo.abilityName = "Drill Fist";
                     partInfo.abilityType = "Activate";
-                    partInfo.abilityDesc = "Attack with a drill to deal multiple hits of damage. Movement and other actions are locked until the attack finishes";
+                    partInfo.abilityDesc = "Shoot out a drill that can bore through an entire wall before breaking. Can also go through enemies";
                     partInfo.abilityCooldown = 0;
                 }
                 return partInfo;
