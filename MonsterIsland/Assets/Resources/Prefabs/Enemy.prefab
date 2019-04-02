@@ -893,8 +893,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1860751665264152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.81, y: -0.79, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalPosition: {x: 8.81, y: -1.1556579, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224956361824635376}
   - {fileID: 4401783797333106}
@@ -1071,7 +1071,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 10
 --- !u!114 &114578217870108758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1085,14 +1085,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 15.5
   jumpForce: 60
-  rightAttackPower: 2
-  leftAttackPower: 2
   attacksLocked: 0
-  text: {fileID: 114244767943668226}
+  movementLocked: 0
+  inHitStun: 0
+  health: 10
+  maxHealth: 10
   hurtBox: {fileID: 68940303664264368}
-  monsterName: 
-  alwaysDropPart: 0
-  partToAlwaysDrop: 
+  rayCastLengthCheck: 0.2
+  width: 0
+  height: 0
+  facingDirection: 0
+  rb: {fileID: 50284019387309448}
+  text: {fileID: 114244767943668226}
+  monsterName: Cactus
+  alwaysDropPart: 1
+  partToAlwaysDrop: RightArm
 --- !u!212 &212098274339478526
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2066,7 +2073,7 @@ RectTransform:
   m_GameObject: {fileID: 1616844852776914}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -3.09}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224506409834396568}
   m_Father: {fileID: 4847553954272542}

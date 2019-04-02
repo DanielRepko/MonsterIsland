@@ -22,12 +22,15 @@ public class HeadPart : MonoBehaviour {
 
     public void InitializePart(HeadPartInfo headPartInfo)
     {
-        if(headPartInfo != null)
+        //this mainly is used to check whether the part is attached to the player
+        PlayerController player = GetComponentInParent<PlayerController>();
+
+        if (headPartInfo != null)
         {
             partInfo = headPartInfo;
 
             //checking whether this part has an ability
-            if (partInfo.abilityName != null)
+            if (partInfo.abilityName != null && player != null)
             {
                 //populating the partAbility field with the appropriate ability delegate
                 partAbility = AbilityFactory.GetPartAbility(partInfo.abilityName);
@@ -40,7 +43,7 @@ public class HeadPart : MonoBehaviour {
                 }//if the type is Activate, set the ability to the Player action delegate
                 else if (partInfo.abilityType == "Activate")
                 {
-                    PlayerController.Instance.headAbilityDelegate = partAbility;
+                    player.headAbilityDelegate = partAbility;
                 }//if the value is anything else, then a typo must have occured when creating the ability info
                 else
                 {

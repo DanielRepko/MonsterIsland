@@ -18,12 +18,15 @@ public class TorsoPart : MonoBehaviour {
 
     public void InitializePart(TorsoPartInfo torsoPartInfo)
     {
+        //this mainly is used to check whether the part is attached to the player
+        PlayerController player = GetComponentInParent<PlayerController>();
+
         if (torsoPartInfo != null)
         {
             partInfo = torsoPartInfo;
 
             //checking whether this part has an ability
-            if (partInfo.abilityName != null)
+            if (partInfo.abilityName != null && player != null)
             {
                 //populating the partAbility field with the appropriate ability delegate
                 partAbility = AbilityFactory.GetPartAbility(partInfo.abilityName);
@@ -36,7 +39,7 @@ public class TorsoPart : MonoBehaviour {
                 }//if the type is Activate, set the ability to the Player action delegate
                 else if (partInfo.abilityType == "Activate")
                 {
-                    PlayerController.Instance.torsoAbilityDelegate = partAbility;
+                    player.torsoAbilityDelegate = partAbility;
                 }//if the value is anything else, then a typo must have occured when creating the ability info
                 else
                 {

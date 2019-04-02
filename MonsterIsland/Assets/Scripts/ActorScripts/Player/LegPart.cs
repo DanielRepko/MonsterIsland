@@ -27,12 +27,15 @@ public class LegPart : MonoBehaviour {
 
     public void InitializePart(LegPartInfo legPartInfo)
     {
+        //this mainly is used to check whether the part is attached to the player
+        PlayerController player = GetComponentInParent<PlayerController>();
+
         if (legPartInfo != null)
         {
             partInfo = legPartInfo;
 
             //populating the partAbility field
-            if (partInfo.abilityName != null)
+            if (partInfo.abilityName != null && player != null)
             {
                 partAbility = AbilityFactory.GetPartAbility(partInfo.abilityName);
 
@@ -44,7 +47,7 @@ public class LegPart : MonoBehaviour {
                 }//if the type is Activate, set the ability to the Player action delegate
                 else if(partInfo.abilityType == "Activate")
                 {
-                    PlayerController.Instance.jumpDelegate = partAbility;
+                    player.jumpDelegate = partAbility;
                 }//if the value is anything else, then a typo must have occured when creating the ability info
                 else
                 {

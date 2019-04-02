@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponRenderer: {fileID: 0}
-  damage: 0
+  damage: 2
   speed: 13
   target: Enemy
 --- !u!212 &212040770578979524

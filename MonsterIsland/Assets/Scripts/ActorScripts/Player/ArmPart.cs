@@ -43,7 +43,8 @@ public class ArmPart : MonoBehaviour {
 
     public void InitializePart(ArmPartInfo armPartInfo)
     {
-        PlayerController player = PlayerController.Instance;
+        //this mainly is used to check whether the part is attached to the player
+        PlayerController player = GetComponentInParent<PlayerController>();
 
         if (armPartInfo != null)
         {
@@ -51,7 +52,7 @@ public class ArmPart : MonoBehaviour {
             weapon = WeaponFactory.GetWeapon(partInfo.equippedWeapon, partType, "Player", weaponRenderer);
 
             //checking whether this part has an ability
-            if (partInfo.abilityName != null)
+            if (partInfo.abilityName != null && player != null)
             {
                 //populating the partAbility field with the appropriate ability delegate
                 ability = AbilityFactory.GetArmPartAbility(partInfo.abilityName);
