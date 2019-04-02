@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
 
+    [Range(0, 3)]
+    public int FileNumber;
+
     public PlayerController player;
     public GameObject coinPrefab;
     public GameObject headDropPrefab;
@@ -34,4 +37,8 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void SaveGame() {
+
+    }
 }
