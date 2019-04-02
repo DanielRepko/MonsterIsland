@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
     [Range(0, 3)]
-    public int FileNumber;
+    public int fileNumber;
     public GameFile gameFile;
     
     public GameObject coinPrefab;
@@ -38,14 +38,14 @@ public class GameManager : MonoBehaviour {
 	}
 
     //Creates a new save file
-    public void CreateSave(int fileNumber) {
+    public void CreateSave() {
         //Store the top level Game File info
         GameFile newFile = new GameFile();
         newFile.fileID = fileNumber;
         newFile.totalPlayTime = 0;
         DateTime date = DateTime.Now;
         newFile.saveDate = date.ToShortDateString();
-        newFile.saveArea = LevelName.Hub.ToString();
+        newFile.saveArea = LevelName.Plains.ToString();
         newFile.saveNest = LevelPosition.Start.ToString();
         newFile.player = new PlayerInfo();
         newFile.gameProgression = new GameProgression();
@@ -139,5 +139,10 @@ public class GameManager : MonoBehaviour {
     //Updates an existing save file
     public void SaveGame() {
         GameFile fileToUpdate = gameFile;
+    }
+
+    public void DeleteSave() {
+        var savePath = System.IO.Path.Combine(Application.persistentDataPath, "file" + fileNumber + ".json");
+        System.IO.File.Delete(savePath);
     }
 }

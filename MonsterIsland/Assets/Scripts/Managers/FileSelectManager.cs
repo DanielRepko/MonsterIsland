@@ -44,7 +44,7 @@ public class FileSelectManager : MonoBehaviour {
     }
 
     public void ShowFile(int fileNumber) {
-        GameManager.instance.FileNumber = fileNumber;
+        GameManager.instance.fileNumber = fileNumber;
         var savePath = Path.Combine(Application.persistentDataPath, "file" + fileNumber + ".json");
         string loadedFileJson;
         try {
@@ -115,6 +115,19 @@ public class FileSelectManager : MonoBehaviour {
             legendaryRightArm.SetActive(false);
             legendaryLegs.SetActive(false);
             GameManager.instance.gameFile = null;
+        }
+    }
+
+    public void PlayPressed() {
+        if(GameManager.instance.gameFile == null) {
+            GameManager.instance.CreateSave();
+        }
+    }
+
+    public void DeletePressed() {
+        if(GameManager.instance.gameFile != null) {
+            GameManager.instance.DeleteSave();
+            ShowFile(GameManager.instance.fileNumber);
         }
     }
 }
