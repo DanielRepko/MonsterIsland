@@ -128,6 +128,13 @@ public class GameManager : MonoBehaviour {
         newFile.gameProgression.nestInfo.castleNest1 = false;
         newFile.gameProgression.nestInfo.castleNest2 = false;
         newFile.gameProgression.nestInfo.castleNest3 = false;
+
+        //Store the save file as the active gameFile, and save to a json file
+        gameFile = newFile;
+        var fileToJson = JsonUtility.ToJson(newFile);
+        var savePath = System.IO.Path.Combine(Application.persistentDataPath, "file" + fileNumber + ".json");
+        System.IO.File.WriteAllText(savePath, fileToJson);
+        Debug.Log("Saved File" + fileNumber + " to " + savePath);
     }
 
     //Updates an existing save file
