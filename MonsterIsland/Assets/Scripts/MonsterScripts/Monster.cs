@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMonster : MonoBehaviour {
+public class Monster : MonoBehaviour {
 
     //parts of the Monster
     public HeadPart headPart;

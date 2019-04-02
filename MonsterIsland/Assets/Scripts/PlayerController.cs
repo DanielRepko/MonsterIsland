@@ -61,7 +61,7 @@ public class PlayerController : Actor {
     [Space(20, order = 1)]
 
     //the Monster gameObject
-    public PlayerMonster monster;
+    public Monster monster;
 
     //delegate type used for player actions and abilities
     public delegate void Ability();
