@@ -75,6 +75,59 @@ public class GameManager : MonoBehaviour {
         newFile.player.inventory.collectedParts.collectedLegs = new List<string>();
         newFile.player.inventory.collectedParts.collectedLegs.Add(Helper.MonsterName.Mitch);
         newFile.player.inventory.collectedWeapons = new List<string>();
+
+        //Legendary Parts Collected
+        newFile.gameProgression.collectedLegendaryParts = new CollectedLegendaryParts();
+        newFile.gameProgression.collectedLegendaryParts.headCollected = false;
+        newFile.gameProgression.collectedLegendaryParts.torsoCollected = false;
+        newFile.gameProgression.collectedLegendaryParts.leftArmCollected = false;
+        newFile.gameProgression.collectedLegendaryParts.rightArmCollected = false;
+        newFile.gameProgression.collectedLegendaryParts.legsCollected = false;
+
+        //Bosses Defeated
+        newFile.gameProgression.defeatedBosses = new DefeatedBosses();
+        newFile.gameProgression.defeatedBosses.plainsBossDefeated = false;
+        newFile.gameProgression.defeatedBosses.desertBossDefeated = false;
+        newFile.gameProgression.defeatedBosses.underwaterBossDefeated = false;
+        newFile.gameProgression.defeatedBosses.jungleBossDefeated = false;
+        newFile.gameProgression.defeatedBosses.skylandBossDefeated = false;
+        newFile.gameProgression.defeatedBosses.castleBossDefeated = false;
+
+        //Chests Opened
+        newFile.gameProgression.openedChests = new OpenedChests();
+        newFile.gameProgression.openedChests.plainsChest1 = false;
+        newFile.gameProgression.openedChests.plainsChest2 = false;
+        newFile.gameProgression.openedChests.hubChest = false;
+        newFile.gameProgression.openedChests.desertChest1 = false;
+        newFile.gameProgression.openedChests.desertChest2 = false;
+        newFile.gameProgression.openedChests.underwaterChest1 = false;
+        newFile.gameProgression.openedChests.underwaterChest2 = false;
+        newFile.gameProgression.openedChests.jungleChest1 = false;
+        newFile.gameProgression.openedChests.jungleChest2 = false;
+        newFile.gameProgression.openedChests.skylandChest1 = false;
+        newFile.gameProgression.openedChests.skylandChest2 = false;
+
+        //Nests Activated
+        newFile.gameProgression.nestInfo = new NestInfo();
+        newFile.gameProgression.nestInfo.hubNest = true;
+        newFile.gameProgression.nestInfo.plainsNest1 = true;
+        newFile.gameProgression.nestInfo.plainsNest2 = false;
+        newFile.gameProgression.nestInfo.plainsNest3 = false;
+        newFile.gameProgression.nestInfo.desertNest1 = false;
+        newFile.gameProgression.nestInfo.desertNest2 = false;
+        newFile.gameProgression.nestInfo.desertNest3 = false;
+        newFile.gameProgression.nestInfo.underwaterNest1 = false;
+        newFile.gameProgression.nestInfo.underwaterNest2 = false;
+        newFile.gameProgression.nestInfo.underwaterNest3 = false;
+        newFile.gameProgression.nestInfo.jungleNest1 = false;
+        newFile.gameProgression.nestInfo.jungleNest2 = false;
+        newFile.gameProgression.nestInfo.jungleNest3 = false;
+        newFile.gameProgression.nestInfo.skylandNest1 = false;
+        newFile.gameProgression.nestInfo.skylandNest2 = false;
+        newFile.gameProgression.nestInfo.skylandNest3 = false;
+        newFile.gameProgression.nestInfo.castleNest1 = false;
+        newFile.gameProgression.nestInfo.castleNest2 = false;
+        newFile.gameProgression.nestInfo.castleNest3 = false;
     }
 
     //Updates an existing save file
