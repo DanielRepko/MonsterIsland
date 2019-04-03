@@ -25,6 +25,12 @@ public class Enemy : Actor {
 
     public Canvas healthBar;
 
+    //fields for handling aggro
+    public bool isAggro;
+    public float aggroRange = 10f;
+    public float aggroTime;
+    private float aggroTimer;
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -42,6 +48,7 @@ public class Enemy : Actor {
     {
         text.text = health.ToString();
 
+        //running any necessary checks on the Enemy
         checkDelegate();
 
         //Handling Hitstun
@@ -90,7 +97,12 @@ public class Enemy : Actor {
         armAttackDelegate = Attack;
         abilityDelegate = Ability;
 
+        //adding methods to be run in fixed update to the check delegate
+        //this allows multiple methods that need to constantly check some status of the Enemy
+        //to be run in FixedUpdate without filling it with method calls
         checkDelegate += UpdateCooldowns;
+        checkDelegate += CheckLineOfSight;
+        checkDelegate += CheckAggro;
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
         //setting the cooldown timers so that the player can use the inputs as soon as the game loads
@@ -121,6 +133,23 @@ public class Enemy : Actor {
     public void SetCooldowns()
     {
 
+    }
+
+    public void CheckAggro()
+    {
+        if(isAggro && aggroTimer < aggroTime)
+        {
+            aggroTimer += Time.deltaTime;
+        }
+        else if(isAggro && aggroTimer >= aggroTime)
+        {
+            isAggro = false;
+            aggroTimer = 0;
+        }
+        else if (!isAggro)
+        {
+            aggroTimer = 0;
+        }
     }
 
     public bool CheckCooldown(string inputCooldown)
@@ -159,6 +188,21 @@ public class Enemy : Actor {
         }
     }
 
+    public void CheckLineOfSight()
+    {
+        Ray lineOfSight = new Ray();
+        lineOfSight.origin = transform.position;
+        lineOfSight.direction = new Vector2(facingDirection, 0);
+
+        Debug.DrawRay(lineOfSight.origin, new Vector3(aggroRange * facingDirection, 0, 0), Color.green);
+
+        RaycastHit2D hit = Physics2D.Raycast(lineOfSight.origin, lineOfSight.direction, aggroRange, 1 << LayerMask.NameToLayer("Player"));
+        if (hit)
+        {
+            isAggro = true;
+        }
+    }
+
     public void Attack(string armType = "RightArm")
     {
 
@@ -173,6 +217,7 @@ public class Enemy : Actor {
     {
         if (!inHitStun)
         {
+            isAggro = true;
             SetFacingDirection(knockBackDirection);
             health -= damage;
             inHitStun = true;
@@ -194,7 +239,6 @@ public class Enemy : Actor {
 
         for(int i = 0; i < colliders.Length; i++)
         {
-            Debug.Log(colliders[i]);
             if(colliders[i] == hurtBox)
             {
                 triggerIsHurtbox = true;

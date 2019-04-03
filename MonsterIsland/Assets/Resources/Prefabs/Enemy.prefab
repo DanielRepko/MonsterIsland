@@ -965,7 +965,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.009260654, y: -0.22890937}
   m_SpriteTilingProperty:
@@ -1285,6 +1285,9 @@ MonoBehaviour:
   attackCooldown: 0
   abilityCooldown: 0
   healthBar: {fileID: 223297972070694418}
+  isAggro: 0
+  aggroRange: 10
+  aggroTime: 5
 --- !u!114 &114906860736696718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2299,7 +2302,7 @@ PointEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 4352
   m_ForceMagnitude: 0
   m_ForceVariation: 1
   m_DistanceScale: 0.0001
