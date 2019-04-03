@@ -126,6 +126,7 @@ public class PlayerController : MonoBehaviour {
             && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))
             && !UIManager.Instance.nestCanvas.activeInHierarchy) {
             UIManager.Instance.ShowNestCanvas();
+            nestCheck.gameObject.GetComponent<Nest>().SetLastNestUsed();
             if(nestCheck.gameObject.GetComponent<Nest>().isActive == false) {
                 nestCheck.gameObject.GetComponent<Nest>().Activate();
             }

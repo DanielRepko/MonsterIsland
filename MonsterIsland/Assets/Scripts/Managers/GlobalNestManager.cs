@@ -105,4 +105,10 @@ public class GlobalNestManager : MonoBehaviour {
         nestInfo.castleNest3 = gameNests[6, 2];
         GameManager.instance.gameFile.gameProgression.nestInfo = nestInfo;
     }
+
+    public void RestPressed() {
+        PlayerController.Instance.health = PlayerController.Instance.maxHealth;
+        GameManager.instance.FinalizeSave();
+        UIManager.Instance.HideNestCanvas();
+    }
 }

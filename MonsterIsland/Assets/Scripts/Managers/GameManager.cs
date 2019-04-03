@@ -155,10 +155,4 @@ public class GameManager : MonoBehaviour {
         System.IO.File.Delete(savePath);
         Debug.Log("File " + fileNumber + " deleted");
     }
-
-    private void OnGUI() {
-        if (GUILayout.Button("Force Save")) {
-            FinalizeSave();
-        }
-    }
 }
