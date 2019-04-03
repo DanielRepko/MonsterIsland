@@ -35,6 +35,7 @@ public class Enemy : Actor {
     void Start () {
         rb = GetComponent<Rigidbody2D>();
         InitializeEnemy();
+        SetFacingDirection(transform.localScale.x);
 	}
 	
 	// Update is called once per frame
@@ -103,6 +104,7 @@ public class Enemy : Actor {
         checkDelegate += UpdateCooldowns;
         checkDelegate += CheckLineOfSight;
         checkDelegate += CheckAggro;
+        checkDelegate += FollowPlayer;
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
         //setting the cooldown timers so that the player can use the inputs as soon as the game loads
@@ -112,7 +114,16 @@ public class Enemy : Actor {
 
     public void SetFacingDirection(float scaleX)
     {
-        facingDirection = scaleX;
+        //checking to see whether scaleX is indicating left or right (may not always be passed as -1 or 1)
+        if(scaleX < 0)
+        {
+            facingDirection = -1;
+        }
+        else
+        {
+            facingDirection = 1;
+        }
+        
         transform.localScale = new Vector3(facingDirection, 1, 1);
         healthBar.transform.localScale = new Vector3(facingDirection, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
         monster.ChangeDirection(facingDirection);
@@ -149,6 +160,18 @@ public class Enemy : Actor {
         else if (!isAggro)
         {
             aggroTimer = 0;
+        }
+    }
+
+    public void FollowPlayer()
+    {
+        if (isAggro)
+        {
+            Debug.Log((PlayerController.Instance.transform.position - transform.position).normalized.x);
+            //having the enemy face towards the player
+            SetFacingDirection((PlayerController.Instance.transform.position - transform.position).normalized.x);
+            //making the enemy move towards the player
+            rb.velocity = new Vector2(moveSpeed * facingDirection, rb.velocity.y);
         }
     }
 
