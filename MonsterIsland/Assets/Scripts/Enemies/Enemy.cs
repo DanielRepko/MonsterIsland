@@ -181,7 +181,27 @@ public class Enemy : Actor {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision == PlayerController.Instance.hurtBox)
+        bool triggerIsHurtbox = false;
+        //checking to see if the player ran into the Enemy
+        Collider2D[] colliders = new Collider2D[5];
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        LayerMask enemyLayer = LayerMask.GetMask("Enemy");
+        contactFilter.SetLayerMask(enemyLayer);
+        contactFilter.useLayerMask = true;
+        contactFilter.useTriggers = true;
+
+        collision.OverlapCollider(contactFilter, colliders);
+
+        for(int i = 0; i < colliders.Length; i++)
+        {
+            Debug.Log(colliders[i]);
+            if(colliders[i] == hurtBox)
+            {
+                triggerIsHurtbox = true;
+            }
+        }
+
+        if (collision == PlayerController.Instance.hurtBox && triggerIsHurtbox)
         {
             if (!inHitStun)
             {
@@ -189,17 +209,6 @@ public class Enemy : Actor {
             }
         }
         
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision == PlayerController.Instance.hurtBox)
-        {
-            if (!inHitStun)
-            {
-                PlayerController.Instance.TakeDamage(1, Helper.GetKnockBackDirection(transform, collision.transform));
-            }
-        }
     }
 
     private void KillEnemy() {

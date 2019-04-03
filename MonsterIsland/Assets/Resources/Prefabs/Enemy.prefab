@@ -422,12 +422,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4847553954272542}
   - component: {fileID: 114578217870108758}
-  - component: {fileID: 68940303664264368}
   - component: {fileID: 70453582673227394}
   - component: {fileID: 50284019387309448}
   - component: {fileID: 58510137848486018}
   - component: {fileID: 250790272746950184}
   - component: {fileID: 95621210937696042}
+  - component: {fileID: 61912855662575508}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -955,8 +955,8 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.0001
---- !u!68 &68940303664264368
-EdgeCollider2D:
+--- !u!61 &61912855662575508
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -964,17 +964,22 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.009260654, y: -0.22890937}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5970488, y: 3.1975296}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.78915787, y: -1.829342}
-  - {x: -0.7891579, y: 1.370381}
-  - {x: 0.8105192, y: 1.370381}
-  - {x: 0.8105192, y: -1.829342}
-  - {x: -0.789734, y: -1.829342}
 --- !u!70 &70453582673227394
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -1046,11 +1051,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1bad03d6351fe4b8a562224c5bda4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headPart: {fileID: 0}
-  torsoPart: {fileID: 0}
-  rightArmPart: {fileID: 0}
-  leftArmPart: {fileID: 0}
-  legPart: {fileID: 0}
+  headPart: {fileID: 114021261452276526}
+  torsoPart: {fileID: 114906860736696718}
+  rightArmPart: {fileID: 114075486265279112}
+  leftArmPart: {fileID: 114366350970800272}
+  legPart: {fileID: 114352212137060682}
 --- !u!114 &114075486265279112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1231,9 +1236,9 @@ MonoBehaviour:
   forearmSprite: {fileID: 21300000, guid: c0e59cc49aeddb641b67aa1959ee470d, type: 3}
   handBackSprite: {fileID: 21300000, guid: 93540ef679a26b049b1ff9c14d510fe8, type: 3}
   handFrontSprite: {fileID: 21300000, guid: 48e6e019c132ca244b1392709b21ae41, type: 3}
-  fingersOpenBackSprite: {fileID: 21300000, guid: a52262c8baa922f4db5f728277c17fbe,
+  fingersOpenBackSprite: {fileID: 21300000, guid: 00e124ac1781a434685521e464fee583,
     type: 3}
-  fingersOpenFrontSprite: {fileID: 21300000, guid: 00e124ac1781a434685521e464fee583,
+  fingersOpenFrontSprite: {fileID: 21300000, guid: a52262c8baa922f4db5f728277c17fbe,
     type: 3}
   fingersClosedBackSprite: {fileID: 21300000, guid: b0497468388b1b648b78d31ca0c60647,
     type: 3}
@@ -1265,15 +1270,15 @@ MonoBehaviour:
   inHitStun: 0
   health: 10
   maxHealth: 10
-  hurtBox: {fileID: 0}
+  hurtBox: {fileID: 61912855662575508}
   rayCastLengthCheck: 0.2
   width: 0
   height: 0
-  monster: {fileID: 0}
+  monster: {fileID: 114033165847294608}
   facingDirection: 0
   rb: {fileID: 0}
   text: {fileID: 114244767943668226}
-  monsterName: 
+  monsterName: EnemyMitch
   alwaysDropPart: 0
   partToAlwaysDrop: 
   equippedWeapon: 
