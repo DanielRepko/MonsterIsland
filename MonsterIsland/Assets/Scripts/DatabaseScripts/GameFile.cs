@@ -6,7 +6,7 @@ using System;
 [Serializable]
 public class GameFile {
     public int fileID;
-    public decimal totalPlayTime;
+    public float totalPlayTime;
     public string saveDate;
     public string saveArea;
     public string saveNest;

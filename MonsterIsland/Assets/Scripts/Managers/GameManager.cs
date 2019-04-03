@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour {
     [Range(0, 3)]
     public int fileNumber;
     public GameFile gameFile;
-    
+
+    public float lastTimeUpdate;
+
     public GameObject coinPrefab;
     public GameObject headDropPrefab;
     public GameObject leftArmDropPrefab;
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
     //Creates a new save file
@@ -137,12 +139,26 @@ public class GameManager : MonoBehaviour {
     }
 
     //Updates an existing save file
-    public void SaveGame() {
-        GameFile fileToUpdate = gameFile;
+    public void FinalizeSave() {
+        var time = Time.timeSinceLevelLoad;
+        gameFile.totalPlayTime += (Time.timeSinceLevelLoad - lastTimeUpdate);
+        lastTimeUpdate = time;
+        gameFile.saveDate = DateTime.Now.ToShortDateString();
+        var fileToJson = JsonUtility.ToJson(gameFile);
+        var savePath = System.IO.Path.Combine(Application.persistentDataPath, "file" + fileNumber + ".json");
+        System.IO.File.WriteAllText(savePath, fileToJson);
+        Debug.Log("Saved File" + fileNumber + " to " + savePath);
     }
 
     public void DeleteSave() {
         var savePath = System.IO.Path.Combine(Application.persistentDataPath, "file" + fileNumber + ".json");
         System.IO.File.Delete(savePath);
+        Debug.Log("File " + fileNumber + " deleted");
+    }
+
+    private void OnGUI() {
+        if (GUILayout.Button("Force Save")) {
+            FinalizeSave();
+        }
     }
 }

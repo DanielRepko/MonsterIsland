@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -71,7 +72,7 @@ public class FileSelectManager : MonoBehaviour {
 
             //General Information
             monsterName.text = loadedFile.player.name;
-            playTime.text = loadedFile.totalPlayTime.ToString();
+            playTime.text = TimeSpan.FromSeconds((int) loadedFile.totalPlayTime).ToString();
             areaName.text = loadedFile.saveArea;
             dateSaved.text = loadedFile.saveDate;
             currentBalance.text = "MB$" + loadedFile.player.inventory.monsterBucks;
@@ -114,18 +115,20 @@ public class FileSelectManager : MonoBehaviour {
             legendaryLeftArm.SetActive(false);
             legendaryRightArm.SetActive(false);
             legendaryLegs.SetActive(false);
-            GameManager.instance.gameFile = null;
+            GameManager.instance.gameFile.fileID = -1;
         }
     }
 
     public void PlayPressed() {
-        if(GameManager.instance.gameFile == null) {
+        if (GameManager.instance.gameFile.fileID == -1) {
             GameManager.instance.CreateSave();
+        } else {
+
         }
     }
 
     public void DeletePressed() {
-        if(GameManager.instance.gameFile != null) {
+        if(GameManager.instance.gameFile.fileID != -1) {
             GameManager.instance.DeleteSave();
             ShowFile(GameManager.instance.fileNumber);
         }
