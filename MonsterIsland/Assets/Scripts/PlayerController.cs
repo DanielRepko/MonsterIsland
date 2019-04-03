@@ -2,21 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : Actor {
 
     public static PlayerController Instance;
 
     public Animator animator;
-
-    public float moveSpeed = 15.5f;
-    public float jumpForce = 60f;
 
     //damage dealt by right arm attack
     public int rightAttackPower = 2;
     //damage dealt by left arm attack
     public int leftAttackPower = 2;
 
-    public bool attacksLocked;
     //these fields are used to add delays between when the player can complete certain actions
     private float _rightAttackCooldown = 0.5f;
     public float RightAttackCooldown { get { return _rightAttackCooldown; } set { _rightAttackCooldown = value; } }
@@ -40,26 +36,12 @@ public class PlayerController : MonoBehaviour {
 
     [Space(20, order = 1)]
 
-
-    public int health;
-    public int maxHealth;
-    public Collider2D hurtBox;
-
-    private float hitStunCooldown = 0.4f;
-    private float hitStunTimer = 0;
-    public bool inHitStun = false;
-    public bool movementLocked = false;
-
     public BoxCollider2D hitBox;
     public int hitBoxDamage;
     public int hitCounter;
     public int totalHits;
 
     public bool hasExtraJump = true;
-
-    public float rayCastLengthCheck = 0.2f;
-    public float width;
-    public float height;
 
     private Collider2D nestCheck;
 
@@ -76,13 +58,6 @@ public class PlayerController : MonoBehaviour {
     private float timeUnderwater;      //The amount of time the player has spent underwater since they last required air
     public bool hasGills = false;
 
-    [Space(20, order = 1)]
-
-    public Rigidbody2D rb;
-
-    //the Monster gameObject
-    public PlayerMonster monster;
-
     //delegate type used for player actions and abilities
     public delegate void Ability();
 
@@ -93,10 +68,6 @@ public class PlayerController : MonoBehaviour {
     public AbilityFactory.ArmAbility leftAttackDelegate = null;
     public AbilityFactory.Ability torsoAbilityDelegate = null;
     public AbilityFactory.Ability headAbilityDelegate = null;
-
-    //used to check what direction the player is facing
-    //-1 = left  1 = right
-    public int facingDirection;
 
     //used to perform miscellaneous checks on the player through fixed update
     public AbilityFactory.Ability playerCheckDelegate = null;
@@ -121,19 +92,6 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
-        if (nestCheck != null && nestCheck.tag == "Nest"
-            && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))
-            && !UIManager.Instance.nestCanvas.activeInHierarchy) {
-            UIManager.Instance.ShowNestCanvas();
-            if(nestCheck.gameObject.GetComponent<Nest>().isActive == false) {
-                nestCheck.gameObject.GetComponent<Nest>().Activate();
-            }
-        }
-
-        if(Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Pause))) {
-            UIManager.Instance.PauseGame();
-        }
 
         //Check if the player is underwater, and if they are, update the underwater timer
         if (isUnderwater) {
@@ -161,8 +119,7 @@ public class PlayerController : MonoBehaviour {
 
         //moving the player
         if (!inHitStun && !movementLocked)
-        {
-            
+        {            
             moveDelegate();
         }
 
@@ -198,13 +155,30 @@ public class PlayerController : MonoBehaviour {
         }
 
         //checking to see whether the extra jump should be refreshed
-        if (PlayerIsOnGround()) {
+        if (IsOnGround()) {
             hasExtraJump = true;
         }
 
         //input jump
         if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Jump))) {
             jumpDelegate();
+        }
+
+
+        if (nestCheck != null && nestCheck.tag == "Nest"
+            && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))
+            && !UIManager.Instance.nestCanvas.activeInHierarchy)
+        {
+            UIManager.Instance.ShowNestCanvas();
+            if (nestCheck.gameObject.GetComponent<Nest>().isActive == false)
+            {
+                nestCheck.gameObject.GetComponent<Nest>().Activate();
+            }
+        }
+
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Pause)))
+        {
+            UIManager.Instance.PauseGame();
         }
     }
 
@@ -238,7 +212,7 @@ public class PlayerController : MonoBehaviour {
 
     //makes the player jump
     public void Jump() {
-        if (PlayerIsOnGround()) {
+        if (IsOnGround()) {
             //calling the jump animation
             animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -287,7 +261,7 @@ public class PlayerController : MonoBehaviour {
     //the default ability method (default is to have no ability so it is meant to be empty)
     public void AbilityDefault() {}
 
-    public void TakeDamage(int damage, float knockBackDirection)
+    override public void TakeDamage(int damage, float knockBackDirection)
     {
         if (!inHitStun)
         {
@@ -340,21 +314,6 @@ public class PlayerController : MonoBehaviour {
         headAbilityTimer = HeadAbilityCooldown;
         torsoAbilityTimer = TorsoAbilityCooldown;
         legAbilityTimer = LegAbilityCooldown;
-    }
-
-    public void ShowAttackFace()
-    {
-        monster.headPart.face.sprite = monster.headPart.attackFaceSprite;
-    }
-
-    public void ShowIdleFace()
-    {
-        monster.headPart.face.sprite = monster.headPart.idleFaceSprite;
-    }
-
-    public void ShowHurtFace()
-    {
-        monster.headPart.face.sprite = monster.headPart.hurtFaceSprite;
     }
 
     public void CheckHitBox()
@@ -460,7 +419,6 @@ public class PlayerController : MonoBehaviour {
                 case "rightAttack":
                     if (rightAttackTimer >= RightAttackCooldown)
                     {
-                        //Debug.Log(monster.rightArmPart.partInfo.abilityCooldown);
                         rightAttackTimer = 0;
                         return true;
                     }
@@ -514,23 +472,6 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
-            return false;
-        }
-    }
-
-    //PlayerIsOnGround function taken from SuperSoyBoy game from Ray Wenderlich
-    public bool PlayerIsOnGround() {
-        bool groundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - height), -Vector2.down, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Terrain"));
-        bool groundCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Terrain"));
-        bool groundCheck3 = Physics2D.Raycast(new Vector2(transform.position.x - (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Terrain"));
-
-
-        bool waterCheck1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - height), -Vector2.down, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Water"));
-        bool waterCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Water"));
-        bool waterCheck3 = Physics2D.Raycast(new Vector2(transform.position.x - (width - 0.2f), transform.position.y - height), -Vector2.up, rayCastLengthCheck, 1 << LayerMask.NameToLayer("Water"));
-        if (groundCheck1 || groundCheck2 || groundCheck3 || waterCheck1 || waterCheck2 || waterCheck3) {
-            return true;
-        } else {
             return false;
         }
     }
