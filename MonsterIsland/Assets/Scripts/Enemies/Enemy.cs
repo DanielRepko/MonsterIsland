@@ -22,6 +22,9 @@ public class Enemy : Actor {
     //ability cooldown
     public float abilityCooldown;
     private float abilityCooldownTimer;
+    //jump cooldown (to prevent them from jumping every possible frame)
+    public float jumpCooldown;
+    private float jumpCooldownTimer;
 
     public Canvas healthBar;
 
@@ -34,8 +37,10 @@ public class Enemy : Actor {
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
+        width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
+        height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
+
         InitializeEnemy();
-        SetFacingDirection(transform.localScale.x);
 	}
 	
 	// Update is called once per frame
@@ -110,6 +115,8 @@ public class Enemy : Actor {
         //setting the cooldown timers so that the player can use the inputs as soon as the game loads
         attackCooldownTimer = attackCooldown;
         abilityCooldownTimer = abilityCooldown;
+
+        SetFacingDirection(transform.localScale.x);
     }
 
     public void SetFacingDirection(float scaleX)
@@ -139,11 +146,67 @@ public class Enemy : Actor {
         {
             abilityCooldownTimer += Time.deltaTime;
         }
+        if (abilityCooldownTimer < attackCooldown)
+        {
+            abilityCooldownTimer += Time.deltaTime;
+        }
+        if (jumpCooldownTimer < jumpCooldown)
+        {
+            jumpCooldownTimer += Time.deltaTime;
+        }
+    }
+
+    public bool CheckCooldown(string inputCooldown)
+    {
+        if (!attacksLocked)
+        {
+            switch (inputCooldown)
+            {
+                case "attack":
+                    if (attackCooldownTimer >= attackCooldown)
+                    {
+                        attackCooldownTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case "ability":
+                    if (abilityCooldownTimer >= abilityCooldown)
+                    {
+                        abilityCooldownTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case "jump":
+                    if (jumpCooldownTimer >= jumpCooldown)
+                    {
+                        jumpCooldownTimer = 0;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                default:
+                    return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void SetCooldowns()
     {
-
+        attackCooldownTimer = attackCooldown;
+        abilityCooldownTimer = abilityCooldown;
+        jumpCooldownTimer = jumpCooldown;
     }
 
     public void CheckAggro()
@@ -167,53 +230,32 @@ public class Enemy : Actor {
     {
         if (isAggro)
         {
-            Debug.Log((PlayerController.Instance.transform.position - transform.position).normalized.x);
             //having the enemy face towards the player
             SetFacingDirection((PlayerController.Instance.transform.position - transform.position).normalized.x);
+
+            bool playerIsHigher = PlayerController.Instance.transform.position.y > transform.position.y && (PlayerController.Instance.transform.position.y - transform.position.y) >= 1;
+            if (playerIsHigher && IsOnGround() && CheckCooldown("jump"))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
+            }
             //making the enemy move towards the player
             rb.velocity = new Vector2(moveSpeed * facingDirection, rb.velocity.y);
             //playing the correct animation
             animator.SetBool("IsRunningRight", rb.velocity.x > 0);
             animator.SetBool("IsRunningLeft", rb.velocity.x < 0);
             animator.SetFloat("FacingDirection", facingDirection);
-        }
-    }
 
-    public bool CheckCooldown(string inputCooldown)
-    {
-        if (!attacksLocked)
-        {
-            switch (inputCooldown)
-            {
-                case "attack":
-                    if (attackCooldownTimer >= attackCooldown)
-                    {
-                        attackCooldownTimer = 0;
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }               
-                case "ability":
-                    if (abilityCooldownTimer >= abilityCooldown)
-                    {
-                        abilityCooldownTimer = 0;
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                default:
-                    return false;
-            }
         }
         else
         {
-            return false;
+            if(rb.velocity.x == 0)
+            {
+                animator.SetBool("IsRunningRight", false);
+                animator.SetBool("IsRunningLeft", false);
+            }
         }
-    }
+    }    
 
     public void CheckLineOfSight()
     {
