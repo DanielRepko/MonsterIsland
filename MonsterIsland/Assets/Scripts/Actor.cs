@@ -24,8 +24,9 @@ abstract public class Actor : MonoBehaviour {
 
     public Monster monster;
 
+    public Animator animator;
 
-    //used to check what direction the player is facing
+    //used to check what direction the actor is facing
     //-1 = left  1 = right
     public float facingDirection;
 

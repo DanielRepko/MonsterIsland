@@ -6,8 +6,6 @@ public class PlayerController : Actor {
 
     public static PlayerController Instance;
 
-    public Animator animator;
-
     //damage dealt by right arm attack
     public int rightAttackPower = 2;
     //damage dealt by left arm attack

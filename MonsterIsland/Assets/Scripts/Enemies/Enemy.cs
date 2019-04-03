@@ -172,6 +172,10 @@ public class Enemy : Actor {
             SetFacingDirection((PlayerController.Instance.transform.position - transform.position).normalized.x);
             //making the enemy move towards the player
             rb.velocity = new Vector2(moveSpeed * facingDirection, rb.velocity.y);
+            //playing the correct animation
+            animator.SetBool("IsRunningRight", rb.velocity.x > 0);
+            animator.SetBool("IsRunningLeft", rb.velocity.x < 0);
+            animator.SetFloat("FacingDirection", facingDirection);
         }
     }
 
