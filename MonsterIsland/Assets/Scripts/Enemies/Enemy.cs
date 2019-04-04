@@ -183,14 +183,48 @@ public class Enemy : Actor {
             jumpRay.origin = new Vector2(transform.position.x, transform.position.y - 1);
             jumpRay.direction = new Vector2(facingDirection, 0);
 
-            Debug.DrawRay(jumpRay.origin, new Vector2(1 * facingDirection, 0), Color.green);
+            Debug.DrawRay(jumpRay.origin, new Vector2(1 * facingDirection, 0), Color.cyan);
 
             RaycastHit2D jumpHit = Physics2D.Raycast(jumpRay.origin, jumpRay.direction, 1.2f, 1 << LayerMask.NameToLayer("Terrain"));
             if (jumpHit)
             {
                 Jump();
             }
+
+            //checking if they need to jump over a gap (and whether they can make the jump)
+            if(HasReachedLedge() && CanJumpOverGap())
+            {
+                Jump();
+            }
         }
+    }
+
+    //sends out a raycast to see if the enemy has reached a ledge
+    public bool HasReachedLedge()
+    {
+        Ray gapRay = new Ray();
+        gapRay.origin = new Vector2(transform.position.x, transform.position.y + 1.4f);
+        gapRay.direction = new Vector2(1.5f * facingDirection, -3.4f).normalized;
+
+        Debug.DrawRay(gapRay.origin, new Vector2(1.5f * facingDirection, -3.4f), Color.blue);
+
+        RaycastHit2D gapHit = Physics2D.Raycast(gapRay.origin, gapRay.direction, new Vector2(1.5f, -3.4f).magnitude, 1 << LayerMask.NameToLayer("Terrain"));
+
+        return !gapHit;
+    }
+
+    //sends out a raycast to see if there is terrain at the end of their jump range
+    public bool CanJumpOverGap()
+    {
+        Ray canCrossRay = new Ray();
+        canCrossRay.origin = new Vector2(transform.position.x, transform.position.y + 1.4f);
+        canCrossRay.direction = new Vector2(7 * facingDirection, -3.4f).normalized;
+        
+        Debug.DrawRay(canCrossRay.origin, new Vector2(7 * facingDirection, -3.4f), Color.blue);
+
+        RaycastHit2D canCrossHit = Physics2D.Raycast(canCrossRay.origin, canCrossRay.direction, new Vector2(6, -3.4f).magnitude, 1 << LayerMask.NameToLayer("Terrain"));
+
+        return canCrossHit;
     }
 
     //used to check whether the target is on a platform above the enemy
@@ -376,7 +410,7 @@ public class Enemy : Actor {
         lineOfSight.origin = transform.position;
         lineOfSight.direction = new Vector2(facingDirection, 0);
 
-        Debug.DrawRay(lineOfSight.origin, new Vector3(aggroRange * facingDirection, 0, 0), Color.green);
+        Debug.DrawRay(lineOfSight.origin, new Vector3(aggroRange * facingDirection, 0, 0), Color.yellow);
 
         RaycastHit2D hit = Physics2D.Raycast(lineOfSight.origin, lineOfSight.direction, aggroRange, 1 << LayerMask.NameToLayer("Player"));
         if (hit)
