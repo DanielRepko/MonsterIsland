@@ -34,6 +34,11 @@ public class Enemy : Actor {
     public float aggroTime;
     private float aggroTimer;
 
+    private bool isUnderWater;
+
+    //the target for the enemy to follow, can be the player or patrol points
+    public GameObject target;
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -109,7 +114,7 @@ public class Enemy : Actor {
         checkDelegate += UpdateCooldowns;
         checkDelegate += CheckLineOfSight;
         checkDelegate += CheckAggro;
-        checkDelegate += FollowPlayer;
+        checkDelegate += FollowTarget;
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
         //setting the cooldown timers so that the player can use the inputs as soon as the game loads
@@ -117,6 +122,65 @@ public class Enemy : Actor {
         abilityCooldownTimer = abilityCooldown;
 
         SetFacingDirection(transform.localScale.x);
+    }
+
+    public void FollowTarget()
+    {
+        if (target != null && !inHitStun)
+        {
+            //having the enemy face towards the target
+            SetFacingDirection((target.transform.position - transform.position).normalized.x);
+
+            //swim up to the target if underwater
+            if (isUnderWater)
+            {
+                bool targetIsHigher = target.transform.position.y > transform.position.y && (target.transform.position.y - transform.position.y) >= 1;
+                if (targetIsHigher)
+                {
+                    Jump();
+                }
+            }
+            //otherwise the enemy must be on land
+            else
+            {
+                Ray jumpRay = new Ray();
+                jumpRay.origin = new Vector2(transform.position.x, transform.position.y - 1);
+                jumpRay.direction = new Vector2(facingDirection, 0);
+
+                Debug.DrawRay(jumpRay.origin, new Vector2(1 * facingDirection, 0), Color.green);
+
+                RaycastHit2D jumpHit = Physics2D.Raycast(jumpRay.origin, jumpRay.direction, 1.2f, 1 << LayerMask.NameToLayer("Terrain"));
+                if (jumpHit)
+                {
+                    Jump();
+                }
+            }
+            
+            //making the enemy move towards the player
+            rb.velocity = new Vector2(moveSpeed * facingDirection, rb.velocity.y);
+            //playing the correct animation
+            animator.SetBool("IsRunningRight", rb.velocity.x > 0);
+            animator.SetBool("IsRunningLeft", rb.velocity.x < 0);
+            animator.SetFloat("FacingDirection", facingDirection);
+
+        }
+        else
+        {
+            if (rb.velocity.x == 0)
+            {
+                animator.SetBool("IsRunningRight", false);
+                animator.SetBool("IsRunningLeft", false);
+            }
+        }
+    }
+
+    public void Jump()
+    {
+        if (IsOnGround() && CheckCooldown("jump"))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
+        }
     }
 
     public void SetFacingDirection(float scaleX)
@@ -136,9 +200,31 @@ public class Enemy : Actor {
         monster.ChangeDirection(facingDirection);
     }
 
+    public void Attack(string armType = "RightArm")
+    {
+
+    }
+
+    public void Ability()
+    {
+
+    }
+
+    override public void TakeDamage(int damage, float knockBackDirection)
+    {
+        if (!inHitStun)
+        {
+            isAggro = true;
+            SetFacingDirection(knockBackDirection);
+            animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
+            health -= damage;
+            inHitStun = true;
+        }
+    }
+
     public void UpdateCooldowns()
     {
-        if(attackCooldownTimer < attackCooldown)
+        if (attackCooldownTimer < attackCooldown)
         {
             attackCooldownTimer += Time.deltaTime;
         }
@@ -211,11 +297,11 @@ public class Enemy : Actor {
 
     public void CheckAggro()
     {
-        if(isAggro && aggroTimer < aggroTime)
+        if (isAggro && aggroTimer < aggroTime)
         {
             aggroTimer += Time.deltaTime;
         }
-        else if(isAggro && aggroTimer >= aggroTime)
+        else if (isAggro && aggroTimer >= aggroTime)
         {
             isAggro = false;
             aggroTimer = 0;
@@ -225,37 +311,6 @@ public class Enemy : Actor {
             aggroTimer = 0;
         }
     }
-
-    public void FollowPlayer()
-    {
-        if (isAggro)
-        {
-            //having the enemy face towards the player
-            SetFacingDirection((PlayerController.Instance.transform.position - transform.position).normalized.x);
-
-            bool playerIsHigher = PlayerController.Instance.transform.position.y > transform.position.y && (PlayerController.Instance.transform.position.y - transform.position.y) >= 1;
-            if (playerIsHigher && IsOnGround() && CheckCooldown("jump"))
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
-            }
-            //making the enemy move towards the player
-            rb.velocity = new Vector2(moveSpeed * facingDirection, rb.velocity.y);
-            //playing the correct animation
-            animator.SetBool("IsRunningRight", rb.velocity.x > 0);
-            animator.SetBool("IsRunningLeft", rb.velocity.x < 0);
-            animator.SetFloat("FacingDirection", facingDirection);
-
-        }
-        else
-        {
-            if(rb.velocity.x == 0)
-            {
-                animator.SetBool("IsRunningRight", false);
-                animator.SetBool("IsRunningLeft", false);
-            }
-        }
-    }    
 
     public void CheckLineOfSight()
     {
@@ -269,34 +324,15 @@ public class Enemy : Actor {
         if (hit)
         {
             isAggro = true;
-        }
-    }
-
-    public void Attack(string armType = "RightArm")
-    {
-
-    }
-
-    public void Ability()
-    {
-
-    }
-
-    override public void TakeDamage(int damage, float knockBackDirection)
-    {
-        if (!inHitStun)
-        {
-            isAggro = true;
-            SetFacingDirection(knockBackDirection);
-            health -= damage;
-            inHitStun = true;
+            target = PlayerController.Instance.gameObject;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        bool triggerIsHurtbox = false;
+
         //checking to see if the player ran into the Enemy
+        bool triggerIsHurtbox = false;
         Collider2D[] colliders = new Collider2D[5];
         ContactFilter2D contactFilter = new ContactFilter2D();
         LayerMask enemyLayer = LayerMask.GetMask("Enemy");
@@ -321,7 +357,22 @@ public class Enemy : Actor {
                 PlayerController.Instance.TakeDamage(1, Helper.GetKnockBackDirection(transform, collision.transform));
             }
         }
+
+        //checking to see if the enemy is underwater
+        if(collision.tag == "Water")
+        {
+            isUnderWater = true;
+        }
         
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        //checking to see if the enemy is underwater
+        if (collision.tag == "Water")
+        {
+            isUnderWater = false;
+        }
     }
 
     private void KillEnemy() {
