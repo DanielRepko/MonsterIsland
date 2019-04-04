@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class Enemy : Actor {
 
+    [Header("PATROL POINTS")]
+    //a list to store the enemy's patrol points
+    public List<GameObject> patrolPoints = new List<GameObject>();
+
+    [Space(10)]
+
     public Text text;
     public string monsterName;
     public bool alwaysDropPart = false;
@@ -41,6 +47,7 @@ public class Enemy : Actor {
 
     //the target for the enemy to follow, can be the player or patrol points
     public GameObject target;
+    
 
     // Use this for initialization
     void Start () {
@@ -49,6 +56,7 @@ public class Enemy : Actor {
         height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
 
         InitializeEnemy();
+        ContinuePatrol();
 	}
 	
 	// Update is called once per frame
@@ -117,6 +125,17 @@ public class Enemy : Actor {
         SetFacingDirection(transform.localScale.x);
     }
 
+    public void Attack(string armType = "RightArm")
+    {
+        animator.Play("RightArm" + Helper.GetAnimDirection(facingDirection, Helper.PartType.RightArm) + "MeleeAnim");
+        PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, PlayerController.Instance.transform));
+    }
+
+    public void Ability()
+    {
+
+    }
+
     public void FollowTarget()
     {
         if (target != null && !inHitStun)
@@ -142,6 +161,57 @@ public class Enemy : Actor {
                 animator.SetBool("IsRunningRight", false);
                 animator.SetBool("IsRunningLeft", false);
             }
+        }
+    }
+
+    //used to make the enemy patrol the area between their assigned patrol points
+    //if there is only one assigned patrol point, then it is a sentry position,
+    //in which case the enemy will simply wait at that point for the player to come along
+    public void ContinuePatrol()
+    {
+        if (!isAggro)
+        {
+            //handing the patrol if there is only one patrol point (sentry position)
+            if(patrolPoints.Count == 1)
+            {
+                //enemy is restarting their patrol
+                if(target != patrolPoints[0])
+                {
+                    target = patrolPoints[0];
+                }
+                //enemy has reached their sentry position
+                else
+                {
+                    //turn the enemy towards the direction they came from
+                    SetFacingDirection(-facingDirection);
+                    target = null;
+                }
+            }
+            else if (patrolPoints.Count == 2)
+            {
+                //enemy is restarting their patrol
+                if(target != patrolPoints[0] && target != patrolPoints[1])
+                {
+                    float distanceToPoint1 = Vector2.Distance(transform.position, patrolPoints[0].transform.position);
+                    float distanceToPoint2 = Vector2.Distance(transform.position, patrolPoints[1].transform.position);
+
+                    target = (distanceToPoint1 < distanceToPoint2) ? patrolPoints[0] : patrolPoints[1];
+                }
+                //enemy has reached one of the patrol points
+                else
+                {
+                    //setting the target to the next patrol point
+                    GameObject nextPatrolPoint = (target == patrolPoints[1]) ? patrolPoints[0] : patrolPoints[1];
+                    target = nextPatrolPoint;
+                }
+            }
+            //if the above statements are false, their must be no patrol points set
+            else
+            {
+                Debug.Log("PATROL POINT ERROR: This enemy has "+patrolPoints.Count+" assigned to it. Make sure you correctly set the patrol points for \""+gameObject.name+"\". Each enemy must have either 1 or 2 patrol points set");
+            }
+            
+            
         }
     }
 
@@ -300,17 +370,6 @@ public class Enemy : Actor {
         }
     }
 
-    public void Attack(string armType = "RightArm")
-    {
-        animator.Play("RightArm" + Helper.GetAnimDirection(facingDirection, Helper.PartType.RightArm) + "MeleeAnim");
-        PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, PlayerController.Instance.transform));
-    }
-
-    public void Ability()
-    {
-
-    }
-
     override public void TakeDamage(int damage, float knockBackDirection)
     {
         if (!inHitStun)
@@ -400,12 +459,14 @@ public class Enemy : Actor {
     {
         if (isAggro && aggroTimer < aggroTime)
         {
+            target = PlayerController.Instance.gameObject;
             aggroTimer += Time.deltaTime;
         }
         else if (isAggro && aggroTimer >= aggroTime)
         {
             isAggro = false;
             aggroTimer = 0;
+            ContinuePatrol();
         }
         else if (!isAggro)
         {
@@ -435,12 +496,18 @@ public class Enemy : Actor {
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision == PlayerController.Instance.hurtBox && PlayerRanIntoEnemy(collision))
+        if (collision == PlayerController.Instance.hurtBox && TouchedEnemyHurtBox(collision))
         {
             if (!inHitStun)
             {
                 PlayerController.Instance.TakeDamage(1, Helper.GetKnockBackDirection(transform, collision.transform));
             }
+        }
+
+        //checking to see if the enemy reached a patrol point
+        if(collision.tag == "PatrolPoint" && target != null && target == collision.gameObject)
+        {
+            ContinuePatrol();
         }
 
         //checking to see if the enemy is underwater
@@ -452,7 +519,7 @@ public class Enemy : Actor {
         
     }
 
-    public bool PlayerRanIntoEnemy(Collider2D collision)
+    public bool TouchedEnemyHurtBox(Collider2D collision)
     {
         bool triggerIsHurtbox = false;
         Collider2D[] colliders = new Collider2D[5];
