@@ -223,7 +223,7 @@ public class PlayerController : Actor {
         attackRay.origin = transform.position;
         attackRay.direction = new Vector2(facingDirection, 0);
 
-        Debug.DrawRay(attackRay.origin, new Vector2(1.7f * facingDirection, 0), Color.green);
+        Debug.DrawRay(attackRay.origin, new Vector2(1.8f * facingDirection, 0), Color.green);
 
         //using the armType and Helper method to call the correct anim
         animator.Play(armType + Helper.GetAnimDirection(facingDirection, armType) + "MeleeAnim");
@@ -243,7 +243,7 @@ public class PlayerController : Actor {
         attackRay.origin = transform.position;
         attackRay.direction = new Vector2(facingDirection, 0);
 
-        Debug.DrawRay(attackRay.origin, new Vector2(1.7f * facingDirection, 0), Color.green);
+        Debug.DrawRay(attackRay.origin, new Vector2(1.8f * facingDirection, 0), Color.green);
 
         animator.Play(armType + Helper.GetAnimDirection(facingDirection, armType) + "MeleeAnim");
 
@@ -264,7 +264,7 @@ public class PlayerController : Actor {
         if (!inHitStun)
         {
             animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
-            rb.velocity = new Vector2(-10 * knockBackDirection, 30);
+            rb.velocity = new Vector2(-15 * knockBackDirection, 35);
             health -= damage;
             inHitStun = true;
         }
@@ -325,6 +325,7 @@ public class PlayerController : Actor {
     //checks to see what direction the player should be facing based on the mouse position
     public void UpdatePlayerDirection() {
         var screenMiddle = Screen.width / 2;
+        //facing right
         if (Input.mousePosition.x > screenMiddle) {
             facingDirection = 1;
             //setting the scale of the player object
@@ -333,6 +334,7 @@ public class PlayerController : Actor {
             GetComponentInChildren<Camera>().transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
 
             monster.ChangeDirection(facingDirection);
+        //facing left
         } else if (Input.mousePosition.x < screenMiddle) {
             facingDirection = -1;
             //setting the scale of the player object

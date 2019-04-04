@@ -16,6 +16,9 @@ public class Enemy : Actor {
     public delegate void CheckDelegate();
     public CheckDelegate checkDelegate;
 
+    public float attackRange;
+    public int damage;
+
     //attack cooldown
     public float attackCooldown;
     private float attackCooldownTimer;
@@ -57,6 +60,12 @@ public class Enemy : Actor {
 
     void FixedUpdate()
     {
+        //attacking if aggro
+        if (isAggro && PlayerIsInAttackRange())
+        {
+            Attack();
+        }
+
         text.text = health.ToString();
 
         //running any necessary checks on the Enemy
@@ -76,22 +85,6 @@ public class Enemy : Actor {
             hitStunTimer = 0;
             inHitStun = false;
         }
-        //Ray attack = new Ray();
-        //attack.origin = transform.position;
-        //attack.direction = new Vector2(-1, 0);
-
-        //Debug.DrawRay(attack.origin, new Vector3(1.7f * -1f, 0, 0), Color.green);
-
-        //RaycastHit2D hit = Physics2D.Raycast(attack.origin, attack.direction, 1.7f, 1 << LayerMask.NameToLayer("Player"));
-        //if (hit)
-        //{
-        //    if (hit.collider == PlayerController.Instance.hurtBox)
-        //    {
-        //        Debug.Log("hit the player");
-        //    }
-        //}
-
-        //GetComponent<Animator>().Play("FrontArmMeleeAnim");
     }
 
     public void InitializeEnemy()
@@ -159,10 +152,6 @@ public class Enemy : Actor {
         //swim up to the target if underwater
         if (isUnderWater)
         {
-            //enemy will need to "jump" constantly to gain any height underwater, and so cannot afford to 
-            //worry about jumpCooldowns, also eliminates the need manually set this for the underwater enemies,
-            //allowing any enemy inheriting this script to swim
-            jumpCooldownTimer = jumpCooldown;
             bool targetIsHigher = target.transform.position.y > transform.position.y && (target.transform.position.y - transform.position.y) >= 1;
             if (targetIsHigher)
             {
@@ -292,9 +281,29 @@ public class Enemy : Actor {
         monster.ChangeDirection(facingDirection);
     }
 
+    public bool PlayerIsInAttackRange()
+    {
+        Ray attackRay = new Ray();
+        attackRay.origin = transform.position;
+        attackRay.direction = new Vector2(facingDirection, 0);
+
+        Debug.DrawRay(attackRay.origin, new Vector3(attackRange * facingDirection, 0, 0), Color.red);
+
+        RaycastHit2D attackHit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Player"));
+        if (attackHit)
+        {
+            return attackHit.collider == PlayerController.Instance.hurtBox && CheckCooldown("attack");
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void Attack(string armType = "RightArm")
     {
-
+        animator.Play("RightArm" + Helper.GetAnimDirection(facingDirection, Helper.PartType.RightArm) + "MeleeAnim");
+        PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, PlayerController.Instance.transform));
     }
 
     public void Ability()
@@ -406,43 +415,27 @@ public class Enemy : Actor {
 
     public void CheckLineOfSight()
     {
-        Ray lineOfSight = new Ray();
-        lineOfSight.origin = transform.position;
-        lineOfSight.direction = new Vector2(facingDirection, 0);
-
-        Debug.DrawRay(lineOfSight.origin, new Vector3(aggroRange * facingDirection, 0, 0), Color.yellow);
-
-        RaycastHit2D hit = Physics2D.Raycast(lineOfSight.origin, lineOfSight.direction, aggroRange, 1 << LayerMask.NameToLayer("Player"));
-        if (hit)
+        if (!isAggro)
         {
-            isAggro = true;
-            target = PlayerController.Instance.gameObject;
+            Ray lineOfSight = new Ray();
+            lineOfSight.origin = transform.position;
+            lineOfSight.direction = new Vector2(facingDirection, 0);
+
+            Debug.DrawRay(lineOfSight.origin, new Vector3(aggroRange * facingDirection, 0, 0), Color.yellow);
+
+            RaycastHit2D hit = Physics2D.Raycast(lineOfSight.origin, lineOfSight.direction, aggroRange, 1 << LayerMask.NameToLayer("Player"));
+            if (hit)
+            {
+                isAggro = true;
+                target = PlayerController.Instance.gameObject;
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        //checking to see if the player ran into the Enemy
-        bool triggerIsHurtbox = false;
-        Collider2D[] colliders = new Collider2D[5];
-        ContactFilter2D contactFilter = new ContactFilter2D();
-        LayerMask enemyLayer = LayerMask.GetMask("Enemy");
-        contactFilter.SetLayerMask(enemyLayer);
-        contactFilter.useLayerMask = true;
-        contactFilter.useTriggers = true;
-
-        collision.OverlapCollider(contactFilter, colliders);
-
-        for(int i = 0; i < colliders.Length; i++)
-        {
-            if(colliders[i] == hurtBox)
-            {
-                triggerIsHurtbox = true;
-            }
-        }
-
-        if (collision == PlayerController.Instance.hurtBox && triggerIsHurtbox)
+        if (collision == PlayerController.Instance.hurtBox && PlayerRanIntoEnemy(collision))
         {
             if (!inHitStun)
             {
@@ -454,8 +447,32 @@ public class Enemy : Actor {
         if(collision.tag == "Water")
         {
             isUnderWater = true;
+            jumpCooldown = 0.2f;
         }
         
+    }
+
+    public bool PlayerRanIntoEnemy(Collider2D collision)
+    {
+        bool triggerIsHurtbox = false;
+        Collider2D[] colliders = new Collider2D[5];
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        LayerMask enemyLayer = LayerMask.GetMask("Enemy");
+        contactFilter.SetLayerMask(enemyLayer);
+        contactFilter.useLayerMask = true;
+        contactFilter.useTriggers = true;
+
+        collision.OverlapCollider(contactFilter, colliders);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i] == hurtBox)
+            {
+                triggerIsHurtbox = true;
+            }
+        }
+
+        return triggerIsHurtbox;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
