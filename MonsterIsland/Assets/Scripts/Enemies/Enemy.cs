@@ -131,34 +131,8 @@ public class Enemy : Actor {
             //having the enemy face towards the target
             SetFacingDirection((target.transform.position - transform.position).normalized.x);
 
-            //swim up to the target if underwater
-            if (isUnderWater)
-            {
-                
-            }
-            //otherwise the enemy must be on land
-            else
-            {
-
-                //checking if the target is on a higher platform         
-                if (TargetIsOnHigherPlatform())
-                {
-                    Jump();
-                }
-
-                //checking if they need to jump over an obstacle
-                Ray jumpRay = new Ray();
-                jumpRay.origin = new Vector2(transform.position.x, transform.position.y - 1);
-                jumpRay.direction = new Vector2(facingDirection, 0);
-
-                Debug.DrawRay(jumpRay.origin, new Vector2(1 * facingDirection, 0), Color.green);
-
-                RaycastHit2D jumpHit = Physics2D.Raycast(jumpRay.origin, jumpRay.direction, 1.2f, 1 << LayerMask.NameToLayer("Terrain"));
-                if (jumpHit)
-                {
-                    Jump();
-                }
-            }
+            //making the enemy jump if they need to
+            MakeEnemyJump();
             
             //making the enemy move towards the player
             rb.velocity = new Vector2(moveSpeed * facingDirection, rb.velocity.y);
@@ -174,6 +148,47 @@ public class Enemy : Actor {
             {
                 animator.SetBool("IsRunningRight", false);
                 animator.SetBool("IsRunningLeft", false);
+            }
+        }
+    }
+
+    //this method contains all code to check for the various
+    //conditions under which the enemy will need to jump
+    public void MakeEnemyJump()
+    {
+        //swim up to the target if underwater
+        if (isUnderWater)
+        {
+            //enemy will need to "jump" constantly to gain any height underwater, and so cannot afford to 
+            //worry about jumpCooldowns, also eliminates the need manually set this for the underwater enemies,
+            //allowing any enemy inheriting this script to swim
+            jumpCooldownTimer = jumpCooldown;
+            bool targetIsHigher = target.transform.position.y > transform.position.y && (target.transform.position.y - transform.position.y) >= 1;
+            if (targetIsHigher)
+            {
+                Jump();
+            }
+        }
+        //otherwise the enemy must be on land, so check when they need to jump
+        else
+        {
+            //checking if the target is on a higher platform         
+            if (TargetIsOnHigherPlatform())
+            {
+                Jump();
+            }
+
+            //checking if they need to jump over an obstacle
+            Ray jumpRay = new Ray();
+            jumpRay.origin = new Vector2(transform.position.x, transform.position.y - 1);
+            jumpRay.direction = new Vector2(facingDirection, 0);
+
+            Debug.DrawRay(jumpRay.origin, new Vector2(1 * facingDirection, 0), Color.green);
+
+            RaycastHit2D jumpHit = Physics2D.Raycast(jumpRay.origin, jumpRay.direction, 1.2f, 1 << LayerMask.NameToLayer("Terrain"));
+            if (jumpHit)
+            {
+                Jump();
             }
         }
     }
