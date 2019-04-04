@@ -134,15 +134,19 @@ public class Enemy : Actor {
             //swim up to the target if underwater
             if (isUnderWater)
             {
-                bool targetIsHigher = target.transform.position.y > transform.position.y && (target.transform.position.y - transform.position.y) >= 1;
-                if (targetIsHigher)
-                {
-                    Jump();
-                }
+                
             }
             //otherwise the enemy must be on land
             else
             {
+
+                //checking if the target is on a higher platform         
+                if (TargetIsOnHigherPlatform())
+                {
+                    Jump();
+                }
+
+                //checking if they need to jump over an obstacle
                 Ray jumpRay = new Ray();
                 jumpRay.origin = new Vector2(transform.position.x, transform.position.y - 1);
                 jumpRay.direction = new Vector2(facingDirection, 0);
@@ -171,6 +175,45 @@ public class Enemy : Actor {
                 animator.SetBool("IsRunningRight", false);
                 animator.SetBool("IsRunningLeft", false);
             }
+        }
+    }
+
+    //used to check whether the target is on a platform above the enemy
+    private float highTime = 0.4f;
+    private float highTimer = 0;
+    private float lastTargetHeight;
+    public bool TargetIsOnHigherPlatform()
+    {
+        bool targetIsHigher = target.transform.position.y > transform.position.y && (target.transform.position.y - transform.position.y) >= 1;
+        float targetHeight = target.transform.position.y;
+        if (targetIsHigher)
+        {
+            if (targetHeight == lastTargetHeight)
+            {
+                if (highTimer < highTime)
+                {
+                    highTimer += Time.deltaTime;
+                    return false;
+                }
+                else if (highTimer >= highTime)
+                {
+                    highTimer = 0;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                lastTargetHeight = targetHeight;
+                return false;
+            }
+        }
+        else
+        {
+            return false;
         }
     }
 
