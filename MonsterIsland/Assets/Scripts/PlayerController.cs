@@ -6,6 +6,8 @@ public class PlayerController : Actor {
 
     public static PlayerController Instance;
 
+    public float moveSpeed = 15.5f;
+
     //damage dealt by right arm attack
     public int rightAttackPower = 2;
     //damage dealt by left arm attack

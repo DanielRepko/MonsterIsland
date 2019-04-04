@@ -4,7 +4,6 @@ using UnityEngine;
 
 abstract public class Actor : MonoBehaviour {
 
-    public float moveSpeed = 15.5f;
     public float jumpForce = 60f;
 
     public bool attacksLocked;
