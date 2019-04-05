@@ -1176,7 +1176,7 @@ MonoBehaviour:
   damage: 2
   attackCooldown: 0.5
   abilityCooldown: 0
-  jumpCooldown: 1
+  jumpCooldown: 0.5
   isAggro: 0
   aggroRange: 8
   aggroTime: 5
