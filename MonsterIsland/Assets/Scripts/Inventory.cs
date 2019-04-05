@@ -20,6 +20,7 @@ public class Inventory : MonoBehaviour {
             collectedParts.collectedLeftArms = new List<string>();
             collectedParts.collectedRightArms = new List<string>();
             collectedParts.collectedLegs = new List<string>();
+            LoadInventory();
         } else if (Instance != this) {
             Destroy(gameObject);
         }
@@ -81,5 +82,14 @@ public class Inventory : MonoBehaviour {
                 AddMoney(10);
                 break;
         }
+    }
+
+    private void LoadInventory() {
+        money = GameManager.instance.gameFile.player.inventory.monsterBucks;
+        collectedParts.collectedHeads = GameManager.instance.gameFile.player.inventory.collectedParts.collectedHeads;
+        collectedParts.collectedTorsos = GameManager.instance.gameFile.player.inventory.collectedParts.collectedTorsos;
+        collectedParts.collectedLeftArms = GameManager.instance.gameFile.player.inventory.collectedParts.collectedLeftArms;
+        collectedParts.collectedRightArms = GameManager.instance.gameFile.player.inventory.collectedParts.collectedRightArms;
+        collectedParts.collectedLegs = GameManager.instance.gameFile.player.inventory.collectedParts.collectedLegs;
     }
 }
