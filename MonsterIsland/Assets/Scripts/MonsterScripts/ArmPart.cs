@@ -116,6 +116,7 @@ public class ArmPart : MonoBehaviour {
                     {
                         enemy.armAttackDelegate = ability;
                         enemy.attackCooldown = weapon.AttackCooldown;
+                        weapon.Damage = enemy.damage;
                     }
                 }
                 else if (partType == Helper.PartType.LeftArm)
@@ -129,6 +130,7 @@ public class ArmPart : MonoBehaviour {
                     {
                         enemy.armAttackDelegate = ability;
                         enemy.attackCooldown = weapon.AttackCooldown;
+                        weapon.Damage = enemy.damage;
                     }
                 }
             }

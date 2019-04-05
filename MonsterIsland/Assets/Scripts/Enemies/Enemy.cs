@@ -97,7 +97,7 @@ public class Enemy : Actor {
         }
     }
 
-    public void InitializeEnemy()
+    virtual public void InitializeEnemy()
     {
         //creating variables to initialize the player monster
         //this code is for testing purposes, final product will pull this information from the database scripts
@@ -127,13 +127,13 @@ public class Enemy : Actor {
         SetFacingDirection(transform.localScale.x);
     }
 
-    public void Attack(string armType = "RightArm")
+   virtual public void Attack(string armType = "RightArm")
     {
         animator.Play("RightArm" + Helper.GetAnimDirection(facingDirection, Helper.PartType.RightArm) + "MeleeAnim");
         PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, PlayerController.Instance.transform));
     }
 
-    public void Ability()
+    virtual public void Ability()
     {
 
     }
@@ -497,15 +497,6 @@ public class Enemy : Actor {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision == PlayerController.Instance.hurtBox && TouchedEnemyHurtBox(collision))
-        {
-            if (!inHitStun)
-            {
-                PlayerController.Instance.TakeDamage(1, Helper.GetKnockBackDirection(transform, collision.transform));
-            }
-        }
-
         //checking to see if the enemy reached a patrol point
         if(collision.tag == "PatrolPoint" && target != null && target == collision.gameObject)
         {
@@ -519,29 +510,6 @@ public class Enemy : Actor {
             jumpCooldown = 0.2f;
         }
         
-    }
-
-    public bool TouchedEnemyHurtBox(Collider2D collision)
-    {
-        bool triggerIsHurtbox = false;
-        Collider2D[] colliders = new Collider2D[5];
-        ContactFilter2D contactFilter = new ContactFilter2D();
-        LayerMask enemyLayer = LayerMask.GetMask("Enemy");
-        contactFilter.SetLayerMask(enemyLayer);
-        contactFilter.useLayerMask = true;
-        contactFilter.useTriggers = true;
-
-        collision.OverlapCollider(contactFilter, colliders);
-
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i] == hurtBox)
-            {
-                triggerIsHurtbox = true;
-            }
-        }
-
-        return triggerIsHurtbox;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
