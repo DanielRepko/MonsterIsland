@@ -29,8 +29,8 @@ public class Cactus : Enemy {
 
         //turning the needles in the same direction the player is facing
         upNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * facingDirection, upNeedle.transform.localScale.y);
-        middleNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * facingDirection, upNeedle.transform.localScale.y);
-        downNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * facingDirection, upNeedle.transform.localScale.y);
+        middleNeedle.transform.localScale = new Vector2(middleNeedle.transform.localScale.x * facingDirection, upNeedle.transform.localScale.y);
+        downNeedle.transform.localScale = new Vector2(downNeedle.transform.localScale.x * facingDirection, upNeedle.transform.localScale.y);
 
 
         //playing the shoot animation
