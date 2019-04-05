@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoomerangProjectile : Projectile {
 
-    float timeTillReturn = 0.6f;
+    float timeTillReturn = 0.8f;
     float throwTimer = 0;
 
     bool returning;

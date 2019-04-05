@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212245110255829670}
   - component: {fileID: 61222953627853390}
   - component: {fileID: 114966762035662152}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: AcidCloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
