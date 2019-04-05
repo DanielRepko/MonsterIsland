@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -147,5 +148,25 @@ public class GameManager : MonoBehaviour {
         var savePath = System.IO.Path.Combine(Application.persistentDataPath, "file" + fileNumber + ".json");
         System.IO.File.Delete(savePath);
         Debug.Log("File " + fileNumber + " deleted");
+    }
+
+    public void LoadToLastNestUsed() {
+        SceneManager.sceneLoaded += MovePlayerToNest;
+        SceneManager.LoadScene(gameFile.saveArea);
+    }
+
+    private void MovePlayerToNest(Scene scene, LoadSceneMode mode) {
+        switch(gameFile.saveNest) {
+            case "Start":
+                UIManager.Instance.TravelToStartNest();
+                break;
+            case "Shop":
+                UIManager.Instance.TravelToShopNest();
+                break;
+            case "Boss":
+                UIManager.Instance.TravelToBossNest();
+                break;
+        }
+        SceneManager.sceneLoaded -= MovePlayerToNest;
     }
 }

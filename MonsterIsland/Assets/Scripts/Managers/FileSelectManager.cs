@@ -121,9 +121,11 @@ public class FileSelectManager : MonoBehaviour {
 
     public void PlayPressed() {
         if (GameManager.instance.gameFile.fileID == -1) {
+            //Create a new save, and head to the monster maker so the player can make their first monster!
             GameManager.instance.CreateSave();
+            SceneManager.LoadScene("MonsterMaker");
         } else {
-
+            GameManager.instance.LoadToLastNestUsed();
         }
     }
 
