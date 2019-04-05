@@ -1248,13 +1248,13 @@ GameObject:
   - component: {fileID: 4038775071464132}
   - component: {fileID: 50294502546255648}
   - component: {fileID: 114012045192248068}
-  - component: {fileID: 68947545826544262}
   - component: {fileID: 70056825719153610}
   - component: {fileID: 58904695573865450}
   - component: {fileID: 250665372711516750}
   - component: {fileID: 95794942750992136}
   - component: {fileID: 61265560518600250}
   - component: {fileID: 114296546351820804}
+  - component: {fileID: 61197305368176652}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -3671,7 +3671,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344063368092656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.65, y: -0.86, z: 0}
+  m_LocalPosition: {x: 73.5, y: 29.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4962323823073406}
@@ -4146,6 +4146,31 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.0001
+--- !u!61 &61197305368176652
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344063368092656}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0030241013, y: -0.22969037}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0060482, y: 3.2002578}
+  m_EdgeRadius: 0
 --- !u!61 &61265560518600250
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -4171,26 +4196,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3754599, y: 1.5918789}
   m_EdgeRadius: 0
---- !u!68 &68947545826544262
-EdgeCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344063368092656}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 1
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.5, y: -1.829342}
-  - {x: -0.5, y: 1.370381}
-  - {x: 0.5, y: 1.370381}
-  - {x: 0.5, y: -1.829342}
-  - {x: -0.5, y: -1.829342}
 --- !u!70 &70056825719153610
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -4242,25 +4247,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e589e8be0291442863faf43da93aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 95794942750992136}
   moveSpeed: 15.5
   jumpForce: 60
-  rightAttackPower: 2
-  leftAttackPower: 2
   attacksLocked: 0
+  movementLocked: 0
+  inHitStun: 0
   health: 0
   maxHealth: 0
-  hurtBox: {fileID: 68947545826544262}
-  inHitStun: 0
-  movementLocked: 0
+  hurtBox: {fileID: 61197305368176652}
+  rayCastLengthCheck: 0.2
+  width: 0
+  height: 0
+  monster: {fileID: 114670642758465856}
+  animator: {fileID: 95794942750992136}
+  facingDirection: 0
+  rb: {fileID: 50294502546255648}
+  rightAttackPower: 2
+  leftAttackPower: 2
   hitBox: {fileID: 61265560518600250}
   hitBoxDamage: 0
   hitCounter: 0
   totalHits: 0
   hasExtraJump: 1
-  rayCastLengthCheck: 0.2
-  width: 0
-  height: 0
   isUnderwater: 0
   air: 1
   timeBetweenAirLoss: 0.1
@@ -4268,16 +4276,13 @@ MonoBehaviour:
   timeBetwenAirDamage: 2
   drownDamage: 0.5
   hasGills: 0
-  rb: {fileID: 50294502546255648}
-  monster: {fileID: 114670642758465856}
-  facingDirection: 0
   head: Lion
-  torso: Mitch
+  torso: Wingus
   rightArm: Mitch
-  leftArm: Cactus
-  legs: Robot
+  leftArm: Skeleton
+  legs: Hingus
   rightWeapon: Boomerang
-  leftWeapon: Fan
+  leftWeapon: 
 --- !u!114 &114017853166408056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12662,7 +12667,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 20802783094141158}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -14617,7 +14622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0, y: -0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224511235826891662
@@ -15281,7 +15286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0, y: -0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224700466436556708
@@ -16096,7 +16101,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224950343692102314
@@ -16114,7 +16119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224953134824225708
@@ -16294,7 +16299,7 @@ PointEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 4352
   m_ForceMagnitude: 0
   m_ForceVariation: 1
   m_DistanceScale: 0.0001

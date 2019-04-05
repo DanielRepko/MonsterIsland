@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61755959216162550}
   - component: {fileID: 50892798291307610}
   - component: {fileID: 114485241264612920}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Projectile_Squeaky Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

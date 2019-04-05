@@ -478,15 +478,14 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = PlayerController.Instance;
 
-        if (!player.isUnderwater)
-        {
+        
             if (player.IsOnGround())
             {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
             }
-            else if (!player.IsOnGround() && player.hasExtraJump)
+            else if (!player.IsOnGround() && player.hasExtraJump && !player.isUnderwater)
             {
                 player.hasExtraJump = false;
 
@@ -503,7 +502,6 @@ public class AbilityFactory : MonoBehaviour {
                 player.animator.Play("TalonFlurry" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 
             }
-        }
     }    
 
 
