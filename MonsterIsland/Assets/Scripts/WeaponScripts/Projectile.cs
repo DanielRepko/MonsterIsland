@@ -40,6 +40,10 @@ public class Projectile : MonoBehaviour {
                     enemy.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                     Destroy(gameObject);
                 }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
         else if (target == "Player")
@@ -49,6 +53,10 @@ public class Projectile : MonoBehaviour {
                 if (collision.collider == PlayerController.Instance.hurtBox)
                 {
                     PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
+                    Destroy(gameObject);
+                }
+                else
+                {
                     Destroy(gameObject);
                 }
             }

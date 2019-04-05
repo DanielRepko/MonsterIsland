@@ -356,9 +356,17 @@ public class Enemy : Actor {
             Debug.DrawRay(attackRay.origin, new Vector3(attackRange * facingDirection, 0, 0), Color.red);
 
             RaycastHit2D attackHit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Player"));
-            if (attackHit)
+            if (attackHit.collider == PlayerController.Instance.hurtBox && CheckCooldown("attack"))
             {
-                return attackHit.collider == PlayerController.Instance.hurtBox && CheckCooldown("attack");
+                return true;
+            }
+            else if(attackHit.collider == PlayerController.Instance.shellCollider && CheckCooldown("attack"))
+            {
+                int rememberDamage = damage;
+                damage = 0;
+                Attack();
+                damage = rememberDamage;
+                return false;
             }
             else
             {

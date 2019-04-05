@@ -193,9 +193,10 @@ public class AbilityFactory : MonoBehaviour {
     {
         //creating the collider to act as the shell
         BoxCollider2D shellCollider = PlayerController.Instance.gameObject.AddComponent<BoxCollider2D>();
-        shellCollider.isTrigger = true;
-        shellCollider.offset = new Vector2(-0.78f, -0.2326667f);
-        shellCollider.size = new Vector2(0.2f, 3.214667f);
+        shellCollider.isTrigger = false;
+        shellCollider.offset = new Vector2(-0.51f * PlayerController.Instance.facingDirection, -0.2326667f);
+        shellCollider.size = new Vector2(0.72f, 3.214667f);
+        PlayerController.Instance.shellCollider = shellCollider;
     }
 
     //Torso Ability (Activate): Allows the player to teleport short distances
