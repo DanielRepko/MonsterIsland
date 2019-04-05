@@ -80,12 +80,10 @@ public class UIManager : MonoBehaviour {
     }
 
     public void DisableQuickTravelMenu() {
-        Debug.Log("'DisableQuickTravelMenu' called!");
         quickTravelMenu.SetActive(false);
     }
 
     public void EnableQuickTravelMenu() {
-        Debug.Log("'EnableQuickTravelMenu' called!");
         quickTravelMenu.SetActive(true);
     }
 
