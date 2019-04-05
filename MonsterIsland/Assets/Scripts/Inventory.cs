@@ -36,6 +36,7 @@ public class Inventory : MonoBehaviour {
     public void AddMoney(int amount) {
         money += amount;
         GameManager.instance.gameFile.player.inventory.monsterBucks = money;
+        UIManager.Instance.UpdateBalance(money);
     }
 
     public void AddMonsterPart(string monsterName, string partType) {
@@ -95,6 +96,7 @@ public class Inventory : MonoBehaviour {
 
     private void LoadInventory() {
         money = GameManager.instance.gameFile.player.inventory.monsterBucks;
+        UIManager.Instance.UpdateBalance(money);
         collectedParts.collectedHeads = GameManager.instance.gameFile.player.inventory.collectedParts.collectedHeads;
         collectedParts.collectedTorsos = GameManager.instance.gameFile.player.inventory.collectedParts.collectedTorsos;
         collectedParts.collectedLeftArms = GameManager.instance.gameFile.player.inventory.collectedParts.collectedLeftArms;

@@ -60,7 +60,7 @@ public class FileSelectManager : MonoBehaviour {
             heartGroup.SetActive(true);
 
             //Current Hearts
-            var i = loadedFile.player.totalHearts;
+            int i = loadedFile.player.totalHearts / 2;
             foreach(var heart in heartImages) {
                 if(i > 0) {
                     heart.SetActive(true);
