@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50347472541535310}
   - component: {fileID: 114537590643219102}
   - component: {fileID: 95931304675539458}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Projectile_Boomerang
   m_TagString: Untagged
   m_Icon: {fileID: 0}

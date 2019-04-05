@@ -4,6 +4,7 @@ using UnityEngine;
 
 abstract public class Actor : MonoBehaviour {
 
+    public float moveSpeed = 15.5f;
     public float jumpForce = 60f;
 
     public bool attacksLocked;
@@ -23,9 +24,8 @@ abstract public class Actor : MonoBehaviour {
 
     public Monster monster;
 
-    public Animator animator;
 
-    //used to check what direction the actor is facing
+    //used to check what direction the player is facing
     //-1 = left  1 = right
     public float facingDirection;
 
