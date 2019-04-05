@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GlobalNestManager : MonoBehaviour {
+public class GlobalObjectManager : MonoBehaviour {
 
-    public static GlobalNestManager instance;
+    public static GlobalObjectManager instance;
     public bool[,] gameNests = {
         { false, false, false },
         { false, false, false },
@@ -16,7 +16,7 @@ public class GlobalNestManager : MonoBehaviour {
         { false, false, false }
     };
 
-    private GameObject localNestManager;
+    private GameObject localObjectManager;
 
 	// Use this for initialization
 	void Start () {
@@ -60,44 +60,44 @@ public class GlobalNestManager : MonoBehaviour {
     }
     
     public void LoadNests(string scene) {
-        if(localNestManager != null) {
+        if(localObjectManager != null) {
             switch(scene) {
                 case "Hub":
-                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[0, 0], false, false);
+                    localObjectManager.GetComponent<LocalObjectManager>().LoadLocalNests(gameNests[0, 0], false, false);
                     break;
                 case "Plains":
-                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[1, 0], gameNests[1, 1], gameNests[1, 2]);
+                    localObjectManager.GetComponent<LocalObjectManager>().LoadLocalNests(gameNests[1, 0], gameNests[1, 1], gameNests[1, 2]);
                     break;
                 case "Desert":
-                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[2, 0], gameNests[2, 1], gameNests[2, 2]);
+                    localObjectManager.GetComponent<LocalObjectManager>().LoadLocalNests(gameNests[2, 0], gameNests[2, 1], gameNests[2, 2]);
                     break;
                 case "Underwater":
-                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[3, 0], gameNests[3, 1], gameNests[3, 2]);
+                    localObjectManager.GetComponent<LocalObjectManager>().LoadLocalNests(gameNests[3, 0], gameNests[3, 1], gameNests[3, 2]);
                     break;
                 case "Jungle":
-                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[4, 0], gameNests[4, 1], gameNests[4, 2]);
+                    localObjectManager.GetComponent<LocalObjectManager>().LoadLocalNests(gameNests[4, 0], gameNests[4, 1], gameNests[4, 2]);
                     break;
                 case "Skyland":
-                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[5, 0], gameNests[5, 1], gameNests[5, 2]);
+                    localObjectManager.GetComponent<LocalObjectManager>().LoadLocalNests(gameNests[5, 0], gameNests[5, 1], gameNests[5, 2]);
                     break;
                 case "Castle":
-                    localNestManager.GetComponent<LocalNestManager>().LoadLocalNests(gameNests[6, 0], gameNests[6, 1], gameNests[6, 2]);
+                    localObjectManager.GetComponent<LocalObjectManager>().LoadLocalNests(gameNests[6, 0], gameNests[6, 1], gameNests[6, 2]);
                     break;
             }
         }
     }
 
     private void SceneLoaded(Scene scene, LoadSceneMode mode) {
-        localNestManager = GameObject.Find("LocalNestManager");
+        localObjectManager = GameObject.Find("LocalObjectManager");
 
-        if(localNestManager != null) {
-            if (localNestManager.scene.name == "Hub") {
+        if(localObjectManager != null) {
+            if (localObjectManager.scene.name == "Hub") {
                 UIManager.Instance.DisableQuickTravelMenu();
             } else {
                 UIManager.Instance.EnableQuickTravelMenu();
             }
 
-            localNestManager.GetComponent<LocalNestManager>().LoadNests();
+            localObjectManager.GetComponent<LocalObjectManager>().LoadNests();
         }
     }
 

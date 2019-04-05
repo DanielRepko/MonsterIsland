@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocalNestManager : MonoBehaviour {
+public class LocalObjectManager : MonoBehaviour {
 
-    public static LocalNestManager Instance;
+    public static LocalObjectManager Instance;
 
     public GameObject startNest;
     public GameObject shopNest;
     public GameObject bossNest;
+    public GameObject chestA;
+    public GameObject chestB;
 
 	// Use this for initialization
 	void Start () {
-        //Since each LocalNestManager is unique to their scene, the instance should update depending on the scene
+        //Since each LocalObjectManager is unique to their scene, the instance should update depending on the scene
         Instance = this;
     }
 	
@@ -37,11 +39,11 @@ public class LocalNestManager : MonoBehaviour {
     }
 
     public void LoadNests() {
-        GlobalNestManager.instance.LoadNests(startNest.GetComponent<Nest>().levelName.ToString());
+        GlobalObjectManager.instance.LoadNests(startNest.GetComponent<Nest>().levelName.ToString());
     }
 
     public void ActivateLocalNest(LevelName levelName, LevelPosition levelPosition) {
-        GlobalNestManager.instance.ActivateNest((int) levelName, (int) levelPosition);
+        GlobalObjectManager.instance.ActivateNest((int) levelName, (int) levelPosition);
         if(levelPosition == LevelPosition.Start) {
             UIManager.Instance.SetStartWarp(true);
         } else if (levelPosition == LevelPosition.Shop) {
