@@ -573,7 +573,7 @@ public class Enemy : Actor {
         //6 to 10, 50% chance of getting a monster part
         if(partChance >= 6) {
             //Grab a random number from 1 to 5. This number represents one of the 5 parts (Head, Torso, Left Arm, Right Arm, Legs)
-            int partToGet = Random.Range(0, 5) + 1;
+            int partToGet = Random.Range(0, 4) + 1;
 
             //If the enemy is always supposed to drop a part, set partToGet to the correct value based on what part it's supposed to drop
             if(alwaysDropPart) {
@@ -584,14 +584,11 @@ public class Enemy : Actor {
                     case Helper.PartType.Torso:
                         partToGet = 2;
                         break;
-                    case Helper.PartType.LeftArm:
+                    case "Arms":
                         partToGet = 3;
                         break;
-                    case Helper.PartType.RightArm:
-                        partToGet = 4;
-                        break;
                     case Helper.PartType.Legs:
-                        partToGet = 5;
+                        partToGet = 4;
                         break;
                 }
             }
@@ -616,21 +613,26 @@ public class Enemy : Actor {
                 }
                 else if (partToGet == 3)
                 {
-                    //Left Arm
-                    GameObject droppedLeftArm = Instantiate(GameManager.instance.leftArmDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-                    droppedLeftArm.GetComponent<DroppedPart>().partType = Helper.PartType.LeftArm;
-                    droppedLeftArm.GetComponent<DroppedPart>().monsterName = monsterName;
-                    droppedLeftArm.GetComponent<ArmPart>().InitializePart(PartFactory.GetArmPartInfo(monsterName, "LeftArm"));
+                    //deciding whether to drop the left or right arm
+                    int armToGet = Random.Range(0, 2) + 1;
+                    if (armToGet == 1)
+                    {
+                        //Left Arm
+                        GameObject droppedLeftArm = Instantiate(GameManager.instance.leftArmDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                        droppedLeftArm.GetComponent<DroppedPart>().partType = Helper.PartType.LeftArm;
+                        droppedLeftArm.GetComponent<DroppedPart>().monsterName = monsterName;
+                        droppedLeftArm.GetComponent<ArmPart>().InitializePart(PartFactory.GetArmPartInfo(monsterName, "LeftArm"));
+                    }
+                    else if (armToGet == 2)
+                    {
+                        //Right Arm
+                        GameObject droppedRightArm = Instantiate(GameManager.instance.rightArmDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                        droppedRightArm.GetComponent<DroppedPart>().partType = Helper.PartType.RightArm;
+                        droppedRightArm.GetComponent<DroppedPart>().monsterName = monsterName;
+                        droppedRightArm.GetComponent<ArmPart>().InitializePart(PartFactory.GetArmPartInfo(monsterName, "RightArm"));
+                    }
                 }
                 else if (partToGet == 4)
-                {
-                    //Right Arm
-                    GameObject droppedRightArm = Instantiate(GameManager.instance.rightArmDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-                    droppedRightArm.GetComponent<DroppedPart>().partType = Helper.PartType.RightArm;
-                    droppedRightArm.GetComponent<DroppedPart>().monsterName = monsterName;
-                    droppedRightArm.GetComponent<ArmPart>().InitializePart(PartFactory.GetArmPartInfo(monsterName, "RightArm"));
-                }
-                else if (partToGet == 5)
                 {
                     //Legs
                     GameObject droppedLegs = Instantiate(GameManager.instance.legsDropPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
