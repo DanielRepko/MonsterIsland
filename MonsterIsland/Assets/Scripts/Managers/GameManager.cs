@@ -13,13 +13,6 @@ public class GameManager : MonoBehaviour {
 
     public float lastTimeUpdate;
 
-    public GameObject coinPrefab;
-    public GameObject headDropPrefab;
-    public GameObject leftArmDropPrefab;
-    public GameObject rightArmDropPrefab;
-    public GameObject torsoDropPrefab;
-    public GameObject legsDropPrefab;
-
     private void Awake() {
         if(instance == null) {
             instance = this;
