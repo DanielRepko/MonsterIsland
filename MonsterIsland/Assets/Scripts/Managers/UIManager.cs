@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour {
     public GameObject pauseCanvas;
     public GameObject settingsPanel;
     public GameObject quickTravelMenu;
+    public Text moneyText;
+    public GameObject[] heartImages;
 
 	// Use this for initialization
 	void Awake() {
@@ -30,9 +32,21 @@ public class UIManager : MonoBehaviour {
         
     }
 
+    public void UpdateHeartCount() {
+        int i = PlayerController.Instance.health;
+        foreach (GameObject heart in heartImages) {
+            if(i > 0) {
+                heart.SetActive(true);
+            } else {
+                heart.SetActive(false);
+            }
+            i--;
+        }
+    }
+
     //When called, updates the air meter based on the provided information
     public void UpdateAirMeter(float air, bool isUnderwater) {
-        if (!GameManager.instance.player.hasGills)
+        if (!PlayerController.Instance.hasGills)
         {
             airMeterBar.GetComponent<RectTransform>().offsetMax = new Vector2(-(122f - (122f * air)), 0f);
             airMeter.SetActive(isUnderwater);
@@ -80,27 +94,31 @@ public class UIManager : MonoBehaviour {
     }
 
     public void DisableQuickTravelMenu() {
-        Debug.Log("'DisableQuickTravelMenu' called!");
         quickTravelMenu.SetActive(false);
     }
 
     public void EnableQuickTravelMenu() {
-        Debug.Log("'EnableQuickTravelMenu' called!");
         quickTravelMenu.SetActive(true);
     }
 
     public void TravelToStartNest() {
-        PlayerController.Instance.transform.position = LocalNestManager.Instance.startNest.transform.position;
+        PlayerController player = FindObjectOfType<PlayerController>();
+        LocalNestManager nestManager = FindObjectOfType<LocalNestManager>();
+        player.transform.position = nestManager.startNest.transform.position;
         HideNestCanvas();
     }
 
     public void TravelToShopNest() {
-        PlayerController.Instance.transform.position = LocalNestManager.Instance.shopNest.transform.position;
+        PlayerController player = FindObjectOfType<PlayerController>();
+        LocalNestManager nestManager = FindObjectOfType<LocalNestManager>();
+        player.transform.position = nestManager.shopNest.transform.position;
         HideNestCanvas();
     }
 
     public void TravelToBossNest() {
-        PlayerController.Instance.transform.position = LocalNestManager.Instance.bossNest.transform.position;
+        PlayerController player = FindObjectOfType<PlayerController>();
+        LocalNestManager nestManager = FindObjectOfType<LocalNestManager>();
+        player.transform.position = nestManager.bossNest.transform.position;
         HideNestCanvas();
     }
 
@@ -114,5 +132,9 @@ public class UIManager : MonoBehaviour {
 
     public void SetBossWarp(bool interactible) {
         quickTravelMenu.transform.Find("QuickBossButton").GetComponent<Button>().interactable = interactible;
+    }
+
+    public void UpdateBalance(int balance) {
+        moneyText.text = balance.ToString();
     }
 }

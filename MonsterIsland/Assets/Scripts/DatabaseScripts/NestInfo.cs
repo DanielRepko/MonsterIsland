@@ -23,5 +23,5 @@ public class NestInfo {
     public bool skylandNest3;
     public bool castleNest1;
     public bool castleNest2;
-    public bool casleNest3;
+    public bool castleNest3;
 }
