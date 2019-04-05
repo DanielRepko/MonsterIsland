@@ -42,6 +42,7 @@ public class PlayerController : Actor {
     public int totalHits;
 
     public bool hasExtraJump = true;
+    public bool canBeHurt = true;
 
     private Collider2D nestCheck;
 
@@ -144,6 +145,7 @@ public class PlayerController : Actor {
         else if(inHitStun && hitStunTimer >= hitStunCooldown)
         {
             hitStunTimer = 0;
+            StartCoroutine("TempInvincible");
             inHitStun = false;
         }
 
@@ -276,13 +278,19 @@ public class PlayerController : Actor {
 
     override public void TakeDamage(int damage, float knockBackDirection)
     {
-        if (!inHitStun)
+        if (!inHitStun && canBeHurt)
         {
             animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(-15 * knockBackDirection, 35);
             health -= damage;
+            canBeHurt = false;
             inHitStun = true;
         }
+    }
+
+    IEnumerator TempInvincible() {
+        yield return new WaitForSeconds(0.5f);
+        canBeHurt = true;
     }
 
     [Space(20, order = 1)]
