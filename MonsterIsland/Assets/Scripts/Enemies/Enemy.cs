@@ -13,7 +13,6 @@ public class Enemy : Actor {
 
     public float moveSpeed = 10;
 
-    public Text text;
     public string monsterName;
     public bool alwaysDropPart = false;
     public string partToAlwaysDrop;
@@ -36,8 +35,6 @@ public class Enemy : Actor {
     //jump cooldown (to prevent them from jumping every possible frame)
     public float jumpCooldown = 1;
     private float jumpCooldownTimer;
-
-    public Canvas healthBar;
 
     //fields for handling aggro
     public bool isAggro;
@@ -73,8 +70,6 @@ public class Enemy : Actor {
         {
             Attack();
         }
-
-        text.text = health.ToString();
 
         //running any necessary checks on the Enemy
         checkDelegate();
@@ -208,7 +203,7 @@ public class Enemy : Actor {
             //if the above statements are false, their must be no patrol points set
             else
             {
-                Debug.Log("PATROL POINT ERROR: This enemy has "+patrolPoints.Count+" patrol points assigned to it. Make sure you correctly set the patrol points for \""+gameObject.name+"\". Each enemy must have either 1 or 2 patrol points set");
+                Debug.LogWarning("PATROL POINT ERROR: This enemy has "+patrolPoints.Count+" patrol points assigned to it. Make sure you correctly set the patrol points for \""+gameObject.name+"\". Each enemy must have either 1 or 2 patrol points set");
             }
             
             
@@ -346,8 +341,7 @@ public class Enemy : Actor {
             facingDirection = 1;
         }
         
-        transform.localScale = new Vector3(facingDirection, 1, 1);
-        healthBar.transform.localScale = new Vector3(facingDirection, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+        transform.localScale = new Vector3(facingDirection, 1, 1);        
         monster.ChangeDirection(facingDirection);
     }
 
