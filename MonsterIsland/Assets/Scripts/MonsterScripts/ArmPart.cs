@@ -116,6 +116,7 @@ public class ArmPart : MonoBehaviour {
                     {
                         enemy.armAttackDelegate = ability;
                         enemy.attackCooldown = weapon.AttackCooldown;
+                        enemy.attackRange = weapon.AttackRange;
                         weapon.Damage = enemy.damage;
                     }
                 }
@@ -130,6 +131,7 @@ public class ArmPart : MonoBehaviour {
                     {
                         enemy.armAttackDelegate = ability;
                         enemy.attackCooldown = weapon.AttackCooldown;
+                        enemy.attackRange = weapon.AttackRange;
                         weapon.Damage = enemy.damage;
                     }
                 }

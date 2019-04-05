@@ -102,7 +102,7 @@ MonoBehaviour:
   weaponRenderer: {fileID: 0}
   damage: 2
   speed: 25
-  target: Enemy
+  target: Player
 --- !u!212 &212886728196738284
 SpriteRenderer:
   m_ObjectHideFlags: 1
