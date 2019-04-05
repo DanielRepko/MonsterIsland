@@ -47,7 +47,6 @@ public class PlayerController : Actor {
 
     [Header("Underwater Properties", order = 0)]
     //Values used in the underwater level
-    public bool isUnderwater;           //If the user is underwater or not
     [Range(0.00f, 1.00f)]
     public float air;                   //The amount of air the player currently has. Min 0, max 1
     public float timeBetweenAirLoss;    //The amount of time between loss in air percentage, in seconds.

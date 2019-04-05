@@ -1284,6 +1284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 60
+  isUnderwater: 0
   attacksLocked: 0
   movementLocked: 0
   inHitStun: 0
@@ -1300,7 +1301,7 @@ MonoBehaviour:
   patrolPoints: []
   moveSpeed: 10
   text: {fileID: 114260824254986198}
-  monsterName: EnemyMitch
+  monsterName: Sam
   alwaysDropPart: 0
   partToAlwaysDrop: 
   equippedWeapon: 

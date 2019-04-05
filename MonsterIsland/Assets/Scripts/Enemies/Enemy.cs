@@ -24,25 +24,25 @@ public class Enemy : Actor {
     public delegate void CheckDelegate();
     public CheckDelegate checkDelegate;
 
-    public float attackRange;
-    public int damage;
+    public float attackRange = 1.7f;
+    public int damage = 2;
 
     //attack cooldown
-    public float attackCooldown;
+    public float attackCooldown = 0.5f;
     private float attackCooldownTimer;
     //ability cooldown
     public float abilityCooldown;
     private float abilityCooldownTimer;
     //jump cooldown (to prevent them from jumping every possible frame)
-    public float jumpCooldown;
+    public float jumpCooldown = 1;
     private float jumpCooldownTimer;
 
     public Canvas healthBar;
 
     //fields for handling aggro
     public bool isAggro;
-    public float aggroRange = 10f;
-    public float aggroTime;
+    public float aggroRange = 8;
+    public float aggroTime = 5;
     private float aggroTimer;
 
     //the target for the enemy to follow, can be the player or patrol points
@@ -66,7 +66,7 @@ public class Enemy : Actor {
         }
 	}
 
-    void FixedUpdate()
+    virtual public void FixedUpdate()
     {
         //attacking if aggro
         if (isAggro && PlayerIsInAttackRange())

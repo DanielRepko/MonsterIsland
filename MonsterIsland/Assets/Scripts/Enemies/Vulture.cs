@@ -10,13 +10,14 @@ public class Vulture : Enemy {
         checkDelegate += Ability;
     }
 
-    public override void Ability()
+    override public void Ability()
     {
         if (!isUnderwater)
         {
+            
             if (rb.velocity.y < 0)
             {
-                rb.gravityScale -= 2f;
+                rb.gravityScale -= 16f;
             }
             else
             {
