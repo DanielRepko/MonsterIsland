@@ -46,10 +46,20 @@ public class ArmPart : MonoBehaviour {
         //this mainly is used to check whether the part is attached to the player
         PlayerController player = GetComponentInParent<PlayerController>();
 
+        Enemy enemy = GetComponentInParent<Enemy>();
+
         if (armPartInfo != null)
         {
             partInfo = armPartInfo;
-            weapon = WeaponFactory.GetWeapon(partInfo.equippedWeapon, partType, "Player", weaponRenderer);
+
+            if(player != null)
+            {
+                weapon = WeaponFactory.GetWeapon(partInfo.equippedWeapon, partType, "Player", weaponRenderer);
+            }
+            else if(enemy != null)
+            {
+                weapon = WeaponFactory.GetWeapon(partInfo.equippedWeapon, partType, "Enemy", weaponRenderer);
+            }
 
             //checking whether this part has an ability
             if (partInfo.abilityName != null && player != null)
@@ -78,9 +88,7 @@ public class ArmPart : MonoBehaviour {
                 {
                     Debug.Log("Error: Invalid ability type");
                 }
-            }
-
-            Enemy enemy = GetComponentInParent<Enemy>();
+            }            
 
             if (enemy == null)
             {
@@ -116,8 +124,15 @@ public class ArmPart : MonoBehaviour {
                     {
                         enemy.armAttackDelegate = ability;
                         enemy.attackCooldown = weapon.AttackCooldown;
-                        enemy.attackRange = weapon.AttackRange;
                         weapon.Damage = enemy.damage;
+                        if (weapon.WeaponType == Helper.WeaponType.Melee)
+                        {
+                            enemy.attackRange = weapon.AttackRange;
+                        }
+                        else if (weapon.WeaponType == Helper.WeaponType.Projectile)
+                        {
+                            weapon.AttackRange = enemy.attackRange;
+                        }
                     }
                 }
                 else if (partType == Helper.PartType.LeftArm)
@@ -131,7 +146,14 @@ public class ArmPart : MonoBehaviour {
                     {
                         enemy.armAttackDelegate = ability;
                         enemy.attackCooldown = weapon.AttackCooldown;
-                        enemy.attackRange = weapon.AttackRange;
+                        if (weapon.WeaponType == Helper.WeaponType.Melee)
+                        {
+                            enemy.attackRange = weapon.AttackRange;
+                        }
+                        else if(weapon.WeaponType == Helper.WeaponType.Projectile)
+                        {
+                            weapon.AttackRange = enemy.attackRange;
+                        }                        
                         weapon.Damage = enemy.damage;
                     }
                 }

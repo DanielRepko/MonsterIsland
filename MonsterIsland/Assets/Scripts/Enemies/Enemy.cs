@@ -68,7 +68,7 @@ public class Enemy : Actor {
         //attacking if aggro
         if (isAggro && PlayerIsInAttackRange())
         {
-            Attack();
+            armAttackDelegate(Helper.PartType.RightArm);
         }
 
         //running any necessary checks on the Enemy
@@ -362,10 +362,19 @@ public class Enemy : Actor {
             }
             else if(attackHit.collider == PlayerController.Instance.shellCollider && CheckCooldown("attack"))
             {
-                int rememberDamage = damage;
-                damage = 0;
-                Attack();
-                damage = rememberDamage;
+                if(equippedWeapon != "")
+                {
+                    monster.rightArmPart.weapon.Damage = 0;
+                    armAttackDelegate(Helper.PartType.RightArm);
+                    monster.rightArmPart.weapon.Damage = damage;
+                }
+                else
+                {
+                    int rememberDamage = damage;
+                    damage = 0;
+                    armAttackDelegate(Helper.PartType.RightArm);
+                    damage = rememberDamage;
+                }                
                 return false;
             }
             else
