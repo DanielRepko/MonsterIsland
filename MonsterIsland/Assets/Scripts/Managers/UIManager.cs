@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour {
     public GameObject settingsPanel;
     public GameObject quickTravelMenu;
     public Text moneyText;
+    public GameObject[] heartImages;
 
 	// Use this for initialization
 	void Awake() {
@@ -29,6 +30,18 @@ public class UIManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
+    }
+
+    public void UpdateHeartCount() {
+        int i = PlayerController.Instance.health;
+        foreach (GameObject heart in heartImages) {
+            if(i > 0) {
+                heart.SetActive(true);
+            } else {
+                heart.SetActive(false);
+            }
+            i--;
+        }
     }
 
     //When called, updates the air meter based on the provided information

@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
 
         //Store infomration about the player themself
         newFile.player.name = "Mitch";
-        newFile.player.totalHearts = 3;
+        newFile.player.totalHearts = 6;
         newFile.player.headPart = new HeadPartInfo();
         newFile.player.torsoPart = new TorsoPartInfo();
         newFile.player.leftArmPart = new ArmPartInfo();
@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour {
 
     //Updates an existing save file
     public void FinalizeSave() {
+        gameFile.player.totalHearts = PlayerController.Instance.maxHealth;
         var time = Time.timeSinceLevelLoad;
         gameFile.totalPlayTime += (Time.timeSinceLevelLoad - lastTimeUpdate);
         lastTimeUpdate = time;
