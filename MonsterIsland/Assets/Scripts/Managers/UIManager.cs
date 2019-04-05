@@ -103,21 +103,21 @@ public class UIManager : MonoBehaviour {
 
     public void TravelToStartNest() {
         PlayerController player = FindObjectOfType<PlayerController>();
-        LocalNestManager nestManager = FindObjectOfType<LocalNestManager>();
+        LocalObjectManager nestManager = FindObjectOfType<LocalObjectManager>();
         player.transform.position = nestManager.startNest.transform.position;
         HideNestCanvas();
     }
 
     public void TravelToShopNest() {
         PlayerController player = FindObjectOfType<PlayerController>();
-        LocalNestManager nestManager = FindObjectOfType<LocalNestManager>();
+        LocalObjectManager nestManager = FindObjectOfType<LocalObjectManager>();
         player.transform.position = nestManager.shopNest.transform.position;
         HideNestCanvas();
     }
 
     public void TravelToBossNest() {
         PlayerController player = FindObjectOfType<PlayerController>();
-        LocalNestManager nestManager = FindObjectOfType<LocalNestManager>();
+        LocalObjectManager nestManager = FindObjectOfType<LocalObjectManager>();
         player.transform.position = nestManager.bossNest.transform.position;
         HideNestCanvas();
     }
