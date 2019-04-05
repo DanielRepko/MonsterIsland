@@ -410,7 +410,7 @@ public class Enemy : Actor {
         {
             abilityCooldownTimer += Time.deltaTime;
         }
-        if (abilityCooldownTimer < attackCooldown)
+        if (abilityCooldownTimer < abilityCooldown)
         {
             abilityCooldownTimer += Time.deltaTime;
         }
