@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61335798066054954}
   - component: {fileID: 50695829620158250}
   - component: {fileID: 114141467983777060}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Projectile_Banana Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471b303a20d30c243866284fdcbdd6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponRenderer: {fileID: 0}
   damage: 1
   speed: 50
   target: Enemy
