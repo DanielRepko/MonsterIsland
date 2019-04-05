@@ -7,6 +7,8 @@ abstract public class Actor : MonoBehaviour {
     public float jumpForce = 60f;
     public bool isUnderwater;
 
+    public Collider2D shellCollider;
+
     public bool attacksLocked;
     public bool movementLocked;
 

@@ -149,6 +149,8 @@ public class AbilityFactory : MonoBehaviour {
 
         Vector2 acidCloudPosition = new Vector2(player.transform.position.x + 2 * player.facingDirection, player.transform.position.y);
 
+        player.animator.Play("HeadAbilityAnim");
+
         Instantiate(acidCloudLoad, acidCloudPosition, Quaternion.identity);
     }
 
@@ -193,9 +195,10 @@ public class AbilityFactory : MonoBehaviour {
     {
         //creating the collider to act as the shell
         BoxCollider2D shellCollider = PlayerController.Instance.gameObject.AddComponent<BoxCollider2D>();
-        shellCollider.isTrigger = true;
-        shellCollider.offset = new Vector2(-0.78f, -0.2326667f);
-        shellCollider.size = new Vector2(0.2f, 3.214667f);
+        shellCollider.isTrigger = false;
+        shellCollider.offset = new Vector2(-0.98f * PlayerController.Instance.facingDirection, -0.02f);
+        shellCollider.size = new Vector2(0.72f, 2.8f);
+        PlayerController.Instance.shellCollider = shellCollider;
     }
 
     //Torso Ability (Activate): Allows the player to teleport short distances

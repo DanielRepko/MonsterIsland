@@ -68,7 +68,7 @@ public class Enemy : Actor {
         //attacking if aggro
         if (isAggro && PlayerIsInAttackRange())
         {
-            Attack();
+            armAttackDelegate(Helper.PartType.RightArm);
         }
 
         //running any necessary checks on the Enemy
@@ -133,7 +133,7 @@ public class Enemy : Actor {
 
     public void FollowTarget()
     {
-        if (target != null && !inHitStun)
+        if (target != null && !inHitStun && !movementLocked)
         {
             //having the enemy face towards the target
             SetFacingDirection((target.transform.position - transform.position).normalized.x);
@@ -347,16 +347,40 @@ public class Enemy : Actor {
 
     public bool PlayerIsInAttackRange()
     {
-        Ray attackRay = new Ray();
-        attackRay.origin = transform.position;
-        attackRay.direction = new Vector2(facingDirection, 0);
-
-        Debug.DrawRay(attackRay.origin, new Vector3(attackRange * facingDirection, 0, 0), Color.red);
-
-        RaycastHit2D attackHit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Player"));
-        if (attackHit)
+        if (!attacksLocked)
         {
-            return attackHit.collider == PlayerController.Instance.hurtBox && CheckCooldown("attack");
+            Ray attackRay = new Ray();
+            attackRay.origin = transform.position;
+            attackRay.direction = new Vector2(facingDirection, 0);
+
+            Debug.DrawRay(attackRay.origin, new Vector3(attackRange * facingDirection, 0, 0), Color.red);
+
+            RaycastHit2D attackHit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Player"));
+            if (attackHit.collider == PlayerController.Instance.hurtBox && CheckCooldown("attack"))
+            {
+                return true;
+            }
+            else if(attackHit.collider == PlayerController.Instance.shellCollider && CheckCooldown("attack"))
+            {
+                if(equippedWeapon != "")
+                {
+                    monster.rightArmPart.weapon.Damage = 0;
+                    armAttackDelegate(Helper.PartType.RightArm);
+                    monster.rightArmPart.weapon.Damage = damage;
+                }
+                else
+                {
+                    int rememberDamage = damage;
+                    damage = 0;
+                    armAttackDelegate(Helper.PartType.RightArm);
+                    damage = rememberDamage;
+                }                
+                return false;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
@@ -386,7 +410,7 @@ public class Enemy : Actor {
         {
             abilityCooldownTimer += Time.deltaTime;
         }
-        if (abilityCooldownTimer < attackCooldown)
+        if (abilityCooldownTimer < abilityCooldown)
         {
             abilityCooldownTimer += Time.deltaTime;
         }

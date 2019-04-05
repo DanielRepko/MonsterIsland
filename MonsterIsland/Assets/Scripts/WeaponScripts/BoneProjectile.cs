@@ -83,6 +83,10 @@ public class BoneProjectile : Projectile {
                     UpdateCooldown(true);
                     Destroy(gameObject);
                 }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
         else if (target == "Player")
@@ -94,6 +98,10 @@ public class BoneProjectile : Projectile {
                     PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
                     weaponRenderer.gameObject.SetActive(true);
                     UpdateCooldown(true);
+                    Destroy(gameObject);
+                }
+                else
+                {
                     Destroy(gameObject);
                 }
             }
