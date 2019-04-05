@@ -149,6 +149,8 @@ public class AbilityFactory : MonoBehaviour {
 
         Vector2 acidCloudPosition = new Vector2(player.transform.position.x + 2 * player.facingDirection, player.transform.position.y);
 
+        player.animator.Play("HeadAbilityAnim");
+
         Instantiate(acidCloudLoad, acidCloudPosition, Quaternion.identity);
     }
 

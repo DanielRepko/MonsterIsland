@@ -12,7 +12,7 @@ public class Knight : Enemy {
 
     public void CanTeleport()
     {
-        if (CheckCooldown("ability") && isAggro)
+        if (CheckCooldown("ability") && isAggro && !attacksLocked && !inHitStun)
         {
             abilityDelegate();
         }
