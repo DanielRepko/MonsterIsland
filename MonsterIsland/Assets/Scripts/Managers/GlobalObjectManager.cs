@@ -67,10 +67,15 @@ public class GlobalObjectManager : MonoBehaviour {
 
         gameChests[0, 0] = GameManager.instance.gameFile.gameProgression.openedChests.hubChest;
         gameChests[1, 0] = GameManager.instance.gameFile.gameProgression.openedChests.plainsChest1;
+        gameChests[1, 1] = GameManager.instance.gameFile.gameProgression.openedChests.plainsChest1;
         gameChests[2, 0] = GameManager.instance.gameFile.gameProgression.openedChests.desertChest1;
+        gameChests[2, 1] = GameManager.instance.gameFile.gameProgression.openedChests.desertChest1;
         gameChests[3, 0] = GameManager.instance.gameFile.gameProgression.openedChests.underwaterChest1;
+        gameChests[3, 1] = GameManager.instance.gameFile.gameProgression.openedChests.underwaterChest1;
         gameChests[4, 0] = GameManager.instance.gameFile.gameProgression.openedChests.jungleChest1;
+        gameChests[4, 1] = GameManager.instance.gameFile.gameProgression.openedChests.jungleChest1;
         gameChests[5, 0] = GameManager.instance.gameFile.gameProgression.openedChests.skylandChest1;
+        gameChests[5, 1] = GameManager.instance.gameFile.gameProgression.openedChests.skylandChest1;
 
         SceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
@@ -162,15 +167,15 @@ public class GlobalObjectManager : MonoBehaviour {
         var chestInfo = new OpenedChests();
         chestInfo.hubChest = gameChests[0, 0];
         chestInfo.plainsChest1 = gameChests[1, 0];
-        chestInfo.plainsChest1 = gameChests[1, 1];
+        chestInfo.plainsChest2 = gameChests[1, 1];
         chestInfo.desertChest1 = gameChests[2, 0];
-        chestInfo.desertChest1 = gameChests[2, 1];
+        chestInfo.desertChest2 = gameChests[2, 1];
         chestInfo.underwaterChest1 = gameChests[3, 0];
-        chestInfo.underwaterChest1 = gameChests[3, 1];
+        chestInfo.underwaterChest2 = gameChests[3, 1];
         chestInfo.jungleChest1 = gameChests[4, 0];
-        chestInfo.jungleChest1 = gameChests[4, 1];
+        chestInfo.jungleChest2 = gameChests[4, 1];
         chestInfo.skylandChest1 = gameChests[5, 0];
-        chestInfo.skylandChest1 = gameChests[5, 1];
+        chestInfo.skylandChest2 = gameChests[5, 1];
         GameManager.instance.gameFile.gameProgression.openedChests = chestInfo;
     }
 

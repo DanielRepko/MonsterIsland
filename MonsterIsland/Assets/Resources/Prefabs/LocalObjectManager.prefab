@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4768506210123266}
   - component: {fileID: 114858569748209518}
   m_Layer: 0
-  m_Name: LocalNestManager
+  m_Name: LocalObjectManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,3 +54,5 @@ MonoBehaviour:
   startNest: {fileID: 0}
   shopNest: {fileID: 0}
   bossNest: {fileID: 0}
+  chestA: {fileID: 0}
+  chestB: {fileID: 0}

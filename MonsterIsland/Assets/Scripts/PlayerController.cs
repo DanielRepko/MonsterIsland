@@ -96,17 +96,6 @@ public class PlayerController : Actor {
 
     // Update is called once per frame
     void Update() {
-
-        if (nestCheck != null && nestCheck.tag == "Nest"
-            && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))
-            && !UIManager.Instance.nestCanvas.activeInHierarchy) {
-            UIManager.Instance.ShowNestCanvas();
-            nestCheck.gameObject.GetComponent<Nest>().SetLastNestUsed();
-            if(nestCheck.gameObject.GetComponent<Nest>().isActive == false) {
-                nestCheck.gameObject.GetComponent<Nest>().Activate();
-            }
-        }
-
         if (chestCheck != null && chestCheck.tag == "Chest"
             && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))) {
             if (chestCheck.gameObject.GetComponent<Chest>().isOpen == false) {
@@ -197,6 +186,7 @@ public class PlayerController : Actor {
             && !UIManager.Instance.nestCanvas.activeInHierarchy)
         {
             UIManager.Instance.ShowNestCanvas();
+            nestCheck.gameObject.GetComponent<Nest>().SetLastNestUsed();
             if (nestCheck.gameObject.GetComponent<Nest>().isActive == false)
             {
                 nestCheck.gameObject.GetComponent<Nest>().Activate();
