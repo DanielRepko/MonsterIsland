@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour {
 
     public int money;
     public CollectedPartsInfo collectedParts;
+    public List<string> collectedWeapons;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class Inventory : MonoBehaviour {
             collectedParts.collectedLeftArms = new List<string>();
             collectedParts.collectedRightArms = new List<string>();
             collectedParts.collectedLegs = new List<string>();
+            collectedWeapons = new List<string>();
             LoadInventory();
         } else if (Instance != this) {
             Destroy(gameObject);
@@ -84,6 +86,13 @@ public class Inventory : MonoBehaviour {
         }
     }
 
+    public void AddWeapon(string weaponName) {
+        if (!collectedWeapons.Contains(weaponName)) {
+            collectedWeapons.Add(weaponName);
+            GameManager.instance.gameFile.player.inventory.collectedWeapons = collectedWeapons;
+        }
+    }
+
     private void LoadInventory() {
         money = GameManager.instance.gameFile.player.inventory.monsterBucks;
         collectedParts.collectedHeads = GameManager.instance.gameFile.player.inventory.collectedParts.collectedHeads;
@@ -91,5 +100,6 @@ public class Inventory : MonoBehaviour {
         collectedParts.collectedLeftArms = GameManager.instance.gameFile.player.inventory.collectedParts.collectedLeftArms;
         collectedParts.collectedRightArms = GameManager.instance.gameFile.player.inventory.collectedParts.collectedRightArms;
         collectedParts.collectedLegs = GameManager.instance.gameFile.player.inventory.collectedParts.collectedLegs;
+        collectedWeapons = GameManager.instance.gameFile.player.inventory.collectedWeapons;
     }
 }
