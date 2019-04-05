@@ -45,6 +45,7 @@ public class PlayerController : Actor {
     public bool canBeHurt = true;
 
     private Collider2D nestCheck;
+    private Collider2D chestCheck;
 
     [Header("Underwater Properties", order = 0)]
     //Values used in the underwater level
@@ -106,7 +107,14 @@ public class PlayerController : Actor {
             }
         }
 
-        if(Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Pause))) {
+        if (chestCheck != null && chestCheck.tag == "Chest"
+            && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))) {
+            if (chestCheck.gameObject.GetComponent<Chest>().isOpen == false) {
+                chestCheck.gameObject.GetComponent<Chest>().Open();
+            }
+        }
+
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Pause))) {
             UIManager.Instance.PauseGame();
         }
 
@@ -545,11 +553,19 @@ public class PlayerController : Actor {
         if(collision.tag == "Nest") {
             nestCheck = null;
         }
+
+        if(collision.tag == "Chest") {
+            chestCheck = null;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
         if(collision.tag == "Nest") {
             nestCheck = collision;
+        }
+
+        if(collision.tag == "Chest") {
+            chestCheck = collision;
         }
     }
 }

@@ -38,8 +38,26 @@ public class LocalObjectManager : MonoBehaviour {
         }
     }
 
-    public void LoadNests() {
-        GlobalObjectManager.instance.LoadNests(startNest.GetComponent<Nest>().levelName.ToString());
+    public void LoadLocalChests(bool chestAOpen, bool chestBOpen) {
+        if (chestA != null) {
+            chestA.GetComponent<Chest>().isOpen = chestAOpen;
+            if(chestAOpen) {
+                chestA.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/In-Game Sprites/Chest_Open");
+                chestA.transform.position += new Vector3(0, 0.4f, 0);
+            }
+        }
+
+        if (chestB != null) {
+            chestB.GetComponent<Chest>().isOpen = chestBOpen;
+            if(chestBOpen) {
+                chestB.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/In-game Sprites/Chest_Open");
+                chestB.transform.position += new Vector3(0, 0.4f, 0);
+            }
+        }
+    }
+
+    public void LoadObjects() {
+        GlobalObjectManager.instance.LoadObjects(startNest.GetComponent<Nest>().levelName.ToString());
     }
 
     public void ActivateLocalNest(LevelName levelName, LevelPosition levelPosition) {
@@ -50,6 +68,17 @@ public class LocalObjectManager : MonoBehaviour {
             UIManager.Instance.SetShopWarp(true);
         } else if (levelPosition == LevelPosition.Boss) {
             UIManager.Instance.SetBossWarp(true);
+        }
+    }
+
+    public void ActivateLocalChest(LevelName levelName, int chestID) {
+        GlobalObjectManager.instance.OpenChest((int)levelName, chestID);
+        if(chestID == chestA.GetComponent<Chest>().chestID) {
+            chestA.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/In-Game Sprites/Chest_Open");
+            chestA.transform.position += new Vector3(0, 0.4f, 0);
+        } else if (chestID == chestB.GetComponent<Chest>().chestID) {
+            chestB.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/In-game Sprites/Chest_Open");
+            chestB.transform.position += new Vector3(0, 0.4f, 0);
         }
     }
 

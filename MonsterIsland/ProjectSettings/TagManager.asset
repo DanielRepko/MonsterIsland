@@ -12,6 +12,7 @@ TagManager:
   - Coin
   - PartDrop
   - PatrolPoint
+  - Chest
   layers:
   - Default
   - TransparentFX

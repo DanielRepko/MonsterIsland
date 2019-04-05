@@ -45783,6 +45783,11 @@ Prefab:
       propertyPath: m_Name
       value: LocalObjectManager
       objectReference: {fileID: 0}
+    - target: {fileID: 114858569748209518, guid: 4890ea28c2aea1f4c8c5ce65ca32065a,
+        type: 2}
+      propertyPath: chestA
+      value: 
+      objectReference: {fileID: 1738258380}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4890ea28c2aea1f4c8c5ce65ca32065a, type: 2}
   m_IsPrefabAsset: 0
@@ -45905,6 +45910,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1455002010176664, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
     type: 2}
   m_PrefabInternal: {fileID: 1023053496}
+--- !u!1 &1738258380 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1385652219247044, guid: d03f94296fee7784dac881bfe5162841,
+    type: 2}
+  m_PrefabInternal: {fileID: 572458622}
 --- !u!1 &1782065451
 GameObject:
   m_ObjectHideFlags: 0
