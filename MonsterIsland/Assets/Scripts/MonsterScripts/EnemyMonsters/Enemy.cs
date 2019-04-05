@@ -112,7 +112,7 @@ public class Enemy : MonoBehaviour {
         if(coinChance >= 6) {
             //Grab a random coin value from 1 to 5, create the coin, and set it's value
             int coinValue = Random.Range(0, 5) + 1;
-            GameObject coin = Instantiate((GameObject) Resources.Load("Assets/Resources/Prefabs/DroppedItems/Coin.prefab"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            GameObject coin = Instantiate(Resources.Load<GameObject>("Prefabs/DroppedItems/Coin"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
             coin.GetComponent<Coin>().value = coinValue;
         }
 
@@ -147,7 +147,7 @@ public class Enemy : MonoBehaviour {
                 if (partToGet == 1)
                 {
                     //Head
-                    GameObject droppedHead = Instantiate((GameObject)Resources.Load("Assets/Resources/Prefabs/DroppedItems/DroppedHead.prefab"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                    GameObject droppedHead = Instantiate(Resources.Load<GameObject>("Prefabs/DroppedItems/DroppedHead"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
                     droppedHead.GetComponent<DroppedPart>().partType = Helper.PartType.Head;
                     droppedHead.GetComponent<DroppedPart>().monsterName = monsterName;
                     droppedHead.GetComponent<HeadPart>().InitializePart(PartFactory.GetHeadPartInfo(monsterName));
@@ -155,7 +155,7 @@ public class Enemy : MonoBehaviour {
                 else if (partToGet == 2)
                 {
                     //Torso
-                    GameObject droppedTorso = Instantiate((GameObject)Resources.Load("Assets/Resources/Prefabs/DroppedItems/DroppedTorso.prefab"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                    GameObject droppedTorso = Instantiate(Resources.Load<GameObject>("Prefabs/DroppedItems/DroppedTorso"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
                     droppedTorso.GetComponent<DroppedPart>().partType = Helper.PartType.Torso;
                     droppedTorso.GetComponent<DroppedPart>().monsterName = monsterName;
                     droppedTorso.GetComponent<TorsoPart>().InitializePart(PartFactory.GetTorsoPartInfo(monsterName));
@@ -163,7 +163,7 @@ public class Enemy : MonoBehaviour {
                 else if (partToGet == 3)
                 {
                     //Left Arm
-                    GameObject droppedLeftArm = Instantiate((GameObject)Resources.Load("Assets/Resources/Prefabs/DroppedItems/DroppedLeftArm.prefab"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                    GameObject droppedLeftArm = Instantiate(Resources.Load<GameObject>("Prefabs/DroppedItems/DroppedLeftArm"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
                     droppedLeftArm.GetComponent<DroppedPart>().partType = Helper.PartType.LeftArm;
                     droppedLeftArm.GetComponent<DroppedPart>().monsterName = monsterName;
                     droppedLeftArm.GetComponent<ArmPart>().InitializePart(PartFactory.GetArmPartInfo(monsterName, "LeftArm"));
@@ -171,7 +171,7 @@ public class Enemy : MonoBehaviour {
                 else if (partToGet == 4)
                 {
                     //Right Arm
-                    GameObject droppedRightArm = Instantiate((GameObject)Resources.Load("Assets/Resources/Prefabs/DroppedItems/DroppedRightArm.prefab"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                    GameObject droppedRightArm = Instantiate(Resources.Load<GameObject>("Prefabs/DroppedItems/DroppedRightArm"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
                     droppedRightArm.GetComponent<DroppedPart>().partType = Helper.PartType.RightArm;
                     droppedRightArm.GetComponent<DroppedPart>().monsterName = monsterName;
                     droppedRightArm.GetComponent<ArmPart>().InitializePart(PartFactory.GetArmPartInfo(monsterName, "RightArm"));
@@ -179,7 +179,7 @@ public class Enemy : MonoBehaviour {
                 else if (partToGet == 5)
                 {
                     //Legs
-                    GameObject droppedLegs = Instantiate((GameObject)Resources.Load("Assets/Resources/Prefabs/DroppedItems/DroppedLegs.prefab"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                    GameObject droppedLegs = Instantiate(Resources.Load<GameObject>("Prefabs/DroppedItems/DroppedLegs"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
                     droppedLegs.GetComponent<DroppedPart>().partType = Helper.PartType.Legs;
                     droppedLegs.GetComponent<DroppedPart>().monsterName = monsterName;
                     droppedLegs.GetComponent<LegPart>().InitializePart(PartFactory.GetLegPartInfo(monsterName));
