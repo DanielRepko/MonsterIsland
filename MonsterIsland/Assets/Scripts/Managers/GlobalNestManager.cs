@@ -132,6 +132,7 @@ public class GlobalNestManager : MonoBehaviour {
 
     public void RestPressed() {
         PlayerController.Instance.health = PlayerController.Instance.maxHealth;
+        UIManager.Instance.UpdateHeartCount();
         GameManager.instance.FinalizeSave();
         UIManager.Instance.HideNestCanvas();
     }

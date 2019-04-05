@@ -54,7 +54,7 @@ public class PlayerController : Actor {
     [Range(0.01f, 1.00f)]
     public float airToLose;            //The amount of air to lose when required. Min 0.01, max 1
     public float timeBetwenAirDamage;  //The amount of time between damage from having no air, in seconds.
-    public float drownDamage;          //The amount of damage the player should take from drowning, when required.
+    public int drownDamage;            //The amount of damage the player should take from drowning, when required.
     private float timeUnderwater;      //The amount of time the player has spent underwater since they last required air
     public bool hasGills = false;
 
@@ -78,6 +78,9 @@ public class PlayerController : Actor {
             width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
             height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
             Instance = this;
+            maxHealth = GameManager.instance.gameFile.player.totalHearts;
+            health = maxHealth;
+            FindObjectOfType<UIManager>().UpdateHeartCount();
         } else if (Instance != this) {
             Destroy(gameObject);
         }
@@ -120,7 +123,8 @@ public class PlayerController : Actor {
 
             //If the player's air is 0 or less and enough time has passed, damage them
             if(air <= 0 && timeUnderwater >= timeBetwenAirDamage) {
-                Debug.Log("Damage the player for " + drownDamage + " damage");
+                PlayerController.Instance.health -= drownDamage;
+                UIManager.Instance.UpdateHeartCount();
                 timeUnderwater -= timeBetwenAirDamage;
             }
         }
@@ -283,6 +287,7 @@ public class PlayerController : Actor {
             animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(-15 * knockBackDirection, 35);
             health -= damage;
+            UIManager.Instance.UpdateHeartCount();
             canBeHurt = false;
             inHitStun = true;
         }
