@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour {
     public int speed;
     public string target;
 
-    private float unsetTriggerTime = 0.01f;
+    private float unsetTriggerTime = 0.05f;
     private float unsetTriggerTimer = 0;
 
     private void FixedUpdate()

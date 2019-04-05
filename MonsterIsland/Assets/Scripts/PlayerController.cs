@@ -330,9 +330,7 @@ public class PlayerController : Actor {
         if (Input.mousePosition.x > screenMiddle) {
             facingDirection = 1;
             //setting the scale of the player object
-            transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
-            //setting the scale of the camera (so that it is not flipped to look away from the world)
-            GetComponentInChildren<Camera>().transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
+            transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);       
 
             monster.ChangeDirection(facingDirection);
         //facing left
@@ -340,8 +338,6 @@ public class PlayerController : Actor {
             facingDirection = -1;
             //setting the scale of the player object
             transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
-            //setting the scale of the camera (so that it is not flipped to look away from the world)
-            GetComponentInChildren<Camera>().transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
 
             monster.ChangeDirection(facingDirection);
         }
