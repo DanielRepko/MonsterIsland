@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour {
     public GameObject pauseCanvas;
     public GameObject settingsPanel;
     public GameObject quickTravelMenu;
+    public Text moneyText;
 
 	// Use this for initialization
 	void Awake() {
@@ -118,5 +119,9 @@ public class UIManager : MonoBehaviour {
 
     public void SetBossWarp(bool interactible) {
         quickTravelMenu.transform.Find("QuickBossButton").GetComponent<Button>().interactable = interactible;
+    }
+
+    public void UpdateBalance(int balance) {
+        moneyText.text = balance.ToString();
     }
 }

@@ -80366,6 +80366,11 @@ Prefab:
       propertyPath: quickTravelMenu
       value: 
       objectReference: {fileID: 1136297798}
+    - target: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: moneyText
+      value: 
+      objectReference: {fileID: 1562602561}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6e1e7a2685d74449d16d2c3e21cee3, type: 2}
   m_IsPrefabAsset: 0
@@ -81347,6 +81352,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1773273311309588, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
     type: 2}
   m_PrefabInternal: {fileID: 1562602556}
+--- !u!114 &1562602561 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114503435858146074, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1562602556}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1676519109
 GameObject:
   m_ObjectHideFlags: 0

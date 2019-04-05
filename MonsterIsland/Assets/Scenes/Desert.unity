@@ -356,6 +356,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1434947816638114, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
     type: 2}
   m_PrefabInternal: {fileID: 2774127}
+--- !u!114 &2774133 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114503435858146074, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 2774127}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &98119731
 GameObject:
   m_ObjectHideFlags: 0
@@ -140690,6 +140696,11 @@ Prefab:
       propertyPath: quickTravelMenu
       value: 
       objectReference: {fileID: 2774132}
+    - target: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
+        type: 2}
+      propertyPath: moneyText
+      value: 
+      objectReference: {fileID: 2774133}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6e1e7a2685d74449d16d2c3e21cee3, type: 2}
   m_IsPrefabAsset: 0
