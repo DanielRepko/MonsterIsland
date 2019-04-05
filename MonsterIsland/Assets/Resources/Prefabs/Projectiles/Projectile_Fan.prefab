@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 250938009273506460}
   - component: {fileID: 114708042353328116}
   - component: {fileID: 50874459512703736}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Projectile_Fan
   m_TagString: Untagged
   m_Icon: {fileID: 0}

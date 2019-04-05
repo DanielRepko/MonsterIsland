@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Coin
   - PartDrop
+  - PatrolPoint
   layers:
   - Default
   - TransparentFX
