@@ -32,4 +32,9 @@ public class Nest : MonoBehaviour {
             LocalNestManager.Instance.ActivateLocalNest(levelName, levelPosition);
         }
     }
+
+    public void SetLastNestUsed() {
+        GameManager.instance.gameFile.saveArea = levelName.ToString();
+        GameManager.instance.gameFile.saveNest = levelPosition.ToString();
+    }
 }

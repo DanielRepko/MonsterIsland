@@ -92,6 +92,20 @@ public class PlayerController : Actor {
     // Update is called once per frame
     void Update() {
 
+        if (nestCheck != null && nestCheck.tag == "Nest"
+            && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))
+            && !UIManager.Instance.nestCanvas.activeInHierarchy) {
+            UIManager.Instance.ShowNestCanvas();
+            nestCheck.gameObject.GetComponent<Nest>().SetLastNestUsed();
+            if(nestCheck.gameObject.GetComponent<Nest>().isActive == false) {
+                nestCheck.gameObject.GetComponent<Nest>().Activate();
+            }
+        }
+
+        if(Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Pause))) {
+            UIManager.Instance.PauseGame();
+        }
+
         //Check if the player is underwater, and if they are, update the underwater timer
         if (isUnderwater) {
             timeUnderwater += Time.deltaTime;
