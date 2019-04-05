@@ -45,8 +45,6 @@ public class Enemy : Actor {
     public float aggroTime;
     private float aggroTimer;
 
-    private bool isUnderWater;
-
     //the target for the enemy to follow, can be the player or patrol points
     public GameObject target;
     
@@ -222,7 +220,7 @@ public class Enemy : Actor {
     public void MakeEnemyJump()
     {
         //swim up to the target if underwater
-        if (isUnderWater)
+        if (isUnderwater)
         {
             bool targetIsHigher = target.transform.position.y > transform.position.y && (target.transform.position.y - transform.position.y) >= 1;
             if (targetIsHigher)
@@ -506,7 +504,7 @@ public class Enemy : Actor {
         //checking to see if the enemy is underwater
         if(collision.tag == "Water")
         {
-            isUnderWater = true;
+            isUnderwater = true;
             jumpCooldown = 0.2f;
         }
         
@@ -517,7 +515,7 @@ public class Enemy : Actor {
         //checking to see if the enemy is underwater
         if (collision.tag == "Water")
         {
-            isUnderWater = false;
+            isUnderwater = false;
         }
     }
 

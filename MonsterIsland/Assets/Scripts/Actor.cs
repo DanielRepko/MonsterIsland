@@ -5,6 +5,7 @@ using UnityEngine;
 abstract public class Actor : MonoBehaviour {
 
     public float jumpForce = 60f;
+    public bool isUnderwater;
 
     public bool attacksLocked;
     public bool movementLocked;
