@@ -43,6 +43,7 @@ public class PlayerController : Actor {
 
     public bool hasExtraJump = true;
     public bool canBeHurt = true;
+    private bool inQuicksand = false;
 
     private Collider2D nestCheck;
     private Collider2D chestCheck;
@@ -229,7 +230,7 @@ public class PlayerController : Actor {
 
     //makes the player jump
     public void Jump() {
-        if (IsOnGround()) {
+        if (IsOnGround() || inQuicksand) {
             //calling the jump animation
             animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -547,6 +548,10 @@ public class PlayerController : Actor {
         if(collision.tag == "Chest") {
             chestCheck = null;
         }
+
+        if(collision.name == "Quicksand") {
+            inQuicksand = false;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
@@ -556,6 +561,10 @@ public class PlayerController : Actor {
 
         if(collision.tag == "Chest") {
             chestCheck = collision;
+        }
+
+        if(collision.name == "Quicksand") {
+            inQuicksand = true;
         }
     }
 }
