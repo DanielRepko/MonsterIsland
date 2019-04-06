@@ -550,6 +550,9 @@ public class PlayerController : Actor {
         }
 
         if(collision.name == "Quicksand") {
+            if(inQuicksand) {
+                moveSpeed *= 4;
+            }
             inQuicksand = false;
         }
     }
@@ -564,6 +567,9 @@ public class PlayerController : Actor {
         }
 
         if(collision.name == "Quicksand") {
+            if(!inQuicksand) {
+                moveSpeed /= 4;
+            }
             inQuicksand = true;
         }
     }
