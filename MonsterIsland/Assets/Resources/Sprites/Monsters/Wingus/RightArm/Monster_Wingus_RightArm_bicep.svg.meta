@@ -2,29 +2,26 @@ fileFormatVersion: 2
 guid: 3d9559aab3d59ac4e9f9049fdec64305
 ScriptedImporter:
   fileIDToRecycleName:
-    100000: gameObject/Monster_Wingus_RightArm_bicep
-    400000: gameObject/Monster_Wingus_RightArm_bicep/Transform
-    21200000: gameObject/Monster_Wingus_RightArm_bicep/SpriteRenderer
+    2800000: tex
     21300000: sprite
-    100100000: gameObject
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: a57477913897c46af95d590f580878bd, type: 3}
-  svgType: 0
+  svgType: 1
   texturedSpriteMeshType: 0
   svgPixelsPerUnit: 100
   gradientResolution: 128
-  alignment: 0
-  customPivot: {x: 0, y: 0}
+  alignment: 9
+  customPivot: {x: 0.5, y: 0.5}
   generatePhysicsShape: 0
   preserveViewport: 0
-  advancedMode: 0
+  advancedMode: 1
   predefinedResolutionIndex: 1
   targetResolution: 1080
   resolutionMultiplier: 1
-  stepDistance: 10
+  stepDistance: 1
   samplingStepDistance: 100
   maxCordDeviationEnabled: 0
   maxCordDeviation: 1
@@ -51,5 +48,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: 8238b59da4481664b89a808429a2b6b3
+      spriteID: b871a7b7cf988434a9eca0607057a7ef
     PhysicsOutlines: []

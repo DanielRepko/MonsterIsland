@@ -320,7 +320,7 @@ public class Enemy : Actor {
         }
     }
 
-    public void Jump()
+    virtual public void Jump()
     {
         if (IsOnGround() && CheckCooldown("jump"))
         {
