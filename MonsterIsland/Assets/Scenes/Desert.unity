@@ -105153,11 +105153,11 @@ AreaEffector2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_UseGlobalAngle: 0
-  m_ForceAngle: 0
-  m_ForceMagnitude: 10
+  m_ForceAngle: 90
+  m_ForceMagnitude: 1700
   m_ForceVariation: 0
   m_ForceTarget: 0
-  m_Drag: 200
+  m_Drag: 50
   m_AngularDrag: 0
 --- !u!19719996 &738982725
 TilemapCollider2D:
