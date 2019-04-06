@@ -29,7 +29,7 @@ public class Nest : MonoBehaviour {
     public void Activate() {
         if(!isActive) {
             isActive = true;
-            LocalNestManager.Instance.ActivateLocalNest(levelName, levelPosition);
+            LocalObjectManager.Instance.ActivateLocalNest(levelName, levelPosition);
         }
     }
 

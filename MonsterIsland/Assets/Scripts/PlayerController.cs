@@ -43,8 +43,10 @@ public class PlayerController : Actor {
 
     public bool hasExtraJump = true;
     public bool canBeHurt = true;
+    private bool inQuicksand = false;
 
     private Collider2D nestCheck;
+    private Collider2D chestCheck;
 
     [Header("Underwater Properties", order = 0)]
     //Values used in the underwater level
@@ -95,18 +97,14 @@ public class PlayerController : Actor {
 
     // Update is called once per frame
     void Update() {
-
-        if (nestCheck != null && nestCheck.tag == "Nest"
-            && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))
-            && !UIManager.Instance.nestCanvas.activeInHierarchy) {
-            UIManager.Instance.ShowNestCanvas();
-            nestCheck.gameObject.GetComponent<Nest>().SetLastNestUsed();
-            if(nestCheck.gameObject.GetComponent<Nest>().isActive == false) {
-                nestCheck.gameObject.GetComponent<Nest>().Activate();
+        if (chestCheck != null && chestCheck.tag == "Chest"
+            && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))) {
+            if (chestCheck.gameObject.GetComponent<Chest>().isOpen == false) {
+                chestCheck.gameObject.GetComponent<Chest>().Open();
             }
         }
 
-        if(Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Pause))) {
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Pause))) {
             UIManager.Instance.PauseGame();
         }
 
@@ -189,6 +187,7 @@ public class PlayerController : Actor {
             && !UIManager.Instance.nestCanvas.activeInHierarchy)
         {
             UIManager.Instance.ShowNestCanvas();
+            nestCheck.gameObject.GetComponent<Nest>().SetLastNestUsed();
             if (nestCheck.gameObject.GetComponent<Nest>().isActive == false)
             {
                 nestCheck.gameObject.GetComponent<Nest>().Activate();
@@ -231,7 +230,7 @@ public class PlayerController : Actor {
 
     //makes the player jump
     public void Jump() {
-        if (IsOnGround()) {
+        if (IsOnGround() || inQuicksand) {
             //calling the jump animation
             animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -545,11 +544,33 @@ public class PlayerController : Actor {
         if(collision.tag == "Nest") {
             nestCheck = null;
         }
+
+        if(collision.tag == "Chest") {
+            chestCheck = null;
+        }
+
+        if(collision.name == "Quicksand") {
+            if(inQuicksand) {
+                moveSpeed *= 4;
+            }
+            inQuicksand = false;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
         if(collision.tag == "Nest") {
             nestCheck = collision;
+        }
+
+        if(collision.tag == "Chest") {
+            chestCheck = collision;
+        }
+
+        if(collision.name == "Quicksand") {
+            if(!inQuicksand) {
+                moveSpeed /= 4;
+            }
+            inQuicksand = true;
         }
     }
 }
