@@ -17,7 +17,7 @@ public class Enemy : Actor {
     public bool alwaysDropPart = false;
     public string partToAlwaysDrop;
     public string equippedWeapon;
-    public AbilityFactory.ArmAbility armAttackDelegate;
+    public AbilityFactory.ArmAbility attackDelegate;
     public AbilityFactory.Ability abilityDelegate;
 
     public delegate void CheckDelegate();
@@ -68,7 +68,7 @@ public class Enemy : Actor {
         //attacking if aggro
         if (isAggro && PlayerIsInAttackRange())
         {
-            armAttackDelegate(Helper.PartType.RightArm);
+            attackDelegate(Helper.PartType.RightArm);
         }
 
         //running any necessary checks on the Enemy
@@ -101,7 +101,7 @@ public class Enemy : Actor {
         var legPartInfo = PartFactory.GetLegPartInfo(monsterName);
         rightArmInfo.equippedWeapon = equippedWeapon;
 
-        armAttackDelegate = Attack;
+        attackDelegate = Attack;
         abilityDelegate = Ability;
 
         //adding methods to be run in fixed update to the check delegate
@@ -320,7 +320,7 @@ public class Enemy : Actor {
         }
     }
 
-    public void Jump()
+    virtual public void Jump()
     {
         if (IsOnGround() && CheckCooldown("jump"))
         {
@@ -365,14 +365,14 @@ public class Enemy : Actor {
                 if(equippedWeapon != "")
                 {
                     monster.rightArmPart.weapon.Damage = 0;
-                    armAttackDelegate(Helper.PartType.RightArm);
+                    attackDelegate(Helper.PartType.RightArm);
                     monster.rightArmPart.weapon.Damage = damage;
                 }
                 else
                 {
                     int rememberDamage = damage;
                     damage = 0;
-                    armAttackDelegate(Helper.PartType.RightArm);
+                    attackDelegate(Helper.PartType.RightArm);
                     damage = rememberDamage;
                 }                
                 return false;
@@ -511,7 +511,7 @@ public class Enemy : Actor {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    virtual public void OnTriggerEnter2D(Collider2D collision)
     {
         //checking to see if the enemy reached a patrol point
         if(collision.tag == "PatrolPoint" && target != null && target == collision.gameObject)

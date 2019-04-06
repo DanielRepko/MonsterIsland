@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponRenderer: {fileID: 0}
   damage: 4
-  speed: 60
+  speed: 40
   target: Enemy
 --- !u!212 &212651155469853552
 SpriteRenderer:

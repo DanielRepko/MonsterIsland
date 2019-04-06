@@ -122,7 +122,7 @@ public class ArmPart : MonoBehaviour {
                     }
                     else if (enemy != null)
                     {
-                        enemy.armAttackDelegate = ability;
+                        enemy.attackDelegate = ability;
                         enemy.attackCooldown = weapon.AttackCooldown;
                         weapon.Damage = enemy.damage;
                         if (weapon.WeaponType == Helper.WeaponType.Melee)
@@ -144,7 +144,7 @@ public class ArmPart : MonoBehaviour {
                     }
                     else if (enemy != null)
                     {
-                        enemy.armAttackDelegate = ability;
+                        enemy.attackDelegate = ability;
                         enemy.attackCooldown = weapon.AttackCooldown;
                         if (weapon.WeaponType == Helper.WeaponType.Melee)
                         {
