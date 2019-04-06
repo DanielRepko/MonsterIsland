@@ -21,7 +21,7 @@ public class Dingus : Enemy {
         {
             if (hit.collider == PlayerController.Instance.hurtBox)
             {
-                PlayerController.Instance.TakeDamage(2, Helper.GetKnockBackDirection(transform, hit.transform));
+                PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, hit.transform));
             }
         }
     }
