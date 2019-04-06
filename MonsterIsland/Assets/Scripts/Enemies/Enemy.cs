@@ -511,7 +511,7 @@ public class Enemy : Actor {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    virtual public void OnTriggerEnter2D(Collider2D collision)
     {
         //checking to see if the enemy reached a patrol point
         if(collision.tag == "PatrolPoint" && target != null && target == collision.gameObject)
