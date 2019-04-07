@@ -19,6 +19,7 @@ public class Lion : Enemy {
             //Enemy was hit from behind
             if (knockBackDirection == facingDirection)
             {
+                health -= damage;
                 abilityDelegate();
             }
             else
