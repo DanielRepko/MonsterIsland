@@ -12,6 +12,10 @@ public class Projectile : MonoBehaviour {
     private float unsetTriggerTime = 0.05f;
     private float unsetTriggerTimer = 0;
 
+    private float offScreenTime = 6;
+    private float offScreenTimer;
+    private bool isOffScreen;
+
     private void FixedUpdate()
     {
         if(unsetTriggerTimer < unsetTriggerTime)
@@ -21,6 +25,26 @@ public class Projectile : MonoBehaviour {
         else if(unsetTriggerTimer >= unsetTriggerTime && GetComponent<BoxCollider2D>().isTrigger)
         {
             GetComponent<BoxCollider2D>().isTrigger = false;
+        }
+        
+    }
+
+    public void CheckOffScreenStatus()
+    {
+        if (isOffScreen)
+        {
+            if (offScreenTimer < offScreenTime)
+            {
+                offScreenTimer += Time.deltaTime;
+            }
+            else if (offScreenTimer >= offScreenTime)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            offScreenTimer = 0;
         }
     }
 
@@ -63,8 +87,13 @@ public class Projectile : MonoBehaviour {
         }
     }
 
+    private void OnBecameVisible()
+    {
+        isOffScreen = false;
+    }
+
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        isOffScreen = true;
     }
 }

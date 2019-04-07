@@ -13,6 +13,10 @@ public class HarpoonProjectile : Projectile {
             Destroy(lastHarpoon.gameObject);
             lastHarpoon = this;
         }
+        else
+        {
+            lastHarpoon = this;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -22,7 +26,7 @@ public class HarpoonProjectile : Projectile {
 
     private void FixedUpdate()
     {
-        
+        CheckOffScreenStatus();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,10 +61,5 @@ public class HarpoonProjectile : Projectile {
                 }
             }
         }
-    }
-
-    private void OnBecameInvisible()
-    {
-        
     }
 }
