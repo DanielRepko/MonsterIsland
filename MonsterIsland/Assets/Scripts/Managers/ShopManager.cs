@@ -58,4 +58,21 @@ public class ShopManager : MonoBehaviour {
 
         UIManager.Instance.RefreshShopUI();
     }
+
+    public void PurchaseItem() {
+        if(UIManager.Instance.selectedItemName.text == shopPart.abilityName && Inventory.Instance.money >= 75) {
+            //Current item is a part. Add it to the inventory and deduct 75 MB
+            Inventory.Instance.AddMonsterPart(shopPart.monster, shopPart.partType);
+            Inventory.Instance.RemoveMoney(75);
+        } else if ((UIManager.Instance.selectedItemName.text == shopWeapon1.WeaponName || UIManager.Instance.selectedItemName.text == shopWeapon2.WeaponName)
+            && Inventory.Instance.money >= 50) {
+            //Current item is a weapon. Add it to the inventory and deduct 50 MB
+            Inventory.Instance.AddWeapon(UIManager.Instance.selectedItemName.text);
+            Inventory.Instance.RemoveMoney(50);
+        } else {
+            //Something went wrong, they shouldn't be able to press the button, keep them from pressing it again
+            UIManager.Instance.purchaseButton.interactable = false;
+        }
+        UIManager.Instance.RefreshShopUI();
+    }
 }

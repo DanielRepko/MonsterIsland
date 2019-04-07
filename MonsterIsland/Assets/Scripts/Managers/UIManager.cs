@@ -93,6 +93,7 @@ public class UIManager : MonoBehaviour {
     public void HideShopPanel() {
         shopPanel.SetActive(false);
         Time.timeScale = 1;
+        RefreshShopUI();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
@@ -218,5 +219,50 @@ public class UIManager : MonoBehaviour {
                 break;
         }
         shopPartButton.interactable = enableButton;
+
+        selectedItemImage.enabled = false;
+        selectedItemName.text = "";
+        selectedItemCost.text = "";
+        selectedItemDescription.text = "";
+        purchaseButton.interactable = false;
+    }
+
+    public void ShowShopWeapon1Info() {
+        selectedItemImage.sprite = ShopManager.instance.shopWeapon1.WeaponSprite;
+        selectedItemImage.enabled = true;
+        selectedItemName.text = ShopManager.instance.shopWeapon1.WeaponName;
+        selectedItemCost.text = "MB$50";
+        selectedItemDescription.text = ShopManager.instance.shopWeapon1.WeaponDesc;
+        if (Inventory.Instance.money >= 50) {
+            purchaseButton.interactable = true;
+        } else {
+            purchaseButton.interactable = false;
+        }
+    }
+
+    public void ShowShopWeapon2Info() {
+        selectedItemImage.sprite = ShopManager.instance.shopWeapon2.WeaponSprite;
+        selectedItemImage.enabled = true;
+        selectedItemName.text = ShopManager.instance.shopWeapon2.WeaponName;
+        selectedItemCost.text = "MB$50";
+        selectedItemDescription.text = ShopManager.instance.shopWeapon2.WeaponDesc;
+        if (Inventory.Instance.money >= 50) {
+            purchaseButton.interactable = true;
+        } else {
+            purchaseButton.interactable = false;
+        }
+    }
+
+    public void ShowShopPartInfo() {
+        selectedItemImage.sprite = Resources.Load<Sprite>("Sprites/Monsters/Robot/Head/Monster_Robot_Head_Face_idle");
+        selectedItemImage.enabled = true;
+        selectedItemName.text = ShopManager.instance.shopPart.abilityName;
+        selectedItemCost.text = "MB$75";
+        selectedItemDescription.text = ShopManager.instance.shopPart.abilityDesc;
+        if (Inventory.Instance.money >= 75) {
+            purchaseButton.interactable = true;
+        } else {
+            purchaseButton.interactable = false;
+        }
     }
 }
