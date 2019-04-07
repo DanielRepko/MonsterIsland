@@ -356,26 +356,33 @@ public class Enemy : Actor {
             Debug.DrawRay(attackRay.origin, new Vector3(attackRange * facingDirection, 0, 0), Color.red);
 
             RaycastHit2D attackHit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Player"));
-            if (attackHit.collider == PlayerController.Instance.hurtBox && CheckCooldown("attack"))
+            if (attackHit)
             {
-                return true;
-            }
-            else if(attackHit.collider == PlayerController.Instance.shellCollider && CheckCooldown("attack"))
-            {
-                if(equippedWeapon != "")
+                if (attackHit.collider == PlayerController.Instance.hurtBox && CheckCooldown("attack"))
                 {
-                    monster.rightArmPart.weapon.Damage = 0;
-                    attackDelegate(Helper.PartType.RightArm);
-                    monster.rightArmPart.weapon.Damage = damage;
+                    return true;
+                }
+                else if (attackHit.collider == PlayerController.Instance.shellCollider && CheckCooldown("attack"))
+                {
+                    if (equippedWeapon != "")
+                    {
+                        monster.rightArmPart.weapon.Damage = 0;
+                        attackDelegate(Helper.PartType.RightArm);
+                        monster.rightArmPart.weapon.Damage = damage;
+                    }
+                    else
+                    {
+                        int rememberDamage = damage;
+                        damage = 0;
+                        attackDelegate(Helper.PartType.RightArm);
+                        damage = rememberDamage;
+                    }
+                    return false;
                 }
                 else
                 {
-                    int rememberDamage = damage;
-                    damage = 0;
-                    attackDelegate(Helper.PartType.RightArm);
-                    damage = rememberDamage;
-                }                
-                return false;
+                    return false;
+                }
             }
             else
             {
