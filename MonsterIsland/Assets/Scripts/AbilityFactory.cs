@@ -133,7 +133,7 @@ public class AbilityFactory : MonoBehaviour {
     //an AOE roar attack. Does not deal damage
     public static void Ability_LionsRoar()
     {
-        
+        PlayerController.Instance.rb.velocity = new Vector2(0, PlayerController.Instance.rb.velocity.y);   
         PlayerController.Instance.animator.Play("LionsRoar" + Helper.GetAnimDirection(PlayerController.Instance.facingDirection) + "Anim");
     }
 
@@ -383,7 +383,12 @@ public class AbilityFactory : MonoBehaviour {
     //due to nature of the ability, needs to pass on a separate method (see FeatherFall())
     public static void Ability_FeatherFall(string armType)
     {
-        PlayerController.Instance.playerCheckDelegate += FeatherFall;
+        PlayerController player = PlayerController.Instance;
+        player.playerCheckDelegate += FeatherFall;
+        if (player.monster.rightArmPart.partInfo.monster == Helper.MonsterName.Vulture && player.monster.leftArmPart.partInfo.monster == Helper.MonsterName.Vulture)
+        {
+            player.jumpForce -= 5;
+        }
     }
 
     //Arm Ability (Activate): Allows the player to extend and shoot their arm out to 
@@ -513,7 +518,7 @@ public class AbilityFactory : MonoBehaviour {
 
         if (!player.isUnderwater)
         {
-            if (player.rb.velocity.y <= 0)
+            if (player.rb.velocity.y <= 0 && !player.IsOnGround())
             {
                 player.rb.gravityScale -= 8f;
             }
