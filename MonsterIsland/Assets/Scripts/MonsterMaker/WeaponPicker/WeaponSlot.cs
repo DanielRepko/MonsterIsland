@@ -22,8 +22,6 @@ public class WeaponSlot : MonoBehaviour {
     {
         weapon = newWeapon;
 
-        string weaponHand = gameObject.name.Substring(0, gameObject.name.Length - 10);
-
         UpdateAbilityBoard();
 
         UpdateUI();
@@ -31,6 +29,7 @@ public class WeaponSlot : MonoBehaviour {
 
     public void UpdateAbilityBoard()
     {
+        string weaponHand = gameObject.name.Substring(0, gameObject.name.Length - 10);
         if (weaponHand == "Right")
         {
             MonsterPartInfo armPart = GetComponentInParent<MonsterMaker>().rightArmSlot.partInfo;
