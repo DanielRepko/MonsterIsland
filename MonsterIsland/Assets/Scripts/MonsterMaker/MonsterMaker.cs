@@ -51,18 +51,17 @@ public class MonsterMaker : MonoBehaviour {
         collectedWeapons.Add(Helper.WeaponName.Fan);
     }
 
-    public void ShowWeaponPicker()
+    public void ShowWeaponPicker(string weaponHand)
     {
         weaponPicker.availableWeapons = collectedWeapons;
         //iterating through all objects inside the MonsterMaker canvas
         foreach (Transform child in transform)
         {
-            //if child is the selected slot
-            if (child.gameObject.name == ("RightWeaponSlot"))
+            if (child.gameObject.name == weaponHand+"WeaponSlot" && weaponHand == "Right")
             {
                 weaponPicker.OpenWeaponPicker(rightWeaponSlot);
             }
-            else if (child.gameObject.name == ("LeftWeaponSlot"))
+            else if (child.gameObject.name == weaponHand + "WeaponSlot" && weaponHand == "Left")
             {
                 weaponPicker.OpenWeaponPicker(leftWeaponSlot);
             }

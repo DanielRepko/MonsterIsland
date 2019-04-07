@@ -58,7 +58,7 @@ public class WeaponPicker : MonoBehaviour {
         }
     }
 
-    public void ResetWeaponPicker()
+    public void ResetWeaponScroll()
     {
         weaponScroll.content.sizeDelta = new Vector2(-800, weaponScroll.content.sizeDelta.y);
         weaponScroll.horizontalScrollbar.value = 0;
@@ -84,7 +84,7 @@ public class WeaponPicker : MonoBehaviour {
         if (weaponSlot != null)
         {
             weaponSlot.ExitWeaponPicker();
-            ResetWeaponPicker();
+            ResetWeaponScroll();
             gameObject.SetActive(false);
         }
     }
