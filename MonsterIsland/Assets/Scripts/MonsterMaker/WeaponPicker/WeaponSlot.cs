@@ -21,7 +21,32 @@ public class WeaponSlot : MonoBehaviour {
     public void ChangeWeapon(Weapon newWeapon)
     {
         weapon = newWeapon;
+
+        string weaponHand = gameObject.name.Substring(0, gameObject.name.Length - 10);
+
+        UpdateAbilityBoard();
+
         UpdateUI();
+    }
+
+    public void UpdateAbilityBoard()
+    {
+        if (weaponHand == "Right")
+        {
+            MonsterPartInfo armPart = GetComponentInParent<MonsterMaker>().rightArmSlot.partInfo;
+            if (armPart.abilityType == "Activate")
+            {
+                abilitySignLabel.text = "";
+            }
+        }
+        else if (weaponHand == "Left")
+        {
+            MonsterPartInfo armPart = GetComponentInParent<MonsterMaker>().leftArmSlot.partInfo;
+            if (armPart.abilityType == "Activate")
+            {
+                abilitySignLabel.text = "";
+            }
+        }
     }
 
     public void EnterWeaponPicker()

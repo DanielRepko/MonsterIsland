@@ -35,25 +35,6 @@ public class MonsterMaker : MonoBehaviour {
             collectedLegs = new List<string>(),
         };
         collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Mitch");
         collectedParts.collectedHeads.Add("Skeleton");
         collectedParts.collectedTorsos.Add("Mitch");
         collectedParts.collectedTorsos.Add("Skeleton");
@@ -61,6 +42,7 @@ public class MonsterMaker : MonoBehaviour {
         collectedParts.collectedLeftArms.Add("Skeleton");
         collectedParts.collectedRightArms.Add("Mitch");
         collectedParts.collectedRightArms.Add("Skeleton");
+        collectedParts.collectedRightArms.Add("Robot");
         collectedParts.collectedLegs.Add("Mitch");
         collectedParts.collectedLegs.Add("Skeleton");
 
