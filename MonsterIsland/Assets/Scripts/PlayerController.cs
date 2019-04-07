@@ -47,6 +47,7 @@ public class PlayerController : Actor {
 
     private Collider2D nestCheck;
     private Collider2D chestCheck;
+    private Collider2D shopCheck;
 
     [Header("Underwater Properties", order = 0)]
     //Values used in the underwater level
@@ -192,6 +193,13 @@ public class PlayerController : Actor {
             {
                 nestCheck.gameObject.GetComponent<Nest>().Activate();
             }
+        }
+
+        if(shopCheck != null && shopCheck.tag == "Shop"
+            && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))
+            && !UIManager.Instance.shopPanel.activeInHierarchy)
+        {
+            UIManager.Instance.ShowShopPanel();
         }
 
         if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Pause)))
@@ -549,6 +557,10 @@ public class PlayerController : Actor {
             chestCheck = null;
         }
 
+        if(collision.tag == "Shop") {
+            shopCheck = null;
+        }
+
         if(collision.name == "Quicksand") {
             if(inQuicksand) {
                 moveSpeed *= 4;
@@ -571,6 +583,10 @@ public class PlayerController : Actor {
                 moveSpeed /= 4;
             }
             inQuicksand = true;
+        }
+
+        if(collision.tag == "Shop") {
+            shopCheck = collision;
         }
     }
 }
