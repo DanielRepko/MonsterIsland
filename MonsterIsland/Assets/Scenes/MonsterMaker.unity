@@ -1710,7 +1710,7 @@ Prefab:
     - target: {fileID: 224374619646400048, guid: c1e7b4c04b61a0e40a5bc1f1c10b86a2,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224374619646400048, guid: c1e7b4c04b61a0e40a5bc1f1c10b86a2,
         type: 2}
@@ -1889,7 +1889,7 @@ Prefab:
     - target: {fileID: 224146421700793608, guid: ac37dbe46f91d014cb16bab9d00336f1,
         type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 224146421700793608, guid: ac37dbe46f91d014cb16bab9d00336f1,
         type: 2}
@@ -2045,6 +2045,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 493149589}
   - {fileID: 1240983552}
   - {fileID: 976240626}
   - {fileID: 993139395}
@@ -2052,7 +2053,6 @@ RectTransform:
   - {fileID: 655777444}
   - {fileID: 1820924209}
   - {fileID: 213944451}
-  - {fileID: 493149589}
   - {fileID: 1079276385}
   - {fileID: 650821320}
   - {fileID: 85833889}
@@ -2590,7 +2590,7 @@ GameObject:
   - component: {fileID: 452948044}
   - component: {fileID: 452948043}
   m_Layer: 5
-  m_Name: PartDetails
+  m_Name: WeaponDetails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2614,7 +2614,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.59997016, y: 151.88002}
+  m_AnchoredPosition: {x: -0.5999756, y: 151.88002}
   m_SizeDelta: {x: -570.7001, y: 81.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &452948043
@@ -2692,7 +2692,7 @@ RectTransform:
   m_Children:
   - {fileID: 662224863}
   m_Father: {fileID: 218162882}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -2983,7 +2983,7 @@ Prefab:
     - target: {fileID: 224359329093624912, guid: b0597b10d739a1f4d9077813408ee1b4,
         type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224359329093624912, guid: b0597b10d739a1f4d9077813408ee1b4,
         type: 2}
@@ -3168,7 +3168,7 @@ Prefab:
     - target: {fileID: 224146421700793608, guid: ac37dbe46f91d014cb16bab9d00336f1,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224146421700793608, guid: ac37dbe46f91d014cb16bab9d00336f1,
         type: 2}
@@ -3272,7 +3272,7 @@ Prefab:
     - target: {fileID: 224751345624413830, guid: 98ff6c5a6934cff4dae8e24e9bc0bb6b,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224751345624413830, guid: 98ff6c5a6934cff4dae8e24e9bc0bb6b,
         type: 2}
@@ -3965,7 +3965,7 @@ Prefab:
     - target: {fileID: 224274263368018522, guid: dc5f913dbe333324f9037ea33c009f41,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224274263368018522, guid: dc5f913dbe333324f9037ea33c009f41,
         type: 2}
@@ -4432,7 +4432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1079276385
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4784,7 +4784,7 @@ GameObject:
   - component: {fileID: 1215417209}
   - component: {fileID: 1215417208}
   m_Layer: 5
-  m_Name: PartPicker
+  m_Name: WeaponScroll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4807,7 +4807,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.00002724784, y: 61.149994}
+  m_AnchoredPosition: {x: 0, y: 61.149994}
   m_SizeDelta: {x: 0, y: 122.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1215417208
@@ -6393,7 +6393,7 @@ Prefab:
     - target: {fileID: 224699169934461378, guid: 0e04099c1c6884743a43a6bc63a74fbd,
         type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 224699169934461378, guid: 0e04099c1c6884743a43a6bc63a74fbd,
         type: 2}
