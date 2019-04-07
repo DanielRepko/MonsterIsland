@@ -39,6 +39,12 @@ public class Inventory : MonoBehaviour {
         UIManager.Instance.UpdateBalance(money);
     }
 
+    public void RemoveMoney(int amount) {
+        money -= amount;
+        GameManager.instance.gameFile.player.inventory.monsterBucks = money;
+        UIManager.Instance.UpdateBalance(money);
+    }
+
     public void AddMonsterPart(string monsterName, string partType) {
         switch(partType) {
             case Helper.PartType.Head:
