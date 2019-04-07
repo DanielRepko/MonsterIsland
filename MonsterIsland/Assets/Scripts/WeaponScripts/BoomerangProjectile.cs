@@ -116,8 +116,4 @@ public class BoomerangProjectile : Projectile {
             }
         }
     }
-    private void OnBecameInvisible()
-    {
-
-    }
 }
