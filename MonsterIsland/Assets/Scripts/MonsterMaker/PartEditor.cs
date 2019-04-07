@@ -38,10 +38,10 @@ public class PartEditor : MonoBehaviour
             
             if(i == 0)
             {
-                xOffset = 55;
+                xOffset = 60;
             } else
             {
-                xOffset += 100;
+                xOffset += 120;
             }
             //loading the appropriate PartPickerPrefab
             var pickerButtonPrefab = new GameObject();

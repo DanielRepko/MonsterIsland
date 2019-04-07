@@ -1296,7 +1296,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 218162882}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1612,7 +1612,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 218162882}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -2008,13 +2008,13 @@ RectTransform:
   - {fileID: 1820924209}
   - {fileID: 732212878}
   - {fileID: 493149589}
-  - {fileID: 560897707}
-  - {fileID: 1153270226}
   - {fileID: 1079276385}
   - {fileID: 650821320}
   - {fileID: 85833889}
   - {fileID: 34852575}
   - {fileID: 1330154656}
+  - {fileID: 1153270226}
+  - {fileID: 560897707}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2740,7 +2740,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.000024557114, y: 53}
+  m_AnchoredPosition: {x: 0.000024557114, y: 48.2}
   m_SizeDelta: {x: -800, y: 121.399994}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &420846557
@@ -2788,7 +2788,7 @@ Prefab:
     - target: {fileID: 224382791345844824, guid: 161a9fa0ce7d42640a9a48e0408a9d1e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 224382791345844824, guid: 161a9fa0ce7d42640a9a48e0408a9d1e,
         type: 2}
@@ -3021,6 +3021,7 @@ MonoBehaviour:
     abilityName: 
     abilityType: 
     abilityDesc: 
+    abilityCooldown: 0
     bicepSprite: 
     forearmSprite: 
     handBackSprite: 
@@ -3029,6 +3030,7 @@ MonoBehaviour:
     fingersOpenFrontSprite: 
     fingersClosedBackSprite: 
     fingersClosedFrontSprite: 
+    equippedWeapon: 
   bicepImage: {fileID: 364056633}
   forearmImage: {fileID: 569627715}
   handImage: {fileID: 1394120391}
@@ -3190,7 +3192,7 @@ Prefab:
     - target: {fileID: 224382791345844824, guid: 161a9fa0ce7d42640a9a48e0408a9d1e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 224382791345844824, guid: 161a9fa0ce7d42640a9a48e0408a9d1e,
         type: 2}
@@ -3522,7 +3524,7 @@ RectTransform:
   - {fileID: 33878178}
   - {fileID: 78837545}
   m_Father: {fileID: 218162882}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3757,6 +3759,7 @@ MonoBehaviour:
     abilityName: 
     abilityType: 
     abilityDesc: 
+    abilityCooldown: 0
     pelvisSprite: 
     thighSprite: 
     shinSprite: 
@@ -4890,6 +4893,7 @@ MonoBehaviour:
     abilityName: 
     abilityType: 
     abilityDesc: 
+    abilityCooldown: 0
     mainSprite: 
   torsoImage: {fileID: 15689480}
 --- !u!1 &993139394
@@ -5041,6 +5045,7 @@ MonoBehaviour:
     abilityName: 
     abilityType: 
     abilityDesc: 
+    abilityCooldown: 0
     bicepSprite: 
     forearmSprite: 
     handBackSprite: 
@@ -5049,6 +5054,7 @@ MonoBehaviour:
     fingersOpenFrontSprite: 
     fingersClosedBackSprite: 
     fingersClosedFrontSprite: 
+    equippedWeapon: 
   bicepImage: {fileID: 1254600154}
   forearmImage: {fileID: 914115672}
   handImage: {fileID: 1689301479}
@@ -5085,7 +5091,7 @@ RectTransform:
   - {fileID: 862593702}
   - {fileID: 1815455037}
   m_Father: {fileID: 218162882}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5541,6 +5547,7 @@ MonoBehaviour:
     abilityName: 
     abilityType: 
     abilityDesc: 
+    abilityCooldown: 0
     mainSprite: 
     neckSprite: 
     hurtSprite: 
@@ -5713,7 +5720,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 218162882}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -6112,7 +6119,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2092643027}
   m_HandleRect: {fileID: 2092643026}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
