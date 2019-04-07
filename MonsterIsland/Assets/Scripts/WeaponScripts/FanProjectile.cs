@@ -17,6 +17,8 @@ public class FanProjectile : Projectile {
         {
             Destroy(gameObject);
         }
+
+        CheckOffScreenStatus();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

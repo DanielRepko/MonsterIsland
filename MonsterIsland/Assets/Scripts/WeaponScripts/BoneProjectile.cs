@@ -20,6 +20,8 @@ public class BoneProjectile : Projectile {
         }
 
         UpdateCooldown(false);
+
+        CheckOffScreenStatus();
         
     }
 

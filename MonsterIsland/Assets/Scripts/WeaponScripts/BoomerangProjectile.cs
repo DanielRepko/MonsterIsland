@@ -36,6 +36,8 @@ public class BoomerangProjectile : Projectile {
 
         UpdateCooldown(false);
 
+        CheckOffScreenStatus();
+
     }
 
     private void UpdateCooldown(bool destroyed)

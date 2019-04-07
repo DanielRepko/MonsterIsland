@@ -55,7 +55,7 @@ public class DrillProjectile : Projectile {
 
     private void FixedUpdate()
     {
-        
+        CheckOffScreenStatus();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
