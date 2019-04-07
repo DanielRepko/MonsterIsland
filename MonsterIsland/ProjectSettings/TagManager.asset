@@ -13,6 +13,7 @@ TagManager:
   - PartDrop
   - PatrolPoint
   - Chest
+  - Shop
   layers:
   - Default
   - TransparentFX
