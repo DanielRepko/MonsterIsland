@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
-
+    
     public static UIManager Instance;
     public GameObject airMeter;
     public GameObject airMeterBar;
@@ -16,6 +16,26 @@ public class UIManager : MonoBehaviour {
     public GameObject quickTravelMenu;
     public Text moneyText;
     public GameObject[] heartImages;
+    
+    //Shop related objects
+    public GameObject shopPanel;
+    public Text shopMoneyText;
+
+    public Button shopWeapon1Button;
+    public Text shopWeapon1Text;
+    public Image shopWeapon1Image;
+    public Button shopWeapon2Button;
+    public Text shopWeapon2Text;
+    public Image shopWeapon2Image;
+    public Button shopPartButton;
+    public Text shpPartText;
+    public Image shopPartImage;
+
+    public Image selectedItemImage;
+    public Text selectedItemName;
+    public Text selectedItemCost;
+    public Text selectedItemDescription;
+    public Button purchaseButton;
 
 	// Use this for initialization
 	void Awake() {

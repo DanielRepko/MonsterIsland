@@ -607,6 +607,22 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  shopPanel: {fileID: 0}
+  shopMoneyText: {fileID: 0}
+  shopWeapon1Button: {fileID: 0}
+  shopWeapon1Text: {fileID: 0}
+  shopWeapon1Image: {fileID: 0}
+  shopWeapon2Button: {fileID: 0}
+  shopWeapon2Text: {fileID: 0}
+  shopWeapon2Image: {fileID: 0}
+  shopPartButton: {fileID: 0}
+  shpPartText: {fileID: 0}
+  shopPartImage: {fileID: 0}
+  selectedItemImage: {fileID: 0}
+  selectedItemName: {fileID: 0}
+  selectedItemCost: {fileID: 0}
+  selectedItemDescription: {fileID: 0}
+  purchaseButton: {fileID: 0}
 --- !u!114 &114351522358479870
 MonoBehaviour:
   m_ObjectHideFlags: 1
