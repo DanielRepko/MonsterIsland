@@ -45863,7 +45863,7 @@ Prefab:
       objectReference: {fileID: 1604197719}
     - target: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,
         type: 2}
-      propertyPath: shpPartText
+      propertyPath: shopPartText
       value: 
       objectReference: {fileID: 2078983335}
     - target: {fileID: 114315649494007076, guid: 0f6e1e7a2685d74449d16d2c3e21cee3,

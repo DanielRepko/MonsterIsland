@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour {
     public Text shopWeapon2Text;
     public Image shopWeapon2Image;
     public Button shopPartButton;
-    public Text shpPartText;
+    public Text shopPartText;
     public Image shopPartImage;
 
     public Image selectedItemImage;
@@ -166,5 +166,57 @@ public class UIManager : MonoBehaviour {
 
     public void UpdateBalance(int balance) {
         moneyText.text = balance.ToString();
+        shopMoneyText.text = balance.ToString();
+    }
+
+    public void RefreshShopUI() {
+        Inventory inventory = FindObjectOfType<Inventory>();
+
+        shopWeapon1Text.text = ShopManager.instance.shopWeapon1.WeaponName;
+        shopWeapon1Image.sprite = ShopManager.instance.shopWeapon1.WeaponSprite;
+        if(inventory.collectedWeapons.Contains(ShopManager.instance.shopWeapon1.WeaponName)) {
+            shopWeapon1Button.interactable = false;
+        } else {
+            shopWeapon1Button.interactable = true;
+        }
+
+        shopWeapon2Text.text = ShopManager.instance.shopWeapon2.WeaponName;
+        shopWeapon2Image.sprite = ShopManager.instance.shopWeapon2.WeaponSprite;
+        if (inventory.collectedWeapons.Contains(ShopManager.instance.shopWeapon2.WeaponName)) {
+            shopWeapon2Button.interactable = false;
+        } else {
+            shopWeapon2Button.interactable = true;
+        }
+        
+        shopPartText.text = ShopManager.instance.shopPart.abilityName;
+        bool enableButton = true;
+        switch(ShopManager.instance.shopPart.partType) {
+            case Helper.PartType.Head:
+                if(inventory.collectedParts.collectedHeads.Contains(Helper.MonsterName.Robot)) {
+                    enableButton = false;
+                }
+                break;
+            case Helper.PartType.Torso:
+                if (inventory.collectedParts.collectedTorsos.Contains(Helper.MonsterName.Robot)) {
+                    enableButton = false;
+                }
+                break;
+            case Helper.PartType.LeftArm:
+                if (Inventory.Instance.collectedParts.collectedLeftArms.Contains(Helper.MonsterName.Robot)) {
+                    enableButton = false;
+                }
+                break;
+            case Helper.PartType.RightArm:
+                if (Inventory.Instance.collectedParts.collectedRightArms.Contains(Helper.MonsterName.Robot)) {
+                    enableButton = false;
+                }
+                break;
+            case Helper.PartType.Legs:
+                if (Inventory.Instance.collectedParts.collectedLegs.Contains(Helper.MonsterName.Robot)) {
+                    enableButton = false;
+                }
+                break;
+        }
+        shopPartButton.interactable = enableButton;
     }
 }
