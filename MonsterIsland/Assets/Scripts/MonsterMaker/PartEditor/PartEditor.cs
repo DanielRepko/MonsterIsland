@@ -38,10 +38,10 @@ public class PartEditor : MonoBehaviour
             
             if(i == 0)
             {
-                xOffset = 55;
+                xOffset = 60;
             } else
             {
-                xOffset += 100;
+                xOffset += 120;
             }
             //loading the appropriate PartPickerPrefab
             var pickerButtonPrefab = new GameObject();
@@ -73,14 +73,13 @@ public class PartEditor : MonoBehaviour
             var pickerButtonTransform = pickerButton.GetComponent<RectTransform>();
             pickerButtonTransform.SetParent(partPicker.content);
             pickerButtonTransform.anchoredPosition = new Vector2(xOffset, 0);
-            partPicker.content.sizeDelta = new Vector2(partPicker.content.sizeDelta.x+100.5f, partPicker.content.sizeDelta.y);
+            partPicker.content.sizeDelta = new Vector2(partPicker.content.sizeDelta.x+120f, partPicker.content.sizeDelta.y);
         }
     }
 
     public void ResetPartPicker()
     {
         partPicker.content.sizeDelta = new Vector2(-800, partPicker.content.sizeDelta.y);
-        partPicker.horizontalScrollbar.value = 0;
         for(int i = 0; i < partPicker.content.childCount; i++)
         {
             Destroy(partPicker.content.GetChild(i).gameObject);
@@ -100,11 +99,14 @@ public class PartEditor : MonoBehaviour
 
     public void ClosePartEditor()
     {
-        partSlot.ExitPartEditor();
-        primaryColorIndicator.color = Color.white;
-        secondaryColorIndicator.color = Color.white;
-        ResetPartPicker();
-        gameObject.SetActive(false);
+        if (partSlot != null)
+        {
+            partSlot.ExitPartEditor();
+            primaryColorIndicator.color = Color.white;
+            secondaryColorIndicator.color = Color.white;
+            ResetPartPicker();
+            gameObject.SetActive(false);
+        }
     }
 
     public Color ConvertHexColor(string hexColor)

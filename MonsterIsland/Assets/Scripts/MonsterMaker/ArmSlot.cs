@@ -25,45 +25,51 @@ public class ArmSlot : PartSlot {
 
     public override void ChangePrimaryColor(string newColor)
     {
-        ArmPartInfo newPart = new ArmPartInfo()
+        if (partInfo.monster != "")
         {
-            monster = partInfo.monster,
-            abilityName = partInfo.abilityName,
-            abilityDesc = partInfo.abilityDesc,
-            bicepSprite = ChangeColor(partInfo.bicepSprite, "PRIMARY", newColor),
-            forearmSprite = ChangeColor(partInfo.forearmSprite, "PRIMARY", newColor),
-            handBackSprite = ChangeColor(partInfo.handBackSprite, "PRIMARY", newColor),
-            handFrontSprite = ChangeColor(partInfo.handFrontSprite, "PRIMARY", newColor),
-            fingersClosedBackSprite = ChangeColor(partInfo.fingersClosedBackSprite, "PRIMARY", newColor),
-            fingersClosedFrontSprite = ChangeColor(partInfo.fingersClosedFrontSprite, "PRIMARY", newColor),
-            fingersOpenBackSprite = ChangeColor(partInfo.fingersOpenBackSprite, "PRIMARY", newColor),
-            fingersOpenFrontSprite = ChangeColor(partInfo.fingersOpenFrontSprite, "PRIMARY", newColor)
-        };
+            ArmPartInfo newPart = new ArmPartInfo()
+            {
+                monster = partInfo.monster,
+                abilityName = partInfo.abilityName,
+                abilityDesc = partInfo.abilityDesc,
+                bicepSprite = ChangeColor(partInfo.bicepSprite, "PRIMARY", newColor),
+                forearmSprite = ChangeColor(partInfo.forearmSprite, "PRIMARY", newColor),
+                handBackSprite = ChangeColor(partInfo.handBackSprite, "PRIMARY", newColor),
+                handFrontSprite = ChangeColor(partInfo.handFrontSprite, "PRIMARY", newColor),
+                fingersClosedBackSprite = ChangeColor(partInfo.fingersClosedBackSprite, "PRIMARY", newColor),
+                fingersClosedFrontSprite = ChangeColor(partInfo.fingersClosedFrontSprite, "PRIMARY", newColor),
+                fingersOpenBackSprite = ChangeColor(partInfo.fingersOpenBackSprite, "PRIMARY", newColor),
+                fingersOpenFrontSprite = ChangeColor(partInfo.fingersOpenFrontSprite, "PRIMARY", newColor)
+            };
 
 
-        partInfo = newPart;
-        UpdateUI();
+            partInfo = newPart;
+            UpdateUI();
+        }
     }
 
     public override void ChangeSecondaryColor(string newColor)
     {
-        ArmPartInfo newPart = new ArmPartInfo()
+        if (partInfo.monster != "")
         {
-            monster = partInfo.monster,
-            abilityName = partInfo.abilityName,
-            abilityDesc = partInfo.abilityDesc,
-            bicepSprite = ChangeColor(partInfo.bicepSprite, "SECONDARY", newColor),
-            forearmSprite = ChangeColor(partInfo.forearmSprite, "SECONDARY", newColor),
-            handBackSprite = ChangeColor(partInfo.handBackSprite, "SECONDARY", newColor),
-            handFrontSprite = ChangeColor(partInfo.handFrontSprite, "SECONDARY", newColor),
-            fingersClosedBackSprite = ChangeColor(partInfo.fingersClosedBackSprite, "SECONDARY", newColor),
-            fingersClosedFrontSprite = ChangeColor(partInfo.fingersClosedFrontSprite, "SECONDARY", newColor),
-            fingersOpenBackSprite = ChangeColor(partInfo.fingersOpenBackSprite, "SECONDARY", newColor),
-            fingersOpenFrontSprite = ChangeColor(partInfo.fingersOpenFrontSprite, "SECONDARY", newColor)
-        };
+            ArmPartInfo newPart = new ArmPartInfo()
+            {
+                monster = partInfo.monster,
+                abilityName = partInfo.abilityName,
+                abilityDesc = partInfo.abilityDesc,
+                bicepSprite = ChangeColor(partInfo.bicepSprite, "SECONDARY", newColor),
+                forearmSprite = ChangeColor(partInfo.forearmSprite, "SECONDARY", newColor),
+                handBackSprite = ChangeColor(partInfo.handBackSprite, "SECONDARY", newColor),
+                handFrontSprite = ChangeColor(partInfo.handFrontSprite, "SECONDARY", newColor),
+                fingersClosedBackSprite = ChangeColor(partInfo.fingersClosedBackSprite, "SECONDARY", newColor),
+                fingersClosedFrontSprite = ChangeColor(partInfo.fingersClosedFrontSprite, "SECONDARY", newColor),
+                fingersOpenBackSprite = ChangeColor(partInfo.fingersOpenBackSprite, "SECONDARY", newColor),
+                fingersOpenFrontSprite = ChangeColor(partInfo.fingersOpenFrontSprite, "SECONDARY", newColor)
+            };
 
-        partInfo = newPart;
-        UpdateUI();
+            partInfo = newPart;
+            UpdateUI();
+        }
     }
 
     public override void UpdateUI()

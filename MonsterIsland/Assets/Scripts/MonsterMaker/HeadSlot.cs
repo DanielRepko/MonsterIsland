@@ -23,37 +23,43 @@ public class HeadSlot : PartSlot{
 
     public override void ChangePrimaryColor(string newColor)
     {
-        HeadPartInfo newPart = new HeadPartInfo()
+        if (partInfo.monster != "")
         {
-            monster = partInfo.monster,
-            abilityName = partInfo.abilityName,
-            abilityDesc = partInfo.abilityDesc,
-            mainSprite = ChangeColor(partInfo.mainSprite, "PRIMARY", newColor),
-            neckSprite = ChangeColor(partInfo.neckSprite, "PRIMARY", newColor),
-            hurtSprite = ChangeColor(partInfo.hurtSprite, "PRIMARY", newColor),
-            attackSprite = ChangeColor(partInfo.attackSprite, "PRIMARY", newColor)
-        };
+            HeadPartInfo newPart = new HeadPartInfo()
+            {
+                monster = partInfo.monster,
+                abilityName = partInfo.abilityName,
+                abilityDesc = partInfo.abilityDesc,
+                mainSprite = ChangeColor(partInfo.mainSprite, "PRIMARY", newColor),
+                neckSprite = ChangeColor(partInfo.neckSprite, "PRIMARY", newColor),
+                hurtSprite = ChangeColor(partInfo.hurtSprite, "PRIMARY", newColor),
+                attackSprite = ChangeColor(partInfo.attackSprite, "PRIMARY", newColor)
+            };
 
 
-        partInfo = newPart;
-        UpdateUI();
+            partInfo = newPart;
+            UpdateUI();
+        }
     }
 
     public override void ChangeSecondaryColor(string newColor)
     {
-        HeadPartInfo newPart = new HeadPartInfo()
+        if (partInfo.monster != "")
         {
-            monster = partInfo.monster,
-            abilityName = partInfo.abilityName,
-            abilityDesc = partInfo.abilityDesc,
-            mainSprite = ChangeColor(partInfo.mainSprite, "SECONDARY", newColor),
-            neckSprite = ChangeColor(partInfo.neckSprite, "SECONDARY", newColor),
-            hurtSprite = ChangeColor(partInfo.hurtSprite, "SECONDARY", newColor),
-            attackSprite = ChangeColor(partInfo.attackSprite, "SECONDARY", newColor)
-        };
+            HeadPartInfo newPart = new HeadPartInfo()
+            {
+                monster = partInfo.monster,
+                abilityName = partInfo.abilityName,
+                abilityDesc = partInfo.abilityDesc,
+                mainSprite = ChangeColor(partInfo.mainSprite, "SECONDARY", newColor),
+                neckSprite = ChangeColor(partInfo.neckSprite, "SECONDARY", newColor),
+                hurtSprite = ChangeColor(partInfo.hurtSprite, "SECONDARY", newColor),
+                attackSprite = ChangeColor(partInfo.attackSprite, "SECONDARY", newColor)
+            };
 
-        partInfo = newPart;
-        UpdateUI();
+            partInfo = newPart;
+            UpdateUI();
+        }
     }
 
     public override void UpdateUI()
