@@ -53,7 +53,7 @@ public class WeaponPicker : MonoBehaviour {
                 var pickerButtonTransform = pickerButton.GetComponent<RectTransform>();
                 pickerButtonTransform.SetParent(weaponScroll.content);
                 pickerButtonTransform.anchoredPosition = new Vector2(xOffset, 0);
-                weaponScroll.content.sizeDelta = new Vector2(weaponScroll.content.sizeDelta.x + 100.5f, weaponScroll.content.sizeDelta.y);
+                weaponScroll.content.sizeDelta = new Vector2(weaponScroll.content.sizeDelta.x + 120f, weaponScroll.content.sizeDelta.y);
             }            
         }
     }
@@ -61,7 +61,6 @@ public class WeaponPicker : MonoBehaviour {
     public void ResetWeaponScroll()
     {
         weaponScroll.content.sizeDelta = new Vector2(-800, weaponScroll.content.sizeDelta.y);
-        weaponScroll.horizontalScrollbar.value = 0;
         for (int i = 0; i < weaponScroll.content.childCount; i++)
         {
             Destroy(weaponScroll.content.GetChild(i).gameObject);

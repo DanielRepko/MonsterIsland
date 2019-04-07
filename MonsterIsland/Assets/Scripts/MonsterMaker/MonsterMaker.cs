@@ -35,6 +35,25 @@ public class MonsterMaker : MonoBehaviour {
             collectedLegs = new List<string>(),
         };
         collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
+        collectedParts.collectedHeads.Add("Mitch");
         collectedParts.collectedHeads.Add("Skeleton");
         collectedParts.collectedTorsos.Add("Mitch");
         collectedParts.collectedTorsos.Add("Skeleton");
@@ -48,6 +67,12 @@ public class MonsterMaker : MonoBehaviour {
         collectedWeapons.Add(Helper.WeaponName.PeaShooter);
         collectedWeapons.Add(Helper.WeaponName.Stick);
         collectedWeapons.Add(Helper.WeaponName.Boomerang);
+        collectedWeapons.Add(Helper.WeaponName.Club);
+        collectedWeapons.Add(Helper.WeaponName.Scimitar);
+        collectedWeapons.Add(Helper.WeaponName.SqueakyHammer);
+        collectedWeapons.Add(Helper.WeaponName.HarpoonGun);
+        collectedWeapons.Add(Helper.WeaponName.Swordfish);
+        collectedWeapons.Add(Helper.WeaponName.BananaGun);
         collectedWeapons.Add(Helper.WeaponName.Fan);
     }
 
