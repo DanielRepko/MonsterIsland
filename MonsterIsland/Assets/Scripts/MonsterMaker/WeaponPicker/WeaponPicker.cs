@@ -11,47 +11,86 @@ public class WeaponPicker : MonoBehaviour {
     public Text weaponDesc;
 
     public ScrollRect weaponScroll;
-    public string[] availableWeapons;
+    public List<string> availableWeapons;
 
     public void PopulateWeaponPicker()
     {
         var xOffset = 0f;
-        //iterating through all of the items in the availbleWeapons array
-        for (int i = 0; i < availableWeapons.Length; i++)
+        if (availableWeapons.Count != 0)
         {
-
-            if (i == 0)
+            //iterating through all of the items in the availbleWeapons array
+            for (int i = 0; i < availableWeapons.Count; i++)
             {
-                xOffset = 60;
-            }
-            else
-            {
-                xOffset += 120;
-            }
-            //loading the appropriate WeaponPicker prefab
-            var pickerButtonPrefab = new GameObject();
-            pickerButtonPrefab = Resources.Load<GameObject>("Prefabs/MonsterMaker/WeaponPickerButton");
 
-            //instantiating the picker button
-            var pickerButton = Instantiate(pickerButtonPrefab, Vector2.zero, Quaternion.identity);
-
-            //initializing the pickerButton and also saving the created Weapon
-            var weapon = pickerButton.GetComponent<WeaponPickerButton>().InitializePickerButton(availableWeapons[i]);
-            //setting the onClick listener to the pickerButton
-            pickerButton.GetComponent<Button>().onClick.AddListener(
-                delegate
+                if (i == 0)
                 {
-                    weaponSlot.ChangeWeapon(weapon);
-                    weaponName.text = weapon.WeaponName;
-                    weaponType.text = weapon.WeaponType;
-                    weaponDesc.text = weapon.WeaponDesc;
-                });
+                    xOffset = 60;
+                }
+                else
+                {
+                    xOffset += 120;
+                }
+                //loading the appropriate WeaponPicker prefab
+                var pickerButtonPrefab = new GameObject();
+                pickerButtonPrefab = Resources.Load<GameObject>("Prefabs/MonsterMaker/WeaponPickerButton");
 
-            //getting the rect transform of the button
-            var pickerButtonTransform = pickerButton.GetComponent<RectTransform>();
-            pickerButtonTransform.SetParent(weaponScroll.content);
-            pickerButtonTransform.anchoredPosition = new Vector2(xOffset, 0);
-            weaponScroll.content.sizeDelta = new Vector2(weaponScroll.content.sizeDelta.x + 100.5f, weaponScroll.content.sizeDelta.y);
+                //instantiating the picker button
+                var pickerButton = Instantiate(pickerButtonPrefab, Vector2.zero, Quaternion.identity);
+
+                //initializing the pickerButton and also saving the created Weapon
+                var weapon = pickerButton.GetComponent<WeaponPickerButton>().InitializePickerButton(availableWeapons[i]);
+                //setting the onClick listener to the pickerButton
+                pickerButton.GetComponent<Button>().onClick.AddListener(
+                    delegate
+                    {
+                        weaponSlot.ChangeWeapon(weapon);
+                        weaponName.text = weapon.WeaponName;
+                        weaponType.text = weapon.WeaponType;
+                        weaponDesc.text = weapon.WeaponDesc;
+                    });
+
+                //getting the rect transform of the button
+                var pickerButtonTransform = pickerButton.GetComponent<RectTransform>();
+                pickerButtonTransform.SetParent(weaponScroll.content);
+                pickerButtonTransform.anchoredPosition = new Vector2(xOffset, 0);
+                weaponScroll.content.sizeDelta = new Vector2(weaponScroll.content.sizeDelta.x + 100.5f, weaponScroll.content.sizeDelta.y);
+            }            
         }
     }
+
+    public void ResetWeaponPicker()
+    {
+        weaponScroll.content.sizeDelta = new Vector2(-800, weaponScroll.content.sizeDelta.y);
+        weaponScroll.horizontalScrollbar.value = 0;
+        for (int i = 0; i < weaponScroll.content.childCount; i++)
+        {
+            Destroy(weaponScroll.content.GetChild(i).gameObject);
+        }
+    }
+
+    public void OpenWeaponPicker(WeaponSlot weaponSlot)
+    {
+        this.weaponSlot = weaponSlot;
+        this.weaponSlot.EnterWeaponPicker();
+        PopulateWeaponPicker();
+        weaponName.text = this.weaponSlot.weaponName;
+        weaponType.text = this.weaponSlot.weaponType;
+        weaponDesc.text = this.weaponSlot.weaponDesc;
+        gameObject.SetActive(true);
+    }
+
+    public void CloseWeaponPicker()
+    {
+        if (weaponSlot != null)
+        {
+            weaponSlot.ExitWeaponPicker();
+            ResetWeaponPicker();
+            gameObject.SetActive(false);
+        }
+    }
+
+
+
+
+
 }

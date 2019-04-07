@@ -100,11 +100,14 @@ public class PartEditor : MonoBehaviour
 
     public void ClosePartEditor()
     {
-        partSlot.ExitPartEditor();
-        primaryColorIndicator.color = Color.white;
-        secondaryColorIndicator.color = Color.white;
-        ResetPartPicker();
-        gameObject.SetActive(false);
+        if (partSlot != null)
+        {
+            partSlot.ExitPartEditor();
+            primaryColorIndicator.color = Color.white;
+            secondaryColorIndicator.color = Color.white;
+            ResetPartPicker();
+            gameObject.SetActive(false);
+        }
     }
 
     public Color ConvertHexColor(string hexColor)

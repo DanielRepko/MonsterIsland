@@ -14,12 +14,14 @@ public class MonsterMaker : MonoBehaviour {
     public ArmSlot rightArmSlot;
     public ArmSlot leftArmSlot;
     public LegsSlot legsSlot;
-    public Button rightWeaponSlot;
-    public Button leftWeaponSlot;
+    public WeaponSlot rightWeaponSlot;
+    public WeaponSlot leftWeaponSlot;
 
     public PartEditor partEditor;
+    public WeaponPicker weaponPicker;
 
     private CollectedPartsInfo collectedParts;
+    private List<string> collectedWeapons = new List<string>();
 
     public void Start()
     {
@@ -42,6 +44,38 @@ public class MonsterMaker : MonoBehaviour {
         collectedParts.collectedRightArms.Add("Skeleton");
         collectedParts.collectedLegs.Add("Mitch");
         collectedParts.collectedLegs.Add("Skeleton");
+
+        collectedWeapons.Add(Helper.WeaponName.PeaShooter);
+        collectedWeapons.Add(Helper.WeaponName.Stick);
+        collectedWeapons.Add(Helper.WeaponName.Boomerang);
+        collectedWeapons.Add(Helper.WeaponName.Fan);
+    }
+
+    public void ShowWeaponPicker()
+    {
+        weaponPicker.availableWeapons = collectedWeapons;
+        //iterating through all objects inside the MonsterMaker canvas
+        foreach (Transform child in transform)
+        {
+            //if child is the selected slot
+            if (child.gameObject.name == ("RightWeaponSlot"))
+            {
+                weaponPicker.OpenWeaponPicker(rightWeaponSlot);
+            }
+            else if (child.gameObject.name == ("LeftWeaponSlot"))
+            {
+                weaponPicker.OpenWeaponPicker(leftWeaponSlot);
+            }
+            else if (child.gameObject.name == "WeaponPicker")
+            {
+                //child is the Weapon Picker, don't do anything
+            }
+            //anything else should be disabled
+            else
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
     }
 
     public void ShowPartEditor(string partType)
@@ -87,14 +121,14 @@ public class MonsterMaker : MonoBehaviour {
         }
     }
 
-    public void HidePartEditor()
+    public void HideEditors()
     {
         //iterating through all objects inside the MonsterMaker canvas
         foreach (Transform child in transform)
         {
             if (child.gameObject.name == "WeaponPicker")
             {
-                child.gameObject.SetActive(false);
+                weaponPicker.CloseWeaponPicker() ;
             }
             else if (child.gameObject.name == "PartEditor")
             {
