@@ -119,11 +119,9 @@ public class AbilityFactory : MonoBehaviour {
         PlayerController player = PlayerController.Instance;
         GameObject tongueLoad = Resources.Load<GameObject>("Prefabs/Projectiles/Frog_Tongue");
         tongueLoad.GetComponent<TongueFlick>().target = "Enemy";
+        tongueLoad.GetComponent<TongueFlick>().actor = PlayerController.Instance;
 
         Vector2 tonguePosition = new Vector2(player.monster.headPart.transform.position.x + 0.3f * player.facingDirection, player.monster.headPart.transform.position.y + 0.05f);
-        //Debug.Log(tongueLoad.transform.localScale);
-        //tongueLoad.transform.localScale *= player.facingDirection;
-        //Debug.Log(tongueLoad.transform.localScale);
         GameObject tongue = Instantiate(tongueLoad, tonguePosition, Quaternion.identity);
         tongue.transform.localScale *= player.facingDirection;
 
@@ -148,6 +146,8 @@ public class AbilityFactory : MonoBehaviour {
         acidCloudLoad.GetComponent<AcidBreath>().target = "Enemy";
 
         Vector2 acidCloudPosition = new Vector2(player.transform.position.x + 2 * player.facingDirection, player.transform.position.y);
+
+        player.animator.Play("HeadAbilityAnim");
 
         Instantiate(acidCloudLoad, acidCloudPosition, Quaternion.identity);
     }
@@ -193,9 +193,10 @@ public class AbilityFactory : MonoBehaviour {
     {
         //creating the collider to act as the shell
         BoxCollider2D shellCollider = PlayerController.Instance.gameObject.AddComponent<BoxCollider2D>();
-        shellCollider.isTrigger = true;
-        shellCollider.offset = new Vector2(-0.78f, -0.2326667f);
-        shellCollider.size = new Vector2(0.2f, 3.214667f);
+        shellCollider.isTrigger = false;
+        shellCollider.offset = new Vector2(-0.98f * PlayerController.Instance.facingDirection, -0.02f);
+        shellCollider.size = new Vector2(0.72f, 2.8f);
+        PlayerController.Instance.shellCollider = shellCollider;
     }
 
     //Torso Ability (Activate): Allows the player to teleport short distances
@@ -261,12 +262,12 @@ public class AbilityFactory : MonoBehaviour {
 
         if (!player.isUnderwater)
         {
-            if (player.PlayerIsOnGround())
+            if (player.IsOnGround())
             {
                 player.animator.Play("SwoopDaWoop" + Helper.GetAnimDirection(player.facingDirection) + "Anim_Grounded");
                 player.rb.velocity = new Vector2(-13f * player.facingDirection, 20);
             }
-            else if (!player.PlayerIsOnGround() && player.hasExtraJump)
+            else if (!player.IsOnGround() && player.hasExtraJump)
             {
                 player.rb.velocity = new Vector2(17f * player.facingDirection, 20);
                 player.animator.Play("SwoopDaWoop" + Helper.GetAnimDirection(player.facingDirection) + "Anim_Aerial");
@@ -292,7 +293,18 @@ public class AbilityFactory : MonoBehaviour {
     //damage, all other actions and movement are locked for the ability's duration
     public static void Ability_DrillFist(string armType)
     {
+        PlayerController player = PlayerController.Instance;
 
+        GameObject drillPrefab = Resources.Load<GameObject>("Prefabs/Projectiles/Projectile_Drill");
+
+        GameObject drill = Instantiate(drillPrefab, player.monster.leftArmPart.hand.transform.position, drillPrefab.transform.rotation);
+
+        drill.transform.localScale = new Vector3(drill.transform.localScale.x, drill.transform.localScale.y * player.facingDirection, drill.transform.localScale.z);
+
+        //playing the shoot animation
+        player.animator.Play(armType + Helper.GetAnimDirection(player.facingDirection, armType) + "ShootAnim");
+
+        drill.GetComponent<Rigidbody2D>().velocity = new Vector2(drill.GetComponent<Projectile>().speed * player.facingDirection, 0);
     }
 
     //Arm Ability (Passive): Increases the player's melee damage, does not affect weapon damage
@@ -356,9 +368,8 @@ public class AbilityFactory : MonoBehaviour {
 
         //turning the needles in the same direction the player is facing
         upNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
-        middleNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
-        downNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
-
+        middleNeedle.transform.localScale = new Vector2(middleNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
+        downNeedle.transform.localScale = new Vector2(downNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
 
         //playing the shoot animation
         player.animator.Play(armType + Helper.GetAnimDirection(player.facingDirection, armType) + "ShootAnim");
@@ -440,13 +451,13 @@ public class AbilityFactory : MonoBehaviour {
 
         if (!player.isUnderwater)
         {
-            if (player.PlayerIsOnGround())
+            if (player.IsOnGround())
             {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
             }
-            else if (!player.PlayerIsOnGround() && player.hasExtraJump)
+            else if (!player.IsOnGround() && player.hasExtraJump)
             {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
@@ -467,15 +478,14 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = PlayerController.Instance;
 
-        if (!player.isUnderwater)
-        {
-            if (player.PlayerIsOnGround())
+        
+            if (player.IsOnGround())
             {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
             }
-            else if (!player.PlayerIsOnGround() && player.hasExtraJump)
+            else if (!player.IsOnGround() && player.hasExtraJump && !player.isUnderwater)
             {
                 player.hasExtraJump = false;
 
@@ -492,7 +502,6 @@ public class AbilityFactory : MonoBehaviour {
                 player.animator.Play("TalonFlurry" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 
             }
-        }
     }    
 
 
@@ -504,9 +513,9 @@ public class AbilityFactory : MonoBehaviour {
 
         if (!player.isUnderwater)
         {
-            if (player.rb.velocity.y < 0)
+            if (player.rb.velocity.y <= 0)
             {
-                player.rb.gravityScale -= 2f;
+                player.rb.gravityScale -= 8f;
             }
             else
             {

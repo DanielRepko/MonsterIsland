@@ -168,7 +168,7 @@ public class PartFactory : MonoBehaviour {
             case Helper.MonsterName.Turtle:
                 partInfo.abilityName = "Hard Shell";
                 partInfo.abilityType = "Passive";
-                partInfo.abilityDesc = "You cannot be hurt by attacks from behind";
+                partInfo.abilityDesc = "You cannot be hurt by attacks from behind, but melee attacks will still knock you back";
                 partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Knight:
@@ -205,7 +205,7 @@ public class PartFactory : MonoBehaviour {
                     partInfo.abilityName = "Drill Fist";
                     partInfo.abilityType = "Activate";
                     partInfo.abilityDesc = "Shoot out a drill that can bore through an entire wall before breaking. Can also go through enemies";
-                    partInfo.abilityCooldown = 1.5f;
+                    partInfo.abilityCooldown = 2f;
                 }
                 return partInfo;
             case Helper.MonsterName.Sam:
@@ -229,7 +229,7 @@ public class PartFactory : MonoBehaviour {
             case Helper.MonsterName.Vulture:
                 partInfo.abilityName = "Feather Fall";
                 partInfo.abilityType = "Passive";
-                partInfo.abilityDesc = "Decrease fall speed. Effect can stack with second arm, does not work underwater";
+                partInfo.abilityDesc = "Decrease fall speed. Both arms are required for effect to work, does not work underwater";
                 partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Lobster:

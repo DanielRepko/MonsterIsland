@@ -81,16 +81,16 @@ public class Weapon {
 
     public void MeleeAttack(string armEquippedOn)
     {
-        PlayerController player = PlayerController.Instance;
+        Actor actor = WeaponSpriteRenderer.GetComponentInParent<Actor>();
 
         //play attack animation
-        player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(player.facingDirection,ArmEquippedOn) + "MeleeAnim");
+        actor.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(actor.facingDirection,ArmEquippedOn) + "MeleeAnim");
 
         Ray attackRay = new Ray();
-        attackRay.origin = player.transform.position;
-        attackRay.direction = new Vector2(player.facingDirection, 0);
+        attackRay.origin = actor.transform.position;
+        attackRay.direction = new Vector2(actor.facingDirection, 0);
 
-        Debug.DrawRay(attackRay.origin, new Vector2(AttackRange * player.facingDirection, 0), Color.green);
+        Debug.DrawRay(attackRay.origin, new Vector2(AttackRange * actor.facingDirection, 0), Color.green);
         RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, _attackRange, 1 << LayerMask.NameToLayer(AttackTarget));
         if (hit)
         {
@@ -99,29 +99,29 @@ public class Weapon {
                 Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
                 if (enemy != null && hit.collider == enemy.hurtBox)
                 {
-                    enemy.TakeDamage(Damage, Helper.GetKnockBackDirection(player.transform, hit.transform));
+                    actor.TakeDamage(Damage, Helper.GetKnockBackDirection(actor.transform, hit.transform));
                 }
             }
             else if(AttackTarget == "Player" && hit.collider == PlayerController.Instance.hurtBox)
             {
-                PlayerController.Instance.TakeDamage(Damage, Helper.GetKnockBackDirection(WeaponSpriteRenderer.GetComponentInParent<Enemy>().transform, hit.transform));
+                actor.TakeDamage(Damage, Helper.GetKnockBackDirection(WeaponSpriteRenderer.GetComponentInParent<Enemy>().transform, hit.transform));
             }
         }
     }
 
     public void ProjectileAttack(string armEquippedOn)
     {
-        PlayerController player = PlayerController.Instance;
+        Actor actor = WeaponSpriteRenderer.GetComponentInParent<Actor>();
 
         Vector2 projectilePosition = new Vector2();
 
         if (ArmEquippedOn == Helper.PartType.RightArm)
         {
-            projectilePosition = player.monster.rightArmPart.hand.transform.position;
+            projectilePosition = actor.monster.rightArmPart.hand.transform.position;
         }
         else if (ArmEquippedOn == Helper.PartType.LeftArm)
         {
-            projectilePosition = player.monster.leftArmPart.hand.transform.position;
+            projectilePosition = actor.monster.leftArmPart.hand.transform.position;
         }
 
         GameObject projectile = Object.Instantiate(ProjectilePrefab, projectilePosition, ProjectilePrefab.transform.rotation);
@@ -132,18 +132,18 @@ public class Weapon {
         var facingDirection = WeaponSpriteRenderer.transform.GetComponentInParent<Rigidbody2D>().transform.localScale.x;
         projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * facingDirection, projectile.transform.localScale.y);
 
-        projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectile.GetComponent<Projectile>().speed * player.facingDirection, 0);
+        projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectile.GetComponent<Projectile>().speed * actor.facingDirection, 0);
 
         if (WeaponName == Helper.WeaponName.Bone || WeaponName == Helper.WeaponName.Boomerang)
         {
             //play attack animation
-            player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(player.facingDirection, ArmEquippedOn) + "MeleeAnim");
+            actor.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(actor.facingDirection, ArmEquippedOn) + "MeleeAnim");
             projectile.GetComponent<Animator>().Play("Spin" + Helper.GetAnimDirection(facingDirection) + "Anim");
         }
         else
         {
             //play shoot animation
-            player.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(player.facingDirection, ArmEquippedOn) + "ShootAnim");
+            actor.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(actor.facingDirection, ArmEquippedOn) + "ShootAnim");
         }
     }
 

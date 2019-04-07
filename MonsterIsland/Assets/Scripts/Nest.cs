@@ -29,7 +29,12 @@ public class Nest : MonoBehaviour {
     public void Activate() {
         if(!isActive) {
             isActive = true;
-            LocalNestManager.Instance.ActivateLocalNest(levelName, levelPosition);
+            LocalObjectManager.Instance.ActivateLocalNest(levelName, levelPosition);
         }
+    }
+
+    public void SetLastNestUsed() {
+        GameManager.instance.gameFile.saveArea = levelName.ToString();
+        GameManager.instance.gameFile.saveNest = levelPosition.ToString();
     }
 }

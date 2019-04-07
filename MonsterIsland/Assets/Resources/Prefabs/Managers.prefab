@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 4847083021761986}
   - component: {fileID: 114241451573536656}
   m_Layer: 0
-  m_Name: GlobalNestManager
+  m_Name: GlobalObjectManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -437,18 +437,129 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9b731d1e88ccb448726337d054e5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  coinPrefab: {fileID: 1758634498893170, guid: 7c321e89e2277aa49ae8c7c018a74973, type: 2}
-  headDropPrefab: {fileID: 1714039446524052, guid: adb622d02560d064898bb5b22b22c686,
-    type: 2}
-  leftArmDropPrefab: {fileID: 1125672735492682, guid: e78c5cb7e4f458a48a4b9e2899db59a9,
-    type: 2}
-  rightArmDropPrefab: {fileID: 1214736009926186, guid: f84a9031edf019b4db9c12083801669e,
-    type: 2}
-  torsoDropPrefab: {fileID: 1997261974715278, guid: f9c31c352c26c34478b6a28c3836a4a1,
-    type: 2}
-  legsDropPrefab: {fileID: 1353959309529644, guid: 22cdeeda0e565e34f93f016dbd3962a9,
-    type: 2}
+  fileNumber: 0
+  gameFile:
+    fileID: 0
+    totalPlayTime: 0
+    saveDate: 
+    saveArea: 
+    saveNest: 
+    player:
+      name: 
+      totalHearts: 16
+      headPart:
+        monster: 
+        abilityName: 
+        abilityType: 
+        abilityDesc: 
+        abilityCooldown: 0
+        mainSprite: 
+        neckSprite: 
+        hurtSprite: 
+        attackSprite: 
+      torsoPart:
+        monster: 
+        abilityName: 
+        abilityType: 
+        abilityDesc: 
+        abilityCooldown: 0
+        mainSprite: 
+      leftArmPart:
+        monster: 
+        abilityName: 
+        abilityType: 
+        abilityDesc: 
+        abilityCooldown: 0
+        bicepSprite: 
+        forearmSprite: 
+        handBackSprite: 
+        handFrontSprite: 
+        fingersOpenBackSprite: 
+        fingersOpenFrontSprite: 
+        fingersClosedBackSprite: 
+        fingersClosedFrontSprite: 
+        equippedWeapon: 
+      rightArmPart:
+        monster: 
+        abilityName: 
+        abilityType: 
+        abilityDesc: 
+        abilityCooldown: 0
+        bicepSprite: 
+        forearmSprite: 
+        handBackSprite: 
+        handFrontSprite: 
+        fingersOpenBackSprite: 
+        fingersOpenFrontSprite: 
+        fingersClosedBackSprite: 
+        fingersClosedFrontSprite: 
+        equippedWeapon: 
+      legsPart:
+        monster: 
+        abilityName: 
+        abilityType: 
+        abilityDesc: 
+        abilityCooldown: 0
+        pelvisSprite: 
+        thighSprite: 
+        shinSprite: 
+        footSprite: 
+      inventory:
+        monsterBucks: 0
+        collectedParts:
+          collectedHeads: []
+          collectedTorsos: []
+          collectedLeftArms: []
+          collectedRightArms: []
+          collectedLegs: []
+        collectedWeapons: []
+    gameProgression:
+      collectedLegendaryParts:
+        headCollected: 0
+        torsoCollected: 0
+        leftArmCollected: 0
+        rightArmCollected: 0
+        legsCollected: 0
+      defeatedBosses:
+        plainsBossDefeated: 0
+        jungleBossDefeated: 0
+        desertBossDefeated: 0
+        underwaterBossDefeated: 0
+        skylandBossDefeated: 0
+        castleBossDefeated: 0
+      openedChests:
+        plainsChest1: 0
+        plainsChest2: 0
+        hubChest: 0
+        jungleChest1: 0
+        jungleChest2: 0
+        desertChest1: 0
+        desertChest2: 0
+        underwaterChest1: 0
+        underwaterChest2: 0
+        skylandChest1: 0
+        skylandChest2: 0
+      nestInfo:
+        hubNest: 0
+        plainsNest1: 0
+        plainsNest2: 0
+        plainsNest3: 0
+        desertNest1: 0
+        desertNest2: 0
+        desertNest3: 0
+        underwaterNest1: 0
+        underwaterNest2: 0
+        underwaterNest3: 0
+        jungleNest1: 0
+        jungleNest2: 0
+        jungleNest3: 0
+        skylandNest1: 0
+        skylandNest2: 0
+        skylandNest3: 0
+        castleNest1: 0
+        castleNest2: 0
+        castleNest3: 0
+  lastTimeUpdate: 0
 --- !u!114 &114241451573536656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -478,6 +589,24 @@ MonoBehaviour:
   pauseCanvas: {fileID: 0}
   settingsPanel: {fileID: 0}
   quickTravelMenu: {fileID: 0}
+  moneyText: {fileID: 0}
+  heartImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114351522358479870
 MonoBehaviour:
   m_ObjectHideFlags: 1

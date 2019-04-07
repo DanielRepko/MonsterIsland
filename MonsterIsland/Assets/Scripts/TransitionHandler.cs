@@ -19,14 +19,17 @@ public class TransitionHandler : MonoBehaviour {
         if (Time.deltaTime > 0) {
             if (hasContact == true && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))) {
                 if (levelName == LevelName.Skyland && fromHub) {
+                    UpdatePlaytime();
                     UIManager.Instance.ShowLoadingPanel();
                     PlayerController.Instance.transform.position = new Vector2(-0.5f, -1f);
                     SceneManager.LoadScene("Skyland");
                 } else if (levelName == LevelName.Skyland && !fromHub) {
+                    UpdatePlaytime();
                     UIManager.Instance.ShowLoadingPanel();
                     PlayerController.Instance.transform.position = new Vector2(70.5f, 13f);
                     SceneManager.LoadScene("Hub");
                 } else if (levelName == LevelName.Castle && fromHub) {
+                    UpdatePlaytime();
                     UIManager.Instance.ShowLoadingPanel();
                     PlayerController.Instance.transform.position = new Vector2(-20f, 1f);
                     SceneManager.LoadScene("Castle");
@@ -40,10 +43,12 @@ public class TransitionHandler : MonoBehaviour {
             switch(levelName) {
                 case LevelName.Plains:
                     if(fromHub) {
+                        UpdatePlaytime();
                         UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(530f, 25.6f);
                         SceneManager.LoadScene("Plains");
                     } else {
+                        UpdatePlaytime();
                         UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(0f, -1.25f);
                         SceneManager.LoadScene("Hub");
@@ -51,10 +56,12 @@ public class TransitionHandler : MonoBehaviour {
                     break;
                 case LevelName.Desert:
                     if (fromHub) {
+                        UpdatePlaytime();
                         UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(20f, 1f);
                         SceneManager.LoadScene("Desert");
                     } else {
+                        UpdatePlaytime();
                         UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(3f, -32f);
                         SceneManager.LoadScene("Hub");
@@ -62,10 +69,12 @@ public class TransitionHandler : MonoBehaviour {
                     break;
                 case LevelName.Underwater:
                     if (fromHub) {
+                        UpdatePlaytime();
                         UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(-10f, 1f);
                         SceneManager.LoadScene("Underwater");
                     } else {
+                        UpdatePlaytime();
                         UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(120f, -66f);
                         SceneManager.LoadScene("Hub");
@@ -73,10 +82,12 @@ public class TransitionHandler : MonoBehaviour {
                     break;
                 case LevelName.Jungle:
                     if (fromHub) {
+                        UpdatePlaytime();
                         UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(-20f, 1f);
                         SceneManager.LoadScene("Jungle");
                     } else {
+                        UpdatePlaytime();
                         UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(140f, -32f);
                         SceneManager.LoadScene("Hub");
@@ -86,6 +97,7 @@ public class TransitionHandler : MonoBehaviour {
                     if (fromHub) {
                         hasContact = true;
                     } else {
+                        UpdatePlaytime();
                         UIManager.Instance.ShowLoadingPanel();
                         PlayerController.Instance.transform.position = new Vector2(70.5f, -34f);
                         SceneManager.LoadScene("Hub");
@@ -104,5 +116,10 @@ public class TransitionHandler : MonoBehaviour {
         if (collision.tag == "Player") {
             hasContact = false;
         }
+    }
+
+    private void UpdatePlaytime() {
+        GameManager.instance.gameFile.totalPlayTime += Time.timeSinceLevelLoad;
+        GameManager.instance.lastTimeUpdate = 0;
     }
 }

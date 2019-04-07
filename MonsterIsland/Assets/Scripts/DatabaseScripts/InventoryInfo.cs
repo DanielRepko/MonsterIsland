@@ -7,5 +7,5 @@ using System;
 public class InventoryInfo {
     public int monsterBucks;
     public CollectedPartsInfo collectedParts;
-    public string[] collectedWeapons;
+    public List<String> collectedWeapons;
 }

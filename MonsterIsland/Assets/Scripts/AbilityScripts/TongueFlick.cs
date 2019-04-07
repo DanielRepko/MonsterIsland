@@ -8,10 +8,11 @@ public class TongueFlick : MonoBehaviour {
     public bool destroy;
 
     public string target;
+    public Actor actor;
 
     private void FixedUpdate()
     {
-        transform.position = new Vector2(PlayerController.Instance.monster.headPart.transform.position.x + 0.3f * PlayerController.Instance.facingDirection, PlayerController.Instance.monster.headPart.transform.position.y + 0.05f); ;
+        transform.position = new Vector2(actor.monster.headPart.transform.position.x + 0.3f * actor.facingDirection, actor.monster.headPart.transform.position.y + 0.05f); ;
 
         if (destroy)
         {
