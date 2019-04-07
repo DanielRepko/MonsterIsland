@@ -85,6 +85,16 @@ public class UIManager : MonoBehaviour {
         Time.timeScale = 1;
     }
 
+    public void ShowShopPanel() {
+        shopPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void HideShopPanel() {
+        shopPanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         HideLoadingPanel();
     }
