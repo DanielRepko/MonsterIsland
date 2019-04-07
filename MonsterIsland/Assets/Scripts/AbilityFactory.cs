@@ -518,7 +518,7 @@ public class AbilityFactory : MonoBehaviour {
 
         if (!player.isUnderwater)
         {
-            if (player.rb.velocity.y <= 0)
+            if (player.rb.velocity.y <= 0 && !player.IsOnGround())
             {
                 player.rb.gravityScale -= 8f;
             }
