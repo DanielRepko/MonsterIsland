@@ -35,7 +35,6 @@ public class HarpoonProjectile : Projectile {
         {
             gameObject.AddComponent<FixedJoint2D>();
             GetComponent<BoxCollider2D>().isTrigger = false;
-            lastHarpoon = this;
         }
 
         if (target == "Enemy")
