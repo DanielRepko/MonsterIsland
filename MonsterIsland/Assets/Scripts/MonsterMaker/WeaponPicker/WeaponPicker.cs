@@ -58,6 +58,14 @@ public class WeaponPicker : MonoBehaviour {
         }
     }
 
+    public void RemoveWeapon()
+    {
+        weaponName.text = "";
+        weaponType.text = "";
+        weaponDesc.text = "";
+        weaponSlot.ClearWeaponSlot();
+    }
+
     public void ResetWeaponScroll()
     {
         weaponScroll.content.sizeDelta = new Vector2(-800, weaponScroll.content.sizeDelta.y);

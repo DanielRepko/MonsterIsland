@@ -40,6 +40,7 @@ public class MonsterMaker : MonoBehaviour {
         collectedParts.collectedTorsos.Add("Skeleton");
         collectedParts.collectedLeftArms.Add("Mitch");
         collectedParts.collectedLeftArms.Add("Skeleton");
+        collectedParts.collectedLeftArms.Add("Robot");
         collectedParts.collectedRightArms.Add("Mitch");
         collectedParts.collectedRightArms.Add("Skeleton");
         collectedParts.collectedRightArms.Add("Robot");

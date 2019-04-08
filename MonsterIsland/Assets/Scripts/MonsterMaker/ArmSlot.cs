@@ -81,11 +81,49 @@ public class ArmSlot : PartSlot {
         {
             handImage.sprite = Helper.CreateSprite(partInfo.handBackSprite, Helper.HeadImporter);
             fingersImage.sprite = Helper.CreateSprite(partInfo.fingersOpenBackSprite, Helper.HeadImporter);
+
+            //checking to see if the Skeleton arm has been equipped
+            if(partInfo.monster == Helper.MonsterName.Skeleton)
+            {
+                GetComponentInParent<MonsterMaker>().rightWeaponSlot.ChangeWeapon(WeaponFactory.GetWeapon(Helper.WeaponName.Bone, null, null, null));
+                GetComponentInParent<MonsterMaker>().rightWeaponSlot.LockSlot();
+            }
+            else if(GetComponentInParent<MonsterMaker>().rightWeaponSlot.weapon != null && GetComponentInParent<MonsterMaker>().rightWeaponSlot.weapon.WeaponName == Helper.WeaponName.Bone)
+            {
+                GetComponentInParent<MonsterMaker>().rightWeaponSlot.ChangeWeapon(new Weapon(null));
+                GetComponentInParent<MonsterMaker>().rightWeaponSlot.UnlockSlot();
+            }
+            else
+            {
+                GetComponentInParent<MonsterMaker>().leftWeaponSlot.UnlockSlot();
+            }
         }
         else if(partType == "LeftArm")
         {
             handImage.sprite = Helper.CreateSprite(partInfo.handFrontSprite, Helper.HeadImporter);
             fingersImage.sprite = Helper.CreateSprite(partInfo.fingersOpenFrontSprite, Helper.HeadImporter);
+
+            //checking to see if the Skeleton arm has been equipped
+            if (partInfo.monster == Helper.MonsterName.Skeleton)
+            {
+                GetComponentInParent<MonsterMaker>().leftWeaponSlot.ChangeWeapon(WeaponFactory.GetWeapon(Helper.WeaponName.Bone, null, null, null));
+                GetComponentInParent<MonsterMaker>().leftWeaponSlot.LockSlot();
+            }
+            //checking to see if specifically the robot left arm has been equipped
+            else if(partInfo.monster == Helper.MonsterName.Robot)
+            {
+                GetComponentInParent<MonsterMaker>().leftWeaponSlot.ChangeWeapon(new Weapon(null));
+                GetComponentInParent<MonsterMaker>().leftWeaponSlot.LockSlot();
+            }
+            else if (GetComponentInParent<MonsterMaker>().leftWeaponSlot.weapon != null && GetComponentInParent<MonsterMaker>().leftWeaponSlot.weapon.WeaponName == Helper.WeaponName.Bone)
+            {
+                GetComponentInParent<MonsterMaker>().leftWeaponSlot.ChangeWeapon(new Weapon(null));
+                GetComponentInParent<MonsterMaker>().leftWeaponSlot.UnlockSlot();
+            }
+            else
+            {
+                GetComponentInParent<MonsterMaker>().leftWeaponSlot.UnlockSlot();
+            }
         }
         
     }
