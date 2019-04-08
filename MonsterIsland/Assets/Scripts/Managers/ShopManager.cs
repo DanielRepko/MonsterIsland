@@ -54,6 +54,11 @@ public class ShopManager : MonoBehaviour {
                 shopWeapon2 = WeaponFactory.GetWeapon(Helper.WeaponName.Fan, null, null, null);
                 shopPart = PartFactory.GetTorsoPartInfo(Helper.MonsterName.Robot);
                 break;
+            default:
+                shopWeapon1 = WeaponFactory.GetWeapon(Helper.WeaponName.Stick, null, null, null);
+                shopWeapon2 = WeaponFactory.GetWeapon(Helper.WeaponName.PeaShooter, null, null, null);
+                shopPart = PartFactory.GetHeadPartInfo(Helper.MonsterName.Robot);
+                break;
         }
 
         UIManager.Instance.RefreshShopUI();

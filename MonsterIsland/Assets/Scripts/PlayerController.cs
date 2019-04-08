@@ -110,7 +110,7 @@ public class PlayerController : Actor {
         }
 
         //Check if the player is underwater, and if they are, update the underwater timer
-        if (isUnderwater) {
+        if (isUnderwater && !hasGills) {
             timeUnderwater += Time.deltaTime;
 
             //If they've been undewater long enough with their air above 0, reduce their air meter.
