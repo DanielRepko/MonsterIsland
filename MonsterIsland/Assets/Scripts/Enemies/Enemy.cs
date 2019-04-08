@@ -521,8 +521,9 @@ public class Enemy : Actor {
     virtual public void OnTriggerEnter2D(Collider2D collision)
     {
         //checking to see if the enemy reached a patrol point
-        if(collision.tag == "PatrolPoint" && target != null && target == collision.gameObject)
+        if(collision.tag == "PatrolPoint" && target != null && target == collision.gameObject && transform.position.y >= collision.transform.position.y)
         {
+            rb.velocity = new Vector2(0, rb.velocity.y);
             ContinuePatrol();
         }
 
