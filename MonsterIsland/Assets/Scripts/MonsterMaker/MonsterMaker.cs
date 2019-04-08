@@ -20,6 +20,10 @@ public class MonsterMaker : MonoBehaviour {
     public PartEditor partEditor;
     public WeaponPicker weaponPicker;
 
+    public InputField nameField;
+
+    public Image DonePanel;
+
     private CollectedPartsInfo collectedParts;
     private List<string> collectedWeapons = new List<string>();
 
