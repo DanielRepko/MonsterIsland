@@ -1993,6 +1993,31 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Left
       objectReference: {fileID: 0}
+    - target: {fileID: 114932990344073602, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114932990344073602, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114776668874651412, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114776668874651412, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.995283
+      objectReference: {fileID: 0}
+    - target: {fileID: 114776668874651412, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.995283
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac37dbe46f91d014cb16bab9d00336f1, type: 2}
   m_IsPrefabAsset: 0
@@ -4710,6 +4735,51 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 114932990344073602, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114932990344073602, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114932990344073602, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.7843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 114932990344073602, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.7843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 114932990344073602, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.7843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 114932990344073602, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114776668874651412, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114776668874651412, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114776668874651412, guid: ac37dbe46f91d014cb16bab9d00336f1,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac37dbe46f91d014cb16bab9d00336f1, type: 2}

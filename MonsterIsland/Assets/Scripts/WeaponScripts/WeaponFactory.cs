@@ -28,7 +28,7 @@ public class WeaponFactory : MonoBehaviour {
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
                     Damage = 3,
-                    AttackRange = 2.5f,
+                    AttackRange = 3.3f,
                     AttackCooldown = 1f,
                     WeaponSpriteRenderer = weaponRenderer
                 };
@@ -42,7 +42,7 @@ public class WeaponFactory : MonoBehaviour {
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
                     Damage = 2,
-                    AttackRange = 2.2f,
+                    AttackRange = 3f,
                     AttackCooldown = 0.4f,
                     WeaponSpriteRenderer = weaponRenderer
                 };
@@ -56,7 +56,7 @@ public class WeaponFactory : MonoBehaviour {
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
                     Damage = 4,
-                    AttackRange = 1.8f,
+                    AttackRange = 2.6f,
                     AttackCooldown = 2f,
                     WeaponSpriteRenderer = weaponRenderer
                 };
@@ -70,7 +70,7 @@ public class WeaponFactory : MonoBehaviour {
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
                     Damage = 2,
-                    AttackRange = 3f,
+                    AttackRange = 3.8f,
                     AttackCooldown = 1.5f,
                     WeaponSpriteRenderer = weaponRenderer
                 };
@@ -158,7 +158,7 @@ public class WeaponFactory : MonoBehaviour {
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
                     Damage = 1,
-                    AttackRange = 2f,
+                    AttackRange = 2.8f,
                     AttackCooldown = 1.5f,
                     WeaponSpriteRenderer = weaponRenderer
                 };
