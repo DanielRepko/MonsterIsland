@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour {
     private float unsetTriggerTime = 0.05f;
     private float unsetTriggerTimer = 0;
 
-    private float offScreenTime = 6;
+    private float offScreenTime = 2;
     private float offScreenTimer;
     private bool isOffScreen;
 

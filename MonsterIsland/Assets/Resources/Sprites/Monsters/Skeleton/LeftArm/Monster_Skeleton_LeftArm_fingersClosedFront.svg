@@ -3,19 +3,19 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
 <rect x="179" y="310.248" fill-opacity="0" fill="#231F20" width="256" height="172"/>
-<path id="PRIMARY_4_" fill="#F1F1F1" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M247.521,371.506
+<path id="SECONDARY_4_" fill="#F1F1F1" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M247.521,371.506
 	l18.911-36.51c2.67-5.151,9.679-6.828,15.657-3.736c5.976,3.089,8.654,9.769,5.988,14.92l-26.164,50.51
 	C254.691,389.65,249.654,381.019,247.521,371.506z"/>
-<path id="PRIMARY_3_" fill="#F1F1F1" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M263.818,399.012
+<path id="SECONDARY_3_" fill="#F1F1F1" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M263.818,399.012
 	l4.954-44.284c0.645-5.758,6.593-9.834,13.281-9.082c6.688,0.743,11.583,6.021,10.938,11.785l-6.065,54.203
 	C278.151,409.052,270.281,404.689,263.818,399.012z"/>
-<path id="PRIMARY_2_" fill="#F1F1F1" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M303.917,414.225
+<path id="SECONDARY_2_" fill="#F1F1F1" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M303.917,414.225
 	c-1.404,0-2.781-0.096-4.16-0.167l-0.778-56.851c-0.077-5.808,5.312-10.58,12.04-10.672c6.729-0.089,12.247,4.538,12.324,10.339
 	l0.747,54.83C317.713,413.297,310.963,414.225,303.917,414.225z"/>
-<path id="PRIMARY_1_" fill="#F1F1F1" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M322.784,345.939
+<path id="SECONDARY_1_" fill="#F1F1F1" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M322.784,345.939
 	c6.426-1.998,13.03,0.869,14.759,6.409l13.04,41.814c-5.685,6.107-12.864,11.042-20.987,14.544l-15.318-49.126
 	C312.55,354.044,316.358,347.934,322.784,345.939z"/>
-<path id="PRIMARY" fill="#F1F1F1" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M356.766,337.946
+<path id="SECONDARY" fill="#F1F1F1" stroke="#231F20" stroke-width="3.1586" stroke-miterlimit="10" d="M356.766,337.946
 	l-21.93,33.461c-3.179,4.854-10.323,5.806-15.953,2.121c-5.63-3.676-7.614-10.595-4.436-15.451l24.813-37.861
 	C346.503,324.861,352.527,330.905,356.766,337.946z"/>
 </svg>

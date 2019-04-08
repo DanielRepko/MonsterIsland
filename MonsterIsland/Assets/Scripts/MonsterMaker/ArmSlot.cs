@@ -88,7 +88,7 @@ public class ArmSlot : PartSlot {
                 GetComponentInParent<MonsterMaker>().rightWeaponSlot.ChangeWeapon(WeaponFactory.GetWeapon(Helper.WeaponName.Bone, null, null, null));
                 GetComponentInParent<MonsterMaker>().rightWeaponSlot.LockSlot();
             }
-            else if(GetComponentInParent<MonsterMaker>().rightWeaponSlot.weapon.WeaponName == Helper.WeaponName.Bone)
+            else if(GetComponentInParent<MonsterMaker>().rightWeaponSlot.weapon != null && GetComponentInParent<MonsterMaker>().rightWeaponSlot.weapon.WeaponName == Helper.WeaponName.Bone)
             {
                 GetComponentInParent<MonsterMaker>().rightWeaponSlot.ChangeWeapon(new Weapon(null));
                 GetComponentInParent<MonsterMaker>().rightWeaponSlot.UnlockSlot();
@@ -115,7 +115,7 @@ public class ArmSlot : PartSlot {
                 GetComponentInParent<MonsterMaker>().leftWeaponSlot.ChangeWeapon(new Weapon(null));
                 GetComponentInParent<MonsterMaker>().leftWeaponSlot.LockSlot();
             }
-            else if (GetComponentInParent<MonsterMaker>().leftWeaponSlot.weapon.WeaponName == Helper.WeaponName.Bone)
+            else if (GetComponentInParent<MonsterMaker>().leftWeaponSlot.weapon != null && GetComponentInParent<MonsterMaker>().leftWeaponSlot.weapon.WeaponName == Helper.WeaponName.Bone)
             {
                 GetComponentInParent<MonsterMaker>().leftWeaponSlot.ChangeWeapon(new Weapon(null));
                 GetComponentInParent<MonsterMaker>().leftWeaponSlot.UnlockSlot();

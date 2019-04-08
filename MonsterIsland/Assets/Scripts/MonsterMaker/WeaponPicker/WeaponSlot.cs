@@ -36,6 +36,26 @@ public class WeaponSlot : MonoBehaviour {
         isLocked = true;
     }
 
+    public void ClearWeaponSlot()
+    {
+        weapon = null;
+        weaponImage.sprite = null;
+
+        weaponName = "";
+        weaponType = "";
+        weaponDesc = "";
+
+        string weaponHand = gameObject.name.Substring(0, gameObject.name.Length - 10);
+        if(weaponHand == "Right")
+        {
+            abilitySignLabel.text = GetComponentInParent<MonsterMaker>().rightArmSlot.abilityName;
+        }
+        else if (weaponHand == "Left")
+        {
+            abilitySignLabel.text = GetComponentInParent<MonsterMaker>().leftArmSlot.abilityName;
+        }
+    }
+
     public void ChangeWeapon(Weapon newWeapon)
     {
             weapon = newWeapon;
