@@ -35,7 +35,7 @@ public class LegPart : MonoBehaviour {
             partInfo = legPartInfo;
 
             //populating the partAbility field
-            if (partInfo.abilityName != null && player != null)
+            if (partInfo.abilityName != "" && player != null)
             {
                 partAbility = AbilityFactory.GetPartAbility(partInfo.abilityName);
 

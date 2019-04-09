@@ -30,7 +30,7 @@ public class HeadPart : MonoBehaviour {
             partInfo = headPartInfo;
 
             //checking whether this part has an ability
-            if (partInfo.abilityName != null && player != null)
+            if (partInfo.abilityName != "" && player != null)
             {
                 //populating the partAbility field with the appropriate ability delegate
                 partAbility = AbilityFactory.GetPartAbility(partInfo.abilityName);

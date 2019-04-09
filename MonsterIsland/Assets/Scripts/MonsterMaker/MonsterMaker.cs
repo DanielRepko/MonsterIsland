@@ -32,9 +32,9 @@ public class MonsterMaker : MonoBehaviour {
         if(PlayerController.Instance != null)
         {
             PlayerController.Instance.gameObject.SetActive(false);
+            PopulateSlots(PlayerController.Instance.monster, GameManager.instance.gameFile.player.name);
         }
 
-        //this code is for testing purposes only
         collectedParts = GameManager.instance.gameFile.player.inventory.collectedParts;
         collectedWeapons = GameManager.instance.gameFile.player.inventory.collectedWeapons;
 
@@ -61,6 +61,39 @@ public class MonsterMaker : MonoBehaviour {
         //collectedWeapons.Add(Helper.WeaponName.Swordfish);
         //collectedWeapons.Add(Helper.WeaponName.BananaGun);
         //collectedWeapons.Add(Helper.WeaponName.Fan);
+    }
+
+    public void PopulateSlots(Monster monster, string playerName)
+    {
+        //getting the part infos from the monster
+        HeadPartInfo headInfo = monster.headPart.partInfo;
+        TorsoPartInfo torsoInfo = monster.torsoPart.partInfo;
+        ArmPartInfo rightArmInfo = monster.rightArmPart.partInfo;
+        ArmPartInfo leftArmInfo = monster.leftArmPart.partInfo;
+        LegPartInfo legsInfo = monster.legPart.partInfo;
+
+        //populating the parts in to each slot
+        headSlot.ChangePart(headInfo);
+        torsoSlot.ChangePart(torsoInfo);
+        rightArmSlot.ChangePart(rightArmInfo);
+        leftArmSlot.ChangePart(leftArmInfo);
+        legsSlot.ChangePart(legsInfo);
+
+        //populating the weapons into each slot, if there are any equipped
+        string rightWeapon = rightArmInfo.equippedWeapon;
+        string leftWeapon = leftArmInfo.equippedWeapon;
+
+        if(rightWeapon != "")
+        {
+            rightWeaponSlot.ChangeWeapon(WeaponFactory.GetWeapon(rightWeapon, null, null, null));
+        }
+        if (leftWeapon != "")
+        {
+            leftWeaponSlot.ChangeWeapon(WeaponFactory.GetWeapon(leftWeapon, null, null, null));
+        }
+
+        //setting the name field text 
+        nameField.text = playerName;
     }
 
     public void ShowWeaponPicker(string weaponHand)
@@ -174,11 +207,12 @@ public class MonsterMaker : MonoBehaviour {
         PlayerInfo playerInfo = GameManager.instance.gameFile.player;
         playerInfo.headPart = headSlot.partInfo;
         playerInfo.torsoPart = torsoSlot.partInfo;
-        rightArmSlot.partInfo.equippedWeapon = (rightWeaponSlot.weapon != null) ? rightWeaponSlot.weapon.WeaponName : "";
+        rightArmSlot.partInfo.equippedWeapon = (rightWeaponSlot.weapon != null && rightWeaponSlot.weapon.WeaponName != "") ? rightWeaponSlot.weapon.WeaponName : "";
         playerInfo.rightArmPart = rightArmSlot.partInfo;
-        leftArmSlot.partInfo.equippedWeapon = (leftWeaponSlot.weapon != null) ? leftWeaponSlot.weapon.WeaponName : "";
+        leftArmSlot.partInfo.equippedWeapon = (leftWeaponSlot.weapon != null && leftWeaponSlot.weapon.WeaponName != "") ? leftWeaponSlot.weapon.WeaponName : "";
         playerInfo.leftArmPart = leftArmSlot.partInfo;
         playerInfo.legsPart = legsSlot.partInfo;
+        playerInfo.name = nameField.text;
 
         GameManager.instance.gameFile.player = playerInfo;
     }

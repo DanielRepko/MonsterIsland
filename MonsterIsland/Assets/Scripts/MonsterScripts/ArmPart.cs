@@ -62,7 +62,7 @@ public class ArmPart : MonoBehaviour {
             }
 
             //checking whether this part has an ability
-            if (partInfo.abilityName != null && player != null)
+            if (partInfo.abilityName != "" && player != null)
             {
                 //populating the partAbility field with the appropriate ability delegate
                 ability = AbilityFactory.GetArmPartAbility(partInfo.abilityName);
@@ -169,7 +169,6 @@ public class ArmPart : MonoBehaviour {
 
             if (partType == Helper.PartType.RightArm)
             {
-                Debug.Log(handBackSprite);
                 hand.sprite = handBackSprite;
                 fingers.sprite = fingersBack;
             } else if (partType == Helper.PartType.LeftArm)
