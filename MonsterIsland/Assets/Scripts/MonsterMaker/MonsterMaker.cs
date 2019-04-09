@@ -170,7 +170,7 @@ public class MonsterMaker : MonoBehaviour {
 
     public void HideDonePanel()
     {
-        donePanel.gameObject.SetActive(true);
+        donePanel.gameObject.SetActive(false);
     }
 
     public void HideEditors()
