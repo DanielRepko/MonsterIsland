@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Actor {
 
@@ -588,5 +589,16 @@ public class PlayerController : Actor {
         if(collision.tag == "Shop") {
             shopCheck = collision;
         }
+    }
+
+    public void ReinitializePlayer()
+    {
+        SceneManager.sceneLoaded += StartReinitialize;
+    }
+
+    private void StartReinitialize(Scene scene, LoadSceneMode mode)
+    {
+        InitializePlayer();
+        SceneManager.sceneLoaded -= StartReinitialize;
     }
 }
