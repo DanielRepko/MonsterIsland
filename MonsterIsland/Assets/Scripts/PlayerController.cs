@@ -7,6 +7,7 @@ public class PlayerController : Actor {
     public static PlayerController Instance;
 
     public float moveSpeed = 15.5f;
+    public float attackRange = 1.7f;
 
     //damage dealt by right arm attack
     public int rightAttackPower = 2;
@@ -251,12 +252,12 @@ public class PlayerController : Actor {
         attackRay.origin = transform.position;
         attackRay.direction = new Vector2(facingDirection, 0);
 
-        Debug.DrawRay(attackRay.origin, new Vector2(1.8f * facingDirection, 0), Color.green);
+        Debug.DrawRay(attackRay.origin, new Vector2(attackRange * facingDirection, 0), Color.green);
 
         //using the armType and Helper method to call the correct anim
         animator.Play(armType + Helper.GetAnimDirection(facingDirection, armType) + "MeleeAnim");
 
-        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
+        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
         if(hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
             if(enemy != null && hit.collider == enemy.hurtBox) {
@@ -271,11 +272,11 @@ public class PlayerController : Actor {
         attackRay.origin = transform.position;
         attackRay.direction = new Vector2(facingDirection, 0);
 
-        Debug.DrawRay(attackRay.origin, new Vector2(1.8f * facingDirection, 0), Color.green);
+        Debug.DrawRay(attackRay.origin, new Vector2(attackRange * facingDirection, 0), Color.green);
 
         animator.Play(armType + Helper.GetAnimDirection(facingDirection, armType) + "MeleeAnim");
 
-        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
+        RaycastHit2D hit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit) {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
             if (enemy != null && hit.collider == enemy.hurtBox) {
