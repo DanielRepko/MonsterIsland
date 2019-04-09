@@ -521,7 +521,7 @@ public class Enemy : Actor {
     virtual public void OnTriggerEnter2D(Collider2D collision)
     {
         //checking to see if the enemy reached a patrol point
-        if(collision.tag == "PatrolPoint" && target != null && target == collision.gameObject && transform.position.y >= collision.transform.position.y)
+        if(collision.tag == "PatrolPoint" && target != null && target == collision.gameObject && (transform.position.y >= collision.transform.position.y || isUnderwater))
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
             ContinuePatrol();
@@ -542,6 +542,7 @@ public class Enemy : Actor {
         if (collision.tag == "Water")
         {
             isUnderwater = false;
+            jumpCooldown = 1f;
         }
     }
 
