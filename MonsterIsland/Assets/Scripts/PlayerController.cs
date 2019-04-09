@@ -6,6 +6,12 @@ public class PlayerController : Actor {
 
     public static PlayerController Instance;
 
+    //Dev Mode exists for when features need to be tested without the fear of death.
+    //When enabled, the player is unable to take damage, and as such does not recieve knockback as well.
+    //Only enable this while in play mode, and delete it before we release the game
+    //This should never be enabled by another script, only in the inspector
+    public bool devMode = false;
+
     public float moveSpeed = 15.5f;
     public float attackRange = 1.7f;
 
@@ -290,7 +296,7 @@ public class PlayerController : Actor {
 
     override public void TakeDamage(int damage, float knockBackDirection)
     {
-        if (!inHitStun && canBeHurt)
+        if (!inHitStun && canBeHurt || !devMode)
         {
             animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(-15 * knockBackDirection, 35);
