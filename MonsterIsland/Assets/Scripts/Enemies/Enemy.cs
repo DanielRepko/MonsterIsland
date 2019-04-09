@@ -536,6 +536,16 @@ public class Enemy : Actor {
         
     }
 
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        //checking to see if the enemy reached a patrol point
+        if (collision.tag == "PatrolPoint" && target != null && target == collision.gameObject && transform.position.y >= collision.transform.position.y)
+        {
+            ContinuePatrol();
+        }
+
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         //checking to see if the enemy is underwater

@@ -13,37 +13,78 @@ public class WeaponSlot : MonoBehaviour {
     public string weaponDesc;
     public Text abilitySignLabel;
 
+    public bool isLocked;
+
     public void Start()
     {
         originalPosition = transform.localPosition;
     }
 
+    public void LockSlot()
+    {
+        Button slotButton = GetComponent<Button>();
+        slotButton.interactable = false;
+        slotButton.transition = Selectable.Transition.ColorTint;
+        isLocked = true;
+    }
+
+    public void UnlockSlot()
+    {
+        Button slotButton = GetComponent<Button>();
+        slotButton.interactable = true;
+        slotButton.transition = Selectable.Transition.None;
+        isLocked = true;
+    }
+
+    public void ClearWeaponSlot()
+    {
+        weapon = null;
+        weaponImage.sprite = null;
+
+        weaponName = "";
+        weaponType = "";
+        weaponDesc = "";
+
+        string weaponHand = gameObject.name.Substring(0, gameObject.name.Length - 10);
+        if(weaponHand == "Right")
+        {
+            abilitySignLabel.text = GetComponentInParent<MonsterMaker>().rightArmSlot.abilityName;
+        }
+        else if (weaponHand == "Left")
+        {
+            abilitySignLabel.text = GetComponentInParent<MonsterMaker>().leftArmSlot.abilityName;
+        }
+    }
+
     public void ChangeWeapon(Weapon newWeapon)
     {
-        weapon = newWeapon;
+            weapon = newWeapon;
 
-        UpdateAbilityBoard();
+            UpdateAbilityBoard();
 
-        UpdateUI();
+            UpdateUI();
     }
 
     public void UpdateAbilityBoard()
     {
         string weaponHand = gameObject.name.Substring(0, gameObject.name.Length - 10);
-        if (weaponHand == "Right")
+        if (weapon.WeaponName != null)
         {
-            MonsterPartInfo armPart = GetComponentInParent<MonsterMaker>().rightArmSlot.partInfo;
-            if (armPart.abilityType == "Activate")
+            if (weaponHand == "Right")
             {
-                abilitySignLabel.text = "";
+                MonsterPartInfo armPart = GetComponentInParent<MonsterMaker>().rightArmSlot.partInfo;
+                if (armPart.abilityType == "Activate")
+                {
+                    abilitySignLabel.text = "";
+                }
             }
-        }
-        else if (weaponHand == "Left")
-        {
-            MonsterPartInfo armPart = GetComponentInParent<MonsterMaker>().leftArmSlot.partInfo;
-            if (armPart.abilityType == "Activate")
+            else if (weaponHand == "Left")
             {
-                abilitySignLabel.text = "";
+                MonsterPartInfo armPart = GetComponentInParent<MonsterMaker>().leftArmSlot.partInfo;
+                if (armPart.abilityType == "Activate")
+                {
+                    abilitySignLabel.text = "";
+                }
             }
         }
     }
@@ -59,7 +100,10 @@ public class WeaponSlot : MonoBehaviour {
     {
         transform.localPosition = originalPosition;
         transform.localScale = new Vector3(1f, 1f, 0);
-        gameObject.GetComponent<Button>().interactable = true;
+        if(!isLocked)
+        {
+            gameObject.GetComponent<Button>().interactable = true;
+        }
     }
 
     public void UpdateUI()

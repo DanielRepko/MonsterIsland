@@ -3,7 +3,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
 <rect x="240.5" y="269.813" fill-opacity="0" fill="#231F20" width="133" height="254.128"/>
-<path id="PRIMARY_16_" fill="#F1F1F1" stroke="#231F20" stroke-width="2.3345" stroke-miterlimit="10" d="M306.252,471.926h0.593
+<path id="PRIMARY" fill="#F1F1F1" stroke="#231F20" stroke-width="2.3345" stroke-miterlimit="10" d="M306.252,471.926h0.593
 	c0.125,6.874,6.699,12.412,14.751,12.39c8.097-0.021,14.622-5.661,14.57-12.6c-0.053-6.478-5.82-11.792-13.193-12.439
 	l-1.244-165.542c7.353-0.689,13.05-6.038,13.004-12.518c-0.05-6.936-6.656-12.538-14.757-12.513
 	c-8.05,0.023-14.536,5.595-14.565,12.474l-0.592,0.002c-0.123-6.879-6.698-12.413-14.749-12.392
@@ -11,5 +11,5 @@
 	c-6.44,1.337-11.203,6.305-11.155,12.229c0.053,6.937,6.655,12.538,14.759,12.513C299.74,484.379,306.227,478.805,306.252,471.926z"
 	/>
 <ellipse fill="none" stroke="#231F20" stroke-width="2.3345" stroke-miterlimit="10" cx="307" cy="294.22" rx="5.833" ry="5.839"/>
-<ellipse id="PRIMARY_15_" fill="#F1F1F1" stroke="#231F20" stroke-width="2.3345" stroke-miterlimit="10" cx="305.833" cy="486.908" rx="19.792" ry="29.583"/>
+<ellipse id="SECONDARY" fill="#F1F1F1" stroke="#231F20" stroke-width="2.3345" stroke-miterlimit="10" cx="305.833" cy="486.908" rx="19.792" ry="29.583"/>
 </svg>

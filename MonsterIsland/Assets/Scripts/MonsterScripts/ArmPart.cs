@@ -127,7 +127,7 @@ public class ArmPart : MonoBehaviour {
                         weapon.Damage = enemy.damage;
                         if (weapon.WeaponType == Helper.WeaponType.Melee)
                         {
-                            enemy.attackRange = weapon.AttackRange;
+                            enemy.attackRange = weapon.AttackRange - 8;
                         }
                         else if (weapon.WeaponType == Helper.WeaponType.Projectile)
                         {
