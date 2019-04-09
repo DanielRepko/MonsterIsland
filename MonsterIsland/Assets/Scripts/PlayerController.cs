@@ -134,7 +134,6 @@ public class PlayerController : Actor {
     private void FixedUpdate() {
         //performing status checks on the player using whatever 
         //methods the delegate holds (may hold multiple method implementations)
-        UpdatePlayerDirection();
         playerCheckDelegate();
 
         //moving the player
