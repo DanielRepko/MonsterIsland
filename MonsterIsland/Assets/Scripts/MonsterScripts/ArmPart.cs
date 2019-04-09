@@ -169,6 +169,7 @@ public class ArmPart : MonoBehaviour {
 
             if (partType == Helper.PartType.RightArm)
             {
+                Debug.Log(handBackSprite);
                 hand.sprite = handBackSprite;
                 fingers.sprite = fingersBack;
             } else if (partType == Helper.PartType.LeftArm)

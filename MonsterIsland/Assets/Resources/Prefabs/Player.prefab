@@ -4304,7 +4304,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344063368092656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.25, z: 0}
+  m_LocalPosition: {x: -16.4, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4962323823073406}
@@ -4919,11 +4919,11 @@ MonoBehaviour:
   timeBetwenAirDamage: 2
   drownDamage: 1
   hasGills: 0
-  head: Lion
-  torso: Knight
-  rightArm: Cactus
-  leftArm: Sam
-  legs: Mitch
+  head: 
+  torso: 
+  rightArm: 
+  leftArm: 
+  legs: 
   rightWeapon: 
   leftWeapon: 
 --- !u!114 &114017853166408056
@@ -8167,7 +8167,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: HideShopPanel
+        m_MethodName: HideNestCanvas
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12241,7 +12241,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114715603898753578}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: LoadMonsterMaker
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114905492758192878

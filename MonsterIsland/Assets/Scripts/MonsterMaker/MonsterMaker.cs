@@ -29,38 +29,38 @@ public class MonsterMaker : MonoBehaviour {
 
     public void Start()
     {
-        //this code is for testing purposes only
-        collectedParts = new CollectedPartsInfo()
+        if(PlayerController.Instance != null)
         {
-            collectedHeads = new List<string>(),
-            collectedTorsos = new List<string>(),
-            collectedLeftArms = new List<string>(),
-            collectedRightArms = new List<string>(),
-            collectedLegs = new List<string>(),
-        };
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Skeleton");
-        collectedParts.collectedTorsos.Add("Mitch");
-        collectedParts.collectedTorsos.Add("Skeleton");
-        collectedParts.collectedLeftArms.Add("Mitch");
-        collectedParts.collectedLeftArms.Add("Skeleton");
-        collectedParts.collectedLeftArms.Add("Robot");
-        collectedParts.collectedRightArms.Add("Mitch");
-        collectedParts.collectedRightArms.Add("Skeleton");
-        collectedParts.collectedRightArms.Add("Robot");
-        collectedParts.collectedLegs.Add("Mitch");
-        collectedParts.collectedLegs.Add("Skeleton");
+            PlayerController.Instance.gameObject.SetActive(false);
+        }
 
-        collectedWeapons.Add(Helper.WeaponName.PeaShooter);
-        collectedWeapons.Add(Helper.WeaponName.Stick);
-        collectedWeapons.Add(Helper.WeaponName.Boomerang);
-        collectedWeapons.Add(Helper.WeaponName.Club);
-        collectedWeapons.Add(Helper.WeaponName.Scimitar);
-        collectedWeapons.Add(Helper.WeaponName.SqueakyHammer);
-        collectedWeapons.Add(Helper.WeaponName.HarpoonGun);
-        collectedWeapons.Add(Helper.WeaponName.Swordfish);
-        collectedWeapons.Add(Helper.WeaponName.BananaGun);
-        collectedWeapons.Add(Helper.WeaponName.Fan);
+        //this code is for testing purposes only
+        collectedParts = GameManager.instance.gameFile.player.inventory.collectedParts;
+        collectedWeapons = GameManager.instance.gameFile.player.inventory.collectedWeapons;
+
+        //collectedParts.collectedHeads.Add("Knight");
+        //collectedParts.collectedHeads.Add("Skeleton");
+        //collectedParts.collectedTorsos.Add("Knight");
+        //collectedParts.collectedTorsos.Add("Skeleton");
+        //collectedParts.collectedLeftArms.Add("Knight");
+        //collectedParts.collectedLeftArms.Add("Skeleton");
+        //collectedParts.collectedLeftArms.Add("Robot");
+        //collectedParts.collectedRightArms.Add("Knight");
+        //collectedParts.collectedRightArms.Add("Skeleton");
+        //collectedParts.collectedRightArms.Add("Robot");
+        //collectedParts.collectedLegs.Add("Knight");
+        //collectedParts.collectedLegs.Add("Skeleton");
+
+        //collectedWeapons.Add(Helper.WeaponName.PeaShooter);
+        //collectedWeapons.Add(Helper.WeaponName.Stick);
+        //collectedWeapons.Add(Helper.WeaponName.Boomerang);
+        //collectedWeapons.Add(Helper.WeaponName.Club);
+        //collectedWeapons.Add(Helper.WeaponName.Scimitar);
+        //collectedWeapons.Add(Helper.WeaponName.SqueakyHammer);
+        //collectedWeapons.Add(Helper.WeaponName.HarpoonGun);
+        //collectedWeapons.Add(Helper.WeaponName.Swordfish);
+        //collectedWeapons.Add(Helper.WeaponName.BananaGun);
+        //collectedWeapons.Add(Helper.WeaponName.Fan);
     }
 
     public void ShowWeaponPicker(string weaponHand)
@@ -157,6 +157,30 @@ public class MonsterMaker : MonoBehaviour {
 
         return allFieldsFilled;
 
+    }
+
+    public void LeaveMonsterMaker()
+    {
+        SaveChanges();
+        if(PlayerController.Instance != null)
+        {
+            PlayerController.Instance.ReinitializePlayer();
+        }
+        GameManager.instance.LoadToLastNestUsed();
+    }
+
+    public void SaveChanges()
+    {
+        PlayerInfo playerInfo = GameManager.instance.gameFile.player;
+        playerInfo.headPart = headSlot.partInfo;
+        playerInfo.torsoPart = torsoSlot.partInfo;
+        rightArmSlot.partInfo.equippedWeapon = (rightWeaponSlot.weapon != null) ? rightWeaponSlot.weapon.WeaponName : "";
+        playerInfo.rightArmPart = rightArmSlot.partInfo;
+        leftArmSlot.partInfo.equippedWeapon = (leftWeaponSlot.weapon != null) ? leftWeaponSlot.weapon.WeaponName : "";
+        playerInfo.leftArmPart = leftArmSlot.partInfo;
+        playerInfo.legsPart = legsSlot.partInfo;
+
+        GameManager.instance.gameFile.player = playerInfo;
     }
 
     public void ShowDonePanel()
