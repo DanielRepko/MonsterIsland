@@ -28,37 +28,43 @@ public class LegsSlot : PartSlot {
 
     public override void ChangePrimaryColor(string newColor)
     {
-        LegPartInfo newPart = new LegPartInfo()
+        if (partInfo.monster != "")
         {
-            monster = partInfo.monster,
-            abilityName = partInfo.abilityName,
-            abilityDesc = partInfo.abilityDesc,
-            pelvisSprite = ChangeColor(partInfo.pelvisSprite, "PRIMARY", newColor),
-            thighSprite = ChangeColor(partInfo.thighSprite, "PRIMARY", newColor),
-            shinSprite = ChangeColor(partInfo.shinSprite, "PRIMARY", newColor),
-            footSprite = ChangeColor(partInfo.footSprite, "PRIMARY", newColor)
-        };
+            LegPartInfo newPart = new LegPartInfo()
+            {
+                monster = partInfo.monster,
+                abilityName = partInfo.abilityName,
+                abilityDesc = partInfo.abilityDesc,
+                pelvisSprite = ChangeColor(partInfo.pelvisSprite, "PRIMARY", newColor),
+                thighSprite = ChangeColor(partInfo.thighSprite, "PRIMARY", newColor),
+                shinSprite = ChangeColor(partInfo.shinSprite, "PRIMARY", newColor),
+                footSprite = ChangeColor(partInfo.footSprite, "PRIMARY", newColor)
+            };
 
 
-        partInfo = newPart;
-        UpdateUI();
+            partInfo = newPart;
+            UpdateUI();
+        }
     }
 
     public override void ChangeSecondaryColor(string newColor)
     {
-        LegPartInfo newPart = new LegPartInfo()
+        if (partInfo.monster != "")
         {
-            monster = partInfo.monster,
-            abilityName = partInfo.abilityName,
-            abilityDesc = partInfo.abilityDesc,
-            pelvisSprite = ChangeColor(partInfo.pelvisSprite, "SECONDARY", newColor),
-            thighSprite = ChangeColor(partInfo.thighSprite, "SECONDARY", newColor),
-            shinSprite = ChangeColor(partInfo.shinSprite, "SECONDARY", newColor),
-            footSprite = ChangeColor(partInfo.footSprite, "SECONDARY", newColor)
-        };
+            LegPartInfo newPart = new LegPartInfo()
+            {
+                monster = partInfo.monster,
+                abilityName = partInfo.abilityName,
+                abilityDesc = partInfo.abilityDesc,
+                pelvisSprite = ChangeColor(partInfo.pelvisSprite, "SECONDARY", newColor),
+                thighSprite = ChangeColor(partInfo.thighSprite, "SECONDARY", newColor),
+                shinSprite = ChangeColor(partInfo.shinSprite, "SECONDARY", newColor),
+                footSprite = ChangeColor(partInfo.footSprite, "SECONDARY", newColor)
+            };
 
-        partInfo = newPart;
-        UpdateUI();
+            partInfo = newPart;
+            UpdateUI();
+        }
     }
 
     public override void UpdateUI()

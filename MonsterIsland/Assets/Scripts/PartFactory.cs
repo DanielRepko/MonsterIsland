@@ -19,6 +19,7 @@ public class PartFactory : MonoBehaviour {
         HeadPartInfo headPart = new HeadPartInfo()
         {
             monster = monsterName,
+            partType = Helper.PartType.Head,
             mainSprite = mainSprite.InnerXml,
             neckSprite = neckSprite.InnerXml,
             hurtSprite = hurtSprite.InnerXml,
@@ -38,6 +39,7 @@ public class PartFactory : MonoBehaviour {
         TorsoPartInfo torsoPart = new TorsoPartInfo()
         {
             monster = monsterName,
+            partType = Helper.PartType.Torso,
             mainSprite = mainSprite.InnerXml
         };
 
@@ -68,6 +70,7 @@ public class PartFactory : MonoBehaviour {
         ArmPartInfo armPart = new ArmPartInfo()
         {
             monster = monsterName,
+            partType = armType,
             bicepSprite = bicepSprite.InnerXml,
             forearmSprite = forearmSprite.InnerXml,
             handBackSprite = handBackSprite.InnerXml,
@@ -97,6 +100,7 @@ public class PartFactory : MonoBehaviour {
         LegPartInfo legPart = new LegPartInfo()
         {
             monster = monsterName,
+            partType = Helper.PartType.Legs,
             pelvisSprite = pelvisSprite.InnerXml,
             thighSprite = thighSprite.InnerXml,
             shinSprite = shinSprite.InnerXml,

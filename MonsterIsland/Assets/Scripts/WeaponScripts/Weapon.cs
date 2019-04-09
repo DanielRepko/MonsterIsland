@@ -117,11 +117,27 @@ public class Weapon {
 
         if (ArmEquippedOn == Helper.PartType.RightArm)
         {
-            projectilePosition = actor.monster.rightArmPart.hand.transform.position;
+            Vector2 armPosition = actor.monster.rightArmPart.hand.transform.position;
+            if (actor.facingDirection > 0)
+            {
+                projectilePosition = new Vector2(armPosition.x + 1 * actor.facingDirection, armPosition.y);
+            }
+            else
+            {
+                projectilePosition = new Vector2(armPosition.x, armPosition.y);
+            }
         }
         else if (ArmEquippedOn == Helper.PartType.LeftArm)
         {
-            projectilePosition = actor.monster.leftArmPart.hand.transform.position;
+            Vector2 armPosition = actor.monster.leftArmPart.hand.transform.position;
+            if (actor.facingDirection < 0)
+            {
+                projectilePosition = new Vector2(armPosition.x + 1 * actor.facingDirection, armPosition.y);
+            }
+            else
+            {
+                projectilePosition = new Vector2(armPosition.x, armPosition.y);
+            }
         }
 
         GameObject projectile = Object.Instantiate(ProjectilePrefab, projectilePosition, ProjectilePrefab.transform.rotation);

@@ -537,7 +537,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1893753594575248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 51.953823, y: 31.18659, z: 0}
+  m_LocalPosition: {x: -156.96387, y: -1.0956175, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4806205324263260}
@@ -964,6 +964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -984,6 +985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1031,6 +1033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1058,6 +1061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 60
   isUnderwater: 0
+  shellCollider: {fileID: 0}
   attacksLocked: 0
   movementLocked: 0
   inHitStun: 0
@@ -1077,12 +1081,11 @@ MonoBehaviour:
   alwaysDropPart: 0
   partToAlwaysDrop: 
   equippedWeapon: 
-  attackRange: 10
+  attackRange: 8
   damage: 2
   attackCooldown: 1
   abilityCooldown: 0
   jumpCooldown: 1
-  healthBar: {fileID: 0}
   isAggro: 0
   aggroRange: 8
   aggroTime: 5
@@ -1116,6 +1119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1148,6 +1152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 

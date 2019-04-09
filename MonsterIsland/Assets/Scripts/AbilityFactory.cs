@@ -119,11 +119,9 @@ public class AbilityFactory : MonoBehaviour {
         PlayerController player = PlayerController.Instance;
         GameObject tongueLoad = Resources.Load<GameObject>("Prefabs/Projectiles/Frog_Tongue");
         tongueLoad.GetComponent<TongueFlick>().target = "Enemy";
+        tongueLoad.GetComponent<TongueFlick>().actor = PlayerController.Instance;
 
         Vector2 tonguePosition = new Vector2(player.monster.headPart.transform.position.x + 0.3f * player.facingDirection, player.monster.headPart.transform.position.y + 0.05f);
-        //Debug.Log(tongueLoad.transform.localScale);
-        //tongueLoad.transform.localScale *= player.facingDirection;
-        //Debug.Log(tongueLoad.transform.localScale);
         GameObject tongue = Instantiate(tongueLoad, tonguePosition, Quaternion.identity);
         tongue.transform.localScale *= player.facingDirection;
 
@@ -135,7 +133,7 @@ public class AbilityFactory : MonoBehaviour {
     //an AOE roar attack. Does not deal damage
     public static void Ability_LionsRoar()
     {
-        
+        PlayerController.Instance.rb.velocity = new Vector2(0, PlayerController.Instance.rb.velocity.y);   
         PlayerController.Instance.animator.Play("LionsRoar" + Helper.GetAnimDirection(PlayerController.Instance.facingDirection) + "Anim");
     }
 
@@ -385,7 +383,12 @@ public class AbilityFactory : MonoBehaviour {
     //due to nature of the ability, needs to pass on a separate method (see FeatherFall())
     public static void Ability_FeatherFall(string armType)
     {
-        PlayerController.Instance.playerCheckDelegate += FeatherFall;
+        PlayerController player = PlayerController.Instance;
+        player.playerCheckDelegate += FeatherFall;
+        if (player.monster.rightArmPart.partInfo.monster == Helper.MonsterName.Vulture && player.monster.leftArmPart.partInfo.monster == Helper.MonsterName.Vulture)
+        {
+            player.jumpForce -= 5;
+        }
     }
 
     //Arm Ability (Activate): Allows the player to extend and shoot their arm out to 
@@ -515,7 +518,7 @@ public class AbilityFactory : MonoBehaviour {
 
         if (!player.isUnderwater)
         {
-            if (player.rb.velocity.y <= 0)
+            if (player.rb.velocity.y <= 0 && !player.IsOnGround())
             {
                 player.rb.gravityScale -= 8f;
             }

@@ -22,32 +22,38 @@ public class TorsoSlot : PartSlot{
 
     public override void ChangePrimaryColor(string newColor)
     {
-        TorsoPartInfo newPart = new TorsoPartInfo()
+        if (partInfo.monster != "")
         {
-            monster = partInfo.monster,
-            abilityName = partInfo.abilityName,
-            abilityDesc = partInfo.abilityDesc,
-            mainSprite = ChangeColor(partInfo.mainSprite, "PRIMARY", newColor)
-        };
+            TorsoPartInfo newPart = new TorsoPartInfo()
+            {
+                monster = partInfo.monster,
+                abilityName = partInfo.abilityName,
+                abilityDesc = partInfo.abilityDesc,
+                mainSprite = ChangeColor(partInfo.mainSprite, "PRIMARY", newColor)
+            };
 
 
-        partInfo = newPart;
-        UpdateUI();
+            partInfo = newPart;
+            UpdateUI();
+        }
     }
 
     public override void ChangeSecondaryColor(string newColor)
     {
-        TorsoPartInfo newPart = new TorsoPartInfo()
+        if (partInfo.monster != "")
         {
-            monster = partInfo.monster,
-            abilityName = partInfo.abilityName,
-            abilityDesc = partInfo.abilityDesc,
-            mainSprite = ChangeColor(partInfo.mainSprite, "SECONDARY", newColor)
-        };
+            TorsoPartInfo newPart = new TorsoPartInfo()
+            {
+                monster = partInfo.monster,
+                abilityName = partInfo.abilityName,
+                abilityDesc = partInfo.abilityDesc,
+                mainSprite = ChangeColor(partInfo.mainSprite, "SECONDARY", newColor)
+            };
 
 
-        partInfo = newPart;
-        UpdateUI();
+            partInfo = newPart;
+            UpdateUI();
+        }
     }
 
     public override void UpdateUI()
