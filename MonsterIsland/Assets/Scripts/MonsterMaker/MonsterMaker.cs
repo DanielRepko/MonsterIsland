@@ -22,7 +22,7 @@ public class MonsterMaker : MonoBehaviour {
 
     public InputField nameField;
 
-    public Image DonePanel;
+    public Image donePanel;
 
     private CollectedPartsInfo collectedParts;
     private List<string> collectedWeapons = new List<string>();
@@ -132,6 +132,47 @@ public class MonsterMaker : MonoBehaviour {
         }
     }
 
+    public bool FieldsAreFilled()
+    {
+        //creating a dictionary storing bools for whether each required field is filled and that respective field's animator
+        Dictionary<Animator, bool> fieldsFilled = new Dictionary<Animator, bool>();
+        fieldsFilled.Add(headSlot.GetComponent<Animator>(), headSlot.partInfo.monster != "");
+        fieldsFilled.Add(torsoSlot.GetComponent<Animator>(), torsoSlot.partInfo.monster != "");
+        fieldsFilled.Add(rightArmSlot.GetComponent<Animator>(), rightArmSlot.partInfo.monster != "");
+        fieldsFilled.Add(leftArmSlot.GetComponent<Animator>(), leftArmSlot.partInfo.monster != "");
+        fieldsFilled.Add(legsSlot.GetComponent<Animator>(), legsSlot.partInfo.monster != "");
+        fieldsFilled.Add(nameField.GetComponent<Animator>(), nameField.text != "");
+
+        bool allFieldsFilled = true;
+
+        foreach(KeyValuePair<Animator, bool> fieldFilled in fieldsFilled)
+        {
+            if (!fieldFilled.Value)
+            {
+                Debug.Log(fieldFilled.Key);
+                fieldFilled.Key.Play("ErrorFlash");
+                allFieldsFilled = false;
+            }
+        }
+
+        return allFieldsFilled;
+
+    }
+
+    public void ShowDonePanel()
+    {
+        //checking to see if all the required slots and info are filled
+        if (FieldsAreFilled())
+        {
+            donePanel.gameObject.SetActive(true);
+        }
+    }
+
+    public void HideDonePanel()
+    {
+        donePanel.gameObject.SetActive(true);
+    }
+
     public void HideEditors()
     {
         //iterating through all objects inside the MonsterMaker canvas
@@ -144,6 +185,10 @@ public class MonsterMaker : MonoBehaviour {
             else if (child.gameObject.name == "PartEditor")
             {
                 partEditor.ClosePartEditor();
+            }
+            else if(child.gameObject.name == "DonePanel")
+            {
+                HideDonePanel();
             }
             //anything else should be enabled
             else
