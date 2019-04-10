@@ -262,6 +262,31 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadMonsterMaker
       objectReference: {fileID: 0}
+    - target: {fileID: 114012045192248068, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+        type: 2}
+      propertyPath: head
+      value: Mitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012045192248068, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+        type: 2}
+      propertyPath: torso
+      value: Mitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012045192248068, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+        type: 2}
+      propertyPath: rightArm
+      value: Mitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012045192248068, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+        type: 2}
+      propertyPath: leftArm
+      value: Mitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012045192248068, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
+        type: 2}
+      propertyPath: legs
+      value: Mitch
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dd60c8d1dd609b489d0083e1b88ff1c, type: 2}
   m_IsPrefabAsset: 0
@@ -147127,7 +147152,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1924216593
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
