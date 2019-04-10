@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour {
@@ -9,6 +10,7 @@ public class AudioManager : MonoBehaviour {
 
     public AudioSource musicAudioSource;
     public AudioSource soundAudioSource;
+    public AudioMixer audioMixer;
 
     public AudioClip bossMusic;
     public AudioClip castleMusic;
@@ -27,6 +29,8 @@ public class AudioManager : MonoBehaviour {
             Instance = this;
             SceneManager.sceneLoaded += LoadLevelMusic;
             LoadLevelMusic(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+            Resources.FindObjectsOfTypeAll<SettingsManager>()[0].SetMusic(PlayerPrefs.GetInt("MusicVolume", 10));
+            Resources.FindObjectsOfTypeAll<SettingsManager>()[0].SetSound(PlayerPrefs.GetInt("SoundVolume", 10));
         } else if (Instance != this) {
             Destroy(gameObject);
         }
