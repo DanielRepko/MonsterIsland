@@ -12,6 +12,8 @@ public class PlayerController : Actor {
     //This should never be enabled by another script, only in the inspector
     public bool devMode = false;
 
+    private bool isAlive = true;
+
     public float moveSpeed = 15.5f;
     public float attackRange = 1.7f;
 
@@ -88,7 +90,8 @@ public class PlayerController : Actor {
             width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
             height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
             Instance = this;
-            maxHealth = GameManager.instance.gameFile.player.totalHearts;
+            var GM = FindObjectOfType<GameManager>();
+            maxHealth = GM.gameFile.player.totalHearts;
             health = maxHealth;
             FindObjectOfType<UIManager>().UpdateHeartCount();
         } else if (Instance != this) {
@@ -105,14 +108,18 @@ public class PlayerController : Actor {
 
     // Update is called once per frame
     void Update() {
+        if(health <= 0 && isAlive) {
+            KillPlayer();
+        }
+
         if (chestCheck != null && chestCheck.tag == "Chest"
-            && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))) {
+            && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact)) && isAlive) {
             if (chestCheck.gameObject.GetComponent<Chest>().isOpen == false) {
                 chestCheck.gameObject.GetComponent<Chest>().Open();
             }
         }
 
-        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Pause))) {
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Pause)) && isAlive) {
             UIManager.Instance.PauseGame();
         }
 
@@ -160,39 +167,39 @@ public class PlayerController : Actor {
         }
 
         //input rightArm attack
-        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Primary)) && CheckCooldown("rightAttack")) {
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Primary)) && CheckCooldown("rightAttack") && isAlive) {
             rightAttackDelegate(Helper.PartType.RightArm);
         }
 
         //input leftArm attack
-        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Secondary)) && CheckCooldown("leftAttack")) {
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Secondary)) && CheckCooldown("leftAttack") && isAlive) {
             leftAttackDelegate(Helper.PartType.LeftArm);
         }
 
         //input torso ability
-        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Torso)) && CheckCooldown("torsoAbility")) {
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Torso)) && CheckCooldown("torsoAbility") && isAlive) {
             torsoAbilityDelegate();
         }
 
         //input Head ability
-        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Head)) && CheckCooldown("headAbility")) {
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Head)) && CheckCooldown("headAbility") && isAlive) {
             headAbilityDelegate();
         }
 
         //checking to see whether the extra jump should be refreshed
-        if (IsOnGround()) {
+        if (IsOnGround() && isAlive) {
             hasExtraJump = true;
         }
 
         //input jump
-        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Jump))) {
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Jump)) && isAlive) {
             jumpDelegate();
         }
 
 
         if (nestCheck != null && nestCheck.tag == "Nest"
             && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))
-            && !UIManager.Instance.nestCanvas.activeInHierarchy)
+            && !UIManager.Instance.nestCanvas.activeInHierarchy && isAlive)
         {
             UIManager.Instance.ShowNestCanvas();
             nestCheck.gameObject.GetComponent<Nest>().SetLastNestUsed();
@@ -204,12 +211,12 @@ public class PlayerController : Actor {
 
         if(shopCheck != null && shopCheck.tag == "Shop"
             && Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Interact))
-            && !UIManager.Instance.shopPanel.activeInHierarchy)
+            && !UIManager.Instance.shopPanel.activeInHierarchy && isAlive)
         {
             UIManager.Instance.ShowShopPanel();
         }
 
-        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Pause)))
+        if (Input.GetKeyDown(CustomInputManager.Instance.GetInputKey(InputType.Pause)) && isAlive)
         {
             UIManager.Instance.PauseGame();
         }
@@ -217,26 +224,26 @@ public class PlayerController : Actor {
 
     public void Move() {
         //input Left
-        if (Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Right))) {
+        if (Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Right)) && isAlive) {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
             animator.SetBool("IsRunningLeft", true);
             animator.SetBool("IsRunningRight", false);
             animator.SetFloat("FacingDirection", facingDirection);
             //input Right
-        } else if (Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Left))) {
+        } else if (Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Left)) && isAlive) {
             animator.SetBool("IsRunningRight", true);
             animator.SetBool("IsRunningLeft", false);
             animator.SetFloat("FacingDirection", facingDirection);
             rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
         //no input
-        } else if (Input.GetKeyUp(CustomInputManager.Instance.GetInputKey(InputType.Left)) || Input.GetKeyUp(CustomInputManager.Instance.GetInputKey(InputType.Right))) {
+        } else if (Input.GetKeyUp(CustomInputManager.Instance.GetInputKey(InputType.Left)) || Input.GetKeyUp(CustomInputManager.Instance.GetInputKey(InputType.Right)) && isAlive) {
             animator.SetBool("IsRunningRight", false);
             animator.SetBool("IsRunningLeft", false);
             animator.SetFloat("FacingDirection", facingDirection);
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
 
-        if(!Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Left)) && !Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Right)))
+        if(!Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Left)) && !Input.GetKey(CustomInputManager.Instance.GetInputKey(InputType.Right)) && isAlive)
         {
             animator.SetBool("IsRunningRight", false);
             animator.SetBool("IsRunningLeft", false);
@@ -245,7 +252,7 @@ public class PlayerController : Actor {
 
     //makes the player jump
     public void Jump() {
-        if (IsOnGround() || inQuicksand) {
+        if ((IsOnGround() || inQuicksand) && isAlive) {
             //calling the jump animation
             animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -368,14 +375,14 @@ public class PlayerController : Actor {
     public void UpdatePlayerDirection() {
         var screenMiddle = Screen.width / 2;
         //facing right
-        if (Input.mousePosition.x > screenMiddle) {
+        if (Input.mousePosition.x > screenMiddle && isAlive) {
             facingDirection = 1;
             //setting the scale of the player object
             transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);       
 
             monster.ChangeDirection(facingDirection);
         //facing left
-        } else if (Input.mousePosition.x < screenMiddle) {
+        } else if (Input.mousePosition.x < screenMiddle && isAlive) {
             facingDirection = -1;
             //setting the scale of the player object
             transform.localScale = new Vector3(facingDirection, transform.localScale.y, 1);
@@ -595,5 +602,38 @@ public class PlayerController : Actor {
         if(collision.tag == "Shop") {
             shopCheck = collision;
         }
+    }
+
+    //Kills the player
+    private void KillPlayer() {
+        isAlive = false;
+        if(facingDirection > 0) {
+            animator.Play("DieRight");
+        } else {
+            animator.Play("DieLeft");
+        }
+        canBeHurt = false;
+        attacksLocked = true;
+        movementLocked = true;
+        AudioManager.Instance.musicAudioSource.Stop();
+        StartCoroutine("RevivePlayer");
+    }
+
+    //Runs the process of respawning the player
+    IEnumerator RevivePlayer() {
+        yield return new WaitForSeconds(5f);
+        animator.SetTrigger("Revive");
+        UIManager.Instance.ShowLoadingPanel();
+        health = maxHealth;
+        UIManager.Instance.UpdateHeartCount();
+        isAlive = true;
+        canBeHurt = true;
+        attacksLocked = false;
+        movementLocked = false;
+        isUnderwater = false;
+        air = 1f;
+        UIManager.Instance.UpdateAirMeter(air, isUnderwater);
+        animator.SetTrigger("Revive");
+        GameManager.instance.LoadToLastNestUsed();
     }
 }
