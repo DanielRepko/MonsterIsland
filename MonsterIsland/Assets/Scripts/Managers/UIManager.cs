@@ -76,6 +76,7 @@ public class UIManager : MonoBehaviour {
     //When called, displays the Nest Canvas
     public void ShowNestCanvas() {
         nestCanvas.SetActive(true);
+        PlayerController.Instance.animator.Play("Idle");
         Time.timeScale = 0;
     }
 
@@ -94,6 +95,7 @@ public class UIManager : MonoBehaviour {
 
     public void ShowShopPanel() {
         shopPanel.SetActive(true);
+        PlayerController.Instance.animator.Play("Idle");
         Time.timeScale = 0;
     }
 
