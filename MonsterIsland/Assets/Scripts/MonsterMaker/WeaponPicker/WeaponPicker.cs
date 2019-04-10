@@ -53,6 +53,7 @@ public class WeaponPicker : MonoBehaviour {
                 var pickerButtonTransform = pickerButton.GetComponent<RectTransform>();
                 pickerButtonTransform.SetParent(weaponScroll.content);
                 pickerButtonTransform.anchoredPosition = new Vector2(xOffset, 0);
+                pickerButtonTransform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 weaponScroll.content.sizeDelta = new Vector2(weaponScroll.content.sizeDelta.x + 120f, weaponScroll.content.sizeDelta.y);
             }            
         }

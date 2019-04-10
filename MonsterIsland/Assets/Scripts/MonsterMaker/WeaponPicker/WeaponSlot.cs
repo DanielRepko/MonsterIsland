@@ -58,11 +58,18 @@ public class WeaponSlot : MonoBehaviour {
 
     public void ChangeWeapon(Weapon newWeapon)
     {
-            weapon = newWeapon;
+        weapon = newWeapon;
 
-            UpdateAbilityBoard();
+        if(weapon != null && weapon.WeaponName != null)
+        {
+            weaponName = weapon.WeaponName;
+            weaponType = weapon.WeaponType;
+            weaponDesc = weapon.WeaponDesc;
+        }
 
-            UpdateUI();
+        UpdateAbilityBoard();
+
+        UpdateUI();
     }
 
     public void UpdateAbilityBoard()
