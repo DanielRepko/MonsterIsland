@@ -134,7 +134,14 @@ public class GameManager : MonoBehaviour {
 
     //Updates an existing save file
     public void FinalizeSave() {
-        gameFile.player.totalHearts = PlayerController.Instance.maxHealth;
+        if (PlayerController.Instance != null)
+        {
+            gameFile.player.totalHearts = PlayerController.Instance.maxHealth;
+        }
+        else
+        {
+            gameFile.player.totalHearts = 6;
+        }
         var time = Time.timeSinceLevelLoad;
         gameFile.totalPlayTime += (Time.timeSinceLevelLoad - lastTimeUpdate);
         lastTimeUpdate = time;
@@ -145,17 +152,20 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Saved File" + fileNumber + " to " + savePath);
     }
 
+    //Deletes an existing save file
     public void DeleteSave() {
         var savePath = System.IO.Path.Combine(Application.persistentDataPath, "file" + fileNumber + ".json");
         System.IO.File.Delete(savePath);
         Debug.Log("File " + fileNumber + " deleted");
     }
 
+    //Moves the player to the nest the scene where their last used nest is
     public void LoadToLastNestUsed() {
         SceneManager.sceneLoaded += MovePlayerToNest;
         SceneManager.LoadScene(gameFile.saveArea);
     }
 
+    //Moves the player to a nest based on the last nest they used according to the save fike
     private void MovePlayerToNest(Scene scene, LoadSceneMode mode) {
         switch(gameFile.saveNest) {
             case "Start":

@@ -68,7 +68,6 @@ public class UIManager : MonoBehaviour {
     public void UpdateAirMeter(float air, bool isUnderwater) {
         if (!PlayerController.Instance.hasGills)
         {
-            var rightEdge = airMeterBar.GetComponent<RectTransform>().anchorMax.x;
             airMeterBar.GetComponent<RectTransform>().anchorMax = new Vector2(air, 1f);
             airMeter.SetActive(isUnderwater);
         }
@@ -77,6 +76,7 @@ public class UIManager : MonoBehaviour {
     //When called, displays the Nest Canvas
     public void ShowNestCanvas() {
         nestCanvas.SetActive(true);
+        PlayerController.Instance.animator.Play("Idle");
         Time.timeScale = 0;
     }
 
@@ -86,8 +86,16 @@ public class UIManager : MonoBehaviour {
         Time.timeScale = 1;
     }
 
+    //Your welcome Daniel. -Jordan
+    public void LoadMonsterMaker() {
+        GameManager.instance.FinalizeSave();
+        HideNestCanvas();
+        SceneManager.LoadScene("MonsterMaker");
+    }
+
     public void ShowShopPanel() {
         shopPanel.SetActive(true);
+        PlayerController.Instance.animator.Play("Idle");
         Time.timeScale = 0;
     }
 

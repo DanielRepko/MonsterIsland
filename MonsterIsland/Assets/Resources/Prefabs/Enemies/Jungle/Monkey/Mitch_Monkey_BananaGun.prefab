@@ -964,6 +964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1027,6 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1059,6 +1061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1086,6 +1089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1133,6 +1137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1159,7 +1164,7 @@ MonoBehaviour:
   inHitStun: 0
   health: 0
   maxHealth: 0
-  hurtBox: {fileID: 0}
+  hurtBox: {fileID: 70083923744928620}
   rayCastLengthCheck: 0.2
   width: 0
   height: 0
@@ -1174,7 +1179,7 @@ MonoBehaviour:
   partToAlwaysDrop: Legs
   equippedWeapon: Banana Gun
   attackRange: 8
-  damage: 2
+  damage: 1
   attackCooldown: 0.5
   abilityCooldown: 0
   jumpCooldown: 1

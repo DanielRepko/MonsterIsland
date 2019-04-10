@@ -83,10 +83,6 @@ public class ArmPart : MonoBehaviour {
                     {
                         player.leftAttackDelegate = ability;
                     }
-                }//if the value is anything else, then a typo must have occured when creating the ability info
-                else
-                {
-                    Debug.Log("Error: Invalid ability type");
                 }
             }            
 
@@ -127,7 +123,7 @@ public class ArmPart : MonoBehaviour {
                         weapon.Damage = enemy.damage;
                         if (weapon.WeaponType == Helper.WeaponType.Melee)
                         {
-                            enemy.attackRange = weapon.AttackRange - 8;
+                            enemy.attackRange = weapon.AttackRange - 0.8f;
                         }
                         else if (weapon.WeaponType == Helper.WeaponType.Projectile)
                         {
@@ -148,7 +144,7 @@ public class ArmPart : MonoBehaviour {
                         enemy.attackCooldown = weapon.AttackCooldown;
                         if (weapon.WeaponType == Helper.WeaponType.Melee)
                         {
-                            enemy.attackRange = weapon.AttackRange;
+                            enemy.attackRange = weapon.AttackRange - 0.8f;
                         }
                         else if(weapon.WeaponType == Helper.WeaponType.Projectile)
                         {

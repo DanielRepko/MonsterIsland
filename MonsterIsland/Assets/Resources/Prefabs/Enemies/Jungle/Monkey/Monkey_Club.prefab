@@ -842,8 +842,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1359057025501654}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.425858, y: 25.196878, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 52.36774, y: -19.979244, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4121816819994714}
@@ -970,7 +970,7 @@ MonoBehaviour:
   inHitStun: 0
   health: 10
   maxHealth: 10
-  hurtBox: {fileID: 0}
+  hurtBox: {fileID: 70850152888452008}
   rayCastLengthCheck: 0.2
   width: 0
   height: 0
@@ -978,14 +978,16 @@ MonoBehaviour:
   animator: {fileID: 95514769371531744}
   facingDirection: 0
   rb: {fileID: 0}
-  patrolPoints: []
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
   moveSpeed: 10
   monsterName: Monkey
   alwaysDropPart: 1
   partToAlwaysDrop: Legs
   equippedWeapon: Club
   attackRange: 8
-  damage: 2
+  damage: 1
   attackCooldown: 0.5
   abilityCooldown: 0
   jumpCooldown: 1
@@ -1022,6 +1024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1042,6 +1045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1089,6 +1093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1121,6 +1126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1168,6 +1174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 

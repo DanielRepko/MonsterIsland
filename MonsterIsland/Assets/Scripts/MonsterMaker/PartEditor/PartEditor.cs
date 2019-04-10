@@ -55,7 +55,7 @@ public class PartEditor : MonoBehaviour
             }
 
             //instantiating the 
-            var pickerButton = (GameObject)Instantiate(pickerButtonPrefab, Vector2.zero, Quaternion.identity);
+            var pickerButton = (GameObject)Instantiate(pickerButtonPrefab, Vector2.zero, Quaternion.identity);            
 
             //initializing the pickerButton and also saving the created PartInfo
             var partInfo = pickerButton.GetComponent<PartPickerButton>().InitializePickerButton(availableParts[i], partSlot.partType);
@@ -73,6 +73,7 @@ public class PartEditor : MonoBehaviour
             var pickerButtonTransform = pickerButton.GetComponent<RectTransform>();
             pickerButtonTransform.SetParent(partPicker.content);
             pickerButtonTransform.anchoredPosition = new Vector2(xOffset, 0);
+            pickerButtonTransform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             partPicker.content.sizeDelta = new Vector2(partPicker.content.sizeDelta.x+120f, partPicker.content.sizeDelta.y);
         }
     }

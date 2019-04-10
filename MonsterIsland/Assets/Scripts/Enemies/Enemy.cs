@@ -482,12 +482,12 @@ public class Enemy : Actor {
 
     public void CheckAggro()
     {
-        if (isAggro && aggroTimer < aggroTime)
+        if (isAggro && aggroTimer < aggroTime && PlayerController.Instance.isAlive)
         {
             target = PlayerController.Instance.gameObject;
             aggroTimer += Time.deltaTime;
         }
-        else if (isAggro && aggroTimer >= aggroTime)
+        else if (isAggro && (aggroTimer >= aggroTime || !PlayerController.Instance.isAlive))
         {
             isAggro = false;
             aggroTimer = 0;
@@ -501,21 +501,26 @@ public class Enemy : Actor {
 
     public void CheckLineOfSight()
     {
-        if (!isAggro)
+        Ray lineOfSight = new Ray();
+        lineOfSight.origin = transform.position;
+        lineOfSight.direction = new Vector2(facingDirection, 0);
+
+        Debug.DrawRay(lineOfSight.origin, new Vector3(aggroRange * facingDirection, 0, 0), Color.yellow);
+
+        RaycastHit2D hit = Physics2D.Raycast(lineOfSight.origin, lineOfSight.direction, aggroRange, 1 << LayerMask.NameToLayer("Player"));
+        if (hit)
         {
-            Ray lineOfSight = new Ray();
-            lineOfSight.origin = transform.position;
-            lineOfSight.direction = new Vector2(facingDirection, 0);
-
-            Debug.DrawRay(lineOfSight.origin, new Vector3(aggroRange * facingDirection, 0, 0), Color.yellow);
-
-            RaycastHit2D hit = Physics2D.Raycast(lineOfSight.origin, lineOfSight.direction, aggroRange, 1 << LayerMask.NameToLayer("Player"));
-            if (hit)
+            if (!isAggro)
             {
                 isAggro = true;
                 target = PlayerController.Instance.gameObject;
             }
+            else
+            {
+                aggroTimer = 0;
+            }
         }
+        
     }
 
     virtual public void OnTriggerEnter2D(Collider2D collision)
@@ -528,7 +533,7 @@ public class Enemy : Actor {
         }
 
         //checking to see if the enemy is underwater
-        if(collision.tag == "Water")
+        if(collision.tag == "Water" || collision.name == "Quicksand")
         {
             isUnderwater = true;
             jumpCooldown = 0.2f;
@@ -549,7 +554,7 @@ public class Enemy : Actor {
     private void OnTriggerExit2D(Collider2D collision)
     {
         //checking to see if the enemy is underwater
-        if (collision.tag == "Water")
+        if (collision.tag == "Water" || collision.name == "Quicksand")
         {
             isUnderwater = false;
             jumpCooldown = 1f;

@@ -20,43 +20,72 @@ public class MonsterMaker : MonoBehaviour {
     public PartEditor partEditor;
     public WeaponPicker weaponPicker;
 
+    public InputField nameField;
+
+    public Image donePanel;
+
     private CollectedPartsInfo collectedParts;
     private List<string> collectedWeapons = new List<string>();
 
     public void Start()
     {
-        //this code is for testing purposes only
-        collectedParts = new CollectedPartsInfo()
+        if(PlayerController.Instance != null && GameManager.instance != null)
         {
-            collectedHeads = new List<string>(),
-            collectedTorsos = new List<string>(),
-            collectedLeftArms = new List<string>(),
-            collectedRightArms = new List<string>(),
-            collectedLegs = new List<string>(),
-        };
-        collectedParts.collectedHeads.Add("Mitch");
-        collectedParts.collectedHeads.Add("Skeleton");
-        collectedParts.collectedTorsos.Add("Mitch");
-        collectedParts.collectedTorsos.Add("Skeleton");
-        collectedParts.collectedLeftArms.Add("Mitch");
-        collectedParts.collectedLeftArms.Add("Skeleton");
-        collectedParts.collectedLeftArms.Add("Robot");
-        collectedParts.collectedRightArms.Add("Mitch");
-        collectedParts.collectedRightArms.Add("Skeleton");
-        collectedParts.collectedRightArms.Add("Robot");
-        collectedParts.collectedLegs.Add("Mitch");
-        collectedParts.collectedLegs.Add("Skeleton");
+            PlayerController.Instance.gameObject.SetActive(false);
+            PopulateSlots(PlayerController.Instance.monster, GameManager.instance.gameFile.player.name);
+        }
 
-        collectedWeapons.Add(Helper.WeaponName.PeaShooter);
-        collectedWeapons.Add(Helper.WeaponName.Stick);
-        collectedWeapons.Add(Helper.WeaponName.Boomerang);
-        collectedWeapons.Add(Helper.WeaponName.Club);
-        collectedWeapons.Add(Helper.WeaponName.Scimitar);
-        collectedWeapons.Add(Helper.WeaponName.SqueakyHammer);
-        collectedWeapons.Add(Helper.WeaponName.HarpoonGun);
-        collectedWeapons.Add(Helper.WeaponName.Swordfish);
-        collectedWeapons.Add(Helper.WeaponName.BananaGun);
-        collectedWeapons.Add(Helper.WeaponName.Fan);
+        if(GameManager.instance != null)
+        {
+            collectedParts = GameManager.instance.gameFile.player.inventory.collectedParts;
+            collectedWeapons = GameManager.instance.gameFile.player.inventory.collectedWeapons;
+        }
+        else
+        {
+            collectedParts = new CollectedPartsInfo()
+            {
+                collectedHeads = new List<string>() { "Mitch" },
+                collectedTorsos = new List<string>() { "Mitch" },
+                collectedRightArms = new List<string>() { "Mitch" },
+                collectedLeftArms = new List<string>() { "Mitch" },
+                collectedLegs = new List<string>() { "Mitch" }
+            };
+            collectedWeapons = new List<string>() { "Stick", "Pea Shooter" };
+        }
+        
+    }
+
+    public void PopulateSlots(Monster monster, string playerName)
+    {
+        //getting the part infos from the monster
+        HeadPartInfo headInfo = monster.headPart.partInfo;
+        TorsoPartInfo torsoInfo = monster.torsoPart.partInfo;
+        ArmPartInfo rightArmInfo = monster.rightArmPart.partInfo;
+        ArmPartInfo leftArmInfo = monster.leftArmPart.partInfo;
+        LegPartInfo legsInfo = monster.legPart.partInfo;
+
+        //populating the parts in to each slot
+        headSlot.ChangePart(headInfo);
+        torsoSlot.ChangePart(torsoInfo);
+        rightArmSlot.ChangePart(rightArmInfo);
+        leftArmSlot.ChangePart(leftArmInfo);
+        legsSlot.ChangePart(legsInfo);
+
+        //populating the weapons into each slot, if there are any equipped
+        string rightWeapon = rightArmInfo.equippedWeapon;
+        string leftWeapon = leftArmInfo.equippedWeapon;
+
+        if(rightWeapon != "")
+        {
+            rightWeaponSlot.ChangeWeapon(WeaponFactory.GetWeapon(rightWeapon, null, null, null));
+        }
+        if (leftWeapon != "")
+        {
+            leftWeaponSlot.ChangeWeapon(WeaponFactory.GetWeapon(leftWeapon, null, null, null));
+        }
+
+        //setting the name field text 
+        nameField.text = playerName;
     }
 
     public void ShowWeaponPicker(string weaponHand)
@@ -128,6 +157,73 @@ public class MonsterMaker : MonoBehaviour {
         }
     }
 
+    public bool FieldsAreFilled()
+    {
+        //creating a dictionary storing bools for whether each required field is filled and that respective field's animator
+        Dictionary<Animator, bool> fieldsFilled = new Dictionary<Animator, bool>();
+        fieldsFilled.Add(headSlot.GetComponent<Animator>(), headSlot.partInfo.monster != "");
+        fieldsFilled.Add(torsoSlot.GetComponent<Animator>(), torsoSlot.partInfo.monster != "");
+        fieldsFilled.Add(rightArmSlot.GetComponent<Animator>(), rightArmSlot.partInfo.monster != "");
+        fieldsFilled.Add(leftArmSlot.GetComponent<Animator>(), leftArmSlot.partInfo.monster != "");
+        fieldsFilled.Add(legsSlot.GetComponent<Animator>(), legsSlot.partInfo.monster != "");
+        fieldsFilled.Add(nameField.GetComponent<Animator>(), nameField.text != "");
+
+        bool allFieldsFilled = true;
+
+        foreach(KeyValuePair<Animator, bool> fieldFilled in fieldsFilled)
+        {
+            if (!fieldFilled.Value)
+            {
+                Debug.Log(fieldFilled.Key);
+                fieldFilled.Key.Play("ErrorFlash");
+                allFieldsFilled = false;
+            }
+        }
+
+        return allFieldsFilled;
+
+    }
+
+    public void LeaveMonsterMaker()
+    {
+        SaveChanges();
+        if(PlayerController.Instance != null)
+        {
+            PlayerController.Instance.ReinitializePlayer();
+        }
+        GameManager.instance.LoadToLastNestUsed();
+    }
+
+    public void SaveChanges()
+    {
+        PlayerInfo playerInfo = GameManager.instance.gameFile.player;
+        playerInfo.headPart = headSlot.partInfo;
+        playerInfo.torsoPart = torsoSlot.partInfo;
+        rightArmSlot.partInfo.equippedWeapon = (rightWeaponSlot.weapon != null && rightWeaponSlot.weapon.WeaponName != "") ? rightWeaponSlot.weapon.WeaponName : "";
+        playerInfo.rightArmPart = rightArmSlot.partInfo;
+        leftArmSlot.partInfo.equippedWeapon = (leftWeaponSlot.weapon != null && leftWeaponSlot.weapon.WeaponName != "") ? leftWeaponSlot.weapon.WeaponName : "";
+        playerInfo.leftArmPart = leftArmSlot.partInfo;
+        playerInfo.legsPart = legsSlot.partInfo;
+        playerInfo.name = nameField.text;
+
+        GameManager.instance.gameFile.player = playerInfo;
+        GameManager.instance.FinalizeSave();
+    }
+
+    public void ShowDonePanel()
+    {
+        //checking to see if all the required slots and info are filled
+        if (FieldsAreFilled())
+        {
+            donePanel.gameObject.SetActive(true);
+        }
+    }
+
+    public void HideDonePanel()
+    {
+        donePanel.gameObject.SetActive(false);
+    }
+
     public void HideEditors()
     {
         //iterating through all objects inside the MonsterMaker canvas
@@ -140,6 +236,10 @@ public class MonsterMaker : MonoBehaviour {
             else if (child.gameObject.name == "PartEditor")
             {
                 partEditor.ClosePartEditor();
+            }
+            else if(child.gameObject.name == "DonePanel")
+            {
+                HideDonePanel();
             }
             //anything else should be enabled
             else

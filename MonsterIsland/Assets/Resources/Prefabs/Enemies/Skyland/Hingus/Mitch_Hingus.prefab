@@ -990,6 +990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1053,6 +1054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1100,6 +1102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1127,6 +1130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1159,6 +1163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1200,7 +1205,7 @@ MonoBehaviour:
   partToAlwaysDrop: Legs
   equippedWeapon: 
   attackRange: 2
-  damage: 2
+  damage: 1
   attackCooldown: 1.5
   abilityCooldown: 0
   jumpCooldown: 1

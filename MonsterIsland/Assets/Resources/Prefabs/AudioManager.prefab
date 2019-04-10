@@ -247,3 +247,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicAudioSource: {fileID: 82360790618481594}
   soundAudioSource: {fileID: 82900117095871312}
+  audioMixer: {fileID: 24100000, guid: aac208b4cefb6854284918db8810f00a, type: 2}
+  bossMusic: {fileID: 8300000, guid: e37d7809c7383c140bac710eac29deea, type: 3}
+  castleMusic: {fileID: 8300000, guid: bc1feeb921710b14997804cbe71eafd0, type: 3}
+  desertMusic: {fileID: 8300000, guid: 5fa1ef9f0c252274bad677322b166717, type: 3}
+  finalBossMusic: {fileID: 8300000, guid: f1d73d8c576a5474b8db799ae82a773d, type: 3}
+  hubMusic: {fileID: 8300000, guid: 38cc7ef70fab52444b4808f5ce673cbd, type: 3}
+  jungleMusic: {fileID: 8300000, guid: fdd85fa02f344ff48bc4e56d62a68384, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: fdfd0e00f5bb96e4d81f2ee2963e73ac, type: 3}
+  plainsMusic: {fileID: 8300000, guid: 0e8df66e87fc34e4b8487c321c6232d9, type: 3}
+  skylandMusic: {fileID: 8300000, guid: 746451c76c786ab4badf1359ee2f7e32, type: 3}
+  underwaterMusic: {fileID: 8300000, guid: 3a10287038ab9eb448ae072c15b955c5, type: 3}

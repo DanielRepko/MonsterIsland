@@ -17,7 +17,8 @@ public class Vulture : Enemy {
             
             if (rb.velocity.y < 0)
             {
-                rb.gravityScale -= 16f;
+                rb.gravityScale /= 2;
+                rb.gravityScale -= 6f;
             }
             else
             {
