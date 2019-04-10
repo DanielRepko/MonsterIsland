@@ -127,7 +127,7 @@ public class ArmPart : MonoBehaviour {
                         weapon.Damage = enemy.damage;
                         if (weapon.WeaponType == Helper.WeaponType.Melee)
                         {
-                            enemy.attackRange = weapon.AttackRange - 8;
+                            enemy.attackRange = weapon.AttackRange - 0.8f;
                         }
                         else if (weapon.WeaponType == Helper.WeaponType.Projectile)
                         {
@@ -148,7 +148,7 @@ public class ArmPart : MonoBehaviour {
                         enemy.attackCooldown = weapon.AttackCooldown;
                         if (weapon.WeaponType == Helper.WeaponType.Melee)
                         {
-                            enemy.attackRange = weapon.AttackRange;
+                            enemy.attackRange = weapon.AttackRange - 0.8f;
                         }
                         else if(weapon.WeaponType == Helper.WeaponType.Projectile)
                         {

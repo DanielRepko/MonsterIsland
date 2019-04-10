@@ -1179,7 +1179,7 @@ MonoBehaviour:
   partToAlwaysDrop: Arms
   equippedWeapon: 
   attackRange: 8
-  damage: 2
+  damage: 1
   attackCooldown: 1
   abilityCooldown: 0
   jumpCooldown: 1
