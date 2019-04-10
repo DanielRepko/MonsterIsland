@@ -15,15 +15,15 @@ public class Lion : Enemy {
         if (!inHitStun)
         {
             isAggro = true;
-            SetFacingDirection(knockBackDirection);
             //Enemy was hit from behind
-            if (knockBackDirection == facingDirection)
+            if (knockBackDirection != facingDirection)
             {
                 health -= damage;
                 abilityDelegate();
             }
             else
             {
+                SetFacingDirection(knockBackDirection);
                 animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
                 health -= damage;
                 inHitStun = true;
