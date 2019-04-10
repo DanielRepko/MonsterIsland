@@ -16,8 +16,12 @@ public class Monkey : Enemy {
 
     public override void Jump()
     {
-        base.Jump();
-        runningTimer = true;
+        if (IsOnGround() && CheckCooldown("jump"))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
+            runningTimer = true;
+        }
     }
 
     public override void Ability()
@@ -33,10 +37,10 @@ public class Monkey : Enemy {
             doubleJumpTimer += Time.deltaTime;
         }
         else if (runningTimer && doubleJumpTimer >= doubleJumpTime)
-        {
-            abilityDelegate();
+        {                       
             runningTimer = false;
             doubleJumpTimer = 0;
+            abilityDelegate();
         }
     }
 }
