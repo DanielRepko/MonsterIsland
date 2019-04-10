@@ -33,8 +33,8 @@ public class SettingsManager : MonoBehaviour {
     void Start () { 
         if (Instance == null) {
             Instance = this;
-            SetMusic(PlayerPrefs.GetInt("MusicVolume", 8));
-            SetSound(PlayerPrefs.GetInt("SoundVolume", 8));
+            SetMusic(PlayerPrefs.GetInt("MusicVolume", 10));
+            SetSound(PlayerPrefs.GetInt("SoundVolume", 10));
             CustomInputManager.Instance.RefreshGUI();
         } else if (Instance != this) {
             Destroy(gameObject);
@@ -75,7 +75,7 @@ public class SettingsManager : MonoBehaviour {
         }
 
         currentMusicVolume = volumeLevel;
-        audioMixer.SetFloat("MusicVolume", (currentMusicVolume * 10 - 80));
+        audioMixer.SetFloat("MusicVolume", (6 * volumeLevel) - 60);
 
         foreach(GameObject bar in musicActiveBars) {
             if(volumeLevel > 0) {
@@ -96,7 +96,7 @@ public class SettingsManager : MonoBehaviour {
         }
 
         currentSoundVolume = volumeLevel;
-        audioMixer.SetFloat("SoundVolume", (currentSoundVolume * 10 - 80));
+        audioMixer.SetFloat("SoundVolume", (6 * volumeLevel) - 60);
 
         foreach (GameObject bar in soundActiveBars) {
             if (volumeLevel > 0) {
