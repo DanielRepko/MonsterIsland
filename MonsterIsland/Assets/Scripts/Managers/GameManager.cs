@@ -134,7 +134,14 @@ public class GameManager : MonoBehaviour {
 
     //Updates an existing save file
     public void FinalizeSave() {
-        gameFile.player.totalHearts = PlayerController.Instance.maxHealth;
+        if (PlayerController.Instance != null)
+        {
+            gameFile.player.totalHearts = PlayerController.Instance.maxHealth;
+        }
+        else
+        {
+            gameFile.player.totalHearts = 6;
+        }
         var time = Time.timeSinceLevelLoad;
         gameFile.totalPlayTime += (Time.timeSinceLevelLoad - lastTimeUpdate);
         lastTimeUpdate = time;

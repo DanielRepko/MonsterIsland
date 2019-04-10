@@ -83,10 +83,6 @@ public class ArmPart : MonoBehaviour {
                     {
                         player.leftAttackDelegate = ability;
                     }
-                }//if the value is anything else, then a typo must have occured when creating the ability info
-                else
-                {
-                    Debug.Log("Error: Invalid ability type");
                 }
             }            
 

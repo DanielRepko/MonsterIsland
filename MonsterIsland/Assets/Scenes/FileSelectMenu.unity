@@ -503,6 +503,7 @@ MonoBehaviour:
   abilitySignLabel: {fileID: 0}
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -902,6 +903,7 @@ MonoBehaviour:
   abilitySignLabel: {fileID: 0}
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1485,10 +1487,10 @@ RectTransform:
   m_Father: {fileID: 934974610}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.66, y: 0.12}
-  m_AnchorMax: {x: 0.74, y: 0.42}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.6542744, y: 0.05421161}
+  m_AnchorMax: {x: 0.74456465, y: 0.4}
+  m_AnchoredPosition: {x: 0.000030518, y: 1}
+  m_SizeDelta: {x: 2, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &361834299
 MonoBehaviour:
@@ -2345,10 +2347,10 @@ RectTransform:
   m_Father: {fileID: 934974610}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.735, y: 0.12}
-  m_AnchorMax: {x: 0.79, y: 0.42}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.7457098, y: 0.09}
+  m_AnchorMax: {x: 0.80141956, y: 0.4}
+  m_AnchoredPosition: {x: -0.50006104, y: 1.2144012}
+  m_SizeDelta: {x: -1, y: -3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &655590135
 MonoBehaviour:
@@ -3554,9 +3556,9 @@ RectTransform:
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.62, y: 0.4}
-  m_AnchorMax: {x: 0.665, y: 0.7}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.6588549, y: 0.7}
+  m_AnchoredPosition: {x: -1.8663001, y: 0}
+  m_SizeDelta: {x: 5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &885355969
 MonoBehaviour:
@@ -3876,6 +3878,7 @@ MonoBehaviour:
   abilitySignLabel: {fileID: 0}
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -5103,6 +5106,7 @@ MonoBehaviour:
   abilitySignLabel: {fileID: 0}
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -6252,10 +6256,10 @@ RectTransform:
   m_Father: {fileID: 934974610}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.66, y: 0.68}
-  m_AnchorMax: {x: 0.74, y: 0.88}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.66, y: 0.7}
+  m_AnchorMax: {x: 0.74, y: 0.8946841}
+  m_AnchoredPosition: {x: -0.16619873, y: 0.36999}
+  m_SizeDelta: {x: -0.33227, y: 0.7399998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1800551021
 MonoBehaviour:
@@ -6322,9 +6326,9 @@ RectTransform:
   m_Father: {fileID: 934974610}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.61, y: 0.12}
-  m_AnchorMax: {x: 0.665, y: 0.42}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.59741956, y: 0.101}
+  m_AnchorMax: {x: 0.652, y: 0.4}
+  m_AnchoredPosition: {x: 0.6339998, y: -0.4288001}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814940705
@@ -7111,10 +7115,10 @@ RectTransform:
   m_Father: {fileID: 934974610}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.735, y: 0.4}
+  m_AnchorMin: {x: 0.74, y: 0.4}
   m_AnchorMax: {x: 0.78, y: 0.7}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2.366211, y: 0}
+  m_SizeDelta: {x: 4, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2004654364
 MonoBehaviour:
@@ -7385,6 +7389,7 @@ MonoBehaviour:
   abilitySignLabel: {fileID: 0}
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 

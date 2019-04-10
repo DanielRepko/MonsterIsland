@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Actor {
 
@@ -320,13 +321,63 @@ public class PlayerController : Actor {
     public void InitializePlayer() {
         //creating variables to initialize the player monster
         //this code is for testing purposes, final product will pull this information from the database scripts
-        var headInfo = PartFactory.GetHeadPartInfo(head);
-        var torsoInfo = PartFactory.GetTorsoPartInfo(torso);
-        var rightArmInfo = PartFactory.GetArmPartInfo(rightArm, Helper.PartType.RightArm);
-        var leftArmInfo = PartFactory.GetArmPartInfo(leftArm, Helper.PartType.LeftArm);
-        var legPartInfo = PartFactory.GetLegPartInfo(legs);
-        rightArmInfo.equippedWeapon = rightWeapon;
-        leftArmInfo.equippedWeapon = leftWeapon;
+
+        HeadPartInfo headInfo = new HeadPartInfo();
+        TorsoPartInfo torsoInfo = new TorsoPartInfo();
+        ArmPartInfo rightArmInfo = new ArmPartInfo();
+        ArmPartInfo leftArmInfo = new ArmPartInfo(); 
+        LegPartInfo legPartInfo = new LegPartInfo();       
+
+        //initializing the Head
+        if (head != "")
+        {
+            headInfo = PartFactory.GetHeadPartInfo(head);
+        }
+        else
+        {
+            headInfo = GameManager.instance.gameFile.player.headPart;
+        }
+        //initializing the Torso
+        if (torso != "")
+        {
+            torsoInfo = PartFactory.GetTorsoPartInfo(torso);
+        }
+        else
+        {
+            torsoInfo = GameManager.instance.gameFile.player.torsoPart;
+        }
+        //initializing the RightArm
+        if (rightArm != "")
+        {
+            rightArmInfo = PartFactory.GetArmPartInfo(rightArm, Helper.PartType.RightArm);
+            rightArmInfo.equippedWeapon = rightWeapon;
+        }
+        else
+        {
+            rightArmInfo = GameManager.instance.gameFile.player.rightArmPart;
+            rightArmInfo.equippedWeapon = rightWeapon;
+        }
+        //initializing the LeftArm
+        if (leftArm != "")
+        {
+            leftArmInfo = PartFactory.GetArmPartInfo(leftArm, Helper.PartType.LeftArm);
+            leftArmInfo.equippedWeapon = leftWeapon;
+        }
+        else
+        {
+            leftArmInfo = GameManager.instance.gameFile.player.leftArmPart;
+            leftArmInfo.equippedWeapon = leftWeapon;
+        }
+        //initializing the Legs
+        if (legs != "")
+        {
+            legPartInfo = PartFactory.GetLegPartInfo(legs);
+        }
+        else
+        {
+            legPartInfo = GameManager.instance.gameFile.player.legsPart;
+        }
+
 
         moveDelegate = Move;
         jumpDelegate = Jump;
@@ -589,5 +640,17 @@ public class PlayerController : Actor {
         if(collision.tag == "Shop") {
             shopCheck = collision;
         }
+    }
+
+    public void ReinitializePlayer()
+    {
+        SceneManager.sceneLoaded += StartReinitialize;
+    }
+
+    private void StartReinitialize(Scene scene, LoadSceneMode mode)
+    {
+        gameObject.SetActive(true);
+        InitializePlayer();
+        SceneManager.sceneLoaded -= StartReinitialize;
     }
 }
