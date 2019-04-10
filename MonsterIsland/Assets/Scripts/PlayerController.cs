@@ -136,7 +136,7 @@ public class PlayerController : Actor {
             }
 
             //If the player's air is 0 or less and enough time has passed, damage them
-            if(air <= 0 && timeUnderwater >= timeBetwenAirDamage) {
+            if(air <= 0 && timeUnderwater >= timeBetwenAirDamage && !devMode) {
                 PlayerController.Instance.health -= drownDamage;
                 UIManager.Instance.UpdateHeartCount();
                 timeUnderwater -= timeBetwenAirDamage;
@@ -304,7 +304,7 @@ public class PlayerController : Actor {
 
     override public void TakeDamage(int damage, float knockBackDirection)
     {
-        if (!inHitStun && canBeHurt || !devMode)
+        if (!inHitStun && canBeHurt && !devMode && isAlive)
         {
             animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(-15 * knockBackDirection, 35);
