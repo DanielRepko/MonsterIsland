@@ -68,7 +68,6 @@ public class UIManager : MonoBehaviour {
     public void UpdateAirMeter(float air, bool isUnderwater) {
         if (!PlayerController.Instance.hasGills)
         {
-            var rightEdge = airMeterBar.GetComponent<RectTransform>().anchorMax.x;
             airMeterBar.GetComponent<RectTransform>().anchorMax = new Vector2(air, 1f);
             airMeter.SetActive(isUnderwater);
         }

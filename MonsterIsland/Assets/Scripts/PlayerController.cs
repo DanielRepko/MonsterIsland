@@ -608,9 +608,9 @@ public class PlayerController : Actor {
     private void KillPlayer() {
         isAlive = false;
         if(facingDirection > 0) {
-            animator.Play("DieRight");
+            animator.Play("PlayerDeathRight");
         } else {
-            animator.Play("DieLeft");
+            animator.Play("PlayerDeathLeft");
         }
         canBeHurt = false;
         attacksLocked = true;
