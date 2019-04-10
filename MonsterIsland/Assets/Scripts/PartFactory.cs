@@ -233,7 +233,7 @@ public class PartFactory : MonoBehaviour {
             case Helper.MonsterName.Vulture:
                 partInfo.abilityName = "Feather Fall";
                 partInfo.abilityType = "Passive";
-                partInfo.abilityDesc = "Decrease fall speed. Both arms are required for effect to work, does not work underwater";
+                partInfo.abilityDesc = "Decrease fall speed. Effect can stack with each arm, does not work underwater";
                 partInfo.abilityCooldown = 0;
                 return partInfo;
             case Helper.MonsterName.Lobster:

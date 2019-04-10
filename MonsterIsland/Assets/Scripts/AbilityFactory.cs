@@ -385,10 +385,6 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = PlayerController.Instance;
         player.playerCheckDelegate += FeatherFall;
-        if (player.monster.rightArmPart.partInfo.monster == Helper.MonsterName.Vulture && player.monster.leftArmPart.partInfo.monster == Helper.MonsterName.Vulture)
-        {
-            player.jumpForce -= 5;
-        }
     }
 
     //Arm Ability (Activate): Allows the player to extend and shoot their arm out to 
@@ -515,14 +511,19 @@ public class AbilityFactory : MonoBehaviour {
 
         if (!player.isUnderwater)
         {
-            if (player.rb.velocity.y <= 0 && !player.IsOnGround())
+            if (player.rb.velocity.y < 0 && !player.IsOnGround())
             {
-                player.rb.gravityScale -= 8f;
+                player.rb.gravityScale /= 2;
+                if (player.monster.rightArmPart.partInfo.monster == Helper.MonsterName.Vulture && player.monster.leftArmPart.partInfo.monster == Helper.MonsterName.Vulture)
+                {
+                    player.rb.gravityScale -= 2f;
+                }
+                else
+                {
+                    player.rb.gravityScale -= 3f;
+                }
             }
-            else
-            {
-                player.rb.gravityScale = 20;
-            }
+       
         }
         else 
         {
