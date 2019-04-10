@@ -83,7 +83,7 @@ public class PlayerController : Actor {
             width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
             height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
             Instance = this;
-            maxHealth = GameManager.instance.gameFile.player.totalHearts;
+            //maxHealth = GameManager.instance.gameFile.player.totalHearts;
             health = maxHealth;
             FindObjectOfType<UIManager>().UpdateHeartCount();
         } else if (Instance != this) {

@@ -454,22 +454,19 @@ public class AbilityFactory : MonoBehaviour {
     {
         PlayerController player = PlayerController.Instance;
 
-        if (!player.isUnderwater)
-        {
             if (player.IsOnGround())
             {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
             }
-            else if (!player.IsOnGround() && player.hasExtraJump)
+            else if (!player.IsOnGround() && player.hasExtraJump && !player.isUnderwater)
             {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
                 player.hasExtraJump = false;
             }
-        }
     }
 
     //Leg Ability (Passive): Increases the player's jump height
