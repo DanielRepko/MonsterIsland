@@ -37,30 +37,6 @@ public class MonsterMaker : MonoBehaviour {
 
         collectedParts = GameManager.instance.gameFile.player.inventory.collectedParts;
         collectedWeapons = GameManager.instance.gameFile.player.inventory.collectedWeapons;
-
-        //collectedParts.collectedHeads.Add("Knight");
-        //collectedParts.collectedHeads.Add("Skeleton");
-        //collectedParts.collectedTorsos.Add("Knight");
-        //collectedParts.collectedTorsos.Add("Skeleton");
-        //collectedParts.collectedLeftArms.Add("Knight");
-        //collectedParts.collectedLeftArms.Add("Skeleton");
-        //collectedParts.collectedLeftArms.Add("Robot");
-        //collectedParts.collectedRightArms.Add("Knight");
-        //collectedParts.collectedRightArms.Add("Skeleton");
-        //collectedParts.collectedRightArms.Add("Robot");
-        //collectedParts.collectedLegs.Add("Knight");
-        //collectedParts.collectedLegs.Add("Skeleton");
-
-        //collectedWeapons.Add(Helper.WeaponName.PeaShooter);
-        //collectedWeapons.Add(Helper.WeaponName.Stick);
-        //collectedWeapons.Add(Helper.WeaponName.Boomerang);
-        //collectedWeapons.Add(Helper.WeaponName.Club);
-        //collectedWeapons.Add(Helper.WeaponName.Scimitar);
-        //collectedWeapons.Add(Helper.WeaponName.SqueakyHammer);
-        //collectedWeapons.Add(Helper.WeaponName.HarpoonGun);
-        //collectedWeapons.Add(Helper.WeaponName.Swordfish);
-        //collectedWeapons.Add(Helper.WeaponName.BananaGun);
-        //collectedWeapons.Add(Helper.WeaponName.Fan);
     }
 
     public void PopulateSlots(Monster monster, string playerName)
