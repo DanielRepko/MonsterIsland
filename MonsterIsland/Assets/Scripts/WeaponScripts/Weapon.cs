@@ -99,12 +99,12 @@ public class Weapon {
                 Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
                 if (enemy != null && hit.collider == enemy.hurtBox)
                 {
-                    actor.TakeDamage(Damage, Helper.GetKnockBackDirection(actor.transform, hit.transform));
+                    enemy.TakeDamage(Damage, Helper.GetKnockBackDirection(actor.transform, hit.transform));
                 }
             }
             else if(AttackTarget == "Player" && hit.collider == PlayerController.Instance.hurtBox)
             {
-                actor.TakeDamage(Damage, Helper.GetKnockBackDirection(WeaponSpriteRenderer.GetComponentInParent<Enemy>().transform, hit.transform));
+                PlayerController.Instance.TakeDamage(Damage, Helper.GetKnockBackDirection(WeaponSpriteRenderer.GetComponentInParent<Enemy>().transform, hit.transform));
             }
         }
     }
