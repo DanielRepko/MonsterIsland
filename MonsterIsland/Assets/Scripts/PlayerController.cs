@@ -672,7 +672,7 @@ public class PlayerController : Actor {
 
     //Runs the process of respawning the player
     IEnumerator RevivePlayer() {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
         animator.SetTrigger("Revive");
         UIManager.Instance.ShowLoadingPanel();
         health = maxHealth;
@@ -684,6 +684,7 @@ public class PlayerController : Actor {
         isUnderwater = false;
         air = 1f;
         UIManager.Instance.UpdateAirMeter(air, isUnderwater);
+        ShowIdleFace();
         animator.SetTrigger("Revive");
         GameManager.instance.LoadToLastNestUsed();
     }
