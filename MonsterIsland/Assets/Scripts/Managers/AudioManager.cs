@@ -63,12 +63,12 @@ public class AudioManager : MonoBehaviour {
     private void LoadLevelMusic(Scene scene, LoadSceneMode mode) {
         switch (scene.name) {
             case "Plains":
-                if (musicAudioSource.clip != hubMusic) {
                     PlayMusic(plainsMusic, true);
-                }
                 break;
             case "Hub":
-                PlayMusic(hubMusic, true);
+                if (musicAudioSource.clip != hubMusic) {
+                    PlayMusic(hubMusic, true);
+                }
                 break;
             case "Desert":
                 PlayMusic(desertMusic, true);

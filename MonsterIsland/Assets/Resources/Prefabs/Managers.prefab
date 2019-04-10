@@ -716,6 +716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicAudioSource: {fileID: 82189413830944218}
   soundAudioSource: {fileID: 82801545650459958}
+  audioMixer: {fileID: 24100000, guid: aac208b4cefb6854284918db8810f00a, type: 2}
   bossMusic: {fileID: 8300000, guid: e37d7809c7383c140bac710eac29deea, type: 3}
   castleMusic: {fileID: 8300000, guid: bc1feeb921710b14997804cbe71eafd0, type: 3}
   desertMusic: {fileID: 8300000, guid: 5fa1ef9f0c252274bad677322b166717, type: 3}
