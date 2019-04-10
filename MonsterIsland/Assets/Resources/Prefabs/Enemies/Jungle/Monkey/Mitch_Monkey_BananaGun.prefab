@@ -1164,7 +1164,7 @@ MonoBehaviour:
   inHitStun: 0
   health: 0
   maxHealth: 0
-  hurtBox: {fileID: 0}
+  hurtBox: {fileID: 70083923744928620}
   rayCastLengthCheck: 0.2
   width: 0
   height: 0

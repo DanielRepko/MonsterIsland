@@ -533,7 +533,7 @@ public class Enemy : Actor {
         }
 
         //checking to see if the enemy is underwater
-        if(collision.tag == "Water")
+        if(collision.tag == "Water" || collision.name == "Quicksand")
         {
             isUnderwater = true;
             jumpCooldown = 0.2f;
@@ -554,7 +554,7 @@ public class Enemy : Actor {
     private void OnTriggerExit2D(Collider2D collision)
     {
         //checking to see if the enemy is underwater
-        if (collision.tag == "Water")
+        if (collision.tag == "Water" || collision.name == "Quicksand")
         {
             isUnderwater = false;
             jumpCooldown = 1f;
