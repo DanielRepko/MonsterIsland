@@ -482,12 +482,12 @@ public class Enemy : Actor {
 
     public void CheckAggro()
     {
-        if (isAggro && aggroTimer < aggroTime)
+        if (isAggro && aggroTimer < aggroTime && PlayerController.Instance.isAlive)
         {
             target = PlayerController.Instance.gameObject;
             aggroTimer += Time.deltaTime;
         }
-        else if (isAggro && aggroTimer >= aggroTime)
+        else if (isAggro && (aggroTimer >= aggroTime || !PlayerController.Instance.isAlive))
         {
             isAggro = false;
             aggroTimer = 0;

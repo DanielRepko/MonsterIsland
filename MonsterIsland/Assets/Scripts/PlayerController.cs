@@ -13,7 +13,7 @@ public class PlayerController : Actor {
     //This should never be enabled by another script, only in the inspector
     public bool devMode = false;
 
-    private bool isAlive = true;
+    public bool isAlive = true;
 
     public float moveSpeed = 15.5f;
     public float attackRange = 1.7f;
