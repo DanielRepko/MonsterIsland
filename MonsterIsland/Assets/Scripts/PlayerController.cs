@@ -92,7 +92,10 @@ public class PlayerController : Actor {
             height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
             Instance = this;
             var GM = FindObjectOfType<GameManager>();
-            maxHealth = GM.gameFile.player.totalHearts;
+            if (GM.gameFile != null)
+            {
+                maxHealth = GM.gameFile.player.totalHearts;
+            }
             health = maxHealth;
             FindObjectOfType<UIManager>().UpdateHeartCount();
         } else if (Instance != this) {
