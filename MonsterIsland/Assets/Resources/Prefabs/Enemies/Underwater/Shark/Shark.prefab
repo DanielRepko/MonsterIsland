@@ -964,6 +964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -991,6 +992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1038,6 +1040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1101,6 +1104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 60
   isUnderwater: 0
+  shellCollider: {fileID: 0}
   attacksLocked: 0
   movementLocked: 0
   inHitStun: 0
@@ -1121,7 +1125,7 @@ MonoBehaviour:
   partToAlwaysDrop: 
   equippedWeapon: Swordfish
   attackRange: 3
-  damage: 2
+  damage: 1
   attackCooldown: 0.5
   abilityCooldown: 0
   jumpCooldown: 1
@@ -1142,6 +1146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1174,6 +1179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 

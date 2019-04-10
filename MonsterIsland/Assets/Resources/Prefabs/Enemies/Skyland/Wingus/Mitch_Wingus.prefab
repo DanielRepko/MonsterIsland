@@ -837,7 +837,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1276082409867874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.633163, y: 25.11096, z: 0}
+  m_LocalPosition: {x: 34.336433, y: 1.0478201, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4168261395126904}
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   partToAlwaysDrop: Torso
   equippedWeapon: Squeaky Hammer
   attackRange: 8
-  damage: 3
+  damage: 1
   attackCooldown: 0.5
   abilityCooldown: 0
   jumpCooldown: 1
@@ -1022,6 +1022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1049,6 +1050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1069,6 +1071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1101,6 +1104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1148,6 +1152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1447,7 +1452,7 @@ SpriteRenderer:
   m_SortingLayerID: 207324261
   m_SortingLayer: 1
   m_SortingOrder: 9
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 176420dda12ac654e94e6cbce7698394, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1455,7 +1460,7 @@ SpriteRenderer:
   m_Size: {x: 15, y: 26.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!212 &212196091907151900
@@ -1999,7 +2004,7 @@ SpriteRenderer:
   m_SortingLayerID: 207324261
   m_SortingLayer: 1
   m_SortingOrder: 11
-  m_Sprite: {fileID: 21300000, guid: b2feeba1f0cd4c141add33d35d21a7fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d98889f0fe254774da6a4f8cf838cc4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

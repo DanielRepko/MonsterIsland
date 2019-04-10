@@ -501,21 +501,26 @@ public class Enemy : Actor {
 
     public void CheckLineOfSight()
     {
-        if (!isAggro)
+        Ray lineOfSight = new Ray();
+        lineOfSight.origin = transform.position;
+        lineOfSight.direction = new Vector2(facingDirection, 0);
+
+        Debug.DrawRay(lineOfSight.origin, new Vector3(aggroRange * facingDirection, 0, 0), Color.yellow);
+
+        RaycastHit2D hit = Physics2D.Raycast(lineOfSight.origin, lineOfSight.direction, aggroRange, 1 << LayerMask.NameToLayer("Player"));
+        if (hit)
         {
-            Ray lineOfSight = new Ray();
-            lineOfSight.origin = transform.position;
-            lineOfSight.direction = new Vector2(facingDirection, 0);
-
-            Debug.DrawRay(lineOfSight.origin, new Vector3(aggroRange * facingDirection, 0, 0), Color.yellow);
-
-            RaycastHit2D hit = Physics2D.Raycast(lineOfSight.origin, lineOfSight.direction, aggroRange, 1 << LayerMask.NameToLayer("Player"));
-            if (hit)
+            if (!isAggro)
             {
                 isAggro = true;
                 target = PlayerController.Instance.gameObject;
             }
+            else
+            {
+                aggroTimer = 0;
+            }
         }
+        
     }
 
     virtual public void OnTriggerEnter2D(Collider2D collision)

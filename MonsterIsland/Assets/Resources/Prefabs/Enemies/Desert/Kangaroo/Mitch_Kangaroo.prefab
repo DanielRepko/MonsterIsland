@@ -980,6 +980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1027,6 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1054,6 +1056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1086,6 +1089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1106,6 +1110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -1153,6 +1158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 70
   isUnderwater: 0
+  shellCollider: {fileID: 0}
   attacksLocked: 0
   movementLocked: 0
   inHitStun: 0
@@ -1173,7 +1179,7 @@ MonoBehaviour:
   partToAlwaysDrop: Legs
   equippedWeapon: 
   attackRange: 1.7
-  damage: 2
+  damage: 1
   attackCooldown: 0.5
   abilityCooldown: 0
   jumpCooldown: 0.5
