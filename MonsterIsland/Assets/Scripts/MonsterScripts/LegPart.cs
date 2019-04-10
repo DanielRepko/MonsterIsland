@@ -35,7 +35,7 @@ public class LegPart : MonoBehaviour {
             partInfo = legPartInfo;
 
             //populating the partAbility field
-            if (partInfo.abilityName != "" && player != null)
+            if (partInfo.abilityName != null && player != null)
             {
                 partAbility = AbilityFactory.GetPartAbility(partInfo.abilityName);
 
@@ -48,10 +48,6 @@ public class LegPart : MonoBehaviour {
                 else if(partInfo.abilityType == "Activate")
                 {
                     player.jumpDelegate = partAbility;
-                }//if the value is anything else, then a typo must have occured when creating the ability info
-                else
-                {
-                    Debug.Log("Error: Invalid ability type");
                 }
             }
 

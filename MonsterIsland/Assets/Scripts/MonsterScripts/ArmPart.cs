@@ -62,7 +62,7 @@ public class ArmPart : MonoBehaviour {
             }
 
             //checking whether this part has an ability
-            if (partInfo.abilityName != "" && player != null)
+            if (partInfo.abilityName != null && player != null)
             {
                 //populating the partAbility field with the appropriate ability delegate
                 ability = AbilityFactory.GetArmPartAbility(partInfo.abilityName);
@@ -83,10 +83,6 @@ public class ArmPart : MonoBehaviour {
                     {
                         player.leftAttackDelegate = ability;
                     }
-                }//if the value is anything else, then a typo must have occured when creating the ability info
-                else
-                {
-                    Debug.Log("Error: Invalid ability type");
                 }
             }            
 

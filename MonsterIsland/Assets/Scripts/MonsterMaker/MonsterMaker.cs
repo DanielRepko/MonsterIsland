@@ -215,6 +215,7 @@ public class MonsterMaker : MonoBehaviour {
         playerInfo.name = nameField.text;
 
         GameManager.instance.gameFile.player = playerInfo;
+        GameManager.instance.FinalizeSave();
     }
 
     public void ShowDonePanel()
