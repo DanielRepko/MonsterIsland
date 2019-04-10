@@ -522,7 +522,6 @@ public class AbilityFactory : MonoBehaviour {
                 {
                     player.rb.gravityScale -= 3f;
                 }
-                Debug.Log(player.rb.gravityScale);
             }
        
         }
