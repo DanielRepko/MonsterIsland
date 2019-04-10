@@ -280,6 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partInfo:
     monster: 
+    partType: 
     abilityName: 
     abilityType: 
     abilityDesc: 
@@ -293,7 +294,7 @@ MonoBehaviour:
     fingersClosedBackSprite: 
     fingersClosedFrontSprite: 
     equippedWeapon: 
-  partType: 
+  partType: RightArm
   bicepSprite: {fileID: 0}
   forearmSprite: {fileID: 0}
   handBackSprite: {fileID: 0}
