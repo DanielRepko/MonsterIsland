@@ -60,6 +60,9 @@ TagManager:
   - name: Monster
     uniqueID: 207324261
     locked: 0
+  - name: ItemDrop
+    uniqueID: 1806941045
+    locked: 0
   - name: Projectile
     uniqueID: 1922656591
     locked: 0
