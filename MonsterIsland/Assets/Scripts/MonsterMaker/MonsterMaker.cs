@@ -29,14 +29,30 @@ public class MonsterMaker : MonoBehaviour {
 
     public void Start()
     {
-        if(PlayerController.Instance != null)
+        if(PlayerController.Instance != null && GameManager.instance != null)
         {
             PlayerController.Instance.gameObject.SetActive(false);
             PopulateSlots(PlayerController.Instance.monster, GameManager.instance.gameFile.player.name);
         }
 
-        collectedParts = GameManager.instance.gameFile.player.inventory.collectedParts;
-        collectedWeapons = GameManager.instance.gameFile.player.inventory.collectedWeapons;
+        if(GameManager.instance != null)
+        {
+            collectedParts = GameManager.instance.gameFile.player.inventory.collectedParts;
+            collectedWeapons = GameManager.instance.gameFile.player.inventory.collectedWeapons;
+        }
+        else
+        {
+            collectedParts = new CollectedPartsInfo()
+            {
+                collectedHeads = new List<string>() { "Mitch" },
+                collectedTorsos = new List<string>() { "Mitch" },
+                collectedRightArms = new List<string>() { "Mitch" },
+                collectedLeftArms = new List<string>() { "Mitch" },
+                collectedLegs = new List<string>() { "Mitch" }
+            };
+            collectedWeapons = new List<string>() { "Stick", "Pea Shooter" };
+        }
+        
     }
 
     public void PopulateSlots(Monster monster, string playerName)
