@@ -85,6 +85,13 @@ public class UIManager : MonoBehaviour {
         Time.timeScale = 1;
     }
 
+    //Your welcome Daniel. -Jordan
+    public void LoadMonsterMaker() {
+        GameManager.instance.FinalizeSave();
+        HideNestCanvas();
+        SceneManager.LoadScene("MonsterMaker");
+    }
+
     public void ShowShopPanel() {
         shopPanel.SetActive(true);
         Time.timeScale = 0;
