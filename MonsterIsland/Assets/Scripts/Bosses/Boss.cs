@@ -2,25 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : Actor{
+public class Boss : Enemy{
 
-    public float moveSpeed = 10;
-
-    public string monsterName;
     public string equippedRightWeapon;
     public string equippedLeftWeapon;
     public AbilityFactory.ArmAbility rightAttackDelegate;
     public AbilityFactory.ArmAbility leftAttackDelegate;
-    public AbilityFactory.ArmAbility attackDelegate;
 
     private string attackingArm;
 
-    public delegate void CheckDelegate();
-    public CheckDelegate checkDelegate;
-
     public float rightAttackRange = 1.7f;
     public float leftAttackRange = 1.7f;
-    private float attackRange;
 
     public int rightAttackDamage = 1;
     public int leftAttackDamage = 1;
@@ -29,19 +21,14 @@ public class Boss : Actor{
     //attack cooldown
     public float rightAttackCooldown = 0.5f;
     public float leftAttackCooldown = 0.5f;
-    private float attackCooldown;
     private float attackCooldownTimer = 0;
 
     //jump cooldown (to prevent them from jumping every possible frame)
-    public float jumpCooldown = 1;
     private float jumpCooldownTimer;
-
-    //the target for the enemy to follow
-    public GameObject target;
 
 
     // Use this for initialization
-    virtual public void Start()
+    override public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
@@ -51,7 +38,7 @@ public class Boss : Actor{
     }
 
     // Update is called once per frame
-    virtual public void Update()
+    override public void Update()
     {
         if (health <= 0)
         {
@@ -59,7 +46,7 @@ public class Boss : Actor{
         }
     }
 
-    virtual public void FixedUpdate()
+    override public void FixedUpdate()
     {
         //attacking if aggro
         if (target != null && PlayerIsInAttackRange())
@@ -86,7 +73,7 @@ public class Boss : Actor{
         }
     }
 
-    virtual public void InitializeEnemy()
+    override public void InitializeEnemy()
     {
         //creating variables to initialize the monster
         //this code is for testing purposes, final product will pull this information from the database scripts
@@ -116,6 +103,7 @@ public class Boss : Actor{
         //setting the cooldown timers so that the player can use the inputs as soon as the game loads
 
         SetFacingDirection(transform.localScale.x);
+        SetCooldowns();
     }
 
     virtual public void RightAttack(string armType)
@@ -153,154 +141,7 @@ public class Boss : Actor{
         }
     }
 
-    virtual public void FollowTarget()
-    {
-        if (target != null && !inHitStun && !movementLocked)
-        {
-            //having the enemy face towards the target
-            SetFacingDirection((target.transform.position - transform.position).normalized.x);
-
-            //making the enemy jump if they need to
-            MakeBossJump();
-
-            //making the enemy move towards the player
-            rb.velocity = new Vector2(moveSpeed * facingDirection, rb.velocity.y);
-            //playing the correct animation
-            animator.SetBool("IsRunningRight", rb.velocity.x > 0);
-            animator.SetBool("IsRunningLeft", rb.velocity.x < 0);
-            animator.SetFloat("FacingDirection", facingDirection);
-
-        }
-        else
-        {
-            if (rb.velocity.x == 0)
-            {
-                animator.SetBool("IsRunningRight", false);
-                animator.SetBool("IsRunningLeft", false);
-            }
-        }
-    }    
-
-    //this method contains all code to check for the various
-    //conditions under which the enemy will need to jump
-    virtual public void MakeBossJump()
-    {
-        //swim up to the target if underwater
-        if (isUnderwater)
-        {
-            bool targetIsHigher = target.transform.position.y > transform.position.y && (target.transform.position.y - transform.position.y) >= 1;
-            if (targetIsHigher)
-            {
-                Jump();
-            }
-        }
-        //otherwise the enemy must be on land, so check when they need to jump
-        else
-        {
-            //checking if the target is on a higher platform         
-            if (TargetIsOnHigherPlatform())
-            {
-                Jump();
-            }
-
-            //checking if they need to jump over an obstacle
-            Ray jumpRay = new Ray();
-            jumpRay.origin = new Vector2(transform.position.x, transform.position.y - 1);
-            jumpRay.direction = new Vector2(facingDirection, 0);
-
-            Debug.DrawRay(jumpRay.origin, new Vector2(1 * facingDirection, 0), Color.cyan);
-
-            RaycastHit2D jumpHit = Physics2D.Raycast(jumpRay.origin, jumpRay.direction, 1.2f, 1 << LayerMask.NameToLayer("Terrain"));
-            if (jumpHit)
-            {
-                Jump();
-            }
-
-            //checking if they need to jump over a gap (and whether they can make the jump)
-            if (HasReachedLedge() && CanJumpOverGap())
-            {
-                Jump();
-            }
-        }
-    }
-
-    //sends out a raycast to see if the enemy has reached a ledge
-    virtual public bool HasReachedLedge()
-    {
-        Ray gapRay = new Ray();
-        gapRay.origin = new Vector2(transform.position.x, transform.position.y + 1.4f);
-        gapRay.direction = new Vector2(1.5f * facingDirection, -3.4f).normalized;
-
-        Debug.DrawRay(gapRay.origin, new Vector2(1.5f * facingDirection, -3.4f), Color.blue);
-
-        RaycastHit2D gapHit = Physics2D.Raycast(gapRay.origin, gapRay.direction, new Vector2(1.5f, -3.4f).magnitude, 1 << LayerMask.NameToLayer("Terrain"));
-
-        return !gapHit;
-    }
-
-    //sends out a raycast to see if there is terrain at the end of their jump range
-    virtual public bool CanJumpOverGap()
-    {
-        Ray canCrossRay = new Ray();
-        canCrossRay.origin = new Vector2(transform.position.x, transform.position.y + 1.4f);
-        canCrossRay.direction = new Vector2(7 * facingDirection, -3.4f).normalized;
-
-        Debug.DrawRay(canCrossRay.origin, new Vector2(7 * facingDirection, -3.4f), Color.blue);
-
-        RaycastHit2D canCrossHit = Physics2D.Raycast(canCrossRay.origin, canCrossRay.direction, new Vector2(6, -3.4f).magnitude, 1 << LayerMask.NameToLayer("Terrain"));
-
-        return canCrossHit;
-    }
-
-    //used to check whether the target is on a platform above the enemy
-    private float highTime = 0.4f;
-    private float highTimer = 0;
-    private float lastTargetHeight;
-    virtual public bool TargetIsOnHigherPlatform()
-    {
-        bool targetIsHigher = target.transform.position.y > transform.position.y && (target.transform.position.y - transform.position.y) >= 1;
-        float targetHeight = target.transform.position.y;
-        if (targetIsHigher)
-        {
-            if (targetHeight == lastTargetHeight)
-            {
-                if (highTimer < highTime)
-                {
-                    highTimer += Time.deltaTime;
-                    return false;
-                }
-                else if (highTimer >= highTime)
-                {
-                    highTimer = 0;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                lastTargetHeight = targetHeight;
-                return false;
-            }
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    virtual public void Jump()
-    {
-        if (IsOnGround() && CheckCooldown("jump"))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
-        }
-    }
-
-    virtual public void SetFacingDirection(float scaleX)
+    override public void SetFacingDirection(float scaleX)
     {
         //checking to see whether scaleX is indicating left or right (may not always be passed as -1 or 1)
         if (scaleX < 0)
@@ -316,7 +157,7 @@ public class Boss : Actor{
         monster.ChangeDirection(facingDirection);
     }
 
-    virtual public bool PlayerIsInAttackRange()
+    override public bool PlayerIsInAttackRange()
     {
         if (!attacksLocked)
         {
@@ -379,7 +220,7 @@ public class Boss : Actor{
         }
     }
 
-    virtual public void UpdateCooldowns()
+    override public void UpdateCooldowns()
     {
         if (attackCooldownTimer < attackCooldown)
         {
@@ -391,7 +232,7 @@ public class Boss : Actor{
         }
     }
 
-    virtual public bool CheckCooldown(string inputCooldown)
+    override public bool CheckCooldown(string inputCooldown)
     {
         if (!attacksLocked)
         {
@@ -427,13 +268,13 @@ public class Boss : Actor{
         }
     }
 
-    virtual public void SetCooldowns()
+    override public void SetCooldowns()
     {
         attackCooldownTimer = attackCooldown;
         jumpCooldownTimer = jumpCooldown;
     }
 
-    virtual public void OnTriggerEnter2D(Collider2D collision)
+    override public void OnTriggerEnter2D(Collider2D collision)
     {
         //checking to see if the enemy is underwater
         if (collision.tag == "Water")
@@ -444,7 +285,7 @@ public class Boss : Actor{
 
     }
 
-    virtual public void OnTriggerExit2D(Collider2D collision)
+    override public void OnTriggerExit2D(Collider2D collision)
     {
         //checking to see if the enemy is underwater
         if (collision.tag == "Water")
@@ -457,5 +298,30 @@ public class Boss : Actor{
     virtual public void KillBoss()
     {
         Destroy(gameObject);
+    }
+
+    override public void KillEnemy()
+    {
+
+    }
+
+    override public void OnTriggerStay2D(Collider2D collision)
+    {
+
+    }
+
+    override public void CheckLineOfSight()
+    {
+
+    }
+
+    override public void CheckAggro()
+    {
+
+    }
+
+    override public void ContinuePatrol()
+    {
+
     }
 }

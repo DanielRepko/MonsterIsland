@@ -118,21 +118,7 @@ public class ArmPart : MonoBehaviour {
                         player.rightAttackDelegate = ability;
                         player.RightAttackCooldown = weapon.AttackCooldown;
                     }
-                    else if (enemy != null)
-                    {
-                        enemy.attackDelegate = ability;
-                        enemy.attackCooldown = weapon.AttackCooldown;
-                        weapon.Damage = enemy.damage;
-                        if (weapon.WeaponType == Helper.WeaponType.Melee)
-                        {
-                            enemy.attackRange = weapon.AttackRange - 0.8f;
-                        }
-                        else if (weapon.WeaponType == Helper.WeaponType.Projectile)
-                        {
-                            weapon.AttackRange = enemy.attackRange;
-                        }
-                    }
-                    else if(boss != null)
+                    else if (boss != null)
                     {
                         boss.rightAttackDelegate = ability;
                         boss.rightAttackCooldown = weapon.AttackCooldown;
@@ -146,6 +132,20 @@ public class ArmPart : MonoBehaviour {
                             weapon.AttackRange = boss.rightAttackRange;
                         }
                     }
+                    else if (enemy != null)
+                    {
+                        enemy.attackDelegate = ability;
+                        enemy.attackCooldown = weapon.AttackCooldown;
+                        weapon.Damage = enemy.damage;
+                        if (weapon.WeaponType == Helper.WeaponType.Melee)
+                        {
+                            enemy.attackRange = weapon.AttackRange - 0.8f;
+                        }
+                        else if (weapon.WeaponType == Helper.WeaponType.Projectile)
+                        {
+                            weapon.AttackRange = enemy.attackRange;
+                        }
+                    }
                 }
                 else if (partType == Helper.PartType.LeftArm)
                 {
@@ -153,21 +153,7 @@ public class ArmPart : MonoBehaviour {
                     {
                         player.leftAttackDelegate = ability;
                         player.LeftAttackCooldown = weapon.AttackCooldown;
-                    }
-                    else if (enemy != null)
-                    {
-                        enemy.attackDelegate = ability;
-                        enemy.attackCooldown = weapon.AttackCooldown;
-                        if (weapon.WeaponType == Helper.WeaponType.Melee)
-                        {
-                            enemy.attackRange = weapon.AttackRange - 0.8f;
-                        }
-                        else if(weapon.WeaponType == Helper.WeaponType.Projectile)
-                        {
-                            weapon.AttackRange = enemy.attackRange;
-                        }                        
-                        weapon.Damage = enemy.damage;
-                    }
+                    }                    
                     else if (boss != null)
                     {
                         boss.leftAttackDelegate = ability;
@@ -181,6 +167,20 @@ public class ArmPart : MonoBehaviour {
                         {
                             weapon.AttackRange = boss.leftAttackRange;
                         }
+                    }
+                    else if (enemy != null)
+                    {
+                        enemy.attackDelegate = ability;
+                        enemy.attackCooldown = weapon.AttackCooldown;
+                        if (weapon.WeaponType == Helper.WeaponType.Melee)
+                        {
+                            enemy.attackRange = weapon.AttackRange - 0.8f;
+                        }
+                        else if (weapon.WeaponType == Helper.WeaponType.Projectile)
+                        {
+                            weapon.AttackRange = enemy.attackRange;
+                        }
+                        weapon.Damage = enemy.damage;
                     }
                 }
             }
