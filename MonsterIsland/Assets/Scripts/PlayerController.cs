@@ -16,7 +16,7 @@ public class PlayerController : Actor {
     public bool isAlive = true;
 
     public float moveSpeed = 15.5f;
-    public float attackRange = 1.7f;
+    public float attackRange = 2.5f;
 
     //damage dealt by right arm attack
     public int rightAttackPower = 2;
