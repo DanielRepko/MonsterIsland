@@ -85,11 +85,12 @@ public class UIManager : MonoBehaviour {
         nestCanvas.SetActive(false);
         Time.timeScale = 1;
     }
-
-    //Your welcome Daniel. -Jordan
+    
+    //Loads the monster maker
     public void LoadMonsterMaker() {
         GameManager.instance.FinalizeSave();
         HideNestCanvas();
+        ShowLoadingPanel();
         SceneManager.LoadScene("MonsterMaker");
     }
 

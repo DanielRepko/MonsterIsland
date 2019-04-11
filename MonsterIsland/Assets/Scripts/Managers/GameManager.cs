@@ -165,6 +165,9 @@ public class GameManager : MonoBehaviour {
     //Moves the player to the nest the scene where their last used nest is
     public void LoadToLastNestUsed() {
         SceneManager.sceneLoaded += MovePlayerToNest;
+        if(GameObject.FindGameObjectWithTag("Loading")) {
+            GameObject.FindGameObjectWithTag("Loading").SetActive(true);
+        }
         SceneManager.LoadScene(gameFile.saveArea);
     }
 
