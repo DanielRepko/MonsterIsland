@@ -1037,9 +1037,9 @@ MonoBehaviour:
     type: 3}
   fingersOpenFrontSprite: {fileID: 21300000, guid: 7674fe0722258d544992a13ec426439e,
     type: 3}
-  fingersClosedBackSprite: {fileID: 21300000, guid: ab412aeed010eae4bba35ab5f1778367,
+  fingersClosedBackSprite: {fileID: 21300000, guid: 1a758cc53b3f9f44685e553ff2a0ad32,
     type: 3}
-  fingersClosedFrontSprite: {fileID: 21300000, guid: cefed554c57bc7741aead075364125fd,
+  fingersClosedFrontSprite: {fileID: 21300000, guid: ae6dae1b993f83e4b9cf38408b69bd41,
     type: 3}
   fingersBack: {fileID: 0}
   fingersFront: {fileID: 0}
