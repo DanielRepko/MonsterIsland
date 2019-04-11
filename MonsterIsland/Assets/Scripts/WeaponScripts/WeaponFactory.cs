@@ -43,7 +43,7 @@ public class WeaponFactory : MonoBehaviour {
                     AttackTarget = attackTarget,
                     Damage = 2,
                     AttackRange = 3f,
-                    AttackCooldown = 0.4f,
+                    AttackCooldown = 0.8f,
                     WeaponSpriteRenderer = weaponRenderer
                 };
                 return scimitar;
@@ -84,7 +84,7 @@ public class WeaponFactory : MonoBehaviour {
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
                     Damage = 2,
-                    AttackCooldown = 1.3f,
+                    AttackCooldown = 1.5f,
                     WeaponSpriteRenderer = weaponRenderer
                 };
                 return peaShooter;
@@ -97,7 +97,7 @@ public class WeaponFactory : MonoBehaviour {
                     ArmEquippedOn = armEquippedOn,
                     AttackTarget = attackTarget,
                     Damage = 1,
-                    AttackCooldown = 0.7f,
+                    AttackCooldown = 0.8f,
                     WeaponSpriteRenderer = weaponRenderer
                 };
                 return bananaGun;

@@ -24,11 +24,11 @@ public class PlayerController : Actor {
     public int leftAttackPower = 2;
 
     //these fields are used to add delays between when the player can complete certain actions
-    private float _rightAttackCooldown = 0.5f;
+    private float _rightAttackCooldown = 1.3f;
     public float RightAttackCooldown { get { return _rightAttackCooldown; } set { _rightAttackCooldown = value; } }
     private float rightAttackTimer = 0;
 
-    private float _leftAttackCooldown = 0.5f;
+    private float _leftAttackCooldown = 1.3f;
     public float LeftAttackCooldown { get { return _leftAttackCooldown; } set { _leftAttackCooldown = value; } }
     private float leftAttackTimer = 0;
 
