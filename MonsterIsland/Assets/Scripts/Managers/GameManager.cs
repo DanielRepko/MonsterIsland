@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
 
         //Store infomration about the player themself
         newFile.player.name = "Mitch";
-        newFile.player.totalHearts = 6;
+        newFile.player.totalHearts = 10;
         newFile.player.headPart = new HeadPartInfo();
         newFile.player.torsoPart = new TorsoPartInfo();
         newFile.player.leftArmPart = new ArmPartInfo();
@@ -137,10 +137,13 @@ public class GameManager : MonoBehaviour {
         if (PlayerController.Instance != null)
         {
             gameFile.player.totalHearts = PlayerController.Instance.maxHealth;
+            if(PlayerController.Instance.monster.torsoPart.partInfo.monster == Helper.MonsterName.Robot) {
+                gameFile.player.totalHearts -= 2;
+            }
         }
         else
         {
-            gameFile.player.totalHearts = 6;
+            gameFile.player.totalHearts = 10;
         }
         var time = Time.timeSinceLevelLoad;
         gameFile.totalPlayTime += (Time.timeSinceLevelLoad - lastTimeUpdate);
