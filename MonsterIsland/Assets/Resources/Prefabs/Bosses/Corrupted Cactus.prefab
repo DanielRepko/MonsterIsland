@@ -999,8 +999,8 @@ MonoBehaviour:
   leftAttackRange: 8
   rightAttackDamage: 2
   leftAttackDamage: 1
-  rightAttackCooldown: 0.5
-  leftAttackCooldown: 0.5
+  rightAttackCooldown: 1
+  leftAttackCooldown: 1
 --- !u!114 &114480498850711472
 MonoBehaviour:
   m_ObjectHideFlags: 1
