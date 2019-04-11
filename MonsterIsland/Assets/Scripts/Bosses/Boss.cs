@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss : Enemy{
 
+    [Space(10)]
+    [Header("ACTUAL BOSS FIELDS")]
     public string equippedRightWeapon;
     public string equippedLeftWeapon;
     public AbilityFactory.ArmAbility rightAttackDelegate;

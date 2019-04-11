@@ -160,12 +160,12 @@ public class AbilityFactory : MonoBehaviour {
         beakRay.origin = new Vector2(player.transform.position.x, player.transform.position.y + 1f);
         beakRay.direction = new Vector3(player.facingDirection, 0, 0);
 
-        Debug.DrawRay(beakRay.origin, new Vector2(1.7f * player.facingDirection, 0), Color.green);
+        Debug.DrawRay(beakRay.origin, new Vector2(3f * player.facingDirection, 0), Color.green);
 
         //playing the animation
         player.animator.Play("HeadAbilityAnim");
 
-        RaycastHit2D hit = Physics2D.Raycast(beakRay.origin, beakRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
+        RaycastHit2D hit = Physics2D.Raycast(beakRay.origin, beakRay.direction, 3f, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit)
         {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
