@@ -47,7 +47,7 @@ public class Enemy : Actor {
     
 
     // Use this for initialization
-    void Start () {
+    virtual public void Start () {
         rb = GetComponent<Rigidbody2D>();
         width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
         height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
@@ -55,9 +55,9 @@ public class Enemy : Actor {
         InitializeEnemy();
         ContinuePatrol();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    virtual public void Update () {
 		if(health <= 0) {
             KillEnemy();
         }
@@ -92,7 +92,7 @@ public class Enemy : Actor {
 
     virtual public void InitializeEnemy()
     {
-        //creating variables to initialize the player monster
+        //creating variables to initialize the monster
         //this code is for testing purposes, final product will pull this information from the database scripts
         var headInfo = PartFactory.GetHeadPartInfo(monsterName);
         var torsoInfo = PartFactory.GetTorsoPartInfo(monsterName);
@@ -131,7 +131,7 @@ public class Enemy : Actor {
 
     }
 
-    public void FollowTarget()
+    virtual public void FollowTarget()
     {
         if (target != null && !inHitStun && !movementLocked)
         {
@@ -162,7 +162,7 @@ public class Enemy : Actor {
     //used to make the enemy patrol the area between their assigned patrol points
     //if there is only one assigned patrol point, then it is a sentry position,
     //in which case the enemy will simply wait at that point for the player to come along
-    public void ContinuePatrol()
+    virtual public void ContinuePatrol()
     {
         if (!isAggro)
         {
@@ -212,7 +212,7 @@ public class Enemy : Actor {
 
     //this method contains all code to check for the various
     //conditions under which the enemy will need to jump
-    public void MakeEnemyJump()
+    virtual public void MakeEnemyJump()
     {
         //swim up to the target if underwater
         if (isUnderwater)
@@ -254,7 +254,7 @@ public class Enemy : Actor {
     }
 
     //sends out a raycast to see if the enemy has reached a ledge
-    public bool HasReachedLedge()
+    virtual public bool HasReachedLedge()
     {
         Ray gapRay = new Ray();
         gapRay.origin = new Vector2(transform.position.x, transform.position.y + 1.4f);
@@ -268,7 +268,7 @@ public class Enemy : Actor {
     }
 
     //sends out a raycast to see if there is terrain at the end of their jump range
-    public bool CanJumpOverGap()
+    virtual public bool CanJumpOverGap()
     {
         Ray canCrossRay = new Ray();
         canCrossRay.origin = new Vector2(transform.position.x, transform.position.y + 1.4f);
@@ -285,7 +285,7 @@ public class Enemy : Actor {
     private float highTime = 0.4f;
     private float highTimer = 0;
     private float lastTargetHeight;
-    public bool TargetIsOnHigherPlatform()
+    virtual public bool TargetIsOnHigherPlatform()
     {
         bool targetIsHigher = target.transform.position.y > transform.position.y && (target.transform.position.y - transform.position.y) >= 1;
         float targetHeight = target.transform.position.y;
@@ -329,7 +329,7 @@ public class Enemy : Actor {
         }
     }
 
-    public void SetFacingDirection(float scaleX)
+    virtual public void SetFacingDirection(float scaleX)
     {
         //checking to see whether scaleX is indicating left or right (may not always be passed as -1 or 1)
         if(scaleX < 0)
@@ -345,7 +345,7 @@ public class Enemy : Actor {
         monster.ChangeDirection(facingDirection);
     }
 
-    public bool PlayerIsInAttackRange()
+    virtual public bool PlayerIsInAttackRange()
     {
         if (!attacksLocked)
         {
@@ -407,7 +407,7 @@ public class Enemy : Actor {
         }
     }
 
-    public void UpdateCooldowns()
+    virtual public void UpdateCooldowns()
     {
         if (attackCooldownTimer < attackCooldown)
         {
@@ -427,7 +427,7 @@ public class Enemy : Actor {
         }
     }
 
-    public bool CheckCooldown(string inputCooldown)
+    virtual public bool CheckCooldown(string inputCooldown)
     {
         if (!attacksLocked)
         {
@@ -473,14 +473,14 @@ public class Enemy : Actor {
         }
     }
 
-    public void SetCooldowns()
+    virtual public void SetCooldowns()
     {
         attackCooldownTimer = attackCooldown;
         abilityCooldownTimer = abilityCooldown;
         jumpCooldownTimer = jumpCooldown;
     }
 
-    public void CheckAggro()
+    virtual public void CheckAggro()
     {
         if (isAggro && aggroTimer < aggroTime && PlayerController.Instance.isAlive)
         {
@@ -499,7 +499,7 @@ public class Enemy : Actor {
         }
     }
 
-    public void CheckLineOfSight()
+    virtual public void CheckLineOfSight()
     {
         Ray lineOfSight = new Ray();
         lineOfSight.origin = transform.position;
@@ -541,7 +541,7 @@ public class Enemy : Actor {
         
     }
 
-    public void OnTriggerStay2D(Collider2D collision)
+    virtual public void OnTriggerStay2D(Collider2D collision)
     {
         //checking to see if the enemy reached a patrol point
         if (collision.tag == "PatrolPoint" && target != null && target == collision.gameObject && transform.position.y >= collision.transform.position.y)
@@ -551,7 +551,7 @@ public class Enemy : Actor {
 
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    virtual public void OnTriggerExit2D(Collider2D collision)
     {
         //checking to see if the enemy is underwater
         if (collision.tag == "Water" || collision.name == "Quicksand")
@@ -561,7 +561,7 @@ public class Enemy : Actor {
         }
     }
 
-    private void KillEnemy() {
+    virtual public void KillEnemy() {
         int coinChance = Random.Range(0, 10) + 1;
         int partChance = Random.Range(0, 10) + 1;
 
