@@ -160,12 +160,12 @@ public class AbilityFactory : MonoBehaviour {
         beakRay.origin = new Vector2(player.transform.position.x, player.transform.position.y + 1f);
         beakRay.direction = new Vector3(player.facingDirection, 0, 0);
 
-        Debug.DrawRay(beakRay.origin, new Vector2(1.7f * player.facingDirection, 0), Color.green);
+        Debug.DrawRay(beakRay.origin, new Vector2(3f * player.facingDirection, 0), Color.green);
 
         //playing the animation
         player.animator.Play("HeadAbilityAnim");
 
-        RaycastHit2D hit = Physics2D.Raycast(beakRay.origin, beakRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
+        RaycastHit2D hit = Physics2D.Raycast(beakRay.origin, beakRay.direction, 3f, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit)
         {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
@@ -362,9 +362,9 @@ public class AbilityFactory : MonoBehaviour {
         }
 
         //instatiating each needle with its own rotation
-        GameObject upNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, 45));
+        GameObject upNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, 45 *  player.facingDirection));
         GameObject middleNeedle = Instantiate(needleLoad, needlePosition, Quaternion.identity);
-        GameObject downNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, -45));
+        GameObject downNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, -45 * player.facingDirection));
 
         //turning the needles in the same direction the player is facing
         upNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
