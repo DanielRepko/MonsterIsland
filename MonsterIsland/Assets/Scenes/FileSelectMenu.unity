@@ -3953,6 +3953,7 @@ MonoBehaviour:
   legendaryLeftArm: {fileID: 2030639977}
   legendaryRightArm: {fileID: 2135051194}
   legendaryLegs: {fileID: 1621297797}
+  loadingPanel: {fileID: 1793370703}
 --- !u!4 &1003799384
 Transform:
   m_ObjectHideFlags: 0

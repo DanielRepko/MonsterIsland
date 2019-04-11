@@ -29,6 +29,7 @@ public class FileSelectManager : MonoBehaviour {
     public GameObject legendaryLeftArm;
     public GameObject legendaryRightArm;
     public GameObject legendaryLegs;
+    public GameObject loadingPanel;
 
 	// Use this for initialization
 	void Start () {
@@ -120,9 +121,18 @@ public class FileSelectManager : MonoBehaviour {
     }
 
     public void PlayPressed() {
+        loadingPanel.SetActive(true);
         if (GameManager.instance.gameFile.fileID == -1) {
             //Create a new save, and head to the monster maker so the player can make their first monster!
             GameManager.instance.CreateSave();
+            SceneManager.LoadScene("MonsterMaker");
+        } else if(GameManager.instance.gameFile.fileID > 0 && (
+            GameManager.instance.gameFile.player.headPart.monster == ""
+            || GameManager.instance.gameFile.player.torsoPart.monster == ""
+            || GameManager.instance.gameFile.player.leftArmPart.monster == ""
+            || GameManager.instance.gameFile.player.rightArmPart.monster == ""
+            || GameManager.instance.gameFile.player.legsPart.monster == ""
+            || GameManager.instance.gameFile.player.name == "")) {
             SceneManager.LoadScene("MonsterMaker");
         } else {
             GameManager.instance.LoadToLastNestUsed();

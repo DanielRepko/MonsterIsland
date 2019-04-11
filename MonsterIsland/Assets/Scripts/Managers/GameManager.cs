@@ -134,17 +134,13 @@ public class GameManager : MonoBehaviour {
 
     //Updates an existing save file
     public void FinalizeSave() {
-        if (PlayerController.Instance != null)
-        {
+        if (PlayerController.Instance != null) {
             gameFile.player.totalHearts = PlayerController.Instance.maxHealth;
             if(PlayerController.Instance.monster.torsoPart.partInfo.monster == Helper.MonsterName.Robot) {
                 gameFile.player.totalHearts -= 2;
             }
         }
-        else
-        {
-            gameFile.player.totalHearts = 10;
-        }
+
         var time = Time.timeSinceLevelLoad;
         gameFile.totalPlayTime += (Time.timeSinceLevelLoad - lastTimeUpdate);
         lastTimeUpdate = time;
@@ -165,8 +161,9 @@ public class GameManager : MonoBehaviour {
     //Moves the player to the nest the scene where their last used nest is
     public void LoadToLastNestUsed() {
         SceneManager.sceneLoaded += MovePlayerToNest;
-        if(GameObject.FindGameObjectWithTag("Loading")) {
-            GameObject.FindGameObjectWithTag("Loading").SetActive(true);
+        var loadingPanels = GameObject.FindGameObjectsWithTag("Loading");
+        foreach(var panel in loadingPanels) {
+            panel.SetActive(true);
         }
         SceneManager.LoadScene(gameFile.saveArea);
     }
