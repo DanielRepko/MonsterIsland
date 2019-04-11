@@ -28,13 +28,13 @@ public class Enemy : Actor {
 
     //attack cooldown
     public float attackCooldown = 0.5f;
-    private float attackCooldownTimer;
+    protected float attackCooldownTimer;
     //ability cooldown
     public float abilityCooldown;
     private float abilityCooldownTimer;
     //jump cooldown (to prevent them from jumping every possible frame)
     public float jumpCooldown = 1;
-    private float jumpCooldownTimer;
+    protected float jumpCooldownTimer;
 
     //fields for handling aggro
     public bool isAggro;

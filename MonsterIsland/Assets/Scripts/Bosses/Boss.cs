@@ -21,10 +21,6 @@ public class Boss : Enemy{
     //attack cooldown
     public float rightAttackCooldown = 0.5f;
     public float leftAttackCooldown = 0.5f;
-    private float attackCooldownTimer = 0;
-
-    //jump cooldown (to prevent them from jumping every possible frame)
-    private float jumpCooldownTimer;
 
 
     // Use this for initialization
