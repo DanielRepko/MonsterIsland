@@ -183,4 +183,15 @@ public class GameManager : MonoBehaviour {
         }
         SceneManager.sceneLoaded -= MovePlayerToNest;
     }
+
+    public void ReturnToMainMenu() {
+        gameFile = null;
+        fileNumber = -1;
+        foreach(Transform manager in ManagerManager.instance.transform) {
+            Destroy(manager.gameObject);
+        }
+        Destroy(ManagerManager.instance.gameObject);
+        Destroy(PlayerController.Instance.gameObject);
+        SceneManager.LoadScene("MainMenu");
+    }
 }
