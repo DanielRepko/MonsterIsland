@@ -21,11 +21,11 @@ public class Weapon {
             {
                 AttackDelegate = FanAttack;
             }
-            else if (_weaponType == Helper.WeaponType.Melee)
+            else if (WeaponType == Helper.WeaponType.Melee)
             {
                 AttackDelegate = MeleeAttack;
             }
-            else if (_weaponType == Helper.WeaponType.Projectile)
+            else if (WeaponType == Helper.WeaponType.Projectile)
             {
                 AttackDelegate = ProjectileAttack;
             }
@@ -112,7 +112,7 @@ public class Weapon {
     public void ProjectileAttack(string armEquippedOn)
     {
         Actor actor = WeaponSpriteRenderer.GetComponentInParent<Actor>();
-
+        
         Vector2 projectilePosition = new Vector2();
 
         if (ArmEquippedOn == Helper.PartType.RightArm)

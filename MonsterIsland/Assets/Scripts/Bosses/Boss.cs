@@ -54,6 +54,7 @@ public class Boss : Enemy{
         if (target != null && PlayerIsInAttackRange())
         {
             attackDelegate(attackingArm);
+            SetNextAttack();
         }
 
         //running any necessary checks on the Enemy
@@ -85,12 +86,12 @@ public class Boss : Enemy{
         var leftArmInfo = PartFactory.GetArmPartInfo(monsterName, Helper.PartType.LeftArm);
         var legPartInfo = PartFactory.GetLegPartInfo(monsterName);
         rightArmInfo.equippedWeapon = equippedRightWeapon;
-        leftArmInfo.equippedWeapon = equippedLeftWeapon;
-
-        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
+        leftArmInfo.equippedWeapon = equippedLeftWeapon;       
 
         rightAttackDelegate = RightAttack;
         leftAttackDelegate = LeftAttack; 
+
+        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
 
         SetNextAttack();
         attackCooldownTimer = attackCooldown;
@@ -112,14 +113,12 @@ public class Boss : Enemy{
     {
         animator.Play("RightArm" + Helper.GetAnimDirection(facingDirection, Helper.PartType.RightArm) + "MeleeAnim");
         PlayerController.Instance.TakeDamage(rightAttackDamage, Helper.GetKnockBackDirection(transform, PlayerController.Instance.transform));
-        SetNextAttack();
     }
 
     virtual public void LeftAttack(string armType)
     {
         animator.Play("LeftArm" + Helper.GetAnimDirection(facingDirection, Helper.PartType.RightArm) + "MeleeAnim");
-        PlayerController.Instance.TakeDamage(leftAttackDamage, Helper.GetKnockBackDirection(transform, PlayerController.Instance.transform));
-        SetNextAttack();
+        PlayerController.Instance.TakeDamage(leftAttackDamage, Helper.GetKnockBackDirection(transform, PlayerController.Instance.transform));        
     }
 
     //Used to alternate between the attacks of each arm
@@ -127,7 +126,7 @@ public class Boss : Enemy{
     {
         if (attackingArm == Helper.PartType.RightArm)
         {
-            attackDelegate = LeftAttack;
+            attackDelegate = leftAttackDelegate;
             attackingArm = Helper.PartType.LeftArm;
             attackRange = leftAttackRange;
             attackDamage = leftAttackDamage;
@@ -135,7 +134,7 @@ public class Boss : Enemy{
         }
         else if (attackingArm == Helper.PartType.LeftArm || attackingArm == null)
         {
-            attackDelegate = RightAttack;
+            attackDelegate = rightAttackDelegate;
             attackingArm = Helper.PartType.RightArm;
             attackRange = rightAttackRange;
             attackDamage = rightAttackDamage;
