@@ -179,7 +179,7 @@ public class AbilityFactory : MonoBehaviour {
     //Torso Ability (Passive): Grants the player an extra heart of health
     public static void Ability_ArmoredBody()
     {
-        PlayerController.Instance.maxHealth += 1;
+        PlayerController.Instance.maxHealth += 2;
     }
 
     //Torso Ability (Passive): Allows the player to breath underwater

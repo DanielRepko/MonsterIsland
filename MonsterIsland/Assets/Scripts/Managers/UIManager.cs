@@ -85,11 +85,12 @@ public class UIManager : MonoBehaviour {
         nestCanvas.SetActive(false);
         Time.timeScale = 1;
     }
-
-    //Your welcome Daniel. -Jordan
+    
+    //Loads the monster maker
     public void LoadMonsterMaker() {
         GameManager.instance.FinalizeSave();
         HideNestCanvas();
+        ShowLoadingPanel();
         SceneManager.LoadScene("MonsterMaker");
     }
 
@@ -114,7 +115,9 @@ public class UIManager : MonoBehaviour {
     }
 
     public void HideLoadingPanel() {
-        loadingPanel.SetActive(false);
+        if (loadingPanel != null) {
+            loadingPanel.SetActive(false);
+        }
     }
 
     public void PauseGame() {
@@ -131,6 +134,10 @@ public class UIManager : MonoBehaviour {
 
     public void ShowSettings() {
         settingsPanel.SetActive(true);
+    }
+
+    public void QuitPressed() {
+        GameManager.instance.ReturnToMainMenu();
     }
 
     public void DisableQuickTravelMenu() {
