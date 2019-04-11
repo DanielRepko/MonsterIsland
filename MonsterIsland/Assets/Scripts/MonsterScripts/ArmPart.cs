@@ -48,6 +48,8 @@ public class ArmPart : MonoBehaviour {
 
         Enemy enemy = GetComponentInParent<Enemy>();
 
+        Boss boss = GetComponentInParent<Boss>();
+
         if (armPartInfo != null)
         {
             partInfo = armPartInfo;
@@ -56,7 +58,7 @@ public class ArmPart : MonoBehaviour {
             {
                 weapon = WeaponFactory.GetWeapon(partInfo.equippedWeapon, partType, "Player", weaponRenderer);
             }
-            else if(enemy != null)
+            else if(enemy != null || boss != null)
             {
                 weapon = WeaponFactory.GetWeapon(partInfo.equippedWeapon, partType, "Enemy", weaponRenderer);
             }
@@ -86,7 +88,7 @@ public class ArmPart : MonoBehaviour {
                 }
             }            
 
-            if (enemy == null)
+            if (player != null)
             {
                 //setting all of the sprite fields
                 bicepSprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.BicepImporter);
@@ -130,6 +132,20 @@ public class ArmPart : MonoBehaviour {
                             weapon.AttackRange = enemy.attackRange;
                         }
                     }
+                    else if(boss != null)
+                    {
+                        boss.rightAttackDelegate = ability;
+                        boss.rightAttackCooldown = weapon.AttackCooldown;
+                        weapon.Damage = boss.rightAttackDamage;
+                        if (weapon.WeaponType == Helper.WeaponType.Melee)
+                        {
+                            boss.rightAttackRange = weapon.AttackRange - 0.8f;
+                        }
+                        else if (weapon.WeaponType == Helper.WeaponType.Projectile)
+                        {
+                            weapon.AttackRange = boss.rightAttackRange;
+                        }
+                    }
                 }
                 else if (partType == Helper.PartType.LeftArm)
                 {
@@ -151,6 +167,20 @@ public class ArmPart : MonoBehaviour {
                             weapon.AttackRange = enemy.attackRange;
                         }                        
                         weapon.Damage = enemy.damage;
+                    }
+                    else if (boss != null)
+                    {
+                        boss.leftAttackDelegate = ability;
+                        boss.leftAttackCooldown = weapon.AttackCooldown;
+                        weapon.Damage = boss.leftAttackDamage;
+                        if (weapon.WeaponType == Helper.WeaponType.Melee)
+                        {
+                            boss.leftAttackRange = weapon.AttackRange - 0.8f;
+                        }
+                        else if (weapon.WeaponType == Helper.WeaponType.Projectile)
+                        {
+                            weapon.AttackRange = boss.leftAttackRange;
+                        }
                     }
                 }
             }

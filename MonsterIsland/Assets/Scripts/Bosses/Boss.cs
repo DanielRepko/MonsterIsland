@@ -11,20 +11,27 @@ public class Boss : Actor{
     public string equippedLeftWeapon;
     public AbilityFactory.ArmAbility rightAttackDelegate;
     public AbilityFactory.ArmAbility leftAttackDelegate;
+    public AbilityFactory.ArmAbility attackDelegate;
+
+    private string attackingArm;
 
     public delegate void CheckDelegate();
     public CheckDelegate checkDelegate;
 
     public float rightAttackRange = 1.7f;
     public float leftAttackRange = 1.7f;
+    private float attackRange;
+
     public int rightAttackDamage = 1;
     public int leftAttackDamage = 1;
+    private int attackDamage;
 
     //attack cooldown
     public float rightAttackCooldown = 0.5f;
-    private float rightAttackCooldownTimer = 0.5f;
     public float leftAttackCooldown = 0.5f;
-    private float leftAttackCooldownTimer = 0.5f;
+    private float attackCooldown;
+    private float attackCooldownTimer = 0;
+
     //jump cooldown (to prevent them from jumping every possible frame)
     public float jumpCooldown = 1;
     private float jumpCooldownTimer;
@@ -57,7 +64,7 @@ public class Boss : Actor{
         //attacking if aggro
         if (target != null && PlayerIsInAttackRange())
         {
-            Attack();
+            attackDelegate(attackingArm);
         }
 
         //running any necessary checks on the Enemy
@@ -91,34 +98,59 @@ public class Boss : Actor{
         rightArmInfo.equippedWeapon = equippedRightWeapon;
         leftArmInfo.equippedWeapon = equippedLeftWeapon;
 
-        attackDelegate = Attack;
-        abilityDelegate = Ability;
+        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
+
+        rightAttackDelegate = RightAttack;
+        leftAttackDelegate = LeftAttack; 
+
+        SetNextAttack();
+        attackCooldownTimer = attackCooldown;
 
         //adding methods to be run in fixed update to the check delegate
         //this allows multiple methods that need to constantly check some status of the Enemy
         //to be run in FixedUpdate without filling it with method calls
         checkDelegate += UpdateCooldowns;
-        checkDelegate += CheckLineOfSight;
-        checkDelegate += CheckAggro;
         checkDelegate += FollowTarget;
 
-        monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
+        
         //setting the cooldown timers so that the player can use the inputs as soon as the game loads
-        attackCooldownTimer = attackCooldown;
-        abilityCooldownTimer = abilityCooldown;
 
         SetFacingDirection(transform.localScale.x);
     }
 
-    virtual public void Attack(string armType = "RightArm")
+    virtual public void RightAttack(string armType)
     {
         animator.Play("RightArm" + Helper.GetAnimDirection(facingDirection, Helper.PartType.RightArm) + "MeleeAnim");
-        PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, PlayerController.Instance.transform));
+        PlayerController.Instance.TakeDamage(rightAttackDamage, Helper.GetKnockBackDirection(transform, PlayerController.Instance.transform));
+        SetNextAttack();
     }
 
-    virtual public void Ability()
+    virtual public void LeftAttack(string armType)
     {
+        animator.Play("LeftArm" + Helper.GetAnimDirection(facingDirection, Helper.PartType.RightArm) + "MeleeAnim");
+        PlayerController.Instance.TakeDamage(leftAttackDamage, Helper.GetKnockBackDirection(transform, PlayerController.Instance.transform));
+        SetNextAttack();
+    }
 
+    //Used to alternate between the attacks of each arm
+    virtual public void SetNextAttack()
+    {
+        if (attackingArm == Helper.PartType.RightArm)
+        {
+            attackDelegate = LeftAttack;
+            attackingArm = Helper.PartType.LeftArm;
+            attackRange = leftAttackRange;
+            attackDamage = leftAttackDamage;
+            attackCooldown = leftAttackCooldown;
+        }
+        else if (attackingArm == Helper.PartType.LeftArm || attackingArm == null)
+        {
+            attackDelegate = RightAttack;
+            attackingArm = Helper.PartType.RightArm;
+            attackRange = rightAttackRange;
+            attackDamage = rightAttackDamage;
+            attackCooldown = rightAttackCooldown;
+        }
     }
 
     virtual public void FollowTarget()
@@ -129,7 +161,7 @@ public class Boss : Actor{
             SetFacingDirection((target.transform.position - transform.position).normalized.x);
 
             //making the enemy jump if they need to
-            MakeEnemyJump();
+            MakeBossJump();
 
             //making the enemy move towards the player
             rb.velocity = new Vector2(moveSpeed * facingDirection, rb.velocity.y);
@@ -147,62 +179,11 @@ public class Boss : Actor{
                 animator.SetBool("IsRunningLeft", false);
             }
         }
-    }
-
-    //used to make the enemy patrol the area between their assigned patrol points
-    //if there is only one assigned patrol point, then it is a sentry position,
-    //in which case the enemy will simply wait at that point for the player to come along
-    virtual public void ContinuePatrol()
-    {
-        if (!isAggro)
-        {
-            //handing the patrol if there is only one patrol point (sentry position)
-            if (patrolPoints.Count == 1)
-            {
-                //enemy is restarting their patrol
-                if (target != patrolPoints[0])
-                {
-                    target = patrolPoints[0];
-                }
-                //enemy has reached their sentry position
-                else
-                {
-                    //turn the enemy towards the direction they came from
-                    SetFacingDirection(-facingDirection);
-                    target = null;
-                }
-            }
-            else if (patrolPoints.Count == 2)
-            {
-                //enemy is restarting their patrol
-                if (target != patrolPoints[0] && target != patrolPoints[1])
-                {
-                    float distanceToPoint1 = Vector2.Distance(transform.position, patrolPoints[0].transform.position);
-                    float distanceToPoint2 = Vector2.Distance(transform.position, patrolPoints[1].transform.position);
-
-                    target = (distanceToPoint1 < distanceToPoint2) ? patrolPoints[0] : patrolPoints[1];
-                }
-                //enemy has reached one of the patrol points
-                else
-                {
-                    //setting the target to the next patrol point
-                    GameObject nextPatrolPoint = (target == patrolPoints[1]) ? patrolPoints[0] : patrolPoints[1];
-                    target = nextPatrolPoint;
-                }
-            }
-            //if the above statements are false, their must be no patrol points set
-            else
-            {
-                Debug.LogWarning("PATROL POINT ERROR: This enemy has " + patrolPoints.Count + " patrol points assigned to it. Make sure you correctly set the patrol points for \"" + gameObject.name + "\". Each enemy must have either 1 or 2 patrol points set");
-            }
-
-
-        }
-    }
+    }    
 
     //this method contains all code to check for the various
     //conditions under which the enemy will need to jump
-    virtual public void MakeEnemyJump()
+    virtual public void MakeBossJump()
     {
         //swim up to the target if underwater
         if (isUnderwater)
@@ -354,18 +335,20 @@ public class Boss : Actor{
                 }
                 else if (attackHit.collider == PlayerController.Instance.shellCollider && CheckCooldown("attack"))
                 {
-                    if (equippedWeapon != "")
+                    if (equippedRightWeapon != "" || equippedLeftWeapon != "")
                     {
                         monster.rightArmPart.weapon.Damage = 0;
-                        attackDelegate(Helper.PartType.RightArm);
-                        monster.rightArmPart.weapon.Damage = damage;
+                        monster.leftArmPart.weapon.Damage = 0;
+                        attackDelegate(attackingArm);
+                        monster.rightArmPart.weapon.Damage = attackDamage;
+                        monster.leftArmPart.weapon.Damage = attackDamage;
                     }
                     else
                     {
-                        int rememberDamage = damage;
-                        damage = 0;
-                        attackDelegate(Helper.PartType.RightArm);
-                        damage = rememberDamage;
+                        int rememberDamage = attackDamage;
+                        attackDamage = 0;
+                        attackDelegate(attackingArm);
+                        attackDamage = rememberDamage;
                     }
                     return false;
                 }
@@ -389,7 +372,6 @@ public class Boss : Actor{
     {
         if (!inHitStun)
         {
-            isAggro = true;
             SetFacingDirection(knockBackDirection);
             animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
             health -= damage;
@@ -402,14 +384,6 @@ public class Boss : Actor{
         if (attackCooldownTimer < attackCooldown)
         {
             attackCooldownTimer += Time.deltaTime;
-        }
-        if (abilityCooldownTimer < attackCooldown)
-        {
-            abilityCooldownTimer += Time.deltaTime;
-        }
-        if (abilityCooldownTimer < abilityCooldown)
-        {
-            abilityCooldownTimer += Time.deltaTime;
         }
         if (jumpCooldownTimer < jumpCooldown)
         {
@@ -427,16 +401,6 @@ public class Boss : Actor{
                     if (attackCooldownTimer >= attackCooldown)
                     {
                         attackCooldownTimer = 0;
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                case "ability":
-                    if (abilityCooldownTimer >= abilityCooldown)
-                    {
-                        abilityCooldownTimer = 0;
                         return true;
                     }
                     else
@@ -466,77 +430,16 @@ public class Boss : Actor{
     virtual public void SetCooldowns()
     {
         attackCooldownTimer = attackCooldown;
-        abilityCooldownTimer = abilityCooldown;
         jumpCooldownTimer = jumpCooldown;
-    }
-
-    virtual public void CheckAggro()
-    {
-        if (isAggro && aggroTimer < aggroTime && PlayerController.Instance.isAlive)
-        {
-            target = PlayerController.Instance.gameObject;
-            aggroTimer += Time.deltaTime;
-        }
-        else if (isAggro && (aggroTimer >= aggroTime || !PlayerController.Instance.isAlive))
-        {
-            isAggro = false;
-            aggroTimer = 0;
-            ContinuePatrol();
-        }
-        else if (!isAggro)
-        {
-            aggroTimer = 0;
-        }
-    }
-
-    virtual public void CheckLineOfSight()
-    {
-        Ray lineOfSight = new Ray();
-        lineOfSight.origin = transform.position;
-        lineOfSight.direction = new Vector2(facingDirection, 0);
-
-        Debug.DrawRay(lineOfSight.origin, new Vector3(aggroRange * facingDirection, 0, 0), Color.yellow);
-
-        RaycastHit2D hit = Physics2D.Raycast(lineOfSight.origin, lineOfSight.direction, aggroRange, 1 << LayerMask.NameToLayer("Player"));
-        if (hit)
-        {
-            if (!isAggro)
-            {
-                isAggro = true;
-                target = PlayerController.Instance.gameObject;
-            }
-            else
-            {
-                aggroTimer = 0;
-            }
-        }
-
     }
 
     virtual public void OnTriggerEnter2D(Collider2D collision)
     {
-        //checking to see if the enemy reached a patrol point
-        if (collision.tag == "PatrolPoint" && target != null && target == collision.gameObject && (transform.position.y >= collision.transform.position.y || isUnderwater))
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            ContinuePatrol();
-        }
-
         //checking to see if the enemy is underwater
         if (collision.tag == "Water")
         {
             isUnderwater = true;
             jumpCooldown = 0.2f;
-        }
-
-    }
-
-    virtual public void OnTriggerStay2D(Collider2D collision)
-    {
-        //checking to see if the enemy reached a patrol point
-        if (collision.tag == "PatrolPoint" && target != null && target == collision.gameObject && transform.position.y >= collision.transform.position.y)
-        {
-            ContinuePatrol();
         }
 
     }
@@ -553,100 +456,6 @@ public class Boss : Actor{
 
     virtual public void KillBoss()
     {
-        int coinChance = Random.Range(0, 10) + 1;
-        int partChance = Random.Range(0, 10) + 1;
-
-        //If the enemy is supposed to always drop a part, overwrite partChance to be 10
-        if (alwaysDropPart)
-        {
-            partChance = 10;
-        }
-
-        //6 to 10, 50% chance of getting coins
-        if (coinChance >= 6)
-        {
-            //Grab a random coin value from 1 to 5, create the coin, and set it's value
-            int coinValue = Random.Range(0, 5) + 1;
-            GameObject coin = Instantiate(Resources.Load<GameObject>("Prefabs/DroppedItems/Coin"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-            coin.GetComponent<Coin>().value = coinValue;
-        }
-
-        //6 to 10, 50% chance of getting a monster part
-        if (partChance >= 6)
-        {
-            //Grab a random number from 1 to 5. This number represents one of the 5 parts (Head, Torso, Left Arm, Right Arm, Legs)
-            int partToGet = Random.Range(0, 4) + 1;
-
-            //If the enemy is always supposed to drop a part, set partToGet to the correct value based on what part it's supposed to drop
-            if (alwaysDropPart)
-            {
-                switch (partToAlwaysDrop)
-                {
-                    case Helper.PartType.Head:
-                        partToGet = 1;
-                        break;
-                    case Helper.PartType.Torso:
-                        partToGet = 2;
-                        break;
-                    case "Arms":
-                        partToGet = 3;
-                        break;
-                    case Helper.PartType.Legs:
-                        partToGet = 4;
-                        break;
-                }
-            }
-
-            if (monsterName != "")
-            {
-                if (partToGet == 1)
-                {
-                    //Head
-                    GameObject droppedHead = Instantiate(Resources.Load<GameObject>("Prefabs/DroppedItems/DroppedHead"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-                    droppedHead.GetComponent<DroppedPart>().partType = Helper.PartType.Head;
-                    droppedHead.GetComponent<DroppedPart>().monsterName = monsterName;
-                    droppedHead.GetComponent<HeadPart>().InitializePart(PartFactory.GetHeadPartInfo(monsterName));
-                }
-                else if (partToGet == 2)
-                {
-                    //Torso
-                    GameObject droppedTorso = Instantiate(Resources.Load<GameObject>("Prefabs/DroppedItems/DroppedTorso"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-                    droppedTorso.GetComponent<DroppedPart>().partType = Helper.PartType.Torso;
-                    droppedTorso.GetComponent<DroppedPart>().monsterName = monsterName;
-                    droppedTorso.GetComponent<TorsoPart>().InitializePart(PartFactory.GetTorsoPartInfo(monsterName));
-                }
-                else if (partToGet == 3)
-                {
-                    //deciding whether to drop the left or right arm
-                    int armToGet = Random.Range(0, 2) + 1;
-                    if (armToGet == 1)
-                    {
-                        //Left Arm
-                        GameObject droppedLeftArm = Instantiate(Resources.Load<GameObject>("Prefabs/DroppedItems/DroppedLeftArm"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-                        droppedLeftArm.GetComponent<DroppedPart>().partType = Helper.PartType.LeftArm;
-                        droppedLeftArm.GetComponent<DroppedPart>().monsterName = monsterName;
-                        droppedLeftArm.GetComponent<ArmPart>().InitializePart(PartFactory.GetArmPartInfo(monsterName, "LeftArm"));
-                    }
-                    else if (armToGet == 2)
-                    {
-                        //Right Arm
-                        GameObject droppedRightArm = Instantiate(Resources.Load<GameObject>("Prefabs/DroppedItems/DroppedRightArm"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-                        droppedRightArm.GetComponent<DroppedPart>().partType = Helper.PartType.RightArm;
-                        droppedRightArm.GetComponent<DroppedPart>().monsterName = monsterName;
-                        droppedRightArm.GetComponent<ArmPart>().InitializePart(PartFactory.GetArmPartInfo(monsterName, "RightArm"));
-                    }
-                }
-                else if (partToGet == 4)
-                {
-                    //Legs
-                    GameObject droppedLegs = Instantiate(Resources.Load<GameObject>("Prefabs/DroppedItems/DroppedLegs"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-                    droppedLegs.GetComponent<DroppedPart>().partType = Helper.PartType.Legs;
-                    droppedLegs.GetComponent<DroppedPart>().monsterName = monsterName;
-                    droppedLegs.GetComponent<LegPart>().InitializePart(PartFactory.GetLegPartInfo(monsterName));
-                }
-            }
-        }
-
         Destroy(gameObject);
     }
 }
