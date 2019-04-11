@@ -48,6 +48,10 @@ public class Boss : Enemy{
 
     override public void FixedUpdate()
     {
+        if (!PlayerController.Instance.isAlive)
+        {
+            target = null;
+        }
         //attacking if aggro
         if (target != null && PlayerIsInAttackRange())
         {
