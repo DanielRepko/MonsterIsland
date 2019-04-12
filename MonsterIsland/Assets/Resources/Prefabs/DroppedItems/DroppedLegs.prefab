@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4101519311990800}
   - component: {fileID: 212929882246409966}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Thigh.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4311586452602470}
   - component: {fileID: 212605573811841932}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Shin.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4431598802330120}
   - component: {fileID: 212643932562858480}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Foot.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 61951719292841748}
   - component: {fileID: 114556981119996854}
   - component: {fileID: 114500082969501898}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: DroppedLegs
   m_TagString: PartDrop
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4354390663744588}
   - component: {fileID: 212249757821373644}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Pelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4515412338502516}
   - component: {fileID: 212183595403031788}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Thigh.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4607766294825028}
   - component: {fileID: 212197317689147412}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Shin.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4502328914129234}
   - component: {fileID: 212325108788417146}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Foot.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
