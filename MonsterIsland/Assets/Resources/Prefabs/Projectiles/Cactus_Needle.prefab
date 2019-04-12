@@ -51,7 +51,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1808023516098108}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -100,9 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponRenderer: {fileID: 0}
-  damage: 2
+  damage: 1
   speed: 25
-  target: Player
+  target: Enemy
+  unsetTriggerTime: 0.2
 --- !u!212 &212886728196738284
 SpriteRenderer:
   m_ObjectHideFlags: 1
