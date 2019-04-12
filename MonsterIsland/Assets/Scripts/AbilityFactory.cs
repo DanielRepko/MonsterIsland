@@ -112,8 +112,8 @@ public class AbilityFactory : MonoBehaviour {
 
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(laser.GetComponent<Projectile>().speed * player.facingDirection, 0);
         //getting the AudioClip to play
-        AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Laser/laser_24");
-        AudioManager.Instance.PlaySound(jumpSound);
+        AudioClip laserSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Laser/laser_24");
+        AudioManager.Instance.PlaySound(laserSound);
     }
 
     //Head Ability (Activate): Allows the player to attack with a tongue flick
@@ -308,6 +308,10 @@ public class AbilityFactory : MonoBehaviour {
         player.animator.Play(armType + Helper.GetAnimDirection(player.facingDirection, armType) + "ShootAnim");
 
         drill.GetComponent<Rigidbody2D>().velocity = new Vector2(drill.GetComponent<Projectile>().speed * player.facingDirection, 0);
+
+        //playing the sound effect
+        AudioClip shootSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Laser/laser_02");
+        AudioManager.Instance.PlaySound(shootSound);
     }
 
     //Arm Ability (Passive): Increases the player's melee damage, does not affect weapon damage
@@ -380,6 +384,10 @@ public class AbilityFactory : MonoBehaviour {
         upNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, speed / 2);
         middleNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, 0);
         downNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, -speed / 2);
+
+        //playing the sound effect
+        AudioClip shootSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Laser/laser_02");
+        AudioManager.Instance.PlaySound(shootSound);
     }
 
     //Arm Ability (Passive): Makes the player fall slower, effect can stack with other arm

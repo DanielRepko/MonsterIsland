@@ -321,8 +321,8 @@ public class PlayerController : Actor {
             inHitStun = true;
 
             //getting the AudioClip to play
-            AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Hit/hit_27");
-            AudioManager.Instance.PlaySound(jumpSound);
+            AudioClip hitSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Hit/hit_27");
+            AudioManager.Instance.PlaySound(hitSound);
         }
     }
 
