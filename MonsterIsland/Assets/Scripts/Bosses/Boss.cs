@@ -24,6 +24,7 @@ public class Boss : Enemy{
     public float rightAttackCooldown = 0.5f;
     public float leftAttackCooldown = 0.5f;
 
+    public bool startFlipped = false;
 
     // Use this for initialization
     override public void Start()
@@ -102,10 +103,13 @@ public class Boss : Enemy{
         checkDelegate += UpdateCooldowns;
         checkDelegate += FollowTarget;
 
-        
-        //setting the cooldown timers so that the player can use the inputs as soon as the game loads
 
-        SetFacingDirection(transform.localScale.x);
+        //setting the cooldown timers so that the player can use the inputs as soon as the game loads
+        if (!startFlipped) {
+            SetFacingDirection(transform.localScale.x);
+        } else {
+            SetFacingDirection(-transform.localScale.x);
+        }
         SetCooldowns();
     }
 

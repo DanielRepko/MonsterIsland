@@ -3,29 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timeline;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class CutsceneManager : MonoBehaviour {
+    
+    private PlayableDirector director;
 
-    public static CutsceneManager Instance;
-    public PlayableDirector director;
-    public GameObject playerCamera;
-    public PlayerController playerController;
-    public GameObject gameplayCanvas;
-    public TimelineAsset activateDesertGem;
-    public TimelineAsset activateUnderwaterGem;
-    public TimelineAsset activateJungleGem;
-    public TimelineAsset finalDesertGem;
-    public TimelineAsset finalUnderwaterGem;
-    public TimelineAsset finalJungleGem;
-    public TimelineAsset openGate;
-
-    private void Awake() {
-        if(Instance == null) {
-            Instance = this;
-        } else if (Instance != this) {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
+    private void Start() {
+        director = GetComponent<PlayableDirector>();
     }
 
     // Update is called once per frame
@@ -36,70 +21,106 @@ public class CutsceneManager : MonoBehaviour {
     IEnumerator EndCutscene() {
         yield return new WaitForSeconds((float) director.duration);
 
-        playerController.enabled = true;
-        gameplayCanvas.SetActive(true);
-        playerCamera.SetActive(true);
+        GetComponent<PlayableDirector>().playableAsset = null;
+        PlayerController.Instance.enabled = true;
+        PlayerController.Instance.gameObject.transform.Find("GameplayCanvas").gameObject.SetActive(true);
+        PlayerController.Instance.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
     }
 
-    private void SetupCutscene() {
-        playerController.enabled = false;
-        gameplayCanvas.SetActive(false);
-        playerCamera.SetActive(false);
+    IEnumerator StartBossFight() {
+        yield return new WaitForSeconds((float) director.duration);
+
+        GetComponent<PlayableDirector>().playableAsset = null;
+        PlayerController.Instance.enabled = true;
+        PlayerController.Instance.gameObject.transform.Find("GameplayCanvas").gameObject.SetActive(true);
+        FindObjectOfType<Boss>().target = PlayerController.Instance.gameObject;
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.bossMusic, true);
+    }
+
+    private void SetupCutscene(bool stopMusic) {
+        if(stopMusic) {
+            AudioManager.Instance.musicAudioSource.Stop();
+        }
+        PlayerController.Instance.enabled = false;
+        PlayerController.Instance.gameObject.transform.Find("GameplayCanvas").gameObject.SetActive(false);
+        PlayerController.Instance.gameObject.transform.Find("Main Camera").gameObject.SetActive(false);
     }
 
     public void PlayActivateDesertGem() {
-        SetupCutscene();
+        SetupCutscene(false);
 
-        director.Play(activateDesertGem);
+        director.Play(Resources.Load<TimelineAsset>("ActivateDesertGem"));
 
         StartCoroutine("EndCutscene");
     }
 
     public void PlayActivateUnderwaterGem() {
-        SetupCutscene();
+        SetupCutscene(false);
 
-        director.Play(activateUnderwaterGem);
+        director.Play(Resources.Load<TimelineAsset>("ActivateUnderwaterGem"));
 
         StartCoroutine("EndCutscene");
     }
 
     public void PlayActivateJungleGem() {
-        SetupCutscene();
+        SetupCutscene(false);
 
-        director.Play(activateUnderwaterGem);
+        director.Play(Resources.Load<TimelineAsset>("ActivateJungleGem"));
 
         StartCoroutine("EndCutscene");
     }
 
     public void PlayFinalDesertGem() {
-        SetupCutscene();
+        SetupCutscene(false);
 
-        director.Play(finalDesertGem);
+        director.Play(Resources.Load<TimelineAsset>("FinalDesertGem"));
 
         StartCoroutine("EndCutscene");
     }
 
     public void PlayFinalUnderwaterGem() {
-        SetupCutscene();
+        SetupCutscene(false);
 
-        director.Play(finalUnderwaterGem);
+        director.Play(Resources.Load<TimelineAsset>("FinalUnderwaterGem"));
 
         StartCoroutine("EndCutscene");
     }
 
     public void PlayFinalJungleGem() {
-        SetupCutscene();
+        SetupCutscene(false);
 
-        director.Play(finalJungleGem);
+        director.Play(Resources.Load<TimelineAsset>("FinalJungleGem"));
 
         StartCoroutine("EndCutscene");
     }
 
     public void PlayOpenGate() {
-        SetupCutscene();
+        SetupCutscene(false);
 
-        director.Play(openGate);
+        director.Play(Resources.Load<TimelineAsset>("OpenGate"));
 
         StartCoroutine("EndCutscene");
+    }
+
+    public void PlayBossStart() {
+        SetupCutscene(true);
+
+        director.Play();
+
+        StartCoroutine("StartBossFight");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.tag == "Player") {
+            switch (SceneManager.GetActiveScene().name) {
+                case "Plains":
+                case "Desert":
+                case "Underwater":
+                case "Jungle":
+                    PlayBossStart();
+                    break;
+            }
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 }
