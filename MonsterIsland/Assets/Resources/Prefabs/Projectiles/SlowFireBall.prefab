@@ -72,7 +72,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -93,6 +93,7 @@ MonoBehaviour:
   damage: 3
   speed: 6
   target: Player
+  unsetTriggerTime: 0.5
   timeTillDestroy: 6
 --- !u!212 &212447030412231462
 SpriteRenderer:

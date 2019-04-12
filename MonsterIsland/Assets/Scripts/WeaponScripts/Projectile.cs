@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour {
     public int speed;
     public string target;
 
-    protected float unsetTriggerTime = 0.05f;
+    public float unsetTriggerTime = 0.2f;
     protected float unsetTriggerTimer = 0;
 
     protected float offScreenTime = 2;
@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour {
         {
             GetComponent<BoxCollider2D>().isTrigger = false;
         }
-        
+
     }
 
     public void CheckOffScreenStatus()

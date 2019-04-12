@@ -12,7 +12,6 @@ public class DragonBoss : Boss {
         height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
 
         InitializeEnemy();
-        UseAttack("SlowBurn");
     }
 
     // Update is called once per frame
@@ -84,12 +83,30 @@ public class DragonBoss : Boss {
     {
         switch (attackName)
         {
-            case "SlowBurn":
+            case "Slow Burn":
                 GameObject slowFireBall = Instantiate(Resources.Load<GameObject>("Prefabs/Projectiles/SlowFireBall"), transform.position, Quaternion.identity);
                 ShootAtPlayer(slowFireBall);
                 break;
-            default:
+            case "Fire Bolt":
+                GameObject fireBolt = Instantiate(Resources.Load<GameObject>("Prefabs/Projectiles/FireBolt"), transform.position, Quaternion.identity);
+                fireBolt.transform.right = (PlayerController.Instance.transform.position - fireBolt.transform.position).normalized;
+                ShootAtPlayer(fireBolt);
                 break;
+            case "Multi Flame":
+                GameObject fireBolt1 = Instantiate(Resources.Load<GameObject>("Prefabs/Projectiles/FireBolt"), transform.position, Quaternion.Euler(0,0,-140));
+                GameObject fireBolt2 = Instantiate(Resources.Load<GameObject>("Prefabs/Projectiles/FireBolt"), transform.position, Quaternion.Euler(0, 0, -120));
+                GameObject fireBolt3 = Instantiate(Resources.Load<GameObject>("Prefabs/Projectiles/FireBolt"), transform.position, Quaternion.Euler(0, 0, -90));
+                GameObject fireBolt4 = Instantiate(Resources.Load<GameObject>("Prefabs/Projectiles/FireBolt"), transform.position, Quaternion.Euler(0, 0, -60));
+                GameObject fireBolt5 = Instantiate(Resources.Load<GameObject>("Prefabs/Projectiles/FireBolt"), transform.position, Quaternion.Euler(0, 0, -40));
+
+                fireBolt1.GetComponent<Rigidbody2D>().velocity = fireBolt1.transform.right * fireBolt1.GetComponent<Projectile>().speed;
+                fireBolt2.GetComponent<Rigidbody2D>().velocity = fireBolt2.transform.right * fireBolt2.GetComponent<Projectile>().speed;
+                fireBolt3.GetComponent<Rigidbody2D>().velocity = fireBolt3.transform.right * fireBolt3.GetComponent<Projectile>().speed;
+                fireBolt4.GetComponent<Rigidbody2D>().velocity = fireBolt4.transform.right * fireBolt4.GetComponent<Projectile>().speed;
+                fireBolt5.GetComponent<Rigidbody2D>().velocity = fireBolt5.transform.right * fireBolt5.GetComponent<Projectile>().speed;
+                break;
+            default:
+                break;            
         }
     }
 
