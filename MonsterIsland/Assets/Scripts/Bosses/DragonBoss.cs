@@ -5,7 +5,6 @@ using UnityEngine;
 public class DragonBoss : Boss {
 
     public Animator wingsAnimator;
-    public bool dontTurn;
 
     // Use this for initialization
     override public void Start()
@@ -71,8 +70,6 @@ public class DragonBoss : Boss {
 
     override public void SetFacingDirection(float scaleX)
     {
-        if (dontTurn)
-        {
             //checking to see whether scaleX is indicating left or right (may not always be passed as -1 or 1)
             if (scaleX < 0)
             {
@@ -85,7 +82,6 @@ public class DragonBoss : Boss {
 
             transform.localScale = new Vector3(facingDirection, 1, 1);
             monster.ChangeDirection(facingDirection);
-        }
     }
 
     override public void TakeDamage(int damage, float knockBackDirection)
