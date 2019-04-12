@@ -9,7 +9,6 @@ public class CutsceneManager : MonoBehaviour {
     public static CutsceneManager Instance;
     public PlayableDirector director;
     public GameObject playerCamera;
-    public PlayerController playerController;
     public GameObject gameplayCanvas;
     public TimelineAsset activateDesertGem;
     public TimelineAsset activateUnderwaterGem;
@@ -18,6 +17,7 @@ public class CutsceneManager : MonoBehaviour {
     public TimelineAsset finalUnderwaterGem;
     public TimelineAsset finalJungleGem;
     public TimelineAsset openGate;
+    public TimelineAsset plainsBossStart;
 
     private void Awake() {
         if(Instance == null) {
@@ -36,19 +36,33 @@ public class CutsceneManager : MonoBehaviour {
     IEnumerator EndCutscene() {
         yield return new WaitForSeconds((float) director.duration);
 
-        playerController.enabled = true;
+        director.playableAsset = null;
+        PlayerController.Instance.enabled = true;
         gameplayCanvas.SetActive(true);
         playerCamera.SetActive(true);
     }
 
-    private void SetupCutscene() {
-        playerController.enabled = false;
+    IEnumerator StartBossFight() {
+        yield return new WaitForSeconds((float) director.duration);
+
+        director.playableAsset = null;
+        PlayerController.Instance.enabled = true;
+        gameplayCanvas.SetActive(true);
+        FindObjectOfType<Boss>().target = PlayerController.Instance.gameObject;
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.bossMusic, true);
+    }
+
+    private void SetupCutscene(bool stopMusic) {
+        if(stopMusic) {
+            AudioManager.Instance.musicAudioSource.Stop();
+        }
+        PlayerController.Instance.enabled = false;
         gameplayCanvas.SetActive(false);
         playerCamera.SetActive(false);
     }
 
     public void PlayActivateDesertGem() {
-        SetupCutscene();
+        SetupCutscene(false);
 
         director.Play(activateDesertGem);
 
@@ -56,7 +70,7 @@ public class CutsceneManager : MonoBehaviour {
     }
 
     public void PlayActivateUnderwaterGem() {
-        SetupCutscene();
+        SetupCutscene(false);
 
         director.Play(activateUnderwaterGem);
 
@@ -64,7 +78,7 @@ public class CutsceneManager : MonoBehaviour {
     }
 
     public void PlayActivateJungleGem() {
-        SetupCutscene();
+        SetupCutscene(false);
 
         director.Play(activateUnderwaterGem);
 
@@ -72,7 +86,7 @@ public class CutsceneManager : MonoBehaviour {
     }
 
     public void PlayFinalDesertGem() {
-        SetupCutscene();
+        SetupCutscene(false);
 
         director.Play(finalDesertGem);
 
@@ -80,7 +94,7 @@ public class CutsceneManager : MonoBehaviour {
     }
 
     public void PlayFinalUnderwaterGem() {
-        SetupCutscene();
+        SetupCutscene(false);
 
         director.Play(finalUnderwaterGem);
 
@@ -88,7 +102,7 @@ public class CutsceneManager : MonoBehaviour {
     }
 
     public void PlayFinalJungleGem() {
-        SetupCutscene();
+        SetupCutscene(false);
 
         director.Play(finalJungleGem);
 
@@ -96,10 +110,18 @@ public class CutsceneManager : MonoBehaviour {
     }
 
     public void PlayOpenGate() {
-        SetupCutscene();
+        SetupCutscene(false);
 
         director.Play(openGate);
 
         StartCoroutine("EndCutscene");
+    }
+
+    public void PlayPlainsBossStart() {
+        SetupCutscene(true);
+
+        director.Play(plainsBossStart);
+
+        StartCoroutine("StartBossFight");
     }
 }

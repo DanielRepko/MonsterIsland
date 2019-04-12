@@ -653,6 +653,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   shopPanel: {fileID: 0}
   shopMoneyText: {fileID: 0}
   shopWeapon1Button: {fileID: 0}
@@ -703,6 +709,7 @@ MonoBehaviour:
   finalUnderwaterGem: {fileID: 11400000, guid: 38412f886381e2049a73db639a0660f6, type: 2}
   finalJungleGem: {fileID: 11400000, guid: af5ef919ee26367499c0ee2b935fa0eb, type: 2}
   openGate: {fileID: 11400000, guid: 943bb0829e5ac344686e4fb5f0189b8a, type: 2}
+  plainsBossStart: {fileID: 11400000, guid: 471f7b2cf6c4dba40a0f708a33c31230, type: 2}
 --- !u!114 &114629648450477680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -736,7 +743,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 0}
-  m_InitialState: 0
+  m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -802,6 +809,18 @@ PlayableDirector:
   - key: {fileID: 114487887398615086, guid: af5ef919ee26367499c0ee2b935fa0eb, type: 2}
     value: {fileID: 0}
   - key: {fileID: 114976458845130666, guid: 38412f886381e2049a73db639a0660f6, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 114036847173067564, guid: 471f7b2cf6c4dba40a0f708a33c31230, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 114029294623843182, guid: 471f7b2cf6c4dba40a0f708a33c31230, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 114419173858365922, guid: 471f7b2cf6c4dba40a0f708a33c31230, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 114159843399400406, guid: 471f7b2cf6c4dba40a0f708a33c31230, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
