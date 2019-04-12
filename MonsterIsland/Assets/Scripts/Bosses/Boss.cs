@@ -90,7 +90,7 @@ public class Boss : Enemy{
         leftArmInfo.equippedWeapon = equippedLeftWeapon;       
 
         rightAttackDelegate = RightAttack;
-        leftAttackDelegate = LeftAttack; 
+        leftAttackDelegate = LeftAttack;
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
 
