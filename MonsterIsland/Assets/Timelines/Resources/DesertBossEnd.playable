@@ -2427,10 +2427,10 @@ MonoBehaviour:
   m_Parent: {fileID: 11400000}
   m_Children: []
   m_Clips:
-  - m_Start: 3.0000000000000004
+  - m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: 114873087274791280}
-    m_Duration: 5
+    m_Duration: 3
     m_TimeScale: 1
     m_ParentTrack: {fileID: 114712973377427842}
     m_EaseInDuration: 0
