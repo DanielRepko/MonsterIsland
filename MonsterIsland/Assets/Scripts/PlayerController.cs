@@ -260,6 +260,10 @@ public class PlayerController : Actor {
             //calling the jump animation
             animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+            //getting the AudioClip to play
+            AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Jump/jump_20");
+            AudioManager.Instance.PlaySound(jumpSound);
         }
     }
 

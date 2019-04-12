@@ -455,14 +455,22 @@ public class AbilityFactory : MonoBehaviour {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
-            }
+
+            //getting the AudioClip to play
+            AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Jump/jump_20");
+            AudioManager.Instance.PlaySound(jumpSound);
+        }
             else if (!player.IsOnGround() && player.hasExtraJump && !player.isUnderwater)
             {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
                 player.hasExtraJump = false;
-            }
+
+                //getting the AudioClip to play
+                AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Jump/jump_20");
+                AudioManager.Instance.PlaySound(jumpSound);
+        }
     }
 
     //Leg Ability (Passive): Increases the player's jump height
@@ -482,6 +490,10 @@ public class AbilityFactory : MonoBehaviour {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
+
+                //getting the AudioClip to play
+                AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Jump/jump_20");
+                AudioManager.Instance.PlaySound(jumpSound);
             }
             else if (!player.IsOnGround() && player.hasExtraJump && !player.isUnderwater)
             {
