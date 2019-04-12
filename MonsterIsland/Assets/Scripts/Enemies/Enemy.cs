@@ -354,7 +354,7 @@ public class Enemy : Actor {
             attackRay.direction = new Vector2(facingDirection, 0);
 
             Debug.DrawRay(attackRay.origin, new Vector3(attackRange * facingDirection, 0, 0), Color.red);
-
+            
             RaycastHit2D attackHit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Player"));
             if (attackHit)
             {

@@ -21,12 +21,14 @@ public class LobsterBoss : Boss {
         }
         pincerRay.direction = new Vector2(facingDirection, 0);
 
-        RaycastHit2D hit = Physics2D.Raycast(pincerRay.origin, pincerRay.direction, 5f, 1 << LayerMask.NameToLayer("Player"));
-        if (hit)
+        int mask =~ LayerMask.GetMask("Enemy");
+        RaycastHit2D playerHit = Physics2D.Raycast(pincerRay.origin, pincerRay.direction, 5f, 1 << mask);
+
+        if (playerHit)
         {
-            if (hit.collider == PlayerController.Instance.hurtBox)
+            if (playerHit.collider == PlayerController.Instance.hurtBox)
             {
-                PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, hit.transform));
+                PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, playerHit.transform));
             }
         }
     }
@@ -48,7 +50,8 @@ public class LobsterBoss : Boss {
         }
         pincerRay.direction = new Vector2(facingDirection, 0);
 
-        RaycastHit2D hit = Physics2D.Raycast(pincerRay.origin, pincerRay.direction, 5f, 1 << LayerMask.NameToLayer("Player"));
+        int mask =~ LayerMask.GetMask("Enemy");
+        RaycastHit2D hit = Physics2D.Raycast(pincerRay.origin, pincerRay.direction, 5f, 1 << mask);
         if (hit)
         {
             if (hit.collider == PlayerController.Instance.hurtBox)
