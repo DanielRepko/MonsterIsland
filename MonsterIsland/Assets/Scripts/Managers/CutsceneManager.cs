@@ -20,21 +20,32 @@ public class CutsceneManager : MonoBehaviour {
 
     IEnumerator EndCutscene() {
         yield return new WaitForSeconds((float) director.duration);
-
-        GetComponent<PlayableDirector>().playableAsset = null;
+        
         PlayerController.Instance.enabled = true;
         PlayerController.Instance.gameObject.transform.Find("GameplayCanvas").gameObject.SetActive(true);
         PlayerController.Instance.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
+        if(!AudioManager.Instance.musicAudioSource.isPlaying) {
+            AudioManager.Instance.LoadLevelMusic(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        }
     }
 
     IEnumerator StartBossFight() {
         yield return new WaitForSeconds((float) director.duration);
-
-        GetComponent<PlayableDirector>().playableAsset = null;
+        
         PlayerController.Instance.enabled = true;
         PlayerController.Instance.gameObject.transform.Find("GameplayCanvas").gameObject.SetActive(true);
         FindObjectOfType<Boss>().target = PlayerController.Instance.gameObject;
         AudioManager.Instance.PlayMusic(AudioManager.Instance.bossMusic, true);
+    }
+
+    public void StopBossFight() {
+        var boss = FindObjectOfType<Boss>();
+        if(boss != null) {
+            FindObjectOfType<Boss>().target = null;
+        }
+        AudioManager.Instance.musicAudioSource.Stop();
+        PlayerController.Instance.enabled = false;
+        PlayerController.Instance.gameObject.transform.Find("GameplayCanvas").gameObject.SetActive(false);
     }
 
     private void SetupCutscene(bool stopMusic) {
@@ -110,8 +121,17 @@ public class CutsceneManager : MonoBehaviour {
         StartCoroutine("StartBossFight");
     }
 
+    public void PlayBossEnd() {
+        StopBossFight();
+
+        director.Play();
+
+        StartCoroutine("EndCutscene");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.tag == "Player") {
+        if (collision.tag == "Player" && gameObject.name != "EndOfFightTrigger") {
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             switch (SceneManager.GetActiveScene().name) {
                 case "Plains":
                 case "Desert":
@@ -120,7 +140,16 @@ public class CutsceneManager : MonoBehaviour {
                     PlayBossStart();
                     break;
             }
+        } else if (collision.tag == "Player" && gameObject.name == "EndOfFightTrigger") {
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            switch (SceneManager.GetActiveScene().name) {
+                case "Desert":
+                case "Underwater":
+                case "Jungle":
+                case "Skyland":
+                    PlayBossEnd();
+                    break;
+            }
         }
     }
 }

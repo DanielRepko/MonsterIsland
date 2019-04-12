@@ -302,7 +302,8 @@ public class Boss : Enemy{
 
     virtual public void KillBoss()
     {
-        Destroy(gameObject);
+        GameObject.Find("EndOfFightTrigger").GetComponent<BoxCollider2D>().enabled = true;
+        //Destroy(gameObject);
     }
 
     override public void KillEnemy()

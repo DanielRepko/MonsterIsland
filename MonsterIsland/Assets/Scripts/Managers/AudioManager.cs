@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour {
 	}
 
     //Starts playing music depending on which level scene was entered
-    private void LoadLevelMusic(Scene scene, LoadSceneMode mode) {
+    public void LoadLevelMusic(Scene scene, LoadSceneMode mode) {
         switch (scene.name) {
             case "Plains":
                     PlayMusic(plainsMusic, true);
