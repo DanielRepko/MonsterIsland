@@ -12,6 +12,7 @@ public class DragonBoss : Boss {
         height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
 
         InitializeEnemy();
+        DragonBossFight.DragonFightDirector.Play(DragonBossFight.DragonFightDirector.playableAsset);
     }
 
     // Update is called once per frame
@@ -31,6 +32,9 @@ public class DragonBoss : Boss {
         {
             target = null;
         }
+
+        float lookTarget = (PlayerController.Instance.transform.position - transform.position).normalized.x;
+        SetFacingDirection(lookTarget);
 
         //running any necessary checks on the Enemy
         //checkDelegate();
