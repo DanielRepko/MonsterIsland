@@ -39,5 +39,9 @@ public class Cactus : Enemy {
         upNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * facingDirection, speed / 2);
         middleNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * facingDirection, 0);
         downNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * facingDirection, -speed / 2);
+
+        //playing the sound effect
+        AudioClip shootSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Laser/laser_02");
+        AudioManager.Instance.PlaySound(shootSound);
     }
 }

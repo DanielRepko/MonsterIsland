@@ -160,6 +160,9 @@ public class Weapon {
         {
             //play shoot animation
             actor.animator.Play(ArmEquippedOn + Helper.GetAnimDirection(actor.facingDirection, ArmEquippedOn) + "ShootAnim");
+
+            AudioClip shootSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Laser/laser_02");
+            AudioManager.Instance.PlaySound(shootSound);
         }
     }
 

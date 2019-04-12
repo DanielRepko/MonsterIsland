@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour {
     public int speed;
     public string target;
 
-    public float unsetTriggerTime = 0.2f;
+    public float unsetTriggerTime = 0.02f;
     protected float unsetTriggerTimer = 0;
 
     protected float offScreenTime = 2;
@@ -50,6 +50,45 @@ public class Projectile : MonoBehaviour {
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Ground")
+        {
+            Destroy(gameObject);
+        }
+        if (target == "Enemy")
+        {
+            if (collision.collider.tag == "Enemy")
+            {
+                Enemy enemy = collision.collider.GetComponent<Enemy>();
+                if (enemy != null && collision.collider == enemy.hurtBox)
+                {
+                    enemy.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
+        else if (target == "Player")
+        {
+            if (collision.collider.tag == "Player")
+            {
+                if (collision.collider == PlayerController.Instance.hurtBox)
+                {
+                    PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.tag == "Ground")
         {

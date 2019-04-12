@@ -90,6 +90,9 @@ public class DragonBoss : Boss {
         {
             //animator.Play(); insert dragon specific hurt animation
             health -= damage;
+            //getting the AudioClip to play
+            AudioClip hitSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Hit/hit_27");
+            AudioManager.Instance.PlaySound(hitSound);
         }
     }
 

@@ -19,6 +19,12 @@ public class StickyBomb : MonoBehaviour {
             }
             Destroy(gameObject);
         }
+
+        if (exploded)
+        {
+            AudioClip explodeSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Explosions/explosion_07");
+            AudioManager.Instance.PlaySound(explodeSound);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
