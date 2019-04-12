@@ -147,6 +147,25 @@ public class CutsceneManager : MonoBehaviour {
 
     public void PlayFinalBossEnd() {
         GameObject.Find("BossFightDirector").GetComponent<PlayableDirector>().Stop();
+        AudioManager.Instance.musicAudioSource.Stop();
+        PlayerController.Instance.enabled = false;
+        PlayerController.Instance.gameObject.transform.Find("GameplayCanvas").gameObject.SetActive(false);
+
+        director.Play();
+
+        StartCoroutine("LoadCredits");
+    }
+
+    IEnumerable LoadCredits() {
+        yield return new WaitForSeconds((float) director.duration);
+        GameManager.instance.gameFile = null;
+        GameManager.instance.fileNumber = -1;
+        foreach (Transform manager in ManagerManager.instance.transform) {
+            Destroy(manager.gameObject);
+        }
+        Destroy(ManagerManager.instance.gameObject);
+        Destroy(PlayerController.Instance.gameObject);
+        SceneManager.LoadScene("Credits");
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

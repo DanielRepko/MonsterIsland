@@ -135,11 +135,6 @@ public class DragonBoss : Boss {
         projectile.GetComponent<Rigidbody2D>().velocity = destination * projectile.GetComponent<Projectile>().speed;
     }
 
-    override public void KillBoss()
-    {
-        Destroy(gameObject);
-    }
-
     /*
      * all methods below this point are overridden to be empty because they are not needed for this boss as
      * most interactions and operations for this boss will be scripted (predetermined) in animations and timelines
