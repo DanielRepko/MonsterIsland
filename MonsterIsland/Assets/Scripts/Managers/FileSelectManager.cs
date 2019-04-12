@@ -10,8 +10,6 @@ public class FileSelectManager : MonoBehaviour {
 
     public Button playButton;
     public Button deleteButton;
-    public GameObject heartGroup;
-    public GameObject[] heartImages;
     public Text monsterName;
     public Text playTime;
     public Text areaName;
@@ -58,18 +56,6 @@ public class FileSelectManager : MonoBehaviour {
             var loadedFile = JsonUtility.FromJson<GameFile>(loadedFileJson);
             playButton.interactable = true;
             deleteButton.interactable = true;
-            heartGroup.SetActive(true);
-
-            //Current Hearts
-            int i = loadedFile.player.totalHearts / 2;
-            foreach(var heart in heartImages) {
-                if(i > 0) {
-                    heart.SetActive(true);
-                    i--;
-                } else {
-                    heart.SetActive(false);
-                }
-            }
 
             //General Information
             monsterName.text = loadedFile.player.name;
@@ -98,7 +84,6 @@ public class FileSelectManager : MonoBehaviour {
         } else {
             playButton.interactable = true;
             deleteButton.interactable = false;
-            heartGroup.SetActive(false);
             monsterName.text = "-----";
             playTime.text = "-----";
             areaName.text = "-----";
