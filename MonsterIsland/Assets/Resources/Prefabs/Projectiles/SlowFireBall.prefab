@@ -94,7 +94,7 @@ MonoBehaviour:
   speed: 6
   target: Player
   unsetTriggerTime: 0.5
-  timeTillDestroy: 4
+  timeTillDestroy: 3
 --- !u!212 &212447030412231462
 SpriteRenderer:
   m_ObjectHideFlags: 1
