@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DragonBoss : Boss {
 
+    public Animator wingsAnimator;
+
     // Use this for initialization
     override public void Start()
     {
@@ -23,6 +25,15 @@ public class DragonBoss : Boss {
         }
     }
 
+    public void StartFlapping()
+    {
+        wingsAnimator.enabled = true;
+    }
+
+    public void StopFlapping()
+    {
+        wingsAnimator.enabled = false;
+    }
     
 
     override public void FixedUpdate()
@@ -59,18 +70,18 @@ public class DragonBoss : Boss {
 
     override public void SetFacingDirection(float scaleX)
     {
-        //checking to see whether scaleX is indicating left or right (may not always be passed as -1 or 1)
-        if (scaleX < 0)
-        {
-            facingDirection = -1;
-        }
-        else
-        {
-            facingDirection = 1;
-        }
+            //checking to see whether scaleX is indicating left or right (may not always be passed as -1 or 1)
+            if (scaleX < 0)
+            {
+                facingDirection = -1;
+            }
+            else
+            {
+                facingDirection = 1;
+            }
 
-        transform.localScale = new Vector3(facingDirection, 1, 1);
-        monster.ChangeDirection(facingDirection);
+            transform.localScale = new Vector3(facingDirection, 1, 1);
+            monster.ChangeDirection(facingDirection);
     }
 
     override public void TakeDamage(int damage, float knockBackDirection)
