@@ -9,12 +9,13 @@ public class Projectile : MonoBehaviour {
     public int speed;
     public string target;
 
-    private float unsetTriggerTime = 0.05f;
-    private float unsetTriggerTimer = 0;
+    public float unsetTriggerTime = 0.2f;
+    protected float unsetTriggerTimer = 0;
 
-    private float offScreenTime = 2;
-    private float offScreenTimer;
-    private bool isOffScreen;
+    protected float offScreenTime = 2;
+    protected float offScreenTimer;
+    protected bool isOffScreen;
+    
 
     private void FixedUpdate()
     {
@@ -22,11 +23,11 @@ public class Projectile : MonoBehaviour {
         {
             unsetTriggerTimer += Time.deltaTime;
         }
-        else if(unsetTriggerTimer >= unsetTriggerTime && GetComponent<BoxCollider2D>().isTrigger)
+        else if(unsetTriggerTimer >= unsetTriggerTime && GetComponent<Collider2D>().isTrigger)
         {
-            GetComponent<BoxCollider2D>().isTrigger = false;
+            GetComponent<Collider2D>().isTrigger = false;
         }
-        
+
     }
 
     public void CheckOffScreenStatus()
