@@ -328,6 +328,7 @@ public class Boss : Enemy{
                 GameManager.instance.gameFile.gameProgression.defeatedBosses.castleBossDefeated = true;
                 break;
         }
+        PlayerController.Instance.maxHealth += 2;
         GameObject.Find("EndOfFightTrigger").GetComponent<BoxCollider2D>().enabled = true;
     }
 
