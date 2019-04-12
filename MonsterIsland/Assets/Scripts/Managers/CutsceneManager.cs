@@ -102,7 +102,7 @@ public class CutsceneManager : MonoBehaviour {
         StartCoroutine("EndCutscene");
     }
 
-    public void PlayPlainsBossStart() {
+    public void PlayBossStart() {
         SetupCutscene(true);
 
         director.Play();
@@ -114,7 +114,10 @@ public class CutsceneManager : MonoBehaviour {
         if (collision.tag == "Player") {
             switch (SceneManager.GetActiveScene().name) {
                 case "Plains":
-                    PlayPlainsBossStart();
+                case "Desert":
+                case "Underwater":
+                case "Jungle":
+                    PlayBossStart();
                     break;
             }
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
