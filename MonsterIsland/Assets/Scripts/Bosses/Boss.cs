@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boss : Enemy{
 
@@ -302,8 +303,32 @@ public class Boss : Enemy{
 
     virtual public void KillBoss()
     {
+        switch(SceneManager.GetActiveScene().name) {
+            case "Plains":
+                GameManager.instance.gameFile.gameProgression.defeatedBosses.plainsBossDefeated = true;
+                GameManager.instance.gameFile.gameProgression.collectedLegendaryParts.torsoCollected = true;
+                break;
+            case "Desert":
+                GameManager.instance.gameFile.gameProgression.defeatedBosses.desertBossDefeated = true;
+                GameManager.instance.gameFile.gameProgression.collectedLegendaryParts.rightArmCollected = true;
+                break;
+            case "Underwater":
+                GameManager.instance.gameFile.gameProgression.defeatedBosses.underwaterBossDefeated = true;
+                GameManager.instance.gameFile.gameProgression.collectedLegendaryParts.legsCollected = true;
+                break;
+            case "Jungle":
+                GameManager.instance.gameFile.gameProgression.defeatedBosses.jungleBossDefeated = true;
+                GameManager.instance.gameFile.gameProgression.collectedLegendaryParts.leftArmCollected = true;
+                break;
+            case "Skyland":
+                GameManager.instance.gameFile.gameProgression.defeatedBosses.skylandBossDefeated = true;
+                GameManager.instance.gameFile.gameProgression.collectedLegendaryParts.headCollected = true;
+                break;
+            case "Castle":
+                GameManager.instance.gameFile.gameProgression.defeatedBosses.castleBossDefeated = true;
+                break;
+        }
         GameObject.Find("EndOfFightTrigger").GetComponent<BoxCollider2D>().enabled = true;
-        //Destroy(gameObject);
     }
 
     override public void KillEnemy()

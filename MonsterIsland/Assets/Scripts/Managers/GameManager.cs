@@ -124,6 +124,12 @@ public class GameManager : MonoBehaviour {
         newFile.gameProgression.nestInfo.castleNest2 = false;
         newFile.gameProgression.nestInfo.castleNest3 = false;
 
+        //Hub Cutscenes Viewed
+        newFile.gameProgression.viewedCutscenes.desertGem = false;
+        newFile.gameProgression.viewedCutscenes.underwaterGem = false;
+        newFile.gameProgression.viewedCutscenes.jungleGem = false;
+        newFile.gameProgression.viewedCutscenes.castleGate = false;
+
         //Store the save file as the active gameFile, and save to a json file
         gameFile = newFile;
         var fileToJson = JsonUtility.ToJson(newFile);
