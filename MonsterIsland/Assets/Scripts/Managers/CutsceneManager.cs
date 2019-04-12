@@ -38,6 +38,14 @@ public class CutsceneManager : MonoBehaviour {
         AudioManager.Instance.PlayMusic(AudioManager.Instance.bossMusic, true);
     }
 
+    IEnumerator StartFinalBossFight() {
+        yield return new WaitForSeconds((float) director.duration);
+        PlayerController.Instance.enabled = true;
+        PlayerController.Instance.gameObject.transform.Find("GameplayCanvas").gameObject.SetActive(true);
+        GameObject.Find("BossFightDirector").GetComponent<PlayableDirector>().Play();
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.finalBossMusic, true);
+    }
+
     public void StopBossFight() {
         var boss = FindObjectOfType<Boss>();
         if(boss != null) {
@@ -121,6 +129,14 @@ public class CutsceneManager : MonoBehaviour {
         StartCoroutine("StartBossFight");
     }
 
+    public void PlayFinalBossStart() {
+        SetupCutscene(true);
+
+        director.Play();
+
+        StartCoroutine("StartFinalBossFight");
+    }
+
     public void PlayBossEnd() {
         StopBossFight();
 
@@ -142,6 +158,9 @@ public class CutsceneManager : MonoBehaviour {
                 case "Underwater":
                 case "Jungle":
                     PlayBossStart();
+                    break;
+                case "Castle":
+                    PlayFinalBossStart();
                     break;
             }
         } else if (collision.tag == "Player" && gameObject.name == "EndOfFightTrigger") {
