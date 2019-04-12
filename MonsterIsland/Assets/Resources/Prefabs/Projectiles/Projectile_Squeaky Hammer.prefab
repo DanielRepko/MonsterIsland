@@ -103,6 +103,7 @@ MonoBehaviour:
   damage: 4
   speed: 40
   target: Enemy
+  unsetTriggerTime: 0.02
 --- !u!212 &212651155469853552
 SpriteRenderer:
   m_ObjectHideFlags: 1

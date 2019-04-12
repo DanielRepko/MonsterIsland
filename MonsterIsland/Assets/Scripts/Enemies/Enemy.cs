@@ -654,6 +654,9 @@ public class Enemy : Actor {
             }
         }
 
+        //playing the sound effect
+        AudioClip dieSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Explosions/explosion_29");
+        AudioManager.Instance.PlaySound(dieSound);
         Destroy(gameObject);
     }
 }

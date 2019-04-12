@@ -674,6 +674,8 @@ public class PlayerController : Actor {
         } else {
             animator.Play("PlayerDeathLeft");
         }
+        AudioClip dieSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Explosions/explosion_29");
+        AudioManager.Instance.PlaySound(dieSound);
         canBeHurt = false;
         attacksLocked = true;
         movementLocked = true;
