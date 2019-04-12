@@ -1065,8 +1065,8 @@ MonoBehaviour:
   attacksLocked: 0
   movementLocked: 0
   inHitStun: 0
-  health: 20
-  maxHealth: 20
+  health: 10
+  maxHealth: 10
   hurtBox: {fileID: 70344589526898210}
   rayCastLengthCheck: 0.2
   width: 0
@@ -1075,8 +1075,21 @@ MonoBehaviour:
   animator: {fileID: 95525711136093572}
   facingDirection: 0
   rb: {fileID: 0}
+  patrolPoints: []
   moveSpeed: 14
   monsterName: EnemyMitch
+  alwaysDropPart: 0
+  partToAlwaysDrop: 
+  equippedWeapon: 
+  attackRange: 1.7
+  damage: 2
+  attackCooldown: 0.5
+  abilityCooldown: 0
+  jumpCooldown: 1
+  isAggro: 0
+  aggroRange: 8
+  aggroTime: 5
+  target: {fileID: 0}
   equippedRightWeapon: Stick
   equippedLeftWeapon: 
   rightAttackRange: 1.7
@@ -1085,8 +1098,7 @@ MonoBehaviour:
   leftAttackDamage: 2
   rightAttackCooldown: 1
   leftAttackCooldown: 1
-  jumpCooldown: 1
-  target: {fileID: 0}
+  startFlipped: 1
 --- !u!114 &114676492617072670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1449,7 +1461,7 @@ SpriteRenderer:
   m_SortingLayerID: 207324261
   m_SortingLayer: 1
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 16e1101c0ca76e54dba669e4472d23c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 90bff659f15a05f4896f61e151c1031a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

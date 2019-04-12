@@ -689,6 +689,7 @@ public class PlayerController : Actor {
         UIManager.Instance.UpdateAirMeter(air, isUnderwater);
         ShowIdleFace();
         animator.SetTrigger("Revive");
+        transform.Find("Main Camera").gameObject.SetActive(true);
         GameManager.instance.LoadToLastNestUsed();
     }
 

@@ -15,6 +15,7 @@ TagManager:
   - Chest
   - Shop
   - Loading
+  - BossTrigger
   layers:
   - Default
   - TransparentFX

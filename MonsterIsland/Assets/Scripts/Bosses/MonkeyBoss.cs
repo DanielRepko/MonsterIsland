@@ -30,22 +30,22 @@ public class MonkeyBoss : Boss {
     public void UseAbility()
     {
 
-        if (IsOnGround() && jumpTimer < jumpTime)
+        if (IsOnGround() && jumpTimer < jumpTime && target != null)
         {
             jumpTimer += Time.deltaTime;
         }
-        else if (jumpTimer >= jumpTime && IsOnGround())
+        else if (jumpTimer >= jumpTime && IsOnGround() && target != null)
         {
             jumpTimer = 0;
             jumpTime = Random.Range(0, 3) + 1;
             Jump();
         }
 
-        if (runningTimer && doubleJumpTimer < doubleJumpTime)
+        if (runningTimer && doubleJumpTimer < doubleJumpTime && target != null)
         {
             doubleJumpTimer += Time.deltaTime;
         }
-        else if (runningTimer && doubleJumpTimer >= doubleJumpTime)
+        else if (runningTimer && doubleJumpTimer >= doubleJumpTime && target != null)
         {
             runningTimer = false;
             doubleJumpTimer = 0;
