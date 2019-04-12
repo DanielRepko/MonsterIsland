@@ -9,12 +9,12 @@ public class Projectile : MonoBehaviour {
     public int speed;
     public string target;
 
-    private float unsetTriggerTime = 0.05f;
-    private float unsetTriggerTimer = 0;
+    protected float unsetTriggerTime = 0.05f;
+    protected float unsetTriggerTimer = 0;
 
-    private float offScreenTime = 2;
-    private float offScreenTimer;
-    private bool isOffScreen;
+    protected float offScreenTime = 2;
+    protected float offScreenTimer;
+    protected bool isOffScreen;
 
     private void FixedUpdate()
     {
