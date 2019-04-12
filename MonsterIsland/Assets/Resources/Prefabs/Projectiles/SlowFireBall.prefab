@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50819363406138066}
   - component: {fileID: 58226193426521048}
   - component: {fileID: 114466092114144134}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: SlowFireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
   speed: 6
   target: Player
   unsetTriggerTime: 0.5
-  timeTillDestroy: 6
+  timeTillDestroy: 4
 --- !u!212 &212447030412231462
 SpriteRenderer:
   m_ObjectHideFlags: 1
