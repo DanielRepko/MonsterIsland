@@ -319,6 +319,10 @@ public class PlayerController : Actor {
             UIManager.Instance.UpdateHeartCount();
             canBeHurt = false;
             inHitStun = true;
+
+            //getting the AudioClip to play
+            AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Hit/hit_27");
+            AudioManager.Instance.PlaySound(jumpSound);
         }
     }
 

@@ -19,6 +19,9 @@ public class Lion : Enemy {
             if (knockBackDirection != facingDirection)
             {
                 health -= damage;
+                //getting the AudioClip to play
+                AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Hit/hit_27");
+                AudioManager.Instance.PlaySound(jumpSound);
                 abilityDelegate();
             }
             else
@@ -27,6 +30,9 @@ public class Lion : Enemy {
                 animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
                 health -= damage;
                 inHitStun = true;
+                //getting the AudioClip to play
+                AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Hit/hit_27");
+                AudioManager.Instance.PlaySound(jumpSound);
             }
         }
     }

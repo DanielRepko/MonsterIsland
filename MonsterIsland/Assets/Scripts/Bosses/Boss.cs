@@ -222,6 +222,9 @@ public class Boss : Enemy{
             animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
             health -= damage;
             inHitStun = true;
+            //getting the AudioClip to play
+            AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Hit/hit_27");
+            AudioManager.Instance.PlaySound(jumpSound);
         }
     }
 
