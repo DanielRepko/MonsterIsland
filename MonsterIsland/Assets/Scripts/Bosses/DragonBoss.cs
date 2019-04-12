@@ -12,6 +12,7 @@ public class DragonBoss : Boss {
         height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
 
         InitializeEnemy();
+        UseAttack("SlowBurn");
     }
 
     // Update is called once per frame
@@ -74,11 +75,29 @@ public class DragonBoss : Boss {
     {
         if (!inHitStun)
         {
-            SetFacingDirection(knockBackDirection);
-            animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
+            //animator.Play(); insert dragon specific hurt animation
             health -= damage;
-            inHitStun = true;
         }
+    }
+
+    public void UseAttack(string attackName)
+    {
+        switch (attackName)
+        {
+            case "SlowBurn":
+                GameObject slowFireBall = Instantiate(Resources.Load<GameObject>("Prefabs/Projectiles/SlowFireBall"), transform.position, Quaternion.identity);
+                ShootAtPlayer(slowFireBall);
+                break;
+            default:
+                break;
+        }
+    }
+
+    //used to more easily aim and shoot fireballs at the player
+    public void ShootAtPlayer(GameObject projectile)
+    {
+        Vector2 destination = (PlayerController.Instance.transform.position - transform.position).normalized;
+        projectile.GetComponent<Rigidbody2D>().velocity = destination * projectile.GetComponent<Projectile>().speed;
     }
 
     override public void KillBoss()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlowFireBall : Projectile {
 
-    public float timeTillDestroy = 6;
+    public float timeTillDestroy = 10;
     private float destroyTimer;
 
     private void FixedUpdate()
@@ -13,9 +13,9 @@ public class SlowFireBall : Projectile {
         {
             unsetTriggerTimer += Time.deltaTime;
         }
-        else if (unsetTriggerTimer >= unsetTriggerTime && GetComponent<BoxCollider2D>().isTrigger)
+        else if (unsetTriggerTimer >= unsetTriggerTime && GetComponent<Collider2D>().isTrigger)
         {
-            GetComponent<BoxCollider2D>().isTrigger = false;
+            GetComponent<Collider2D>().isTrigger = false;
         }
 
         if (destroyTimer < timeTillDestroy)
