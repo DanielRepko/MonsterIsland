@@ -65,7 +65,11 @@ public class DragonBoss : Boss {
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
 
-        SetFacingDirection(transform.localScale.x);
+        if (!startFlipped) {
+            SetFacingDirection(transform.localScale.x);
+        } else {
+            SetFacingDirection(-transform.localScale.x);
+        }
     }
 
     override public void SetFacingDirection(float scaleX)

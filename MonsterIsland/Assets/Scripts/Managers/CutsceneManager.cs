@@ -129,6 +129,10 @@ public class CutsceneManager : MonoBehaviour {
         StartCoroutine("EndCutscene");
     }
 
+    public void PlayFinalBossEnd() {
+        GameObject.Find("BossFightDirector").GetComponent<PlayableDirector>().Stop();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == "Player" && gameObject.name != "EndOfFightTrigger") {
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -149,6 +153,9 @@ public class CutsceneManager : MonoBehaviour {
                 case "Jungle":
                 case "Skyland":
                     PlayBossEnd();
+                    break;
+                case "Castle":
+                    PlayFinalBossEnd();
                     break;
             }
         }
