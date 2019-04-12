@@ -143,6 +143,7 @@ public class CutsceneManager : MonoBehaviour {
         } else if (collision.tag == "Player" && gameObject.name == "EndOfFightTrigger") {
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             switch (SceneManager.GetActiveScene().name) {
+                case "Plains":
                 case "Desert":
                 case "Underwater":
                 case "Jungle":
