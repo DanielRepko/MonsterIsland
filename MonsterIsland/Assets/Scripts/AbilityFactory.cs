@@ -111,6 +111,9 @@ public class AbilityFactory : MonoBehaviour {
         laser.GetComponent<Projectile>().target = "Enemy";
 
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(laser.GetComponent<Projectile>().speed * player.facingDirection, 0);
+        //getting the AudioClip to play
+        AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Laser/laser_24");
+        AudioManager.Instance.PlaySound(jumpSound);
     }
 
     //Head Ability (Activate): Allows the player to attack with a tongue flick

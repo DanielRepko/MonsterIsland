@@ -103,6 +103,7 @@ MonoBehaviour:
   damage: 2
   speed: 70
   target: 
+  unsetTriggerTime: 0.01
 --- !u!212 &212433946326440840
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -136,7 +137,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1922656591
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0bf8e25857a8aa9458b4125c2b14eeec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
