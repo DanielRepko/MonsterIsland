@@ -85,11 +85,12 @@ public class UIManager : MonoBehaviour {
         nestCanvas.SetActive(false);
         Time.timeScale = 1;
     }
-
-    //Your welcome Daniel. -Jordan
+    
+    //Loads the monster maker
     public void LoadMonsterMaker() {
         GameManager.instance.FinalizeSave();
         HideNestCanvas();
+        ShowLoadingPanel();
         SceneManager.LoadScene("MonsterMaker");
     }
 
@@ -114,7 +115,9 @@ public class UIManager : MonoBehaviour {
     }
 
     public void HideLoadingPanel() {
-        loadingPanel.SetActive(false);
+        if (loadingPanel != null) {
+            loadingPanel.SetActive(false);
+        }
     }
 
     public void PauseGame() {
@@ -133,6 +136,10 @@ public class UIManager : MonoBehaviour {
         settingsPanel.SetActive(true);
     }
 
+    public void QuitPressed() {
+        GameManager.instance.ReturnToMainMenu();
+    }
+
     public void DisableQuickTravelMenu() {
         quickTravelMenu.SetActive(false);
     }
@@ -142,22 +149,39 @@ public class UIManager : MonoBehaviour {
     }
 
     public void TravelToStartNest() {
-        PlayerController player = FindObjectOfType<PlayerController>();
+        PlayerController player;
+        if (PlayerController.Instance != null) {
+            player = PlayerController.Instance;
+        } else {
+            player = FindObjectOfType<PlayerController>();
+        }
         LocalObjectManager nestManager = FindObjectOfType<LocalObjectManager>();
         player.transform.position = nestManager.startNest.transform.position;
         HideNestCanvas();
     }
 
     public void TravelToShopNest() {
-        PlayerController player = FindObjectOfType<PlayerController>();
+        PlayerController player;
+        if (PlayerController.Instance != null) {
+            player = PlayerController.Instance;
+        } else {
+            player = FindObjectOfType<PlayerController>();
+        }
         LocalObjectManager nestManager = FindObjectOfType<LocalObjectManager>();
         player.transform.position = nestManager.shopNest.transform.position;
         HideNestCanvas();
     }
 
     public void TravelToBossNest() {
-        PlayerController player = FindObjectOfType<PlayerController>();
+        PlayerController player;
+        if(PlayerController.Instance != null) {
+            player = PlayerController.Instance;
+        } else {
+            player = FindObjectOfType<PlayerController>();
+        }
+        
         LocalObjectManager nestManager = FindObjectOfType<LocalObjectManager>();
+
         player.transform.position = nestManager.bossNest.transform.position;
         HideNestCanvas();
     }

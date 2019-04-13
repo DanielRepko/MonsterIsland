@@ -46,4 +46,31 @@ public class TongueFlick : MonoBehaviour {
             }
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (target == "Enemy")
+        {
+            if (collision.tag == "Enemy")
+            {
+                Enemy enemy = collision.GetComponent<Enemy>();
+                if (enemy != null && collision == enemy.hurtBox)
+                {
+                    enemy.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
+                    Destroy(gameObject);
+                }
+            }
+        }
+        else if (target == "Player")
+        {
+            if (collision.tag == "Player")
+            {
+                if (collision == PlayerController.Instance.hurtBox)
+                {
+                    PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
+                    Destroy(gameObject);
+                }
+            }
+        }
+    }
 }

@@ -23,9 +23,9 @@ public class Cactus : Enemy {
         }
 
         //instatiating each needle with its own rotation
-        GameObject upNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, 45));
+        GameObject upNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, 45 * facingDirection));
         GameObject middleNeedle = Instantiate(needleLoad, needlePosition, Quaternion.identity);
-        GameObject downNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, -45));
+        GameObject downNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, -45 * facingDirection));
 
         //turning the needles in the same direction the player is facing
         upNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * facingDirection, upNeedle.transform.localScale.y);
@@ -39,5 +39,9 @@ public class Cactus : Enemy {
         upNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * facingDirection, speed / 2);
         middleNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * facingDirection, 0);
         downNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * facingDirection, -speed / 2);
+
+        //playing the sound effect
+        AudioClip shootSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Laser/laser_02");
+        AudioManager.Instance.PlaySound(shootSound);
     }
 }

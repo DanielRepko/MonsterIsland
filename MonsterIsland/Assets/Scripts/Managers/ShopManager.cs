@@ -61,6 +61,9 @@ public class ShopManager : MonoBehaviour {
                 break;
         }
 
+        if(scene.name == "MainMenu" || scene.name == "FileSelectMenu") {
+            return;
+        }
         UIManager.Instance.RefreshShopUI();
     }
 

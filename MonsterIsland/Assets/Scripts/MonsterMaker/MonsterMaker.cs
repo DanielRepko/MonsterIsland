@@ -27,6 +27,8 @@ public class MonsterMaker : MonoBehaviour {
     private CollectedPartsInfo collectedParts;
     private List<string> collectedWeapons = new List<string>();
 
+    public GameObject loadingPanel;
+
     public void Start()
     {
         if(PlayerController.Instance != null && GameManager.instance != null)
@@ -186,6 +188,7 @@ public class MonsterMaker : MonoBehaviour {
 
     public void LeaveMonsterMaker()
     {
+        loadingPanel.SetActive(true);
         SaveChanges();
         if(PlayerController.Instance != null)
         {
@@ -241,10 +244,12 @@ public class MonsterMaker : MonoBehaviour {
             {
                 HideDonePanel();
             }
-            //anything else should be enabled
+            //anything else should be enabled except the loading panel
             else
             {
-                child.gameObject.SetActive(true);
+                if(child.tag != "Loading") {
+                    child.gameObject.SetActive(true);
+                }
             }
         }
     }
