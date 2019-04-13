@@ -11,6 +11,47 @@ public class CutsceneManager : MonoBehaviour {
 
     private void Start() {
         director = GetComponent<PlayableDirector>();
+        var bosses = GameManager.instance.gameFile.gameProgression.defeatedBosses;
+        bool hasBeenDefeated = false;
+        //Check if i've already been defeated. If I have, destroy myself.
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "Plains":
+                if (bosses.plainsBossDefeated)
+                {
+                    hasBeenDefeated = true;
+                }
+                break;
+            case "Desert":
+                if (bosses.desertBossDefeated)
+                {
+                    hasBeenDefeated = true;
+                }
+                break;
+            case "Underwater":
+                if (bosses.underwaterBossDefeated)
+                {
+                    hasBeenDefeated = true;
+                }
+                break;
+            case "Jungle":
+                if (bosses.jungleBossDefeated)
+                {
+                    hasBeenDefeated = true;
+                }
+                break;
+            case "Skyland":
+                if (bosses.skylandBossDefeated)
+                {
+                    hasBeenDefeated = true;
+                }
+                break;
+        }
+
+        if (hasBeenDefeated)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

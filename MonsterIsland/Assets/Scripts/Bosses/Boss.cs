@@ -13,6 +13,7 @@ public class Boss : Enemy{
     public AbilityFactory.ArmAbility leftAttackDelegate;
 
     private string attackingArm;
+    private bool isAlive = true;
 
     public float rightAttackRange = 1.7f;
     public float leftAttackRange = 1.7f;
@@ -30,6 +31,40 @@ public class Boss : Enemy{
     // Use this for initialization
     override public void Start()
     {
+        var bosses = GameManager.instance.gameFile.gameProgression.defeatedBosses;
+        bool hasBeenDefeated = false;
+        //Check if i've already been defeated. If I have, destroy myself.
+        switch(SceneManager.GetActiveScene().name) {
+            case "Plains":
+                if(bosses.plainsBossDefeated) {
+                    hasBeenDefeated = true;
+                }
+                break;
+            case "Desert":
+                if(bosses.desertBossDefeated) {
+                    hasBeenDefeated = true;
+                }
+                break;
+            case "Underwater":
+                if(bosses.underwaterBossDefeated) {
+                    hasBeenDefeated = true;
+                }
+                break;
+            case "Jungle":
+                if(bosses.jungleBossDefeated) {
+                    hasBeenDefeated = true;
+                }
+                break;
+            case "Skyland":
+                if(bosses.skylandBossDefeated) {
+                    hasBeenDefeated = true;
+                }
+                break;
+        }
+
+        if(hasBeenDefeated) {
+            Destroy(gameObject);
+        }
         rb = GetComponent<Rigidbody2D>();
         width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
         height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
@@ -40,8 +75,8 @@ public class Boss : Enemy{
     // Update is called once per frame
     override public void Update()
     {
-        if (health <= 0)
-        {
+        if (health <= 0 && isAlive) {
+            isAlive = false;
             KillBoss();
         }
     }

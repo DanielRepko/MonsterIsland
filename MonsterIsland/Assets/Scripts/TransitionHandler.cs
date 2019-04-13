@@ -11,7 +11,23 @@ public class TransitionHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        if (fromHub) {
+            switch (levelName) {
+                case LevelName.Skyland:
+                    if (GameManager.instance.gameFile.gameProgression.defeatedBosses.desertBossDefeated
+                        && GameManager.instance.gameFile.gameProgression.defeatedBosses.underwaterBossDefeated
+                        && GameManager.instance.gameFile.gameProgression.defeatedBosses.jungleBossDefeated) {
+                        gameObject.SetActive(true);
+                    }
+                    break;
+                case LevelName.Castle:
+                    if(GameManager.instance.gameFile.gameProgression.defeatedBosses.skylandBossDefeated) {
+                        gameObject.SetActive(true);
+                        GameObject.Find("CastleBarGroup").SetActive(false);
+                    }
+                    break;
+            }
+        }
 	}
 	
 	// Update is called once per frame
