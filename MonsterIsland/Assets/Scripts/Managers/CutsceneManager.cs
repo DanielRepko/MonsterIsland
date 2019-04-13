@@ -97,6 +97,15 @@ public class CutsceneManager : MonoBehaviour {
         AudioManager.Instance.PlayMusic(AudioManager.Instance.bossMusic, true);
     }
 
+    IEnumerator StartSkylandBossFight() {
+        yield return new WaitForSeconds((float) director.duration);
+
+        PlayerController.Instance.enabled = true;
+        PlayerController.Instance.gameObject.transform.Find("GameplayCanvas").gameObject.SetActive(true);
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.bossMusic, true);
+        GameObject.Find("BossFightDirector").GetComponent<PlayableDirector>().Play();
+    }
+
     IEnumerator StartFinalBossFight() {
         yield return new WaitForSeconds((float) director.duration);
         PlayerController.Instance.enabled = true;
@@ -188,6 +197,14 @@ public class CutsceneManager : MonoBehaviour {
         StartCoroutine("StartBossFight");
     }
 
+    public void PlaySkylandBossStart() {
+        SetupCutscene(true);
+
+        director.Play();
+
+        StartCoroutine("StartSkylandBossFight");
+    }
+
     public void PlayFinalBossStart() {
         SetupCutscene(true);
 
@@ -198,6 +215,17 @@ public class CutsceneManager : MonoBehaviour {
 
     public void PlayBossEnd() {
         StopBossFight();
+
+        director.Play();
+
+        StartCoroutine("EndCutscene");
+    }
+
+    public void PlaySkylandBossEnd() {
+        GameObject.Find("BossFightDirector").GetComponent<PlayableDirector>().Stop();
+        AudioManager.Instance.musicAudioSource.Stop();
+        PlayerController.Instance.enabled = false;
+        PlayerController.Instance.gameObject.transform.Find("GameplayCanvas").gameObject.SetActive(false);
 
         director.Play();
 
@@ -237,6 +265,9 @@ public class CutsceneManager : MonoBehaviour {
                 case "Jungle":
                     PlayBossStart();
                     break;
+                case "Skyland":
+                    PlaySkylandBossStart();
+                    break;
                 case "Castle":
                     PlayFinalBossStart();
                     break;
@@ -248,8 +279,10 @@ public class CutsceneManager : MonoBehaviour {
                 case "Desert":
                 case "Underwater":
                 case "Jungle":
-                case "Skyland":
                     PlayBossEnd();
+                    break;
+                case "Skyland":
+                    PlaySkylandBossEnd();
                     break;
                 case "Castle":
                     PlayFinalBossEnd();
