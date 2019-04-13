@@ -260,6 +260,10 @@ public class PlayerController : Actor {
             //calling the jump animation
             animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+            //getting the AudioClip to play
+            AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Jump/jump_20");
+            AudioManager.Instance.PlaySound(jumpSound);
         }
     }
 
@@ -315,6 +319,10 @@ public class PlayerController : Actor {
             UIManager.Instance.UpdateHeartCount();
             canBeHurt = false;
             inHitStun = true;
+
+            //getting the AudioClip to play
+            AudioClip hitSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Hit/hit_27");
+            AudioManager.Instance.PlaySound(hitSound);
         }
     }
 
@@ -666,6 +674,8 @@ public class PlayerController : Actor {
         } else {
             animator.Play("PlayerDeathLeft");
         }
+        AudioClip dieSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Explosions/explosion_29");
+        AudioManager.Instance.PlaySound(dieSound);
         canBeHurt = false;
         attacksLocked = true;
         movementLocked = true;

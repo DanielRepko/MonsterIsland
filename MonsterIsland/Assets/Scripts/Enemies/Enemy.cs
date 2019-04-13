@@ -404,6 +404,9 @@ public class Enemy : Actor {
             animator.Play("KnockBack" + Helper.GetAnimDirection(facingDirection) + "Anim");
             health -= damage;
             inHitStun = true;
+            //getting the AudioClip to play
+            AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Hit/hit_27");
+            AudioManager.Instance.PlaySound(jumpSound);
         }
     }
 
@@ -651,6 +654,9 @@ public class Enemy : Actor {
             }
         }
 
+        //playing the sound effect
+        AudioClip dieSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Explosions/explosion_29");
+        AudioManager.Instance.PlaySound(dieSound);
         Destroy(gameObject);
     }
 }
