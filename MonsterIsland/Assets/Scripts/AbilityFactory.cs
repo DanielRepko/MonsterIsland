@@ -111,6 +111,9 @@ public class AbilityFactory : MonoBehaviour {
         laser.GetComponent<Projectile>().target = "Enemy";
 
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(laser.GetComponent<Projectile>().speed * player.facingDirection, 0);
+        //getting the AudioClip to play
+        AudioClip laserSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Laser/laser_24");
+        AudioManager.Instance.PlaySound(laserSound);
     }
 
     //Head Ability (Activate): Allows the player to attack with a tongue flick
@@ -160,12 +163,12 @@ public class AbilityFactory : MonoBehaviour {
         beakRay.origin = new Vector2(player.transform.position.x, player.transform.position.y + 1f);
         beakRay.direction = new Vector3(player.facingDirection, 0, 0);
 
-        Debug.DrawRay(beakRay.origin, new Vector2(1.7f * player.facingDirection, 0), Color.green);
+        Debug.DrawRay(beakRay.origin, new Vector2(3f * player.facingDirection, 0), Color.green);
 
         //playing the animation
         player.animator.Play("HeadAbilityAnim");
 
-        RaycastHit2D hit = Physics2D.Raycast(beakRay.origin, beakRay.direction, 1.7f, 1 << LayerMask.NameToLayer("Enemy"));
+        RaycastHit2D hit = Physics2D.Raycast(beakRay.origin, beakRay.direction, 3f, 1 << LayerMask.NameToLayer("Enemy"));
         if (hit)
         {
             Enemy enemy = hit.transform.GetComponentInParent<Enemy>();
@@ -179,7 +182,7 @@ public class AbilityFactory : MonoBehaviour {
     //Torso Ability (Passive): Grants the player an extra heart of health
     public static void Ability_ArmoredBody()
     {
-        PlayerController.Instance.maxHealth += 1;
+        PlayerController.Instance.maxHealth += 2;
     }
 
     //Torso Ability (Passive): Allows the player to breath underwater
@@ -305,6 +308,10 @@ public class AbilityFactory : MonoBehaviour {
         player.animator.Play(armType + Helper.GetAnimDirection(player.facingDirection, armType) + "ShootAnim");
 
         drill.GetComponent<Rigidbody2D>().velocity = new Vector2(drill.GetComponent<Projectile>().speed * player.facingDirection, 0);
+
+        //playing the sound effect
+        AudioClip shootSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Laser/laser_02");
+        AudioManager.Instance.PlaySound(shootSound);
     }
 
     //Arm Ability (Passive): Increases the player's melee damage, does not affect weapon damage
@@ -362,9 +369,9 @@ public class AbilityFactory : MonoBehaviour {
         }
 
         //instatiating each needle with its own rotation
-        GameObject upNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, 45));
+        GameObject upNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, 45 *  player.facingDirection));
         GameObject middleNeedle = Instantiate(needleLoad, needlePosition, Quaternion.identity);
-        GameObject downNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, -45));
+        GameObject downNeedle = Instantiate(needleLoad, needlePosition, Quaternion.Euler(0, 0, -45 * player.facingDirection));
 
         //turning the needles in the same direction the player is facing
         upNeedle.transform.localScale = new Vector2(upNeedle.transform.localScale.x * player.facingDirection, upNeedle.transform.localScale.y);
@@ -377,6 +384,10 @@ public class AbilityFactory : MonoBehaviour {
         upNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, speed / 2);
         middleNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, 0);
         downNeedle.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * player.facingDirection, -speed / 2);
+
+        //playing the sound effect
+        AudioClip shootSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Laser/laser_02");
+        AudioManager.Instance.PlaySound(shootSound);
     }
 
     //Arm Ability (Passive): Makes the player fall slower, effect can stack with other arm
@@ -455,14 +466,22 @@ public class AbilityFactory : MonoBehaviour {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
-            }
+
+            //getting the AudioClip to play
+            AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Jump/jump_20");
+            AudioManager.Instance.PlaySound(jumpSound);
+        }
             else if (!player.IsOnGround() && player.hasExtraJump && !player.isUnderwater)
             {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
                 player.hasExtraJump = false;
-            }
+
+                //getting the AudioClip to play
+                AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Jump/jump_20");
+                AudioManager.Instance.PlaySound(jumpSound);
+        }
     }
 
     //Leg Ability (Passive): Increases the player's jump height
@@ -482,6 +501,10 @@ public class AbilityFactory : MonoBehaviour {
                 //calling the jump animation
                 player.animator.Play("Jump" + Helper.GetAnimDirection(player.facingDirection) + "Anim");
                 player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
+
+                //getting the AudioClip to play
+                AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Jump/jump_20");
+                AudioManager.Instance.PlaySound(jumpSound);
             }
             else if (!player.IsOnGround() && player.hasExtraJump && !player.isUnderwater)
             {

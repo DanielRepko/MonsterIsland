@@ -10,8 +10,6 @@ public class FileSelectManager : MonoBehaviour {
 
     public Button playButton;
     public Button deleteButton;
-    public GameObject heartGroup;
-    public GameObject[] heartImages;
     public Text monsterName;
     public Text playTime;
     public Text areaName;
@@ -29,10 +27,11 @@ public class FileSelectManager : MonoBehaviour {
     public GameObject legendaryLeftArm;
     public GameObject legendaryRightArm;
     public GameObject legendaryLegs;
+    public GameObject loadingPanel;
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -57,18 +56,6 @@ public class FileSelectManager : MonoBehaviour {
             var loadedFile = JsonUtility.FromJson<GameFile>(loadedFileJson);
             playButton.interactable = true;
             deleteButton.interactable = true;
-            heartGroup.SetActive(true);
-
-            //Current Hearts
-            int i = loadedFile.player.totalHearts / 2;
-            foreach(var heart in heartImages) {
-                if(i > 0) {
-                    heart.SetActive(true);
-                    i--;
-                } else {
-                    heart.SetActive(false);
-                }
-            }
 
             //General Information
             monsterName.text = loadedFile.player.name;
@@ -80,12 +67,35 @@ public class FileSelectManager : MonoBehaviour {
             //Current Parts and Weapons
             //TODO: When code to save the current parts and weapons is added, update this to load those parts and weapons
             headSlot.SetActive(true);
+            headSlot.GetComponent<HeadSlot>().faceImage.sprite = Helper.CreateSprite(loadedFile.player.headPart.mainSprite, Helper.HeadImporter);
+            headSlot.GetComponent<HeadSlot>().neckImage.sprite = Helper.CreateSprite(loadedFile.player.headPart.neckSprite, Helper.HeadImporter);
+
             torsoSlot.SetActive(true);
+            torsoSlot.GetComponent<TorsoSlot>().torsoImage.sprite = Helper.CreateSprite(loadedFile.player.torsoPart.mainSprite, Helper.TorsoImporter);
+
             leftArmSlot.SetActive(true);
+            leftArmSlot.GetComponent<ArmSlot>().bicepImage.sprite = Helper.CreateSprite(loadedFile.player.leftArmPart.bicepSprite, Helper.BicepImporter);
+            leftArmSlot.GetComponent<ArmSlot>().forearmImage.sprite = Helper.CreateSprite(loadedFile.player.leftArmPart.forearmSprite, Helper.ForearmImporter);
+            leftArmSlot.GetComponent<ArmSlot>().handImage.sprite = Helper.CreateSprite(loadedFile.player.leftArmPart.handFrontSprite, Helper.HandImporter);
+            leftArmSlot.GetComponent<ArmSlot>().fingersImage.sprite = Helper.CreateSprite(loadedFile.player.leftArmPart.fingersOpenFrontSprite, Helper.HandImporter);
+
             rightArmSlot.SetActive(true);
+            rightArmSlot.GetComponent<ArmSlot>().bicepImage.sprite = Helper.CreateSprite(loadedFile.player.rightArmPart.bicepSprite, Helper.BicepImporter);
+            rightArmSlot.GetComponent<ArmSlot>().forearmImage.sprite = Helper.CreateSprite(loadedFile.player.rightArmPart.forearmSprite, Helper.ForearmImporter);
+            rightArmSlot.GetComponent<ArmSlot>().handImage.sprite = Helper.CreateSprite(loadedFile.player.rightArmPart.handFrontSprite, Helper.HandImporter);
+            rightArmSlot.GetComponent<ArmSlot>().fingersImage.sprite = Helper.CreateSprite(loadedFile.player.rightArmPart.fingersOpenFrontSprite, Helper.HandImporter);
+
             legSlot.SetActive(true);
+            legSlot.GetComponent<LegsSlot>().pelvisImage.sprite = Helper.CreateSprite(loadedFile.player.legsPart.pelvisSprite, Helper.PelvisImporter);
+            legSlot.GetComponent<LegsSlot>().leftFootImage.sprite = legSlot.GetComponent<LegsSlot>().rightFootImage.sprite = Helper.CreateSprite(loadedFile.player.legsPart.footSprite, Helper.FootImporter);
+            legSlot.GetComponent<LegsSlot>().leftShinImage.sprite = legSlot.GetComponent<LegsSlot>().rightShinImage.sprite = Helper.CreateSprite(loadedFile.player.legsPart.shinSprite, Helper.ShinImporter);
+            legSlot.GetComponent<LegsSlot>().leftThighImage.sprite = legSlot.GetComponent<LegsSlot>().rightThighImage.sprite = Helper.CreateSprite(loadedFile.player.legsPart.thighSprite, Helper.ThighImporter);
+
             leftWeapon.enabled = true;
+            leftWeapon.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Weapons/" + loadedFile.player.leftArmPart.equippedWeapon);
+
             rightWeapon.enabled = true;
+            rightWeapon.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Weapons/" + loadedFile.player.rightArmPart.equippedWeapon);
 
             //Legendary Parts
             legendaryHead.SetActive(loadedFile.gameProgression.collectedLegendaryParts.headCollected);
@@ -97,7 +107,6 @@ public class FileSelectManager : MonoBehaviour {
         } else {
             playButton.interactable = true;
             deleteButton.interactable = false;
-            heartGroup.SetActive(false);
             monsterName.text = "-----";
             playTime.text = "-----";
             areaName.text = "-----";
@@ -120,9 +129,18 @@ public class FileSelectManager : MonoBehaviour {
     }
 
     public void PlayPressed() {
+        loadingPanel.SetActive(true);
         if (GameManager.instance.gameFile.fileID == -1) {
             //Create a new save, and head to the monster maker so the player can make their first monster!
             GameManager.instance.CreateSave();
+            SceneManager.LoadScene("MonsterMaker");
+        } else if(GameManager.instance.gameFile.fileID > 0 && (
+            GameManager.instance.gameFile.player.headPart.monster == ""
+            || GameManager.instance.gameFile.player.torsoPart.monster == ""
+            || GameManager.instance.gameFile.player.leftArmPart.monster == ""
+            || GameManager.instance.gameFile.player.rightArmPart.monster == ""
+            || GameManager.instance.gameFile.player.legsPart.monster == ""
+            || GameManager.instance.gameFile.player.name == "")) {
             SceneManager.LoadScene("MonsterMaker");
         } else {
             GameManager.instance.LoadToLastNestUsed();

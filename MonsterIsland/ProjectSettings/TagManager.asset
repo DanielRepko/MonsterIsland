@@ -14,6 +14,8 @@ TagManager:
   - PatrolPoint
   - Chest
   - Shop
+  - Loading
+  - BossTrigger
   layers:
   - Default
   - TransparentFX
@@ -28,9 +30,9 @@ TagManager:
   - Bubble
   - Enemy
   - Projectile
+  - DragonProjectile
   - Collectable
   - InvisibleWall
-  - 
   - 
   - 
   - 

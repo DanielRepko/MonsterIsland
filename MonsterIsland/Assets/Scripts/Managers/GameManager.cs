@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
 
         //Store infomration about the player themself
         newFile.player.name = "Mitch";
-        newFile.player.totalHearts = 6;
+        newFile.player.totalHearts = 10;
         newFile.player.headPart = new HeadPartInfo();
         newFile.player.torsoPart = new TorsoPartInfo();
         newFile.player.leftArmPart = new ArmPartInfo();
@@ -124,6 +124,12 @@ public class GameManager : MonoBehaviour {
         newFile.gameProgression.nestInfo.castleNest2 = false;
         newFile.gameProgression.nestInfo.castleNest3 = false;
 
+        //Hub Cutscenes Viewed
+        newFile.gameProgression.viewedCutscenes.desertGem = false;
+        newFile.gameProgression.viewedCutscenes.underwaterGem = false;
+        newFile.gameProgression.viewedCutscenes.jungleGem = false;
+        newFile.gameProgression.viewedCutscenes.castleGate = false;
+
         //Store the save file as the active gameFile, and save to a json file
         gameFile = newFile;
         var fileToJson = JsonUtility.ToJson(newFile);
@@ -134,14 +140,13 @@ public class GameManager : MonoBehaviour {
 
     //Updates an existing save file
     public void FinalizeSave() {
-        if (PlayerController.Instance != null)
-        {
+        if (PlayerController.Instance != null) {
             gameFile.player.totalHearts = PlayerController.Instance.maxHealth;
+            if(PlayerController.Instance.monster.torsoPart.partInfo.monster == Helper.MonsterName.Robot) {
+                gameFile.player.totalHearts -= 2;
+            }
         }
-        else
-        {
-            gameFile.player.totalHearts = 6;
-        }
+
         var time = Time.timeSinceLevelLoad;
         gameFile.totalPlayTime += (Time.timeSinceLevelLoad - lastTimeUpdate);
         lastTimeUpdate = time;
@@ -162,6 +167,10 @@ public class GameManager : MonoBehaviour {
     //Moves the player to the nest the scene where their last used nest is
     public void LoadToLastNestUsed() {
         SceneManager.sceneLoaded += MovePlayerToNest;
+        var loadingPanels = GameObject.FindGameObjectsWithTag("Loading");
+        foreach(var panel in loadingPanels) {
+            panel.SetActive(true);
+        }
         SceneManager.LoadScene(gameFile.saveArea);
     }
 
@@ -179,5 +188,16 @@ public class GameManager : MonoBehaviour {
                 break;
         }
         SceneManager.sceneLoaded -= MovePlayerToNest;
+    }
+
+    public void ReturnToMainMenu() {
+        gameFile = null;
+        fileNumber = -1;
+        foreach(Transform manager in ManagerManager.instance.transform) {
+            Destroy(manager.gameObject);
+        }
+        Destroy(ManagerManager.instance.gameObject);
+        Destroy(PlayerController.Instance.gameObject);
+        SceneManager.LoadScene("MainMenu");
     }
 }

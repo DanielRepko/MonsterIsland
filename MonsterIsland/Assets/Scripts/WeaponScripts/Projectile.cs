@@ -9,12 +9,13 @@ public class Projectile : MonoBehaviour {
     public int speed;
     public string target;
 
-    private float unsetTriggerTime = 0.05f;
-    private float unsetTriggerTimer = 0;
+    public float unsetTriggerTime = 0.02f;
+    protected float unsetTriggerTimer = 0;
 
-    private float offScreenTime = 2;
-    private float offScreenTimer;
-    private bool isOffScreen;
+    protected float offScreenTime = 2;
+    protected float offScreenTimer;
+    protected bool isOffScreen;
+    
 
     private void FixedUpdate()
     {
@@ -22,11 +23,11 @@ public class Projectile : MonoBehaviour {
         {
             unsetTriggerTimer += Time.deltaTime;
         }
-        else if(unsetTriggerTimer >= unsetTriggerTime && GetComponent<BoxCollider2D>().isTrigger)
+        else if(unsetTriggerTimer >= unsetTriggerTime && GetComponent<Collider2D>().isTrigger)
         {
-            GetComponent<BoxCollider2D>().isTrigger = false;
+            GetComponent<Collider2D>().isTrigger = false;
         }
-        
+
     }
 
     public void CheckOffScreenStatus()
@@ -47,8 +48,47 @@ public class Projectile : MonoBehaviour {
             offScreenTimer = 0;
         }
     }
-
+    
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Ground")
+        {
+            Destroy(gameObject);
+        }
+        if (target == "Enemy")
+        {
+            if (collision.collider.tag == "Enemy")
+            {
+                Enemy enemy = collision.collider.GetComponent<Enemy>();
+                if (enemy != null && collision.collider == enemy.hurtBox)
+                {
+                    enemy.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
+        else if (target == "Player")
+        {
+            if (collision.collider.tag == "Player")
+            {
+                if (collision.collider == PlayerController.Instance.hurtBox)
+                {
+                    PlayerController.Instance.TakeDamage(damage, Helper.GetKnockBackDirection(transform, collision.transform));
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.tag == "Ground")
         {

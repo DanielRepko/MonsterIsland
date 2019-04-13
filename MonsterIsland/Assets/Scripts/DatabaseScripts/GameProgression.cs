@@ -9,4 +9,5 @@ public class GameProgression {
     public DefeatedBosses defeatedBosses;
     public OpenedChests openedChests;
     public NestInfo nestInfo;
+    public ViewedCutscenes viewedCutscenes;
 }

@@ -16,7 +16,7 @@ public class PlayerController : Actor {
     public bool isAlive = true;
 
     public float moveSpeed = 15.5f;
-    public float attackRange = 1.7f;
+    public float attackRange = 2.5f;
 
     //damage dealt by right arm attack
     public int rightAttackPower = 2;
@@ -24,11 +24,11 @@ public class PlayerController : Actor {
     public int leftAttackPower = 2;
 
     //these fields are used to add delays between when the player can complete certain actions
-    private float _rightAttackCooldown = 0.5f;
+    private float _rightAttackCooldown = 0.8f;
     public float RightAttackCooldown { get { return _rightAttackCooldown; } set { _rightAttackCooldown = value; } }
     private float rightAttackTimer = 0;
 
-    private float _leftAttackCooldown = 0.5f;
+    private float _leftAttackCooldown = 0.8f;
     public float LeftAttackCooldown { get { return _leftAttackCooldown; } set { _leftAttackCooldown = value; } }
     private float leftAttackTimer = 0;
 
@@ -91,10 +91,10 @@ public class PlayerController : Actor {
             width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
             height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
             Instance = this;
-            var GM = FindObjectOfType<GameManager>();
-            if (GM.gameFile != null)
-            {
-                maxHealth = GM.gameFile.player.totalHearts;
+            if (GameManager.instance != null) {
+                maxHealth = GameManager.instance.gameFile.player.totalHearts;
+            } else {
+                maxHealth = 20;
             }
             health = maxHealth;
             FindObjectOfType<UIManager>().UpdateHeartCount();
@@ -260,6 +260,10 @@ public class PlayerController : Actor {
             //calling the jump animation
             animator.Play("Jump" + Helper.GetAnimDirection(facingDirection) + "Anim");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+            //getting the AudioClip to play
+            AudioClip jumpSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Jump/jump_20");
+            AudioManager.Instance.PlaySound(jumpSound);
         }
     }
 
@@ -315,6 +319,10 @@ public class PlayerController : Actor {
             UIManager.Instance.UpdateHeartCount();
             canBeHurt = false;
             inHitStun = true;
+
+            //getting the AudioClip to play
+            AudioClip hitSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Hit/hit_27");
+            AudioManager.Instance.PlaySound(hitSound);
         }
     }
 
@@ -666,6 +674,8 @@ public class PlayerController : Actor {
         } else {
             animator.Play("PlayerDeathLeft");
         }
+        AudioClip dieSound = Resources.Load<AudioClip>("Zero Rare/Retro Sound Effects/Audio/Explosions/explosion_29");
+        AudioManager.Instance.PlaySound(dieSound);
         canBeHurt = false;
         attacksLocked = true;
         movementLocked = true;
@@ -689,6 +699,7 @@ public class PlayerController : Actor {
         UIManager.Instance.UpdateAirMeter(air, isUnderwater);
         ShowIdleFace();
         animator.SetTrigger("Revive");
+        transform.Find("Main Camera").gameObject.SetActive(true);
         GameManager.instance.LoadToLastNestUsed();
     }
 
