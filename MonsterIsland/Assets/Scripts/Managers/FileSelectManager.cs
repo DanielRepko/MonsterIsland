@@ -67,12 +67,35 @@ public class FileSelectManager : MonoBehaviour {
             //Current Parts and Weapons
             //TODO: When code to save the current parts and weapons is added, update this to load those parts and weapons
             headSlot.SetActive(true);
+            headSlot.GetComponent<HeadSlot>().faceImage.sprite = Helper.CreateSprite(loadedFile.player.headPart.mainSprite, Helper.HeadImporter);
+            headSlot.GetComponent<HeadSlot>().neckImage.sprite = Helper.CreateSprite(loadedFile.player.headPart.neckSprite, Helper.HeadImporter);
+
             torsoSlot.SetActive(true);
+            torsoSlot.GetComponent<TorsoSlot>().torsoImage.sprite = Helper.CreateSprite(loadedFile.player.torsoPart.mainSprite, Helper.TorsoImporter);
+
             leftArmSlot.SetActive(true);
+            leftArmSlot.GetComponent<ArmSlot>().bicepImage.sprite = Helper.CreateSprite(loadedFile.player.leftArmPart.bicepSprite, Helper.BicepImporter);
+            leftArmSlot.GetComponent<ArmSlot>().forearmImage.sprite = Helper.CreateSprite(loadedFile.player.leftArmPart.forearmSprite, Helper.ForearmImporter);
+            leftArmSlot.GetComponent<ArmSlot>().handImage.sprite = Helper.CreateSprite(loadedFile.player.leftArmPart.handFrontSprite, Helper.HandImporter);
+            leftArmSlot.GetComponent<ArmSlot>().fingersImage.sprite = Helper.CreateSprite(loadedFile.player.leftArmPart.fingersOpenFrontSprite, Helper.HandImporter);
+
             rightArmSlot.SetActive(true);
+            rightArmSlot.GetComponent<ArmSlot>().bicepImage.sprite = Helper.CreateSprite(loadedFile.player.rightArmPart.bicepSprite, Helper.BicepImporter);
+            rightArmSlot.GetComponent<ArmSlot>().forearmImage.sprite = Helper.CreateSprite(loadedFile.player.rightArmPart.forearmSprite, Helper.ForearmImporter);
+            rightArmSlot.GetComponent<ArmSlot>().handImage.sprite = Helper.CreateSprite(loadedFile.player.rightArmPart.handFrontSprite, Helper.HandImporter);
+            rightArmSlot.GetComponent<ArmSlot>().fingersImage.sprite = Helper.CreateSprite(loadedFile.player.rightArmPart.fingersOpenFrontSprite, Helper.HandImporter);
+
             legSlot.SetActive(true);
+            legSlot.GetComponent<LegsSlot>().pelvisImage.sprite = Helper.CreateSprite(loadedFile.player.legsPart.pelvisSprite, Helper.PelvisImporter);
+            legSlot.GetComponent<LegsSlot>().leftFootImage.sprite = legSlot.GetComponent<LegsSlot>().rightFootImage.sprite = Helper.CreateSprite(loadedFile.player.legsPart.footSprite, Helper.FootImporter);
+            legSlot.GetComponent<LegsSlot>().leftShinImage.sprite = legSlot.GetComponent<LegsSlot>().rightShinImage.sprite = Helper.CreateSprite(loadedFile.player.legsPart.shinSprite, Helper.ShinImporter);
+            legSlot.GetComponent<LegsSlot>().leftThighImage.sprite = legSlot.GetComponent<LegsSlot>().rightThighImage.sprite = Helper.CreateSprite(loadedFile.player.legsPart.thighSprite, Helper.ThighImporter);
+
             leftWeapon.enabled = true;
+            leftWeapon.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Weapons/" + loadedFile.player.leftArmPart.equippedWeapon);
+
             rightWeapon.enabled = true;
+            rightWeapon.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Weapons/" + loadedFile.player.rightArmPart.equippedWeapon);
 
             //Legendary Parts
             legendaryHead.SetActive(loadedFile.gameProgression.collectedLegendaryParts.headCollected);

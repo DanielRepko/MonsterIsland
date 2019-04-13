@@ -3418,10 +3418,10 @@ RectTransform:
   m_Father: {fileID: 934974610}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.62, y: 0.4}
-  m_AnchorMax: {x: 0.6588549, y: 0.7}
-  m_AnchoredPosition: {x: -1.8662987, y: 0}
-  m_SizeDelta: {x: 5, y: 0}
+  m_AnchorMin: {x: 0.74, y: 0.4}
+  m_AnchorMax: {x: 0.78, y: 0.7}
+  m_AnchoredPosition: {x: 2.366211, y: 0}
+  m_SizeDelta: {x: 4, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &885355969
 MonoBehaviour:
@@ -3649,16 +3649,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playButton: {fileID: 1865722475}
   deleteButton: {fileID: 571633324}
-  heartGroup: {fileID: 0}
-  heartImages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   monsterName: {fileID: 1080459445}
   playTime: {fileID: 1160613483}
   areaName: {fileID: 251660804}
@@ -6676,10 +6666,10 @@ RectTransform:
   m_Father: {fileID: 934974610}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.74, y: 0.4}
-  m_AnchorMax: {x: 0.78, y: 0.7}
-  m_AnchoredPosition: {x: 2.366211, y: 0}
-  m_SizeDelta: {x: 4, y: 0}
+  m_AnchorMin: {x: 0.62, y: 0.4}
+  m_AnchorMax: {x: 0.6588549, y: 0.7}
+  m_AnchoredPosition: {x: -1.8663025, y: 0}
+  m_SizeDelta: {x: 5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2004654364
 MonoBehaviour:
