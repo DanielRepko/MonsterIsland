@@ -84414,27 +84414,27 @@ Prefab:
     - target: {fileID: 114012045192248068, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
         type: 2}
       propertyPath: head
-      value: Mitch
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114012045192248068, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
         type: 2}
       propertyPath: torso
-      value: Mitch
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114012045192248068, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
         type: 2}
       propertyPath: rightArm
-      value: Mitch
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114012045192248068, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
         type: 2}
       propertyPath: leftArm
-      value: Mitch
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114012045192248068, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
         type: 2}
       propertyPath: legs
-      value: Mitch
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114476023652144412, guid: 5dd60c8d1dd609b489d0083e1b88ff1c,
         type: 2}
