@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4189858325258040}
   - component: {fileID: 212405941564374432}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4853589568420024}
   - component: {fileID: 212323915066292296}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Fingers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 61625877142323280}
   - component: {fileID: 114843376737826238}
   - component: {fileID: 114962906760060458}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: DroppedLeftArm
   m_TagString: PartDrop
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4444394172536998}
   - component: {fileID: 212697230568675598}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4170020817224302}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4449218083865624}
   - component: {fileID: 212474598004425144}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Bicep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4604098755932736}
   - component: {fileID: 212988147701443748}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Forearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
