@@ -19,8 +19,9 @@ public class DragonBoss : Boss {
     // Update is called once per frame
     override public void Update()
     {
-        if (health <= 0)
+        if (health <= 0 && isAlive)
         {
+            isAlive = false;
             KillBoss();
         }
     }

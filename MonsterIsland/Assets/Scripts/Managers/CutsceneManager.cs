@@ -243,7 +243,7 @@ public class CutsceneManager : MonoBehaviour {
         StartCoroutine("LoadCredits");
     }
 
-    IEnumerable LoadCredits() {
+    IEnumerator LoadCredits() {
         yield return new WaitForSeconds((float) director.duration);
         GameManager.instance.gameFile = null;
         GameManager.instance.fileNumber = -1;

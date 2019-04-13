@@ -13,7 +13,7 @@ public class Boss : Enemy{
     public AbilityFactory.ArmAbility leftAttackDelegate;
 
     private string attackingArm;
-    private bool isAlive = true;
+    protected bool isAlive = true;
 
     public float rightAttackRange = 1.7f;
     public float leftAttackRange = 1.7f;
