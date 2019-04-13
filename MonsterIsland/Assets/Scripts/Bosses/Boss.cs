@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boss : Enemy{
 
@@ -12,6 +13,7 @@ public class Boss : Enemy{
     public AbilityFactory.ArmAbility leftAttackDelegate;
 
     private string attackingArm;
+    protected bool isAlive = true;
 
     public float rightAttackRange = 1.7f;
     public float leftAttackRange = 1.7f;
@@ -29,6 +31,40 @@ public class Boss : Enemy{
     // Use this for initialization
     override public void Start()
     {
+        var bosses = GameManager.instance.gameFile.gameProgression.defeatedBosses;
+        bool hasBeenDefeated = false;
+        //Check if i've already been defeated. If I have, destroy myself.
+        switch(SceneManager.GetActiveScene().name) {
+            case "Plains":
+                if(bosses.plainsBossDefeated) {
+                    hasBeenDefeated = true;
+                }
+                break;
+            case "Desert":
+                if(bosses.desertBossDefeated) {
+                    hasBeenDefeated = true;
+                }
+                break;
+            case "Underwater":
+                if(bosses.underwaterBossDefeated) {
+                    hasBeenDefeated = true;
+                }
+                break;
+            case "Jungle":
+                if(bosses.jungleBossDefeated) {
+                    hasBeenDefeated = true;
+                }
+                break;
+            case "Skyland":
+                if(bosses.skylandBossDefeated) {
+                    hasBeenDefeated = true;
+                }
+                break;
+        }
+
+        if(hasBeenDefeated) {
+            Destroy(gameObject);
+        }
         rb = GetComponent<Rigidbody2D>();
         width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
         height = GetComponent<Collider2D>().bounds.extents.y + 0.5f;
@@ -39,8 +75,8 @@ public class Boss : Enemy{
     // Update is called once per frame
     override public void Update()
     {
-        if (health <= 0)
-        {
+        if (health <= 0 && isAlive) {
+            isAlive = false;
             KillBoss();
         }
     }
@@ -305,7 +341,33 @@ public class Boss : Enemy{
 
     virtual public void KillBoss()
     {
-        Destroy(gameObject);
+        switch(SceneManager.GetActiveScene().name) {
+            case "Plains":
+                GameManager.instance.gameFile.gameProgression.defeatedBosses.plainsBossDefeated = true;
+                GameManager.instance.gameFile.gameProgression.collectedLegendaryParts.torsoCollected = true;
+                break;
+            case "Desert":
+                GameManager.instance.gameFile.gameProgression.defeatedBosses.desertBossDefeated = true;
+                GameManager.instance.gameFile.gameProgression.collectedLegendaryParts.rightArmCollected = true;
+                break;
+            case "Underwater":
+                GameManager.instance.gameFile.gameProgression.defeatedBosses.underwaterBossDefeated = true;
+                GameManager.instance.gameFile.gameProgression.collectedLegendaryParts.legsCollected = true;
+                break;
+            case "Jungle":
+                GameManager.instance.gameFile.gameProgression.defeatedBosses.jungleBossDefeated = true;
+                GameManager.instance.gameFile.gameProgression.collectedLegendaryParts.leftArmCollected = true;
+                break;
+            case "Skyland":
+                GameManager.instance.gameFile.gameProgression.defeatedBosses.skylandBossDefeated = true;
+                GameManager.instance.gameFile.gameProgression.collectedLegendaryParts.headCollected = true;
+                break;
+            case "Castle":
+                GameManager.instance.gameFile.gameProgression.defeatedBosses.castleBossDefeated = true;
+                break;
+        }
+        PlayerController.Instance.maxHealth += 2;
+        GameObject.Find("EndOfFightTrigger").GetComponent<BoxCollider2D>().enabled = true;
     }
 
     override public void KillEnemy()

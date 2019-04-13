@@ -19,8 +19,9 @@ public class DragonBoss : Boss {
     // Update is called once per frame
     override public void Update()
     {
-        if (health <= 0)
+        if (health <= 0 && isAlive)
         {
+            isAlive = false;
             KillBoss();
         }
     }
@@ -65,7 +66,11 @@ public class DragonBoss : Boss {
 
         monster.InitializeMonster(headInfo, torsoInfo, rightArmInfo, leftArmInfo, legPartInfo);
 
-        SetFacingDirection(transform.localScale.x);
+        if (!startFlipped) {
+            SetFacingDirection(transform.localScale.x);
+        } else {
+            SetFacingDirection(-transform.localScale.x);
+        }
     }
 
     override public void SetFacingDirection(float scaleX)
@@ -132,11 +137,6 @@ public class DragonBoss : Boss {
     {
         Vector2 destination = (PlayerController.Instance.transform.position - transform.position).normalized;
         projectile.GetComponent<Rigidbody2D>().velocity = destination * projectile.GetComponent<Projectile>().speed;
-    }
-
-    override public void KillBoss()
-    {
-        Destroy(gameObject);
     }
 
     /*
