@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour {
         newFile.gameProgression.nestInfo.castleNest3 = false;
 
         //Hub Cutscenes Viewed
+        newFile.gameProgression.viewedCutscenes = new ViewedCutscenes();
         newFile.gameProgression.viewedCutscenes.desertGem = false;
         newFile.gameProgression.viewedCutscenes.underwaterGem = false;
         newFile.gameProgression.viewedCutscenes.jungleGem = false;
