@@ -2497,7 +2497,7 @@ MonoBehaviour:
     m_DisplayName: Active
     m_Version: 1
   m_Version: 1
-  m_PostPlaybackState: 0
+  m_PostPlaybackState: 1
 --- !u!114 &114748289311961766
 MonoBehaviour:
   m_ObjectHideFlags: 1

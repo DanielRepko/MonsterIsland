@@ -88,7 +88,7 @@ public class ArmPart : MonoBehaviour {
                 }
             }            
 
-            if (player != null)
+            if (GetComponentInParent<Enemy>() == null)
             {
                 //setting all of the sprite fields
                 bicepSprite = Helper.CreateSprite(partInfo.bicepSprite, Helper.BicepImporter);
@@ -188,6 +188,11 @@ public class ArmPart : MonoBehaviour {
             {
                 fingersBack = fingersOpenBackSprite;
                 fingersFront = fingersOpenFrontSprite;
+                weaponSprite = null;
+                if (weaponRenderer != null)
+                {
+                    weaponRenderer.sprite = null;
+                }
             }
 
             bicep.sprite = bicepSprite;

@@ -1101,8 +1101,8 @@ MonoBehaviour:
   - {fileID: 0}
   moveSpeed: 10
   monsterName: Monkey
-  alwaysDropPart: 1
-  partToAlwaysDrop: Legs
+  alwaysDropPart: 0
+  partToAlwaysDrop: 
   equippedWeapon: Banana Gun
   attackRange: 8
   damage: 1

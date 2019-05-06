@@ -379,7 +379,6 @@ public class PlayerController : Actor {
         else
         {
             rightArmInfo = GameManager.instance.gameFile.player.rightArmPart;
-            rightArmInfo.equippedWeapon = rightWeapon;
         }
         //initializing the LeftArm
         if (leftArm != "")
@@ -390,7 +389,6 @@ public class PlayerController : Actor {
         else
         {
             leftArmInfo = GameManager.instance.gameFile.player.leftArmPart;
-            leftArmInfo.equippedWeapon = leftWeapon;
         }
         //initializing the Legs
         if (legs != "")

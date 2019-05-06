@@ -67,15 +67,15 @@ public class GlobalObjectManager : MonoBehaviour {
 
         gameChests[0, 0] = GameManager.instance.gameFile.gameProgression.openedChests.hubChest;
         gameChests[1, 0] = GameManager.instance.gameFile.gameProgression.openedChests.plainsChest1;
-        gameChests[1, 1] = GameManager.instance.gameFile.gameProgression.openedChests.plainsChest1;
+        gameChests[1, 1] = GameManager.instance.gameFile.gameProgression.openedChests.plainsChest2;
         gameChests[2, 0] = GameManager.instance.gameFile.gameProgression.openedChests.desertChest1;
-        gameChests[2, 1] = GameManager.instance.gameFile.gameProgression.openedChests.desertChest1;
+        gameChests[2, 1] = GameManager.instance.gameFile.gameProgression.openedChests.desertChest2;
         gameChests[3, 0] = GameManager.instance.gameFile.gameProgression.openedChests.underwaterChest1;
-        gameChests[3, 1] = GameManager.instance.gameFile.gameProgression.openedChests.underwaterChest1;
+        gameChests[3, 1] = GameManager.instance.gameFile.gameProgression.openedChests.underwaterChest2;
         gameChests[4, 0] = GameManager.instance.gameFile.gameProgression.openedChests.jungleChest1;
-        gameChests[4, 1] = GameManager.instance.gameFile.gameProgression.openedChests.jungleChest1;
+        gameChests[4, 1] = GameManager.instance.gameFile.gameProgression.openedChests.jungleChest2;
         gameChests[5, 0] = GameManager.instance.gameFile.gameProgression.openedChests.skylandChest1;
-        gameChests[5, 1] = GameManager.instance.gameFile.gameProgression.openedChests.skylandChest1;
+        gameChests[5, 1] = GameManager.instance.gameFile.gameProgression.openedChests.skylandChest2;
 
         SceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }

@@ -33,7 +33,7 @@ public class WeaponSlot : MonoBehaviour {
         Button slotButton = GetComponent<Button>();
         slotButton.interactable = true;
         slotButton.transition = Selectable.Transition.None;
-        isLocked = true;
+        isLocked = false;
     }
 
     public void ClearWeaponSlot()
@@ -75,7 +75,7 @@ public class WeaponSlot : MonoBehaviour {
     public void UpdateAbilityBoard()
     {
         string weaponHand = gameObject.name.Substring(0, gameObject.name.Length - 10);
-        if (weapon.WeaponName != null)
+        if (weapon != null && weapon.WeaponName != null)
         {
             if (weaponHand == "Right")
             {

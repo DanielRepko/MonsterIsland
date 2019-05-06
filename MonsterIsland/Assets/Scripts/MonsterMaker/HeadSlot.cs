@@ -29,7 +29,9 @@ public class HeadSlot : PartSlot{
             {
                 monster = partInfo.monster,
                 abilityName = partInfo.abilityName,
+                abilityType = partInfo.abilityType,
                 abilityDesc = partInfo.abilityDesc,
+                abilityCooldown = partInfo.abilityCooldown,
                 mainSprite = ChangeColor(partInfo.mainSprite, "PRIMARY", newColor),
                 neckSprite = ChangeColor(partInfo.neckSprite, "PRIMARY", newColor),
                 hurtSprite = ChangeColor(partInfo.hurtSprite, "PRIMARY", newColor),
@@ -50,7 +52,9 @@ public class HeadSlot : PartSlot{
             {
                 monster = partInfo.monster,
                 abilityName = partInfo.abilityName,
+                abilityType = partInfo.abilityType,
                 abilityDesc = partInfo.abilityDesc,
+                abilityCooldown = partInfo.abilityCooldown,
                 mainSprite = ChangeColor(partInfo.mainSprite, "SECONDARY", newColor),
                 neckSprite = ChangeColor(partInfo.neckSprite, "SECONDARY", newColor),
                 hurtSprite = ChangeColor(partInfo.hurtSprite, "SECONDARY", newColor),

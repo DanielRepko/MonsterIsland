@@ -20,23 +20,23 @@ public class CutsceneManager : MonoBehaviour {
         //Check if i've already been defeated. If I have, destroy myself.
         switch (SceneManager.GetActiveScene().name) {
             case "Hub":
-                if(GameManager.instance.gameFile.gameProgression.viewedCutscenes.desertGem) {
+                if(GameManager.instance.gameFile.gameProgression.defeatedBosses.desertBossDefeated) {
                     desert = true;
                     GameObject.Find("DesertGem").GetComponent<SpriteRenderer>().color = Color.yellow;
                 }
-                if (GameManager.instance.gameFile.gameProgression.viewedCutscenes.underwaterGem) {
+                if (GameManager.instance.gameFile.gameProgression.defeatedBosses.underwaterBossDefeated) {
                     water = true;
                     GameObject.Find("UnderwaterGem").GetComponent<SpriteRenderer>().color = Color.blue;
                 }
-                if (GameManager.instance.gameFile.gameProgression.viewedCutscenes.jungleGem) {
+                if (GameManager.instance.gameFile.gameProgression.defeatedBosses.jungleBossDefeated) {
                     jungle = true;
                     GameObject.Find("JungleGem").GetComponent<SpriteRenderer>().color = Color.green;
                 }
                 if(desert && water && jungle) {
-                    GameObject.Find("HubToSkylandTransition").SetActive(true);
+                    GameObject.Find("TransitionObjects").transform.Find("HubToSkylandTransition").gameObject.SetActive(true);
                 }
                 if(GameManager.instance.gameFile.gameProgression.defeatedBosses.skylandBossDefeated) {
-                    GameObject.Find("HubToCastleTransition").SetActive(true);
+                    GameObject.Find("TransitionObjects").transform.Find("HubToCastleTransition").gameObject.SetActive(true);
                     GameObject.Find("CastleBarGroup").SetActive(false);
                 }
                 break;
@@ -290,7 +290,7 @@ public class CutsceneManager : MonoBehaviour {
             }
         }
 
-        if(collision.tag == "Player" && SceneManager.GetActiveScene().name == "Plains") {
+        if(collision.tag == "Player" && SceneManager.GetActiveScene().name == "Hub") {
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             var progress = GameManager.instance.gameFile.gameProgression;
 

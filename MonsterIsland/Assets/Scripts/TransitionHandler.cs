@@ -23,7 +23,6 @@ public class TransitionHandler : MonoBehaviour {
                 case LevelName.Castle:
                     if(GameManager.instance.gameFile.gameProgression.defeatedBosses.skylandBossDefeated) {
                         gameObject.SetActive(true);
-                        GameObject.Find("CastleBarGroup").SetActive(false);
                     }
                     break;
             }

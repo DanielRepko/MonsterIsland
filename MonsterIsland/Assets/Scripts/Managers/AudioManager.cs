@@ -38,10 +38,7 @@ public class AudioManager : MonoBehaviour {
 	}
 	
     public void PlayMusic(AudioClip song, bool loop) {
-        if(musicAudioSource.clip == song) {
-            return;
-        }
-
+                 
         if(musicAudioSource.isPlaying) {
             musicAudioSource.Stop();
         }
