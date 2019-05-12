@@ -37,7 +37,9 @@ public class CutsceneManager : MonoBehaviour {
                 }
                 if(GameManager.instance.gameFile.gameProgression.defeatedBosses.skylandBossDefeated) {
                     GameObject.Find("TransitionObjects").transform.Find("HubToCastleTransition").gameObject.SetActive(true);
-                    GameObject.Find("CastleBarGroup").SetActive(false);
+                    if (GameManager.instance.gameFile.gameProgression.viewedCutscenes.castleGate && GameObject.Find("CastleBarGroup")) {
+                        GameObject.Find("CastleBarGroup").SetActive(false);
+                    }
                 }
                 break;
             case "Plains":
@@ -131,6 +133,14 @@ public class CutsceneManager : MonoBehaviour {
         PlayerController.Instance.enabled = false;
         PlayerController.Instance.gameObject.transform.Find("GameplayCanvas").gameObject.SetActive(false);
         PlayerController.Instance.gameObject.transform.Find("Main Camera").gameObject.SetActive(false);
+    }
+
+    public void PlayHubCutscene() {
+        SetupCutscene(false);
+
+        director.Play();
+
+        StartCoroutine("EndCutscene");
     }
 
     public void PlayActivateDesertGem() {
@@ -293,49 +303,96 @@ public class CutsceneManager : MonoBehaviour {
         if(collision.tag == "Player" && SceneManager.GetActiveScene().name == "Hub") {
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             var progress = GameManager.instance.gameFile.gameProgression;
+            
+            //Since we're in the hub, multiple cutscenes are possible. Check which cutscene this trigger is in charge of
+            switch(director.playableAsset.name) {
+                //Desert Gem Activation
+                case "ActivateDesertGem":
+                    //Check if the desert cutscene has already been played. If it has not, continue
+                    if(!progress.viewedCutscenes.desertGem) {
+                        //Check if the desert level HAS been completed, and either jungle or underwater has NOT been completed
+                        if(progress.defeatedBosses.desertBossDefeated && (!progress.defeatedBosses.underwaterBossDefeated || !progress.defeatedBosses.jungleBossDefeated)) {
+                            //If all of the above conditions are met, we are good to play the cutscene
+                            GameManager.instance.gameFile.gameProgression.viewedCutscenes.desertGem = true;
+                            PlayHubCutscene();
+                        }
+                    }
+                    break;
 
-            //If the desert has been cleared AND the desert gem cutscene has not been viewed
-            if(progress.defeatedBosses.desertBossDefeated && !progress.viewedCutscenes.desertGem) {
-                //Mark the desert gem as played
-                GameManager.instance.gameFile.gameProgression.viewedCutscenes.desertGem = true;
+                //Underwater Gem Activation
+                case "ActivateUnderwaterGem":
+                    //Check if the underwater cutscene has already been played. If it has not, continue
+                    if (!progress.viewedCutscenes.underwaterGem) {
+                        //Check if the underwater level HAS been completed, and either jungle or desert has NOT been completed
+                        if (progress.defeatedBosses.underwaterBossDefeated && (!progress.defeatedBosses.desertBossDefeated || !progress.defeatedBosses.jungleBossDefeated)) {
+                            //If all of the above conditions are met, we are good to play the cutscene
+                            GameManager.instance.gameFile.gameProgression.viewedCutscenes.underwaterGem = true;
+                            PlayHubCutscene();
+                        }
+                    }
+                    break;
 
-                //If the underwater and jungle bosses have already been defeated
-                if(progress.viewedCutscenes.underwaterGem && progress.viewedCutscenes.jungleGem) {
-                    //Play final desert gem
-                    PlayFinalDesertGem();
-                } else {
-                    //Otherwise, play normal desert gem
-                    PlayActivateDesertGem();
-                }
-                //Otherwise, if underwater was cleared AND the underwater cutscene has not been viewed
-            } else if (progress.defeatedBosses.underwaterBossDefeated && !progress.viewedCutscenes.underwaterGem) {
-                //Mark the underwater cutscene as viewed
-                GameManager.instance.gameFile.gameProgression.viewedCutscenes.underwaterGem = true;
+                //Jungle Gem Activation
+                case "ActivateJungleGem":
+                    //Check if the jungle cutscene has already been played. If it has not, continue
+                    if (!progress.viewedCutscenes.jungleGem) {
+                        //Check if the jungle level HAS been completed, and either underwater or desert has NOT been completed
+                        if (progress.defeatedBosses.jungleBossDefeated && (!progress.defeatedBosses.desertBossDefeated || !progress.defeatedBosses.underwaterBossDefeated)) {
+                            //If all of the above conditions are met, we are good to play the cutscene
+                            GameManager.instance.gameFile.gameProgression.viewedCutscenes.jungleGem = true;
+                            PlayHubCutscene();
+                        }
+                    }
+                    break;
 
-                //If desert and jungle have been cleared, play final gem version. Otherwise, play normal.
-                if(progress.viewedCutscenes.desertGem && progress.viewedCutscenes.jungleGem) {
-                    PlayFinalUnderwaterGem();
-                } else {
-                    PlayActivateUnderwaterGem();
-                }
-                //Otherwise, just do all that again but with jungle
-            } else if (progress.defeatedBosses.jungleBossDefeated && !progress.viewedCutscenes.jungleGem) {
-                //Mark the jungle cutscene as viewed
-                GameManager.instance.gameFile.gameProgression.viewedCutscenes.jungleGem = true;
+                //Desert is the final gem
+                case "FinalDesertGem":
+                    //Check if the desert cutscene has already been played. If it has not, continue
+                    if (!progress.viewedCutscenes.desertGem) {
+                        //Check if all the levels have been completed
+                        if (progress.defeatedBosses.desertBossDefeated && progress.defeatedBosses.underwaterBossDefeated && progress.defeatedBosses.jungleBossDefeated) {
+                            //If all of the above conditions are met, we are good to play the cutscene
+                            GameManager.instance.gameFile.gameProgression.viewedCutscenes.desertGem = true;
+                            PlayHubCutscene();
+                        }
+                    }
+                    break;
 
-                //If desert and underwater have been cleared, play final gem version. Otherwise, play normal.
-                if (progress.viewedCutscenes.desertGem && progress.viewedCutscenes.underwaterGem)
-                {
-                    PlayFinalJungleGem();
-                }
-                else
-                {
-                    PlayActivateJungleGem();
-                }
-                //IF IT'S NONE OF THOSE, check if skyland was cleared. If it was, castle cutscene.
-            } else if(progress.defeatedBosses.skylandBossDefeated && !progress.viewedCutscenes.castleGate) {
-                GameManager.instance.gameFile.gameProgression.viewedCutscenes.castleGate = true;
-                PlayOpenGate();
+                //Underwater is the final gem
+                case "FinalUnderwaterGem":
+                    //Check if the underwater cutscene has already been played. If it has not, continue
+                    if (!progress.viewedCutscenes.underwaterGem) {
+                        //Check if all the levels have been completed
+                        if (progress.defeatedBosses.desertBossDefeated && progress.defeatedBosses.underwaterBossDefeated && progress.defeatedBosses.jungleBossDefeated) {
+                            //If all of the above conditions are met, we are good to play the cutscene
+                            GameManager.instance.gameFile.gameProgression.viewedCutscenes.underwaterGem = true;
+                            PlayHubCutscene();
+                        }
+                    }
+                    break;
+
+                //Jungle is the final gem
+                case "FinalJungleGem":
+                    //Check if the jungle cutscene has already been played. If it has not, continue
+                    if (!progress.viewedCutscenes.jungleGem) {
+                        //Check if all the levels have been completed
+                        if (progress.defeatedBosses.desertBossDefeated && progress.defeatedBosses.underwaterBossDefeated && progress.defeatedBosses.jungleBossDefeated) {
+                            //If all of the above conditions are met, we are good to play the cutscene
+                            GameManager.instance.gameFile.gameProgression.viewedCutscenes.jungleGem = true;
+                            PlayHubCutscene();
+                        }
+                    }
+                    break;
+
+                //Opening the castle gate
+                case "OpenGate":
+                    //Check if the cutscene already played, and if the boss of skyland has been defeated
+                    if(!progress.viewedCutscenes.castleGate && progress.defeatedBosses.skylandBossDefeated) {
+                        //If this is true, we're good to play the cutscene
+                        GameManager.instance.gameFile.gameProgression.viewedCutscenes.castleGate = true;
+                        PlayHubCutscene();
+                    }
+                    break;
             }
         }
     }
