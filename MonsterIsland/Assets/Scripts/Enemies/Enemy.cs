@@ -42,6 +42,10 @@ public class Enemy : Actor {
     public float aggroTime = 5;
     private float aggroTimer;
 
+    //used for timing how long the player should be in range before attacking
+    private float attackTimer = 0;
+    private float timeTillAttack = 0.1f;
+
     //the target for the enemy to follow, can be the player or patrol points
     public GameObject target;
     
@@ -68,7 +72,20 @@ public class Enemy : Actor {
         //attacking if aggro
         if (isAggro && PlayerIsInAttackRange())
         {
-            attackDelegate(Helper.PartType.RightArm);
+            if (attackTimer < timeTillAttack)
+            {
+                attackTimer += Time.deltaTime;
+                Debug.Log(attackTimer);
+            }
+            else if(attackTimer >= timeTillAttack && CheckCooldown("attack"))
+            {
+                attackDelegate(Helper.PartType.RightArm);
+                attackTimer = 0;
+            }            
+        }
+        else if (!PlayerIsInAttackRange())
+        {
+            attackTimer = 0;
         }
 
         //running any necessary checks on the Enemy
@@ -358,11 +375,11 @@ public class Enemy : Actor {
             RaycastHit2D attackHit = Physics2D.Raycast(attackRay.origin, attackRay.direction, attackRange, 1 << LayerMask.NameToLayer("Player"));
             if (attackHit)
             {
-                if (attackHit.collider == PlayerController.Instance.hurtBox && CheckCooldown("attack"))
+                if (attackHit.collider == PlayerController.Instance.hurtBox)
                 {
                     return true;
                 }
-                else if (attackHit.collider == PlayerController.Instance.shellCollider && CheckCooldown("attack"))
+                else if (attackHit.collider == PlayerController.Instance.shellCollider)
                 {
                     if (equippedWeapon != "")
                     {

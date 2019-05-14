@@ -370,6 +370,8 @@ public class Boss : Enemy{
         GameObject.Find("EndOfFightTrigger").GetComponent<BoxCollider2D>().enabled = true;
     }
 
+    //THESE ARE ALL OF THE METHODS FROM THE ENEMY SCRIPT THAT ARE NOT NEEDED FOR THE BOSS SCRIPT
+
     override public void KillEnemy()
     {
 
