@@ -3,13 +3,13 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
 <rect x="179.194" y="310.397" fill-opacity="0" fill="#231F20" width="255.613" height="171.701"/>
-<path fill="#FFFA00" stroke="#231F20" stroke-width="3.1535" stroke-miterlimit="10" d="M422.43,374.421l-24.253-28.441
-	c1.516,4.553,2.336,9.395,2.336,14.417c0,16.759-9.116,31.515-22.943,40.168l5.932,6.958c9.732,11.411,16.312,1.502,27.062-7.641
-	C421.312,390.741,432.162,385.835,422.43,374.421z"/>
-<path fill="#FFFA00" stroke="#231F20" stroke-width="3.1535" stroke-miterlimit="10" d="M349.704,408.666h-45.24v36.873
-	c0,14.99,11.445,11.703,25.563,11.703c14.121,0,25.566,3.287,25.566-11.703v-37.211
+<path id="PRIMARY_2_" fill="#FFFA00" stroke="#231F20" stroke-width="3.1535" stroke-miterlimit="10" d="M422.43,374.421
+	l-24.253-28.441c1.516,4.553,2.336,9.395,2.336,14.417c0,16.759-9.116,31.515-22.943,40.168l5.932,6.958
+	c9.732,11.411,16.312,1.502,27.062-7.641C421.312,390.741,432.162,385.835,422.43,374.421z"/>
+<path id="PRIMARY_1_" fill="#FFFA00" stroke="#231F20" stroke-width="3.1535" stroke-miterlimit="10" d="M349.704,408.666h-45.24
+	v36.873c0,14.99,11.445,11.703,25.563,11.703c14.121,0,25.566,3.287,25.566-11.703v-37.211
 	C353.657,408.534,351.697,408.666,349.704,408.666z"/>
-<path fill="#FFFA00" stroke="#231F20" stroke-width="3.1535" stroke-miterlimit="10" d="M264.29,408.666
+<path id="PRIMARY" fill="#FFFA00" stroke="#231F20" stroke-width="3.1535" stroke-miterlimit="10" d="M264.29,408.666
 	c-10.466,0-20.188-2.948-28.312-7.982v44.861c0,14.987,11.446,11.697,25.564,11.697c14.119,0,25.566,3.29,25.566-11.697v-36.879
 	H264.29z"/>
 <path id="PRIMARY_6_" fill="#FFFA00" stroke="#231F20" stroke-width="3.1535" stroke-miterlimit="10" d="M290.083,453.903
