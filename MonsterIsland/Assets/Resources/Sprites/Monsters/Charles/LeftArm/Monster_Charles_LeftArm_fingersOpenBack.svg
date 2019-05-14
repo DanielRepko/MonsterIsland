@@ -2,13 +2,13 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<path fill="#FFFA00" stroke="#231F20" stroke-width="3.1523" stroke-miterlimit="10" d="M191.395,374.471l24.29-28.376
-	c-1.519,4.542-2.339,9.374-2.339,14.385c0,16.721,9.13,31.444,22.979,40.078l-5.941,6.942c-9.747,11.385-16.336,1.498-27.102-7.624
-	C192.516,390.753,181.648,385.859,191.395,374.471z"/>
-<path fill="#FFFA00" stroke="#231F20" stroke-width="3.1523" stroke-miterlimit="10" d="M264.231,408.638h45.309v36.79
-	c0,14.955-11.463,11.677-25.602,11.677c-14.142,0-25.605,3.278-25.605-11.677v-37.127
+<path id="PRIMARY_2_" fill="#FFFA00" stroke="#231F20" stroke-width="3.1523" stroke-miterlimit="10" d="M191.395,374.471
+	l24.29-28.376c-1.519,4.542-2.339,9.374-2.339,14.385c0,16.721,9.13,31.444,22.979,40.078l-5.941,6.942
+	c-9.747,11.385-16.336,1.498-27.102-7.624C192.516,390.753,181.648,385.859,191.395,374.471z"/>
+<path id="PRIMARY_1_" fill="#FFFA00" stroke="#231F20" stroke-width="3.1523" stroke-miterlimit="10" d="M264.231,408.638h45.309
+	v36.79c0,14.955-11.463,11.677-25.602,11.677c-14.142,0-25.605,3.278-25.605-11.677v-37.127
 	C260.271,408.506,262.234,408.638,264.231,408.638z"/>
-<path fill="#FFFA00" stroke="#231F20" stroke-width="3.1523" stroke-miterlimit="10" d="M349.774,408.638
+<path id="PRIMARY" fill="#FFFA00" stroke="#231F20" stroke-width="3.1523" stroke-miterlimit="10" d="M349.774,408.638
 	c10.481,0,20.22-2.941,28.355-7.964v44.76c0,14.953-11.463,11.671-25.605,11.671c-14.139,0-25.604,3.282-25.604-11.671v-36.796
 	H349.774z"/>
 <rect x="179" y="310.591" fill-opacity="0" fill="#231F20" width="256" height="171.312"/>
