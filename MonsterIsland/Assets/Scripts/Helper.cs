@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.VectorGraphics.Editor;
 using Unity.VectorGraphics;
 using System.IO;
 using System.Xml;
@@ -9,128 +8,198 @@ using System;
 
 public class Helper : MonoBehaviour {
 
-    //Importers for the monster part images
+    //holds the info for creating the monster part images from scratch
+    public struct Importer 
+    {
+        public const float MaxCordDeviation = float.MaxValue;
+        public const float MaxTangentAngle = Mathf.PI / 2f;
+        public const float SamplingStepDistance = 100;
+        public const float StepDistance = 1;
+        public const float SvgPixelsPerUnit = 10;
+        public const VectorUtils.Alignment Alignment = VectorUtils.Alignment.Custom;
+        public float CustomPivotX;
+        public float CustomPivotY;
+        public const ushort GradientResolution = 128;
+    };
+
+    //Fields of type Importer that set the CustomPivots for each kind of part
+
     /**
      * Head
      **/
-    public static SVGImporter HeadImporter = new SVGImporter(){
-        MaxCordDeviation = float.MaxValue,
-        MaxTangentAngle = Mathf.PI / 2f,
-        SamplingStepDistance = 100,
-        StepDistance = 1,
-        SvgPixelsPerUnit = 10,
-        Alignment = VectorUtils.Alignment.Custom,
-        CustomPivot = new Vector2(0.4943407f, 0.1643327f),
-        GradientResolution = 128
-    };
+    public static Importer HeadImporter
+    {
+        get => new Importer { CustomPivotX = 0.4943407f, CustomPivotY = 0.1643327f };
+            
+    }
 
     /**
      * Torso
      **/
-    public static SVGImporter TorsoImporter = new SVGImporter()
+    public static Importer TorsoImporter
     {
-        MaxCordDeviation = float.MaxValue,
-        MaxTangentAngle = Mathf.PI / 2f,
-        SamplingStepDistance = 100,
-        StepDistance = 1,
-        SvgPixelsPerUnit = 10,
-        Alignment = VectorUtils.Alignment.Custom,
-        CustomPivot = new Vector2(0.5f,0.5f),
-        GradientResolution = 128
-    };
+        get => new Importer { CustomPivotX = 0.5f, CustomPivotY = 0.5f };
+
+    }
 
     /**
      * Arms
      **/
-    //Bicep
-    public static SVGImporter BicepImporter = new SVGImporter()
+    public static Importer BicepImporter
     {
-        MaxCordDeviation = float.MaxValue,
-        MaxTangentAngle = Mathf.PI / 2f,
-        SamplingStepDistance = 100,
-        StepDistance = 1,
-        SvgPixelsPerUnit = 10,
-        Alignment = VectorUtils.Alignment.Custom,
-        CustomPivot = new Vector2(0.5f,0.5f),
-        GradientResolution = 128
-    };
-    //Forearm
-    public static SVGImporter ForearmImporter = new SVGImporter()
+        get => new Importer { CustomPivotX = 0.5f, CustomPivotY = 0.5f };
+
+    }
+    public static Importer ForearmImporter
     {
-        MaxCordDeviation = float.MaxValue,
-        MaxTangentAngle = Mathf.PI / 2f,
-        SamplingStepDistance = 100,
-        StepDistance = 1,
-        SvgPixelsPerUnit = 10,
-        Alignment = VectorUtils.Alignment.Custom,
-        CustomPivot = new Vector2(0.4908897f, 0.9051564f),
-        GradientResolution = 128
-    };
-    //Hand/Fingers
-    public static SVGImporter HandImporter = new SVGImporter()
+        get => new Importer { CustomPivotX = 0.4908897f, CustomPivotY = 0.9051564f };
+
+    }
+    public static Importer HandImporter
     {
-        MaxCordDeviation = float.MaxValue,
-        MaxTangentAngle = Mathf.PI / 2f,
-        SamplingStepDistance = 100,
-        StepDistance = 1,
-        SvgPixelsPerUnit = 10,
-        Alignment = VectorUtils.Alignment.Custom,
-        CustomPivot = new Vector2(0.5f, 0.95f),
-        GradientResolution = 128
-    };
+        get => new Importer { CustomPivotX = 0.5f, CustomPivotY = 0.95f };
+
+    }
 
     /**
      * Legs
      **/
+    public static Importer PelvisImporter
+    {
+        get => new Importer { CustomPivotX = 0.5f, CustomPivotY = 0.5f };
+
+    }
+    public static Importer ThighImporter
+    {
+        get => new Importer { CustomPivotX = 0.5f, CustomPivotY = 0.9f };
+
+    }
+    public static Importer ShinImporter
+    {
+        get => new Importer { CustomPivotX = 0.5f, CustomPivotY = 0.9f };
+
+    }
+    public static Importer FootImporter
+    {
+        get => new Importer { CustomPivotX = 0.3657119f, CustomPivotY = 0.5829804f };
+
+    }
+
+
+
+    //public static SVGImporter HeadImporter = new SVGImporter()
+    //{
+    //    MaxCordDeviation = float.MaxValue,
+    //    MaxTangentAngle = Mathf.PI / 2f,
+    //    SamplingStepDistance = 100,
+    //    StepDistance = 1,
+    //    SvgPixelsPerUnit = 10,
+    //    Alignment = VectorUtils.Alignment.Custom,
+    //    CustomPivot = new Vector2(0.4943407f, 0.1643327f),
+    //    GradientResolution = 128
+    //};
+
+    
+    //public static SVGImporter TorsoImporter = new SVGImporter()
+    //{
+    //    MaxCordDeviation = float.MaxValue,
+    //    MaxTangentAngle = Mathf.PI / 2f,
+    //    SamplingStepDistance = 100,
+    //    StepDistance = 1,
+    //    SvgPixelsPerUnit = 10,
+    //    Alignment = VectorUtils.Alignment.Custom,
+    //    CustomPivot = new Vector2(0.5f,0.5f),
+    //    GradientResolution = 128
+    //};
+
+    
+    //Bicep
+    //public static SVGImporter BicepImporter = new SVGImporter()
+    //{
+    //    MaxCordDeviation = float.MaxValue,
+    //    MaxTangentAngle = Mathf.PI / 2f,
+    //    SamplingStepDistance = 100,
+    //    StepDistance = 1,
+    //    SvgPixelsPerUnit = 10,
+    //    Alignment = VectorUtils.Alignment.Custom,
+    //    CustomPivot = new Vector2(0.5f,0.5f),
+    //    GradientResolution = 128
+    //};
+    //Forearm
+    //public static SVGImporter ForearmImporter = new SVGImporter()
+    //{
+    //    MaxCordDeviation = float.MaxValue,
+    //    MaxTangentAngle = Mathf.PI / 2f,
+    //    SamplingStepDistance = 100,
+    //    StepDistance = 1,
+    //    SvgPixelsPerUnit = 10,
+    //    Alignment = VectorUtils.Alignment.Custom,
+    //    CustomPivot = new Vector2(0.4908897f, 0.9051564f),
+    //    GradientResolution = 128
+    //};
+    //Hand/Fingers
+    //public static SVGImporter HandImporter = new SVGImporter()
+    //{
+    //    MaxCordDeviation = float.MaxValue,
+    //    MaxTangentAngle = Mathf.PI / 2f,
+    //    SamplingStepDistance = 100,
+    //    StepDistance = 1,
+    //    SvgPixelsPerUnit = 10,
+    //    Alignment = VectorUtils.Alignment.Custom,
+    //    CustomPivot = new Vector2(0.5f, 0.95f),
+    //    GradientResolution = 128
+    //};
+
+    
     //Pelvis
-    public static SVGImporter PelvisImporter = new SVGImporter()
-    {
-        MaxCordDeviation = float.MaxValue,
-        MaxTangentAngle = Mathf.PI / 2f,
-        SamplingStepDistance = 100,
-        StepDistance = 1,
-        SvgPixelsPerUnit = 10,
-        Alignment = VectorUtils.Alignment.Custom,
-        CustomPivot = new Vector2(0.5f, 0.5f),
-        GradientResolution = 128
-    };
+    //public static SVGImporter PelvisImporter = new SVGImporter()
+    //{
+    //    MaxCordDeviation = float.MaxValue,
+    //    MaxTangentAngle = Mathf.PI / 2f,
+    //    SamplingStepDistance = 100,
+    //    StepDistance = 1,
+    //    SvgPixelsPerUnit = 10,
+    //    Alignment = VectorUtils.Alignment.Custom,
+    //    CustomPivot = new Vector2(0.5f, 0.5f),
+    //    GradientResolution = 128
+    //};
     //Thigh
-    public static SVGImporter ThighImporter = new SVGImporter()
-    {
-        MaxCordDeviation = float.MaxValue,
-        MaxTangentAngle = Mathf.PI / 2f,
-        SamplingStepDistance = 100,
-        StepDistance = 1,
-        SvgPixelsPerUnit = 10,
-        Alignment = VectorUtils.Alignment.Custom,
-        CustomPivot = new Vector2(0.5f, 0.9f),
-        GradientResolution = 128
-    };
+    //public static SVGImporter ThighImporter = new SVGImporter()
+    //{
+    //    MaxCordDeviation = float.MaxValue,
+    //    MaxTangentAngle = Mathf.PI / 2f,
+    //    SamplingStepDistance = 100,
+    //    StepDistance = 1,
+    //    SvgPixelsPerUnit = 10,
+    //    Alignment = VectorUtils.Alignment.Custom,
+    //    CustomPivot = new Vector2(0.5f, 0.9f),
+    //    GradientResolution = 128
+    //};
     //Shin
-    public static SVGImporter ShinImporter = new SVGImporter()
-    {
-        
-        MaxCordDeviation = float.MaxValue,
-        MaxTangentAngle = Mathf.PI / 2f,
-        SamplingStepDistance = 100,
-        StepDistance = 1,
-        SvgPixelsPerUnit = 10,
-        Alignment = VectorUtils.Alignment.Custom,
-        CustomPivot = new Vector2(0.5f, 0.9f),
-        GradientResolution = 128
-    };
+    //public static SVGImporter ShinImporter = new SVGImporter()
+    //{
+
+    //    MaxCordDeviation = float.MaxValue,
+    //    MaxTangentAngle = Mathf.PI / 2f,
+    //    SamplingStepDistance = 100,
+    //    StepDistance = 1,
+    //    SvgPixelsPerUnit = 10,
+    //    Alignment = VectorUtils.Alignment.Custom,
+    //    CustomPivot = new Vector2(0.5f, 0.9f),
+    //    GradientResolution = 128
+    //};
     //Foot
-    public static SVGImporter FootImporter = new SVGImporter()
-    {
-        MaxCordDeviation = float.MaxValue,
-        MaxTangentAngle = Mathf.PI / 2f,
-        SamplingStepDistance = 100,
-        StepDistance = 1,
-        SvgPixelsPerUnit = 10,
-        Alignment = VectorUtils.Alignment.Custom,
-        CustomPivot = new Vector2(0.3657119f, 0.5829804f),
-        GradientResolution = 128
-    };
+    //public static SVGImporter FootImporter = new SVGImporter()
+    //{
+    //    MaxCordDeviation = float.MaxValue,
+    //    MaxTangentAngle = Mathf.PI / 2f,
+    //    SamplingStepDistance = 100,
+    //    StepDistance = 1,
+    //    SvgPixelsPerUnit = 10,
+    //    Alignment = VectorUtils.Alignment.Custom,
+    //    CustomPivot = new Vector2(0.3657119f, 0.5829804f),
+    //    GradientResolution = 128
+    //};
 
     //Used for part types
     public struct PartType 
@@ -265,11 +334,7 @@ public class Helper : MonoBehaviour {
     }
 
     //helper method used to convert the imageStrings to Sprites
-    //inMonsterMaker parameter used to determine whether the call is happening inside the MonsterMaker
-    //if it is, the method does not adjust the scaling of the images
-    //this is necessary because scaling the images properly is very taxing, and would put
-    //too much loading into the Monster Maker
-    public static Sprite CreateSprite(string partString, SVGImporter importer)
+    public static Sprite CreateSprite(string partString, Importer imageSettings)
     {
         StringReader reader = new StringReader(partString);
 
@@ -278,10 +343,10 @@ public class Helper : MonoBehaviour {
         //creating TessellationOptions
         var options = new VectorUtils.TessellationOptions
         {
-            MaxCordDeviation = importer.MaxCordDeviation,
-            MaxTanAngleDeviation = importer.MaxTangentAngle,
-            SamplingStepSize = importer.SamplingStepDistance,
-            StepDistance = importer.StepDistance
+            MaxCordDeviation = Importer.MaxCordDeviation,
+            MaxTanAngleDeviation = Importer.MaxTangentAngle,
+            SamplingStepSize = Importer.SamplingStepDistance,
+            StepDistance = Importer.StepDistance
         };
 
         //loading a material
@@ -290,8 +355,10 @@ public class Helper : MonoBehaviour {
         //creating the geometry list
         var geometryList = VectorUtils.TessellateScene(sceneInfo.Scene, options);
 
+        Vector2 imagePivot = new Vector2(imageSettings.CustomPivotX, imageSettings.CustomPivotY);
+
         //building the initial sprite
-        Sprite partSprite = VectorUtils.BuildSprite(geometryList, importer.SvgPixelsPerUnit, importer.Alignment, importer.CustomPivot, importer.GradientResolution, true);
+        Sprite partSprite = VectorUtils.BuildSprite(geometryList, Importer.SvgPixelsPerUnit, Importer.Alignment, imagePivot, Importer.GradientResolution, true);
 
         int spriteWidth = (int)partSprite.rect.width;
         int spriteHeight = (int)partSprite.rect.height;
@@ -300,7 +367,7 @@ public class Helper : MonoBehaviour {
         Texture2D partTexture = VectorUtils.RenderSpriteToTexture2D(partSprite, spriteWidth, spriteHeight, material);
 
         //creating the final textured sprite
-        Sprite texturedSprite = Sprite.Create(partTexture, new Rect(0, 0, spriteWidth, spriteHeight), importer.CustomPivot);
+        Sprite texturedSprite = Sprite.Create(partTexture, new Rect(0, 0, spriteWidth, spriteHeight), imagePivot);
 
         return texturedSprite;
     }

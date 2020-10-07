@@ -4,7 +4,6 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using System.Xml;
-using Unity.VectorGraphics.Editor;
 using Unity.VectorGraphics;
 
 public class MonsterMaker : MonoBehaviour {
