@@ -1,11 +1,15 @@
 fileFormatVersion: 2
 guid: acc5d9735413db84daf23370041fd5e0
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Forest_terrain_slope_dirt_grass(fall)_128px_0
-    21300002: Forest_terrain_slope_dirt_grass(fall)_128px_1
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Forest_terrain_slope_dirt_grass(fall)_128px_0
+  - first:
+      213: 21300002
+    second: Forest_terrain_slope_dirt_grass(fall)_128px_1
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -59,8 +63,9 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -71,7 +76,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -82,7 +88,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -93,6 +100,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -115,6 +123,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d5d337395a3bd1a4ca0ff545935be52f
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -138,6 +147,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 9e0805356a089574c8eeb1e1f77a08de
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -146,10 +156,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: e84aeda5890fe2a47938084ebc03f0e3
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
