@@ -6,7 +6,6 @@ using System;
 using System.Xml;
 using System.IO;
 using Unity.VectorGraphics;
-using Unity.VectorGraphics.Editor;
 
 public abstract class PartSlot : MonoBehaviour {
     public Vector3 originalPosition;
